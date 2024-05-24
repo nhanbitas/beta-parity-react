@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lib:install": "npm install --prefix registry",
+    "lib:build": "npm run build --prefix registry"
   },
   "dependencies": {
     "react": "^18",
