@@ -1,5 +1,5 @@
 import AccordionDemo from "@components/demo/AccordionDemo";
-import BadgeDemo from "@components/demo/Badge";
+import BadgeDemo from "@components/demo/BadgeDemo";
 import Header from "@components/doc/Header";
 
 export default function Home() {

@@ -1,14 +1,15 @@
 'use client'
 
 import React from 'react'
-import{ Accordion, AccordionItem, AccordionTrigger, AccordionContent, Badge }from "@libComponents/index"
+import{ Accordion, AccordionItem, AccordionTrigger, AccordionContent }from "@libComponents/Accordion"
 
 const AccordionDemo = () => {
   return (
     <Accordion
     style={{ width: '500px', margin: '50px' }}
     type='single'
-    defaultValue='item-1'
+    defaultValue=""
+    collapsible
     className='Accordion'
     onValueChange={(value) => console.log(value)}
   >

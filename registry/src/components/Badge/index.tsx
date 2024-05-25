@@ -2,7 +2,6 @@ import React from 'react';
 import classNames from 'classnames';
 import './index.css';
 
-// const RadixBadge = Radix.Badge;
 export interface BadgeProps extends React.HTMLAttributes<HTMLElement> {
   asChild?: boolean;
   children?: React.ReactNode;

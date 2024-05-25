@@ -1,2 +1,2 @@
-export * from './Accodion';
-export * from './Badge';
+export * from "./Accordion"
+export * from "./Badge"

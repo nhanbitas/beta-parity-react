@@ -1,8 +1,8 @@
 import React from 'react';
 import * as RadixAccordion from '@radix-ui/react-accordion';
 import classNames from 'classnames';
-import { ChevronDownIcon } from '@radix-ui/react-icons';
 import './index.css';
+import { ChevronDown } from 'lucide-react';
 
 const Accordion = RadixAccordion.Root;
 
@@ -24,7 +24,7 @@ const AccordionTrigger = React.forwardRef<
   <RadixAccordion.Header className='AccordionHeader'>
     <RadixAccordion.Trigger className={classNames('AccordionTrigger', className)} {...props} ref={forwardedRef}>
       {children}
-      <ChevronDownIcon className='AccordionChevron' aria-hidden />
+      <ChevronDown className='AccordionChevron' aria-hidden />
     </RadixAccordion.Trigger>
   </RadixAccordion.Header>
 ));
