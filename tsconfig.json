@@ -19,7 +19,7 @@
     ],
     "paths": {
       "@components/*": ["./src/components/*"],
-      "@libComponents/*": ["./registry/src/components/*"],
+      "@libComponents/*": ["./registry/ui/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
