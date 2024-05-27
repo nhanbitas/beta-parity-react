@@ -7,9 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "lib:dev": "npm run dev --prefix registry",
-    "lib:install": "npm install --prefix registry",
-    "lib:build": "npm run build --prefix registry"
+    "dev:lib": "npm run dev --prefix registry",
+    "install:lib": "npm install --prefix registry",
+    "build:lib": "npm run build --prefix registry"
   },
   "dependencies": {
     "next": "14.2.3",
