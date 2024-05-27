@@ -1,14 +1,14 @@
 {
-  "name": "beta-parity-react",
+  "name": "beta-parity-react-web",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev --port 3005",
-    "build": "next build",
+    "build": "npm run build:lib && next build",
     "start": "next start",
     "lint": "next lint",
     "dev:lib": "npm run dev --prefix registry",
-    "install:lib": "npm install --prefix registry",
+    "install:lib": "npm run install:package --prefix registry",
     "build:lib": "npm run build --prefix registry"
   },
   "dependencies": {

@@ -15,6 +15,7 @@
     "build:babel": "npx babel src/components --out-dir ui --extensions \".ts,.tsx\"",
     "build:ts": "tsc --project tsconfig.lib.json",
     "build:ui": "npm run build:postcss && npm run build:ts && npm run build:babel",
+    "install:package": "npm install",
     "publish:lib": "npm run build && npm publish"
   },
   "keywords": [
@@ -27,6 +28,7 @@
   "dependencies": {
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-slot": "^1.0.2",
+    "beta-parity-react": "file:",
     "classnames": "^2.5.1",
     "lucide-react": "^0.379.0",
     "react": "^18.3.1",

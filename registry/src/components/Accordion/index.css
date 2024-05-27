@@ -15,13 +15,9 @@ h3 {
     @apply text-body-compact-02 flex w-full flex-col border-b border-solid  border-gray-200 bg-white first:rounded-t-md last:rounded-b-md last:border-none;
   }
 
-  .accordion-item:first-child {
-    @apply rounded-t-md;
-  }
-
-  .accordion-item:last-child {
-    @apply border-b-0;
-  }
+  /* .accordion-item:focus-within {
+    @apply ring-1 ring-gray-500;
+  } */
 
   .accordion-trigger {
     @apply flex h-14 items-center justify-between text-ellipsis px-4 font-semibold text-gray-500;
@@ -45,15 +41,11 @@ h3 {
   }
 
   .accordion-content {
-    @apply overflow-hidden;
+    @apply text-body-compact-02 overflow-hidden;
   }
 
   .accordion-content-text {
     @apply w-full p-4;
-  }
-
-  .accordion-content[data-state='open'] {
-    @apply text-body-compact-02 flex flex-col items-start justify-between gap-4;
   }
 }
 
