@@ -4,7 +4,7 @@ import React from 'react';
 const BadgeDemo = () => {
   return (
     <div>
-      <Badge color='orange' size='small'>
+      <Badge color='green' size='large'>
         This is a badge
       </Badge>
     </div>
