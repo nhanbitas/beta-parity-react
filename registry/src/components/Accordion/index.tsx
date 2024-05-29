@@ -4,14 +4,39 @@ import classNames from 'classnames';
 import './index.css';
 import { ChevronDown } from 'lucide-react';
 
+export interface AccordionProps {
+  items?: {
+    title: string;
+    content: React.ReactNode | React.FC;
+    value: string | number;
+    disabled?: boolean;
+    key: string | number;
+  }[];
+}
+
 const Accordion = React.forwardRef<
   React.ElementRef<typeof RadixAccordion.Root>,
-  React.ComponentPropsWithoutRef<typeof RadixAccordion.Root>
->(({ children, className, ...props }, forwardedRef) => (
-  <RadixAccordion.Root className={classNames('accordion', className)} {...props} ref={forwardedRef}>
-    {children}
-  </RadixAccordion.Root>
-));
+  React.ComponentPropsWithoutRef<typeof RadixAccordion.Root> & AccordionProps
+>(({ children, className, items, ...props }, forwardedRef) => {
+  if (!items || items.length === 0)
+    return (
+      <RadixAccordion.Root className={classNames('accordion', className)} {...props} ref={forwardedRef}>
+        {children}
+      </RadixAccordion.Root>
+    );
+
+  return (
+    <RadixAccordion.Root className={classNames('accordion', className)} {...props} ref={forwardedRef}>
+      {items.map((item: any) => (
+        <AccordionItem value={item.value} key={item.key} disabled={item.disabled ?? false}>
+          <AccordionTrigger>{item.title}</AccordionTrigger>
+          <AccordionContent>{item.content}</AccordionContent>
+        </AccordionItem>
+      ))}
+      {children}
+    </RadixAccordion.Root>
+  );
+});
 
 Accordion.displayName = 'Accordion';
 
