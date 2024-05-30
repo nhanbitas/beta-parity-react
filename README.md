@@ -7,9 +7,9 @@ This project is reusable components for web/app built in react components, that 
 
 - Clone repository
 
-- Install packages:
-  - Root: `npm install`
-  - Registry: `npm run install:lib`
+>Node version: 10.5.0
+
+- Install packages: `npm run install:packages`
   
 - Dev mode: 
   - `npm run dev:lib` to build and watch component changes

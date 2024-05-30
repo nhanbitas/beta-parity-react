@@ -28,6 +28,9 @@ const meta = {
   tags: ['autodocs'],
   parameters: {
     layout: 'centered'
+  },
+  args: {
+   style: { width: 500 },
   }
 } satisfies Meta<typeof Accordion>;
 

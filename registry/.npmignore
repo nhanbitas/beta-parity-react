@@ -1,6 +1,7 @@
 /build
 /src
 /public
+/node_modules
 /.babelrc
 /.eslintignore
 /.eslintrc.js
@@ -10,3 +11,6 @@
 /tsconfig.json
 /tsconfig.lib.json
 /postcss.config.js
+
+/.storybook
+/.storybook/*

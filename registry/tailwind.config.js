@@ -3,7 +3,7 @@ module.exports = {
   future: {
     hoverOnlyWhenSupported: true
   },
-  content: ['./src/**/*.{html,js,ts,jsx,tsx,md}'],
+  content: ['./src/**/*.{js,jsx,ts,tsx}', './.storybook/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
       fontWeight: {

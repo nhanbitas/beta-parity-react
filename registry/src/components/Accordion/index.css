@@ -8,11 +8,11 @@ h3 {
 
 @layer components {
   .accordion {
-    @apply flex w-full flex-col rounded-md border border-gray-200;
+    @apply flex w-full flex-col rounded-md border border-solid border-gray-200;
   }
 
   .accordion-item {
-    @apply text-body-compact-02 flex w-full flex-col border-b border-solid  border-gray-200 bg-white first:rounded-t-md last:rounded-b-md last:border-none;
+    @apply text-body-compact-02 flex flex-col border-0 border-b border-solid border-gray-200 bg-white first:rounded-t-md last:rounded-b-md last:border-b-0;
   }
 
   /* .accordion-item:focus-within {
@@ -33,7 +33,7 @@ h3 {
   }
 
   .accordion-chevron {
-    @apply h-4 w-4 text-gray-500 transition-all duration-300;
+    @apply h-4 w-4 text-gray-500 transition-all duration-300 rotate-0;
   }
 
   .accordion-trigger[data-state='open'] > .accordion-chevron {
@@ -45,7 +45,7 @@ h3 {
   }
 
   .accordion-content-text {
-    @apply w-full p-4;
+    @apply  p-4;
   }
 }
 
