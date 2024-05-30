@@ -1,5 +1,7 @@
 /* tailwindcss import */
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import 'tailwindcss/base';
+
 @import './font.css';
-@import './animation.css';
 @import './typography.css';
-@import './prose.css';

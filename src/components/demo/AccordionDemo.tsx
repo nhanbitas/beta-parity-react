@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Accordion } from '@libComponents/Accordion';
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@libComponents/Accordion';
 
 const accordionItems = [
   {
@@ -26,14 +26,11 @@ const accordionItems = [
 const AccordionDemo = () => {
   return (
     <Accordion
-      items={accordionItems}
-      style={{ width: '500px', margin: '50px' }}
       type='single'
       collapsible
       onValueChange={(value) => console.log(value)}
-   />
-
-
+      items={accordionItems}
+    ></Accordion>
   );
 };
 

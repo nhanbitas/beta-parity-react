@@ -1,3 +1,4 @@
+@import 'tailwindcss/components';
 @import '../global.css';
 
 /* reset */
@@ -33,7 +34,7 @@ h3 {
   }
 
   .accordion-chevron {
-    @apply h-4 w-4 text-gray-500 transition-all duration-300 rotate-0;
+    @apply h-4 w-4 rotate-0 text-gray-500 transition-all duration-300;
   }
 
   .accordion-trigger[data-state='open'] > .accordion-chevron {
@@ -45,7 +46,7 @@ h3 {
   }
 
   .accordion-content-text {
-    @apply  p-4;
+    @apply p-4;
   }
 }
 

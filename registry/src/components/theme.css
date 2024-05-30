@@ -1,0 +1,97 @@
+@import 'tailwindcss/components';
+
+@layer components {
+  /* Theme */
+  .primary {
+    @apply bg-orange-500 text-white enabled:hover:bg-orange-600 enabled:active:bg-orange-700 disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-gray-200;
+  }
+
+  .secondary {
+    @apply bg-gray-100 text-black enabled:hover:bg-gray-200 enabled:active:bg-gray-300 disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-gray-200;
+  }
+
+  .tertiary {
+    @apply border border-gray-500 bg-white text-gray-500 enabled:hover:border-gray-700 enabled:hover:text-gray-700 enabled:active:border-black enabled:active:text-black disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-gray-200;
+  }
+
+  .ghost {
+    @apply bg-none text-gray-500 enabled:hover:text-gray-700 enabled:active:text-black disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-gray-200;
+  }
+
+  .danger {
+    @apply bg-red-500 text-white enabled:hover:bg-red-600 enabled:active:bg-red-700 disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-gray-200;
+  }
+
+  .success {
+    @apply bg-green-500 text-white enabled:hover:bg-green-600 enabled:active:bg-green-700 disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-gray-200;
+  }
+
+  .system {
+    @apply bg-blue-500 text-white enabled:hover:bg-blue-600 enabled:active:bg-blue-700 disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-gray-200;
+  }
+
+  .outlined {
+    @apply border border-gray-200 bg-white text-gray-600;
+  }
+
+  .outlined.orange {
+    @apply border border-orange-200 bg-orange-50 text-orange-600;
+  }
+
+  .outlined.red {
+    @apply border border-red-200 bg-red-50 text-red-600;
+  }
+
+  .outlined.green {
+    @apply border border-green-200 bg-green-50 text-green-600;
+  }
+
+  .outlined.yellow {
+    @apply border border-yellow-200 bg-yellow-50 text-yellow-600;
+  }
+
+  .outlined.blue {
+    @apply border border-blue-200 bg-blue-50 text-blue-600;
+  }
+
+  .outlined.violet {
+    @apply border border-violet-200 bg-violet-50 text-violet-600;
+  }
+
+  .outlined.sky {
+    @apply border border-sky-200 bg-sky-50 text-sky-600;
+  }
+
+  .filled {
+    @apply border-none bg-gray-50 text-gray-600;
+  }
+
+  .filled.orange {
+    @apply bg-orange-50 text-orange-600;
+  }
+
+  .filled.red {
+    @apply bg-red-50 text-red-600;
+  }
+
+  .filled.green {
+    @apply bg-green-50 text-green-600;
+  }
+
+  .filled.yellow {
+    @apply bg-yellow-50 text-yellow-600;
+  }
+
+  .filled.blue {
+    @apply bg-blue-50 text-blue-600;
+  }
+
+  .filled.violet {
+    @apply bg-violet-50 text-violet-600;
+  }
+
+  .filled.sky {
+    @apply bg-sky-50 text-sky-600;
+  }
+  /* Theme */
+}
