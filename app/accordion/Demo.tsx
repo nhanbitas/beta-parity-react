@@ -5,22 +5,14 @@ import React from 'react';
 
 type Props = {};
 
-const Page = (props: Props) => {
-  return (
-    <>
-      <Accordion
-        type='single'
-        collapsible
-        onValueChange={(value) => console.log(value)}
-        items={accordionItems}
-      ></Accordion>
+export const DemoSingle = (props: Props) => (
+  <Accordion type='single' collapsible onValueChange={(value) => console.log(value)} items={accordionItems} />
+);
 
-      <Accordion type='multiple' onValueChange={(value) => console.log(value)} items={accordionItems}></Accordion>
-    </>
-  );
-};
-
-const accordionItems = [
+export const DemoMulti = (props: Props) => (
+  <Accordion type='multiple' onValueChange={(value) => console.log(value)} items={accordionItems} />
+);
+export const accordionItems = [
   {
     value: 'item-1',
     title: 'Is it accessible?',
@@ -40,5 +32,3 @@ const accordionItems = [
     key: 'item-3'
   }
 ];
-
-export default Page;

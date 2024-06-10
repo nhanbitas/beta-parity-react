@@ -31,4 +31,4 @@ const Page = (props: Props) => {
   );
 };
 
-export default Page;
+export const Demo = () => <Page />;

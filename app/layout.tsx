@@ -17,9 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className='flex'>
+      <body className='relative flex'>
         <SideBar />
-        <main className='flex h-screen min-h-screen flex-1 flex-col items-center justify-between p-24'>{children}</main>
+        <main className='prose ml-[256px] flex min-h-screen flex-1 flex-col gap-8 p-24'>{children}</main>
       </body>
     </html>
   );

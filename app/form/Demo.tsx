@@ -4,7 +4,7 @@ import { Input } from '@libComponents/Input';
 
 type Props = {};
 
-const Page = (props: Props) => {
+export const DemoBasicForm = (props: Props) => {
   return (
     <div className='w-full'>
       <Form>
@@ -26,5 +26,3 @@ const Page = (props: Props) => {
     </div>
   );
 };
-
-export default Page;
