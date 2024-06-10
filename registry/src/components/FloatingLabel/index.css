@@ -1,28 +1,36 @@
-.contained-label:not(.active) {
+.floating-label:not(.active) {
   @apply text-body-compact-02 pointer-events-none absolute top-2 z-10 w-full translate-y-2.5 transform truncate pl-4 pr-10 text-gray-400 transition-all;
 }
 
-.contained-label.active {
+.floating-label.active {
   @apply text-label-01 pointer-events-none absolute top-2 z-10 w-full transform truncate pl-[1.0625rem] text-gray-400 transition-all;
 }
 
-.contained-label ~ *:not(button):not(.number-input-unit) {
+.floating-label ~ *:not(button):not(.number-input-unit):not(.action-container):not(.input-wrapper) {
   @apply h-[3.5rem] min-h-[3.5rem] pt-[1.125rem] placeholder:opacity-0 placeholder:transition-opacity;
 }
 
-.contained-label:not(.active) ~ .date-picker-calendar-button,
-.contained-label:not(.active) ~ .password-input-eye-button,
-.contained-label:not(.active) ~ .number-input-unit {
+.floating-label:not(.active) ~ .date-picker-calendar-button,
+.floating-label:not(.active) ~ .password-input-eye-button,
+.floating-label:not(.active) ~ .number-input-unit {
   @apply hidden;
 }
 
-/* .contained-label.required {
+/* .floating-label.required {
       @apply before:absolute before:left-[0.3125rem] before:text-[10px] before:font-bold before:leading-[1.375rem] before:text-red-500 before:content-['\FF0A'];
     }
-    .contained-label.required.active {
+    .floating-label.required.active {
       @apply before:leading-[unset];
     } */
 
-.contained-label.active ~ * {
+.floating-label.active ~ * {
   @apply placeholder:opacity-100 placeholder:transition-opacity;
+}
+
+.floating-label-wrapper {
+  @apply relative h-min w-full rounded-md;
+}
+
+.floating-label-wrapper .floating-label ~ * > input {
+  @apply h-[3.5rem] min-h-[3.5rem] pt-[1.125rem] placeholder:opacity-0 placeholder:transition-opacity;
 }

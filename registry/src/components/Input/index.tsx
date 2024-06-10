@@ -1,15 +1,17 @@
+'use client';
+
 import * as React from 'react';
 import classNames from 'classnames';
 import './index.css';
 import { X } from 'lucide-react';
-import { ContainedLabel } from '../ContainedLabel';
+import { ContainedLabel } from '../FloatingLabel';
 import useCombinedRefs from '../hooks/useCombinedRefs';
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  wrapperClassName?: string;
+  wrapperClassname?: string;
   clearBtnClassName?: string;
   isClearable?: boolean;
-  containedLabel?: string;
+  floatingLabel?: string;
   onClear?: () => void;
   ActionBtn?: JSX.Element | React.ReactNode;
   isError?: boolean;
@@ -18,7 +20,21 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   (
-    { className, type = 'text', isClearable, onClear, containedLabel, ActionBtn, isError, isSuccess, ...props },
+    {
+      className,
+      type = 'text',
+      isClearable,
+      onClear,
+      floatingLabel,
+      ActionBtn,
+      isError,
+      isSuccess,
+      wrapperClassname,
+      onChange,
+      onFocus,
+      onBlur,
+      ...props
+    },
     ref
   ) => {
     const [value, setValue] = React.useState(props.value || '');
@@ -34,20 +50,20 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       setValue(e.target.value);
-      props.onChange && props.onChange(e);
+      onChange && onChange(e);
     };
 
     const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
       setIsActiveContainedLabel(true);
-      props.onFocus && props.onFocus(e);
+      onFocus && onFocus(e);
     };
 
     const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
       !value && setIsActiveContainedLabel(false);
-      props.onBlur && props.onBlur(e);
+      onBlur && onBlur(e);
     };
 
-    if (!isClearable && !ActionBtn && !containedLabel)
+    if (!isClearable && !ActionBtn && !floatingLabel)
       return (
         <input
           type={type}
@@ -57,12 +73,12 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         />
       );
 
-    if (isClearable || containedLabel || ActionBtn) {
+    if (isClearable || floatingLabel || ActionBtn) {
       const addedClassname = isClearable && ActionBtn ? 'with-actions' : isClearable || ActionBtn ? 'with-action' : '';
 
       return (
-        <div className={classNames('input-wrapper', addedClassname, props.wrapperClassName)}>
-          {containedLabel && <ContainedLabel isActive={isActiveContainedLabel}>{containedLabel}</ContainedLabel>}
+        <div className={classNames('input-wrapper', addedClassname, wrapperClassname)}>
+          {floatingLabel && <ContainedLabel isActive={isActiveContainedLabel}>{floatingLabel}</ContainedLabel>}
 
           <input
             type={type}
