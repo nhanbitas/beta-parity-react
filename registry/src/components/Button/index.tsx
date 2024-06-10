@@ -1,7 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
 import './index.css';
-import { Spinner } from '../Spinner';
 
 export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   text?: string;
@@ -33,6 +32,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ) => {
     return (
       <button
+        type='button'
         className={classNames('btn', className, variant, size, {
           'icon-only': iconOnly,
           loading: isLoading,
@@ -40,15 +40,10 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         })}
         onClick={!disabled && !isLoading ? onClick : undefined}
         ref={ref}
+        {...(isLoading ? { 'data-loading': 'true' } : {})}
         {...props}
       >
-        {isLoading ? (
-          <>
-            <Spinner variant='circle-01' /> {text || children}
-          </>
-        ) : (
-          text || children
-        )}
+        {text || children}
       </button>
     );
   }

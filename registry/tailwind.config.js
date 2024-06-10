@@ -153,5 +153,9 @@ module.exports = {
       'upper-roman': 'upper-roman'
     }
   },
-  plugins: []
+  plugins: [
+    require('@tailwindcss/container-queries'),
+    require('./plugins/scrollbar.tw.js'),
+    require('./plugins/typography.tw.js')
+  ]
 };

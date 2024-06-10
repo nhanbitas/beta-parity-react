@@ -1,78 +1,72 @@
-@import '../global.css';
-
-@layer components {
-  /* Spinner */
-  .loading {
-    @apply pointer-events-auto cursor-wait;
-  }
-
-  .loading:not(.ghost):not(span) {
-    @apply border-gray-200 bg-gray-100 text-gray-500;
-  }
-
-  .loading.success:not(.ghost):not(span) {
-    @apply bg-green-50 text-green-600;
-  }
-
-  .loading.error:not(.ghost):not(span) {
-    @apply bg-red-50 text-red-600;
-  }
-
-  span.loading.success,
-  span.loading.error {
-    @apply bg-transparent;
-  }
-
-  .spinner-svg {
-    @apply bg-orange h-4 w-4 text-blue-500;
-  }
-
-  .spinner-svg.large {
-    @apply h-8 w-8;
-  }
-
-  .spinner-svg.extra-large {
-    @apply h-12 w-12;
-  }
-  /* Spinner */
+/* Spinner */
+.loading {
+  @apply pointer-events-none;
 }
 
-@layer utilities {
-  .spinner-logo-01 {
-    mask-position: center center;
-    mask-repeat: no-repeat;
-    mask-size: cover;
-    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 64 64'%3E%3Cg%3E%3CanimateTransform keyTimes='0; 0.25; 0.33; 0.7; 0.83; 1' calcMode='spline' keySplines='0.12 0.1 0.39 0; 0.25 1 0.5 1; 0.32 0 0.67 1; 0.7 0 0.84 0; 0.61 1 0.88 0.9' attributeName='transform' type='rotate' dur='2s' values='0 32 32; 90 32 32; 30 32 32; 30 32 32; 60 32 32; 120 32 32' fill='freeze' repeatCount='indefinite' /%3E%3Cpath fill='none' stroke='%23ff5715' stroke-linecap='round' stroke-dashoffset='0' stroke-dasharray='642.5 0' style='transform: scale(0.5)' stroke-width='9'%3E%3Canimate keyTimes='0; 0.25; 0.33; 0.7; 0.83; 1' calcMode='spline' keySplines='0.7 0 0.84 0; 0.25 1 0.5 1; 0.32 0 0.67 1; 0.7 0 0.84 0; 0.25 1 0.5 1' repeatCount='indefinite' attributeName='d' dur='2s' values='M 55.082 48.7 C 22.882 67.3 12.082 47.5 17.882 37.4 C 23.682 27.3 46.282 26.8 46.282 64 C 46.282 101.2 23.682 100.7 17.882 90.6 C 12.082 80.5 23.182 60.7 55.282 79.3 C 87.382 97.9 75.782 117.2 64.082 117.2 C 52.382 117.2 40.682 97.9 72.882 79.3 C 105.082 60.7 115.982 80.5 110.082 90.6 C 104.182 100.7 81.682 101.2 81.682 64 C 81.682 26.8 104.182 27.3 109.982 37.4 C 115.882 47.5 104.882 67.3 72.782 48.7 C 40.682 30.1 52.382 10.8 63.982 10.8 C 75.582 10.8 87.282 30.1 55.082 48.7 Z; M 44 29.36 C 37.92 32.88 32.88 37.92 29.36 44 C 25.92 49.92 24 56.72 24 64 C 24 71.28 25.92 78.08 29.36 84 C 32.88 90.08 37.92 95.12 44 98.64 C 49.92 102.08 56.72 104 64 104 C 71.28 104 78.08 102.08 84 98.64 C 90.08 95.12 95.12 90.08 98.64 84 C 102.08 78.08 104 71.28 104 64 C 104 56.72 102.08 49.92 98.64 44 C 95.12 37.92 90.08 32.88 84 29.36 C 78.08 25.92 71.28 24 64 24 C 56.72 24 49.92 25.92 44 29.36 Z; M 39 20.7 C 31.4 25.1 25.1 31.4 20.7 39 C 16.4 46.4 14 54.9 14 64 C 14 73.1 16.4 81.6 20.7 89 C 25.1 96.6 31.4 102.9 39 107.3 C 46.4 111.6 54.9 114 64 114 C 73.1 114 81.6 111.6 89 107.3 C 96.6 102.9 102.9 96.6 107.3 89 C 111.6 81.6 114 73.1 114 64 C 114 54.9 111.6 46.4 107.3 39 C 102.9 31.4 96.6 25.1 89 20.7 C 81.6 16.4 73.1 14 64 14 C 54.9 14 46.4 16.4 39 20.7 Z; M 39 20.7 C 31.4 25.1 25.1 31.4 20.7 39 C 16.4 46.4 14 54.9 14 64 C 14 73.1 16.4 81.6 20.7 89 C 25.1 96.6 31.4 102.9 39 107.3 C 46.4 111.6 54.9 114 64 114 C 73.1 114 81.6 111.6 89 107.3 C 96.6 102.9 102.9 96.6 107.3 89 C 111.6 81.6 114 73.1 114 64 C 114 54.9 111.6 46.4 107.3 39 C 102.9 31.4 96.6 25.1 89 20.7 C 81.6 16.4 73.1 14 64 14 C 54.9 14 46.4 16.4 39 20.7 Z; M 44 29.36 C 49.92 25.92 56.72 24 64 24 C 71.28 24 78.08 25.92 84 29.36 C 90.08 32.88 95.12 37.92 98.64 44 C 102.08 49.92 104 56.72 104 64 C 104 71.28 102.08 78.08 98.64 84 C 95.12 90.08 90.08 95.12 84 98.64 C 78.08 102.08 71.28 104 64 104 C 56.72 104 49.92 102.08 44 98.64 C 37.92 95.12 32.88 90.08 29.36 84 C 25.92 78.08 24 71.28 24 64 C 24 56.72 25.92 49.92 29.36 44 C 32.88 37.92 37.92 32.88 44 29.36 Z; M 55.082 48.7 C 22.882 67.3 12.082 47.5 17.882 37.4 C 23.682 27.3 46.282 26.8 46.282 64 C 46.282 101.2 23.682 100.7 17.882 90.6 C 12.082 80.5 23.182 60.7 55.282 79.3 C 87.382 97.9 75.782 117.2 64.082 117.2 C 52.382 117.2 40.682 97.9 72.882 79.3 C 105.082 60.7 115.982 80.5 110.082 90.6 C 104.182 100.7 81.682 101.2 81.682 64 C 81.682 26.8 104.182 27.3 109.982 37.4 C 115.882 47.5 104.882 67.3 72.782 48.7 C 40.682 30.1 52.382 10.8 63.982 10.8 C 75.582 10.8 87.282 30.1 55.082 48.7 Z' /%3E%3Canimate attributeName='stroke-dashoffset' repeatCount='indefinite' dur='2s' keyTimes='0; 0.55; 0.8; 0.85; 1' values='0; 0; 313.897; 0; 0'%3E%3C/animate%3E%3Canimate attributeName='stroke-dasharray' repeatCount='indefinite' dur='2s' keyTimes='0; 0.2; 0.25; 0.55; 0.8; 0.85; 1' values='642.5 0; 642.5 0; 313.897 0; 0 313.897; 313.897 0; 642.5 0; 642.5 0'%3E%3C/animate%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
-  }
+.loading:not(.ghost):not(span) {
+  @apply border-gray-200 bg-gray-100 text-gray-500;
+}
 
-  .spinner-logo-02 {
-    mask-position: center center;
-    mask-repeat: no-repeat;
-    mask-size: cover;
-    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 64 64'%3E%3Cpath d='M 55.082 48.7 C 22.882 67.3 12.082 47.5 17.882 37.4 C 23.682 27.3 46.282 26.8 46.282 64 C 46.282 101.2 23.682 100.7 17.882 90.6 C 12.082 80.5 23.182 60.7 55.282 79.3 C 87.382 97.9 75.782 117.2 64.082 117.2 C 52.382 117.2 40.682 97.9 72.882 79.3 C 105.082 60.7 115.982 80.5 110.082 90.6 C 104.182 100.7 81.682 101.2 81.682 64 C 81.682 26.8 104.182 27.3 109.982 37.4 C 115.882 47.5 104.882 67.3 72.782 48.7 C 40.682 30.1 52.382 10.8 63.982 10.8 C 75.582 10.8 87.282 30.1 55.082 48.7 Z' fill='none' stroke='%23ff5715' stroke-linecap='round' stroke-dashoffset='642.4989013671875' stroke-dasharray='257 385.4989013671875' style='transform: scale(0.5)' stroke-width='9'%3E%3Canimate attributeName='stroke-dashoffset' repeatCount='indefinite' dur='6.00s' keyTimes='0; 1' values='642.4989013671875; 3212.4945068359375'%3E%3C/animate%3E%3C/path%3E%3C/svg%3E");
-  }
-  .spinner-logo-03 {
-    mask-position: center center;
-    mask-repeat: no-repeat;
-    mask-size: cover;
-    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 64 64'%3E%3Cpath d='M 55.082 48.7 C 22.882 67.3 12.082 47.5 17.882 37.4 C 23.682 27.3 46.282 26.8 46.282 64 C 46.282 101.2 23.682 100.7 17.882 90.6 C 12.082 80.5 23.182 60.7 55.282 79.3 C 87.382 97.9 75.782 117.2 64.082 117.2 C 52.382 117.2 40.682 97.9 72.882 79.3 C 105.082 60.7 115.982 80.5 110.082 90.6 C 104.182 100.7 81.682 101.2 81.682 64 C 81.682 26.8 104.182 27.3 109.982 37.4 C 115.882 47.5 104.882 67.3 72.782 48.7 C 40.682 30.1 52.382 10.8 63.982 10.8 C 75.582 10.8 87.282 30.1 55.082 48.7 Z' fill='none' stroke='%23ff5715' stroke-linecap='round' stroke-dashoffset='0' style='transform: scale(0.5)' stroke-width='9'%3E%3Canimate attributeName='stroke-dashoffset' repeatCount='indefinite' dur='2.80s' keyTimes='0; 0.5; 1' values='-586.4989013671875; 56; 56'%3E%3C/animate%3E%3Canimate attributeName='stroke-dasharray' repeatCount='indefinite' dur='2.80s' keyTimes='0; 0.5; 1' values='0 642.4989013671875; 642.4989013671875 0; 0 642.4989013671875'%3E%3C/animate%3E%3C/path%3E%3C/svg%3E");
-  }
-  .spinner-logo-04 {
-    mask-position: center center;
-    mask-repeat: no-repeat;
-    mask-size: cover;
-    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 64 64'%3E%3Cg%3E%3CanimateTransform keyTimes='0; 0.1; 0.4; 0.6; 0.9; 1' calcMode='spline' keySplines='0.32 0 0.67 1; 0.32 0 0.67 1; 0.32 0 0.67 1; 0.32 0 0.67 1; 0.32 0 0.67 1' attributeName='transform' type='rotate' dur='2s' values='0 32 32; 0 32 32; 180 32 32; 180 32 32; 360 32 32; 360 32 32' fill='freeze' repeatCount='indefinite' /%3E%3Cpath fill='none' stroke='%23ff5715' stroke-linecap='round' stroke-dashoffset='0' stroke-dasharray='642.5 0' style='transform: scale(0.5)' stroke-width='9'%3E%3Canimate keyTimes='0; 0.4; 0.6;1' repeatCount='indefinite' attributeName='d' dur='2s' values=' M 55.082 48.7 C 22.882 67.3 12.082 47.5 17.882 37.4 C 23.682 27.3 46.282 26.8 46.282 64 C 46.282 101.2 23.682 100.7 17.882 90.6 C 12.082 80.5 23.182 60.7 55.282 79.3 C 87.382 97.9 75.782 117.2 64.082 117.2 C 52.382 117.2 40.682 97.9 72.882 79.3 C 105.082 60.7 115.982 80.5 110.082 90.6 C 104.182 100.7 81.682 101.2 81.682 64 C 81.682 26.8 104.182 27.3 109.982 37.4 C 115.882 47.5 104.882 67.3 72.782 48.7 C 40.682 30.1 52.382 10.8 63.982 10.8 C 75.582 10.8 87.282 30.1 55.082 48.7 Z; M 72.882 79.3 C 40.682 97.9 52.382 117.2 64.082 117.2 C 75.782 117.2 87.382 97.9 55.282 79.3 C 23.182 60.7 12.082 80.5 17.882 90.6 C 23.682 100.7 46.282 101.2 46.282 64 C 46.282 26.8 23.682 27.3 17.882 37.4 C 12.082 47.5 22.882 67.3 55.082 48.7 C 87.282 30.1 75.582 10.8 63.982 10.8 C 52.382 10.8 40.682 30.1 72.782 48.7 C 104.882 67.3 115.882 47.5 109.982 37.4 C 104.182 27.3 81.682 26.8 81.682 64 C 81.682 101.2 104.182 100.7 110.082 90.6 C 115.982 80.5 105.082 60.7 72.882 79.3 Z; M 55.082 48.7 C 22.882 67.3 12.082 47.5 17.882 37.4 C 23.682 27.3 46.282 26.8 46.282 64 C 46.282 101.2 23.682 100.7 17.882 90.6 C 12.082 80.5 23.182 60.7 55.282 79.3 C 87.382 97.9 75.782 117.2 64.082 117.2 C 52.382 117.2 40.682 97.9 72.882 79.3 C 105.082 60.7 115.982 80.5 110.082 90.6 C 104.182 100.7 81.682 101.2 81.682 64 C 81.682 26.8 104.182 27.3 109.982 37.4 C 115.882 47.5 104.882 67.3 72.782 48.7 C 40.682 30.1 52.382 10.8 63.982 10.8 C 75.582 10.8 87.282 30.1 55.082 48.7 Z; M 81.682 64 C 81.682 101.2 104.182 100.7 110.082 90.6 C 115.982 80.5 105.082 60.7 72.882 79.3 C 40.682 97.9 52.382 117.2 64.082 117.2 C 75.782 117.2 87.382 97.9 55.282 79.3 C 23.182 60.7 12.082 80.5 17.882 90.6 C 23.682 100.7 46.282 101.2 46.282 64 C 46.282 26.8 23.682 27.3 17.882 37.4 C 12.082 47.5 22.882 67.3 55.082 48.7 C 87.282 30.1 75.582 10.8 63.982 10.8 C 52.382 10.8 40.682 30.1 72.782 48.7 C 104.882 67.3 115.882 47.5 109.982 37.4 C 104.182 27.3 81.682 26.8 81.682 64 Z' /%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
-  }
-  .spinner-circle-01 {
-    mask-position: center center;
-    mask-repeat: no-repeat;
-    mask-size: cover;
-    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 64 64'%3E%3Cg%3E%3CanimateTransform attributeName='transform' type='rotate' values='0 32 32;360 32 32' begin='0s' dur='2s' fill='freeze' repeatCount='indefinite' /%3E%3Ccircle fill='none' stroke='%23ff5715' stroke-width='5' stroke-linecap='round' cx='32' cy='32' r='22.5' stroke-dasharray='141.5' stroke-dashoffset='140'%3E%3CanimateTransform calcMode='spline' keySplines='0.42 0 0.58 1; 0.42 0 0.58 1' attributeName='transform' type='rotate' values='0 32 32; 45 32 32; 360 32 32' begin='0s' dur='1.4s' fill='freeze' repeatCount='indefinite' /%3E%3Canimate calcMode='spline' keySplines='0.67 0 0.33 1; 0.42 0 0.58 1' attributeName='stroke-dashoffset' values='140; 37.5; 140' begin='0s' dur='1.4s' fill='freeze' repeatCount='indefinite' /%3E%3C/circle%3E%3C/g%3E%3C/svg%3E");
-  }
-  .spinner-circle-02 {
-    mask-position: center center;
-    mask-repeat: no-repeat;
-    mask-size: cover;
-    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 64 64'%3E%3Cg%3E%3CanimateTransform attributeName='transform' type='rotate' values='0 32 32;270 32 32' begin='0s' dur='1.4s' fill='freeze' repeatCount='indefinite' /%3E%3Ccircle fill='none' stroke='%23ff5715' stroke-width='5' stroke-linecap='round' cx='32' cy='32' r='22.5' stroke-dasharray='187' stroke-dashoffset='610'%3E%3CanimateTransform attributeName='transform' type='rotate' values='0 32 32; 135 32 32; 450 32 32' begin='0s' dur='1.4s' fill='freeze' repeatCount='indefinite' /%3E%3Canimate attributeName='stroke-dashoffset' values='150; 50; 150' begin='0s' dur='1.4s' fill='freeze' repeatCount='indefinite' /%3E%3C/circle%3E%3C/g%3E%3C/svg%3E");
-  }
+.loading.success:not(.ghost):not(span) {
+  @apply bg-green-50 text-green-600;
+}
+
+.loading.error:not(.ghost):not(span) {
+  @apply bg-red-50 text-red-600;
+}
+
+span.loading.success,
+span.loading.error {
+  @apply bg-transparent;
+}
+
+.spinner-svg {
+  @apply h-4 w-4 bg-orange text-blue-500;
+}
+
+.spinner-svg.large {
+  @apply h-8 w-8;
+}
+
+.spinner-svg.extra-large {
+  @apply h-12 w-12;
+}
+/* Spinner */
+
+.spinner-logo-01 {
+  mask-position: center center;
+  mask-repeat: no-repeat;
+  mask-size: cover;
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 64 64'%3E%3Cg%3E%3CanimateTransform keyTimes='0; 0.25; 0.33; 0.7; 0.83; 1' calcMode='spline' keySplines='0.12 0.1 0.39 0; 0.25 1 0.5 1; 0.32 0 0.67 1; 0.7 0 0.84 0; 0.61 1 0.88 0.9' attributeName='transform' type='rotate' dur='2s' values='0 32 32; 90 32 32; 30 32 32; 30 32 32; 60 32 32; 120 32 32' fill='freeze' repeatCount='indefinite' /%3E%3Cpath fill='none' stroke='%23ff5715' stroke-linecap='round' stroke-dashoffset='0' stroke-dasharray='642.5 0' style='transform: scale(0.5)' stroke-width='9'%3E%3Canimate keyTimes='0; 0.25; 0.33; 0.7; 0.83; 1' calcMode='spline' keySplines='0.7 0 0.84 0; 0.25 1 0.5 1; 0.32 0 0.67 1; 0.7 0 0.84 0; 0.25 1 0.5 1' repeatCount='indefinite' attributeName='d' dur='2s' values='M 55.082 48.7 C 22.882 67.3 12.082 47.5 17.882 37.4 C 23.682 27.3 46.282 26.8 46.282 64 C 46.282 101.2 23.682 100.7 17.882 90.6 C 12.082 80.5 23.182 60.7 55.282 79.3 C 87.382 97.9 75.782 117.2 64.082 117.2 C 52.382 117.2 40.682 97.9 72.882 79.3 C 105.082 60.7 115.982 80.5 110.082 90.6 C 104.182 100.7 81.682 101.2 81.682 64 C 81.682 26.8 104.182 27.3 109.982 37.4 C 115.882 47.5 104.882 67.3 72.782 48.7 C 40.682 30.1 52.382 10.8 63.982 10.8 C 75.582 10.8 87.282 30.1 55.082 48.7 Z; M 44 29.36 C 37.92 32.88 32.88 37.92 29.36 44 C 25.92 49.92 24 56.72 24 64 C 24 71.28 25.92 78.08 29.36 84 C 32.88 90.08 37.92 95.12 44 98.64 C 49.92 102.08 56.72 104 64 104 C 71.28 104 78.08 102.08 84 98.64 C 90.08 95.12 95.12 90.08 98.64 84 C 102.08 78.08 104 71.28 104 64 C 104 56.72 102.08 49.92 98.64 44 C 95.12 37.92 90.08 32.88 84 29.36 C 78.08 25.92 71.28 24 64 24 C 56.72 24 49.92 25.92 44 29.36 Z; M 39 20.7 C 31.4 25.1 25.1 31.4 20.7 39 C 16.4 46.4 14 54.9 14 64 C 14 73.1 16.4 81.6 20.7 89 C 25.1 96.6 31.4 102.9 39 107.3 C 46.4 111.6 54.9 114 64 114 C 73.1 114 81.6 111.6 89 107.3 C 96.6 102.9 102.9 96.6 107.3 89 C 111.6 81.6 114 73.1 114 64 C 114 54.9 111.6 46.4 107.3 39 C 102.9 31.4 96.6 25.1 89 20.7 C 81.6 16.4 73.1 14 64 14 C 54.9 14 46.4 16.4 39 20.7 Z; M 39 20.7 C 31.4 25.1 25.1 31.4 20.7 39 C 16.4 46.4 14 54.9 14 64 C 14 73.1 16.4 81.6 20.7 89 C 25.1 96.6 31.4 102.9 39 107.3 C 46.4 111.6 54.9 114 64 114 C 73.1 114 81.6 111.6 89 107.3 C 96.6 102.9 102.9 96.6 107.3 89 C 111.6 81.6 114 73.1 114 64 C 114 54.9 111.6 46.4 107.3 39 C 102.9 31.4 96.6 25.1 89 20.7 C 81.6 16.4 73.1 14 64 14 C 54.9 14 46.4 16.4 39 20.7 Z; M 44 29.36 C 49.92 25.92 56.72 24 64 24 C 71.28 24 78.08 25.92 84 29.36 C 90.08 32.88 95.12 37.92 98.64 44 C 102.08 49.92 104 56.72 104 64 C 104 71.28 102.08 78.08 98.64 84 C 95.12 90.08 90.08 95.12 84 98.64 C 78.08 102.08 71.28 104 64 104 C 56.72 104 49.92 102.08 44 98.64 C 37.92 95.12 32.88 90.08 29.36 84 C 25.92 78.08 24 71.28 24 64 C 24 56.72 25.92 49.92 29.36 44 C 32.88 37.92 37.92 32.88 44 29.36 Z; M 55.082 48.7 C 22.882 67.3 12.082 47.5 17.882 37.4 C 23.682 27.3 46.282 26.8 46.282 64 C 46.282 101.2 23.682 100.7 17.882 90.6 C 12.082 80.5 23.182 60.7 55.282 79.3 C 87.382 97.9 75.782 117.2 64.082 117.2 C 52.382 117.2 40.682 97.9 72.882 79.3 C 105.082 60.7 115.982 80.5 110.082 90.6 C 104.182 100.7 81.682 101.2 81.682 64 C 81.682 26.8 104.182 27.3 109.982 37.4 C 115.882 47.5 104.882 67.3 72.782 48.7 C 40.682 30.1 52.382 10.8 63.982 10.8 C 75.582 10.8 87.282 30.1 55.082 48.7 Z' /%3E%3Canimate attributeName='stroke-dashoffset' repeatCount='indefinite' dur='2s' keyTimes='0; 0.55; 0.8; 0.85; 1' values='0; 0; 313.897; 0; 0'%3E%3C/animate%3E%3Canimate attributeName='stroke-dasharray' repeatCount='indefinite' dur='2s' keyTimes='0; 0.2; 0.25; 0.55; 0.8; 0.85; 1' values='642.5 0; 642.5 0; 313.897 0; 0 313.897; 313.897 0; 642.5 0; 642.5 0'%3E%3C/animate%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+}
+
+.spinner-logo-02 {
+  mask-position: center center;
+  mask-repeat: no-repeat;
+  mask-size: cover;
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 64 64'%3E%3Cpath d='M 55.082 48.7 C 22.882 67.3 12.082 47.5 17.882 37.4 C 23.682 27.3 46.282 26.8 46.282 64 C 46.282 101.2 23.682 100.7 17.882 90.6 C 12.082 80.5 23.182 60.7 55.282 79.3 C 87.382 97.9 75.782 117.2 64.082 117.2 C 52.382 117.2 40.682 97.9 72.882 79.3 C 105.082 60.7 115.982 80.5 110.082 90.6 C 104.182 100.7 81.682 101.2 81.682 64 C 81.682 26.8 104.182 27.3 109.982 37.4 C 115.882 47.5 104.882 67.3 72.782 48.7 C 40.682 30.1 52.382 10.8 63.982 10.8 C 75.582 10.8 87.282 30.1 55.082 48.7 Z' fill='none' stroke='%23ff5715' stroke-linecap='round' stroke-dashoffset='642.4989013671875' stroke-dasharray='257 385.4989013671875' style='transform: scale(0.5)' stroke-width='9'%3E%3Canimate attributeName='stroke-dashoffset' repeatCount='indefinite' dur='6.00s' keyTimes='0; 1' values='642.4989013671875; 3212.4945068359375'%3E%3C/animate%3E%3C/path%3E%3C/svg%3E");
+}
+.spinner-logo-03 {
+  mask-position: center center;
+  mask-repeat: no-repeat;
+  mask-size: cover;
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 64 64'%3E%3Cpath d='M 55.082 48.7 C 22.882 67.3 12.082 47.5 17.882 37.4 C 23.682 27.3 46.282 26.8 46.282 64 C 46.282 101.2 23.682 100.7 17.882 90.6 C 12.082 80.5 23.182 60.7 55.282 79.3 C 87.382 97.9 75.782 117.2 64.082 117.2 C 52.382 117.2 40.682 97.9 72.882 79.3 C 105.082 60.7 115.982 80.5 110.082 90.6 C 104.182 100.7 81.682 101.2 81.682 64 C 81.682 26.8 104.182 27.3 109.982 37.4 C 115.882 47.5 104.882 67.3 72.782 48.7 C 40.682 30.1 52.382 10.8 63.982 10.8 C 75.582 10.8 87.282 30.1 55.082 48.7 Z' fill='none' stroke='%23ff5715' stroke-linecap='round' stroke-dashoffset='0' style='transform: scale(0.5)' stroke-width='9'%3E%3Canimate attributeName='stroke-dashoffset' repeatCount='indefinite' dur='2.80s' keyTimes='0; 0.5; 1' values='-586.4989013671875; 56; 56'%3E%3C/animate%3E%3Canimate attributeName='stroke-dasharray' repeatCount='indefinite' dur='2.80s' keyTimes='0; 0.5; 1' values='0 642.4989013671875; 642.4989013671875 0; 0 642.4989013671875'%3E%3C/animate%3E%3C/path%3E%3C/svg%3E");
+}
+.spinner-logo-04 {
+  mask-position: center center;
+  mask-repeat: no-repeat;
+  mask-size: cover;
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 64 64'%3E%3Cg%3E%3CanimateTransform keyTimes='0; 0.1; 0.4; 0.6; 0.9; 1' calcMode='spline' keySplines='0.32 0 0.67 1; 0.32 0 0.67 1; 0.32 0 0.67 1; 0.32 0 0.67 1; 0.32 0 0.67 1' attributeName='transform' type='rotate' dur='2s' values='0 32 32; 0 32 32; 180 32 32; 180 32 32; 360 32 32; 360 32 32' fill='freeze' repeatCount='indefinite' /%3E%3Cpath fill='none' stroke='%23ff5715' stroke-linecap='round' stroke-dashoffset='0' stroke-dasharray='642.5 0' style='transform: scale(0.5)' stroke-width='9'%3E%3Canimate keyTimes='0; 0.4; 0.6;1' repeatCount='indefinite' attributeName='d' dur='2s' values=' M 55.082 48.7 C 22.882 67.3 12.082 47.5 17.882 37.4 C 23.682 27.3 46.282 26.8 46.282 64 C 46.282 101.2 23.682 100.7 17.882 90.6 C 12.082 80.5 23.182 60.7 55.282 79.3 C 87.382 97.9 75.782 117.2 64.082 117.2 C 52.382 117.2 40.682 97.9 72.882 79.3 C 105.082 60.7 115.982 80.5 110.082 90.6 C 104.182 100.7 81.682 101.2 81.682 64 C 81.682 26.8 104.182 27.3 109.982 37.4 C 115.882 47.5 104.882 67.3 72.782 48.7 C 40.682 30.1 52.382 10.8 63.982 10.8 C 75.582 10.8 87.282 30.1 55.082 48.7 Z; M 72.882 79.3 C 40.682 97.9 52.382 117.2 64.082 117.2 C 75.782 117.2 87.382 97.9 55.282 79.3 C 23.182 60.7 12.082 80.5 17.882 90.6 C 23.682 100.7 46.282 101.2 46.282 64 C 46.282 26.8 23.682 27.3 17.882 37.4 C 12.082 47.5 22.882 67.3 55.082 48.7 C 87.282 30.1 75.582 10.8 63.982 10.8 C 52.382 10.8 40.682 30.1 72.782 48.7 C 104.882 67.3 115.882 47.5 109.982 37.4 C 104.182 27.3 81.682 26.8 81.682 64 C 81.682 101.2 104.182 100.7 110.082 90.6 C 115.982 80.5 105.082 60.7 72.882 79.3 Z; M 55.082 48.7 C 22.882 67.3 12.082 47.5 17.882 37.4 C 23.682 27.3 46.282 26.8 46.282 64 C 46.282 101.2 23.682 100.7 17.882 90.6 C 12.082 80.5 23.182 60.7 55.282 79.3 C 87.382 97.9 75.782 117.2 64.082 117.2 C 52.382 117.2 40.682 97.9 72.882 79.3 C 105.082 60.7 115.982 80.5 110.082 90.6 C 104.182 100.7 81.682 101.2 81.682 64 C 81.682 26.8 104.182 27.3 109.982 37.4 C 115.882 47.5 104.882 67.3 72.782 48.7 C 40.682 30.1 52.382 10.8 63.982 10.8 C 75.582 10.8 87.282 30.1 55.082 48.7 Z; M 81.682 64 C 81.682 101.2 104.182 100.7 110.082 90.6 C 115.982 80.5 105.082 60.7 72.882 79.3 C 40.682 97.9 52.382 117.2 64.082 117.2 C 75.782 117.2 87.382 97.9 55.282 79.3 C 23.182 60.7 12.082 80.5 17.882 90.6 C 23.682 100.7 46.282 101.2 46.282 64 C 46.282 26.8 23.682 27.3 17.882 37.4 C 12.082 47.5 22.882 67.3 55.082 48.7 C 87.282 30.1 75.582 10.8 63.982 10.8 C 52.382 10.8 40.682 30.1 72.782 48.7 C 104.882 67.3 115.882 47.5 109.982 37.4 C 104.182 27.3 81.682 26.8 81.682 64 Z' /%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+}
+.spinner-circle-01 {
+  mask-position: center center;
+  mask-repeat: no-repeat;
+  mask-size: cover;
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 64 64'%3E%3Cg%3E%3CanimateTransform attributeName='transform' type='rotate' values='0 32 32;360 32 32' begin='0s' dur='2s' fill='freeze' repeatCount='indefinite' /%3E%3Ccircle fill='none' stroke='%23ff5715' stroke-width='5' stroke-linecap='round' cx='32' cy='32' r='22.5' stroke-dasharray='141.5' stroke-dashoffset='140'%3E%3CanimateTransform calcMode='spline' keySplines='0.42 0 0.58 1; 0.42 0 0.58 1' attributeName='transform' type='rotate' values='0 32 32; 45 32 32; 360 32 32' begin='0s' dur='1.4s' fill='freeze' repeatCount='indefinite' /%3E%3Canimate calcMode='spline' keySplines='0.67 0 0.33 1; 0.42 0 0.58 1' attributeName='stroke-dashoffset' values='140; 37.5; 140' begin='0s' dur='1.4s' fill='freeze' repeatCount='indefinite' /%3E%3C/circle%3E%3C/g%3E%3C/svg%3E");
+}
+.spinner-circle-02 {
+  mask-position: center center;
+  mask-repeat: no-repeat;
+  mask-size: cover;
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 64 64'%3E%3Cg%3E%3CanimateTransform attributeName='transform' type='rotate' values='0 32 32;270 32 32' begin='0s' dur='1.4s' fill='freeze' repeatCount='indefinite' /%3E%3Ccircle fill='none' stroke='%23ff5715' stroke-width='5' stroke-linecap='round' cx='32' cy='32' r='22.5' stroke-dasharray='187' stroke-dashoffset='610'%3E%3CanimateTransform attributeName='transform' type='rotate' values='0 32 32; 135 32 32; 450 32 32' begin='0s' dur='1.4s' fill='freeze' repeatCount='indefinite' /%3E%3Canimate attributeName='stroke-dashoffset' values='150; 50; 150' begin='0s' dur='1.4s' fill='freeze' repeatCount='indefinite' /%3E%3C/circle%3E%3C/g%3E%3C/svg%3E");
 }
