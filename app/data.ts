@@ -32,6 +32,14 @@ export const components = [
     url: '/spinner'
   },
   {
+    name: 'Toast',
+    url: '/toast'
+  },
+  {
+    name: 'Modal',
+    url: '/modal'
+  },
+  {
     name: 'Dropdown',
     url: '/dropdown'
   }
