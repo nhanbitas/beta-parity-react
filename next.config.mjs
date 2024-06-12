@@ -5,8 +5,9 @@ const withMDX = mdx();
 const nextConfig = {
   reactStrictMode: false,
   // Configure `pageExtensions` to include MDX files
-  pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx']
+  pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   // Optionally, add any other Next.js config below
+  productionBrowserSourceMaps: true
 };
 
 export default withMDX(nextConfig);

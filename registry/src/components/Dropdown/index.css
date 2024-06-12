@@ -1,5 +1,3 @@
-@import '../global.css';
-
 .dropdown {
   @apply relative h-fit cursor-pointer rounded-md border-none;
 }

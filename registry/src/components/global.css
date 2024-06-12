@@ -4,3 +4,7 @@
 @import 'tailwindcss/base';
 
 @import './font.css';
+
+svg.lucide {
+  @apply h-4 w-4;
+}
