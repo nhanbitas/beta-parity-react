@@ -7,7 +7,7 @@ import { ButtonProps } from '../Button';
 
 export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
-  size?: 'small' | 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large' | 'extra-large';
   type?: 'static' | 'dynamic';
   children: React.ReactNode;
   isActive: boolean;
@@ -16,9 +16,10 @@ export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export const Modal = React.forwardRef<HTMLDivElement, ModalProps>(
-  ({ className, type = 'dynamic', size = 'medium', isActive, onClose, onOpen, children, ...props }, ref) => {
+  ({ className, type, size = 'medium', isActive, onClose, onOpen, children, ...props }, ref) => {
     const [isOpen, setIsOpen] = React.useState(isActive);
     const [isBlock, setIsBlock] = React.useState(isActive);
+    const [isDialogWarning, setIsDialogWarning] = React.useState(false);
 
     const handleActive = React.useCallback(() => {
       setIsBlock(true);
@@ -46,6 +47,22 @@ export const Modal = React.forwardRef<HTMLDivElement, ModalProps>(
       }
     }, [isActive, handleActive, handleClose]);
 
+    React.useEffect(() => {
+      const documentClickHandler = (event: MouseEvent) => {
+        const target = event.target as HTMLElement;
+
+        if (target && !target.closest('.modal-dialog') && type === 'static') {
+          setIsDialogWarning(true);
+          setTimeout(() => setIsDialogWarning(false), 100);
+        } else if (target && !target.closest('.modal-dialog')) {
+          handleClose();
+        }
+      };
+
+      document.addEventListener('click', documentClickHandler);
+      return () => document.removeEventListener('click', documentClickHandler);
+    }, [type, handleClose]);
+
     return (
       <div
         style={{ display: isBlock ? 'block' : 'none' }}
@@ -53,7 +70,7 @@ export const Modal = React.forwardRef<HTMLDivElement, ModalProps>(
         ref={ref}
         {...props}
       >
-        <ModalDialog>{children}</ModalDialog>
+        <ModalDialog className={classNames({ 'modal-static-animation': isDialogWarning })}>{children}</ModalDialog>
       </div>
     );
   }

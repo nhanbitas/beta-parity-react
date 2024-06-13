@@ -6,8 +6,12 @@
   @apply text-label-01 flex h-5 w-fit select-none items-center gap-0.5 truncate rounded-full border border-gray-500 bg-gray-50 px-1.5 font-semibold text-gray-600;
 }
 
-.badge.dotted {
-  @apply before:dot before:h-1.5 before:w-1.5;
+.badge.dotted::before {
+  content: '';
+  background-color: currentColor;
+  margin: 1px;
+  border-radius: 100%;
+  @apply h-1.5 w-1.5;
 }
 
 .badge i,
@@ -77,10 +81,4 @@
 
 .badge.gray.strong {
   @apply border-gray-500 bg-gray-500 text-white;
-}
-
-.dot {
-  background-color: currentColor;
-  margin: 1px;
-  border-radius: 100%;
 }
