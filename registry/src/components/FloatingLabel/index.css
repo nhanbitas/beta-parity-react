@@ -1,9 +1,9 @@
 .floating-label:not(.active) {
-  @apply text-body-compact-02 pointer-events-none absolute top-2 z-10 w-full translate-y-2.5 transform truncate pl-4 pr-10 text-gray-400 transition-all;
+  @apply text-body-compact-02 pointer-events-none absolute top-2 w-full translate-y-2.5 transform truncate pl-4 pr-10 text-left text-gray-400 transition-all;
 }
 
 .floating-label.active {
-  @apply text-label-01 pointer-events-none absolute top-2 z-10 w-full transform truncate pl-[1.0625rem] text-gray-400 transition-all;
+  @apply text-label-01 pointer-events-none absolute top-2 w-full transform truncate pl-[1.0625rem] text-left text-gray-400 transition-all;
 }
 
 .floating-label ~ *:not(button):not(.number-input-unit):not(.action-container):not(.input-wrapper) {
