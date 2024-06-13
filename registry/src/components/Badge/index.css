@@ -1,3 +1,5 @@
+@import '../global.css';
+
 .badge {
   @apply text-label-01 flex h-6 w-fit select-none items-center gap-1 truncate rounded-full border border-gray-500 bg-gray-50 px-1.5 font-semibold text-gray-600;
 }

@@ -42,5 +42,9 @@ export const components = [
   {
     name: 'Dropdown',
     url: '/dropdown'
+  },
+  {
+    name: 'Chip',
+    url: '/chip'
   }
 ];

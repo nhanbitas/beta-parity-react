@@ -1,3 +1,5 @@
+@import '../global.css';
+
 .dropdown {
   @apply relative h-fit cursor-pointer rounded-md border-none;
 }
@@ -11,7 +13,7 @@
 }
 
 .dropdown-content {
-  @apply text-body-02 invisible absolute z-10 flex w-full cursor-default flex-col rounded-md bg-white  text-gray-600 opacity-0 drop-shadow-md;
+  @apply z-dropdown text-body-02 invisible absolute z-10 flex w-full cursor-default flex-col rounded-md bg-white  text-gray-600 opacity-0 drop-shadow-md;
 }
 
 .dropdown-content > * {

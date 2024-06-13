@@ -1,3 +1,5 @@
+@import '../global.css';
+
 /* Spinner */
 .loading {
   @apply pointer-events-none;

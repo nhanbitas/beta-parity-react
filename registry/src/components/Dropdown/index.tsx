@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import './index.css';
 import useCombinedProps from '../hooks/useCombinedProps';
+import useCombinedRefs from '../hooks/useCombinedRefs';
 
 export interface DropdownProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
@@ -35,12 +36,14 @@ export const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>(
     },
     ref
   ) => {
+    const dropdownRef = React.useRef(null);
     const [openState, setOpenState] = React.useState(isOpen);
+    const combinedRefs = useCombinedRefs(dropdownRef, ref);
 
     const handleOutsideClick = (e: MouseEvent) => {
       if (e.target) {
         const target = e.target as HTMLElement;
-        if (!target.closest('.dropdown')) {
+        if (combinedRefs.current && !combinedRefs.current.contains(target)) {
           setOpenState(false);
         }
       }
@@ -62,7 +65,7 @@ export const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>(
     } as DropdownPassThroughProps);
 
     return (
-      <div className={classNames('dropdown', className, size)} ref={ref} {...props} data-open={openState}>
+      <div className={classNames('dropdown', className, size)} ref={combinedRefs} {...props} data-open={openState}>
         {clonedChildren}
       </div>
     );

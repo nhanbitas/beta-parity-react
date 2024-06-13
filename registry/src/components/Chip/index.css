@@ -1,0 +1,20 @@
+@import '../theme.css';
+@import '../global.css';
+
+.chip {
+  @apply text-body-compact-01 flex h-8 w-fit min-w-0 cursor-pointer select-none items-center gap-1 truncate rounded-md px-2;
+}
+
+.chip > .chip-avatar {
+  @apply mr-0.5 h-6 w-6 min-w-[1.5rem] rounded-full;
+}
+
+.chip.small {
+  @apply text-body-compact-01 flex h-6 min-w-min cursor-pointer select-none items-center gap-1 truncate rounded-md px-1.5;
+}
+
+.chip.small > .chip-avatar {
+  @apply mr-0.5 h-[1.125rem] w-[1.125rem] min-w-[1.125rem] rounded-full;
+}
+
+/* Chip */
