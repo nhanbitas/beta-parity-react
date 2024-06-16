@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import './index.css';
-import { Input, InputProps } from '../Input';
+import { Input } from '../Input';
 import { Eye } from 'lucide-react';
 import useCombinedRefs from '../hooks/useCombinedRefs';
 

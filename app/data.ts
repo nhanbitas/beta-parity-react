@@ -46,5 +46,9 @@ export const components = [
   {
     name: 'Chip',
     url: '/chip'
+  },
+  {
+    name: 'Number Input',
+    url: '/number-input'
   }
 ];

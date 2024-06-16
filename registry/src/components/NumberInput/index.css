@@ -1,0 +1,35 @@
+.number-input {
+  @apply text-body-compact-02 h-10 w-full text-ellipsis rounded-md bg-white px-4 read-only:bg-gray-100;
+}
+
+.number-input:disabled {
+  @apply bg-gray-100 text-gray-100;
+}
+
+.number-input:not([value='']) {
+  @apply text-black;
+}
+
+.number-input-unit:not(.selectable) {
+  @apply absolute bottom-0 right-0 mx-3 my-2 h-6 rounded-md bg-transparent px-0;
+}
+
+.number-input-unit:not(.selectable) > select {
+  @apply pointer-events-none h-6 w-fit max-w-min select-none rounded-md bg-transparent px-0 text-right text-gray-500;
+}
+
+/* .number-input-unit.selectable {
+  @apply after:chevron-selector-vertical-mini absolute bottom-0 right-0 mx-2 my-2 h-6 rounded-md py-0 transition-colors after:absolute after:right-0.5 after:top-0 after:h-full after:transform after:items-center after:bg-gray-300 after:transition;
+} */
+
+.number-input-unit.selectable > select {
+  @apply h-6 w-fit max-w-min rounded-md bg-transparent pl-1 pr-5 text-right text-gray-500;
+}
+
+.number-input-clear-button {
+  @apply absolute bottom-0 right-0 m-2.5 flex h-5 w-5 items-center justify-center rounded-full p-1 text-gray-500 transition-colors;
+}
+
+.number-input-clear-button:hover {
+  @apply bg-gray-100 text-gray-600;
+}
