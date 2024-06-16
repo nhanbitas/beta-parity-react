@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import './index.css';
+import { NumericFormat, NumericFormatProps } from 'react-number-format';
 import { Input } from '../Input';
 
 import useCombinedRefs from '../hooks/useCombinedRefs';
@@ -10,27 +11,16 @@ export interface NumberInputProps {
   unit?: string | string[];
 }
 
-const NumberInput = React.forwardRef<
+export const NumberInput = React.forwardRef<
   React.ElementRef<typeof Input>,
-  React.ComponentPropsWithoutRef<typeof Input> & NumberInputProps
+  React.ComponentPropsWithoutRef<typeof Input> & NumberInputProps & NumericFormatProps
 >(({ unit, ...props }, ref) => {
-  const inputRef = React.useRef<HTMLInputElement>(null);
-  const combinedRef = useCombinedRefs(inputRef, ref);
   const [currentUnit, setCurrentUnit] = React.useState<string | string[] | undefined>(unit);
 
-  return (
-    <Input
-      ref={combinedRef}
-      type='number'
-      {...props}
-      ActionBtn={<UnitSelector unit={unit} setCurrentUnit={setCurrentUnit} currentUnit={currentUnit} />}
-    />
-  );
+  return <NumericFormat {...(props as any)} getInputRef={ref} customInput={Input} />;
 });
 
 NumberInput.displayName = 'NumberInput';
-
-export { NumberInput };
 
 export interface UnitSelectorProps {
   unit?: string | string[];

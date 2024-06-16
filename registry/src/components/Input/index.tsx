@@ -22,9 +22,9 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
   (
     {
       className,
+      value,
       type = 'text',
       isClearable,
-      onClear,
       floatingLabel,
       ActionBtn,
       isError,
@@ -33,23 +33,31 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       onChange,
       onFocus,
       onBlur,
+      onClear,
       ...props
     },
     ref
   ) => {
-    const [value, setValue] = React.useState(props.value || '');
-    const [isActiveContainedLabel, setIsActiveContainedLabel] = React.useState(props.value ? true : false);
+    const [currentValue, setCurrentValue] = React.useState(value || '');
+    const [isActiveContainedLabel, setIsActiveContainedLabel] = React.useState(value ? true : false);
     const inputRef = React.useRef<HTMLInputElement>(null);
     const combinedRef = useCombinedRefs(inputRef, ref);
 
     const handleClear = () => {
-      setValue('');
-      combinedRef.current && combinedRef.current.focus();
+      if (combinedRef.current) {
+        setCurrentValue('');
+        combinedRef.current.focus();
+      }
+
       onClear && onClear();
+
+      if (onChange) {
+        onChange({ target: { value: '' } } as React.ChangeEvent<HTMLInputElement>);
+      }
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      setValue(e.target.value);
+      setCurrentValue(e.target.value);
       onChange && onChange(e);
     };
 
@@ -59,16 +67,25 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     };
 
     const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-      !value && setIsActiveContainedLabel(false);
+      !currentValue && setIsActiveContainedLabel(false);
       onBlur && onBlur(e);
     };
+
+    React.useEffect(() => {
+      setCurrentValue(value || '');
+    }, [value]);
 
     if (!isClearable && !ActionBtn && !floatingLabel)
       return (
         <input
           type={type}
           className={classNames('input', { 'error-state': isError }, { 'success-state': isSuccess }, className)}
-          ref={ref}
+          ref={combinedRef}
+          {...props}
+          value={currentValue}
+          onChange={handleChange}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
           {...props}
         />
       );
@@ -85,13 +102,13 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             className={classNames('input', { 'error-state': isError }, { 'success-state': isSuccess }, className)}
             ref={combinedRef}
             {...props}
-            value={value}
+            value={currentValue}
             onChange={handleChange}
             onFocus={handleFocus}
             onBlur={handleBlur}
           />
 
-          {isActiveContainedLabel && value && (
+          {isActiveContainedLabel && currentValue && (
             <div className='action-container'>
               {isClearable && (
                 <button
