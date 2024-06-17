@@ -10,7 +10,7 @@ export const DemoBasicDropdown = (props: Props) => {
   return (
     <Dropdown className='not-prose w-64 bg-white'>
       <DropdownTringger>Dropdown</DropdownTringger>
-      <DropdownContent>
+      <DropdownContent clickToClose={true}>
         <DropdownItem>Item 1</DropdownItem>
         <DropdownItem>Item 2</DropdownItem>
         <DropdownItem>Item 3</DropdownItem>

@@ -74,12 +74,12 @@ export const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>(
 
 Dropdown.displayName = 'Dropdown';
 
-export interface TriggerButton extends React.HTMLAttributes<HTMLButtonElement> {
+export interface TriggerButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   children?: React.ReactNode;
   className?: string;
 }
 
-export interface DropdownTriggerProps extends TriggerButton, DropdownPassThroughProps {}
+export interface DropdownTriggerProps extends TriggerButtonProps, DropdownPassThroughProps {}
 
 export const DropdownTringger = React.forwardRef<HTMLButtonElement, DropdownTriggerProps>(
   ({ className, children, isLoading, disabled, openState, setOpenState, isToggle, ...props }, ref) => {
@@ -91,6 +91,7 @@ export const DropdownTringger = React.forwardRef<HTMLButtonElement, DropdownTrig
         setOpenState && setOpenState(true);
       }
     };
+
     return (
       <button
         className={classNames('dropdown-trigger', className)}
@@ -110,6 +111,7 @@ DropdownTringger.displayName = 'DropdownTringger';
 export interface ContentDropdownDiv extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   className?: string;
+  clickToClose?: boolean;
 }
 
 export interface DropdownContentProps extends ContentDropdownDiv, DropdownPassThroughProps {}
@@ -126,13 +128,22 @@ export const DropdownContent = React.forwardRef<HTMLDivElement, DropdownContentP
       openState,
       setOpenState,
       isToggle,
+      clickToClose = false,
       ...props
     },
     ref
   ) => {
+    const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+      e.stopPropagation();
+      if (clickToClose) {
+        setOpenState && setOpenState(false);
+      }
+    };
+
     return (
       <div
         className={classNames('dropdown-content', className, position, size)}
+        onClick={handleClick}
         ref={ref}
         {...props}
         data-open={openState}
