@@ -25,11 +25,3 @@
 .number-input-unit.selectable > select {
   @apply h-6 w-fit max-w-min rounded-md bg-transparent pl-1 pr-5 text-right text-gray-500;
 }
-
-.number-input-clear-button {
-  @apply absolute bottom-0 right-0 m-2.5 flex h-5 w-5 items-center justify-center rounded-full p-1 text-gray-500 transition-colors;
-}
-
-.number-input-clear-button:hover {
-  @apply bg-gray-100 text-gray-600;
-}

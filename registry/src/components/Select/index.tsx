@@ -28,10 +28,6 @@ export const NativeSelect = React.forwardRef<HTMLSelectElement, NativeSelectProp
       setCurrentValue(e.target.value);
       onChange && onChange(e);
       setIsActiveContainedLabel(e.target.value ? true : false);
-
-      if (selectRef.current && !e.target.value) {
-        selectRef.current.blur();
-      }
     };
 
     const handleFocus = (e: React.FocusEvent<HTMLSelectElement>) => {
@@ -40,12 +36,13 @@ export const NativeSelect = React.forwardRef<HTMLSelectElement, NativeSelectProp
     };
 
     const handleBlur = (e: React.FocusEvent<HTMLSelectElement>) => {
+      setIsSelectOpen(false);
       !currentValue && setIsActiveContainedLabel(false);
       onBlur && onBlur(e);
     };
 
     const handleClick = (e: React.MouseEvent<HTMLSelectElement>) => {
-      setIsSelectOpen(true);
+      setIsSelectOpen((pre) => !pre);
       onclick && onclick(e);
     };
 
@@ -55,7 +52,14 @@ export const NativeSelect = React.forwardRef<HTMLSelectElement, NativeSelectProp
 
     if (options && options.length > 0) {
       const ArrowBtn = (
-        <button className={classNames('arrow-btn', { open: isSelectOpen })}>
+        <button
+          className={classNames('arrow-btn', { open: isSelectOpen })}
+          onClick={(e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            combinedRef.current && combinedRef.current.focus();
+          }}
+        >
           <ChevronDown />
         </button>
       );

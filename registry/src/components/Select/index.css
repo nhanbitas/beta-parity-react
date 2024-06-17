@@ -1,3 +1,5 @@
+@import '../global.css';
+
 /* Select */
 .select-wrapper {
   @apply relative h-min w-full rounded-md border border-gray-200 transition-colors after:absolute after:right-0 after:top-0 after:h-full after:transform after:items-center after:bg-black after:transition;
@@ -12,7 +14,13 @@
 .native-select.no-value {
   @apply text-gray-500;
 }
-.arrow-btn {
-  @apply flex h-full w-full items-center justify-center rounded-full p-1 text-gray-500 transition-colors;
+
+.input-wrapper .right-element-container .arrow-btn {
+  @apply transition-all duration-150 ease-in-out;
 }
+
+.input-wrapper .right-element-container .arrow-btn.open {
+  @apply -scale-y-100;
+}
+
 /* Select */

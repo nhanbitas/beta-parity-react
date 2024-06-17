@@ -8,7 +8,10 @@
   @apply z-foreground text-label-01 pointer-events-none absolute top-2 w-full transform truncate pl-[1.0625rem] text-left text-gray-400 transition-all;
 }
 
-.floating-label ~ *:not(button):not(.number-input-unit):not(.action-container):not(.input-wrapper) {
+.floating-label
+  ~ *:not(button):not(.number-input-unit):not(.input-wrapper):not(.right-element-container):not(
+    .left-element-container
+  ) {
   @apply h-[3.5rem] min-h-[3.5rem] pt-[1.125rem] placeholder:opacity-0 placeholder:transition-opacity;
 }
 

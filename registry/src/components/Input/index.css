@@ -311,10 +311,11 @@ input[type='password']:disabled {
   @apply absolute bottom-0 left-0 flex h-full items-center;
 }
 
-.clear-button {
-  @apply m-2.5 flex h-5 w-5 items-center justify-center rounded-full p-1 text-gray-500 transition-colors;
+.right-element-container > *,
+.left-element-container > * {
+  @apply m-2.5 flex h-5 w-5 items-center justify-center rounded-full p-0.5 text-gray-500 transition-colors;
 }
-
-.clear-button:hover {
+.right-element-container > *:hover,
+.left-element-container > *:hover {
   @apply bg-gray-100 text-gray-600;
 }
