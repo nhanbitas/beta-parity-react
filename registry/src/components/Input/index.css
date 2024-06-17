@@ -303,9 +303,12 @@ input[type='password']:disabled {
   @apply pl-4 pr-20;
 }
 
-.with-action .action-container,
-.with-actions .action-container {
-  @apply absolute bottom-0 right-0 flex;
+.right-element-container {
+  @apply absolute bottom-0 right-0 flex h-full items-center;
+}
+
+.left-element-container {
+  @apply absolute bottom-0 left-0 flex h-full items-center;
 }
 
 .clear-button {

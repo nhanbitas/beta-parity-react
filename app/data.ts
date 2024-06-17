@@ -50,5 +50,9 @@ export const components = [
   {
     name: 'Number Input',
     url: '/number-input'
+  },
+  {
+    name: 'Select',
+    url: '/select'
   }
 ];

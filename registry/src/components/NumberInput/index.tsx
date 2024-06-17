@@ -108,8 +108,21 @@ export const NumberInput = React.forwardRef<
     if (isClearable || floatingLabel || ActionBtn) {
       const addedClassname = isClearable && ActionBtn ? 'with-actions' : isClearable || ActionBtn ? 'with-action' : '';
 
+      const isHasRightInputAction = isActiveContainedLabel && (isClearable || ActionBtn);
+
+      const RightInputActions = isHasRightInputAction && (
+        <>
+          {isClearable && currentValue && (
+            <button type='button' className={classNames('clear-button', clearBtnClassName)} onClick={handleClear}>
+              <X />
+            </button>
+          )}
+          {ActionBtn ? ActionBtn : null}
+        </>
+      );
+
       return (
-        <InputWrapper className={classNames(addedClassname, wrapperClassname)}>
+        <InputWrapper className={classNames(addedClassname, wrapperClassname)} rightElement={RightInputActions}>
           {floatingLabel && (
             <ContainedLabel isActive={isActiveContainedLabel || props.allowEmptyFormatting}>
               {floatingLabel}
@@ -126,17 +139,6 @@ export const NumberInput = React.forwardRef<
             onBlur={handleBlur}
             {...currentProps}
           />
-
-          {isActiveContainedLabel && currentValue && (
-            <div className='action-container'>
-              {isClearable && (
-                <button type='button' className={classNames('clear-button', clearBtnClassName)} onClick={handleClear}>
-                  <X />
-                </button>
-              )}
-              {ActionBtn ? ActionBtn : null}
-            </div>
-          )}
         </InputWrapper>
       );
     }

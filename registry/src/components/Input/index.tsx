@@ -93,8 +93,21 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     if (isClearable || floatingLabel || ActionBtn) {
       const addedClassname = isClearable && ActionBtn ? 'with-actions' : isClearable || ActionBtn ? 'with-action' : '';
 
+      const isHasRightInputAction = isActiveContainedLabel && (isClearable || ActionBtn);
+
+      const RightInputActions = isHasRightInputAction && (
+        <>
+          {isClearable && currentValue && (
+            <button type='button' className={classNames('clear-button', props.clearBtnClassName)} onClick={handleClear}>
+              <X />
+            </button>
+          )}
+          {ActionBtn ? ActionBtn : null}
+        </>
+      );
+
       return (
-        <InputWrapper className={classNames(addedClassname, wrapperClassname)}>
+        <InputWrapper className={classNames(addedClassname, wrapperClassname)} rightElement={RightInputActions}>
           {floatingLabel && <ContainedLabel isActive={isActiveContainedLabel}>{floatingLabel}</ContainedLabel>}
 
           <input
@@ -107,21 +120,6 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             onFocus={handleFocus}
             onBlur={handleBlur}
           />
-
-          {isActiveContainedLabel && currentValue && (
-            <div className='action-container'>
-              {isClearable && (
-                <button
-                  type='button'
-                  className={classNames('clear-button', props.clearBtnClassName)}
-                  onClick={handleClear}
-                >
-                  <X />
-                </button>
-              )}
-              {ActionBtn ? ActionBtn : null}
-            </div>
-          )}
         </InputWrapper>
       );
     }
@@ -131,14 +129,17 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 Input.displayName = 'Input';
 
 export interface InputWrapperProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  wrapperClassname?: string;
+  leftElement?: JSX.Element | React.ReactNode;
+  rightElement?: JSX.Element | React.ReactNode;
 }
 
 export const InputWrapper = React.forwardRef<HTMLInputElement, InputWrapperProps>(
-  ({ className, children, ...props }, ref) => {
+  ({ className, children, leftElement, rightElement, ...props }, ref) => {
     return (
       <div className={classNames('input-wrapper', className)} ref={ref} {...props}>
+        {leftElement && <div className='left-element-container'>{leftElement}</div>}
         {children}
+        {rightElement && <div className='right-element-container'>{rightElement}</div>}
       </div>
     );
   }
