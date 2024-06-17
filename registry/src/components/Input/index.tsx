@@ -94,7 +94,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       const addedClassname = isClearable && ActionBtn ? 'with-actions' : isClearable || ActionBtn ? 'with-action' : '';
 
       return (
-        <div className={classNames('input-wrapper', addedClassname, wrapperClassname)}>
+        <InputWrapper className={classNames(addedClassname, wrapperClassname)}>
           {floatingLabel && <ContainedLabel isActive={isActiveContainedLabel}>{floatingLabel}</ContainedLabel>}
 
           <input
@@ -122,12 +122,28 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
               {ActionBtn ? ActionBtn : null}
             </div>
           )}
-        </div>
+        </InputWrapper>
       );
     }
   }
 );
 
 Input.displayName = 'Input';
+
+export interface InputWrapperProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  wrapperClassname?: string;
+}
+
+export const InputWrapper = React.forwardRef<HTMLInputElement, InputWrapperProps>(
+  ({ className, children, ...props }, ref) => {
+    return (
+      <div className={classNames('input-wrapper', className)} ref={ref} {...props}>
+        {children}
+      </div>
+    );
+  }
+);
+
+InputWrapper.displayName = 'InputWrapper';
 
 export { Input };
