@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useEffect, useCallback } from 'react';
 import ReactDOM from 'react-dom';
 import Toast, { ToastProps } from './Toast';
@@ -10,6 +12,7 @@ interface ToastContainerProps {
 interface ToastInstance extends ToastProps {}
 
 const ToastContainer: React.FC<ToastContainerProps> = ({ max = 1 }) => {
+  const [isClient, setIsClient] = useState(false);
   const [toasts, setToasts] = useState<ToastInstance[]>([]);
 
   const removeToast = useCallback((id: string) => {
@@ -30,6 +33,12 @@ const ToastContainer: React.FC<ToastContainerProps> = ({ max = 1 }) => {
 
   const topRightToasts = toasts.filter((toast) => toast.position === 'top-right');
   const bottomCenterToasts = toasts.filter((toast) => toast.position === 'bottom-center');
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) return null;
 
   return (
     <>
