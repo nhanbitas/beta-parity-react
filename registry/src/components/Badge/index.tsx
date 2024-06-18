@@ -4,7 +4,7 @@ import './index.css';
 
 export interface BadgeProps extends React.HTMLAttributes<HTMLElement> {
   asChild?: boolean;
-  children?: React.ReactNode;
+  children?: string | React.ReactNode;
   className?: string;
   color?: 'gray' | 'orange' | 'sky' | 'violet' | 'green' | 'red' | 'yellow' | 'blue';
   size?: 'small' | 'medium' | 'large';

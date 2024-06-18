@@ -1,93 +1,86 @@
 @import '../global.css';
 
-@layer components {
-  /* Badge */
-  .badge {
-    @apply text-label-01 flex h-6 w-fit select-none items-center gap-1 truncate rounded-full border border-gray-500 bg-gray-50 px-1.5 font-semibold text-gray-600;
-  }
-
-  .badge.small {
-    @apply text-label-01 flex h-5 w-fit select-none items-center gap-0.5 truncate rounded-full border border-gray-500 bg-gray-50 px-1.5 font-semibold text-gray-600;
-  }
-
-  .badge.dotted {
-    @apply before:dot before:h-1.5 before:w-1.5;
-  }
-
-  .badge i,
-  .badge img {
-    @apply h-4 w-4;
-  }
-
-  .badge.green {
-    @apply border-green-500 bg-green-50 text-green-600;
-  }
-
-  .badge.orange {
-    @apply border-orange-500 bg-orange-50 text-orange-600;
-  }
-
-  .badge.sky {
-    @apply border-sky-500 bg-sky-50 text-sky-600;
-  }
-
-  .badge.violet {
-    @apply border-violet-500 bg-violet-50 text-violet-600;
-  }
-
-  .badge.red {
-    @apply border-red-500 bg-red-50 text-red-600;
-  }
-
-  .badge.yellow {
-    @apply border-yellow-500 bg-yellow-50 text-yellow-600;
-  }
-
-  .badge.blue {
-    @apply border-blue-500 bg-blue-50 text-blue-600;
-  }
-
-  .badge.gray {
-    @apply border-gray-500 bg-gray-50 text-gray-600;
-  }
-
-  .badge.green.strong {
-    @apply border-green-500 bg-green-500 text-white;
-  }
-
-  .badge.orange.strong {
-    @apply border-orange-500 bg-orange-500 text-white;
-  }
-
-  .badge.sky.strong {
-    @apply border-sky-500 bg-sky-500 text-white;
-  }
-
-  .badge.violet.strong {
-    @apply border-violet-500 bg-violet-500 text-white;
-  }
-
-  .badge.red.strong {
-    @apply border-red-500 bg-red-500 text-white;
-  }
-
-  .badge.yellow.strong {
-    @apply border-yellow-500 bg-yellow-500 text-white;
-  }
-
-  .badge.blue.strong {
-    @apply border-blue-500 bg-blue-500 text-white;
-  }
-
-  .badge.gray.strong {
-    @apply border-gray-500 bg-gray-500 text-white;
-  }
+.badge {
+  @apply text-label-01 flex h-6 w-fit select-none items-center gap-1 truncate rounded-full border border-gray-500 bg-gray-50 px-1.5 font-semibold text-gray-600;
 }
 
-@layer utilities {
-  .dot {
-    background-color: currentColor;
-    margin: 1px;
-    border-radius: 100%;
-  }
+.badge.small {
+  @apply text-label-01 flex h-5 w-fit select-none items-center gap-0.5 truncate rounded-full border border-gray-500 bg-gray-50 px-1.5 font-semibold text-gray-600;
+}
+
+.badge.dotted::before {
+  content: '';
+  background-color: currentColor;
+  margin: 1px;
+  border-radius: 100%;
+  @apply h-1.5 w-1.5;
+}
+
+.badge i,
+.badge img {
+  @apply h-4 w-4;
+}
+
+.badge.green {
+  @apply border-green-500 bg-green-50 text-green-600;
+}
+
+.badge.orange {
+  @apply border-orange-500 bg-orange-50 text-orange-600;
+}
+
+.badge.sky {
+  @apply border-sky-500 bg-sky-50 text-sky-600;
+}
+
+.badge.violet {
+  @apply border-violet-500 bg-violet-50 text-violet-600;
+}
+
+.badge.red {
+  @apply border-red-500 bg-red-50 text-red-600;
+}
+
+.badge.yellow {
+  @apply border-yellow-500 bg-yellow-50 text-yellow-600;
+}
+
+.badge.blue {
+  @apply border-blue-500 bg-blue-50 text-blue-600;
+}
+
+.badge.gray {
+  @apply border-gray-500 bg-gray-50 text-gray-600;
+}
+
+.badge.green.strong {
+  @apply border-green-500 bg-green-500 text-white;
+}
+
+.badge.orange.strong {
+  @apply border-orange-500 bg-orange-500 text-white;
+}
+
+.badge.sky.strong {
+  @apply border-sky-500 bg-sky-500 text-white;
+}
+
+.badge.violet.strong {
+  @apply border-violet-500 bg-violet-500 text-white;
+}
+
+.badge.red.strong {
+  @apply border-red-500 bg-red-500 text-white;
+}
+
+.badge.yellow.strong {
+  @apply border-yellow-500 bg-yellow-500 text-white;
+}
+
+.badge.blue.strong {
+  @apply border-blue-500 bg-blue-500 text-white;
+}
+
+.badge.gray.strong {
+  @apply border-gray-500 bg-gray-500 text-white;
 }

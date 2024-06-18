@@ -1,0 +1,9 @@
+@import '../global.css';
+
+.eye-btn.showed {
+  @apply bg-blue-500 text-white;
+}
+
+.eye-btn.showed:hover {
+  @apply bg-blue-600;
+}

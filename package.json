@@ -7,11 +7,19 @@
     "build": "npm run build:lib && next build",
     "start": "next start",
     "lint": "next lint",
-    "dev:lib": "npm run dev --prefix registry",
+    "install:packages": "npm install && npm run install:lib",
     "install:lib": "npm run install:package --prefix registry",
-    "build:lib": "npm run build --prefix registry"
+    "dev:lib": "npm run dev --prefix registry",
+    "dev:storybook": "npm run dev:storybook --prefix registry",
+    "build:lib": "npm run build --prefix registry",
+    "build:storybook": "npm run build:storybook --prefix registry"
   },
   "dependencies": {
+    "@mdx-js/loader": "^3.0.1",
+    "@mdx-js/react": "^3.0.1",
+    "@next/mdx": "^14.2.3",
+    "@types/mdx": "^2.0.13",
+    "lucide-react": "^0.390.0",
     "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18"

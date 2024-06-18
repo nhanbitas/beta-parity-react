@@ -3,7 +3,7 @@ module.exports = {
   future: {
     hoverOnlyWhenSupported: true
   },
-  content: ['./src/**/*.{html,js,ts,jsx,tsx,md}'],
+  content: ['./src/**/*.{js,jsx,ts,tsx,css}', './.storybook/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
       fontWeight: {
@@ -153,5 +153,10 @@ module.exports = {
       'upper-roman': 'upper-roman'
     }
   },
-  plugins: []
+  plugins: [
+    require('@tailwindcss/container-queries'),
+    require('./plugins/scrollbar.tw.js'),
+    require('./plugins/typography.tw.js'),
+    require('./plugins/zIndex.tw.js')
+  ]
 };

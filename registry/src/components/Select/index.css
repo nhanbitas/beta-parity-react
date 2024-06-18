@@ -1,0 +1,52 @@
+@import '../global.css';
+
+/* Select */
+.select-wrapper {
+  @apply relative h-min w-full rounded-md border border-gray-200 transition-colors after:absolute after:right-0 after:top-0 after:h-full after:transform after:items-center after:bg-black after:transition;
+}
+
+.select-wrapper.active {
+  @apply after:-scale-y-100;
+}
+
+.select-wrapper:not(.selected) {
+  @apply relative w-full rounded-md border border-gray-200 text-gray-500 after:bg-gray-500 hover:text-gray-700 after:hover:bg-gray-700;
+}
+
+.native-select.no-value {
+  @apply text-gray-500;
+}
+
+.input-wrapper .right-element-container .arrow-btn {
+  @apply transition-all duration-150 ease-in-out;
+}
+
+.input-wrapper .right-element-container .arrow-btn.open {
+  @apply -scale-y-100;
+}
+
+.select-item {
+  @apply relative h-full w-full cursor-pointer rounded-md p-3 text-gray-900 first:rounded-t-none hover:bg-gray-100;
+}
+
+.select-item.active {
+  @apply bg-blue-100;
+}
+
+.select-item .selected-icon {
+  @apply absolute right-0 top-0 flex aspect-auto h-full w-fit items-center justify-center p-3;
+}
+
+.dropdown.custom-select .dropdown-trigger {
+  @apply h-full w-full rounded-md border border-gray-200 bg-white px-4 text-left text-gray-500 shadow-sm hover:text-gray-700;
+}
+
+.dropdown.custom-select .dropdown-trigger[data-open='true'] {
+  @apply rounded-b-none;
+}
+
+.dropdown.custom-select .dropdown-content {
+  @apply m-0 flex flex-col gap-1 rounded-t-none border border-t-0 border-gray-200 p-1;
+}
+
+/* Select */

@@ -1,4 +1,5 @@
 @import 'tailwindcss/components';
+@import './font.css';
 
 @layer components {
   .prose {

@@ -1,0 +1,115 @@
+@import '../animation.css';
+@import '../global.css';
+
+.toast-container {
+  @apply fixed z-[999] m-4 flex w-[20rem] flex-col justify-end gap-4 !bg-transparent;
+}
+
+.toast-container.top-right {
+  @apply right-0 top-0;
+}
+
+.toast-container.bottom-center {
+  @apply bottom-0 left-1/2 top-auto -translate-x-1/2;
+}
+
+.toast {
+  @apply text-body-compact-01 relative flex h-auto w-full items-center justify-center gap-2 overflow-hidden rounded-md !bg-white px-4 py-2 drop-shadow-md transition-all duration-300;
+}
+
+.toast.active.collapsed {
+  @apply absolute right-0 h-full w-full;
+}
+
+.toast.active.collapsed > * {
+  @apply invisible;
+}
+
+.toast:not(.active) {
+  @apply hidden;
+}
+
+.toast-container.top-right .toast.active {
+  @apply animate-slide-in-left flex;
+}
+
+.toast-container.bottom-center .toast.active {
+  @apply animate-slide-in-bottom flex;
+}
+
+.toast-container.top-right .toast.closing,
+.toast-container.bottom-center .toast.closing {
+  @apply animate-fade-out;
+}
+
+.toast::before {
+  @apply absolute left-0 top-0 h-full w-1 bg-gray-900;
+}
+
+.toast-icon {
+  @apply flex h-5 w-5 items-center justify-center self-start rounded-full text-[12px] font-normal text-white;
+}
+
+.toast-body {
+  @apply flex flex-auto flex-col gap-1 text-gray-600;
+}
+
+.toast-title {
+  @apply text-heading-01;
+}
+
+.toast-close {
+  @apply flex h-4 w-4 cursor-pointer items-center justify-center self-start text-gray-900;
+}
+
+.toast.info {
+  @apply before:bg-blue-500;
+}
+
+.toast.success {
+  @apply before:bg-green-500;
+}
+
+.toast.warning {
+  @apply before:bg-yellow-500;
+}
+
+.toast.danger {
+  @apply before:bg-red-500;
+}
+
+.toast-icon {
+  @apply flex-shrink-0;
+}
+
+.info .toast-icon {
+  background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"%3E%3Cpath d="M9.99935 18.3332C14.5827 18.3332 18.3327 14.5832 18.3327 9.99984C18.3327 5.4165 14.5827 1.6665 9.99935 1.6665C5.41602 1.6665 1.66602 5.4165 1.66602 9.99984C1.66602 14.5832 5.41602 18.3332 9.99935 18.3332Z" fill="%23147AFF" stroke="%23147AFF" style="fill:%23147AFF;fill:color(display-p3%200.0784%200.4784%201.0000);fill-opacity:1;stroke:%23147AFF;stroke:color(display-p3%200.0784%200.4784%201.0000);stroke-opacity:1;" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"%3E%3C/path%3E%3Cpath d="M10 10V14.1667" stroke="white" style="stroke:white;stroke-opacity:1;" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"%3E%3C/path%3E%3Cpath d="M10 6.25H10.0075" stroke="white" style="stroke:white;stroke-opacity:1;" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"%3E%3C/path%3E%3C/svg%3E');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  pointer-events: none;
+}
+
+.success .toast-icon {
+  background-image: url('data:image/svg+xml,%3Csvg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M10.0003 18.3332C14.5837 18.3332 18.3337 14.5832 18.3337 9.99984C18.3337 5.4165 14.5837 1.6665 10.0003 1.6665C5.41699 1.6665 1.66699 5.4165 1.66699 9.99984C1.66699 14.5832 5.41699 18.3332 10.0003 18.3332Z" fill="%2339AC56" stroke="%2339AC56" style="fill:%2339AC56;fill:color(display-p3%200.2235%200.6745%200.3373);fill-opacity:1;stroke:%2339AC56;stroke:color(display-p3%200.2235%200.6745%200.3373);stroke-opacity:1;" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"%3E%3C/path%3E%3Cpath d="M6.45801 9.99993L8.81634 12.3583L13.5413 7.6416" stroke="white" style="stroke:white;stroke-opacity:1;" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"%3E%3C/path%3E%3C/svg%3E');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  pointer-events: none;
+}
+
+.warning .toast-icon {
+  background-image: url('data:image/svg+xml,%3Csvg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M10.0008 17.8414H4.95084C2.05917 17.8414 0.850839 15.7747 2.25084 13.2497L4.85084 8.56641L7.30084 4.16641C8.78417 1.49141 11.2175 1.49141 12.7008 4.16641L15.1508 8.57474L17.7508 13.2581C19.1508 15.7831 17.9342 17.8497 15.0508 17.8497H10.0008V17.8414Z" fill="%23FFBC05" stroke="%23FFBC05" style="fill:%23FFBC05;fill:color(display-p3%201.0000%200.7373%200.0196);fill-opacity:1;stroke:%23FFBC05;stroke:color(display-p3%201.0000%200.7373%200.0196);stroke-opacity:1;" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"%3E%3C/path%3E%3Cpath d="M10 7.5V11.6667" stroke="white" style="stroke:white;stroke-opacity:1;" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"%3E%3C/path%3E%3Cpath d="M9.99512 14.1665H10.0026" stroke="white" style="stroke:white;stroke-opacity:1;" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"%3E%3C/path%3E%3C/svg%3E');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  pointer-events: none;
+}
+
+.danger .toast-icon {
+  background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"%3E%3Cpath d="M9.93294 18.3332C14.5163 18.3332 18.2663 14.5832 18.2663 9.99984C18.2663 5.4165 14.5163 1.6665 9.93294 1.6665C5.34961 1.6665 1.59961 5.4165 1.59961 9.99984C1.59961 14.5832 5.34961 18.3332 9.93294 18.3332Z" fill="%23D62E42" stroke="%23D62E42" style="fill:%23D62E42;fill:color(display-p3 0.8392 0.1804 0.2588);fill-opacity:1;stroke:%23D62E42;stroke:color(display-p3 0.8392 0.1804 0.2588);stroke-opacity:1;" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"%3E%3C/path%3E%3Cpath d="M6.59961 10H13.2663" stroke="white" style="stroke:white;stroke-opacity:1;" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"%3E%3C/path%3E%3C/svg%3E');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  pointer-events: none;
+}

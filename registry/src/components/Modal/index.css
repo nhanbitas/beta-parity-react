@@ -1,0 +1,49 @@
+@import '../global.css';
+
+.modal {
+  @apply text-body-compact-01 fixed left-0 top-0 z-50 hidden h-screen w-screen overflow-visible bg-[rgba(0,0,0,0.3)] p-4 opacity-0 transition-opacity duration-150 ease-linear;
+}
+
+.modal.active {
+  @apply opacity-100;
+}
+
+.modal-dialog {
+  @apply m-[10vh] mx-auto flex h-fit max-h-[calc(100vh-20vh)] w-auto max-w-[500px] -translate-y-12 flex-col items-center justify-between overflow-auto rounded-md bg-white transition-all duration-150 ease-in-out;
+}
+
+.active .modal-dialog {
+  @apply translate-y-0;
+}
+
+.modal-dialog.modal-static-animation {
+  @apply scale-[101%];
+}
+
+.modal.small .modal-dialog {
+  @apply max-w-[300px];
+}
+
+.modal.large .modal-dialog {
+  @apply max-w-[800px];
+}
+
+.modal.extra-large .modal-dialog {
+  @apply max-w-[1140px];
+}
+
+.modal-header {
+  @apply flex w-full shrink-0 items-center justify-between  p-4;
+}
+
+.modal-header > button {
+  @apply rounded-md px-2 py-1 text-gray-500 hover:bg-gray-100 hover:text-gray-900;
+}
+
+.modal-body {
+  @apply w-full overflow-auto border-y-[1px] border-gray-200 p-4;
+}
+
+.modal-footer {
+  @apply flex w-full shrink-0 items-center  justify-end gap-2 p-4;
+}
