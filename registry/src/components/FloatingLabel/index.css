@@ -1,11 +1,11 @@
 @import '../global.css';
 
 .floating-label:not(.active) {
-  @apply z-foreground text-body-compact-02 pointer-events-none absolute top-2 w-full translate-y-2.5 transform truncate pl-4 pr-10 text-left text-gray-400 transition-all;
+  @apply z-foreground text-body-compact-02 pointer-events-none absolute left-0 top-2 w-full translate-y-2.5 transform truncate pl-4 pr-10 text-left text-gray-400 transition-all;
 }
 
 .floating-label.active {
-  @apply z-foreground text-label-01 pointer-events-none absolute top-2 w-full transform truncate pl-[1.0625rem] text-left text-gray-400 transition-all;
+  @apply z-foreground text-label-01 pointer-events-none absolute left-0 top-2 w-full transform truncate pl-[1.0625rem] text-left text-gray-400 transition-all;
 }
 
 .floating-label
@@ -36,6 +36,12 @@
   @apply relative h-min w-full rounded-md;
 }
 
-.floating-label-wrapper .floating-label ~ * input {
+.floating-label-wrapper .floating-label ~ * input,
+.floating-label-wrapper .floating-label ~ * select,
+.floating-label-wrapper .floating-label ~ * textarea {
   @apply h-[3.5rem] min-h-[3.5rem] pt-[1.125rem] placeholder:opacity-0 placeholder:transition-opacity;
+}
+
+.floating-label-wrapper .floating-label ~ * .no-value {
+  @apply text-transparent;
 }

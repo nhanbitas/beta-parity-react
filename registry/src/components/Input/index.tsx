@@ -11,7 +11,6 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
   wrapperClassname?: string;
   clearBtnClassName?: string;
   isClearable?: boolean;
-  floatingLabel?: string;
   onClear?: () => void;
   ActionBtn?: JSX.Element | React.ReactNode;
   isError?: boolean;
@@ -25,7 +24,6 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       value,
       type = 'text',
       isClearable,
-      floatingLabel,
       ActionBtn,
       isError,
       isSuccess,
@@ -39,7 +37,6 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     ref
   ) => {
     const [currentValue, setCurrentValue] = React.useState(value || '');
-    const [isActiveContainedLabel, setIsActiveContainedLabel] = React.useState(value ? true : false);
     const inputRef = React.useRef<HTMLInputElement>(null);
     const combinedRef = useCombinedRefs(inputRef, ref);
 
@@ -62,12 +59,10 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     };
 
     const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
-      setIsActiveContainedLabel(true);
       onFocus && onFocus(e);
     };
 
     const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-      !currentValue && setIsActiveContainedLabel(false);
       onBlur && onBlur(e);
     };
 
@@ -75,54 +70,35 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       setCurrentValue(value || '');
     }, [value]);
 
-    if (!isClearable && !ActionBtn && !floatingLabel)
-      return (
+    const addedClassname = isClearable && ActionBtn ? 'with-actions' : isClearable || ActionBtn ? 'with-action' : '';
+
+    const isHasRightInputAction = isClearable || ActionBtn;
+
+    const RightInputActions = isHasRightInputAction && (
+      <>
+        {isClearable && currentValue && (
+          <button type='button' className={classNames('clear-button', props.clearBtnClassName)} onClick={handleClear}>
+            <X />
+          </button>
+        )}
+        {ActionBtn ? ActionBtn : null}
+      </>
+    );
+
+    return (
+      <InputWrapper className={classNames(addedClassname, wrapperClassname)} rightElement={RightInputActions}>
         <input
           type={type}
           className={classNames('input', { 'error-state': isError }, { 'success-state': isSuccess }, className)}
           ref={combinedRef}
-          {...props}
           value={currentValue}
           onChange={handleChange}
           onFocus={handleFocus}
           onBlur={handleBlur}
           {...props}
         />
-      );
-
-    if (isClearable || floatingLabel || ActionBtn) {
-      const addedClassname = isClearable && ActionBtn ? 'with-actions' : isClearable || ActionBtn ? 'with-action' : '';
-
-      const isHasRightInputAction = isActiveContainedLabel && (isClearable || ActionBtn);
-
-      const RightInputActions = isHasRightInputAction && (
-        <>
-          {isClearable && currentValue && (
-            <button type='button' className={classNames('clear-button', props.clearBtnClassName)} onClick={handleClear}>
-              <X />
-            </button>
-          )}
-          {ActionBtn ? ActionBtn : null}
-        </>
-      );
-
-      return (
-        <InputWrapper className={classNames(addedClassname, wrapperClassname)} rightElement={RightInputActions}>
-          {floatingLabel && <ContainedLabel isActive={isActiveContainedLabel}>{floatingLabel}</ContainedLabel>}
-
-          <input
-            type={type}
-            className={classNames('input', { 'error-state': isError }, { 'success-state': isSuccess }, className)}
-            ref={combinedRef}
-            {...props}
-            value={currentValue}
-            onChange={handleChange}
-            onFocus={handleFocus}
-            onBlur={handleBlur}
-          />
-        </InputWrapper>
-      );
-    }
+      </InputWrapper>
+    );
   }
 );
 

@@ -3,6 +3,7 @@
 import React from 'react';
 import { Dropdown, DropdownTringger, DropdownContent, DropdownItem, DropdownDivider } from '@libComponents/Dropdown';
 import { Input } from '@libComponents/Input';
+import { FloatingLabel } from '@libComponents/FloatingLabel';
 
 type Props = {};
 
@@ -34,7 +35,9 @@ export const DemoInputDropdown = (props: Props) => {
   return (
     <Dropdown className='not-prose w-64 bg-white' isOpen={Boolean(value)} isToggle={false}>
       <DropdownTringger className='!p-0'>
-        <Input floatingLabel='Search' type='text' onChange={handleSearch} />
+        <FloatingLabel label='Search'>
+          <Input type='text' onChange={handleSearch} />
+        </FloatingLabel>
       </DropdownTringger>
       <DropdownContent>
         {value.map((item) => (

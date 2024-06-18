@@ -8,7 +8,6 @@ import { ChevronDown } from 'lucide-react';
 
 export interface NativeSelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   options: { value: string; label: string }[];
-  floatingLabel?: string;
   value?: string;
   onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   onFocus?: (e: React.FocusEvent<HTMLSelectElement>) => void;
@@ -17,9 +16,8 @@ export interface NativeSelectProps extends React.SelectHTMLAttributes<HTMLSelect
 }
 
 export const NativeSelect = React.forwardRef<HTMLSelectElement, NativeSelectProps>(
-  ({ options, className, floatingLabel, onChange, onFocus, onBlur, onclick, value, ...props }, ref) => {
+  ({ options, className, onChange, onFocus, onBlur, onclick, value, ...props }, ref) => {
     const [currentValue, setCurrentValue] = React.useState(value || '');
-    const [isActiveContainedLabel, setIsActiveContainedLabel] = React.useState(value ? true : false);
     const [isSelectOpen, setIsSelectOpen] = React.useState(false);
     const selectRef = React.useRef<HTMLSelectElement>(null);
     const combinedRef = useCombinedRefs(selectRef, ref);
@@ -27,17 +25,14 @@ export const NativeSelect = React.forwardRef<HTMLSelectElement, NativeSelectProp
     const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
       setCurrentValue(e.target.value);
       onChange && onChange(e);
-      setIsActiveContainedLabel(e.target.value ? true : false);
     };
 
     const handleFocus = (e: React.FocusEvent<HTMLSelectElement>) => {
-      setIsActiveContainedLabel(true);
       onFocus && onFocus(e);
     };
 
     const handleBlur = (e: React.FocusEvent<HTMLSelectElement>) => {
       setIsSelectOpen(false);
-      !currentValue && setIsActiveContainedLabel(false);
       onBlur && onBlur(e);
     };
 
@@ -55,20 +50,16 @@ export const NativeSelect = React.forwardRef<HTMLSelectElement, NativeSelectProp
         <button
           className={classNames('arrow-btn', { open: isSelectOpen })}
           onClick={(e) => {
-            e.stopPropagation();
-            e.preventDefault();
             combinedRef.current && combinedRef.current.focus();
           }}
         >
           <ChevronDown />
         </button>
       );
+
       return (
         <InputWrapper rightElement={ArrowBtn}>
-          {floatingLabel && <ContainedLabel isActive={isActiveContainedLabel}>{floatingLabel}</ContainedLabel>}
-
           <select
-            style={{ color: !currentValue && floatingLabel ? 'transparent' : '' }}
             ref={combinedRef}
             className={classNames('native-select', className, { 'no-value': !currentValue })}
             onChange={handleChange}

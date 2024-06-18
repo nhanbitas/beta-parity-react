@@ -20,42 +20,43 @@ const ContainedLabel = React.forwardRef<HTMLLabelElement, ContainedLabelProps>(
 ContainedLabel.displayName = 'ContainedLabel';
 
 export interface FloatingLabelProps extends React.HTMLAttributes<HTMLElement> {
-  label?: string | React.ReactNode;
+  label: string | React.ReactNode;
   children?: React.ReactNode;
   className?: string;
   wrapperClassname?: string;
-  for: string;
 }
 
 const FloatingLabel = React.forwardRef<HTMLDivElement, FloatingLabelProps>(
-  ({ label, for: forId, children, className, wrapperClassname, ...props }, ref) => {
+  ({ label, children, className, wrapperClassname, ...props }, ref) => {
     const [isActive, setIsActive] = React.useState(false);
 
-    React.useEffect(() => {
-      const inputElement = document.getElementById(forId) as HTMLInputElement | null;
-      if (inputElement) {
-        const handleInputFocus = () => {
-          setIsActive(true);
-        };
-        const handleInputBlur = () => {
-          setIsActive(Boolean(inputElement?.value));
-        };
-        inputElement.addEventListener('focus', handleInputFocus);
-        inputElement.addEventListener('blur', handleInputBlur);
+    const handleFocus = (e: any) => {
+      setIsActive(true);
+    };
 
-        return () => {
-          inputElement.removeEventListener('focus', handleInputFocus);
-          inputElement.removeEventListener('blur', handleInputBlur);
-        };
-      }
-    }, [forId]);
+    const handleBlur = (e: any) => {
+      e.target.value ? setIsActive(true) : setIsActive(e.target.value);
+    };
 
     return (
       <div className={classNames('floating-label-wrapper', wrapperClassname)} {...props} ref={ref}>
         <ContainedLabel isActive={isActive} className={className}>
           {label}
         </ContainedLabel>
-        {children}
+        {React.Children.map(children, (child) =>
+          React.isValidElement(child)
+            ? React.cloneElement(child as React.ReactElement<any>, {
+                onFocus: (e: any) => {
+                  handleFocus(e);
+                  child.props.onFocus && child.props.onFocus(e);
+                },
+                onBlur: (e: any) => {
+                  handleBlur(e);
+                  child.props.onFocus && child.props.onBlur(e);
+                }
+              })
+            : child
+        )}
       </div>
     );
   }

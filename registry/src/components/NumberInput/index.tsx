@@ -31,7 +31,6 @@ export const NumberInput = React.forwardRef<
       format = '',
       isPattern = false,
       isClearable,
-      floatingLabel,
       ActionBtn,
       isError,
       isSuccess,
@@ -52,7 +51,6 @@ export const NumberInput = React.forwardRef<
     const [currentValue, setCurrentValue] = React.useState<string | number | null | undefined>(
       value || defaultValue || ''
     );
-    const [isActiveContainedLabel, setIsActiveContainedLabel] = React.useState(value || defaultValue ? true : false);
     const inputRef = React.useRef<HTMLInputElement>(null);
     const combinedRef = useCombinedRefs(inputRef, ref);
     const TagName = isPattern ? PatternFormat : NumericFormat;
@@ -76,12 +74,10 @@ export const NumberInput = React.forwardRef<
     };
 
     const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
-      setIsActiveContainedLabel(true);
       onFocus && onFocus(e);
     };
 
     const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-      !currentValue && setIsActiveContainedLabel(false);
       onBlur && onBlur(e);
     };
 
@@ -91,8 +87,23 @@ export const NumberInput = React.forwardRef<
 
     const currentProps = isPattern ? { ...(props as PatternFormatProps) } : { ...(props as NumericFormatProps) };
 
-    if (!isClearable && !ActionBtn && !floatingLabel)
-      return (
+    const addedClassname = isClearable && ActionBtn ? 'with-actions' : isClearable || ActionBtn ? 'with-action' : '';
+
+    const isHasRightInputAction = isClearable || ActionBtn;
+
+    const RightInputActions = isHasRightInputAction && (
+      <>
+        {isClearable && currentValue && (
+          <button type='button' className={classNames('clear-button', clearBtnClassName)} onClick={handleClear}>
+            <X />
+          </button>
+        )}
+        {ActionBtn ? ActionBtn : null}
+      </>
+    );
+
+    return (
+      <InputWrapper className={classNames(addedClassname, wrapperClassname)} rightElement={RightInputActions}>
         <TagName
           className={classNames('input', { 'error-state': isError }, { 'success-state': isSuccess }, className)}
           getInputRef={combinedRef}
@@ -103,45 +114,8 @@ export const NumberInput = React.forwardRef<
           onBlur={handleBlur}
           {...currentProps}
         />
-      );
-
-    if (isClearable || floatingLabel || ActionBtn) {
-      const addedClassname = isClearable && ActionBtn ? 'with-actions' : isClearable || ActionBtn ? 'with-action' : '';
-
-      const isHasRightInputAction = isActiveContainedLabel && (isClearable || ActionBtn);
-
-      const RightInputActions = isHasRightInputAction && (
-        <>
-          {isClearable && currentValue && (
-            <button type='button' className={classNames('clear-button', clearBtnClassName)} onClick={handleClear}>
-              <X />
-            </button>
-          )}
-          {ActionBtn ? ActionBtn : null}
-        </>
-      );
-
-      return (
-        <InputWrapper className={classNames(addedClassname, wrapperClassname)} rightElement={RightInputActions}>
-          {floatingLabel && (
-            <ContainedLabel isActive={isActiveContainedLabel || props.allowEmptyFormatting}>
-              {floatingLabel}
-            </ContainedLabel>
-          )}
-
-          <TagName
-            className={classNames('input', { 'error-state': isError }, { 'success-state': isSuccess }, className)}
-            getInputRef={combinedRef}
-            format={format ? format : undefined}
-            value={currentValue}
-            onChange={handleChange}
-            onFocus={handleFocus}
-            onBlur={handleBlur}
-            {...currentProps}
-          />
-        </InputWrapper>
-      );
-    }
+      </InputWrapper>
+    );
   }
 );
 

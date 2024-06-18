@@ -20,7 +20,11 @@ export const DemoNativeSelect = (props: Props) => {
 };
 
 export const DemoNativeSelectLabel = (props: Props) => {
-  return <NativeSelect floatingLabel='Choose option' options={options} onChange={(e) => console.log(e.target.value)} />;
+  return (
+    <FloatingLabel label='Choose option'>
+      <NativeSelect options={options} onChange={(e) => console.log(e.target.value)} />
+    </FloatingLabel>
+  );
 };
 
 export const DemoCustomSelect = (props: Props) => {

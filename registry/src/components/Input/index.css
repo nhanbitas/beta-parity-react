@@ -127,124 +127,52 @@ input[type='search'].rounded-md {
 }
 
 /* Set default input font size to 1rem */
-input[type='color'],
-input[type='date'],
-input[type='datetime'],
-input[type='datetime-local'],
-input[type='email'],
-input[type='month'],
-input[type='number'],
-input[type='password'],
-input[type='search'],
-input[type='tel'],
-input[type='text'],
-input[type='time'],
-input[type='url'],
-input[type='week'],
+input,
 select,
 textarea {
   font-size: 1rem;
 }
 
 /* Set default input outline offset and border-radius when focused to 0 */
-input[type='color']:focus,
-input[type='date']:focus,
-input[type='datetime']:focus,
-input[type='datetime-local']:focus,
-input[type='email']:focus,
-input[type='month']:focus,
-input[type='number']:focus,
-input[type='password']:focus,
-input[type='search']:focus,
-input[type='tel']:focus,
-input[type='text']:focus,
-input[type='time']:focus,
-input[type='url']:focus,
-input[type='week']:focus,
+input:focus,
 select:focus,
 textarea:focus {
   outline-offset: 0;
   border-radius: 0.375rem;
 }
 
-input[type='color'].error-state,
-input[type='date'].error-state,
-input[type='datetime'].error-state,
-input[type='datetime-local'].error-state,
-input[type='email'].error-state,
-input[type='month'].error-state,
-input[type='number'].error-state,
-input[type='password'].error-state,
-input[type='search'].error-state,
-input[type='tel'].error-state,
-input[type='text'].error-state,
-input[type='time'].error-state,
-input[type='url'].error-state,
-input[type='week'].error-state,
+input.error-state,
 select.error-state,
 textarea.error-state {
   border: 0.125rem solid #d62e42;
   outline-color: #d62e42;
 }
 
-input[type='color'].error-state:focus,
-input[type='date'].error-state:focus,
-input[type='datetime'].error-state:focus,
-input[type='datetime-local'].error-state:focus,
-input[type='email'].error-state:focus,
-input[type='month'].error-state:focus,
-input[type='number'].error-state:focus,
-input[type='password'].error-state:focus,
-input[type='search'].error-state:focus,
-input[type='tel'].error-state:focus,
-input[type='text'].error-state:focus,
-input[type='time'].error-state:focus,
-input[type='url'].error-state:focus,
-input[type='week'].error-state:focus,
+input.error-state:focus,
 select.error-state:focus,
 textarea.error-state:focus {
   border: 0.125rem solid #d62e42;
   outline-color: #d62e42;
 }
 
-input[type='color'].success-state,
-input[type='date'].success-state,
-input[type='datetime'].success-state,
-input[type='datetime-local'].success-state,
-input[type='email'].success-state,
-input[type='month'].success-state,
-input[type='number'].success-state,
-input[type='password'].success-state,
-input[type='search'].success-state,
-input[type='tel'].success-state,
-input[type='text'].success-state,
-input[type='time'].success-state,
-input[type='url'].success-state,
-input[type='week'].success-state,
+input.success-state,
 select.success-state,
 textarea.success-state {
   border: 0.125rem solid #39ac56;
   outline-color: #39ac56;
 }
 
-input[type='color'].success-state:focus,
-input[type='date'].success-state:focus,
-input[type='datetime'].success-state:focus,
-input[type='datetime-local'].success-state:focus,
-input[type='email'].success-state:focus,
-input[type='month'].success-state:focus,
-input[type='number'].success-state:focus,
-input[type='password'].success-state:focus,
-input[type='search'].success-state:focus,
-input[type='tel'].success-state:focus,
-input[type='text'].success-state:focus,
-input[type='time'].success-state:focus,
-input[type='url'].success-state:focus,
-input[type='week'].success-state:focus,
+input.success-state:focus,
 select.success-state:focus,
 textarea.success-state:focus {
   border: 0.125rem solid #39ac56;
   outline-color: #39ac56;
+}
+
+input:disabled,
+select:disabled,
+textarea:disabled {
+  @apply bg-gray-100 text-gray-100;
 }
 
 select {
@@ -279,16 +207,10 @@ fieldset:disabled {
   pointer-events: none;
 }
 
-input[type='text'],
-input[type='number'],
-input[type='password'] {
-  @apply text-body-compact-02 h-10 w-full text-ellipsis rounded-md border border-gray-200 bg-white px-4 read-only:bg-gray-100;
-}
-
-input[type='text']:disabled,
-input[type='number']:disabled,
-input[type='password']:disabled {
-  @apply bg-gray-100 text-gray-100;
+input,
+select,
+textarea {
+  @apply text-body-compact-02 h-10 w-full text-ellipsis rounded-md border border-gray-200 bg-white px-4;
 }
 
 .input-wrapper {
