@@ -65,7 +65,7 @@ export const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>(
     } as DropdownPassThroughProps);
 
     return (
-      <div className={classNames('dropdown', className, size)} ref={combinedRefs} {...props} data-open={openState}>
+      <div className={classNames('dropdown', className, size)} ref={combinedRefs} data-open={openState} {...props}>
         {clonedChildren}
       </div>
     );
@@ -84,7 +84,7 @@ export interface DropdownTriggerProps extends TriggerButtonProps, DropdownPassTh
 export const DropdownTringger = React.forwardRef<HTMLButtonElement, DropdownTriggerProps>(
   ({ className, children, isLoading, disabled, openState, setOpenState, isToggle, ...props }, ref) => {
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-      e.stopPropagation();
+      props.onClick && props.onClick(e);
       if (isToggle) {
         setOpenState && setOpenState(!openState);
       } else {

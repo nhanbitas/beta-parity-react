@@ -1,7 +1,8 @@
 'use client';
 
 import React from 'react';
-import { NativeSelect } from '@libComponents/Select';
+import { CustomSelect, NativeSelect } from '@libComponents/Select';
+import { FloatingLabel } from '@libComponents/FloatingLabel';
 
 type Props = {};
 
@@ -15,9 +16,13 @@ const options = [
 ];
 
 export const DemoNativeSelect = (props: Props) => {
-  return <NativeSelect options={options} />;
+  return <NativeSelect options={options} onChange={(e) => console.log(e.target.value)} />;
 };
 
 export const DemoNativeSelectLabel = (props: Props) => {
-  return <NativeSelect floatingLabel='Choose option' options={options} />;
+  return <NativeSelect floatingLabel='Choose option' options={options} onChange={(e) => console.log(e.target.value)} />;
+};
+
+export const DemoCustomSelect = (props: Props) => {
+  return <CustomSelect options={options} labelSelect='Choose option' />;
 };
