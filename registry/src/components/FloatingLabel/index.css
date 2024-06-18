@@ -36,6 +36,6 @@
   @apply relative h-min w-full rounded-md;
 }
 
-.floating-label-wrapper .floating-label ~ * > input {
+.floating-label-wrapper .floating-label ~ * input {
   @apply h-[3.5rem] min-h-[3.5rem] pt-[1.125rem] placeholder:opacity-0 placeholder:transition-opacity;
 }

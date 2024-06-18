@@ -3,13 +3,14 @@ import classNames from 'classnames';
 import './index.css';
 import { InputWrapper } from '../Input';
 import useCombinedRefs from '../hooks/useCombinedRefs';
-import { ChevronDown } from 'lucide-react';
+import { Check, ChevronDown } from 'lucide-react';
 import { Dropdown, DropdownContent, DropdownItem, DropdownTringger } from '../Dropdown';
 
 export interface CustomSelectProps extends React.HTMLAttributes<HTMLDivElement> {
   options: { value: string; label: string }[];
   labelSelect?: string;
   value?: string;
+  selectedIcon?: React.ReactNode;
   onChange?: (e: React.ChangeEvent<HTMLDivElement>) => void;
   onFocus?: (e: React.FocusEvent<HTMLDivElement>) => void;
   onBlur?: (e: React.FocusEvent<HTMLDivElement>) => void;
@@ -17,7 +18,7 @@ export interface CustomSelectProps extends React.HTMLAttributes<HTMLDivElement> 
 }
 
 export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
-  ({ options, className, labelSelect, onChange, onFocus, onBlur, onclick, value, ...props }, ref) => {
+  ({ options, className, selectedIcon, labelSelect, onChange, onFocus, onBlur, onclick, value, ...props }, ref) => {
     const [currentValue, setCurrentValue] = React.useState(
       options.filter((item) => item.value === value)[0]?.value || ''
     );
@@ -79,7 +80,11 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
                   label={label}
                   onClick={handleItemClick}
                   isActive={value === currentValue && currentValue !== ''}
-                />
+                >
+                  {value === currentValue && currentValue !== '' ? (
+                    <span className='selected-icon'>{selectedIcon || <Check />}</span>
+                  ) : null}
+                </SelectItem>
               ))}
             </DropdownContent>
           </Dropdown>
@@ -122,7 +127,8 @@ export const SelectItem = React.forwardRef<HTMLSpanElement, SelectItem>(
         onClick={handleClick}
         {...props}
       >
-        {label || children}
+        {label}
+        {children}
       </span>
     );
   }

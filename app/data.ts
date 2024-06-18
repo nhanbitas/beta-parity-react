@@ -54,5 +54,9 @@ export const components = [
   {
     name: 'Select',
     url: '/select'
+  },
+  {
+    name: 'Date picker',
+    url: '/date-picker'
   }
 ];

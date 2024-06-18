@@ -4,9 +4,11 @@
 .select-wrapper {
   @apply relative h-min w-full rounded-md border border-gray-200 transition-colors after:absolute after:right-0 after:top-0 after:h-full after:transform after:items-center after:bg-black after:transition;
 }
+
 .select-wrapper.active {
   @apply after:-scale-y-100;
 }
+
 .select-wrapper:not(.selected) {
   @apply relative w-full rounded-md border border-gray-200 text-gray-500 after:bg-gray-500 hover:text-gray-700 after:hover:bg-gray-700;
 }
@@ -24,11 +26,15 @@
 }
 
 .select-item {
-  @apply h-full w-full cursor-pointer rounded-md p-3 text-gray-900 first:rounded-t-none hover:bg-gray-100;
+  @apply relative h-full w-full cursor-pointer rounded-md p-3 text-gray-900 first:rounded-t-none hover:bg-gray-100;
 }
 
 .select-item.active {
-  @apply bg-sky-100;
+  @apply bg-blue-100;
+}
+
+.select-item .selected-icon {
+  @apply absolute right-0 top-0 flex aspect-auto h-full w-fit items-center justify-center p-3;
 }
 
 .dropdown.custom-select .dropdown-trigger {

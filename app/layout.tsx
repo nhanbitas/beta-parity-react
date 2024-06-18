@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang='en'>
       <body className='relative flex'>
         <SideBar />
-        <main className='prose ml-[256px] flex min-h-screen flex-1 flex-col gap-8 p-24'>{children}</main>
+        <main className='ml-[256px] flex min-h-screen flex-1 flex-col gap-8 p-24'>{children}</main>
       </body>
     </html>
   );
