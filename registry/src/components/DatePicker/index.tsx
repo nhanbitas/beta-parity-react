@@ -16,9 +16,28 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePikerProps>((pr
       <Calendar />
     </span>
   );
+
+  const handleFocus = (e: any) => {
+    props.onFocus && props.onFocus(e);
+  };
+
+  const handleBlur = (e: any) => {
+    props.onBlur && props.onBlur(e);
+  };
+
+  React.useEffect(() => {
+    handleFocus({ target: { value: props.value } });
+  }, [props.value]);
+
   return (
     <InputWrapper rightElement={RightBtn}>
-      <Flatpickr className={classNames('date-picker', props.className)} {...props} ref={ref as any} />
+      <Flatpickr
+        className={classNames('date-picker', props.className)}
+        onBlur={handleBlur}
+        onFocus={handleFocus}
+        {...props}
+        ref={ref as any}
+      />
     </InputWrapper>
   );
 });
