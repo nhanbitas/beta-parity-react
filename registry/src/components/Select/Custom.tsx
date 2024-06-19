@@ -4,7 +4,7 @@ import './index.css';
 import { InputWrapper } from '../Input';
 import useCombinedRefs from '../hooks/useCombinedRefs';
 import { Check, ChevronDown } from 'lucide-react';
-import { Dropdown, DropdownContent, DropdownItem, DropdownTringger } from '../Dropdown';
+import { Dropdown, DropdownContent, DropdownItem, DropdownTrigger } from '../Dropdown';
 
 export interface CustomSelectProps extends React.HTMLAttributes<HTMLDivElement> {
   options: { value: string; label: string }[];
@@ -71,7 +71,7 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
             onClick={handleDropdownClick}
             {...props}
           >
-            <DropdownTringger style={{ color: currentValue ? 'black' : '' }}>{currentLabel || '---'}</DropdownTringger>
+            <DropdownTrigger style={{ color: currentValue ? 'black' : '' }}>{currentLabel || '---'}</DropdownTrigger>
             <DropdownContent clickToClose={true}>
               {options.map(({ value, label }) => (
                 <SelectItem

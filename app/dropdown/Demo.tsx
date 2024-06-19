@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Dropdown, DropdownTringger, DropdownContent, DropdownItem, DropdownDivider } from '@libComponents/Dropdown';
+import { Dropdown, DropdownTrigger, DropdownContent, DropdownItem, DropdownDivider } from '@libComponents/Dropdown';
 import { Input } from '@libComponents/Input';
 import { FloatingLabel } from '@libComponents/FloatingLabel';
 
@@ -10,7 +10,7 @@ type Props = {};
 export const DemoBasicDropdown = (props: Props) => {
   return (
     <Dropdown className='not-prose w-64 bg-white'>
-      <DropdownTringger>Dropdown</DropdownTringger>
+      <DropdownTrigger>Dropdown</DropdownTrigger>
       <DropdownContent clickToClose={true}>
         <DropdownItem>Item 1</DropdownItem>
         <DropdownItem>Item 2</DropdownItem>
@@ -36,11 +36,11 @@ export const DemoInputDropdown = (props: Props) => {
 
   return (
     <Dropdown className='not-prose w-64 bg-white' isOpen={Boolean(value)} isToggle={false}>
-      <DropdownTringger className='!p-0'>
+      <DropdownTrigger className='!p-0'>
         <FloatingLabel label='Search'>
           <Input type='text' onChange={handleSearch} value={value} />
         </FloatingLabel>
-      </DropdownTringger>
+      </DropdownTrigger>
       <DropdownContent>
         {results.length > 0
           ? results.map((item) => <DropdownItem key={item}>{item}</DropdownItem>)
@@ -53,7 +53,7 @@ export const DemoInputDropdown = (props: Props) => {
 export const DemoSelectDropdown = (props: Props) => {
   return (
     <Dropdown className='not-prose w-64 bg-white'>
-      <DropdownTringger>Select</DropdownTringger>
+      <DropdownTrigger>Select</DropdownTrigger>
       <DropdownContent>
         <DropdownItem>Item 1</DropdownItem>
         <DropdownItem>Item 2</DropdownItem>

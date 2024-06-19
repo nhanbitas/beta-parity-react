@@ -81,7 +81,7 @@ export interface TriggerButtonProps extends React.HTMLAttributes<HTMLButtonEleme
 
 export interface DropdownTriggerProps extends TriggerButtonProps, DropdownPassThroughProps {}
 
-export const DropdownTringger = React.forwardRef<HTMLButtonElement, DropdownTriggerProps>(
+export const DropdownTrigger = React.forwardRef<HTMLButtonElement, DropdownTriggerProps>(
   ({ className, children, isLoading, disabled, openState, setOpenState, isToggle, ...props }, ref) => {
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
       props.onClick && props.onClick(e);
@@ -106,7 +106,7 @@ export const DropdownTringger = React.forwardRef<HTMLButtonElement, DropdownTrig
   }
 );
 
-DropdownTringger.displayName = 'DropdownTringger';
+DropdownTrigger.displayName = 'DropdownTrigger';
 
 export interface ContentDropdownDiv extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
