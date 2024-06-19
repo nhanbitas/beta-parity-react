@@ -46,9 +46,10 @@ export const DemoPattenInput = (props: Props) => {
   return (
     <NumberInput
       onValueChange={(values, sourceInfo) => console.log(values, sourceInfo)}
+      isClearable
       isPattern
       allowEmptyFormatting
-      format='##-##&##'
+      format='##-##/##'
       mask='_'
     />
   );

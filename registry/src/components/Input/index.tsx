@@ -89,7 +89,11 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       <InputWrapper className={classNames(addedClassname, wrapperClassname)} rightElement={RightInputActions}>
         <input
           type={type}
-          className={classNames('input', { 'error-state': isError }, { 'success-state': isSuccess }, className)}
+          className={classNames(
+            'input',
+            { 'error-state': isError, 'success-state': isSuccess, 'no-value': currentValue },
+            className
+          )}
           ref={combinedRef}
           value={currentValue}
           onChange={handleChange}

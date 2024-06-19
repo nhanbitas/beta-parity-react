@@ -2,11 +2,6 @@
 @import '../global.css';
 
 /* reset */
-button,
-h3 {
-  all: unset;
-}
-
 @layer components {
   .accordion {
     @apply flex w-full flex-col rounded-md border border-solid border-gray-200;
