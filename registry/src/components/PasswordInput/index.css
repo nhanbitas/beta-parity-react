@@ -5,5 +5,5 @@
 }
 
 .eye-btn.showed:hover {
-  @apply bg-blue-600;
+  @apply bg-blue-600 text-white;
 }

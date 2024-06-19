@@ -15,7 +15,11 @@ export const DemoDatePicker = (props: Props) => {
   };
 
   return (
-    <DatePicker id='input-1' value={date} onChange={handleChange} options={{ dateFormat: 'd/m/Y', static: true }} />
+    <DatePicker
+      value={date}
+      onChange={handleChange}
+      options={{ dateFormat: 'd/m/Y', static: true, allowInput: true }}
+    />
   );
 };
 
@@ -29,7 +33,11 @@ export const DemoLabelDatePicker = (props: Props) => {
 
   return (
     <FloatingLabel label='Date Picker'>
-      <DatePicker id='input-1' value={date} onChange={handleChange} options={{ dateFormat: 'd/m/Y', static: true }} />
+      <DatePicker
+        value={date}
+        onChange={handleChange}
+        options={{ dateFormat: 'd/m/Y', static: true, allowInput: true }}
+      />
     </FloatingLabel>
   );
 };
