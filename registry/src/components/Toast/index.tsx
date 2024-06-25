@@ -3,7 +3,7 @@
 import Toast, { ToastProps } from './Toast';
 import ToastContainer from './ToastContainer';
 
-export interface ToastOptions extends Omit<ToastProps, 'id'> {}
+export interface ToastOptions extends Omit<ToastProps, 'id' | 'removeToast'> {}
 
 const toast = ({ position, type, ...options }: ToastOptions) => {
   const event = new CustomEvent('parity-add-toast', {

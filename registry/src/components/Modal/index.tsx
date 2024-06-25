@@ -4,6 +4,7 @@ import React from 'react';
 import classNames from 'classnames';
 import './index.css';
 import { ButtonProps } from '../Button';
+import { Portal } from '../Portal';
 
 export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
@@ -18,11 +19,11 @@ export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
 export const Modal = React.forwardRef<HTMLDivElement, ModalProps>(
   ({ className, type, size = 'medium', isActive, onClose, onOpen, children, ...props }, ref) => {
     const [isOpen, setIsOpen] = React.useState(isActive);
-    const [isBlock, setIsBlock] = React.useState(isActive);
+    const [isDisplay, setIsDisplay] = React.useState(isActive);
     const [isDialogWarning, setIsDialogWarning] = React.useState(false);
 
     const handleActive = React.useCallback(() => {
-      setIsBlock(true);
+      setIsDisplay(true);
       const timeoutId = setTimeout(() => {
         setIsOpen(true);
       }, 100);
@@ -33,7 +34,7 @@ export const Modal = React.forwardRef<HTMLDivElement, ModalProps>(
     const handleClose = React.useCallback(() => {
       setIsOpen(false);
       const timeoutId = setTimeout(() => {
-        setIsBlock(false);
+        setIsDisplay(false);
       }, 100);
       onClose && onClose();
       return () => clearTimeout(timeoutId);
@@ -64,14 +65,13 @@ export const Modal = React.forwardRef<HTMLDivElement, ModalProps>(
     }, [type, handleClose]);
 
     return (
-      <div
-        style={{ display: isBlock ? 'block' : 'none' }}
-        className={classNames('modal', className, type, size, { active: isOpen })}
-        ref={ref}
-        {...props}
-      >
-        <ModalDialog className={classNames({ 'modal-static-animation': isDialogWarning })}>{children}</ModalDialog>
-      </div>
+      isDisplay && (
+        <Portal>
+          <div className={classNames('modal', className, type, size, { active: isOpen })} ref={ref} {...props}>
+            <ModalDialog className={classNames({ 'modal-static-animation': isDialogWarning })}>{children}</ModalDialog>
+          </div>
+        </Portal>
+      )
     );
   }
 );

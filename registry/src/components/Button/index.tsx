@@ -43,6 +43,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         onClick={!disabled && !isLoading ? onClick : undefined}
         ref={ref}
         {...(isLoading ? { 'data-loading': 'true' } : {})}
+        disabled={disabled}
         {...props}
       >
         {text || children}

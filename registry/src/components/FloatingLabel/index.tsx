@@ -35,7 +35,7 @@ const FloatingLabel = React.forwardRef<HTMLDivElement, FloatingLabelProps>(
     };
 
     const handleBlur = (e: any) => {
-      e.target.value ? setIsActive(true) : setIsActive(e.target.value);
+      e.target.value ? setIsActive(true) : setIsActive(false);
     };
 
     return (

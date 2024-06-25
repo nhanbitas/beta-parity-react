@@ -7,14 +7,28 @@ import classNames from 'classnames';
 import Flatpickr, { DateTimePickerProps } from 'react-flatpickr';
 import { InputWrapper } from '../Input';
 import { Calendar } from 'lucide-react';
+import useCombinedRefs from '../hooks/useCombinedRefs';
 
 export interface DatePikerProps extends DateTimePickerProps {}
 
-export const DatePicker = React.forwardRef<HTMLInputElement, DatePikerProps>((props, ref) => {
+export const DatePicker = React.forwardRef<
+  HTMLInputElement,
+  {
+    onFocus?: (e: any) => void;
+    onBlur?: (e: any) => void;
+  } & DatePikerProps
+>(({ options, ...props }, ref) => {
+  const inputRef = React.useRef<any>(null);
+  const combinedRefs = useCombinedRefs(ref, inputRef);
+
+  const handleIconclick = (e: any) => {
+    combinedRefs.current && combinedRefs.current.flatpickr.input.focus();
+  };
+
   const RightBtn = (
-    <span className='date-picker-calendar-button'>
+    <button type='button' className='cursor-pointer' onClick={handleIconclick}>
       <Calendar />
-    </span>
+    </button>
   );
 
   const handleFocus = (e: any) => {
@@ -35,8 +49,9 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePikerProps>((pr
         className={classNames('date-picker', props.className)}
         onBlur={handleBlur}
         onFocus={handleFocus}
+        options={{ disableMobile: true, ...options }}
         {...props}
-        ref={ref as any}
+        ref={combinedRefs as any}
       />
     </InputWrapper>
   );

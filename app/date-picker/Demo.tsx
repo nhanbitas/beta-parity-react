@@ -33,11 +33,7 @@ export const DemoLabelDatePicker = (props: Props) => {
 
   return (
     <FloatingLabel label='Date Picker'>
-      <DatePicker
-        value={date}
-        onChange={handleChange}
-        options={{ dateFormat: 'd/m/Y', static: true, allowInput: true }}
-      />
+      <DatePicker value={date} onChange={handleChange} options={{ dateFormat: 'd/m/Y', static: true }} />
     </FloatingLabel>
   );
 };
