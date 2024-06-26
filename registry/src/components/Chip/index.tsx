@@ -3,6 +3,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import './index.css';
+import Base from '../Base';
 
 export interface ChipProps extends React.HTMLAttributes<HTMLElement> {
   children?: string | React.ReactNode;
@@ -18,6 +19,7 @@ export interface ChipProps extends React.HTMLAttributes<HTMLElement> {
   value?: string | number;
   onActive?: (value?: string | number) => void;
   onDeactive?: (value?: string | number) => void;
+  component?: any;
 }
 
 export const Chip = React.forwardRef<HTMLElement, ChipProps>(
@@ -35,6 +37,7 @@ export const Chip = React.forwardRef<HTMLElement, ChipProps>(
       isToggle = true,
       onActive,
       onDeactive,
+      component = 'span',
       ...props
     },
     ref
@@ -59,18 +62,19 @@ export const Chip = React.forwardRef<HTMLElement, ChipProps>(
     }, [active, onActive, onDeactive, value, label]);
 
     return (
-      <span
+      <Base
         className={classNames('chip', className, variant, size, {
           [color]: active,
           active: active
         })}
         onClick={handleClick}
+        component={component}
         ref={ref}
         {...props}
       >
         {icon}
         {label}
-      </span>
+      </Base>
     );
   }
 );

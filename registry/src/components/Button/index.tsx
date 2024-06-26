@@ -3,6 +3,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import './index.css';
+import Base, { BaseProps } from '../Base';
 
 export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   text?: string;
@@ -14,6 +15,7 @@ export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   disabled?: boolean;
   iconOnly?: boolean;
+  component?: any;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -28,12 +30,14 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       disabled = false,
       iconOnly = false,
       isLoading = false,
+      component = 'button',
       ...props
     },
     ref
   ) => {
     return (
-      <button
+      <Base
+        component={component}
         type='button'
         className={classNames('btn', className, variant, size, {
           'icon-only': iconOnly,
@@ -47,7 +51,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {text || children}
-      </button>
+      </Base>
     );
   }
 );
