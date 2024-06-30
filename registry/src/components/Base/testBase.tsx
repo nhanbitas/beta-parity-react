@@ -1,25 +1,20 @@
-import React, { forwardRef, ElementType, ReactElement } from 'react';
+import React, { ElementType, forwardRef, ReactElement } from 'react';
+import { PolymorphicComponentProps, PolymorphicRef } from './factory';
 
-export type PolymorphicComponentProps<C extends React.ElementType, Props> = Props &
-  Omit<React.ComponentPropsWithRef<C>, keyof Props> & { component?: C };
-
-export interface BaseComponentProps {
-  className?: string;
-  children?: React.ReactNode;
-}
+type BaseComponentProps<C extends ElementType> = PolymorphicComponentProps<C>;
 
 const BaseComponent = forwardRef(
   <C extends ElementType = 'div'>(
-    { component, className, children, ...props }: PolymorphicComponentProps<C, BaseComponentProps>,
-    ref: React.Ref<Element>
+    { component: Component = 'div' as C, children, ...props }: BaseComponentProps<C>,
+    ref: PolymorphicRef<C>
   ): ReactElement => {
-    const Component = component || 'div';
+    const ComponentElement = Component as ElementType;
     return (
-      <Component ref={ref as any} className={className} {...props}>
+      <ComponentElement ref={ref} {...props}>
         {children}
-      </Component>
+      </ComponentElement>
     );
   }
-) as <C extends ElementType = 'div'>(props: PolymorphicComponentProps<C, BaseComponentProps>) => ReactElement;
+);
 
 export default BaseComponent;

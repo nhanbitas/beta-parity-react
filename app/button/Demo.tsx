@@ -3,11 +3,21 @@
 import React from 'react';
 import { Button } from '@libComponents/Button';
 import { ClipboardCheck } from 'lucide-react';
+import Link from 'next/link';
+import { Badge } from '@libComponents/Badge';
+import Image from 'next/image';
 
 export const DemoBasicButton = () => {
+  const ref = React.useRef<HTMLButtonElement>(null);
   return (
     <div>
-      <Button>Click</Button>
+      <Button ref={ref} component={Badge} color='red' onClick={() => console.log(ref.current)}>
+        Click
+      </Button>
+      <br />
+      <Button variant='secondary' component='a' href='/button'>
+        Click
+      </Button>
     </div>
   );
 };
@@ -41,7 +51,7 @@ export const DemoStatesButton = () => {
     <div className='flex gap-4'>
       <Button disabled>Click</Button>
       <Button isLoading>Click</Button>
-      <Button iconOnly>
+      <Button>
         <ClipboardCheck />
       </Button>
     </div>

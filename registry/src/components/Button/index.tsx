@@ -1,11 +1,12 @@
-'use client';
+'use Client';
 
-import React from 'react';
-import classNames from 'classnames';
+import React, { ElementType } from 'react';
+import BaseComponent from '../Base/testBase';
+import { createPolymorphicComponent, PolymorphicComponentProps } from '../Base/factory';
 import './index.css';
-import Base, { BaseProps } from '../Base';
+import classNames from 'classnames';
 
-export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
+interface ButtonProps {
   text?: string;
   size?: 'small' | 'medium' | 'large';
   variant?: 'primary' | 'secondary' | 'tertiary' | 'ghost' | 'danger' | 'success' | 'system';
@@ -15,12 +16,12 @@ export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   disabled?: boolean;
   iconOnly?: boolean;
-  component?: any;
 }
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  (
+export const Button = createPolymorphicComponent<'button', ButtonProps>(
+  <C extends React.ElementType = 'button'>(
     {
+      component,
       className = '',
       children,
       size = 'medium',
@@ -30,32 +31,31 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       disabled = false,
       iconOnly = false,
       isLoading = false,
-      component = 'button',
       ...props
-    },
-    ref
+    }: PolymorphicComponentProps<C, ButtonProps>,
+    ref: React.Ref<any>
   ) => {
+    const Component = component || ('button' as C);
+
+    const classes = classNames('btn', className, variant, size, {
+      'icon-only': iconOnly,
+      loading: isLoading,
+      disabled: disabled || isLoading
+    });
+
     return (
-      <Base
-        component={component}
+      <BaseComponent
+        component={Component}
         type='button'
-        className={classNames('btn', className, variant, size, {
-          'icon-only': iconOnly,
-          loading: isLoading,
-          disabled: disabled || isLoading
-        })}
+        className={classes}
         onClick={!disabled && !isLoading ? onClick : undefined}
         ref={ref}
         {...(isLoading ? { 'data-loading': 'true' } : {})}
         disabled={disabled}
         {...props}
       >
-        {text || children}
-      </Base>
+        {isLoading ? 'Loading...' : children}
+      </BaseComponent>
     );
   }
 );
-
-Button.displayName = 'Button';
-
-export { Button };
