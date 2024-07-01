@@ -4,8 +4,9 @@ import React from 'react';
 import classNames from 'classnames';
 import './index.css';
 import Base from '../Base';
+import { PolymorphicComponentProps, createPolymorphicComponent } from '../Base/factory';
 
-export interface ChipProps extends React.HTMLAttributes<HTMLElement> {
+export interface ChipProps {
   children?: string | React.ReactNode;
   className?: string;
   label: string;
@@ -19,11 +20,10 @@ export interface ChipProps extends React.HTMLAttributes<HTMLElement> {
   value?: string | number;
   onActive?: (value?: string | number) => void;
   onDeactive?: (value?: string | number) => void;
-  component?: any;
 }
 
-export const Chip = React.forwardRef<HTMLElement, ChipProps>(
-  (
+export const Chip = createPolymorphicComponent<'span', ChipProps>(
+  <C extends React.ElementType = 'span'>(
     {
       className,
       children,
@@ -37,11 +37,13 @@ export const Chip = React.forwardRef<HTMLElement, ChipProps>(
       isToggle = true,
       onActive,
       onDeactive,
-      component = 'span',
+      component,
       ...props
-    },
-    ref
+    }: PolymorphicComponentProps<C, ChipProps>,
+    ref: React.Ref<any>
   ) => {
+    const Component = component || ('span' as C);
+
     const [active, setActive] = React.useState(false);
 
     const handleClick = () => {
@@ -60,7 +62,6 @@ export const Chip = React.forwardRef<HTMLElement, ChipProps>(
       if (active && onActive) onActive(value || label);
       if (!active && onDeactive) onDeactive(value || label);
     }, [active, onActive, onDeactive, value, label]);
-
     return (
       <Base
         className={classNames('chip', className, variant, size, {
@@ -68,7 +69,7 @@ export const Chip = React.forwardRef<HTMLElement, ChipProps>(
           active: active
         })}
         onClick={handleClick}
-        component={component}
+        component={Component}
         ref={ref}
         {...props}
       >

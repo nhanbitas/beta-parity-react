@@ -1,10 +1,10 @@
 'use Client';
 
 import React, { ElementType } from 'react';
-import BaseComponent from '../Base/testBase';
 import { createPolymorphicComponent, PolymorphicComponentProps } from '../Base/factory';
 import './index.css';
 import classNames from 'classnames';
+import Base from '../Base';
 
 interface ButtonProps {
   text?: string;
@@ -44,7 +44,7 @@ export const Button = createPolymorphicComponent<'button', ButtonProps>(
     });
 
     return (
-      <BaseComponent
+      <Base
         component={Component}
         type='button'
         className={classes}
@@ -55,7 +55,7 @@ export const Button = createPolymorphicComponent<'button', ButtonProps>(
         {...props}
       >
         {isLoading ? 'Loading...' : children}
-      </BaseComponent>
+      </Base>
     );
   }
 );

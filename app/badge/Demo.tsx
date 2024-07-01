@@ -68,3 +68,13 @@ export const DemoSmallBadge = (props: Props) => {
     </div>
   );
 };
+
+export const DemoBadgeWithLink = (props: Props) => {
+  return (
+    <div className='flex gap-4'>
+      <Badge component='a' href='#' color='sky' size='medium' variant=''>
+        Link
+      </Badge>
+    </div>
+  );
+};

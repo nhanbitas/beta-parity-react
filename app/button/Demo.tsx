@@ -3,9 +3,7 @@
 import React from 'react';
 import { Button } from '@libComponents/Button';
 import { ClipboardCheck } from 'lucide-react';
-import Link from 'next/link';
 import { Badge } from '@libComponents/Badge';
-import Image from 'next/image';
 
 export const DemoBasicButton = () => {
   const ref = React.useRef<HTMLButtonElement>(null);

@@ -3,7 +3,6 @@
 import React from 'react';
 import classNames from 'classnames';
 import './index.css';
-import { ButtonProps } from '../Button';
 import { Portal } from '../Portal';
 
 export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -78,7 +77,7 @@ export const Modal = React.forwardRef<HTMLDivElement, ModalProps>(
 
 Modal.displayName = 'Modal';
 
-export interface ModalTriggerProps extends ButtonProps {}
+export interface ModalTriggerProps extends React.HTMLAttributes<HTMLButtonElement> {}
 
 export const ModalTrigger = React.forwardRef<HTMLButtonElement, ModalTriggerProps>(
   ({ className, children, ...props }, ref) => {
