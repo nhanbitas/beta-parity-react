@@ -1,7 +1,7 @@
 @import '../global.css';
 
 .modal {
-  @apply text-body-compact-01 fixed left-0 top-0 z-50 h-screen w-screen overflow-visible bg-[rgba(0,0,0,0.3)] p-4 opacity-0 transition-opacity duration-150 ease-linear;
+  @apply z-overlay text-body-compact-01 fixed left-0 top-0 h-screen w-screen overflow-visible bg-[rgba(0,0,0,0.3)] p-4 opacity-0 transition-opacity duration-150 ease-linear;
 }
 
 .modal.active {

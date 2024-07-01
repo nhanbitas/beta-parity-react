@@ -1,0 +1,3 @@
+.portal-container {
+  @apply z-max;
+}

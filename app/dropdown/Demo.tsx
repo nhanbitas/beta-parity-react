@@ -8,17 +8,21 @@ import { FloatingLabel } from '@libComponents/FloatingLabel';
 type Props = {};
 
 export const DemoBasicDropdown = (props: Props) => {
+  const [isOpen, setIsOpen] = React.useState(false);
   return (
-    <Dropdown className='not-prose w-64 bg-white'>
-      <DropdownTrigger>Dropdown</DropdownTrigger>
-      <DropdownContent clickToClose={true}>
-        <DropdownItem>Item 1</DropdownItem>
-        <DropdownItem>Item 2</DropdownItem>
-        <DropdownItem>Item 3</DropdownItem>
-        <DropdownDivider />
-        <DropdownItem>Item 4</DropdownItem>
-      </DropdownContent>
-    </Dropdown>
+    <>
+      <button onClick={() => setIsOpen(!isOpen)}>click</button>
+      <Dropdown isOpen={isOpen} className='not-prose w-64 bg-white'>
+        <DropdownTrigger>Dropdown</DropdownTrigger>
+        <DropdownContent clickToClose={true}>
+          <DropdownItem>Item 1</DropdownItem>
+          <DropdownItem>Item 2</DropdownItem>
+          <DropdownItem>Item 3</DropdownItem>
+          <DropdownDivider />
+          <DropdownItem>Item 4</DropdownItem>
+        </DropdownContent>
+      </Dropdown>
+    </>
   );
 };
 
@@ -51,15 +55,18 @@ export const DemoInputDropdown = (props: Props) => {
 };
 
 export const DemoSelectDropdown = (props: Props) => {
+  const handleClick = (e: any) => {
+    console.log(e);
+  };
   return (
     <Dropdown className='not-prose w-64 bg-white'>
       <DropdownTrigger>Select</DropdownTrigger>
-      <DropdownContent>
-        <DropdownItem>Item 1</DropdownItem>
-        <DropdownItem>Item 2</DropdownItem>
-        <DropdownItem>Item 3</DropdownItem>
+      <DropdownContent clickToClose={true}>
+        <DropdownItem onClick={() => handleClick('1')}>Item 1</DropdownItem>
+        <DropdownItem onClick={() => handleClick('2')}>Item 2</DropdownItem>
+        <DropdownItem onClick={() => handleClick('3')}>Item 3</DropdownItem>
         <DropdownDivider />
-        <DropdownItem>Item 4</DropdownItem>
+        <DropdownItem onClick={() => handleClick('4')}>Item 4</DropdownItem>
       </DropdownContent>
     </Dropdown>
   );

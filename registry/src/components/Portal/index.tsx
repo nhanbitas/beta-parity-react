@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './index.css';
 
 export interface PortalProps {
   className?: string;
@@ -12,6 +13,7 @@ export const Portal = React.forwardRef<HTMLDivElement, PortalProps>(
 
     React.useEffect(() => {
       const div = document.createElement('div');
+      div.classList.add('portal-container');
 
       if (target) {
         target.appendChild(div);
