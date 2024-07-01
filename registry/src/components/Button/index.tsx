@@ -4,9 +4,9 @@ import React, { ElementType } from 'react';
 import { createPolymorphicComponent, PolymorphicComponentProps } from '../Base/factory';
 import './index.css';
 import classNames from 'classnames';
-import Base from '../Base';
+import Base, { BaseProps } from '../Base';
 
-interface ButtonProps {
+interface ButtonProps extends BaseProps {
   text?: string;
   size?: 'small' | 'medium' | 'large';
   variant?: 'primary' | 'secondary' | 'tertiary' | 'ghost' | 'danger' | 'success' | 'system';

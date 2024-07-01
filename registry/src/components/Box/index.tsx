@@ -1,9 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
-import Base from '../Base';
+import Base, { BaseProps } from '../Base';
 import { PolymorphicComponentProps, createPolymorphicComponent } from '../Base/factory';
 
-export interface BoxProps {}
+export interface BoxProps extends BaseProps {}
 
 const Box = createPolymorphicComponent<'div', BoxProps>(
   <C extends React.ElementType = 'div'>(

@@ -3,10 +3,10 @@
 import React from 'react';
 import classNames from 'classnames';
 import './index.css';
-import Base from '../Base';
+import Base, { BaseProps } from '../Base';
 import { PolymorphicComponentProps, createPolymorphicComponent } from '../Base/factory';
 
-export interface ChipProps {
+export interface ChipProps extends BaseProps {
   children?: string | React.ReactNode;
   className?: string;
   label: string;

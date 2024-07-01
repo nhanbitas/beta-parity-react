@@ -1,6 +1,8 @@
 import React, { ElementType, ReactElement, forwardRef } from 'react';
 import { PolymorphicComponentProps, PolymorphicRef } from './factory';
 
+export interface BaseProps {}
+
 type BaseComponentProps<C extends ElementType> = PolymorphicComponentProps<C>;
 
 const Base = forwardRef(

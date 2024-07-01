@@ -1,10 +1,10 @@
 import React from 'react';
 import classNames from 'classnames';
 import './index.css';
-import Base from '../Base';
+import Base, { BaseProps } from '../Base';
 import { PolymorphicComponentProps, createPolymorphicComponent } from '../Base/factory';
 
-export interface BadgeProps {
+export interface BadgeProps extends BaseProps {
   children?: string | React.ReactNode;
   className?: string;
   color?: 'gray' | 'orange' | 'sky' | 'violet' | 'green' | 'red' | 'yellow' | 'blue';
