@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { CustomSelect, NativeSelect } from '@libComponents/Select';
-import { FloatingLabel } from '@libComponents/FloatingLabel';
 
 type Props = {};
 
@@ -20,11 +19,7 @@ export const DemoNativeSelect = (props: Props) => {
 };
 
 export const DemoNativeSelectLabel = (props: Props) => {
-  return (
-    <FloatingLabel label='Choose option'>
-      <NativeSelect options={options} onChange={(e) => console.log(e.target.value)} />
-    </FloatingLabel>
-  );
+  return <NativeSelect options={options} onChange={(e) => console.log(e.target.value)} floatingLabel='Choose option' />;
 };
 
 export const DemoCustomSelect = (props: Props) => {

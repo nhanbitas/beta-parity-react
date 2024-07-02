@@ -1,6 +1,5 @@
 import React from 'react';
 import { PasswordInput } from '@libComponents/PasswordInput';
-import { FloatingLabel } from '@libComponents/FloatingLabel';
 
 type Props = {};
 
@@ -14,8 +13,4 @@ export const DemoErrorPasswordInput = () => <PasswordInput wrapperClassname='!w-
 
 export const DemoSuccessPasswordInput = () => <PasswordInput wrapperClassname='!w-64' isSuccess={true} />;
 
-export const DemoLabelPasswordInput = () => (
-  <FloatingLabel label='Password' wrapperClassname='!w-64'>
-    <PasswordInput />
-  </FloatingLabel>
-);
+export const DemoLabelPasswordInput = () => <PasswordInput floatingLabel='Password' wrapperClassname='!w-64' />;

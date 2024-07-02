@@ -8,13 +8,6 @@
   @apply z-foreground text-label-01 pointer-events-none absolute left-0 top-2 w-full transform truncate pl-[1.0625rem] text-left text-gray-400 transition-all;
 }
 
-.floating-label
-  ~ *:not(button):not(.number-input-unit):not(.input-wrapper):not(.right-element-container):not(
-    .left-element-container
-  ) {
-  @apply h-[3.5rem] min-h-[3.5rem] pt-[1.125rem] placeholder:opacity-0 placeholder:transition-opacity;
-}
-
 .floating-label:not(.active) ~ .date-picker-calendar-button,
 .floating-label:not(.active) ~ .password-input-eye-button,
 .floating-label:not(.active) ~ .number-input-unit {
@@ -30,6 +23,27 @@
 
 .floating-label.active ~ * {
   @apply placeholder:opacity-100 placeholder:transition-opacity;
+}
+
+.floating-label ~ * input,
+.floating-label ~ * select,
+.floating-label ~ * textarea {
+  @apply h-[3.5rem] min-h-[3.5rem] pt-[1.125rem] placeholder:opacity-0 placeholder:transition-opacity;
+}
+
+.floating-label ~ * .no-value {
+  @apply text-transparent;
+}
+
+.floating-label ~ input,
+.floating-label ~ select,
+.floating-label ~ textarea {
+  @apply h-[3.5rem] min-h-[3.5rem] pt-[1.125rem] placeholder:opacity-0 placeholder:transition-opacity;
+}
+
+.floating-label ~ .no-value,
+.floating-label ~ input[value=''] {
+  @apply text-transparent;
 }
 
 .floating-label-wrapper {

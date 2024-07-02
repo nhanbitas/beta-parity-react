@@ -1,6 +1,6 @@
 /* Date Picker */
 .date-picker {
-  @apply text-body-compact-02 h-10 w-full text-ellipsis rounded-md border border-gray-200 bg-white pl-4 pr-10;
+  @apply text-body-compact-02 w-full text-ellipsis rounded-md border border-gray-200 bg-white;
 }
 
 .date-picker-wrapper {

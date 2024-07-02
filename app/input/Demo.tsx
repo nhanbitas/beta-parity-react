@@ -1,4 +1,3 @@
-import { FloatingLabel } from '@libComponents/FloatingLabel';
 import { Input } from '@libComponents/Input';
 import React from 'react';
 
@@ -12,8 +11,4 @@ export const DemoErrorInput = () => <Input isError={true} type='text' />;
 
 export const DemoSuccessInput = () => <Input isSuccess={true} type='text' />;
 
-export const DemoLabelInput = () => (
-  <FloatingLabel label='Floating Label'>
-    <Input type='text' isClearable />
-  </FloatingLabel>
-);
+export const DemoLabelInput = () => <Input type='text' isClearable floatingLabel='Floating Label' />;

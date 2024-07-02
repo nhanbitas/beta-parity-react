@@ -9,6 +9,7 @@ import { ChevronDown } from 'lucide-react';
 export interface NativeSelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   options: { value: string; label: string }[];
   value?: string;
+  floatingLabel?: string;
   onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   onFocus?: (e: React.FocusEvent<HTMLSelectElement>) => void;
   onBlur?: (e: React.FocusEvent<HTMLSelectElement>) => void;
@@ -16,7 +17,7 @@ export interface NativeSelectProps extends React.SelectHTMLAttributes<HTMLSelect
 }
 
 export const NativeSelect = React.forwardRef<HTMLSelectElement, NativeSelectProps>(
-  ({ options, className, onChange, onFocus, onBlur, onclick, value, ...props }, ref) => {
+  ({ options, className, floatingLabel, onChange, onFocus, onBlur, onclick, value, ...props }, ref) => {
     const [currentValue, setCurrentValue] = React.useState(value || '');
     const [isSelectOpen, setIsSelectOpen] = React.useState(false);
     const selectRef = React.useRef<HTMLSelectElement>(null);
@@ -59,6 +60,7 @@ export const NativeSelect = React.forwardRef<HTMLSelectElement, NativeSelectProp
 
       return (
         <InputWrapper rightElement={ArrowBtn}>
+          {floatingLabel && <ContainedLabel isActive={isSelectOpen || !!currentValue}>{floatingLabel}</ContainedLabel>}
           <select
             ref={combinedRef}
             className={classNames('native-select', className, { 'no-value': !currentValue })}

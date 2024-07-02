@@ -2,12 +2,11 @@
 
 import React from 'react';
 import { DatePicker } from '@libComponents/DatePicker';
-import { FloatingLabel } from '@libComponents/FloatingLabel';
 
 type Props = {};
 
 export const DemoDatePicker = (props: Props) => {
-  const [date, setDate] = React.useState(new Date());
+  const [date, setDate] = React.useState('');
 
   const handleChange = (date: any) => {
     console.log(date);
@@ -24,16 +23,13 @@ export const DemoDatePicker = (props: Props) => {
 };
 
 export const DemoLabelDatePicker = (props: Props) => {
-  const [date, setDate] = React.useState(new Date());
+  const [date, setDate] = React.useState('');
 
-  const handleChange = (date: any) => {
-    console.log(date);
-    setDate(date);
+  const handleChange = (selectedDates: any, dateStr: any, instance: any) => {
+    setDate(dateStr);
   };
 
   return (
-    <FloatingLabel label='Date Picker'>
-      <DatePicker value={date} onChange={handleChange} options={{ dateFormat: 'd/m/Y', static: true }} />
-    </FloatingLabel>
+    <DatePicker value={date} onChange={handleChange} options={{ dateFormat: 'd/m/Y' }} floatingLabel='Choose date' />
   );
 };

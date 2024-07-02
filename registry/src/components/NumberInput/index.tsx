@@ -16,6 +16,8 @@ export interface NumberInputProps extends InputProps {
   maxCharacters?: number;
   isPattern?: boolean;
   format?: any;
+  floatingLabel?: React.ReactNode;
+  wrapperClassname?: string;
 }
 
 export const NumberInput = React.forwardRef<
@@ -40,6 +42,7 @@ export const NumberInput = React.forwardRef<
       max,
       minCharacters,
       maxCharacters,
+      floatingLabel,
       onChange,
       onFocus,
       onBlur,
@@ -51,6 +54,7 @@ export const NumberInput = React.forwardRef<
     const [currentValue, setCurrentValue] = React.useState<string | number | null | undefined>(
       value || defaultValue || ''
     );
+    const [isFocused, setIsFocused] = React.useState(false);
     const inputRef = React.useRef<HTMLInputElement>(null);
     const combinedRef = useCombinedRefs(inputRef, ref);
     const TagName = isPattern ? PatternFormat : NumericFormat;
@@ -74,10 +78,12 @@ export const NumberInput = React.forwardRef<
     };
 
     const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+      setIsFocused(true);
       onFocus && onFocus(e);
     };
 
     const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+      setIsFocused(false);
       onBlur && onBlur(e);
     };
 
@@ -104,6 +110,7 @@ export const NumberInput = React.forwardRef<
 
     return (
       <InputWrapper className={classNames(addedClassname, wrapperClassname)} rightElement={RightInputActions}>
+        {floatingLabel && <ContainedLabel isActive={isFocused || !!currentValue}>{floatingLabel}</ContainedLabel>}
         <TagName
           className={classNames('input', { 'error-state': isError }, { 'success-state': isSuccess }, className)}
           getInputRef={combinedRef}

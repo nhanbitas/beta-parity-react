@@ -18,9 +18,9 @@ export const DemoVariantsSpinner = () => {
 export const DemoSizeSpinner = () => {
   return (
     <div className='flex gap-4'>
-      <Spinner variant='logo-01' size='small' />
-      <Spinner variant='logo-01' size='medium' />
-      <Spinner variant='logo-01' size='large' />
+      <Spinner variant='logo-01' size='sm' />
+      <Spinner variant='logo-01' />
+      <Spinner variant='logo-01' size='lg' />
     </div>
   );
 };

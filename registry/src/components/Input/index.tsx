@@ -11,6 +11,7 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
   wrapperClassname?: string;
   clearBtnClassName?: string;
   isClearable?: boolean;
+  floatingLabel?: React.ReactNode;
   onClear?: () => void;
   ActionBtn?: JSX.Element | React.ReactNode;
   isError?: boolean;
@@ -28,6 +29,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       isError,
       isSuccess,
       wrapperClassname,
+      floatingLabel,
       onChange,
       onFocus,
       onBlur,
@@ -37,6 +39,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     ref
   ) => {
     const [currentValue, setCurrentValue] = React.useState(value || '');
+    const [isFocused, setIsFocused] = React.useState(false);
     const inputRef = React.useRef<HTMLInputElement>(null);
     const combinedRef = useCombinedRefs(inputRef, ref);
 
@@ -59,10 +62,12 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     };
 
     const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+      setIsFocused(true);
       onFocus && onFocus(e);
     };
 
     const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+      setIsFocused(false);
       onBlur && onBlur(e);
     };
 
@@ -87,6 +92,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
     return (
       <InputWrapper className={classNames(addedClassname, wrapperClassname)} rightElement={RightInputActions}>
+        {floatingLabel && <ContainedLabel isActive={isFocused || !!currentValue}>{floatingLabel}</ContainedLabel>}
         <input
           type={type}
           className={classNames(

@@ -17,7 +17,7 @@ const ContainedLabel = React.forwardRef<HTMLLabelElement, ContainedLabelProps>(
   )
 );
 
-ContainedLabel.displayName = 'ContainedLabel';
+ContainedLabel.displayName = 'floating-label';
 
 export interface FloatingLabelProps extends React.HTMLAttributes<HTMLElement> {
   label: string | React.ReactNode;
@@ -29,6 +29,7 @@ export interface FloatingLabelProps extends React.HTMLAttributes<HTMLElement> {
 const FloatingLabel = React.forwardRef<HTMLDivElement, FloatingLabelProps>(
   ({ label, children, className, wrapperClassname, ...props }, ref) => {
     const [isActive, setIsActive] = React.useState(false);
+    const [inputValue, setInputValue] = React.useState('');
 
     const handleFocus = (e: any) => {
       setIsActive(true);
@@ -38,9 +39,13 @@ const FloatingLabel = React.forwardRef<HTMLDivElement, FloatingLabelProps>(
       e.target.value ? setIsActive(true) : setIsActive(false);
     };
 
+    const handleValueChange = (e: any) => {
+      setInputValue(e.target.value);
+    };
+
     return (
       <div className={classNames('floating-label-wrapper', wrapperClassname)} {...props} ref={ref}>
-        <ContainedLabel isActive={isActive} className={className}>
+        <ContainedLabel isActive={isActive || !!inputValue} className={className}>
           {label}
         </ContainedLabel>
         {React.Children.map(children, (child) =>
@@ -53,6 +58,10 @@ const FloatingLabel = React.forwardRef<HTMLDivElement, FloatingLabelProps>(
                 onBlur: (e: any) => {
                   handleBlur(e);
                   child.props.onFocus && child.props.onBlur(e);
+                },
+                onChange: (e: any) => {
+                  handleValueChange(e);
+                  child.props.onFocus && child.props.onChange(e);
                 }
               })
             : child

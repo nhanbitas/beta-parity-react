@@ -16,10 +16,6 @@ export const components = [
     url: '/form'
   },
   {
-    name: 'Floating Label',
-    url: '/floating-label'
-  },
-  {
     name: 'Input',
     url: '/input'
   },

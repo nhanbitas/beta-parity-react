@@ -8,8 +8,12 @@ import Flatpickr, { DateTimePickerProps } from 'react-flatpickr';
 import { InputWrapper } from '../Input';
 import { Calendar } from 'lucide-react';
 import useCombinedRefs from '../hooks/useCombinedRefs';
+import { ContainedLabel } from '../FloatingLabel';
 
-export interface DatePikerProps extends DateTimePickerProps {}
+export interface DatePikerProps extends DateTimePickerProps {
+  floatingLabel?: React.ReactNode;
+  wrapperClassname?: string;
+}
 
 export const DatePicker = React.forwardRef<
   HTMLInputElement,
@@ -17,9 +21,11 @@ export const DatePicker = React.forwardRef<
     onFocus?: (e: any) => void;
     onBlur?: (e: any) => void;
   } & DatePikerProps
->(({ options, ...props }, ref) => {
+>(({ options, floatingLabel, wrapperClassname, ...props }, ref) => {
   const inputRef = React.useRef<any>(null);
   const combinedRefs = useCombinedRefs(ref, inputRef);
+  const [isFocused, setIsFocused] = React.useState(false);
+  const currentValue = props.value;
 
   const handleIconclick = (e: any) => {
     combinedRefs.current && combinedRefs.current.flatpickr.input.focus();
@@ -31,24 +37,25 @@ export const DatePicker = React.forwardRef<
     </button>
   );
 
+  const addedClassname = RightBtn && 'with-action';
+
   const handleFocus = (e: any) => {
+    setIsFocused(true);
     props.onFocus && props.onFocus(e);
   };
 
-  const handleBlur = (e: any) => {
-    props.onBlur && props.onBlur(e);
+  const handleOnClose = (selectedDates: any, dateStr: any, instance: any) => {
+    setIsFocused(false);
+    props.onClose && props.onClose(selectedDates, dateStr, instance);
   };
 
-  React.useEffect(() => {
-    handleFocus({ target: { value: props.value } });
-  }, [props.value]);
-
   return (
-    <InputWrapper rightElement={RightBtn}>
+    <InputWrapper className={classNames(addedClassname, wrapperClassname)} rightElement={RightBtn}>
+      {floatingLabel && <ContainedLabel isActive={isFocused || !!currentValue}>{floatingLabel}</ContainedLabel>}
       <Flatpickr
         className={classNames('date-picker', props.className)}
-        onBlur={handleBlur}
         onFocus={handleFocus}
+        onClose={handleOnClose}
         options={{ disableMobile: true, ...options }}
         {...props}
         ref={combinedRefs as any}

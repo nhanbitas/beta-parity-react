@@ -57,13 +57,12 @@ export const DemoPattenInput = (props: Props) => {
 
 export const DemoPhoneLabelInput = (props: Props) => {
   return (
-    <FloatingLabel label='Phone Number'>
-      <NumberInput
-        onValueChange={(values, sourceInfo) => console.log(values, sourceInfo)}
-        isClearable
-        thousandsGroupStyle='thousand'
-        thousandSeparator=' '
-      />
-    </FloatingLabel>
+    <NumberInput
+      onValueChange={(values, sourceInfo) => console.log(values, sourceInfo)}
+      floatingLabel='Phone Number'
+      isClearable
+      thousandsGroupStyle='thousand'
+      thousandSeparator=' '
+    />
   );
 };

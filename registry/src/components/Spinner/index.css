@@ -23,14 +23,17 @@ span.loading.error {
 }
 
 .spinner-svg {
-  @apply h-4 w-4 bg-orange text-blue-500;
+  @apply bg-orange text-blue-500;
+}
+.spinner-svg.small {
+  @apply h-4 w-4;
 }
 
-.spinner-svg.large {
+.spinner-svg.medium {
   @apply h-8 w-8;
 }
 
-.spinner-svg.extra-large {
+.spinner-svg.large {
   @apply h-12 w-12;
 }
 /* Spinner */
