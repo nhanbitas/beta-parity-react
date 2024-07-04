@@ -7,6 +7,7 @@ import Base, { BaseProps } from '../Base';
 import { Input, InputProps } from '../Input';
 import useCombinedRefs from '../hooks/useCombinedRefs';
 import { PolymorphicComponentProps, createPolymorphicComponent } from '../Base/factory';
+import useCloneChildren from '../hooks/useCloneChildren';
 
 export interface CheckboxProps extends InputProps {
   /**
@@ -100,23 +101,32 @@ export const CheckboxGroup = ({ data, nested, layout = 'vertical', children, ...
     }
   }, [values]);
 
+  const cloneChildren = useCloneChildren(children, {
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => handleChange({} as DataItems[number], e)
+  });
+
+  if (children) {
+    return <div className={classNames('checkbox-group', layout)}>{cloneChildren}</div>;
+  }
+
   if (nested) {
     return <CheckboxNest data={data} {...props} />;
   }
 
   return (
     <div className={classNames('checkbox-group', layout)}>
-      {data.map((node: DataItems[number]) => (
-        <Checkbox
-          key={node.value}
-          label={node.label}
-          subLabel={node.subLabel}
-          value={node.value || ''}
-          checked={node.value ? values.includes(node.value) : false}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(node, e)}
-          {...node.inputProps}
-        />
-      ))}
+      {data &&
+        data.map((node: DataItems[number]) => (
+          <Checkbox
+            key={node.value}
+            label={node.label}
+            subLabel={node.subLabel}
+            value={node.value || ''}
+            checked={node.value ? values.includes(node.value) : false}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(node, e)}
+            {...node.inputProps}
+          />
+        ))}
     </div>
   );
 };
@@ -158,7 +168,7 @@ export interface CheckboxNestProps {
   /**
    * The data tree for nested checkbox
    */
-  data: DataItems;
+  data?: DataItems;
 
   /**
    * Callback when checkbox is changed
@@ -213,7 +223,7 @@ export const CheckboxNest = (props: CheckboxNestProps) => {
    */
   const handleChange = (clickedNode: DataItems[number], e: any) => {
     const isChecked = e.target.checked;
-    const newTreeData = [...treeData];
+    const newTreeData = treeData ? [...treeData] : [];
 
     const findNodeAndUpdate = (nodes: DataItems) => {
       nodes.forEach((n) => {
@@ -238,10 +248,12 @@ export const CheckboxNest = (props: CheckboxNestProps) => {
     setTreeData(data || []);
 
     //Update state base on provided data tree
-    handleChange(data[0], { target: { checked: data[0]?.checked || false } });
+    handleChange((data && data[0]) || ({} as DataItems[number]), {
+      target: { checked: (data && data[0]?.checked) || false }
+    });
   }, [data]);
 
-  return <RecursiveCheckbox data={treeData} handleChange={handleChange} />;
+  return <RecursiveCheckbox data={treeData || []} handleChange={handleChange} />;
 };
 
 /**

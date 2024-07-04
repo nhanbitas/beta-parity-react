@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import './index.css';
-import useCombinedProps from '../hooks/useCombinedProps';
+import useCloneChildren from '../hooks/useCloneChildren';
 import useCombinedRefs from '../hooks/useCombinedRefs';
 
 export interface DropdownProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -61,7 +61,7 @@ export const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>(
       return () => document.removeEventListener('click', handleOutsideClick);
     }, [isOpen, setOpenState]);
 
-    const clonedChildren = useCombinedProps(children, {
+    const clonedChildren = useCloneChildren(children, {
       openState,
       setOpenState,
       isToggle,

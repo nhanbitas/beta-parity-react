@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-function useCombinedProps<T extends object>(children: React.ReactNode, props: T): React.ReactNode {
+function useCloneChildren<T extends object>(children: React.ReactNode, props: T): React.ReactNode {
   const clonedChildren = React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
       return React.cloneElement(child, { ...props } as any);
@@ -11,4 +11,4 @@ function useCombinedProps<T extends object>(children: React.ReactNode, props: T)
   return clonedChildren;
 }
 
-export default useCombinedProps;
+export default useCloneChildren;

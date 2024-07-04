@@ -59,6 +59,11 @@ export const DemoBasicCheckbox = (props: Props) => {
       <h2>Group</h2>
       <CheckboxGroup data={treeData} onChange={(value: any) => console.log(value)} />
       <CheckboxGroup data={treeData} onChange={(value: any) => console.log(value)} layout='horizontal' />
+      <CheckboxGroup onChange={(value: any) => console.log(value)}>
+        <Checkbox value='value-1' label='value 1' />
+        <Checkbox value='value-2' label='value 2' />
+        <Checkbox value='value-3' label='value 3' />
+      </CheckboxGroup>
 
       <h2>NestedGroup</h2>
       <CheckboxGroup nested={true} data={treeData} onChange={(value: any) => console.log(value)} />
