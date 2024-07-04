@@ -6,18 +6,58 @@ import './index.css';
 import { X } from 'lucide-react';
 import { ContainedLabel } from '../FloatingLabel';
 import useCombinedRefs from '../hooks/useCombinedRefs';
+import { PolymorphicComponentProps, createPolymorphicComponent } from '../Base/factory';
+import Base, { BaseProps } from '../Base';
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  /**
+   * Added className for the wrapper input
+   */
   wrapperClassname?: string;
+
+  /**
+   * Added className for the clear button
+   */
   clearBtnClassName?: string;
+
+  /**
+   * Define the visible of clear button
+   */
   isClearable?: boolean;
+
+  /**
+   * Define of floating label of input
+   *
+   * If the value is component, the floating label will be generate by that component
+   */
   floatingLabel?: React.ReactNode;
+
+  /**
+   * Callback function when clear value of input
+   */
   onClear?: () => void;
+
+  /**
+   * Added action button, generate in the right of clear button (if any)
+   */
   ActionBtn?: JSX.Element | React.ReactNode;
+
+  /**
+   * Define of error state
+   */
   isError?: boolean;
+
+  /**
+   * Define of success state
+   */
   isSuccess?: boolean;
 }
 
+/**
+ * Input component with basic usage
+ *
+ * @see http://localhost:3005/input
+ */
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   (
     {
@@ -114,19 +154,35 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
 Input.displayName = 'Input';
 
-export interface InputWrapperProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface InputWrapperProps extends BaseProps {
   leftElement?: JSX.Element | React.ReactNode;
   rightElement?: JSX.Element | React.ReactNode;
 }
 
-export const InputWrapper = React.forwardRef<HTMLInputElement, InputWrapperProps>(
-  ({ className, children, leftElement, rightElement, ...props }, ref) => {
+/**
+ * Input wrapper fo input tag
+ *
+ * Specific props: leftElement, rightElement
+ */
+export const InputWrapper = createPolymorphicComponent<'div', InputWrapperProps>(
+  <C extends React.ElementType = 'div'>(
+    {
+      component,
+      className,
+      children,
+      leftElement,
+      rightElement,
+      ...props
+    }: PolymorphicComponentProps<C, InputWrapperProps>,
+    ref: React.Ref<any>
+  ) => {
+    const Component = component || ('div' as C);
     return (
-      <div className={classNames('input-wrapper', className)} ref={ref} {...props}>
+      <Base component={Component} className={classNames('input-wrapper', className)} ref={ref} {...props}>
         {leftElement && <div className='left-element-container'>{leftElement}</div>}
         {children}
         {rightElement && <div className='right-element-container'>{rightElement}</div>}
-      </div>
+      </Base>
     );
   }
 );

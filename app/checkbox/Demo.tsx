@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Checkbox, CheckboxNest } from '@libComponents/Checkbox';
+import { Checkbox, CheckboxGroup } from '@libComponents/Checkbox';
 
 const treeData = [
   {
@@ -20,7 +20,7 @@ const treeData = [
         value: 'value-2-1',
         label: 'Child 2.1',
         children: [
-          { value: 'value-2-1-1', label: 'Grandchild 2.1.1' },
+          { value: 'value-2-1-1', label: 'Grandchild 2.1.1', checked: true },
           { value: 'value-2-1-2', label: 'Grandchild 2.1.2' }
         ]
       },
@@ -41,19 +41,28 @@ type Props = {};
 export const DemoBasicCheckbox = (props: Props) => {
   return (
     <>
-      <Checkbox label={'Basic Checkbox'} />
-      <Checkbox checked label={'Checked Checkbox'} subLabel={'This is a checked Checkbox'} />
-      <Checkbox label={'Disabled Checkbox'} subLabel={'This is a disabled Checkbox'} disabled />
+      <h2>Basic</h2>
+      <Checkbox />
+      <Checkbox label='With Label' />
+      <Checkbox label='With Sub Label' subLabel='This is a sub label' />
+      <Checkbox checked label='Controlled Checkbox' subLabel='This is a Checkbox with checked = true' />
+      <Checkbox label='Disabled Checkbox' subLabel='This is a disabled Checkbox' disabled />
+      <Checkbox checked label='Disabled Checkbox' subLabel='This is a disabled Checkbox' disabled />
       <Checkbox
-        label={'Indeterminate Checkbox'}
-        subLabel={'This is a indeterminate Checkbox'}
+        label='Indeterminate Checkbox'
+        subLabel='This is a Checkbox with indeterminate = true'
         indeterminate={true}
         onChange={(e) => {
           console.log(e.target.checked);
         }}
       />
+      <h2>Group</h2>
+      <CheckboxGroup data={treeData} onChange={(value: any) => console.log(value)} />
+      <CheckboxGroup data={treeData} onChange={(value: any) => console.log(value)} layout='horizontal' />
 
-      <CheckboxNest data={treeData} onChange={(value: any) => console.log(value)} />
+      <h2>NestedGroup</h2>
+      <CheckboxGroup nested={true} data={treeData} onChange={(value: any) => console.log(value)} />
+      <CheckboxGroup nested={true} data={treeData} root='All' onChange={(value: any) => console.log(value)} />
     </>
   );
 };
