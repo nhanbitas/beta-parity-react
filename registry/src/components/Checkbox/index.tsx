@@ -45,7 +45,6 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
         combinedRef.current.indeterminate = indeterminate;
       }
     }, [indeterminate]);
-
     return (
       <CheckBoxWrapper aria-disabled={props.disabled}>
         <Input className='checkbox' type={type} ref={combinedRef} {...props} />
@@ -66,11 +65,6 @@ Checkbox.displayName = 'Checkbox';
 
 export interface CheckboxGroup extends CheckboxNestProps {
   /**
-   * Define nested type for checkbox
-   */
-  nested?: boolean;
-
-  /**
    * The layout of group checboxes
    */
   layout?: 'vertical' | 'horizontal';
@@ -79,9 +73,22 @@ export interface CheckboxGroup extends CheckboxNestProps {
    * Children of Group
    */
   children?: React.ReactNode;
+  value?: any;
+  label?: any;
+  style?: any;
 }
 
-export const CheckboxGroup = ({ data, nested, layout = 'vertical', children, ...props }: CheckboxGroup) => {
+export const CheckboxGroup = ({
+  data,
+  layout = 'vertical',
+  value,
+  label,
+  children,
+  depth = 0,
+  style,
+  ...props
+}: CheckboxGroup & { depth?: number }) => {
+  console.log(depth);
   const [values, setValues] = React.useState<any[]>([]);
 
   const handleChange = (node: DataItems[number], e: React.ChangeEvent<HTMLInputElement>) => {
@@ -101,34 +108,42 @@ export const CheckboxGroup = ({ data, nested, layout = 'vertical', children, ...
     }
   }, [values]);
 
+  const marginStyle = (depth: number) => (depth ? { marginLeft: depth * 28 } : {});
+
   const cloneChildren = useCloneChildren(children, {
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => handleChange({} as DataItems[number], e)
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => handleChange({} as DataItems[number], e),
+    depth: depth + 1,
+    wrapperProps: { style: marginStyle(depth) }
   });
 
   if (children) {
-    return <div className={classNames('checkbox-group', layout)}>{cloneChildren}</div>;
+    return (
+      <div className={classNames('checkbox-group', layout)}>
+        {label && value && <Checkbox label={label} value={value} wrapperProps={{ style: marginStyle(depth - 1) }} />}
+        {cloneChildren}
+      </div>
+    );
   }
 
-  if (nested) {
-    return <CheckboxNest data={data} {...props} />;
+  if (data && data.length) {
+    const checkboxes = value && label ? [...data, { value, label }] : data;
+    return (
+      <div className={classNames('checkbox-group', layout)} {...props}>
+        {checkboxes &&
+          checkboxes.map((node: DataItems[number]) => (
+            <Checkbox
+              key={node.value}
+              label={node.label}
+              subLabel={node.subLabel}
+              value={node.value || ''}
+              checked={node.value ? values.includes(node.value) : false}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(node, e)}
+              {...node.inputProps}
+            />
+          ))}
+      </div>
+    );
   }
-
-  return (
-    <div className={classNames('checkbox-group', layout)}>
-      {data &&
-        data.map((node: DataItems[number]) => (
-          <Checkbox
-            key={node.value}
-            label={node.label}
-            subLabel={node.subLabel}
-            value={node.value || ''}
-            checked={node.value ? values.includes(node.value) : false}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(node, e)}
-            {...node.inputProps}
-          />
-        ))}
-    </div>
-  );
 };
 
 export interface CheckBoxWrapperProps extends BaseProps {}
@@ -151,7 +166,6 @@ export const CheckBoxWrapper = createPolymorphicComponent<'label', CheckBoxWrapp
     );
   }
 );
-
 CheckBoxWrapper.displayName = 'CheckBoxWrapper';
 
 export type DataItems = {

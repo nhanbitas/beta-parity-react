@@ -7,7 +7,7 @@ import { X } from 'lucide-react';
 import { ContainedLabel } from '../FloatingLabel';
 import useCombinedRefs from '../hooks/useCombinedRefs';
 import { NumericFormat, NumericFormatProps, PatternFormat, PatternFormatProps } from 'react-number-format';
-import { InputWrapper, InputProps } from '../Input';
+import { InputWrapper, InputProps, InputWrapperProps } from '../Input';
 
 export interface NumberInputProps extends InputProps {
   min?: number;
@@ -17,7 +17,7 @@ export interface NumberInputProps extends InputProps {
   isPattern?: boolean;
   format?: any;
   floatingLabel?: React.ReactNode;
-  wrapperClassname?: string;
+  wrapperProps?: InputWrapperProps & React.HTMLAttributes<HTMLDivElement>;
 }
 
 export const NumberInput = React.forwardRef<
@@ -36,7 +36,7 @@ export const NumberInput = React.forwardRef<
       ActionBtn,
       isError,
       isSuccess,
-      wrapperClassname,
+      wrapperProps,
       clearBtnClassName,
       min,
       max,
@@ -109,7 +109,7 @@ export const NumberInput = React.forwardRef<
     );
 
     return (
-      <InputWrapper className={classNames(addedClassname, wrapperClassname)} rightElement={RightInputActions}>
+      <InputWrapper className={classNames(addedClassname, wrapperProps?.className)} rightElement={RightInputActions}>
         {floatingLabel && <ContainedLabel isActive={isFocused || !!currentValue}>{floatingLabel}</ContainedLabel>}
         <TagName
           className={classNames('input', { 'error-state': isError }, { 'success-state': isSuccess }, className)}

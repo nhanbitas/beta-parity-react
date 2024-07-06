@@ -13,7 +13,7 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
   /**
    * Added className for the wrapper input
    */
-  wrapperClassname?: string;
+  wrapperProps?: InputWrapperProps & React.HTMLAttributes<HTMLDivElement>;
 
   /**
    * Added className for the clear button
@@ -68,7 +68,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       ActionBtn,
       isError,
       isSuccess,
-      wrapperClassname,
+      wrapperProps,
       floatingLabel,
       onChange,
       onFocus,
@@ -131,7 +131,11 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     );
 
     return (
-      <InputWrapper className={classNames(addedClassname, wrapperClassname)} rightElement={RightInputActions}>
+      <InputWrapper
+        className={classNames(addedClassname, wrapperProps?.className)}
+        rightElement={RightInputActions}
+        {...wrapperProps}
+      >
         {floatingLabel && <ContainedLabel isActive={isFocused || !!currentValue}>{floatingLabel}</ContainedLabel>}
         <input
           type={type}

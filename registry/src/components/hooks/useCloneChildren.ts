@@ -1,14 +1,40 @@
-import * as React from 'react';
+import React from 'react';
 
-function useCloneChildren<T extends object>(children: React.ReactNode, props: T): React.ReactNode {
-  const clonedChildren = React.Children.map(children, (child) => {
+export type UseCloneChildrenProps = {
+  children: React.ReactNode;
+} & React.Attributes;
+
+export type UseCloneChildrenOptions = {
+  recursive?: boolean;
+};
+
+export function useCloneChildren<T extends object>(
+  children: React.ReactNode,
+  props: T,
+  options?: UseCloneChildrenOptions
+): React.ReactNode {
+  const { recursive } = options || {};
+  const cloneElement = (child: React.ReactNode): React.ReactNode => {
     if (React.isValidElement(child)) {
-      return React.cloneElement(child, { ...props } as any);
-    }
-    return child;
-  });
+      // Clone the child with props
+      const clonedChild = React.cloneElement(child, {
+        ...props,
+        ...child.props // Ensure child's original props are not overwritten
+      } as UseCloneChildrenProps);
 
-  return clonedChildren;
+      // If recursive is true, recursively clone its children
+      if (recursive && child.props && child.props.children) {
+        const clonedChildren = React.Children.map(child.props.children, cloneElement);
+        return React.cloneElement(clonedChild, { children: clonedChildren } as UseCloneChildrenProps);
+      }
+
+      return clonedChild;
+    }
+
+    return child;
+  };
+
+  return React.Children.map(children, cloneElement);
 }
 
 export default useCloneChildren;
