@@ -24,6 +24,13 @@ export interface CheckboxProps extends InputProps {
    * Setting indeterminate state for checkbox
    */
   indeterminate?: boolean;
+
+  parentValues?: any;
+  setParentValues?: any;
+  checkedParentValues?: any;
+  setCheckedParentValues?: any;
+  onGroupChange?: any;
+  depth?: number;
 }
 
 /**
@@ -36,18 +43,67 @@ export interface CheckboxProps extends InputProps {
  * @see http://localhost:3005/checkbox
  */
 export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
-  ({ type = 'checkbox', label, subLabel, indeterminate = false, ...props }, ref) => {
+  (
+    {
+      type = 'checkbox',
+      label,
+      subLabel,
+      indeterminate = false,
+      depth,
+      parentValues,
+      setParentValues,
+      checkedParentValues,
+      setCheckedParentValues,
+      onGroupChange,
+      onChange,
+      ...props
+    },
+    ref
+  ) => {
     const checkboxRef = React.useRef(null);
     const combinedRef = useCombinedRefs(checkboxRef, ref);
+
+    const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      const isChecked = event.target.checked;
+      const value = event.target.value;
+
+      if (checkedParentValues && setCheckedParentValues && setParentValues && onGroupChange) {
+        let updatedValues = [...checkedParentValues];
+
+        if (isChecked) {
+          updatedValues.push(value);
+        } else {
+          updatedValues = updatedValues.filter((item) => item !== value);
+        }
+
+        const uniqueValues = Array.from(new Set(updatedValues));
+
+        setCheckedParentValues(uniqueValues);
+
+        onGroupChange(uniqueValues);
+      }
+
+      onChange && onChange(event);
+    };
 
     React.useEffect(() => {
       if (combinedRef.current) {
         combinedRef.current.indeterminate = indeterminate;
       }
     }, [indeterminate]);
+
+    React.useEffect(() => {
+      if (setParentValues) {
+        setParentValues((pre: any[]) => {
+          const uniqueValues = new Set([...pre, { value: props.value, checked: props.checked }]);
+          return Array.from(uniqueValues);
+        });
+      }
+    }, [setParentValues, props.value, props.checked]);
+
     return (
       <CheckBoxWrapper aria-disabled={props.disabled}>
-        <Input className='checkbox' type={type} ref={combinedRef} {...props} />
+        <Input className='checkbox' type={type} ref={combinedRef} onChange={handleCheckboxChange} {...props} />
         {label || subLabel ? (
           <div className='input-label-wrapper'>
             {label && <span className='input-label'>{label}</span>}
@@ -73,8 +129,14 @@ export interface CheckboxGroup extends CheckboxNestProps {
    * Children of Group
    */
   children?: React.ReactNode;
-  value?: any;
   label?: any;
+  value?: any;
+  allChecked?: boolean;
+  parentValues?: any;
+  setParentValues?: any;
+  checkedParentValues?: any;
+  setCheckedParentValues?: any;
+  onGroupChange?: any;
   style?: any;
 }
 
@@ -83,35 +145,54 @@ export const CheckboxGroup = ({
   layout = 'vertical',
   value,
   label,
+  allChecked = false,
   children,
-  depth = 0,
+  parentValues,
+  setParentValues,
+  checkedParentValues,
+  setCheckedParentValues,
   style,
+  onChange,
+  onGroupChange,
+  depth = 0,
   ...props
 }: CheckboxGroup & { depth?: number }) => {
-  console.log(depth);
-  const [values, setValues] = React.useState<any[]>([]);
+  const [childrenValues, setChildrenValues] = React.useState<{ label: any; value: any }[]>([]); // danh sach list
+  const [checkedValues, setCheckedValues] = React.useState<string[]>([]); // danh sach checked
+  const [isAllChecked, setIsAllChecked] = React.useState(allChecked);
 
-  const handleChange = (node: DataItems[number], e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    const checked = e.target.checked;
-
-    if (checked && !values.includes(value)) {
-      setValues([...values, value]);
-    } else {
-      setValues(values.filter((v) => v !== value));
-    }
-  };
+  const [isIndeterminate, setIsIndeterminate] = React.useState(false);
 
   React.useEffect(() => {
-    if (props.onChange) {
-      props.onChange(values);
+    if (setParentValues) {
+      setParentValues((pre: any[]) => {
+        const uniqueValues = new Set([...pre, ...childrenValues]);
+        return Array.from(uniqueValues);
+      });
     }
-  }, [values]);
+  }, [childrenValues, setParentValues]);
+
+  React.useEffect(() => {
+    setIsIndeterminate(checkedValues.length > 0 && checkedValues.length < childrenValues.length);
+    setIsAllChecked(checkedValues.length === childrenValues.length);
+
+    if (setCheckedParentValues) {
+      const uniqueValues = new Set([...checkedParentValues, ...checkedValues]);
+      setCheckedParentValues(Array.from(uniqueValues));
+      onGroupChange && onGroupChange(Array.from(uniqueValues));
+    }
+  }, [checkedValues, childrenValues]);
 
   const marginStyle = (depth: number) => (depth ? { marginLeft: depth * 28 } : {});
 
   const cloneChildren = useCloneChildren(children, {
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => handleChange({} as DataItems[number], e),
+    setParentValues: setChildrenValues,
+    parentValues: childrenValues,
+    checkedParentValues: checkedValues,
+    setCheckedParentValues: (values: any) => {
+      setCheckedValues(values);
+    },
+    onGroupChange: onChange,
     depth: depth + 1,
     wrapperProps: { style: marginStyle(depth) }
   });
@@ -119,28 +200,23 @@ export const CheckboxGroup = ({
   if (children) {
     return (
       <div className={classNames('checkbox-group', layout)}>
-        {label && value && <Checkbox label={label} value={value} wrapperProps={{ style: marginStyle(depth - 1) }} />}
+        {label && value && (
+          <Checkbox
+            label={label}
+            value={value}
+            indeterminate={isIndeterminate}
+            checked={isAllChecked}
+            wrapperProps={{ style: marginStyle(depth - 1) }}
+            onChange={(e) => {
+              if (checkedValues.length > 0) {
+                setCheckedValues([]);
+              } else {
+                setCheckedValues(childrenValues.map((item) => item.value));
+              }
+            }}
+          />
+        )}
         {cloneChildren}
-      </div>
-    );
-  }
-
-  if (data && data.length) {
-    const checkboxes = value && label ? [...data, { value, label }] : data;
-    return (
-      <div className={classNames('checkbox-group', layout)} {...props}>
-        {checkboxes &&
-          checkboxes.map((node: DataItems[number]) => (
-            <Checkbox
-              key={node.value}
-              label={node.label}
-              subLabel={node.subLabel}
-              value={node.value || ''}
-              checked={node.value ? values.includes(node.value) : false}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(node, e)}
-              {...node.inputProps}
-            />
-          ))}
       </div>
     );
   }
