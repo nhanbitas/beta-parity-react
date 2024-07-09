@@ -2,16 +2,12 @@
 
 import React from 'react';
 import { Checkbox, CheckboxGroup } from '@libComponents/Checkbox';
+
 const arrData = ['value-1', 'value-2', 'value-3', 'value-4'];
 const treeData = [
   {
     value: 'value-1',
     label: 'Parent 1',
-    checkboxProps: {
-      checkboxWrapperProps: {
-        className: '!bg-blue-200 px-1 rounded-md'
-      }
-    },
     children: [
       { value: 'value-1-1', label: 'Child 1.1' },
       { value: 'value-1-2', label: 'Child 1.2' }
@@ -20,11 +16,6 @@ const treeData = [
   {
     value: 'value-2',
     label: 'Parent 2',
-    checkboxProps: {
-      checkboxWrapperProps: {
-        className: '!bg-blue-200 px-1 rounded-md'
-      }
-    },
     children: [
       {
         value: 'value-2-1',
@@ -66,10 +57,23 @@ export const DemoBasicCheckbox = (props: Props) => {
         label='Indeterminate Checkbox'
         subLabel='This is a Checkbox with indeterminate = true'
         indeterminate={true}
-        onChange={(e) => {
-          console.log(e.target.checked);
-        }}
       />
+    </>
+  );
+};
+
+export const DemoGroupCheckbox = (props: Props) => {
+  const [arr, setArr] = React.useState<any>(
+    arrData.map((item) => {
+      return { label: item, value: item };
+    })
+  );
+  const [group, setGroup] = React.useState({
+    value: 'all',
+    label: 'All'
+  });
+  return (
+    <>
       <h2>Group</h2>
 
       <CheckboxGroup onChange={(value: any, tree: any, getGroup: any) => console.log(value, tree, getGroup('value-1'))}>
@@ -79,41 +83,39 @@ export const DemoBasicCheckbox = (props: Props) => {
       </CheckboxGroup>
 
       <CheckboxGroup
-        value='value'
-        label='All'
+        onParse={(value) => console.log('parsed', value)}
+        value={group.value}
+        label={group.label}
         onChange={(value: any, tree: any, getGroup: any) => console.log(value, tree, getGroup('value-1'))}
       >
-        {arrData.map((item) => (
-          <Checkbox key={item} value={item} label={item} />
+        {arr.map((item: any) => (
+          <Checkbox key={item.value} value={item.value} label={item.label} />
         ))}
       </CheckboxGroup>
+    </>
+  );
+};
 
+export const DemoNestedCheckbox = (props: Props) => {
+  const [parsedValue, setParsedValue] = React.useState<any>([]);
+  return (
+    <>
       <h2>NestedGroup</h2>
-      <CheckboxGroup
-        nested
-        data={treeData}
-        onChange={(value: any, tree: any, getGroup: any) => console.log(value, tree, getGroup('value-2-1'))}
-      />
 
       <CheckboxGroup
-        nested
-        data={treeData}
-        label='all'
-        value='value-all'
-        layout='horizontal'
-        onChange={(value: any, tree: any, getGroup: any) => console.log(value, tree, getGroup('value-2-2'))}
-      />
-
-      <CheckboxGroup onChange={(value: any, tree: any, getGroup: any) => console.log(value, tree, getGroup('value-5'))}>
+        tree={parsedValue}
+        onParse={(value) => setParsedValue(value)}
+        onChange={(value: any, tree: any, getGroup: any) => console.log(value, tree, getGroup('value-5'))}
+      >
         <Checkbox value='value-1' label='value 1' />
         <Checkbox value='value-2' label='value 2' />
         <Checkbox value='value-3' label='value 3' />
         <CheckboxGroup value='value-4' label='value 4'>
-          <Checkbox value='value-4.1' label='value 4.1' />
+          <Checkbox value='value-4.1' label='value 4.1' onClick={() => console.log('click value 4.1')} />
           <Checkbox value='value-4.2' label='value 4.2' />
         </CheckboxGroup>
         <CheckboxGroup value='value-5' label='value 5'>
-          <Checkbox value='value-5.1' label='value 5.1' />
+          <Checkbox value='value-5.1' label='value 5.1' checked />
           <Checkbox value='value-5.2' label='value 5.2' />
           <CheckboxGroup value='value-5.3' label='value 5.3'>
             <Checkbox value='value-5.3.1' label='value 5.3.1' />
@@ -122,6 +124,14 @@ export const DemoBasicCheckbox = (props: Props) => {
           </CheckboxGroup>
         </CheckboxGroup>
       </CheckboxGroup>
+
+      <CheckboxGroup
+        tree={treeData}
+        label='all'
+        value='value-all'
+        onParse={(value) => console.log('parsed nested', value)}
+        onChange={(value: any, tree: any, getGroup: any) => console.log(value, tree, getGroup('value-2'))}
+      />
     </>
   );
 };
