@@ -2,11 +2,16 @@
 
 import React from 'react';
 import { Checkbox, CheckboxGroup } from '@libComponents/Checkbox';
-
+const arrData = ['value-1', 'value-2', 'value-3', 'value-4'];
 const treeData = [
   {
     value: 'value-1',
     label: 'Parent 1',
+    checkboxProps: {
+      checkboxWrapperProps: {
+        className: '!bg-blue-200 px-1 rounded-md'
+      }
+    },
     children: [
       { value: 'value-1-1', label: 'Child 1.1' },
       { value: 'value-1-2', label: 'Child 1.2' }
@@ -15,6 +20,11 @@ const treeData = [
   {
     value: 'value-2',
     label: 'Parent 2',
+    checkboxProps: {
+      checkboxWrapperProps: {
+        className: '!bg-blue-200 px-1 rounded-md'
+      }
+    },
     children: [
       {
         value: 'value-2-1',
@@ -62,15 +72,39 @@ export const DemoBasicCheckbox = (props: Props) => {
       />
       <h2>Group</h2>
 
-      <CheckboxGroup onChange={(value: any) => console.log(value)}>
-        <Checkbox value='value-1' label='value 1' />
+      <CheckboxGroup onChange={(value: any, tree: any, getGroup: any) => console.log(value, tree, getGroup('value-1'))}>
+        <Checkbox value='value-1' label='value 1' checked />
         <Checkbox value='value-2' label='value 2' />
         <Checkbox value='value-3' label='value 3' />
       </CheckboxGroup>
 
-      <h2>NestedGroup</h2>
+      <CheckboxGroup
+        value='value'
+        label='All'
+        onChange={(value: any, tree: any, getGroup: any) => console.log(value, tree, getGroup('value-1'))}
+      >
+        {arrData.map((item) => (
+          <Checkbox key={item} value={item} label={item} />
+        ))}
+      </CheckboxGroup>
 
-      <CheckboxGroup onChange={(value: any) => console.log('value root', value)}>
+      <h2>NestedGroup</h2>
+      <CheckboxGroup
+        nested
+        data={treeData}
+        onChange={(value: any, tree: any, getGroup: any) => console.log(value, tree, getGroup('value-2-1'))}
+      />
+
+      <CheckboxGroup
+        nested
+        data={treeData}
+        label='all'
+        value='value-all'
+        layout='horizontal'
+        onChange={(value: any, tree: any, getGroup: any) => console.log(value, tree, getGroup('value-2-2'))}
+      />
+
+      <CheckboxGroup onChange={(value: any, tree: any, getGroup: any) => console.log(value, tree, getGroup('value-5'))}>
         <Checkbox value='value-1' label='value 1' />
         <Checkbox value='value-2' label='value 2' />
         <Checkbox value='value-3' label='value 3' />
