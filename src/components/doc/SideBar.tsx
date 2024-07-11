@@ -11,7 +11,7 @@ const SideBar = (props: Props) => {
   const pathname = usePathname();
 
   return (
-    <aside className='fixed left-0 top-0 h-screen w-[256px] bg-white'>
+    <aside className='side-bar fixed left-0 top-0 h-screen w-[256px] border-r border-gray-200'>
       <Link href='/' className='text-heading-03 block w-full px-4 py-4 text-black'>
         Components
       </Link>

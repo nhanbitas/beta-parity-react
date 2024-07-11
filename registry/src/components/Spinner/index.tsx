@@ -1,7 +1,13 @@
 import React from 'react';
 import classNames from 'classnames';
 import './index.css';
-import { sizeMap } from '../constant';
+
+export const sizeMap = {
+  sm: 'small',
+  md: 'medium',
+  lg: 'large',
+  xl: 'extra-large'
+} as const;
 
 export interface SpinnerProps extends React.HTMLAttributes<HTMLSpanElement> {
   variant: 'circle-01' | 'circle-02' | 'logo-01' | 'logo-02' | 'logo-03' | 'logo-04';
