@@ -44,32 +44,6 @@ input[type='search']::-ms-reveal {
   height: 0;
 }
 
-/* Override browser's default radio input */
-input[type='radio'] {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  border-radius: 50%;
-  min-width: 1rem;
-  min-height: 1rem;
-  max-width: 1rem;
-  max-height: 1rem;
-  border: 0.125rem solid #a8a8a8;
-  position: relative;
-  top: 0.125rem;
-  transition: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-  background-color: white;
-}
-input[type='radio']:checked {
-  border: 0.3125rem solid #4294ff;
-  outline: unset !important;
-}
-input[type='radio']:disabled {
-  border-color: #c6c6c6;
-  opacity: 0.5;
-}
-
 /* Disable default appearance for search input on Chrome, Safari, Edge, Opera */
 input[type='search']::-webkit-search-decoration,
 input[type='search']::-webkit-search-cancel-button,

@@ -58,5 +58,9 @@ export const components = [
   {
     name: 'Checkbox',
     url: '/checkbox'
+  },
+  {
+    name: 'Radio',
+    url: '/radio'
   }
 ];
