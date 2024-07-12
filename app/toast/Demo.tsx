@@ -21,7 +21,7 @@ export const DemoInfoToast = (props: Props) => {
     });
   return (
     <>
-      <Button variant='system' onClick={notify} className='w-24'>
+      <Button onClick={notify} className='w-24'>
         Info
       </Button>
     </>
@@ -42,7 +42,7 @@ export const DemoSuccessToast = (props: Props) => {
     });
   return (
     <>
-      <Button variant='success' onClick={notify} className='w-24'>
+      <Button onClick={notify} className='w-24'>
         Success
       </Button>
     </>
@@ -62,7 +62,7 @@ export const DemoWarningToast = (props: Props) => {
     });
   return (
     <>
-      <Button variant='secondary' onClick={notify} className='w-24'>
+      <Button onClick={notify} className='w-24'>
         Warning
       </Button>
     </>
@@ -82,7 +82,7 @@ export const DemoDangerToast = (props: Props) => {
     });
   return (
     <>
-      <Button variant='danger' onClick={notify} className='w-24'>
+      <Button onClick={notify} className='w-24'>
         Danger
       </Button>
     </>
