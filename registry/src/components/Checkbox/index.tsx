@@ -25,7 +25,7 @@ export interface CheckboxProps extends InputProps {
    * @type {string | React.ReactNode}
    * @memberof CheckboxProps
    */
-  subLabel?: string | React.ReactNode;
+  sublabel?: string | React.ReactNode;
 
   /**
    * Indicates whether the checkbox is in an indeterminate state.
@@ -45,7 +45,7 @@ export interface CheckboxProps extends InputProps {
 }
 
 export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
-  ({ type = 'checkbox', label, subLabel, indeterminate = false, checkboxWrapperProps, ...props }, ref) => {
+  ({ type = 'checkbox', label, sublabel, indeterminate = false, checkboxWrapperProps, ...props }, ref) => {
     const checkboxRef = React.useRef(null);
     const combinedRef = useCombinedRefs(checkboxRef, ref);
 
@@ -58,10 +58,10 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
     return (
       <CheckBoxWrapper aria-disabled={props.disabled} {...checkboxWrapperProps}>
         <Input className='checkbox' type={type} ref={combinedRef} {...props} />
-        {label || subLabel ? (
+        {label || sublabel ? (
           <div className='input-label-wrapper'>
             {label && <span className='input-label'>{label}</span>}
-            {subLabel && <span className='input-sublabel'>{subLabel}</span>}
+            {sublabel && <span className='input-sublabel'>{sublabel}</span>}
           </div>
         ) : (
           <></>
@@ -76,7 +76,7 @@ Checkbox.displayName = 'Checkbox';
 export type DataItems = {
   value: string;
   label: string | React.ReactNode;
-  subLabel?: string | React.ReactNode;
+  sublabel?: string | React.ReactNode;
   checked?: boolean;
   indeterminate?: boolean;
   checkboxProps?: CheckboxProps;
@@ -106,7 +106,15 @@ export interface CheckboxGroup extends BaseProps {
    * @type {Function}
    * @memberof CheckboxGroup
    */
-  onChange?: (value: any, tree: DataItems, getGroup: (groupValue: string) => any) => void;
+  onChange?: ({
+    value,
+    tree,
+    getGroup
+  }: {
+    value: any;
+    tree: DataItems;
+    getGroup: (groupValue: string) => any;
+  }) => void;
 
   /**
    * The function to handle the parsed value of the CheckboxGroup.
@@ -127,6 +135,15 @@ export interface CheckboxGroup extends BaseProps {
   label?: string | React.ReactNode;
 
   /**
+   * The sub-label for the CheckboxGroup.
+   * Can be a string or a React node.
+   *
+   * @type {string | React.ReactNode}
+   * @memberof CheckboxProps
+   */
+  sublabel?: string | React.ReactNode;
+
+  /**
    * The value for the CheckboxGroup. This value is ui control - control children state, it not be return
    *
    * When CheckboxGroup have label and value, CheckboxGroup will have a parent node to control CheckboxGroup's children
@@ -135,25 +152,57 @@ export interface CheckboxGroup extends BaseProps {
    * @memberof CheckboxGroup
    */
   value?: string;
+  checked?: boolean;
 }
 
-export const CheckboxGroup = ({ tree, children, onChange, label, value, onParse, ...props }: CheckboxGroup) => {
+export const CheckboxGroup = ({
+  tree,
+  children,
+  onChange,
+  label,
+  sublabel,
+  value,
+  checked,
+  onParse,
+  ...props
+}: CheckboxGroup) => {
   // Memorize data when children are mounted, change root data if tree, label, value are changed
   const rootData = React.useMemo(() => {
     let data = tree ? [...tree] : ([] as DataItems);
 
+    const findNodeAndUpdate = (nodes: DataItems) => {
+      nodes.forEach((n) => {
+        if (n.checked) {
+          updateChildren(n, n.checked);
+        }
+
+        if (n.children) {
+          findNodeAndUpdate(n.children);
+        }
+      });
+    };
+
     if (children && data.length === 0) {
       data = transformChildrenToTree(children);
-      updateParents(data);
     }
 
     if (label && value) {
-      data = [{ value, label, children: data }];
-      updateParents(data);
+      data = [{ value, label, sublabel: sublabel, checked, children: data }];
     }
 
+    // checked in parent is priority
+    // if checked = true , all of children is true
+    // if checked = false | undefined , the value of checked is dependent on children, it means parent's checked depends on updateParents()
+    findNodeAndUpdate(data);
+
+    // checked in chilren is priority
+    // if all of children is true , parent's checked is true
+    // if once of children is true, parent's checked is false/undefined and parent's indeterminate is true
+    // if all of children is false , parent's checked is false
+    updateParents(data);
+
     return data;
-  }, [tree, label, value]);
+  }, [tree, label, value, sublabel]);
 
   const [treeData, setTreeData] = React.useState<any>(rootData);
 
@@ -177,14 +226,14 @@ export const CheckboxGroup = ({ tree, children, onChange, label, value, onParse,
   }
 
   // Update children state - tree data only
-  const updateChildren = (node: DataItems[number], isChecked: boolean) => {
+  function updateChildren(node: DataItems[number], isChecked: boolean) {
     node.checked = isChecked;
     node.indeterminate = false;
 
     if (node.children) {
       node.children.forEach((child) => updateChildren(child, isChecked));
     }
-  };
+  }
 
   // Handle change when clicking a checkbox inside checkbox group - tree data only
   const handleChange = (clickedNode: DataItems[number], e: any) => {
@@ -206,9 +255,11 @@ export const CheckboxGroup = ({ tree, children, onChange, label, value, onParse,
     setTreeData(newTreeData);
 
     onChange &&
-      onChange(findCheckedValues(newTreeData), newTreeData, (groupValue: string) =>
-        getGroupValue(newTreeData, groupValue)
-      );
+      onChange({
+        value: findCheckedValues(newTreeData),
+        tree: newTreeData,
+        getGroup: (groupValue: string) => getGroupValue(newTreeData, groupValue)
+      });
   };
 
   // Init tree data when root data is changed - controled by outside data
@@ -273,7 +324,7 @@ export const RecursiveCheckbox = ({
           {node.label && node.value ? (
             <Checkbox
               label={node.label}
-              subLabel={node.subLabel}
+              sublabel={node.sublabel}
               value={node.value || ''}
               checked={node.checked || false}
               indeterminate={node.indeterminate || false}
@@ -299,13 +350,13 @@ const transformChildrenToTree = (children: any) => {
   const tree: any = [];
 
   React.Children.forEach(children, (child) => {
-    const { label, value, children, checked, indeterminate, subLabel, ...rest } = child.props;
+    const { label, value, children, checked, indeterminate, sublabel, ...rest } = child.props;
     const node = {
       label: label,
       value: value,
       checked: checked,
       indeterminate: indeterminate,
-      subLabel: subLabel,
+      sublabel: sublabel,
       checkboxProps: { ...rest }, // The remained props will be asign to checkboxProps key, checkboxProps will pass to checkbox particularly
       children: children
     };
