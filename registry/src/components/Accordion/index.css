@@ -1,72 +1,66 @@
-@import 'tailwindcss/components';
 @import '../global.css';
 
-/* reset */
-@layer components {
-  .accordion {
-    @apply flex w-full flex-col rounded-md border border-solid border-gray-200;
-  }
-
-  .accordion-item {
-    @apply text-body-compact-02 flex flex-col border-0 border-b border-solid border-gray-200 bg-white first:rounded-t-md last:rounded-b-md last:border-b-0;
-  }
-
-  /* .accordion-item:focus-within {
-    @apply ring-1 ring-gray-500;
-  } */
-
-  .accordion-trigger {
-    @apply flex h-14 items-center justify-between text-ellipsis px-4 font-semibold text-gray-500;
-  }
-
-  .accordion-trigger[data-state='open'] {
-    @apply text-gray-900;
-  }
-
-  .accordion-trigger:hover,
-  .accordion-trigger:hover .accordion-chevron {
-    @apply text-gray-900;
-  }
-
-  .accordion-chevron {
-    @apply h-4 w-4 rotate-0 text-gray-500 transition-all duration-300;
-  }
-
-  .accordion-trigger[data-state='open'] > .accordion-chevron {
-    @apply rotate-180;
-  }
-
-  .accordion-content {
-    @apply text-body-compact-02 overflow-hidden;
-  }
-
-  .accordion-content-text {
-    @apply p-4;
-  }
+.accordion:not(.flush) {
+  @apply flex w-full flex-col rounded-md border border-gray-200;
 }
 
-.accordion-content[data-state='open'] {
-  animation: slideDown 300ms cubic-bezier(0.87, 0, 0.13, 1);
+.accordion.flush {
+  @apply flex w-full flex-col border-t;
 }
 
-@keyframes slideDown {
-  from {
-    height: 0;
-  }
-  to {
-    height: var(--radix-accordion-content-height);
-  }
+.accordion-item {
+  @apply text-body-compact-02 flex w-full flex-col border-b;
 }
 
-.accordion-content[data-state='closed'] {
-  animation: slideUp 300ms cubic-bezier(0.87, 0, 0.13, 1);
+.accordion:not(.flush) > .accordion-item {
+  @apply border-solid border-gray-200 bg-white first:rounded-t-md last:rounded-b-md last:border-none;
 }
 
-@keyframes slideUp {
-  from {
-    height: var(--radix-accordion-content-height);
-  }
-  to {
-    height: 0;
-  }
+.accordion.flush > .accordion-item {
+  @apply last:border-none;
+}
+
+.accordion-trigger {
+  @apply flex h-14 items-center justify-between text-ellipsis px-4 text-gray-500 hover:text-gray-700;
+}
+
+.accordion-item:first-of-type > .accordion-trigger {
+  @apply rounded-t-md;
+}
+
+.accordion-item:last-of-type > .accordion-trigger,
+.accordion-item:last-of-type > .accordion-content {
+  @apply rounded-b-md;
+}
+
+.accordion-item.active > .accordion-trigger {
+  @apply text-black enabled:hover:text-black;
+}
+
+.accordion-trigger-icon {
+  @apply h-4 w-4 rotate-0;
+}
+
+.accordion-item.active > .accordion-trigger > .accordion-trigger-icon {
+  @apply rotate-180;
+}
+
+.accordion-trigger.icon-left > .accordion-trigger-text {
+  @apply w-full truncate pl-4 text-left font-semibold;
+}
+
+.accordion-trigger.icon-right > .accordion-trigger-text {
+  @apply w-full truncate text-left font-semibold;
+}
+
+.accordion-content {
+  @apply h-auto overflow-hidden px-4 text-black transition-all duration-300 ease-in-out;
+}
+
+.accordion-item.active .accordion-content {
+  @apply text-body-compact-02 flex flex-col items-start justify-between gap-4 pb-4 pt-2;
+}
+
+.accordion-item:not(.active) .accordion-content {
+  @apply py-0;
 }
