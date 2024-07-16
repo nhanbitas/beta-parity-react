@@ -10,11 +10,11 @@
 }
 
 .btn:active {
-  @apply scale-[.97];
+  @apply translate-y-[1px];
 }
 
 .btn:active:disabled {
-  @apply scale-100;
+  @apply translate-y-0;
 }
 
 .btn:disabled {
