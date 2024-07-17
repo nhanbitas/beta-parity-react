@@ -45,7 +45,7 @@
   transform: rotateX(180deg);
 }
 .accordion-item.active > .accordion-trigger > .accordion-trigger-icon.cross-trigger {
-  @apply rotate-45;
+  @apply rotate-0;
 }
 
 .accordion-trigger.icon-left > .accordion-trigger-text {

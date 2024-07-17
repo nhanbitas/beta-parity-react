@@ -3,7 +3,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import './index.css';
-import { ChevronDown, Plus } from 'lucide-react';
+import { ChevronDown, Minus, Plus } from 'lucide-react';
 import { createPolymorphicComponent, PolymorphicComponentProps } from '../Base/factory';
 import Base, { BaseProps } from '../Base';
 import useDidMountEffect from '../hooks/useDidMountEffect';
@@ -279,7 +279,8 @@ export const AccordionTrigger = createPolymorphicComponent<'button', AccordionTr
   ) => {
     const Component = component || ('button' as C);
 
-    const iconElement = !icon || icon === 'chevron' ? <ChevronDown size={16} /> : <Plus size={16} />;
+    const iconElement =
+      !icon || icon === 'chevron' ? <ChevronDown size={16} /> : isExpanded ? <Minus size={16} /> : <Plus size={16} />;
 
     const iconWrapperClassName = classNames('accordion-trigger-icon', {
       'chervon-trigger': icon === 'chevron' || !icon,
