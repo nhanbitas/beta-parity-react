@@ -1,6 +1,6 @@
 'use client';
 
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@libComponents/Accordion';
+import { Accordion, AccordionItemContent, AccordionItem, AccordionItemTrigger } from '@libComponents/Accordion';
 import React from 'react';
 
 type Props = {};
@@ -36,51 +36,51 @@ export const DemoSingle = (props: Props) => {
 
       <Accordion items={accordionItems} kind='flush' icon='cross' />
 
-      <Accordion defaultValue='item-2' onValueChange={(value) => console.log(value)}>
-        <AccordionItem value='item-1'>
-          <AccordionTrigger>Is it accessible?</AccordionTrigger>
-          <AccordionContent>
+      <Accordion defaultValue='item-2' onChange={(value) => console.log(value)}>
+        <AccordionItem value='item-1' disabled>
+          <AccordionItemTrigger>Is it accessible?</AccordionItemTrigger>
+          <AccordionItemContent>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore
             magna aliqua.
-          </AccordionContent>
+          </AccordionItemContent>
         </AccordionItem>
         <AccordionItem value='item-2'>
-          <AccordionTrigger>Is it unstyled?</AccordionTrigger>
-          <AccordionContent>
+          <AccordionItemTrigger>Is it unstyled?</AccordionItemTrigger>
+          <AccordionItemContent>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore
             magna aliqua.
-          </AccordionContent>
+          </AccordionItemContent>
         </AccordionItem>
         <AccordionItem value='item-3'>
-          <AccordionTrigger>Can it be animated?</AccordionTrigger>
-          <AccordionContent>
+          <AccordionItemTrigger>Can it be animated?</AccordionItemTrigger>
+          <AccordionItemContent>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore
             magna aliqua.
-          </AccordionContent>
+          </AccordionItemContent>
         </AccordionItem>
       </Accordion>
 
-      <Accordion kind='flush' defaultValue='item-2' onValueChange={(value) => console.log(value)}>
-        <AccordionItem value='item-1'>
-          <AccordionTrigger>Is it accessible?</AccordionTrigger>
-          <AccordionContent>
+      <Accordion kind='flush' defaultValue='item-2' onChange={(value) => console.log(value)}>
+        <AccordionItem value='item-1' disabled>
+          <AccordionItemTrigger>Is it accessible?</AccordionItemTrigger>
+          <AccordionItemContent>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore
             magna aliqua.
-          </AccordionContent>
+          </AccordionItemContent>
         </AccordionItem>
         <AccordionItem value='item-2'>
-          <AccordionTrigger>Is it unstyled?</AccordionTrigger>
-          <AccordionContent>
+          <AccordionItemTrigger>Is it unstyled?</AccordionItemTrigger>
+          <AccordionItemContent>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore
             magna aliqua.
-          </AccordionContent>
+          </AccordionItemContent>
         </AccordionItem>
         <AccordionItem value='item-3'>
-          <AccordionTrigger>Can it be animated?</AccordionTrigger>
-          <AccordionContent>
+          <AccordionItemTrigger>Can it be animated?</AccordionItemTrigger>
+          <AccordionItemContent>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore
             magna aliqua.
-          </AccordionContent>
+          </AccordionItemContent>
         </AccordionItem>
       </Accordion>
     </>
@@ -94,14 +94,14 @@ export const DemoMulti = (props: Props) => {
         items={accordionItems}
         defaultValue='item-2'
         type='multiple'
-        onValueChange={(value) => console.log(value)}
+        onChange={(value) => console.log(value)}
       />
       <Accordion
         items={accordionItems}
         defaultValue='item-2'
         type='multiple'
         kind='flush'
-        onValueChange={(value) => console.log(value)}
+        onChange={(value) => console.log(value)}
       />
     </>
   );
@@ -114,14 +114,14 @@ export const DemoIconLeft = (props: Props) => {
         items={accordionItems}
         iconSide='left'
         defaultValue={['item-2']}
-        onValueChange={(value) => console.log(value)}
+        onChange={(value) => console.log(value)}
       />
       <Accordion
         items={accordionItems}
         kind='flush'
         iconSide='left'
         icon='cross'
-        onValueChange={(value) => console.log(value)}
+        onChange={(value) => console.log(value)}
       />
     </>
   );
@@ -130,50 +130,50 @@ export const DemoIconLeft = (props: Props) => {
 export const NestedAccordion = (props: Props) => {
   return (
     <>
-      <Accordion defaultValue='item-2' type='multiple' onValueChange={(value) => console.log(value)}>
+      <Accordion defaultValue='item-2' type='multiple' onChange={(value) => console.log(value)}>
         <AccordionItem value='item-1'>
-          <AccordionTrigger>Is it Nested?</AccordionTrigger>
-          <AccordionContent>
+          <AccordionItemTrigger>Is it Nested?</AccordionItemTrigger>
+          <AccordionItemContent>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore
             magna aliqua.
-            <Accordion defaultValue='item-2' type='multiple' onValueChange={(value) => console.log(value)}>
+            <Accordion defaultValue='item-2' type='multiple' onChange={(value) => console.log(value)}>
               <AccordionItem value='item-1'>
-                <AccordionTrigger>Is it accessible?</AccordionTrigger>
-                <AccordionContent>
+                <AccordionItemTrigger>Is it accessible?</AccordionItemTrigger>
+                <AccordionItemContent>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et
                   dolore magna aliqua.
-                </AccordionContent>
+                </AccordionItemContent>
               </AccordionItem>
               <AccordionItem value='item-2'>
-                <AccordionTrigger>Is it unstyled?</AccordionTrigger>
-                <AccordionContent>
+                <AccordionItemTrigger>Is it unstyled?</AccordionItemTrigger>
+                <AccordionItemContent>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et
                   dolore magna aliqua.
-                </AccordionContent>
+                </AccordionItemContent>
               </AccordionItem>
               <AccordionItem value='item-3'>
-                <AccordionTrigger>Can it be animated?</AccordionTrigger>
-                <AccordionContent>
+                <AccordionItemTrigger>Can it be animated?</AccordionItemTrigger>
+                <AccordionItemContent>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et
                   dolore magna aliqua.
-                </AccordionContent>
+                </AccordionItemContent>
               </AccordionItem>
             </Accordion>
-          </AccordionContent>
+          </AccordionItemContent>
         </AccordionItem>
         <AccordionItem value='item-2'>
-          <AccordionTrigger>Is it unstyled?</AccordionTrigger>
-          <AccordionContent>
+          <AccordionItemTrigger>Is it unstyled?</AccordionItemTrigger>
+          <AccordionItemContent>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore
             magna aliqua.
-          </AccordionContent>
+          </AccordionItemContent>
         </AccordionItem>
         <AccordionItem value='item-3'>
-          <AccordionTrigger>Can it be animated?</AccordionTrigger>
-          <AccordionContent>
+          <AccordionItemTrigger>Can it be animated?</AccordionItemTrigger>
+          <AccordionItemContent>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore
             magna aliqua.
-          </AccordionContent>
+          </AccordionItemContent>
         </AccordionItem>
       </Accordion>
 
@@ -190,7 +190,7 @@ export const NestedAccordion = (props: Props) => {
                 iconSide='left'
                 icon='cross'
                 type='multiple'
-                onValueChange={(value) => console.log(value)}
+                onChange={(value) => console.log(value)}
               />
             </>
           )
@@ -198,7 +198,7 @@ export const NestedAccordion = (props: Props) => {
         kind='flush'
         iconSide='left'
         icon='cross'
-        onValueChange={(value) => console.log(value)}
+        onChange={(value) => console.log(value)}
       />
     </>
   );
@@ -209,51 +209,51 @@ export const DemoControlled = (props: Props) => {
   const [multiValue, setMultiValue] = React.useState<string[]>([]);
   return (
     <>
-      <Accordion value={singleValue} onValueChange={(value) => console.log(value)}>
+      <Accordion value={singleValue} onChange={(value) => console.log(value)}>
         <AccordionItem value='item-1' onClick={() => setSingleValue('item-1')}>
-          <AccordionTrigger>Can set value 1</AccordionTrigger>
-          <AccordionContent>
+          <AccordionItemTrigger>Can set value 1</AccordionItemTrigger>
+          <AccordionItemContent>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore
             magna aliqua.
-          </AccordionContent>
+          </AccordionItemContent>
         </AccordionItem>
         <AccordionItem value='item-2' onClick={() => setSingleValue('item-2')}>
-          <AccordionTrigger>Can set value 2</AccordionTrigger>
-          <AccordionContent>
+          <AccordionItemTrigger>Can set value 2</AccordionItemTrigger>
+          <AccordionItemContent>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore
             magna aliqua.
-          </AccordionContent>
+          </AccordionItemContent>
         </AccordionItem>
         <AccordionItem value='item-3'>
-          <AccordionTrigger>Can not set value 3</AccordionTrigger>
-          <AccordionContent>
+          <AccordionItemTrigger>Can not set value 3</AccordionItemTrigger>
+          <AccordionItemContent>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore
             magna aliqua.
-          </AccordionContent>
+          </AccordionItemContent>
         </AccordionItem>
       </Accordion>
 
-      <Accordion value={multiValue} type='multiple' onValueChange={(value) => console.log(value)}>
+      <Accordion value={multiValue} type='multiple' onChange={(value) => console.log(value)}>
         <AccordionItem value='item-1' onClick={() => setMultiValue(Array.from(new Set([...multiValue, 'item-1'])))}>
-          <AccordionTrigger>Append value 1</AccordionTrigger>
-          <AccordionContent>
+          <AccordionItemTrigger>Append value 1</AccordionItemTrigger>
+          <AccordionItemContent>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore
             magna aliqua.
-          </AccordionContent>
+          </AccordionItemContent>
         </AccordionItem>
         <AccordionItem value='item-2' onClick={() => setMultiValue(Array.from(new Set([...multiValue, 'item-2'])))}>
-          <AccordionTrigger>Append value 2</AccordionTrigger>
-          <AccordionContent>
+          <AccordionItemTrigger>Append value 2</AccordionItemTrigger>
+          <AccordionItemContent>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore
             magna aliqua.
-          </AccordionContent>
+          </AccordionItemContent>
         </AccordionItem>
         <AccordionItem value='item-3' onClick={() => setMultiValue(['item-3'])}>
-          <AccordionTrigger>Only value 3</AccordionTrigger>
-          <AccordionContent>
+          <AccordionItemTrigger>Only value 3</AccordionItemTrigger>
+          <AccordionItemContent>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore
             magna aliqua.
-          </AccordionContent>
+          </AccordionItemContent>
         </AccordionItem>
       </Accordion>
     </>

@@ -12,6 +12,14 @@
   @apply text-body-compact-02 flex w-full flex-col border-b;
 }
 
+.accordion-item[disabled] {
+  @apply cursor-not-allowed text-gray-200;
+}
+
+.accordion-item[disabled] button:disabled {
+  @apply cursor-not-allowed text-gray-200;
+}
+
 .accordion:not(.flush) > .accordion-item {
   @apply border-solid border-gray-200 bg-white first:rounded-t-md last:rounded-b-md last:border-none;
 }
@@ -20,50 +28,50 @@
   @apply last:border-none;
 }
 
-.accordion-trigger {
+.accordion-item-trigger {
   @apply flex h-14 flex-shrink-0 items-center justify-between text-ellipsis px-4 text-gray-500 hover:text-gray-700;
 }
 
-.accordion-item:first-of-type > .accordion-trigger {
+.accordion-item:first-of-type > .accordion-item-trigger {
   @apply rounded-t-md;
 }
 
-.accordion-item:last-of-type > .accordion-trigger,
-.accordion-item:last-of-type > .accordion-content {
+.accordion-item:last-of-type > .accordion-item-trigger,
+.accordion-item:last-of-type > .accordion-item-content {
   @apply rounded-b-md;
 }
 
-.accordion-item.active > .accordion-trigger {
+.accordion-item.active > .accordion-item-trigger {
   @apply text-black enabled:hover:text-black;
 }
 
-.accordion-trigger-icon {
+.accordion-item-trigger-icon {
   @apply h-4 w-4 transition-transform duration-300 ease-in-out;
 }
 
-.accordion-item.active > .accordion-trigger > .accordion-trigger-icon.chervon-trigger {
+.accordion-item.active > .accordion-item-trigger > .accordion-item-trigger-icon.chevron-trigger {
   transform: rotateX(180deg);
 }
-.accordion-item.active > .accordion-trigger > .accordion-trigger-icon.cross-trigger {
+.accordion-item.active > .accordion-item-trigger > .accordion-item-trigger-icon.cross-trigger {
   @apply rotate-0;
 }
 
-.accordion-trigger.icon-left > .accordion-trigger-text {
+.accordion-item-trigger.icon-left > .accordion-item-trigger-text {
   @apply w-full truncate pl-4 text-left font-semibold;
 }
 
-.accordion-trigger.icon-right > .accordion-trigger-text {
+.accordion-item-trigger.icon-right > .accordion-item-trigger-text {
   @apply w-full truncate text-left font-semibold;
 }
 
-.accordion-content {
+.accordion-item-content {
   @apply text-body-compact-02 flex flex-grow-0 flex-col items-start justify-between gap-4 overflow-hidden px-4 text-black transition-all duration-300 ease-in-out;
 }
 
-.accordion-item.active .accordion-content {
+.accordion-item.active .accordion-item-content {
   @apply h-auto max-h-[100%] pb-4 pt-2 opacity-100;
 }
 
-.accordion-item:not(.active) .accordion-content {
+.accordion-item:not(.active) .accordion-item-content {
   @apply h-[0] max-h-[0%] py-0 opacity-0;
 }
