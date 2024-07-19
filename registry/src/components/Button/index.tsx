@@ -95,6 +95,13 @@ export const Button = createPolymorphicComponent<'button', ButtonProps>(
       loading: isLoading
     });
 
+    const parsedChildren = React.Children.map(children, (child) => {
+      if (typeof child === 'string' || typeof child === 'number') {
+        return <span>{child}</span>;
+      }
+      return child;
+    });
+
     return (
       <Base
         component={Component}
@@ -106,7 +113,7 @@ export const Button = createPolymorphicComponent<'button', ButtonProps>(
         disabled={disabled || isLoading}
         {...props}
       >
-        {btnText}
+        {parsedChildren}
       </Base>
     );
   }
