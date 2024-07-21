@@ -97,7 +97,7 @@ export const Button = createPolymorphicComponent<'button', ButtonProps>(
 
     const parsedChildren = React.Children.map(children, (child) => {
       if (typeof child === 'string' || typeof child === 'number') {
-        return <span>{child}</span>;
+        return <span className='btn-text'>{child}</span>;
       }
       return child;
     });
