@@ -58,7 +58,7 @@ export interface ButtonProps extends BaseProps {
    * @type {boolean}
    * @memberof ButtonProps
    */
-  isLoading?: boolean;
+  isPending?: boolean;
 
   /**
    * Indicates whether the button is icon-only, without any text.
@@ -80,7 +80,7 @@ export const Button = createPolymorphicComponent<'button', ButtonProps>(
       kind = 'filled',
       disabled = false,
       iconOnly = false,
-      isLoading = false,
+      isPending = false,
       onClick,
       ...props
     }: PolymorphicComponentProps<C, ButtonProps>,
@@ -92,7 +92,7 @@ export const Button = createPolymorphicComponent<'button', ButtonProps>(
 
     const classes = classNames('btn', colorMap[color], kindMap[kind], sizeMap[size], className, {
       'icon-only': iconOnly,
-      loading: isLoading
+      loading: isPending
     });
 
     const parsedChildren = React.Children.map(children, (child) => {
@@ -107,10 +107,10 @@ export const Button = createPolymorphicComponent<'button', ButtonProps>(
         component={Component}
         type='button'
         className={classes}
-        onClick={!disabled && !isLoading ? onClick : undefined}
+        onClick={!disabled && !isPending ? onClick : undefined}
         ref={ref}
-        {...(isLoading ? { 'data-loading': 'true' } : {})}
-        disabled={disabled || isLoading}
+        {...(isPending ? { 'data-loading': 'true' } : {})}
+        disabled={disabled || isPending}
         {...props}
       >
         {parsedChildren}

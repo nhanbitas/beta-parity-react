@@ -4,8 +4,7 @@ import React from 'react';
 import classNames from 'classnames';
 import './index.css';
 import { ChevronDown, Minus, Plus } from 'lucide-react';
-import { createPolymorphicComponent, PolymorphicComponentProps } from '../Base/factory';
-import Base, { BaseProps } from '../Base';
+import { BaseProps } from '../Base';
 import useDidMountEffect from '../hooks/useDidMountEffect';
 
 // Accordion
@@ -84,11 +83,9 @@ export interface AccordionProps extends BaseProps {
     itemProps?: Omit<AccordionItemProps, 'value'> & React.HTMLAttributes<HTMLDivElement>;
   }[];
 }
-
-export const Accordion = createPolymorphicComponent<'div', AccordionProps>(
-  <C extends React.ElementType = 'div'>(
+export const Accordion = React.forwardRef<HTMLDivElement, AccordionProps & React.HTMLAttributes<HTMLDivElement>>(
+  (
     {
-      component,
       className,
       children,
       type = 'single',
@@ -100,11 +97,9 @@ export const Accordion = createPolymorphicComponent<'div', AccordionProps>(
       items,
       onChange,
       ...props
-    }: PolymorphicComponentProps<C, AccordionProps>,
-    ref: React.Ref<any>
+    },
+    ref
   ) => {
-    const Component = component || ('div' as C);
-
     // Init value for accordion
     let initValue = value || defaultValue || '';
     if (type === 'multiple' && !Array.isArray(initValue)) {
@@ -149,7 +144,6 @@ export const Accordion = createPolymorphicComponent<'div', AccordionProps>(
     if (items && items.length) {
       return (
         <Accordion
-          component={Component}
           className={className}
           ref={ref}
           value={value}
@@ -172,9 +166,9 @@ export const Accordion = createPolymorphicComponent<'div', AccordionProps>(
     }
 
     return (
-      <Base component={Component} className={classNames('accordion', className, kind)} ref={ref} {...props}>
+      <div className={classNames('accordion', className, kind)} ref={ref} {...props}>
         {clonedChildren}
-      </Base>
+      </div>
     );
   }
 );
@@ -200,89 +194,81 @@ export interface AccordionItemProps {
    * @default false
    */
   disabled?: boolean;
+
+  /**
+   * Clone props
+   */
+  currentValue?: any;
+  handleChange?: any;
+  type?: any;
 }
 
-export const AccordionItem = createPolymorphicComponent<'div', AccordionItemProps>(
-  <C extends React.ElementType = 'div'>(
-    {
-      component,
-      className,
-      children,
-      disabled = false,
-      currentValue,
-      value,
-      handleChange,
-      type = 'single',
-      ...props
-    }: PolymorphicComponentProps<C, AccordionItemProps>,
-    ref: React.Ref<any>
-  ) => {
-    const Component = component || ('div' as C);
+export const AccordionItem = React.forwardRef<
+  HTMLDivElement,
+  AccordionItemProps & React.HTMLAttributes<HTMLDivElement>
+>(({ className, children, disabled = false, currentValue, value, handleChange, type = 'single', ...props }, ref) => {
+  const isExpanded = type === 'multiple' ? currentValue?.includes(value as string) : value === currentValue;
 
-    const isExpanded = type === 'multiple' ? currentValue?.includes(value as string) : value === currentValue;
+  const cloneChildren = React.Children.map(children, (child) => {
+    if (React.isValidElement(child)) {
+      const { ...rest } = child.props;
+      let props: any;
 
-    const cloneChildren = React.Children.map(children, (child) => {
-      if (React.isValidElement(child)) {
-        const { ...rest } = child.props;
-        let props: any;
-
-        if (child.type === AccordionItemTrigger) {
-          props = {
-            ...rest,
-            isExpanded: isExpanded,
-            disabled: disabled,
-            handleChange: () => !disabled && handleChange && handleChange(value as string)
-          };
-        }
-
-        if (child.type === AccordionItemContent) {
-          props = {
-            ...rest,
-            isExpanded: isExpanded
-          };
-        }
-
-        return React.cloneElement(child, props);
+      if (child.type === AccordionItemTrigger) {
+        props = {
+          ...rest,
+          isExpanded: isExpanded,
+          disabled: disabled,
+          handleChange: () => !disabled && handleChange && handleChange(value as string)
+        };
       }
-    });
 
-    return (
-      <Base
-        component={Component}
-        className={classNames('accordion-item', className, { active: isExpanded })}
-        disabled={disabled}
-        ref={ref}
-        {...props}
-      >
-        {cloneChildren}
-      </Base>
-    );
-  }
-);
+      if (child.type === AccordionItemContent) {
+        props = {
+          ...rest,
+          isExpanded: isExpanded
+        };
+      }
+
+      return React.cloneElement(child, props);
+    }
+  });
+
+  return (
+    <div
+      className={classNames('accordion-item', className, { active: isExpanded })}
+      aria-disabled={disabled}
+      ref={ref}
+      {...props}
+    >
+      {cloneChildren}
+    </div>
+  );
+});
 
 AccordionItem.displayName = 'AccordionItem';
 
 // Accordion Trigger
 
-export interface AccordionItemTriggerProps {}
+export interface AccordionItemTriggerProps {
+  /**
+   * Clone props
+   */
+  isExpanded?: any;
+  disabled?: any;
+  handleChange?: any;
+  icon?: any;
+  iconSide?: any;
+}
 
-export const AccordionItemTrigger = createPolymorphicComponent<'button', AccordionItemTriggerProps>(
-  <C extends React.ElementType = 'button'>(
-    {
-      component,
-      className,
-      children,
-      isExpanded,
-      disabled,
-      handleChange,
-      icon = 'chevron',
-      iconSide = 'right',
-      ...props
-    }: PolymorphicComponentProps<C, AccordionItemTriggerProps>,
-    ref: React.Ref<any>
+export const AccordionItemTrigger = React.forwardRef<
+  HTMLButtonElement,
+  AccordionItemTriggerProps & React.HTMLAttributes<HTMLButtonElement>
+>(
+  (
+    { className, children, isExpanded, disabled, handleChange, icon = 'chevron', iconSide = 'right', ...props },
+    ref
   ) => {
-    const Component = component || ('button' as C);
-
     const iconElement =
       !icon || icon === 'chevron' ? <ChevronDown size={16} /> : isExpanded ? <Minus size={16} /> : <Plus size={16} />;
 
@@ -292,8 +278,7 @@ export const AccordionItemTrigger = createPolymorphicComponent<'button', Accordi
     });
 
     return (
-      <Base
-        component={Component}
+      <button
         className={classNames('accordion-item-trigger', className, {
           'icon-left': iconSide === 'left',
           'icon-right': iconSide === 'right'
@@ -307,7 +292,7 @@ export const AccordionItemTrigger = createPolymorphicComponent<'button', Accordi
         {iconSide === 'left' && <span className={iconWrapperClassName}>{iconElement}</span>}
         <span className='accordion-item-trigger-text'>{children}</span>
         {iconSide === 'right' && <span className={iconWrapperClassName}>{iconElement}</span>}
-      </Base>
+      </button>
     );
   }
 );
@@ -316,22 +301,23 @@ AccordionItemTrigger.displayName = 'AccordionItemTrigger';
 
 // Accordion Content
 
-export interface AccordionItemContentProps {}
+export interface AccordionItemContentProps {
+  /**
+   * Clone props
+   */
+  isExpanded?: any;
+}
 
-export const AccordionItemContent = createPolymorphicComponent<'div', AccordionItemContentProps>(
-  <C extends React.ElementType = 'div'>(
-    { component, className, children, isExpanded, ...props }: PolymorphicComponentProps<C, AccordionItemContentProps>,
-    ref: React.Ref<any>
-  ) => {
-    const Component = component || ('div' as C);
-
-    return (
-      <Base component={Component} className={classNames('accordion-item-content', className)} ref={ref} {...props}>
-        {children}
-      </Base>
-    );
-  }
-);
+export const AccordionItemContent = React.forwardRef<
+  HTMLDivElement,
+  AccordionItemContentProps & React.HTMLAttributes<HTMLDivElement>
+>(({ className, children, isExpanded, ...props }, ref) => {
+  return (
+    <div className={classNames('accordion-item-content', className)} ref={ref} {...props}>
+      {children}
+    </div>
+  );
+});
 
 AccordionItemContent.displayName = 'AccordionItemContent';
 

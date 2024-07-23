@@ -73,15 +73,17 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
 
 Checkbox.displayName = 'Checkbox';
 
-export type DataItems = {
+export interface CheckboxTreeItem {
   value: string;
   label: string | React.ReactNode;
   sublabel?: string | React.ReactNode;
   checked?: boolean;
   indeterminate?: boolean;
   checkboxProps?: CheckboxProps;
-  children?: DataItems;
-}[];
+  children?: CheckboxTreeItem[];
+}
+
+export type DataItems = CheckboxTreeItem[];
 
 export interface CheckboxGroup extends BaseProps {
   /**
@@ -284,19 +286,16 @@ export interface CheckBoxWrapperProps extends BaseProps {}
  *
  * Props of wrapper extends from BaseProps
  */
-export const CheckBoxWrapper = createPolymorphicComponent<'label', CheckBoxWrapperProps>(
-  <C extends React.ElementType = 'label'>(
-    { component, className, children, ...props }: PolymorphicComponentProps<C, CheckBoxWrapperProps>,
-    ref: React.Ref<any>
-  ) => {
-    const Component = component || ('label' as C);
-    return (
-      <Base component={Component} className={classNames('checkbox-wrapper', className)} ref={ref} {...props}>
-        {children}
-      </Base>
-    );
-  }
-);
+export const CheckBoxWrapper = React.forwardRef<
+  HTMLLabelElement,
+  CheckBoxWrapperProps & React.HTMLAttributes<HTMLLabelElement>
+>(({ className, children, ...props }, ref) => {
+  return (
+    <label className={classNames('checkbox-wrapper', className)} ref={ref} {...props}>
+      {children}
+    </label>
+  );
+});
 
 CheckBoxWrapper.displayName = 'CheckBoxWrapper';
 

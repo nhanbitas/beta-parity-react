@@ -196,18 +196,15 @@ export interface RadioWrapperProps extends BaseProps {}
  *
  * Props of wrapper extends from BaseProps
  */
-export const RadioWrapper = createPolymorphicComponent<'label', RadioWrapperProps>(
-  <C extends React.ElementType = 'label'>(
-    { component, className, children, ...props }: PolymorphicComponentProps<C, RadioWrapperProps>,
-    ref: React.Ref<any>
-  ) => {
-    const Component = component || ('label' as C);
-    return (
-      <Base component={Component} className={classNames('radio-wrapper', className)} ref={ref} {...props}>
-        {children}
-      </Base>
-    );
-  }
-);
+export const RadioWrapper = React.forwardRef<
+  HTMLLabelElement,
+  RadioWrapperProps & React.HTMLAttributes<HTMLLabelElement>
+>(({ className, children, ...props }, ref) => {
+  return (
+    <label className={classNames('radio-wrapper', className)} ref={ref} {...props}>
+      {children}
+    </label>
+  );
+});
 
 RadioWrapper.displayName = 'RadioWrapper';

@@ -120,7 +120,7 @@ export const DemoStatesButton = () => {
       <h3>States</h3>
       <div className='flex gap-4'>
         <Button disabled>Button</Button>
-        <Button isLoading>Button</Button>
+        <Button isPending>Button</Button>
       </div>
     </div>
   );

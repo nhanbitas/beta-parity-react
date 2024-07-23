@@ -12,11 +12,11 @@
   @apply text-body-compact-02 flex w-full flex-col border-b;
 }
 
-.accordion-item[disabled] {
+.accordion-item[aria-disabled='true'] {
   @apply cursor-not-allowed text-gray-200;
 }
 
-.accordion-item[disabled] button:disabled {
+.accordion-item[aria-disabled='true'] button:disabled {
   @apply cursor-not-allowed text-gray-200;
 }
 
