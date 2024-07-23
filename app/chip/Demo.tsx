@@ -31,7 +31,7 @@ export const DemoButtonChip = (props: Props) => {
       {/* filled */}
       <div className='not-prose flex flex-wrap gap-2'>
         {Object.keys(colorMap).map((color: any) => (
-          <Chip key={color} color={color} label={color} onClick={() => alert(`${color} chip is clicked`)} />
+          <Chip key={color} color={color} label={color} onClick={() => console.log('click')} />
         ))}
       </div>
       {/* outline */}
@@ -40,11 +40,11 @@ export const DemoButtonChip = (props: Props) => {
           <Chip
             key={color}
             type='button'
-            kind='outline'
+            kind='glass'
             icon={<Container />}
             color={color}
             label={color}
-            onClick={() => alert(`${color} outline chip is clicked`)}
+            onClick={() => console.log('click')}
           />
         ))}
       </div>
@@ -57,7 +57,6 @@ export const DemoButtonChip = (props: Props) => {
             icon={
               <Image
                 alt='chip-avatar'
-                className='rounded-full'
                 width={20}
                 height={20}
                 src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'
@@ -65,7 +64,7 @@ export const DemoButtonChip = (props: Props) => {
             }
             color={color}
             label='John Smith'
-            onClick={() => alert(`${color} chip with avatar is clicked`)}
+            onClick={() => console.log('click')}
           />
         ))}
       </div>
@@ -75,12 +74,29 @@ export const DemoButtonChip = (props: Props) => {
           <Chip
             key={size}
             type='button'
-            kind='outline'
+            kind='glass'
             size={size}
             label={sizeMap[size as keyof typeof sizeMap]}
-            onClick={() => alert(`${sizeMap[size as keyof typeof sizeMap]} chip is clicked`)}
+            onClick={() => console.log('click')}
           />
         ))}
+      </div>
+      {/* disabled */}
+      <div className='not-prose flex flex-wrap gap-2'>
+        <Chip disabled kind='glass' label='Disabled' onClick={() => console.log('click')} />
+        <Chip
+          disabled
+          label='Disabled'
+          icon={
+            <Image
+              alt='chip-avatar'
+              width={20}
+              height={20}
+              src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'
+            />
+          }
+          onClick={() => console.log('click')}
+        />
       </div>
     </>
   );
@@ -94,13 +110,31 @@ export const DemoRadio = () => {
           <Chip type='radio' key={color} value={color} color={color} label={color} onChange={(e) => console.log(e)} />
         ))}
       </div>
+      <div className='not-prose flex flex-wrap gap-2'>
+        {Object.keys(colorMap).map((color: any) => (
+          <Chip
+            type='radio'
+            key={color}
+            kind='glass'
+            value={color}
+            color={color}
+            label={color}
+            defaultChecked={true}
+            onChange={(e) => console.log(e)}
+          />
+        ))}
+      </div>
+      <div className='not-prose flex flex-wrap gap-2'>
+        <Chip disabled label='Disabled' type='radio' checked />
+        <Chip disabled label='Disabled' kind='glass' type='radio' checked />
+      </div>
     </>
   );
 };
+
 export const DemoCheckbox = () => {
   return (
     <>
-      {/* uncontrol */}
       <div className='not-prose flex flex-wrap gap-2'>
         {Object.keys(colorMap).map((color: any) => (
           <Chip
@@ -110,30 +144,46 @@ export const DemoCheckbox = () => {
             color={color}
             label={color}
             onChange={(e) => console.log(e)}
+            defaultChecked={true}
           />
         ))}
       </div>
 
-      {/* control */}
       <div className='not-prose flex flex-wrap gap-2'>
         {Object.keys(colorMap).map((color: any) => (
-          <Chip type='checkbox' key={color} value={color} color={color} label={color} icon={<Container />} checked />
+          <Chip
+            type='checkbox'
+            kind='glass'
+            key={color}
+            value={color}
+            color={color}
+            label={color}
+            onChange={(e) => console.log(e)}
+          />
         ))}
       </div>
 
-      {/* sizes */}
+      <div className='not-prose flex flex-wrap gap-2'>
+        {Object.keys(colorMap).map((color: any) => (
+          <Chip type='checkbox' key={color} value={color} color={color} label={color} icon={<Container />} />
+        ))}
+      </div>
+
       <div className='not-prose flex flex-wrap gap-2'>
         {Object.keys(sizeMap).map((size: any) => (
           <Chip
             key={size}
             value={size}
             type='checkbox'
-            kind='outline'
+            kind='glass'
             size={size}
-            checked
             label={sizeMap[size as keyof typeof sizeMap]}
           />
         ))}
+      </div>
+      <div className='not-prose flex flex-wrap gap-2'>
+        <Chip disabled label='Disabled' type='checkbox' checked />
+        <Chip disabled label='Disabled' kind='glass' type='checkbox' checked />
       </div>
     </>
   );
@@ -142,8 +192,13 @@ export const DemoCheckbox = () => {
 export const DemoDropdown = () => {
   return (
     <>
-      {/* uncontrol */}
+      {/* unvalued */}
       <div className='not-prose flex flex-wrap gap-2'>
+        <Chip type='dropdown' label='Options' onChange={(e) => console.log(e)} />
+      </div>
+      {/* valued */}
+      <div className='not-prose flex flex-wrap gap-2'>
+        {/* no icon */}
         {Object.keys(colorMap).map((color: any) => (
           <Chip
             type='dropdown'
@@ -155,10 +210,10 @@ export const DemoDropdown = () => {
           />
         ))}
       </div>
-      {/* control */}
       <div className='not-prose flex flex-wrap gap-2'>
+        {/*  icon */}
         {Object.keys(colorMap).map((color: any) => (
-          <Chip type='dropdown' key={color} value={color} color={color} label={color} icon={<Container />} isActive />
+          <Chip type='dropdown' key={color} value={color} color={color} label={color} icon={<Container />} />
         ))}
       </div>
       {/* sizes */}
@@ -168,12 +223,15 @@ export const DemoDropdown = () => {
             key={size}
             value={size}
             type='dropdown'
-            kind='outline'
+            kind='glass'
             size={size}
             isActive={false}
             label={sizeMap[size as keyof typeof sizeMap]}
           />
         ))}
+      </div>
+      <div className='not-prose flex flex-wrap gap-2'>
+        <Chip disabled label='Disabled' type='dropdown' />
       </div>
     </>
   );
@@ -218,13 +276,17 @@ export const DemoInput = () => {
             key={size}
             value={size}
             type='input'
-            kind='outline'
+            kind='glass'
             size={size}
             label={sizeMap[size as keyof typeof sizeMap]}
             onClick={() => console.log('click')}
             onRemove={() => console.log('remove')}
           />
         ))}
+      </div>
+      <div className='not-prose flex flex-wrap gap-2'>
+        <Chip disabled type='input' label='Disabled' onClick={() => console.log('click')} />
+        <Chip disabled kind='glass' type='input' label='Disabled' onClick={() => console.log('click')} />
       </div>
     </>
   );
@@ -247,7 +309,10 @@ export const DemoSingleFilter = () => {
             value={item}
             label={item}
             checked={value == item || false}
-            onChange={(e) => setValue(e.value as string)}
+            onChange={(e) => {
+              setValue(e.value as string);
+              console.log(e);
+            }}
           />
         ))}
       </div>

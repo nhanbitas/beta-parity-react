@@ -1,3 +1,8 @@
+*:focus-visible {
+  outline: 2px solid black;
+  outline-offset: -2px; /* overide border */
+}
+
 svg.lucide.small {
   @apply h-3 w-3;
 }
