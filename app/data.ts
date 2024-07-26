@@ -1,66 +1,87 @@
 export const components = [
   {
     name: 'Accordion',
-    url: '/accordion'
-  },
-  {
-    name: 'Badge',
-    url: '/badge'
+    url: '/accordion',
+    status: 3
   },
   {
     name: 'Button',
-    url: '/button'
-  },
-  {
-    name: 'Form',
-    url: '/form'
-  },
-  {
-    name: 'Input',
-    url: '/input'
-  },
-  {
-    name: 'Password Input',
-    url: '/password-input'
-  },
-  {
-    name: 'Spinner',
-    url: '/spinner'
-  },
-  {
-    name: 'Toast',
-    url: '/toast'
-  },
-  {
-    name: 'Modal',
-    url: '/modal'
-  },
-  {
-    name: 'Dropdown',
-    url: '/dropdown'
-  },
-  {
-    name: 'Chip',
-    url: '/chip'
-  },
-  {
-    name: 'Number Input',
-    url: '/number-input'
-  },
-  {
-    name: 'Select',
-    url: '/select'
-  },
-  {
-    name: 'Date picker',
-    url: '/date-picker'
+    url: '/button',
+    status: 3
   },
   {
     name: 'Checkbox',
-    url: '/checkbox'
+    url: '/checkbox',
+    status: 3
   },
   {
     name: 'Radio',
-    url: '/radio'
+    url: '/radio',
+    status: 3
+  },
+  {
+    name: 'Chip',
+    url: '/chip',
+    status: 2
+  },
+  {
+    name: 'Dropdown',
+    url: '/dropdown',
+    status: 2
+  },
+  {
+    name: 'Select',
+    url: '/select',
+    status: 2
+  },
+  {
+    name: 'Switch',
+    url: '/switch',
+    status: 2
+  },
+  {
+    name: 'Badge',
+    url: '/badge',
+    status: 2
+  },
+  {
+    name: 'Form',
+    url: '/form',
+    status: 1
+  },
+  {
+    name: 'Input',
+    url: '/input',
+    status: 1
+  },
+  {
+    name: 'Password Input',
+    url: '/password-input',
+    status: 1
+  },
+  {
+    name: 'Spinner',
+    url: '/spinner',
+    status: 1
+  },
+  {
+    name: 'Toast',
+    url: '/toast',
+    status: 1
+  },
+  {
+    name: 'Modal',
+    url: '/modal',
+    status: 1
+  },
+  {
+    name: 'Number Input',
+    url: '/number-input',
+    status: 1
+  },
+  {
+    name: 'Date picker',
+    url: '/date-picker',
+    status: 1
   }
 ];

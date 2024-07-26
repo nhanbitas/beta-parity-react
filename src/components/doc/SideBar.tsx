@@ -16,16 +16,23 @@ const SideBar = (props: Props) => {
         Components
       </Link>
       <ul>
-        {components.map((component: { name: string; url: string }) => (
-          <li className='h-fit w-full hover:bg-gray-100' key={component.url}>
-            <Link
-              className={`z-10 block w-full px-4 py-2 ${pathname.startsWith(component.url) ? 'text-orange-500' : 'text-gray-900'}`}
-              href={component.url}
-            >
-              {component.name}
-            </Link>
-          </li>
-        ))}
+        {components
+          .sort((a, b) => a.name.localeCompare(b.name))
+          .map((component: { name: string; url: string; status: number }) => (
+            <li className='h-fit w-full hover:bg-gray-100' key={component.url}>
+              <Link
+                className={`z-10 block w-full px-4 py-2 ${pathname.startsWith(component.url) ? 'bg-orange-50/50 text-orange-500' : 'text-gray-900'}`}
+                href={component.url}
+              >
+                {component.name}{' '}
+                <span
+                  className={`text-label-01 ml-2 rounded-md p-0.5  ${component.status === 1 ? 'bg-violet-200/50 text-violet-800' : component.status === 2 ? 'bg-sky-200/50 text-sky-800' : 'bg-green-200/50 text-green-800'}`}
+                >
+                  {component.status === 1 ? 'next' : component.status === 2 ? 'current' : 'post-queue'}
+                </span>
+              </Link>
+            </li>
+          ))}
       </ul>
     </aside>
   );
