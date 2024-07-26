@@ -254,7 +254,7 @@ export const Chip = React.forwardRef<
   };
 
   // Define content to display
-  const InnerChipContent = () => (
+  const InnerChipContent = (
     <>
       {icon ? <span className='chip-icon'>{icon}</span> : null}
       <span className='chip-label'>{label || children}</span>
@@ -306,7 +306,7 @@ export const Chip = React.forwardRef<
       const checkboxClassname = classNames('chip', className, kindChip, sizeChip, active ? colorChip : 'gray');
       return (
         <span className={checkboxClassname} ref={ref} {...eventHandlers} {...accessibilityProps} {...rest}>
-          <InnerChipContent />
+          {InnerChipContent}
           <span className={`check-icon ${active ? 'active' : ''}`}>
             <Check />
           </span>
@@ -317,7 +317,7 @@ export const Chip = React.forwardRef<
       const radioClassname = classNames('chip', className, kindChip, sizeChip, active ? colorChip : 'gray');
       return (
         <span className={radioClassname} ref={ref} {...eventHandlers} {...accessibilityProps} {...rest}>
-          <InnerChipContent />
+          {InnerChipContent}
           <span className={`check-icon ${active ? 'active' : ''}`}>
             <Check />
           </span>
@@ -339,7 +339,7 @@ export const Chip = React.forwardRef<
       };
       return (
         <span className={inputClassname} ref={ref} {...eventHandlers} {...accessibilityProps} {...rest}>
-          <InnerChipContent />
+          {InnerChipContent}
           {removeButton ? (
             <button tabIndex={disabled ? -1 : 0} className='chip-icon chip-close' onClick={removeHandler}>
               <X />
@@ -357,7 +357,7 @@ export const Chip = React.forwardRef<
               <Check />
             </span>
           ) : null}
-          <InnerChipContent />
+          {InnerChipContent}
           {active ? (
             <span className='chip-icon'>{<ChevronUp />}</span>
           ) : (
@@ -370,7 +370,7 @@ export const Chip = React.forwardRef<
       const btnClassName = classNames('chip', className, kindChip, sizeChip, { [colorChip]: type === 'button' });
       return (
         <span className={btnClassName} ref={ref} {...eventHandlers} {...accessibilityProps} {...rest}>
-          <InnerChipContent />
+          {InnerChipContent}
         </span>
       );
   }

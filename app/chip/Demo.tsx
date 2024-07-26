@@ -373,29 +373,53 @@ export const DemoRemoveChip = () => {
 };
 
 export const DemoSelectDropdown = (props: Props) => {
-  const [value, setValue] = React.useState('Ford');
+  const [value, setValue] = React.useState('');
   const [active, setActive] = React.useState(false);
+  const ref = React.useRef<any>(null);
+
   const handleClick = (e: any) => {
     setValue(e);
     setActive(false);
   };
-  const activeClick = (e: any) => {
-    setActive(true);
-  };
-  console.log(active);
+
+  React.useEffect(() => {
+    const handleClickOutside = (e: any) => {
+      if (ref.current && !ref.current.contains(e.target)) {
+        setActive(false);
+      }
+    };
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
+
+  console.group('Dropdown chip data');
+  console.log('value =', value || undefined);
+  console.log('active =', active);
+  console.groupEnd();
+
   return (
-    <Dropdown className='not-prose w-64 bg-white'>
-      <DropdownTrigger onClick={activeClick}>
-        <Chip type='dropdown' value={value} icon={<CarFront />} label={value} isActive={active} color='violet' />
+    <Dropdown ref={ref} className='not-prose w-64 bg-white' isOpen={active} isToggle={false}>
+      <DropdownTrigger className='!w-fit !p-0'>
+        <Chip
+          type='dropdown'
+          value={value}
+          label={value || 'Select'}
+          color='violet'
+          icon={<CarFront />}
+          isActive={active}
+          onChange={(e: any) => setActive(e.active)}
+        />
       </DropdownTrigger>
-      <DropdownContent clickToClose={true}>
-        {values.map((item) => (
+      <DropdownContent>
+        {['', ...values].map((item) => (
           <DropdownItem
             key={item}
             onClick={() => handleClick(item)}
-            style={{ color: item === value ? 'violet' : 'black' }}
+            style={{ color: item === value && item !== '' ? 'violet' : 'black' }}
           >
-            {item}
+            {item || '-- All --'}
           </DropdownItem>
         ))}
       </DropdownContent>
