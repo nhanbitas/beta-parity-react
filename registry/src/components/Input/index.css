@@ -165,9 +165,13 @@ textarea {
   @apply absolute bottom-0 left-0 flex h-full items-center;
 }
 
+.left-element-container ~ input {
+  @apply pl-10;
+}
+
 .right-element-container > *,
 .left-element-container > * {
-  @apply m-2.5 flex h-5 w-5 items-center justify-center rounded-full p-0.5 text-gray-500 transition-colors;
+  @apply m-3 flex items-center justify-center rounded-full  text-gray-500 transition-colors;
 }
 .right-element-container > *:hover,
 .left-element-container > *:hover {

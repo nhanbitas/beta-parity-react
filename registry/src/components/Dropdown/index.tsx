@@ -1,24 +1,34 @@
 import React from 'react';
 import classNames from 'classnames';
 import './index.css';
-import useCloneChildren from '../hooks/useCloneChildren';
-import useCombinedRefs from '../hooks/useCombinedRefs';
+import { Check, Search, ChevronUp, ChevronDown } from 'lucide-react';
+import { Input } from '../Input';
+
+const sizeMap = {
+  sm: 'small',
+  md: 'medium',
+  lg: 'large'
+};
+
+const sizeHeightMap = {
+  sm: 32,
+  md: 40,
+  lg: 48
+};
 
 export interface DropdownProps extends React.HTMLAttributes<HTMLDivElement> {
-  className?: string;
-  children?: React.ReactNode;
-  position?: 'top' | 'top-left' | 'top-right' | 'bottom' | 'bottom-left' | 'bottom-right' | 'left' | 'right';
-  size?: 'fit' | 'full' | 'standard';
-  isToggle?: boolean;
-  isOpen?: boolean;
+  position?: 'top' | 'bottom' | 'left' | 'right' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
+  size?: keyof typeof sizeMap;
   isLoading?: boolean;
   disabled?: boolean;
-}
-
-export interface DropdownPassThroughProps
-  extends Pick<DropdownProps, 'isToggle' | 'isOpen' | 'isLoading' | 'disabled' | 'position' | 'size'> {
-  openState?: boolean;
-  setOpenState?: (openState: boolean) => void;
+  isOpen?: boolean;
+  searchable?: boolean;
+  defaultSearch?: string;
+  searchPlaceholder?: string;
+  limit?: number;
+  scrollIndicator?: boolean;
+  onOpen?: () => void;
+  onClose?: () => void;
 }
 
 export const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>(
@@ -26,54 +36,145 @@ export const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>(
     {
       className,
       children,
+      isOpen = false,
       position = 'bottom',
-      size = 'standard',
+      size = 'md',
       isLoading,
       disabled,
-      isOpen,
-      isToggle = true,
+      defaultSearch = '',
+      searchPlaceholder,
+      searchable = false,
+      limit,
+      scrollIndicator = false,
       ...props
     },
     ref
   ) => {
-    const dropdownRef = React.useRef(null);
-    const [openState, setOpenState] = React.useState(isOpen);
-    const combinedRefs = useCombinedRefs(dropdownRef, ref);
+    const searchRef = React.useRef<any>(null);
+    const drowdownItemsRef = React.useRef<HTMLDivElement>(null);
+    const [indicator, setIndicator] = React.useState({
+      top: false,
+      bottom: false
+    });
+    const [keyword, setKeyword] = React.useState<string>(defaultSearch);
 
-    const handleOutsideClick = (e: MouseEvent) => {
-      if (e.target) {
-        const target = e.target as HTMLElement;
-        if (combinedRefs.current && !combinedRefs.current.contains(target)) {
-          setOpenState(false);
-        }
+    const handleFocus = (e: any) => {
+      searchRef.current?.focus();
+    };
+
+    const handleIndicatorClick = (name: any) => {
+      if (drowdownItemsRef.current && name === 'top-indicator') {
+        drowdownItemsRef.current.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      if (drowdownItemsRef.current && name === 'bottom-indicator') {
+        drowdownItemsRef.current.scrollTo({ top: drowdownItemsRef.current.scrollHeight, behavior: 'smooth' });
       }
     };
 
+    const filterChildren = (children: React.ReactNode, keyword = '') => {
+      return React.Children.map(children, (child: React.ReactNode): React.ReactNode => {
+        if (!React.isValidElement(child)) {
+          return null;
+        }
+
+        const isValidItem = child.props.value && child.props.value.toLowerCase().includes(keyword.toLowerCase());
+
+        if (isValidItem) {
+          // If the item is valid, return it
+          return child;
+        } else if (child.props.children) {
+          // If the child has children, filter them recursively
+          const filteredChildren = filterChildren(child.props.children, keyword);
+
+          // If the filtered children are not empty, clone the element with filtered children
+          if (filteredChildren && React.Children.count(filteredChildren) > 0) {
+            return React.cloneElement(child, { ...child.props }, filteredChildren);
+          }
+        }
+
+        // If none of the conditions match, return null
+        return null;
+      });
+    };
+
+    const searchChildren = filterChildren(children, keyword);
+    const isScrollable = !!limit;
+    const isContainChildren = React.Children.count(searchable ? searchChildren : children) > 0;
+
     React.useEffect(() => {
-      if (isOpen) {
-        setOpenState(isOpen);
-      } else {
-        setOpenState(false);
-      }
+      let currentRef = drowdownItemsRef.current;
+      const handleIndicator = () => {
+        if (currentRef) {
+          setIndicator({
+            top: currentRef.scrollTop !== 0,
+            bottom: currentRef.scrollHeight - currentRef.clientHeight - currentRef.scrollTop > 0
+          });
+        }
+      };
+      handleIndicator();
+      currentRef && currentRef.addEventListener('scroll', handleIndicator);
 
-      document.addEventListener('click', handleOutsideClick);
-
-      return () => document.removeEventListener('click', handleOutsideClick);
-    }, [isOpen, setOpenState]);
-
-    const clonedChildren = useCloneChildren(children, {
-      openState,
-      setOpenState,
-      isToggle,
-      isLoading,
-      disabled,
-      position,
-      size
-    } as DropdownPassThroughProps);
+      return () => {
+        currentRef && currentRef.removeEventListener('scroll', handleIndicator);
+      };
+    }, []);
 
     return (
-      <div className={classNames('dropdown', className, size)} ref={combinedRefs} data-open={openState} {...props}>
-        {clonedChildren}
+      <div
+        className={classNames('dropdown', className, position, sizeMap[size as keyof typeof sizeMap])}
+        ref={ref}
+        data-open={isOpen}
+        {...props}
+      >
+        {searchable ? (
+          <Input
+            value={keyword}
+            onChange={(e) => setKeyword(e.target.value)}
+            ref={searchRef}
+            type='text'
+            wrapperProps={{
+              leftElement: (
+                <span className='search-dropdown-btn' onClick={handleFocus}>
+                  <Search />
+                </span>
+              )
+            }}
+            isClearable
+            placeholder={searchPlaceholder || ''}
+            className='dropdown-item-search'
+          />
+        ) : null}
+
+        <div
+          className='dropdown-items'
+          ref={drowdownItemsRef}
+          style={{
+            overflowY: isScrollable ? 'auto' : 'hidden',
+            maxHeight: (isScrollable && (sizeHeightMap[size as keyof typeof sizeMap] + 4) * limit) || 'auto'
+          }}
+        >
+          {isScrollable && isContainChildren && scrollIndicator ? (
+            <span
+              className={classNames('indicator', indicator.top ? 'top-indicator' : '')}
+              style={{ top: searchable ? 40 : 0 }}
+              onClick={() => handleIndicatorClick('top-indicator')}
+            >
+              <ChevronUp />
+            </span>
+          ) : null}
+
+          {searchable && keyword ? searchChildren : children}
+
+          {isScrollable && isContainChildren && scrollIndicator ? (
+            <span
+              className={classNames('indicator', indicator.bottom ? 'bottom-indicator' : '')}
+              onClick={() => handleIndicatorClick('bottom-indicator')}
+            >
+              <ChevronDown />
+            </span>
+          ) : null}
+        </div>
       </div>
     );
   }
@@ -81,100 +182,40 @@ export const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>(
 
 Dropdown.displayName = 'Dropdown';
 
-export interface TriggerButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
-  children?: React.ReactNode;
-  className?: string;
-}
-
-export interface DropdownTriggerProps extends TriggerButtonProps, DropdownPassThroughProps {}
-
-export const DropdownTrigger = React.forwardRef<HTMLButtonElement, DropdownTriggerProps>(
-  ({ className, children, isLoading, disabled, openState, setOpenState, isToggle, ...props }, ref) => {
-    const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-      props.onClick && props.onClick(e);
-      if (isToggle) {
-        setOpenState && setOpenState(!openState);
-      } else {
-        setOpenState && setOpenState(true);
-      }
-    };
-
-    return (
-      <button
-        className={classNames('dropdown-trigger', className)}
-        ref={ref}
-        {...props}
-        data-open={openState}
-        onClick={handleClick}
-      >
-        {children}
-      </button>
-    );
-  }
-);
-
-DropdownTrigger.displayName = 'DropdownTrigger';
-
-export interface ContentDropdownDiv extends React.HTMLAttributes<HTMLDivElement> {
-  children?: React.ReactNode;
-  className?: string;
-  clickToClose?: boolean;
-}
-
-export interface DropdownContentProps extends ContentDropdownDiv, DropdownPassThroughProps {}
-
-export const DropdownContent = React.forwardRef<HTMLDivElement, DropdownContentProps>(
-  (
-    {
-      className,
-      children,
-      position = 'bottom',
-      size,
-      isLoading,
-      disabled,
-      openState,
-      setOpenState,
-      isToggle,
-      clickToClose = false,
-      ...props
-    },
-    ref
-  ) => {
-    const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
-      e.stopPropagation();
-      if (clickToClose) {
-        setOpenState && setOpenState(false);
-      }
-    };
-
-    return (
-      <div
-        className={classNames('dropdown-content', className, position, size)}
-        onClick={handleClick}
-        ref={ref}
-        {...props}
-        data-open={openState}
-      >
-        {children}
-      </div>
-    );
-  }
-);
-
-DropdownContent.displayName = 'DropdownContent';
-
 export interface DropdownItemProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
   children?: React.ReactNode;
   isLoading?: boolean;
   disabled?: boolean;
+  value?: string | number;
+  iconSide?: 'left' | 'right';
+  selected?: boolean;
+  label?: string;
+  icon?: React.ReactNode;
 }
 
 export const DropdownItem = React.forwardRef<HTMLDivElement, DropdownItemProps>(
-  ({ className, children, isLoading, disabled, ...props }, ref) => {
+  (
+    { className, children, isLoading, disabled, iconSide = 'right', label, icon, value, selected = false, ...props },
+    ref
+  ) => {
+    const accessibilityProps = {
+      'aria-disabled': disabled,
+      tabIndex: disabled ? -1 : 0,
+      'aria-selected': selected
+    };
+
+    const sideOfCheckIcon = iconSide === 'right' || icon ? 'right' : 'left'; // reseting side check icon to right if it has icon
+
     return (
-      <div tabIndex={0} className={classNames('dropdown-item', className)} ref={ref} {...props}>
-        {children}
+      <div {...accessibilityProps} className={classNames('dropdown-item', className)} ref={ref} {...props}>
+        {sideOfCheckIcon === 'left' || icon ? (
+          <span className='dropdown-item-icon'>{icon ? icon : selected && <Check />}</span>
+        ) : null}
+
+        <span className='dropdown-item-label'>{label || children}</span>
+
+        {sideOfCheckIcon === 'right' && <span className='dropdown-item-icon'>{selected && <Check />}</span>}
       </div>
     );
   }
@@ -184,19 +225,33 @@ DropdownItem.displayName = 'DropdownItem';
 
 export interface DropdownDividerProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
-  children?: React.ReactNode;
   isLoading?: boolean;
   disabled?: boolean;
 }
 
 export const DropdownDivider = React.forwardRef<HTMLDivElement, DropdownDividerProps>(
-  ({ className, children, isLoading, disabled, ...props }, ref) => {
-    return (
-      <div className={classNames('dropdown-divider', className)} ref={ref} {...props}>
-        {children}
-      </div>
-    );
+  ({ className, isLoading, disabled, ...props }, ref) => {
+    return <div className={classNames('dropdown-divider', className)} ref={ref} {...props}></div>;
   }
 );
 
 DropdownDivider.displayName = 'DropdownDivider';
+
+export interface DropdownGroupProps extends React.HTMLAttributes<HTMLDivElement> {
+  groupValue: string;
+}
+
+export const DropdownGroup = React.forwardRef<HTMLDivElement, DropdownGroupProps>(
+  ({ className, children, groupValue, ...props }, ref) => {
+    return (
+      <>
+        <div className={classNames('dropdown-group-label', className)} data-value={groupValue} ref={ref} {...props}>
+          {groupValue}
+        </div>
+        {children}
+      </>
+    );
+  }
+);
+
+DropdownGroup.displayName = 'DropdownGroup';

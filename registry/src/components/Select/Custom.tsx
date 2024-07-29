@@ -4,7 +4,7 @@ import './index.css';
 import { InputWrapper } from '../Input';
 import useCombinedRefs from '../hooks/useCombinedRefs';
 import { Check, ChevronDown } from 'lucide-react';
-import { Dropdown, DropdownContent, DropdownItem, DropdownTrigger } from '../Dropdown';
+import { Dropdown, DropdownItem } from '../Dropdown';
 
 export interface CustomSelectProps extends React.HTMLAttributes<HTMLDivElement> {
   options: { value: string; label: string }[];
@@ -71,22 +71,19 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
             onClick={handleDropdownClick}
             {...props}
           >
-            <DropdownTrigger style={{ color: currentValue ? 'black' : '' }}>{currentLabel || '---'}</DropdownTrigger>
-            <DropdownContent clickToClose={true}>
-              {options.map(({ value, label }) => (
-                <SelectItem
-                  key={value}
-                  value={value}
-                  label={label}
-                  onClick={handleItemClick}
-                  isActive={value === currentValue && currentValue !== ''}
-                >
-                  {value === currentValue && currentValue !== '' ? (
-                    <span className='selected-icon'>{selectedIcon || <Check />}</span>
-                  ) : null}
-                </SelectItem>
-              ))}
-            </DropdownContent>
+            {options.map(({ value, label }) => (
+              <SelectItem
+                key={value}
+                value={value}
+                label={label}
+                onClick={handleItemClick}
+                isActive={value === currentValue && currentValue !== ''}
+              >
+                {value === currentValue && currentValue !== '' ? (
+                  <span className='selected-icon'>{selectedIcon || <Check />}</span>
+                ) : null}
+              </SelectItem>
+            ))}
           </Dropdown>
         </InputWrapper>
       );

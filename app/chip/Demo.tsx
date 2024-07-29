@@ -4,7 +4,7 @@ import React from 'react';
 import { Chip } from '@libComponents/Chip';
 import { CarFront, Container } from 'lucide-react';
 import Image from 'next/image';
-import { Dropdown, DropdownContent, DropdownItem, DropdownTrigger } from '@libComponents/Dropdown';
+import { Dropdown, DropdownItem } from '@libComponents/Dropdown';
 
 type Props = {};
 
@@ -382,47 +382,34 @@ export const DemoSelectDropdown = (props: Props) => {
     setActive(false);
   };
 
-  React.useEffect(() => {
-    const handleClickOutside = (e: any) => {
-      if (ref.current && !ref.current.contains(e.target)) {
-        setActive(false);
-      }
-    };
-    document.addEventListener('click', handleClickOutside);
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-    };
-  }, []);
-
   console.group('Dropdown chip data');
   console.log('value =', value || undefined);
   console.log('active =', active);
   console.groupEnd();
 
   return (
-    <Dropdown ref={ref} className='not-prose w-64 bg-white' isOpen={active} isToggle={false}>
-      <DropdownTrigger className='!w-fit !p-0'>
-        <Chip
-          type='dropdown'
-          value={value}
-          label={value || 'Select'}
-          color='violet'
-          icon={<CarFront />}
-          isActive={active}
-          onChange={(e: any) => setActive(e.active)}
-        />
-      </DropdownTrigger>
-      <DropdownContent>
+    <div className='relative w-56'>
+      <Chip
+        type='dropdown'
+        value={value}
+        label={value || 'Select'}
+        color='violet'
+        icon={<CarFront />}
+        isActive={active}
+        onChange={(e: any) => setActive(e.active)}
+      />
+      <Dropdown ref={ref} className='not-prose w-64 bg-white' isOpen={active}>
         {['', ...values].map((item) => (
           <DropdownItem
+            icon={item && <CarFront />}
             key={item}
             onClick={() => handleClick(item)}
-            style={{ color: item === value && item !== '' ? 'violet' : 'black' }}
+            selected={item === value}
           >
             {item || '-- All --'}
           </DropdownItem>
         ))}
-      </DropdownContent>
-    </Dropdown>
+      </Dropdown>
+    </div>
   );
 };
