@@ -3,6 +3,8 @@ import classNames from 'classnames';
 import './index.css';
 import { Check, Search, ChevronUp, ChevronDown } from 'lucide-react';
 import { Input } from '../Input';
+import { Radio } from '../Radio';
+import { Checkbox } from '../Checkbox';
 
 const sizeMap = {
   sm: 'small',
@@ -16,26 +18,32 @@ const sizeHeightMap = {
   lg: 48
 };
 
-export interface DropdownProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface MenuProps extends React.HTMLAttributes<HTMLDivElement> {
   position?: 'top' | 'bottom' | 'left' | 'right' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
   size?: keyof typeof sizeMap;
+  type?: 'single-select' | 'multi-select';
+  useInput?: boolean;
   isLoading?: boolean;
   disabled?: boolean;
   isOpen?: boolean;
   searchable?: boolean;
   defaultSearch?: string;
   searchPlaceholder?: string;
-  limit?: number;
+  overflowLimit?: number;
   scrollIndicator?: boolean;
+  header?: React.ReactNode;
+  footer?: React.ReactNode;
   onOpen?: () => void;
   onClose?: () => void;
 }
 
-export const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>(
+export const Menu = React.forwardRef<HTMLDivElement, MenuProps>(
   (
     {
       className,
       children,
+      type = 'single-select',
+      useInput = false,
       isOpen = false,
       position = 'bottom',
       size = 'md',
@@ -44,7 +52,9 @@ export const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>(
       defaultSearch = '',
       searchPlaceholder,
       searchable = false,
-      limit,
+      overflowLimit,
+      header,
+      footer,
       scrollIndicator = false,
       ...props
     },
@@ -78,11 +88,17 @@ export const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>(
           return null;
         }
 
-        const isValidItem = child.props.value && child.props.value.toLowerCase().includes(keyword.toLowerCase());
+        const isValidItem = searchable
+          ? child.props.value && child.props.value.toLowerCase().includes(keyword.toLowerCase())
+          : true;
 
         if (isValidItem) {
-          // If the item is valid, return it
-          return child;
+          // If the item is valid, return it with passed props
+          const addedprops = {
+            type: type,
+            useInput: useInput
+          };
+          return child.type === MenuItem ? React.cloneElement(child, { ...addedprops }) : child;
         } else if (child.props.children) {
           // If the child has children, filter them recursively
           const filteredChildren = filterChildren(child.props.children, keyword);
@@ -98,9 +114,9 @@ export const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>(
       });
     };
 
-    const searchChildren = filterChildren(children, keyword);
-    const isScrollable = !!limit;
-    const isContainChildren = React.Children.count(searchable ? searchChildren : children) > 0;
+    const cloneChildren = filterChildren(children, keyword);
+    const isScrollable = !!overflowLimit;
+    const isContainChildren = React.Children.count(searchable ? cloneChildren : children) > 0;
 
     React.useEffect(() => {
       let currentRef = drowdownItemsRef.current;
@@ -118,53 +134,57 @@ export const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>(
       return () => {
         currentRef && currentRef.removeEventListener('scroll', handleIndicator);
       };
-    }, []);
+    }, [keyword]);
 
     return (
       <div
-        className={classNames('dropdown', className, position, sizeMap[size as keyof typeof sizeMap])}
+        className={classNames('menu', className, position, sizeMap[size as keyof typeof sizeMap])}
         ref={ref}
         data-open={isOpen}
         {...props}
       >
-        {searchable ? (
-          <Input
-            value={keyword}
-            onChange={(e) => setKeyword(e.target.value)}
-            ref={searchRef}
-            type='text'
-            wrapperProps={{
-              leftElement: (
-                <span className='search-dropdown-btn' onClick={handleFocus}>
-                  <Search />
-                </span>
-              )
-            }}
-            isClearable
-            placeholder={searchPlaceholder || ''}
-            className='dropdown-item-search'
-          />
-        ) : null}
+        {header && !searchable && <div className='menu-header'>{header}</div>}
+
+        {searchable && (
+          <div className='menu-header'>
+            <Input
+              value={keyword}
+              onChange={(e) => setKeyword(e.target.value)}
+              ref={searchRef}
+              type='text'
+              wrapperProps={{
+                leftElement: (
+                  <span className='search-menu-btn' onClick={handleFocus}>
+                    <Search />
+                  </span>
+                )
+              }}
+              isClearable
+              placeholder={searchPlaceholder || ''}
+              className='menu-item-search'
+            />
+          </div>
+        )}
 
         <div
-          className='dropdown-items'
+          className='menu-items'
           ref={drowdownItemsRef}
           style={{
-            overflowY: isScrollable ? 'auto' : 'hidden',
-            maxHeight: (isScrollable && (sizeHeightMap[size as keyof typeof sizeMap] + 4) * limit) || 'auto'
+            overflow: isScrollable ? 'auto' : 'hidden',
+            maxHeight: (isScrollable && (sizeHeightMap[size as keyof typeof sizeMap] + 4) * overflowLimit) || 'auto',
+            ...props.style
           }}
         >
           {isScrollable && isContainChildren && scrollIndicator ? (
             <span
               className={classNames('indicator', indicator.top ? 'top-indicator' : '')}
-              style={{ top: searchable ? 40 : 0 }}
               onClick={() => handleIndicatorClick('top-indicator')}
             >
               <ChevronUp />
             </span>
           ) : null}
 
-          {searchable && keyword ? searchChildren : children}
+          {cloneChildren}
 
           {isScrollable && isContainChildren && scrollIndicator ? (
             <span
@@ -175,28 +195,44 @@ export const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>(
             </span>
           ) : null}
         </div>
+
+        {footer && <div className='menu-footer'>{footer}</div>}
       </div>
     );
   }
 );
 
-Dropdown.displayName = 'Dropdown';
+Menu.displayName = 'Menu';
 
-export interface DropdownItemProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface MenuItemProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
   children?: React.ReactNode;
   isLoading?: boolean;
   disabled?: boolean;
   value?: string | number;
-  iconSide?: 'left' | 'right';
+  checkmarkSide?: 'left' | 'right';
   selected?: boolean;
   label?: string;
   icon?: React.ReactNode;
+  name?: string;
 }
 
-export const DropdownItem = React.forwardRef<HTMLDivElement, DropdownItemProps>(
+export const MenuItem = React.forwardRef<HTMLDivElement, MenuItemProps & Pick<MenuProps, 'type' | 'useInput'>>(
   (
-    { className, children, isLoading, disabled, iconSide = 'right', label, icon, value, selected = false, ...props },
+    {
+      className,
+      children,
+      isLoading,
+      disabled,
+      checkmarkSide = 'right',
+      label,
+      value,
+      icon,
+      selected = false,
+      type = 'single-select',
+      useInput = false,
+      ...props
+    },
     ref
   ) => {
     const accessibilityProps = {
@@ -205,47 +241,55 @@ export const DropdownItem = React.forwardRef<HTMLDivElement, DropdownItemProps>(
       'aria-selected': selected
     };
 
-    const sideOfCheckIcon = iconSide === 'right' || icon ? 'right' : 'left'; // reseting side check icon to right if it has icon
+    if (useInput) {
+      return type === 'single-select' ? (
+        <Radio label={label} value={value} {...props} />
+      ) : (
+        <Checkbox label={label} value={value} {...props} />
+      );
+    }
+
+    const sideOfCheckIcon = checkmarkSide === 'right' || icon ? 'right' : 'left'; // reseting side check icon to right if it has icon
 
     return (
-      <div {...accessibilityProps} className={classNames('dropdown-item', className)} ref={ref} {...props}>
+      <div {...accessibilityProps} className={classNames('menu-item', className)} ref={ref} {...props}>
         {sideOfCheckIcon === 'left' || icon ? (
-          <span className='dropdown-item-icon'>{icon ? icon : selected && <Check />}</span>
+          <span className='menu-item-icon'>{icon ? icon : selected && <Check />}</span>
         ) : null}
 
-        <span className='dropdown-item-label'>{label || children}</span>
+        <span className='menu-item-label'>{label || children}</span>
 
-        {sideOfCheckIcon === 'right' && <span className='dropdown-item-icon'>{selected && <Check />}</span>}
+        {sideOfCheckIcon === 'right' && <span className='menu-item-icon'>{selected && <Check />}</span>}
       </div>
     );
   }
 );
 
-DropdownItem.displayName = 'DropdownItem';
+MenuItem.displayName = 'MenuItem';
 
-export interface DropdownDividerProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface MenuDividerProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
   isLoading?: boolean;
   disabled?: boolean;
 }
 
-export const DropdownDivider = React.forwardRef<HTMLDivElement, DropdownDividerProps>(
+export const MenuDivider = React.forwardRef<HTMLDivElement, MenuDividerProps>(
   ({ className, isLoading, disabled, ...props }, ref) => {
-    return <div className={classNames('dropdown-divider', className)} ref={ref} {...props}></div>;
+    return <div className={classNames('menu-divider', className)} ref={ref} {...props}></div>;
   }
 );
 
-DropdownDivider.displayName = 'DropdownDivider';
+MenuDivider.displayName = 'MenuDivider';
 
-export interface DropdownGroupProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface MenuGroupProps extends React.HTMLAttributes<HTMLDivElement> {
   groupValue: string;
 }
 
-export const DropdownGroup = React.forwardRef<HTMLDivElement, DropdownGroupProps>(
+export const MenuGroup = React.forwardRef<HTMLDivElement, MenuGroupProps>(
   ({ className, children, groupValue, ...props }, ref) => {
     return (
       <>
-        <div className={classNames('dropdown-group-label', className)} data-value={groupValue} ref={ref} {...props}>
+        <div className={classNames('menu-group-label', className)} data-value={groupValue} ref={ref} {...props}>
           {groupValue}
         </div>
         {children}
@@ -254,4 +298,4 @@ export const DropdownGroup = React.forwardRef<HTMLDivElement, DropdownGroupProps
   }
 );
 
-DropdownGroup.displayName = 'DropdownGroup';
+MenuGroup.displayName = 'MenuGroup';

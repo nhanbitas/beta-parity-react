@@ -4,7 +4,7 @@ import './index.css';
 import { InputWrapper } from '../Input';
 import useCombinedRefs from '../hooks/useCombinedRefs';
 import { Check, ChevronDown } from 'lucide-react';
-import { Dropdown, DropdownItem } from '../Dropdown';
+import { Menu, MenuItem } from '../Menu';
 
 export interface CustomSelectProps extends React.HTMLAttributes<HTMLDivElement> {
   options: { value: string; label: string }[];
@@ -40,7 +40,7 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
       setCurrentLabel(e.target.value.label);
     };
 
-    const handleDropdownClick = () => {
+    const handleMenuClick = () => {
       setIsSelectOpen((pre) => !pre);
     };
 
@@ -63,12 +63,12 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
       );
       return (
         <InputWrapper rightElement={ArrowBtn}>
-          <Dropdown
+          <Menu
             className={classNames('custom-select', className, { 'no-value': !currentValue })}
             ref={combinedRef}
             onBlur={handleBlur}
             data-select-value={currentValue}
-            onClick={handleDropdownClick}
+            onClick={handleMenuClick}
             {...props}
           >
             {options.map(({ value, label }) => (
@@ -84,7 +84,7 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
                 ) : null}
               </SelectItem>
             ))}
-          </Dropdown>
+          </Menu>
         </InputWrapper>
       );
     }

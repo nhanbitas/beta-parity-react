@@ -4,7 +4,7 @@ import React from 'react';
 import { Chip } from '@libComponents/Chip';
 import { CarFront, Container } from 'lucide-react';
 import Image from 'next/image';
-import { Dropdown, DropdownItem } from '@libComponents/Dropdown';
+import { Menu, MenuItem } from '@libComponents/Menu';
 
 type Props = {};
 
@@ -189,7 +189,7 @@ export const DemoCheckbox = () => {
   );
 };
 
-export const DemoDropdown = () => {
+export const DemoMenu = () => {
   return (
     <>
       {/* unvalued */}
@@ -372,7 +372,7 @@ export const DemoRemoveChip = () => {
   );
 };
 
-export const DemoSelectDropdown = (props: Props) => {
+export const DemoSelectMenu = (props: Props) => {
   const [value, setValue] = React.useState('');
   const [active, setActive] = React.useState(false);
   const ref = React.useRef<any>(null);
@@ -382,7 +382,7 @@ export const DemoSelectDropdown = (props: Props) => {
     setActive(false);
   };
 
-  console.group('Dropdown chip data');
+  console.group('Menu chip data');
   console.log('value =', value || undefined);
   console.log('active =', active);
   console.groupEnd();
@@ -398,18 +398,13 @@ export const DemoSelectDropdown = (props: Props) => {
         isActive={active}
         onChange={(e: any) => setActive(e.active)}
       />
-      <Dropdown ref={ref} className='not-prose w-64 bg-white' isOpen={active}>
+      <Menu ref={ref} className='not-prose w-64 bg-white' isOpen={active}>
         {['', ...values].map((item) => (
-          <DropdownItem
-            icon={item && <CarFront />}
-            key={item}
-            onClick={() => handleClick(item)}
-            selected={item === value}
-          >
+          <MenuItem icon={item && <CarFront />} key={item} onClick={() => handleClick(item)} selected={item === value}>
             {item || '-- All --'}
-          </DropdownItem>
+          </MenuItem>
         ))}
-      </Dropdown>
+      </Menu>
     </div>
   );
 };

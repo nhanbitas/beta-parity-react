@@ -25,8 +25,8 @@ export const components = [
     status: 2
   },
   {
-    name: 'Dropdown',
-    url: '/dropdown',
+    name: 'Menu',
+    url: '/menu',
     status: 2
   },
   {
