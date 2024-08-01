@@ -3,7 +3,7 @@
 /* base */
 
 .menu {
-  @apply z-dropdown text-body-02 invisible absolute flex w-full cursor-default flex-col gap-1  rounded-md bg-white text-gray-600 opacity-0 drop-shadow-md;
+  @apply z-dropdown text-body-02 invisible absolute flex w-full cursor-default flex-col gap-1 rounded-md bg-white text-gray-600 opacity-0 drop-shadow-md;
 }
 
 .menu-header,
@@ -46,7 +46,7 @@
   @apply flex-auto truncate;
 }
 
-.menu .menu-item[aria-selected='true'],
+.menu .menu-item[aria-checked='true'],
 .menu .checkbox-wrapper:has(input:checked),
 .menu .radio-wrapper:has(input:checked) {
   @apply bg-gray-50 hover:bg-gray-100;
@@ -129,49 +129,37 @@
 
 /* Positions */
 .menu {
-  @apply left-1/2 top-full my-2 -translate-x-1/2 transition-opacity duration-300;
+  @apply left-1/2 top-full my-2 -translate-x-1/2 transition-opacity duration-150;
 }
 
-.menu-content.bottom-right {
-  @apply left-1/2 top-full my-2 -translate-x-5 transition-opacity duration-300;
+.menu-items.bottom-right {
+  @apply left-1/2 top-full my-2 -translate-x-5 transition-opacity duration-150;
 }
 
-.menu-content.bottom-left {
-  @apply left-auto right-1/2 top-full my-2 translate-x-5 transition-opacity duration-300;
+.menu-items.bottom-left {
+  @apply left-auto right-1/2 top-full my-2 translate-x-5 transition-opacity duration-150;
 }
 
-.menu-content.top {
-  @apply bottom-full left-1/2 top-auto my-2 -translate-x-1/2 transition-opacity duration-300;
+.menu-items.top {
+  @apply bottom-full left-1/2 top-auto my-2 -translate-x-1/2 transition-opacity duration-150;
 }
 
-.menu-content.top-right {
-  @apply bottom-full left-1/2 top-auto  my-2 -translate-x-5  transition-opacity duration-300;
+.menu-items.top-right {
+  @apply bottom-full left-1/2 top-auto  my-2 -translate-x-5  transition-opacity duration-150;
 }
 
-.menu-content.top-left {
-  @apply bottom-full left-auto right-1/2 top-auto my-2 translate-x-5 transition-opacity duration-300;
+.menu-items.top-left {
+  @apply bottom-full left-auto right-1/2 top-auto my-2 translate-x-5 transition-opacity duration-150;
 }
 
-.menu-content.left {
-  @apply -top-2 left-auto right-full mx-2 translate-x-0 transition-opacity duration-300;
+.menu-items.left {
+  @apply -top-2 left-auto right-full mx-2 translate-x-0 transition-opacity duration-150;
 }
 
-.menu-content.right {
-  @apply -top-2 left-full right-auto mx-2 translate-x-0 transition-opacity duration-300;
-}
-
-.menu-content.text-small .menu-item {
-  @apply text-helper-02 gap-2 p-2;
-}
-
-.menu-content.text-small .group-selection .menu-item {
-  @apply pr-10;
+.menu-items.right {
+  @apply -top-2 left-full right-auto mx-2 translate-x-0 transition-opacity duration-150;
 }
 
 .menu-divider {
   @apply h-px w-full shrink-0 bg-gray-200;
 }
-
-/* .menu-content.text-small .menu-group {
-  @apply before:text-heading-compact-01 before:gap-2 before:p-2;
-} */

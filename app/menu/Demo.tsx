@@ -25,12 +25,8 @@ export const DemoBasicMenu = (props: Props) => {
             </div>
           }
         >
-          <MenuItem checkmarkSide='right' selected={true}>
-            Item 1
-          </MenuItem>
-          <MenuItem checkmarkSide='left' selected={true}>
-            Item 2
-          </MenuItem>
+          <MenuItem>Item 1</MenuItem>
+          <MenuItem>Item 2</MenuItem>
           <MenuItem>Item 3</MenuItem>
           <MenuItem>Item 4</MenuItem>
         </Menu>
@@ -38,10 +34,10 @@ export const DemoBasicMenu = (props: Props) => {
 
       <div className='not-prose relative w-64 bg-white'>
         <Menu searchable={true} size='md' isOpen={isOpen} searchPlaceholder='Search...'>
-          <MenuItem checkmarkSide='right' selected={true} icon={<CarFront />} value={'Item 1'}>
+          <MenuItem icon={<CarFront />} value={'Item 1'}>
             Item 1
           </MenuItem>
-          <MenuItem checkmarkSide='left' selected={true} icon={<CarFront />} value={'Item 2'}>
+          <MenuItem icon={<CarFront />} value={'Item 2'}>
             Item 2
           </MenuItem>
           <MenuItem icon={<CarFront />} value={'Item 3'}>
@@ -55,14 +51,10 @@ export const DemoBasicMenu = (props: Props) => {
 
       <div className='not-prose relative w-64 bg-white'>
         <Menu size='lg' isOpen={isOpen}>
-          <MenuItem checkmarkSide='right' selected>
-            Item 1
-          </MenuItem>
-          <MenuItem checkmarkSide='left' selected>
-            Item 2
-          </MenuItem>
-          <MenuItem>Item 3</MenuItem>
-          <MenuItem>Item 4</MenuItem>
+          <MenuItem checkmarkSide='left'>Item 1</MenuItem>
+          <MenuItem checkmarkSide='left'>Item 2</MenuItem>
+          <MenuItem checkmarkSide='left'>Item 3</MenuItem>
+          <MenuItem checkmarkSide='left'>Item 4</MenuItem>
         </Menu>
       </div>
     </div>
@@ -90,21 +82,21 @@ export const DemoScrollableMenu = (props: Props) => {
       <div className='not-prose relative w-64 bg-white'>
         <Menu size='sm' isOpen={isOpen} overflowLimit={5} scrollIndicator={true}>
           {searchItems.map((item) => (
-            <MenuItem key={item} label={item} value={item} />
+            <MenuItem key={item} label={item} value={item} onChange={(e) => console.log(e)} />
           ))}
         </Menu>
       </div>
       <div className='not-prose relative w-64 bg-white'>
-        <Menu size='md' isOpen={isOpen} overflowLimit={5} scrollIndicator={true} useInput={true} type='multi-select'>
+        <Menu size='md' isOpen={isOpen} overflowLimit={5} scrollIndicator={true}>
           {searchItems.map((item) => (
-            <MenuItem key={item} label={item} value={item} />
+            <MenuItem key={item} label={item} value={item} useInput='checkbox' />
           ))}
         </Menu>
       </div>
       <div className='not-prose relative w-64 bg-white'>
-        <Menu size='lg' isOpen={isOpen} overflowLimit={5} scrollIndicator={true} searchable useInput={true}>
+        <Menu size='lg' isOpen={isOpen} overflowLimit={5} scrollIndicator={true} searchable>
           {searchItems.map((item) => (
-            <MenuItem key={item} label={item} value={item} name='radio-dropdown' />
+            <MenuItem key={item} label={item} value={item} name='radio-dropdown' useInput='radio' />
           ))}
         </Menu>
       </div>
@@ -127,55 +119,62 @@ export const DemoMenuGroup = (props: Props) => {
         >
           <MenuGroup groupValue='Group 1'>
             {searchItems.map((item) => (
-              <MenuItem key={item} label={item} value={item} checkmarkSide='left' selected />
+              <MenuItem key={item} label={item} value={item} checkmarkSide='left' />
             ))}
           </MenuGroup>
           <MenuDivider />
           <MenuGroup groupValue='Group 2'>
             {searchItems.map((item) => (
-              <MenuItem key={item} label={item} value={item} checkmarkSide='right' selected />
+              <MenuItem key={item} label={item} value={item} checkmarkSide='right' />
             ))}
           </MenuGroup>
         </Menu>
       </div>
 
       <div className='not-prose relative w-64 bg-white'>
-        <Menu size='md' isOpen={isOpen} overflowLimit={5} scrollIndicator={true} searchable useInput={true}>
+        <Menu size='md' isOpen={isOpen} overflowLimit={5} scrollIndicator={true} searchable>
           <MenuGroup groupValue='Group 1'>
             {searchItems.map((item) => (
-              <MenuItem key={item} label={item} value={item} name='Group 1' />
+              <MenuItem key={item} label={item} value={item} name='Group 1' useInput='radio' />
             ))}
           </MenuGroup>
           <MenuDivider />
           <MenuGroup groupValue='Group 2'>
             {searchItems.map((item) => (
-              <MenuItem key={item} label={item} value={item} name='Group 2' />
+              <MenuItem key={item} label={item} value={item} name='Group 2' useInput='radio' />
             ))}
           </MenuGroup>
         </Menu>
       </div>
 
       <div className='not-prose relative w-64 bg-white'>
-        <Menu
-          size='lg'
-          isOpen={isOpen}
-          overflowLimit={7}
-          scrollIndicator={true}
-          searchable
-          useInput={true}
-          type='multi-select'
-        >
+        <Menu size='lg' isOpen={isOpen} overflowLimit={7} scrollIndicator={true} searchable>
           <MenuGroup groupValue='Group 1'>
             {searchItems.map((item) => (
-              <MenuItem key={item} label={item} value={item} name='Group 1' />
+              <MenuItem key={item} label={item} value={item} name='Group 1' useInput='checkbox' />
             ))}
           </MenuGroup>
           <MenuDivider />
           <MenuGroup groupValue='Group 2'>
             {searchItems.map((item) => (
-              <MenuItem key={item} label={item} value={item} name='Group 2' />
+              <MenuItem key={item} label={item} value={item} name='Group 2' useInput='checkbox' />
             ))}
           </MenuGroup>
+        </Menu>
+      </div>
+    </div>
+  );
+};
+
+export const DemoTriggerMenu = (props: Props) => {
+  const [isOpen, setIsOpen] = React.useState(true);
+  return (
+    <div className='mb-96 flex gap-4'>
+      <div className='not-prose relative w-64 bg-white'>
+        <Menu size='sm' isOpen={isOpen} overflowLimit={5} scrollIndicator={true} trigger={<button>Trigger</button>}>
+          {searchItems.map((item) => (
+            <MenuItem key={item} label={item} value={item} onChange={(e) => console.log(e)} />
+          ))}
         </Menu>
       </div>
     </div>

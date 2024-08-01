@@ -400,9 +400,13 @@ export const DemoSelectMenu = (props: Props) => {
       />
       <Menu ref={ref} className='not-prose w-64 bg-white' isOpen={active}>
         {['', ...values].map((item) => (
-          <MenuItem icon={item && <CarFront />} key={item} onClick={() => handleClick(item)} selected={item === value}>
-            {item || '-- All --'}
-          </MenuItem>
+          <MenuItem
+            icon={item && <CarFront />}
+            key={item}
+            label={item || '-- All --'}
+            onClick={() => handleClick(item)}
+            checked={item === value}
+          />
         ))}
       </Menu>
     </div>

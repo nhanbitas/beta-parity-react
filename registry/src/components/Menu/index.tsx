@@ -5,6 +5,8 @@ import { Check, Search, ChevronUp, ChevronDown } from 'lucide-react';
 import { Input } from '../Input';
 import { Radio } from '../Radio';
 import { Checkbox } from '../Checkbox';
+import useKeyboard from '../hooks/useKeyboard';
+import useDidMountEffect from '../hooks/useDidMountEffect';
 
 const sizeMap = {
   sm: 'small',
@@ -21,8 +23,6 @@ const sizeHeightMap = {
 export interface MenuProps extends React.HTMLAttributes<HTMLDivElement> {
   position?: 'top' | 'bottom' | 'left' | 'right' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
   size?: keyof typeof sizeMap;
-  type?: 'single-select' | 'multi-select';
-  useInput?: boolean;
   isLoading?: boolean;
   disabled?: boolean;
   isOpen?: boolean;
@@ -31,6 +31,7 @@ export interface MenuProps extends React.HTMLAttributes<HTMLDivElement> {
   searchPlaceholder?: string;
   overflowLimit?: number;
   scrollIndicator?: boolean;
+  trigger?: React.ReactNode;
   header?: React.ReactNode;
   footer?: React.ReactNode;
   onOpen?: () => void;
@@ -42,8 +43,6 @@ export const Menu = React.forwardRef<HTMLDivElement, MenuProps>(
     {
       className,
       children,
-      type = 'single-select',
-      useInput = false,
       isOpen = false,
       position = 'bottom',
       size = 'md',
@@ -53,6 +52,7 @@ export const Menu = React.forwardRef<HTMLDivElement, MenuProps>(
       searchPlaceholder,
       searchable = false,
       overflowLimit,
+      trigger,
       header,
       footer,
       scrollIndicator = false,
@@ -93,12 +93,8 @@ export const Menu = React.forwardRef<HTMLDivElement, MenuProps>(
           : true;
 
         if (isValidItem) {
-          // If the item is valid, return it with passed props
-          const addedprops = {
-            type: type,
-            useInput: useInput
-          };
-          return child.type === MenuItem ? React.cloneElement(child, { ...addedprops }) : child;
+          // If the item is valid, return it
+          return child;
         } else if (child.props.children) {
           // If the child has children, filter them recursively
           const filteredChildren = filterChildren(child.props.children, keyword);
@@ -204,20 +200,22 @@ export const Menu = React.forwardRef<HTMLDivElement, MenuProps>(
 
 Menu.displayName = 'Menu';
 
-export interface MenuItemProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface MenuItemProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   className?: string;
   children?: React.ReactNode;
   isLoading?: boolean;
   disabled?: boolean;
   value?: string | number;
   checkmarkSide?: 'left' | 'right';
-  selected?: boolean;
+  checked?: boolean;
   label?: string;
   icon?: React.ReactNode;
   name?: string;
+  useInput?: 'radio' | 'checkbox';
+  onChange?: ({ value, checked }: { value: string | number; checked: boolean }) => void;
 }
 
-export const MenuItem = React.forwardRef<HTMLDivElement, MenuItemProps & Pick<MenuProps, 'type' | 'useInput'>>(
+export const MenuItem = React.forwardRef<HTMLDivElement, MenuItemProps>(
   (
     {
       className,
@@ -228,38 +226,69 @@ export const MenuItem = React.forwardRef<HTMLDivElement, MenuItemProps & Pick<Me
       label,
       value,
       icon,
-      selected = false,
-      type = 'single-select',
-      useInput = false,
+      checked,
+      useInput,
+      onChange,
       ...props
     },
     ref
   ) => {
+    const [currentSelected, setCurrentSelected] = React.useState(checked || false);
+
+    const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent> | React.KeyboardEvent) => {
+      if (disabled || isLoading || useInput) return;
+      checked == undefined && setCurrentSelected(!currentSelected);
+      onChange && onChange({ value: value || '', checked: !currentSelected });
+      props.onClick && props.onClick(e as React.MouseEvent<HTMLDivElement>);
+    };
+
+    const keyUpHandler = useKeyboard('Enter', (e: React.KeyboardEvent) => {
+      handleClick(e);
+      props.onKeyUp && props.onKeyUp(e as React.KeyboardEvent<HTMLDivElement>);
+    });
+
+    const keyEventHandlers = {
+      onKeyUp: keyUpHandler
+    };
+
     const accessibilityProps = {
       'aria-disabled': disabled,
       tabIndex: disabled ? -1 : 0,
-      'aria-selected': selected
+      'aria-checked': currentSelected
     };
-
-    if (useInput) {
-      return type === 'single-select' ? (
-        <Radio label={label} value={value} {...props} />
-      ) : (
-        <Checkbox label={label} value={value} {...props} />
-      );
-    }
 
     const sideOfCheckIcon = checkmarkSide === 'right' || icon ? 'right' : 'left'; // reseting side check icon to right if it has icon
 
+    useDidMountEffect(() => {
+      if (checked !== undefined) {
+        setCurrentSelected(checked);
+      }
+    }, [checked]);
+
+    if (useInput) {
+      return useInput === 'radio' ? (
+        <Radio label={label} value={value} checked={checked} {...props} />
+      ) : (
+        <Checkbox label={label} value={value} checked={checked} {...props} />
+      );
+    }
+
     return (
-      <div {...accessibilityProps} className={classNames('menu-item', className)} ref={ref} {...props}>
+      <div
+        className={classNames('menu-item', className)}
+        ref={ref}
+        onClick={handleClick}
+        {...props}
+        {...accessibilityProps}
+        {...keyEventHandlers}
+      >
         {sideOfCheckIcon === 'left' || icon ? (
-          <span className='menu-item-icon'>{icon ? icon : selected && <Check />}</span>
+          <span className='menu-item-icon'>{icon ? icon : currentSelected && <Check />}</span>
         ) : null}
 
         <span className='menu-item-label'>{label || children}</span>
 
-        {sideOfCheckIcon === 'right' && <span className='menu-item-icon'>{selected && <Check />}</span>}
+        {sideOfCheckIcon === 'right' && <span className='menu-item-icon'>{currentSelected && <Check />}</span>}
       </div>
     );
   }
