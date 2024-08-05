@@ -1,60 +1,57 @@
 'use client';
 
 import React from 'react';
-import { Menu, MenuItem, MenuDivider, MenuGroup } from '@libComponents/Menu';
+import { Menu, MenuItem, MenuDivider, MenuGroup, MenuHeader, MenuFooter } from '@libComponents/Menu';
 import { CarFront, FlagTriangleRightIcon } from 'lucide-react';
+import { MenuTrigger } from '@libComponents/Menu/index';
+import { Chip } from '@libComponents/Chip';
 
 type Props = {};
 
 export const DemoBasicMenu = (props: Props) => {
   const [isOpen, setIsOpen] = React.useState(true);
+  const [value, setValue] = React.useState('');
+
+  const handleClick = (e: any) => {
+    setValue(e);
+    setIsOpen(false);
+  };
+
   return (
     <div className='mb-96 flex gap-4'>
-      <div className='not-prose relative  w-64 bg-white'>
-        <Menu
-          size='sm'
-          isOpen={isOpen}
-          header={
+      <MenuTrigger menuTarget='demo-menu' onClick={() => setIsOpen(!isOpen)}>
+        <Chip label={value || 'Select'} type='dropdown' color='sky' value={value} isActive={isOpen} />
+      </MenuTrigger>
+
+      <div className='not-prose relative w-64 bg-white'>
+        <Menu id='demo-menu' size='md' isOpen={isOpen} overflowLimit={4} scrollIndicator={true}>
+          <MenuHeader>
             <div className='flex h-full items-center gap-1'>
               <FlagTriangleRightIcon style={{ color: 'red' }} /> This is a header
             </div>
-          }
-          footer={
+          </MenuHeader>
+
+          <MenuItem value={'item-1'} onClick={() => handleClick('item-1')} checked={value === 'item-1'}>
+            Item 1
+          </MenuItem>
+          <MenuItem value={'item-2'} onClick={() => handleClick('item-2')} checked={value === 'item-2'}>
+            Item 2
+          </MenuItem>
+          <MenuItem value={'item-3'} onClick={() => handleClick('item-3')} checked={value === 'item-3'}>
+            Item 3
+          </MenuItem>
+          <MenuItem value={'item-4'} onClick={() => handleClick('item-4')} checked={value === 'item-4'}>
+            Item 4
+          </MenuItem>
+          <MenuItem value={'item-5'} onClick={() => handleClick('item-5')} checked={value === 'item-5'}>
+            Item 5
+          </MenuItem>
+
+          <MenuFooter>
             <div className='flex h-full items-center gap-1'>
               <FlagTriangleRightIcon style={{ color: 'skyblue' }} /> This is a footer
             </div>
-          }
-        >
-          <MenuItem>Item 1</MenuItem>
-          <MenuItem>Item 2</MenuItem>
-          <MenuItem>Item 3</MenuItem>
-          <MenuItem>Item 4</MenuItem>
-        </Menu>
-      </div>
-
-      <div className='not-prose relative w-64 bg-white'>
-        <Menu searchable={true} size='md' isOpen={isOpen} searchPlaceholder='Search...'>
-          <MenuItem icon={<CarFront />} value={'Item 1'}>
-            Item 1
-          </MenuItem>
-          <MenuItem icon={<CarFront />} value={'Item 2'}>
-            Item 2
-          </MenuItem>
-          <MenuItem icon={<CarFront />} value={'Item 3'}>
-            Item 3
-          </MenuItem>
-          <MenuItem icon={<CarFront />} value={'Item 4'}>
-            Item 4
-          </MenuItem>
-        </Menu>
-      </div>
-
-      <div className='not-prose relative w-64 bg-white'>
-        <Menu size='lg' isOpen={isOpen}>
-          <MenuItem checkmarkSide='left'>Item 1</MenuItem>
-          <MenuItem checkmarkSide='left'>Item 2</MenuItem>
-          <MenuItem checkmarkSide='left'>Item 3</MenuItem>
-          <MenuItem checkmarkSide='left'>Item 4</MenuItem>
+          </MenuFooter>
         </Menu>
       </div>
     </div>

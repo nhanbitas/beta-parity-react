@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactFragment } from 'react';
 import classNames from 'classnames';
 import './index.css';
 import { Check, Search, ChevronUp, ChevronDown } from 'lucide-react';
@@ -32,8 +32,6 @@ export interface MenuProps extends React.HTMLAttributes<HTMLDivElement> {
   overflowLimit?: number;
   scrollIndicator?: boolean;
   trigger?: React.ReactNode;
-  header?: React.ReactNode;
-  footer?: React.ReactNode;
   onOpen?: () => void;
   onClose?: () => void;
 }
@@ -53,8 +51,6 @@ export const Menu = React.forwardRef<HTMLDivElement, MenuProps>(
       searchable = false,
       overflowLimit,
       trigger,
-      header,
-      footer,
       scrollIndicator = false,
       ...props
     },
@@ -72,19 +68,19 @@ export const Menu = React.forwardRef<HTMLDivElement, MenuProps>(
       searchRef.current?.focus();
     };
 
-    const handleIndicatorClick = (name: any) => {
-      if (drowdownItemsRef.current && name === 'top-indicator') {
+    const handleIndicatorClick = (name: 'top' | 'bottom') => {
+      if (drowdownItemsRef.current && name === 'top') {
         drowdownItemsRef.current.scrollTo({ top: 0, behavior: 'smooth' });
       }
 
-      if (drowdownItemsRef.current && name === 'bottom-indicator') {
+      if (drowdownItemsRef.current && name === 'bottom') {
         drowdownItemsRef.current.scrollTo({ top: drowdownItemsRef.current.scrollHeight, behavior: 'smooth' });
       }
     };
 
     const filterChildren = (children: React.ReactNode, keyword = '') => {
       return React.Children.map(children, (child: React.ReactNode): React.ReactNode => {
-        if (!React.isValidElement(child)) {
+        if (!React.isValidElement(child) || child.type === MenuHeader || child.type === MenuFooter) {
           return null;
         }
 
@@ -93,24 +89,21 @@ export const Menu = React.forwardRef<HTMLDivElement, MenuProps>(
           : true;
 
         if (isValidItem) {
-          // If the item is valid, return it
           return child;
         } else if (child.props.children) {
-          // If the child has children, filter them recursively
           const filteredChildren = filterChildren(child.props.children, keyword);
-
-          // If the filtered children are not empty, clone the element with filtered children
           if (filteredChildren && React.Children.count(filteredChildren) > 0) {
             return React.cloneElement(child, { ...child.props }, filteredChildren);
           }
         }
 
-        // If none of the conditions match, return null
         return null;
       });
     };
 
     const cloneChildren = filterChildren(children, keyword);
+    const Header = getComponent(children, MenuHeader);
+    const Footer = getComponent(children, MenuFooter);
     const isScrollable = !!overflowLimit;
     const isContainChildren = React.Children.count(searchable ? cloneChildren : children) > 0;
 
@@ -139,10 +132,8 @@ export const Menu = React.forwardRef<HTMLDivElement, MenuProps>(
         data-open={isOpen}
         {...props}
       >
-        {header && !searchable && <div className='menu-header'>{header}</div>}
-
-        {searchable && (
-          <div className='menu-header'>
+        {searchable ? (
+          <MenuHeader>
             <Input
               value={keyword}
               onChange={(e) => setKeyword(e.target.value)}
@@ -159,7 +150,9 @@ export const Menu = React.forwardRef<HTMLDivElement, MenuProps>(
               placeholder={searchPlaceholder || ''}
               className='menu-item-search'
             />
-          </div>
+          </MenuHeader>
+        ) : (
+          Header
         )}
 
         <div
@@ -172,27 +165,21 @@ export const Menu = React.forwardRef<HTMLDivElement, MenuProps>(
           }}
         >
           {isScrollable && isContainChildren && scrollIndicator ? (
-            <span
-              className={classNames('indicator', indicator.top ? 'top-indicator' : '')}
-              onClick={() => handleIndicatorClick('top-indicator')}
-            >
-              <ChevronUp />
-            </span>
+            <MenuIndicator position='top' isActive={indicator.top} onClick={() => handleIndicatorClick('top')} />
           ) : null}
 
           {cloneChildren}
 
           {isScrollable && isContainChildren && scrollIndicator ? (
-            <span
-              className={classNames('indicator', indicator.bottom ? 'bottom-indicator' : '')}
-              onClick={() => handleIndicatorClick('bottom-indicator')}
-            >
-              <ChevronDown />
-            </span>
+            <MenuIndicator
+              position='bottom'
+              isActive={indicator.bottom}
+              onClick={() => handleIndicatorClick('bottom')}
+            />
           ) : null}
         </div>
 
-        {footer && <div className='menu-footer'>{footer}</div>}
+        {Footer}
       </div>
     );
   }
@@ -296,6 +283,83 @@ export const MenuItem = React.forwardRef<HTMLDivElement, MenuItemProps>(
 
 MenuItem.displayName = 'MenuItem';
 
+export interface MenuTriggerProps extends React.HTMLAttributes<HTMLElement> {
+  [key: string]: any;
+}
+
+export const MenuTrigger = React.forwardRef<HTMLElement, MenuTriggerProps>(({ className, children, ...props }, ref) => {
+  const cloneChildren = React.Children.map(children, (child) => {
+    if (React.isValidElement(child)) {
+      return React.cloneElement(child, { ...props, ref: ref } as MenuTriggerProps);
+    }
+  });
+  return <>{cloneChildren}</>;
+});
+
+MenuTrigger.displayName = 'MenuTrigger';
+
+export interface MenuHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
+  className?: string;
+  children?: React.ReactNode;
+}
+
+export const MenuHeader = React.forwardRef<HTMLDivElement, MenuHeaderProps>(
+  ({ className, children, ...props }, ref) => {
+    return (
+      <div className={classNames('menu-header', className)} ref={ref} {...props}>
+        {children}
+      </div>
+    );
+  }
+);
+
+MenuHeader.displayName = 'MenuHeader';
+
+export interface MenuFooterProps extends React.HTMLAttributes<HTMLDivElement> {
+  className?: string;
+  children?: React.ReactNode;
+}
+
+export const MenuFooter = React.forwardRef<HTMLDivElement, MenuFooterProps>(
+  ({ className, children, ...props }, ref) => {
+    return (
+      <div className={classNames('menu-footer', className)} ref={ref} {...props}>
+        {children}
+      </div>
+    );
+  }
+);
+
+MenuFooter.displayName = 'MenuFooter';
+
+export interface MenuInicator extends React.HTMLAttributes<HTMLSpanElement> {
+  position: 'top' | 'bottom';
+  isActive: boolean;
+  onClick: () => void;
+  className?: string;
+  disabled?: boolean;
+}
+
+export const MenuIndicator = React.forwardRef<HTMLSpanElement, MenuInicator>(
+  ({ className, position, isActive, ...props }, ref) => {
+    if (!isActive) return null;
+    return (
+      <span
+        className={classNames('menu-indicator', className, {
+          'menu-indicator-top': position === 'top',
+          'menu-indicator-bottom': position === 'bottom'
+        })}
+        ref={ref}
+        {...props}
+      >
+        {position === 'top' ? <ChevronUp /> : <ChevronDown />}
+      </span>
+    );
+  }
+);
+
+MenuIndicator.displayName = 'MenuIndicator';
+
 export interface MenuDividerProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
   isLoading?: boolean;
@@ -328,3 +392,7 @@ export const MenuGroup = React.forwardRef<HTMLDivElement, MenuGroupProps>(
 );
 
 MenuGroup.displayName = 'MenuGroup';
+
+const getComponent = (children: React.ReactNode, component: string | React.ComponentType) => {
+  return React.Children.toArray(children).find((child) => React.isValidElement(child) && child.type === component);
+};

@@ -56,23 +56,23 @@
   @apply pointer-events-none opacity-50;
 }
 
-.indicator {
+.menu-indicator {
   @apply z-foreground absolute left-0  hidden h-8 w-full items-center justify-center from-white/75 to-white p-0;
 }
 
-.indicator.top-indicator {
+.menu-indicator.menu-indicator-top {
   @apply top-0 flex bg-gradient-to-t;
 }
 
-.indicator.bottom-indicator {
+.menu-indicator.menu-indicator-bottom {
   @apply bottom-0 flex  bg-gradient-to-b;
 }
 
-.menu:has(.menu-header) .indicator.top-indicator {
+.menu:has(.menu-header) .menu-indicator.menu-indicator-top {
   @apply top-10;
 }
 
-.menu:has(.menu-footer) .indicator.bottom-indicator {
+.menu:has(.menu-footer) .menu-indicator.menu-indicator-bottom {
   @apply bottom-10;
 }
 
