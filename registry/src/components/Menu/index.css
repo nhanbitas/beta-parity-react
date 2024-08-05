@@ -128,7 +128,7 @@
 }
 
 /* Positions */
-.menu {
+/* .menu {
   @apply left-1/2 top-full my-2 -translate-x-1/2 transition-opacity duration-150;
 }
 
@@ -162,4 +162,4 @@
 
 .menu-divider {
   @apply h-px w-full shrink-0 bg-gray-200;
-}
+} */
