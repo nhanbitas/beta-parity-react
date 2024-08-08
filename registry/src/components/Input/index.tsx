@@ -141,7 +141,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           type={type}
           className={classNames(
             'input',
-            { 'error-state': isError, 'success-state': isSuccess, 'no-value': !currentValue },
+            { 'error-state': isError, 'success-state': isSuccess, 'non-value': !currentValue },
             className
           )}
           ref={combinedRef}

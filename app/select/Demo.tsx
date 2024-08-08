@@ -15,7 +15,22 @@ const options = [
 ];
 
 export const DemoNativeSelect = (props: Props) => {
-  return <NativeSelect options={options} onChange={(e) => console.log(e.target.value)} />;
+  return (
+    <div className='not-prose flex flex-col gap-2'>
+      <NativeSelect options={options} selectSize='sm' onChange={(e) => console.log(e.target.value)} />
+      <NativeSelect options={options} selectSize='md' onChange={(e) => console.log(e.target.value)} />
+      <NativeSelect options={options} selectSize='lg' onChange={(e) => console.log(e.target.value)} />
+
+      <NativeSelect selectSize='lg' onChange={(e) => console.log(e.target.value)}>
+        <option value=''>Choose option</option>
+        <option value='1'>Option 1</option>
+        <option value='2'>Option 2</option>
+        <option value='3'>Option 3</option>
+        <option value='4'>Option 4</option>
+        <option value='5'>Option 5</option>
+      </NativeSelect>
+    </div>
+  );
 };
 
 export const DemoNativeSelectLabel = (props: Props) => {

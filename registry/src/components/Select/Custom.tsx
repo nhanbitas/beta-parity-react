@@ -64,7 +64,7 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
       return (
         <InputWrapper rightElement={ArrowBtn}>
           <Menu
-            className={classNames('custom-select', className, { 'no-value': !currentValue })}
+            className={classNames('custom-select', className, { 'non-value': !currentValue })}
             ref={combinedRef}
             onBlur={handleBlur}
             data-select-value={currentValue}

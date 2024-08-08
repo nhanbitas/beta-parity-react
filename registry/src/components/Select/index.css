@@ -1,5 +1,64 @@
 @import '../global.css';
 
+select {
+  @apply text-body-compact-02 m-0 w-full cursor-pointer appearance-none text-ellipsis rounded-md border border-gray-200 bg-white pl-4 pr-10;
+}
+
+select > option {
+  @apply appearance-none rounded-none py-8 text-gray-950;
+}
+
+select:focus {
+  outline-offset: 0;
+  border-radius: 0.375rem;
+}
+
+select.error-state {
+  border: 0.125rem solid #d62e42;
+  outline-color: #d62e42;
+}
+
+select.error-state:focus {
+  border: 0.125rem solid #d62e42;
+  outline-color: #d62e42;
+}
+
+select.success-state {
+  border: 0.125rem solid #39ac56;
+  outline-color: #39ac56;
+}
+
+select.success-state:focus {
+  border: 0.125rem solid #39ac56;
+  outline-color: #39ac56;
+}
+
+select:disabled {
+  @apply bg-gray-100 text-gray-100;
+}
+
+select:disabled,
+option:disabled {
+  background-color: #f4f4f4;
+  color: #f4f4f4;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* sizes */
+
+select.small {
+  @apply py-1;
+}
+
+select.medium {
+  @apply py-2;
+}
+
+select.large {
+  @apply py-3;
+}
+
 /* Select */
 .select-wrapper {
   @apply relative h-min w-full rounded-md border border-gray-200 transition-colors after:absolute after:right-0 after:top-0 after:h-full after:transform after:items-center after:bg-black after:transition;
@@ -13,15 +72,19 @@
   @apply relative w-full rounded-md border border-gray-200 text-gray-500 after:bg-gray-500 hover:text-gray-700 after:hover:bg-gray-700;
 }
 
-.native-select.no-value {
+.native-select.non-value {
   @apply text-gray-500;
 }
 
-.input-wrapper .right-element-container .arrow-btn {
+.input-wrapper .right-element-container .arrow-select-btn {
   @apply transition-all duration-150 ease-in-out;
 }
 
-.input-wrapper .right-element-container .arrow-btn.open {
+.right-element-container:has(.arrow-select-btn) {
+  @apply pointer-events-none select-none;
+}
+
+.input-wrapper .right-element-container .arrow-select-btn.open {
   @apply -scale-y-100;
 }
 

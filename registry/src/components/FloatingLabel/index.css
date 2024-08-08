@@ -1,7 +1,7 @@
 @import '../global.css';
 
 .floating-label:not(.active) {
-  @apply z-foreground text-body-compact-02 pointer-events-none absolute left-0 top-2 w-full translate-y-2.5 transform truncate pl-4 pr-10 text-left text-gray-400 transition-all;
+  @apply z-foreground text-body-compact-02 pointer-events-none absolute left-0 top-1/2 w-full -translate-y-1/2 transform truncate pl-4 pr-10 text-left text-gray-400 transition-all;
 }
 
 .floating-label.active {
@@ -28,20 +28,17 @@
 .floating-label ~ * input,
 .floating-label ~ * select,
 .floating-label ~ * textarea {
-  @apply h-[3.5rem] min-h-[3.5rem] pt-[1.125rem] placeholder:opacity-0 placeholder:transition-opacity;
-}
-
-.floating-label ~ * .no-value {
-  @apply text-transparent;
+  @apply h-[3.75rem] pt-[1.125rem] placeholder:opacity-0 placeholder:transition-opacity;
 }
 
 .floating-label ~ input,
 .floating-label ~ select,
 .floating-label ~ textarea {
-  @apply h-[3.5rem] min-h-[3.5rem] pt-[1.125rem] placeholder:opacity-0 placeholder:transition-opacity;
+  @apply h-[3.75rem] pt-[1.125rem] placeholder:opacity-0 placeholder:transition-opacity;
 }
 
-.floating-label ~ .no-value,
+.floating-label ~ .non-value,
+.floating-label ~ * .non-value,
 .floating-label ~ input[value=''] {
   @apply text-transparent;
 }
@@ -56,6 +53,6 @@
   @apply h-[3.5rem] min-h-[3.5rem] pt-[1.125rem] placeholder:opacity-0 placeholder:transition-opacity;
 }
 
-.floating-label-wrapper .floating-label ~ * .no-value {
+.floating-label-wrapper .floating-label ~ * .non-value {
   @apply text-transparent;
 }
