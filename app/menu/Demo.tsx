@@ -10,7 +10,7 @@ type Props = {};
 
 export const DemoBasicMenu = (props: Props) => {
   const [isOpen, setIsOpen] = React.useState(false);
-
+  const ref = React.useRef<any>(null);
   const handleClick = (e: any) => {
     setIsOpen(false);
     window.alert(`clicked ${e}`);
@@ -18,17 +18,10 @@ export const DemoBasicMenu = (props: Props) => {
 
   return (
     <>
-      <Chip
-        id='demo-menu-trigger'
-        label='Menu'
-        type='dropdown'
-        color='sky'
-        isActive={isOpen}
-        onClick={() => setIsOpen(!isOpen)}
-      />
+      <Chip ref={ref} label='Menu' type='dropdown' color='sky' isActive={isOpen} onClick={() => setIsOpen(!isOpen)} />
 
       <Menu
-        anchorId='demo-menu-trigger'
+        anchor={ref.current}
         isOpen={isOpen}
         size='md'
         overflowLimit={5}
@@ -86,7 +79,7 @@ export const DemoScrollableMenu = (props: Props) => {
         </MenuTrigger>
         <Menu
           position='top-start'
-          anchorId='scroll-menu'
+          anchor='scroll-menu'
           className='max-h-[200px] max-w-[300px]'
           size='sm'
           isOpen={isOpen}
@@ -111,7 +104,7 @@ export const DemoScrollableMenu = (props: Props) => {
           Click
         </MenuTrigger>
         <Menu
-          anchorId='scroll-menu-checkbox'
+          anchor='scroll-menu-checkbox'
           className='max-w-[300px]'
           size='md'
           isOpen={isOpenCheckbox}
@@ -136,7 +129,7 @@ export const DemoScrollableMenu = (props: Props) => {
           Click
         </MenuTrigger>
         <Menu
-          anchorId='scroll-menu-radio'
+          anchor='scroll-menu-radio'
           className='max-w-[300px]'
           size='lg'
           isOpen={isOpenRadio}
@@ -172,7 +165,7 @@ export const DemoMenuGroup = (props: Props) => {
           Click
         </MenuTrigger>
         <Menu
-          anchorId='group-menu'
+          anchor='group-menu'
           size='sm'
           className='max-w-[300px]'
           isOpen={isOpenGroup}
@@ -200,7 +193,7 @@ export const DemoMenuGroup = (props: Props) => {
           Click
         </MenuTrigger>
         <Menu
-          anchorId='group-checkbox-menu'
+          anchor='group-checkbox-menu'
           size='md'
           className='max-w-[300px]'
           isOpen={isOpenCheckboxGroup}
@@ -227,7 +220,7 @@ export const DemoMenuGroup = (props: Props) => {
           Click
         </MenuTrigger>
         <Menu
-          anchorId='group-radio-menu'
+          anchor='group-radio-menu'
           size='lg'
           className='max-w-[300px]'
           isOpen={isOpenRadioGroup}

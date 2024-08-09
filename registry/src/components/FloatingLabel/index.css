@@ -26,12 +26,14 @@
 }
 
 .floating-label ~ * input,
+.floating-label ~ * .value-input-wrapper,
 .floating-label ~ * select,
 .floating-label ~ * textarea {
   @apply h-[3.75rem] pt-[1.125rem] placeholder:opacity-0 placeholder:transition-opacity;
 }
 
 .floating-label ~ input,
+.floating-label ~ .value-input-wrapper,
 .floating-label ~ select,
 .floating-label ~ textarea {
   @apply h-[3.75rem] pt-[1.125rem] placeholder:opacity-0 placeholder:transition-opacity;
@@ -39,6 +41,7 @@
 
 .floating-label ~ .non-value,
 .floating-label ~ * .non-value,
+.floating-label ~ .value-input-wrapper.non-value,
 .floating-label ~ input[value=''] {
   @apply text-transparent;
 }
@@ -48,6 +51,7 @@
 }
 
 .floating-label-wrapper .floating-label ~ * input,
+.floating-label-wrapper .floating-label ~ * .value-input-wrapper,
 .floating-label-wrapper .floating-label ~ * select,
 .floating-label-wrapper .floating-label ~ * textarea {
   @apply h-[3.5rem] min-h-[3.5rem] pt-[1.125rem] placeholder:opacity-0 placeholder:transition-opacity;

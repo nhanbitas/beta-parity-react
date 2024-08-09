@@ -60,6 +60,7 @@ input[type='search'].rounded-md {
 
 /* Set default input font size to 1rem */
 input,
+.value-input-wrapper,
 textarea {
   font-size: 1rem;
 }
@@ -105,18 +106,25 @@ fieldset:disabled {
 }
 
 input,
+.value-input-wrapper,
 textarea {
   @apply text-body-compact-02 h-10 w-full text-ellipsis rounded-md border border-gray-200 bg-white px-4;
+}
+
+.value-input-wrapper {
+  @apply pointer-events-none absolute left-0 top-0 h-full w-full text-center;
 }
 
 .input-wrapper {
   @apply relative h-min w-full rounded-md;
 }
 
+.with-action .value-input-wrapper,
 .with-action input {
   @apply pl-4 pr-10;
 }
 
+.with-actions .value-input-wrapper,
 .with-actions input {
   @apply pl-4 pr-20;
 }
@@ -129,6 +137,7 @@ textarea {
   @apply absolute bottom-0 left-0 flex h-full items-center;
 }
 
+.left-element-container ~ .value-input-wrapper,
 .left-element-container ~ input {
   @apply pl-10;
 }

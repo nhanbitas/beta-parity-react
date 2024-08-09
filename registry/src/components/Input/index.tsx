@@ -58,7 +58,7 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
  *
  * @see http://localhost:3005/input
  */
-const Input = React.forwardRef<HTMLInputElement, InputProps>(
+export const Input = React.forwardRef<HTMLInputElement, InputProps>(
   (
     {
       className,
@@ -193,4 +193,14 @@ export const InputWrapper = createPolymorphicComponent<'div', InputWrapperProps>
 
 InputWrapper.displayName = 'InputWrapper';
 
-export { Input };
+export interface ValueInputWrapperProps extends React.HTMLAttributes<HTMLDivElement> {}
+
+export const ValueInputWrapper = React.forwardRef<HTMLDivElement, ValueInputWrapperProps>(
+  ({ children, className, ...props }, ref) => (
+    <div className={classNames('value-input-wrapper', className)} {...props} ref={ref}>
+      {children}
+    </div>
+  )
+);
+
+ValueInputWrapper.displayName = 'ValueInputWrapper';

@@ -1,14 +1,17 @@
 import React from 'react';
 import classNames from 'classnames';
 import './index.css';
-import { InputWrapper } from '../Input';
-import useCombinedRefs from '../hooks/useCombinedRefs';
-import { Check, ChevronDown } from 'lucide-react';
+import { InputWrapper, ValueInputWrapper } from '../Input';
+import { ChevronDown } from 'lucide-react';
 import { Menu, MenuItem } from '../Menu';
+import { ContainedLabel } from '../FloatingLabel';
+import { Chip } from '../Chip';
+import { useResizeObserver } from '../hooks/useObserver';
 
 export interface CustomSelectProps extends React.HTMLAttributes<HTMLDivElement> {
   options: { value: string; label: string }[];
   labelSelect?: string;
+  floatingLabel?: React.ReactNode;
   value?: string;
   selectedIcon?: React.ReactNode;
   onChange?: (e: React.ChangeEvent<HTMLDivElement>) => void;
@@ -18,71 +21,89 @@ export interface CustomSelectProps extends React.HTMLAttributes<HTMLDivElement> 
 }
 
 export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
-  ({ options, className, selectedIcon, labelSelect, onChange, onFocus, onBlur, onclick, value, ...props }, ref) => {
-    const [currentValue, setCurrentValue] = React.useState(
-      options.filter((item) => item.value === value)[0]?.value || ''
-    );
-    const [currentLabel, setCurrentLabel] = React.useState(
-      options.filter((item) => item.value === value)[0]?.label || options[0].label
-    );
-
+  (
+    {
+      options,
+      children,
+      className,
+      selectedIcon,
+      labelSelect,
+      floatingLabel,
+      onChange,
+      onFocus,
+      onBlur,
+      onclick,
+      value,
+      ...props
+    },
+    passedRef
+  ) => {
+    const [currentValue, setCurrentValue] = React.useState(value || '');
     const [isSelectOpen, setIsSelectOpen] = React.useState(false);
-    const selectRef = React.useRef<HTMLDivElement>(null);
-    const combinedRef = useCombinedRefs(selectRef, ref);
 
-    const handleBlur = (e: React.FocusEvent<HTMLDivElement>) => {
+    const [wrapperRef, rect] = useResizeObserver();
+    // const combinedRef = useCombinedRefs(selectRef, ref);
+
+    const handleClick = (value: string) => {
+      setCurrentValue(value);
       setIsSelectOpen(false);
-      onBlur && onBlur(e);
     };
 
-    const handleItemClick = (e: any) => {
-      setCurrentValue(e.target.value.value);
-      setCurrentLabel(e.target.value.label);
-    };
-
-    const handleMenuClick = () => {
-      setIsSelectOpen((pre) => !pre);
+    const handleFocus = (e: any) => {
+      setIsSelectOpen(true);
+      onFocus && onFocus(e);
     };
 
     React.useEffect(() => {
       setCurrentValue(value || '');
     }, [value]);
 
-    if (options && options.length > 0) {
+    if ((options && options.length > 0) || children) {
       const ArrowBtn = (
-        <button
-          className={classNames('arrow-btn', { open: isSelectOpen })}
-          onClick={(e) => {
-            e.stopPropagation();
-            e.preventDefault();
-            combinedRef.current && combinedRef.current.focus();
-          }}
-        >
+        <button className={classNames('arrow-select-btn', { open: isSelectOpen })}>
           <ChevronDown />
         </button>
       );
+
       return (
-        <InputWrapper rightElement={ArrowBtn}>
+        <InputWrapper rightElement={ArrowBtn} ref={wrapperRef}>
+          {floatingLabel && <ContainedLabel isActive={isSelectOpen || !!currentValue}>{floatingLabel}</ContainedLabel>}
+
+          <input
+            type='text'
+            readOnly
+            className={classNames('input', { 'non-value': !currentValue })}
+            style={{ color: 'transparent' }}
+            value={Array.isArray(currentValue) ? currentValue.join(',') : currentValue}
+            onFocus={handleFocus}
+            {...props}
+          />
+
+          <ValueInputWrapper className={classNames({ 'non-value': !currentValue })}>
+            {Array.isArray(currentValue) ? (
+              <Chip type='input' value={currentValue} label={currentValue} />
+            ) : (
+              <span>{options.filter((item) => item.value === currentValue)[0].label}</span>
+            )}
+          </ValueInputWrapper>
+
           <Menu
             className={classNames('custom-select', className, { 'non-value': !currentValue })}
-            ref={combinedRef}
-            onBlur={handleBlur}
+            anchor={wrapperRef.current as unknown as HTMLElement}
+            isOpen={isSelectOpen}
             data-select-value={currentValue}
-            onClick={handleMenuClick}
             {...props}
+            style={{ width: rect?.width, ...props.style }}
           >
             {options.map(({ value, label }) => (
-              <SelectItem
+              <MenuItem
+                useInput
+                checked={value === currentValue}
+                onChange={(e: any) => handleClick(e.value)}
                 key={value}
-                value={value}
                 label={label}
-                onClick={handleItemClick}
-                isActive={value === currentValue && currentValue !== ''}
-              >
-                {value === currentValue && currentValue !== '' ? (
-                  <span className='selected-icon'>{selectedIcon || <Check />}</span>
-                ) : null}
-              </SelectItem>
+                value={value}
+              />
             ))}
           </Menu>
         </InputWrapper>

@@ -38,5 +38,5 @@ export const DemoNativeSelectLabel = (props: Props) => {
 };
 
 export const DemoCustomSelect = (props: Props) => {
-  return <CustomSelect options={options} labelSelect='Choose option' />;
+  return <CustomSelect options={options} labelSelect='Choose option' floatingLabel='Choose option' />;
 };

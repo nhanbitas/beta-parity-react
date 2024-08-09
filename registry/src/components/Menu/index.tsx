@@ -34,7 +34,7 @@ const sizeHeightMap = {
 export interface MenuProps extends React.HTMLAttributes<HTMLDivElement> {
   position?: Placement;
   size?: keyof typeof sizeMap;
-  anchorId?: string;
+  anchor?: HTMLElement | string;
   overflowLimit?: number;
   scrollIndicator?: boolean;
   searchable?: boolean;
@@ -60,7 +60,7 @@ export const Menu = React.forwardRef<HTMLDivElement, MenuProps>(
       defaultSearch = '',
       className,
       children,
-      anchorId,
+      anchor,
       isLoading,
       disabled,
       searchPlaceholder,
@@ -173,8 +173,15 @@ export const Menu = React.forwardRef<HTMLDivElement, MenuProps>(
     // ========================= Define Anchor - Trigger Of Menu ========================= //
 
     React.useEffect(() => {
-      refs.setReference(document.getElementById(anchorId || ''));
-    }, []);
+      if (anchor === undefined) return;
+
+      if (anchor && typeof anchor === 'string') {
+        refs.setReference(document.getElementById(anchor));
+        return;
+      }
+
+      refs.setReference(anchor as HTMLElement);
+    }, [anchor]);
 
     // ========================= Handle Navigation By Arrow Key ========================= //
     const { setItemsRef, resetItemsRef, initFocus } = useArrowKeyNavigation(menuRef);
@@ -306,10 +313,10 @@ export const MenuItem = React.forwardRef<HTMLDivElement, MenuItemProps>(
 
       if (useInput === 'checkbox' || useInput === 'radio') return;
       checked == undefined && setCurrentSelected(!currentSelected);
+      onChange && onChange({ value: value || '', checked: !currentSelected } as any);
     };
 
     const keyUpHandler = useKeyboard('Enter', (e: any) => {
-      console.log('click');
       e.target && e.target.click();
       props.onKeyUp && props.onKeyUp(e as React.KeyboardEvent<HTMLDivElement>);
     });
@@ -333,10 +340,6 @@ export const MenuItem = React.forwardRef<HTMLDivElement, MenuItemProps>(
         setCurrentSelected(checked);
       }
     }, [checked]);
-
-    useDidMountEffect(() => {
-      onChange && onChange({ value: value || '', checked: currentSelected } as any);
-    }, [currentSelected]);
 
     if (!!useInput) {
       const { 'aria-checked': _, ...rest } = accessibilityProps;

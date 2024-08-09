@@ -9,7 +9,7 @@ export interface ContainedLabelProps extends React.LabelHTMLAttributes<HTMLLabel
   isActive?: boolean;
 }
 
-const ContainedLabel = React.forwardRef<HTMLLabelElement, ContainedLabelProps>(
+export const ContainedLabel = React.forwardRef<HTMLLabelElement, ContainedLabelProps>(
   ({ isActive, children, className, ...props }, ref) => (
     <label className={classNames('floating-label', className, { active: isActive })} {...props} ref={ref}>
       {children}
@@ -17,7 +17,7 @@ const ContainedLabel = React.forwardRef<HTMLLabelElement, ContainedLabelProps>(
   )
 );
 
-ContainedLabel.displayName = 'floating-label';
+ContainedLabel.displayName = 'ContainedLabel';
 
 export interface FloatingLabelProps extends React.HTMLAttributes<HTMLElement> {
   label: string | React.ReactNode;
@@ -26,7 +26,7 @@ export interface FloatingLabelProps extends React.HTMLAttributes<HTMLElement> {
   wrapperClassname?: string;
 }
 
-const FloatingLabel = React.forwardRef<HTMLDivElement, FloatingLabelProps>(
+export const FloatingLabel = React.forwardRef<HTMLDivElement, FloatingLabelProps>(
   ({ label, children, className, wrapperClassname, ...props }, ref) => {
     const [isActive, setIsActive] = React.useState(false);
     const [inputValue, setInputValue] = React.useState('');
@@ -72,5 +72,3 @@ const FloatingLabel = React.forwardRef<HTMLDivElement, FloatingLabelProps>(
 );
 
 FloatingLabel.displayName = 'FloatingLabel';
-
-export { ContainedLabel, FloatingLabel };
