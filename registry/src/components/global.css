@@ -1,4 +1,5 @@
-*:focus-visible {
+*:focus-visible,
+*[data-focus-visible='true'] {
   outline: 2px solid black;
   outline-offset: -2px; /* overide border */
 }

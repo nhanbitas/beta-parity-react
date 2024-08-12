@@ -112,20 +112,20 @@ textarea {
 }
 
 .value-input-wrapper {
-  @apply pointer-events-none absolute left-0 top-0 h-full w-full text-center;
+  @apply cursor-pointer;
 }
 
 .input-wrapper {
   @apply relative h-min w-full rounded-md;
 }
 
-.with-action .value-input-wrapper,
-.with-action input {
+.input-action .value-input-wrapper,
+.input-action input {
   @apply pl-4 pr-10;
 }
 
-.with-actions .value-input-wrapper,
-.with-actions input {
+.input-actions .value-input-wrapper,
+.input-actions input {
   @apply pl-4 pr-20;
 }
 

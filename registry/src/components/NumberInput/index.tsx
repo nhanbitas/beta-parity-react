@@ -93,7 +93,7 @@ export const NumberInput = React.forwardRef<
 
     const currentProps = isPattern ? { ...(props as PatternFormatProps) } : { ...(props as NumericFormatProps) };
 
-    const addedClassname = isClearable && ActionBtn ? 'with-actions' : isClearable || ActionBtn ? 'with-action' : '';
+    const addedClassname = isClearable && ActionBtn ? 'input-actions' : isClearable || ActionBtn ? 'input-action' : '';
 
     const isHasRightInputAction = isClearable || ActionBtn;
 

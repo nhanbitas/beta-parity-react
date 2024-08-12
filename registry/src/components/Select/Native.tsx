@@ -4,6 +4,7 @@ import './index.css';
 import { InputWrapper } from '../Input';
 import { ContainedLabel } from '../FloatingLabel';
 import { ChevronDown } from 'lucide-react';
+import useCombinedRefs from '../hooks/useCombinedRefs';
 
 const sizeMap = {
   sm: 'small',
@@ -46,6 +47,8 @@ export const NativeSelect = React.forwardRef<HTMLSelectElement, NativeSelectProp
   ) => {
     const [currentValue, setCurrentValue] = React.useState(value || '');
     const [isSelectOpen, setIsSelectOpen] = React.useState(false);
+    const selectRef = React.useRef<HTMLSelectElement>(null);
+    const mergedRef = useCombinedRefs(ref, selectRef);
 
     const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
       setCurrentValue(e.target.value);
@@ -72,7 +75,10 @@ export const NativeSelect = React.forwardRef<HTMLSelectElement, NativeSelectProp
 
     if ((options && options.length > 0) || children) {
       const ArrowBtn = (
-        <button className={classNames('arrow-select-btn', { open: isSelectOpen })}>
+        <button
+          className={classNames('arrow-select-btn', { open: isSelectOpen })}
+          onClick={() => mergedRef.current?.focus()}
+        >
           <ChevronDown />
         </button>
       );
@@ -81,7 +87,7 @@ export const NativeSelect = React.forwardRef<HTMLSelectElement, NativeSelectProp
         <InputWrapper rightElement={ArrowBtn}>
           {floatingLabel && <ContainedLabel isActive={isSelectOpen || !!currentValue}>{floatingLabel}</ContainedLabel>}
           <select
-            ref={ref}
+            ref={mergedRef}
             className={classNames('native-select', className, {
               'non-value': !currentValue,
               [sizeMap[selectSize]]: !floatingLabel

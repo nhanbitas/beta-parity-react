@@ -115,7 +115,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       setCurrentValue(value || '');
     }, [value]);
 
-    const addedClassname = isClearable && ActionBtn ? 'with-actions' : isClearable || ActionBtn ? 'with-action' : '';
+    const addedClassname = isClearable && ActionBtn ? 'input-actions' : isClearable || ActionBtn ? 'input-action' : '';
 
     const isHasRightInputAction = isClearable || ActionBtn;
 
