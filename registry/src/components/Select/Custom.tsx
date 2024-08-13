@@ -20,9 +20,10 @@ export interface CustomSelectProps extends React.HTMLAttributes<HTMLDivElement>,
   clearButton?: boolean;
   allowDeselection?: boolean;
   floatingLabel?: React.ReactNode;
-  value?: string;
+  value?: string | string[];
   selectedIcon?: React.ReactNode;
-  onChange?: (e: React.ChangeEvent<HTMLDivElement>) => void;
+  countDescription?: string;
+  onChange?: (e: any) => void;
   onFocus?: (e: React.FocusEvent<HTMLDivElement>) => void;
   onBlur?: (e: React.FocusEvent<HTMLDivElement>) => void;
   onclick?: (e: React.MouseEvent<HTMLDivElement>) => void;
@@ -39,6 +40,7 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
       clearButton = false,
       allowDeselection = false,
       placeHolder = 'Please choose an option',
+      countDescription = 'item(s) selected',
       selectedIcon,
       floatingLabel,
       onChange,
@@ -53,30 +55,30 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
     const [currentValue, setCurrentValue] = React.useState<string | string[]>(value || multiSelect ? [] : '');
     const [isSelectOpen, setIsSelectOpen] = React.useState(false);
     const [menu, setMenu] = React.useState<HTMLDivElement | null>(null);
-    const refOutsideClick = useOutsideClick(() => setIsSelectOpen(false), ['click', 'touchstart'], [menu]);
     const [wrapperRef, rect] = useResizeObserver();
+    const refOutsideClick = useOutsideClick(() => setIsSelectOpen(false), ['click', 'touchstart'], [menu]);
     const mergedRef = useCombinedRefs(ref, refOutsideClick, wrapperRef);
-    const [chipsRef, chipsRect] = useResizeObserver();
+    const selectContainerRef = React.useRef<HTMLDivElement>(null);
+    const selectInputRef = React.useRef<HTMLInputElement>(null);
 
-    const handleClick = (value: string, isRemove?: boolean) => {
+    const handleClick = (value: string, isResetValue?: boolean) => {
       let changedValue: string | string[];
-
       if (multiSelect) {
-        isRemove || (currentValue.includes(value) && allowDeselection)
+        isResetValue || (currentValue.includes(value) && allowDeselection)
           ? (changedValue = (currentValue as string[]).filter((val) => val !== value))
           : (changedValue = Array.from(new Set([...(currentValue as string[]), value])));
       } else {
         changedValue = value;
       }
 
-      !!value ? setCurrentValue(changedValue) : setCurrentValue(multiSelect ? [] : '');
+      !!value ? setCurrentValue(() => changedValue) : setCurrentValue(() => (multiSelect ? [] : ''));
       onChange && onChange(changedValue as any);
       setIsSelectOpen(false);
     };
 
     const handleClear = () => {
-      setCurrentValue('');
-      onChange && onChange('' as any);
+      setCurrentValue(multiSelect ? [] : '');
+      onChange && onChange(multiSelect ? [] : '');
     };
 
     const handleFocus = (e: any) => {
@@ -85,52 +87,79 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
     };
 
     React.useEffect(() => {
-      setCurrentValue(value || '');
+      setCurrentValue(value || multiSelect ? [] : '');
     }, [value]);
 
-    if ((options && options.length > 0) || children) {
-      const ArrowBtn = (
-        <button
-          className={classNames('arrow-select-btn', { open: isSelectOpen })}
-          onClick={() => setIsSelectOpen(!isSelectOpen)}
+    const ArrowBtn = (
+      <button
+        className={classNames('arrow-select-btn', { open: isSelectOpen })}
+        onClick={() => setIsSelectOpen(!isSelectOpen)}
+      >
+        <ChevronDown />
+      </button>
+    );
+
+    const isValueEmpty = Array.isArray(currentValue) ? currentValue.length === 0 : !currentValue;
+    const addedClassname = clearButton ? 'input-actions' : 'input-action';
+    const RightInputActions = (
+      <>
+        {clearButton && !isValueEmpty && (
+          <button type='button' className={classNames('clear-button')} onClick={handleClear}>
+            <X />
+          </button>
+        )}
+        {ArrowBtn}
+      </>
+    );
+
+    const [isShowingChips, setIsShowingChips] = React.useState(
+      multiSelect && Array.isArray(currentValue) && currentValue.length > 0
+    );
+
+    React.useLayoutEffect(() => {
+      const selectInputWidth = selectInputRef.current ? selectInputRef.current.clientWidth : 0;
+      const selectInputPaddingX = selectInputRef.current
+        ? parseInt(window.getComputedStyle(selectInputRef.current).paddingLeft.slice(0, -2)) +
+          parseInt(window.getComputedStyle(selectInputRef.current).paddingRight.slice(0, -2))
+        : 0;
+      const containerWidth = selectContainerRef.current?.clientWidth || 0;
+      setIsShowingChips(selectInputWidth - selectInputPaddingX >= containerWidth);
+    }, [
+      currentValue,
+      selectInputRef.current,
+      selectContainerRef.current,
+      selectInputRef.current?.clientWidth,
+      isSelectOpen
+    ]);
+
+    const accessibilityWrapperProps = {
+      role: 'combobox',
+      tabIndex: 0,
+      'data-focus-visible': isSelectOpen,
+      'aria-haspopup': true,
+      ...(!isShowingChips &&
+        !isValueEmpty && {
+          'data-number-of-chips': currentValue.length
+        })
+    };
+
+    return (
+      <InputWrapper className={addedClassname} rightElement={RightInputActions} ref={mergedRef}>
+        {floatingLabel && <ContainedLabel isActive={isSelectOpen || !isValueEmpty}>{floatingLabel}</ContainedLabel>}
+
+        <ValueInputWrapper
+          ref={selectInputRef}
+          className={classNames({ 'non-value': isValueEmpty })}
+          onClick={handleFocus}
+          {...accessibilityWrapperProps}
         >
-          <ChevronDown />
-        </button>
-      );
-
-      const isValueEmpty = Array.isArray(currentValue) ? currentValue.length === 0 : !currentValue;
-      const addedClassname = clearButton ? 'input-actions' : 'input-action';
-      const RightInputActions = (
-        <>
-          {clearButton && !isValueEmpty && (
-            <button type='button' className={classNames('clear-button')} onClick={handleClear}>
-              <X />
-            </button>
+          {!isShowingChips && !isValueEmpty && (
+            <div className='select-number-chips-label'>{currentValue.length + ' ' + countDescription}</div>
           )}
-          {ArrowBtn}
-        </>
-      );
 
-      const accessibilityWrapperProps = {
-        role: 'combobox',
-        tabIndex: 0,
-        'data-focus-visible': isSelectOpen,
-        'aria-haspopup': true
-      };
-      console.log(rect);
-      console.log(chipsRef.current?.getBoundingClientRect());
-      return (
-        <InputWrapper className={addedClassname} rightElement={RightInputActions} ref={mergedRef}>
-          {floatingLabel && <ContainedLabel isActive={isSelectOpen || !isValueEmpty}>{floatingLabel}</ContainedLabel>}
-
-          <ValueInputWrapper
-            className={classNames({ 'non-value': isValueEmpty })}
-            onClick={handleFocus}
-            {...accessibilityWrapperProps}
-          >
-            {Array.isArray(currentValue) && !!currentValue.length ? (
-              <div className='chips-container' ref={chipsRef}>
-                {currentValue.map(
+          <div className='select-container' ref={selectContainerRef}>
+            {multiSelect && Array.isArray(currentValue) && currentValue.length
+              ? currentValue.map(
                   (item) =>
                     !!item && (
                       <Chip
@@ -143,45 +172,46 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
                         onRemove={() => handleClick(item, true)}
                       />
                     )
-                )}
-              </div>
-            ) : (
-              <span>{isValueEmpty ? placeHolder : options.filter((item) => item.value === currentValue)[0].label}</span>
-            )}
-          </ValueInputWrapper>
+                )
+              : null}
+          </div>
 
-          <Menu
-            ref={setMenu}
-            className={classNames('custom-select', className, { 'non-value': isValueEmpty })}
-            anchor={wrapperRef.current as unknown as HTMLElement}
-            isOpen={isSelectOpen}
-            data-select-value={currentValue}
-            {...props}
-            style={{ width: rect?.width, ...props.style }}
-            searchable={filterable}
-          >
-            {options.map(({ value, label }) => {
-              const isChecked = Array.isArray(currentValue)
-                ? currentValue.includes(value) && !!value
-                : value === currentValue && !!value;
-              return (
-                <MenuItem
-                  key={value}
-                  value={value}
-                  label={label}
-                  useInput
-                  checked={isChecked}
-                  onChange={(e: any) => handleClick(e.value)}
-                  icon={selectedIcon}
-                />
-              );
-            })}
-          </Menu>
-        </InputWrapper>
-      );
-    }
+          <span className='select-label'>
+            {isValueEmpty
+              ? placeHolder
+              : !multiSelect && options.filter((item) => item.value === currentValue)[0].label}
+          </span>
+        </ValueInputWrapper>
 
-    return null;
+        <Menu
+          ref={setMenu}
+          className={classNames('custom-select', className, { 'non-value': isValueEmpty })}
+          anchor={wrapperRef.current as unknown as HTMLElement}
+          isOpen={isSelectOpen}
+          data-select-value={currentValue}
+          {...props}
+          style={{ width: rect?.width, ...props.style }}
+          searchable={filterable}
+        >
+          {options.map(({ value, label }) => {
+            const isChecked = Array.isArray(currentValue)
+              ? currentValue.includes(value) && !!value
+              : value === currentValue && !!value;
+            return (
+              <MenuItem
+                key={value}
+                value={value}
+                label={label}
+                useInput
+                checked={isChecked}
+                onChange={(e: any) => handleClick(e.value)}
+                icon={selectedIcon}
+              />
+            );
+          })}
+        </Menu>
+      </InputWrapper>
+    );
   }
 );
 

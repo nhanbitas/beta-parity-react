@@ -89,13 +89,15 @@ export const Menu = React.forwardRef<HTMLDivElement, MenuProps>(
 
     const filterChildren = (children: React.ReactNode, keyword = '') =>
       React.Children.map(children, (child: React.ReactNode): React.ReactNode => {
-        if (!React.isValidElement(child) || child.type === MenuHeader || child.type === MenuFooter) return null;
+        if (!React.isValidElement(child)) return child;
+
+        if (child.type === MenuHeader || child.type === MenuFooter) return null;
 
         const isValidItem = searchable
           ? child.props.value && child.props.value.toLowerCase().includes(keyword.toLowerCase())
           : true;
 
-        if (isValidItem) {
+        if (isValidItem || !child.props.value) {
           return child;
         } else if (child.props.children) {
           const filteredChildren = filterChildren(child.props.children, keyword);

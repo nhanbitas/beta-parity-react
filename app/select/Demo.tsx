@@ -71,6 +71,7 @@ export const DemoCustomMutipleSelect = (props: Props) => {
         options={options}
         placeHolder='Choose option'
         floatingLabel='Choose option'
+        countDescription='option(s) selected'
         overflowLimit={5}
         allowDeselection
         scrollIndicator

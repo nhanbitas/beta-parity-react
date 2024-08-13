@@ -69,15 +69,27 @@ select.large {
 
 /* Custom Select */
 .input-wrapper .value-input-wrapper {
-  @apply flex max-w-full items-center;
+  @apply flex w-full items-center overflow-hidden;
 }
 
 .input-wrapper .value-input-wrapper.non-value {
   @apply text-gray-500;
 }
 
-.input-wrapper .value-input-wrapper .chips-container {
-  @apply flex w-fit flex-row gap-1;
+.input-wrapper .value-input-wrapper .select-label {
+  @apply pointer-events-none w-full select-none overflow-hidden text-ellipsis whitespace-nowrap;
+}
+
+.input-wrapper .value-input-wrapper .select-container {
+  @apply flex flex-row gap-1;
+}
+
+.input-wrapper .value-input-wrapper[data-number-of-chips] .select-container > * {
+  @apply invisible;
+}
+
+.input-wrapper .value-input-wrapper .select-number-chips-label {
+  @apply w-full shrink-0 grow items-center overflow-hidden text-ellipsis whitespace-nowrap text-gray-500;
 }
 
 .input-wrapper .right-element-container .arrow-select-btn {
