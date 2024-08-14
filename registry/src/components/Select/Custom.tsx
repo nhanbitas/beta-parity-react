@@ -3,22 +3,33 @@ import classNames from 'classnames';
 import './index.css';
 import { InputWrapper, ValueInputWrapper } from '../Input';
 import { ChevronDown, X } from 'lucide-react';
-import { Menu, MenuItem, MenuItemProps, MenuProps } from '../Menu';
+import {
+  Menu,
+  MenuDivider,
+  MenuDividerProps,
+  MenuGroup,
+  MenuGroupProps,
+  MenuItem,
+  MenuItemProps,
+  MenuProps
+} from '../Menu';
 import { ContainedLabel } from '../FloatingLabel';
 import { Chip } from '../Chip';
 import { useResizeObserver } from '../hooks/useObserver';
 import { useOutsideClick } from '../hooks/useOutsideClick';
 import useCombinedRefs from '../hooks/useCombinedRefs';
+import useKeyboard from '../hooks/useKeyboard';
 
 export type SelecItemType = { value: string; label: string };
 
 export interface CustomSelectProps extends React.HTMLAttributes<HTMLDivElement>, MenuProps {
-  options: SelecItemType[];
+  options?: SelecItemType[];
   multiSelect?: boolean;
   filterable?: boolean;
   placeHolder?: string;
   clearButton?: boolean;
-  allowDeselection?: boolean;
+  deselectable?: boolean;
+  isStatic?: boolean;
   floatingLabel?: React.ReactNode;
   value?: string | string[];
   selectedIcon?: React.ReactNode;
@@ -26,7 +37,6 @@ export interface CustomSelectProps extends React.HTMLAttributes<HTMLDivElement>,
   onChange?: (e: any) => void;
   onFocus?: (e: React.FocusEvent<HTMLDivElement>) => void;
   onBlur?: (e: React.FocusEvent<HTMLDivElement>) => void;
-  onclick?: (e: React.MouseEvent<HTMLDivElement>) => void;
 }
 
 export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
@@ -35,10 +45,12 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
       options,
       children,
       className,
+      disabled = false,
       multiSelect = false,
       filterable = false,
       clearButton = false,
-      allowDeselection = false,
+      deselectable = false,
+      isStatic = false,
       placeHolder = 'Please choose an option',
       countDescription = 'item(s) selected',
       selectedIcon,
@@ -46,7 +58,6 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
       onChange,
       onFocus,
       onBlur,
-      onclick,
       value,
       ...props
     },
@@ -60,38 +71,70 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
     const mergedRef = useCombinedRefs(ref, refOutsideClick, wrapperRef);
     const selectContainerRef = React.useRef<HTMLDivElement>(null);
     const selectInputRef = React.useRef<HTMLInputElement>(null);
+    const renderedOptions = options && options.length > 0 ? options : getSelectItems(children);
 
-    const handleClick = (value: string, isResetValue?: boolean) => {
+    const handleClick = (value: string, isRemove?: boolean) => {
+      if (disabled) return;
       let changedValue: string | string[];
       if (multiSelect) {
-        isResetValue || (currentValue.includes(value) && allowDeselection)
+        isRemove || (currentValue.includes(value) && deselectable)
           ? (changedValue = (currentValue as string[]).filter((val) => val !== value))
           : (changedValue = Array.from(new Set([...(currentValue as string[]), value])));
       } else {
         changedValue = value;
       }
 
-      !!value ? setCurrentValue(() => changedValue) : setCurrentValue(() => (multiSelect ? [] : ''));
-      onChange && onChange(changedValue as any);
-      setIsSelectOpen(false);
+      setCurrentValue(multiSelect && !value ? [] : changedValue);
+      onChange?.(multiSelect && !value ? [] : changedValue);
+
+      if (!isStatic) {
+        setIsSelectOpen(false);
+        selectInputRef.current?.focus();
+      }
     };
 
     const handleClear = () => {
       setCurrentValue(multiSelect ? [] : '');
-      onChange && onChange(multiSelect ? [] : '');
+      onChange?.(multiSelect ? [] : '');
     };
 
     const handleFocus = (e: any) => {
+      if (disabled) return;
       setIsSelectOpen(!isSelectOpen);
-      onFocus && onFocus(e);
+      onFocus?.(e);
     };
 
-    React.useEffect(() => {
-      setCurrentValue(value || multiSelect ? [] : '');
-    }, [value]);
+    const cloneWithProps = (child: React.ReactNode): React.ReactNode => {
+      if (!React.isValidElement(child)) {
+        return child;
+      }
+
+      if (child.type === SelectItem) {
+        const isChecked = Array.isArray(currentValue)
+          ? currentValue.includes(child.props.value) && !!child.props.value
+          : child.props.value === currentValue && !!child.props.value;
+        return (
+          <MenuItem
+            {...child.props}
+            key={child.props.value}
+            value={child.props.value}
+            label={child.props.label}
+            useInput
+            checked={isChecked}
+            onChange={(e: any) => handleClick(e.target.value)}
+            icon={selectedIcon}
+          />
+        );
+      }
+
+      return React.cloneElement(child as React.ReactElement<any>, {
+        children: React.Children.map(child.props.children, cloneWithProps)
+      });
+    };
 
     const ArrowBtn = (
       <button
+        disabled={disabled}
         className={classNames('arrow-select-btn', { open: isSelectOpen })}
         onClick={() => setIsSelectOpen(!isSelectOpen)}
       >
@@ -132,15 +175,30 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
       isSelectOpen
     ]);
 
+    React.useEffect(() => {
+      setCurrentValue(value || multiSelect ? [] : '');
+    }, [value]);
+
     const accessibilityWrapperProps = {
       role: 'combobox',
-      tabIndex: 0,
+      tabIndex: disabled ? -1 : 0,
+      'aria-disabled': disabled,
       'data-focus-visible': isSelectOpen,
       'aria-haspopup': true,
       ...(!isShowingChips &&
         !isValueEmpty && {
           'data-number-of-chips': currentValue.length
         })
+    };
+
+    const keyUpHandler = useKeyboard('Enter', (e: any) => {
+      if (disabled) return;
+      setIsSelectOpen(!isSelectOpen);
+      props.onKeyUp && props.onKeyUp(e as React.KeyboardEvent<HTMLDivElement>);
+    });
+
+    const keyEventHandlers = {
+      onKeyUp: keyUpHandler
     };
 
     return (
@@ -152,6 +210,7 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
           className={classNames({ 'non-value': isValueEmpty })}
           onClick={handleFocus}
           {...accessibilityWrapperProps}
+          {...keyEventHandlers}
         >
           {!isShowingChips && !isValueEmpty && (
             <div className='select-number-chips-label'>{currentValue.length + ' ' + countDescription}</div>
@@ -168,7 +227,7 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
                         kind='glass'
                         color='orange'
                         value={item}
-                        label={options.filter((i) => i.value === item)[0].label}
+                        label={renderedOptions.filter((i) => i.value === item)[0].label}
                         onRemove={() => handleClick(item, true)}
                       />
                     )
@@ -179,7 +238,7 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
           <span className='select-label'>
             {isValueEmpty
               ? placeHolder
-              : !multiSelect && options.filter((item) => item.value === currentValue)[0].label}
+              : !multiSelect && renderedOptions.filter((item) => item.value === currentValue)[0].label}
           </span>
         </ValueInputWrapper>
 
@@ -193,22 +252,24 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
           style={{ width: rect?.width, ...props.style }}
           searchable={filterable}
         >
-          {options.map(({ value, label }) => {
-            const isChecked = Array.isArray(currentValue)
-              ? currentValue.includes(value) && !!value
-              : value === currentValue && !!value;
-            return (
-              <MenuItem
-                key={value}
-                value={value}
-                label={label}
-                useInput
-                checked={isChecked}
-                onChange={(e: any) => handleClick(e.value)}
-                icon={selectedIcon}
-              />
-            );
-          })}
+          {options && options.length > 0
+            ? renderedOptions.map(({ value, label }) => {
+                const isChecked = Array.isArray(currentValue)
+                  ? currentValue.includes(value) && !!value
+                  : value === currentValue && !!value;
+                return (
+                  <MenuItem
+                    key={value}
+                    value={value}
+                    label={label}
+                    useInput
+                    checked={isChecked}
+                    onChange={(e: any) => handleClick(e.target.value)}
+                    icon={selectedIcon}
+                  />
+                );
+              })
+            : React.Children.map(children, cloneWithProps)}
         </Menu>
       </InputWrapper>
     );
@@ -217,10 +278,44 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
 
 CustomSelect.displayName = 'CustomSelect';
 
-export interface SelectItem extends MenuItemProps {}
+export interface SelectItemProps extends MenuItemProps {}
 
-export const SelectItem = React.forwardRef<HTMLDivElement, SelectItem>((props, ref) => {
+export const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>((props, ref) => {
   return <MenuItem {...props} ref={ref} />;
 });
 
 SelectItem.displayName = 'SelectItem';
+
+export interface SelectGroupProps extends MenuGroupProps {}
+
+export const SelectGroup = React.forwardRef<HTMLDivElement, SelectGroupProps>((props, ref) => {
+  return <MenuGroup {...props} ref={ref} />;
+});
+
+SelectGroup.displayName = 'SelectGroup';
+
+export interface SelectDividerProps extends MenuDividerProps {}
+
+export const SelectDivider = React.forwardRef<HTMLDivElement, SelectDividerProps>((props, ref) => {
+  return <MenuDivider {...props} ref={ref} />;
+});
+
+SelectDivider.displayName = 'SelectDivider';
+
+const getSelectItems = (children: React.ReactNode): SelecItemType[] => {
+  let returnValue: SelecItemType[] = [];
+
+  React.Children.forEach(children, (child, index) => {
+    if (!React.isValidElement(child)) return;
+
+    if (child.type === SelectGroup) {
+      returnValue = returnValue.concat(getSelectItems(child.props.children));
+    }
+
+    if (child.type === SelectItem) {
+      returnValue = returnValue.concat({ value: child.props.value, label: child.props.label });
+    }
+  });
+
+  return returnValue;
+};

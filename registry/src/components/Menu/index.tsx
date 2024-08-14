@@ -97,7 +97,7 @@ export const Menu = React.forwardRef<HTMLDivElement, MenuProps>(
           ? child.props.value && child.props.value.toLowerCase().includes(keyword.toLowerCase())
           : true;
 
-        if (isValidItem || !child.props.value) {
+        if (isValidItem || (!child.props.value && !child.props.groupValue)) {
           return child;
         } else if (child.props.children) {
           const filteredChildren = filterChildren(child.props.children, keyword);
@@ -191,7 +191,9 @@ export const Menu = React.forwardRef<HTMLDivElement, MenuProps>(
       resetItemsRef();
 
       if (isOpen && itemsRef.current) {
-        const items = itemsRef.current.querySelectorAll('[role="menuitem"]');
+        const items = searchable
+          ? [searchRef.current, ...itemsRef.current.querySelectorAll('[role="menuitem"]')]
+          : itemsRef.current.querySelectorAll('[role="menuitem"]');
 
         if (items && items.length > 0) {
           items.forEach((item) => {
@@ -276,7 +278,7 @@ export interface MenuItemProps extends Omit<React.HTMLAttributes<HTMLDivElement>
   children?: React.ReactNode;
   isLoading?: boolean;
   disabled?: boolean;
-  value?: string | number;
+  value?: string;
   checkmarkSide?: 'left' | 'right';
   checked?: boolean;
   label?: string;
@@ -315,7 +317,7 @@ export const MenuItem = React.forwardRef<HTMLDivElement, MenuItemProps>(
 
       if (useInput === 'checkbox' || useInput === 'radio') return;
       checked == undefined && setCurrentSelected(!currentSelected);
-      onChange && onChange({ value: value || '', checked: !currentSelected } as any);
+      onChange && onChange({ target: { value: value || '' }, checked: !currentSelected } as any);
     };
 
     const keyUpHandler = useKeyboard('Enter', (e: any) => {

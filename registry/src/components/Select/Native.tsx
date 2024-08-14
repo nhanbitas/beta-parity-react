@@ -18,7 +18,7 @@ const sizeMap = {
 // Declare and export native select type and native select component
 
 export interface NativeSelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
-  options?: { value: string; label: string }[];
+  options?: { value: string; label: string; disabled?: boolean }[];
   value?: string;
   floatingLabel?: string;
   selectSize?: keyof typeof sizeMap;
@@ -99,8 +99,8 @@ export const NativeSelect = React.forwardRef<HTMLSelectElement, NativeSelectProp
             {...props}
           >
             {options
-              ? options.map(({ value, label }) => (
-                  <option key={value} value={value}>
+              ? options.map(({ value, label, disabled = false }) => (
+                  <option key={value} value={value} disabled={disabled}>
                     {label}
                   </option>
                 ))

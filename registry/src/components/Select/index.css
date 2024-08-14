@@ -41,18 +41,16 @@ select.success-state:focus {
   outline-color: #39ac56;
 }
 
-select:disabled {
-  @apply bg-gray-100 text-gray-100;
-}
-
 select:disabled,
-option:disabled {
-  background-color: #f4f4f4;
-  color: #f4f4f4;
-  pointer-events: none;
-  user-select: none;
+select:disabled ~ .right-element-container,
+select:disabled ~ .left-element-container,
+.input-wrapper:has(.value-input-wrapper[aria-disabled='true']) {
+  @apply pointer-events-none select-none opacity-50;
 }
 
+option:disabled {
+  @apply pointer-events-none text-gray-300/50;
+}
 /* sizes */
 
 select.small {
