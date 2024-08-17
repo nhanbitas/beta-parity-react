@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { CustomSelect, NativeSelect, SelectDivider, SelectItem, SelectGroup } from '@libComponents/Select';
+import { Car } from 'lucide-react';
 
 type Props = {};
 
@@ -51,6 +52,7 @@ export const DemoCustomSelect = (props: Props) => {
         placeHolder='Choose option'
         overflowLimit={5}
         scrollIndicator
+        leftIcon={<Car />}
       />
       <CustomSelect
         onChange={(e) => console.log(e)}
@@ -178,6 +180,7 @@ export const DemoCustomMutipleSelect = (props: Props) => {
         floatingLabel='Choose option'
         countDescription='option(s) selected'
         overflowLimit={5}
+        leftIcon={<Car />}
         isStatic
         deselectable
         scrollIndicator

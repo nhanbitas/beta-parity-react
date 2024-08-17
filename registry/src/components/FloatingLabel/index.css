@@ -8,6 +8,14 @@
   @apply z-foreground text-label-01 pointer-events-none absolute left-0 top-2 w-full transform truncate pl-[1.0625rem] text-left text-gray-400 transition-all;
 }
 
+.left-element-container ~ .floating-label:not(.active) {
+  @apply pl-10;
+}
+
+.left-element-container ~ .floating-label.active {
+  @apply pl-10;
+}
+
 .floating-label:not(.active) ~ .date-picker-calendar-button,
 .floating-label:not(.active) ~ .password-input-eye-button,
 .floating-label:not(.active) ~ .number-input-unit {

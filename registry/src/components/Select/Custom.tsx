@@ -20,6 +20,13 @@ import { useOutsideClick } from '../hooks/useOutsideClick';
 import useCombinedRefs from '../hooks/useCombinedRefs';
 import useKeyboard from '../hooks/useKeyboard';
 
+// TODO: Write docs for types
+
+// =========================
+// Custom select
+// =========================
+// Declare and export custom select type and custom select component
+
 export type SelecItemType = { value: string; label: string };
 
 export interface CustomSelectProps extends React.HTMLAttributes<HTMLDivElement>, MenuProps {
@@ -31,6 +38,7 @@ export interface CustomSelectProps extends React.HTMLAttributes<HTMLDivElement>,
   deselectable?: boolean;
   isStatic?: boolean;
   floatingLabel?: React.ReactNode;
+  leftIcon?: React.ReactNode;
   value?: string | string[];
   selectedIcon?: React.ReactNode;
   countDescription?: string;
@@ -45,12 +53,14 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
       options,
       children,
       className,
+      style,
       disabled = false,
       multiSelect = false,
       filterable = false,
       clearButton = false,
-      deselectable = false,
+      deselectable = true,
       isStatic = false,
+      leftIcon,
       placeHolder = 'Please choose an option',
       countDescription = 'item(s) selected',
       selectedIcon,
@@ -154,6 +164,11 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
         {ArrowBtn}
       </>
     );
+    const LeftInputActions = (
+      <button disabled={disabled} onClick={() => setIsSelectOpen(!isSelectOpen)}>
+        {leftIcon}
+      </button>
+    );
 
     const [isShowingChips, setIsShowingChips] = React.useState(
       multiSelect && Array.isArray(currentValue) && currentValue.length > 0
@@ -202,7 +217,12 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
     };
 
     return (
-      <InputWrapper className={addedClassname} rightElement={RightInputActions} ref={mergedRef}>
+      <InputWrapper
+        className={addedClassname}
+        leftElement={!!leftIcon ? LeftInputActions : null}
+        rightElement={RightInputActions}
+        ref={mergedRef}
+      >
         {floatingLabel && <ContainedLabel isActive={isSelectOpen || !isValueEmpty}>{floatingLabel}</ContainedLabel>}
 
         <ValueInputWrapper
@@ -249,7 +269,7 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
           isOpen={isSelectOpen}
           data-select-value={currentValue}
           {...props}
-          style={{ width: rect?.width, ...props.style }}
+          style={{ width: rect?.width, ...style }}
           searchable={filterable}
         >
           {options && options.length > 0
@@ -278,6 +298,11 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
 
 CustomSelect.displayName = 'CustomSelect';
 
+// =========================
+// Select item
+// =========================
+// Declare and export select item type and select item component
+
 export interface SelectItemProps extends MenuItemProps {}
 
 export const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>((props, ref) => {
@@ -285,6 +310,11 @@ export const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>((pro
 });
 
 SelectItem.displayName = 'SelectItem';
+
+// =========================
+// Select group
+// =========================
+// Declare and export select group type and select group component
 
 export interface SelectGroupProps extends MenuGroupProps {}
 
@@ -294,6 +324,11 @@ export const SelectGroup = React.forwardRef<HTMLDivElement, SelectGroupProps>((p
 
 SelectGroup.displayName = 'SelectGroup';
 
+// =========================
+// Select divider
+// =========================
+// Declare and export select divider type and select divider component
+
 export interface SelectDividerProps extends MenuDividerProps {}
 
 export const SelectDivider = React.forwardRef<HTMLDivElement, SelectDividerProps>((props, ref) => {
@@ -301,6 +336,11 @@ export const SelectDivider = React.forwardRef<HTMLDivElement, SelectDividerProps
 });
 
 SelectDivider.displayName = 'SelectDivider';
+
+// =========================
+// Select utils
+// =========================
+// Declare utils for select and children of select component
 
 const getSelectItems = (children: React.ReactNode): SelecItemType[] => {
   let returnValue: SelecItemType[] = [];
