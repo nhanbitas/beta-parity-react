@@ -60,6 +60,7 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
       onChange,
       onFocus,
       onBlur,
+      onKeyUp,
       value,
       ...props
     },
@@ -202,7 +203,7 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
     const keyUpHandler = useKeyboard('Enter', (e: any) => {
       if (disabled) return;
       setIsSelectOpen(!isSelectOpen);
-      props.onKeyUp && props.onKeyUp(e as React.KeyboardEvent<HTMLDivElement>);
+      onKeyUp?.(e as React.KeyboardEvent<HTMLDivElement>);
     });
 
     const keyEventHandlers = {

@@ -1,0 +1,93 @@
+@import '../global.css';
+
+/* base */
+.switch {
+  @apply relative box-content inline-flex shrink-0 cursor-pointer items-center rounded-full transition-colors duration-300;
+}
+
+.switch .switch-slider {
+  @apply absolute flex items-center justify-center rounded-full bg-white transition-transform duration-300;
+}
+
+.switch:active .switch-slider,
+.switch:hover .switch-slider {
+  box-shadow: 0px 0px 1px 8px rgba(229, 231, 235, 0.2);
+}
+
+.switch .switch-slider .switch-icon {
+  @apply text-gray-500;
+}
+
+/* color */
+.switch[aria-checked='true'] {
+  @apply border border-green-200 bg-green-500;
+}
+
+.switch[aria-checked='true'] .switch-slider .switch-icon {
+  @apply text-green-500;
+}
+
+.switch[aria-checked='false'] {
+  @apply border border-gray-300 bg-gray-200;
+}
+
+/* sizes */
+.switch.small {
+  @apply h-6 w-10;
+}
+
+.switch.small .switch-slider {
+  @apply h-5 w-5;
+}
+
+.switch.small .switch-slider .switch-icon {
+  @apply h-4 w-4;
+}
+
+.switch.small[aria-checked='true'] .switch-slider {
+  @apply translate-x-[1.125rem]; /* sliderWidth - switchPadding */
+}
+
+.switch.small[aria-checked='false'] .switch-slider {
+  @apply translate-x-0.5;
+}
+
+.switch.medium {
+  @apply h-8 w-14;
+}
+
+.switch.medium .switch-slider {
+  @apply h-7  w-7;
+}
+
+.switch.medium .switch-slider .switch-icon {
+  @apply h-5 w-5;
+}
+
+.switch.medium[aria-checked='true'] .switch-slider {
+  @apply translate-x-[1.625rem];
+}
+
+.switch.medium[aria-checked='false'] .switch-slider {
+  @apply translate-x-0.5;
+}
+
+.switch.large {
+  @apply h-10 w-[4.5rem];
+}
+
+.switch.large .switch-slider {
+  @apply h-9 w-9;
+}
+
+.switch.large .switch-slider .switch-icon {
+  @apply h-6 w-6;
+}
+
+.switch.large[aria-checked='true'] .switch-slider {
+  @apply translate-x-[2.125rem];
+}
+
+.switch.large[aria-checked='false'] .switch-slider {
+  @apply translate-x-0.5;
+}
