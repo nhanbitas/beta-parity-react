@@ -58,7 +58,7 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
  *
  * @see http://localhost:3005/input
  */
-const Input = React.forwardRef<HTMLInputElement, InputProps>(
+export const Input = React.forwardRef<HTMLInputElement, InputProps>(
   (
     {
       className,
@@ -115,7 +115,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       setCurrentValue(value || '');
     }, [value]);
 
-    const addedClassname = isClearable && ActionBtn ? 'with-actions' : isClearable || ActionBtn ? 'with-action' : '';
+    const addedClassname = isClearable && ActionBtn ? 'input-actions' : isClearable || ActionBtn ? 'input-action' : '';
 
     const isHasRightInputAction = isClearable || ActionBtn;
 
@@ -141,7 +141,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           type={type}
           className={classNames(
             'input',
-            { 'error-state': isError, 'success-state': isSuccess, 'no-value': !currentValue },
+            { 'error-state': isError, 'success-state': isSuccess, 'non-value': !currentValue },
             className
           )}
           ref={combinedRef}
@@ -193,4 +193,14 @@ export const InputWrapper = createPolymorphicComponent<'div', InputWrapperProps>
 
 InputWrapper.displayName = 'InputWrapper';
 
-export { Input };
+export interface ValueInputWrapperProps extends React.HTMLAttributes<HTMLDivElement> {}
+
+export const ValueInputWrapper = React.forwardRef<HTMLDivElement, ValueInputWrapperProps>(
+  ({ children, className, ...props }, ref) => (
+    <div className={classNames('value-input-wrapper', className)} {...props} ref={ref}>
+      {children}
+    </div>
+  )
+);
+
+ValueInputWrapper.displayName = 'ValueInputWrapper';

@@ -9,7 +9,7 @@ export interface PortalProps {
 }
 export const Portal = React.forwardRef<HTMLDivElement, PortalProps>(
   ({ className, children, target, ...props }, ref) => {
-    const [container, setContainer] = React.useState<HTMLElement | null>(null);
+    const containerRef = React.useRef<HTMLElement | null>(null);
 
     React.useEffect(() => {
       const div = document.createElement('div');
@@ -21,7 +21,7 @@ export const Portal = React.forwardRef<HTMLDivElement, PortalProps>(
         document.body.appendChild(div);
       }
 
-      setContainer(div);
+      containerRef.current = div;
 
       return () => {
         if (target) {
@@ -30,11 +30,11 @@ export const Portal = React.forwardRef<HTMLDivElement, PortalProps>(
           document.body.removeChild(div);
         }
       };
-    }, []);
+    }, [target]);
 
-    if (!container) return null;
+    if (!containerRef.current) return null;
 
-    return ReactDOM.createPortal(children, container);
+    return ReactDOM.createPortal(children, containerRef.current);
   }
 );
 

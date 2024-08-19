@@ -37,7 +37,7 @@ export const DatePicker = React.forwardRef<
     </button>
   );
 
-  const addedClassname = RightBtn && 'with-action';
+  const addedClassname = RightBtn && 'input-action';
 
   const handleFocus = (e: any) => {
     setIsFocused(true);

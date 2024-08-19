@@ -60,79 +60,45 @@ input[type='search'].rounded-md {
 
 /* Set default input font size to 1rem */
 input,
-select,
+.value-input-wrapper,
 textarea {
   font-size: 1rem;
 }
 
 /* Set default input outline offset and border-radius when focused to 0 */
 input:focus,
-select:focus,
 textarea:focus {
   outline-offset: 0;
   border-radius: 0.375rem;
 }
 
 input.error-state,
-select.error-state,
 textarea.error-state {
   border: 0.125rem solid #d62e42;
   outline-color: #d62e42;
 }
 
 input.error-state:focus,
-select.error-state:focus,
 textarea.error-state:focus {
   border: 0.125rem solid #d62e42;
   outline-color: #d62e42;
 }
 
 input.success-state,
-select.success-state,
 textarea.success-state {
   border: 0.125rem solid #39ac56;
   outline-color: #39ac56;
 }
 
 input.success-state:focus,
-select.success-state:focus,
 textarea.success-state:focus {
   border: 0.125rem solid #39ac56;
   outline-color: #39ac56;
 }
 
 input:disabled,
-select:disabled,
 textarea:disabled {
   @apply bg-gray-100 text-gray-100;
-}
-
-select {
-  appearance: none;
-  background-color: white;
-  border: none;
-  padding: 0 2.5rem 0 1rem;
-  border-radius: 0.375rem;
-  text-overflow: ellipsis;
-  margin: 0;
-  width: 100%;
-  height: 2.5rem;
-  font-family: inherit;
-  font-size: inherit;
-  cursor: pointer;
-  line-height: inherit;
-}
-
-option {
-  color: black;
-}
-
-select:disabled,
-option:disabled {
-  background-color: #f4f4f4;
-  color: #f4f4f4;
-  pointer-events: none;
-  user-select: none;
 }
 
 fieldset:disabled {
@@ -140,20 +106,26 @@ fieldset:disabled {
 }
 
 input,
-select,
+.value-input-wrapper,
 textarea {
   @apply text-body-compact-02 h-10 w-full text-ellipsis rounded-md border border-gray-200 bg-white px-4;
+}
+
+.value-input-wrapper {
+  @apply cursor-pointer;
 }
 
 .input-wrapper {
   @apply relative h-min w-full rounded-md;
 }
 
-.with-action input {
+.input-action .value-input-wrapper,
+.input-action input {
   @apply pl-4 pr-10;
 }
 
-.with-actions input {
+.input-actions .value-input-wrapper,
+.input-actions input {
   @apply pl-4 pr-20;
 }
 
@@ -165,6 +137,7 @@ textarea {
   @apply absolute bottom-0 left-0 flex h-full items-center;
 }
 
+.left-element-container ~ .value-input-wrapper,
 .left-element-container ~ input {
   @apply pl-10;
 }
@@ -173,6 +146,7 @@ textarea {
 .left-element-container > * {
   @apply m-3 flex items-center justify-center rounded-full  text-gray-500 transition-colors;
 }
+
 .right-element-container > *:hover,
 .left-element-container > *:hover {
   @apply bg-gray-100 text-gray-600;
