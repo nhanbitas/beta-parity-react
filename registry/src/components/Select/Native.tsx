@@ -122,8 +122,8 @@ NativeSelect.displayName = 'NativeSelect';
 // Declare and export native option type and native option component
 
 export interface NativeOptionProps extends React.OptionHTMLAttributes<HTMLOptionElement> {
-  value: string;
-  label: string;
+  value?: string;
+  label?: string;
 }
 
 export const NativeOption = React.forwardRef<HTMLOptionElement, NativeOptionProps>(

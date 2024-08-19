@@ -3,22 +3,14 @@ import classNames from 'classnames';
 import './index.css';
 import { InputWrapper, ValueInputWrapper } from '../Input';
 import { ChevronDown, X } from 'lucide-react';
-import {
-  Menu,
-  MenuDivider,
-  MenuDividerProps,
-  MenuGroup,
-  MenuGroupProps,
-  MenuItem,
-  MenuItemProps,
-  MenuProps
-} from '../Menu';
+import { Menu, MenuDivider, MenuDividerProps, MenuGroup, MenuGroupProps, MenuItem, MenuProps } from '../Menu';
 import { ContainedLabel } from '../FloatingLabel';
 import { Chip } from '../Chip';
 import { useResizeObserver } from '../hooks/useObserver';
 import { useOutsideClick } from '../hooks/useOutsideClick';
 import useCombinedRefs from '../hooks/useCombinedRefs';
 import useKeyboard from '../hooks/useKeyboard';
+import { NativeOption } from './Native';
 
 // TODO: Write docs for types
 
@@ -27,11 +19,11 @@ import useKeyboard from '../hooks/useKeyboard';
 // =========================
 // Declare and export custom select type and custom select component
 
-export type SelecItemType = { value: string; label: string };
+export type SelecItemType = { value: string; label: string; disabled?: boolean };
 
 export interface CustomSelectProps extends React.HTMLAttributes<HTMLDivElement>, MenuProps {
   options?: SelecItemType[];
-  multiSelect?: boolean;
+  multiselect?: boolean;
   filterable?: boolean;
   placeHolder?: string;
   clearButton?: boolean;
@@ -55,7 +47,7 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
       className,
       style,
       disabled = false,
-      multiSelect = false,
+      multiselect = false,
       filterable = false,
       clearButton = false,
       deselectable = true,
@@ -73,7 +65,7 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
     },
     ref
   ) => {
-    const [currentValue, setCurrentValue] = React.useState<string | string[]>(value || multiSelect ? [] : '');
+    const [currentValue, setCurrentValue] = React.useState<string | string[]>(value || multiselect ? [] : '');
     const [isSelectOpen, setIsSelectOpen] = React.useState(false);
     const [menu, setMenu] = React.useState<HTMLDivElement | null>(null);
     const [wrapperRef, rect] = useResizeObserver();
@@ -86,7 +78,7 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
     const handleClick = (value: string, isRemove?: boolean) => {
       if (disabled) return;
       let changedValue: string | string[];
-      if (multiSelect) {
+      if (multiselect) {
         isRemove || (currentValue.includes(value) && deselectable)
           ? (changedValue = (currentValue as string[]).filter((val) => val !== value))
           : (changedValue = Array.from(new Set([...(currentValue as string[]), value])));
@@ -94,8 +86,8 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
         changedValue = value;
       }
 
-      setCurrentValue(multiSelect && !value ? [] : changedValue);
-      onChange?.(multiSelect && !value ? [] : changedValue);
+      setCurrentValue(multiselect && !value ? [] : changedValue);
+      onChange?.(multiselect && !value ? [] : changedValue);
 
       if (!isStatic) {
         setIsSelectOpen(false);
@@ -104,8 +96,8 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
     };
 
     const handleClear = () => {
-      setCurrentValue(multiSelect ? [] : '');
-      onChange?.(multiSelect ? [] : '');
+      setCurrentValue(multiselect ? [] : '');
+      onChange?.(multiselect ? [] : '');
     };
 
     const handleFocus = (e: any) => {
@@ -129,8 +121,9 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
             key={child.props.value}
             value={child.props.value}
             label={child.props.label}
-            useInput
             checked={isChecked}
+            useInput={false}
+            multiselect={multiselect}
             onChange={(e: any) => handleClick(e.target.value)}
             icon={selectedIcon}
           />
@@ -171,7 +164,7 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
     );
 
     const [isShowingChips, setIsShowingChips] = React.useState(
-      multiSelect && Array.isArray(currentValue) && currentValue.length > 0
+      multiselect && Array.isArray(currentValue) && currentValue.length > 0
     );
 
     React.useLayoutEffect(() => {
@@ -191,8 +184,8 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
     ]);
 
     React.useEffect(() => {
-      setCurrentValue(value || multiSelect ? [] : '');
-    }, [value]);
+      setCurrentValue(value || multiselect ? [] : '');
+    }, [value, multiselect]);
 
     const accessibilityWrapperProps = {
       role: 'combobox',
@@ -237,7 +230,7 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
           )}
 
           <div className='select-container' ref={selectContainerRef}>
-            {multiSelect && Array.isArray(currentValue) && currentValue.length
+            {multiselect && Array.isArray(currentValue) && currentValue.length
               ? currentValue.map(
                   (item) =>
                     !!item && (
@@ -258,11 +251,11 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
           <span className='select-label'>
             {isValueEmpty
               ? placeHolder
-              : !multiSelect && renderedOptions.filter((item) => item.value === currentValue)[0].label}
+              : !multiselect && renderedOptions.filter((item) => item.value === currentValue)[0].label}
           </span>
         </ValueInputWrapper>
 
-        <Menu
+        <SelectMenu
           ref={setMenu}
           className={classNames('custom-select', className, { 'non-value': isValueEmpty })}
           anchor={wrapperRef.current as unknown as HTMLElement}
@@ -282,15 +275,16 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
                     key={value}
                     value={value}
                     label={label}
-                    useInput
                     checked={isChecked}
+                    useInput={false}
+                    multiselect={multiselect}
                     onChange={(e: any) => handleClick(e.target.value)}
                     icon={selectedIcon}
                   />
                 );
               })
             : React.Children.map(children, cloneWithProps)}
-        </Menu>
+        </SelectMenu>
       </InputWrapper>
     );
   }
@@ -299,14 +293,30 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
 CustomSelect.displayName = 'CustomSelect';
 
 // =========================
+// Select menu
+// =========================
+// Declare and export select menu type and select menu component
+
+export interface SelectMenuProps extends MenuProps {}
+
+export const SelectMenu = React.forwardRef<HTMLDivElement, SelectMenuProps>((props, ref) => {
+  return <Menu {...props} ref={ref} />;
+});
+
+SelectMenu.displayName = 'SelectMenu';
+
+// =========================
 // Select item
 // =========================
 // Declare and export select item type and select item component
 
-export interface SelectItemProps extends MenuItemProps {}
+type SelectItemProps = React.ComponentProps<typeof MenuItem> &
+  React.ComponentProps<typeof NativeOption> & { type?: 'input' | 'native' };
 
-export const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>((props, ref) => {
-  return <MenuItem {...props} ref={ref} />;
+export const SelectItem = React.forwardRef<HTMLDivElement | HTMLOptionElement, SelectItemProps>((props, ref: any) => {
+  const { type, ...rest } = props;
+  let Component = type === 'input' ? MenuItem : NativeOption;
+  return <Component {...rest} ref={ref} />;
 });
 
 SelectItem.displayName = 'SelectItem';

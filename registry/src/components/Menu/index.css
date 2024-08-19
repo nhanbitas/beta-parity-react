@@ -39,16 +39,19 @@
 }
 
 .menu-item-icon {
-  @apply inline-block h-4 w-4;
+  @apply inline-flex h-4 w-4 items-center justify-center;
 }
 
 .menu-item-label {
   @apply flex-auto truncate;
 }
 
+.menu-no-items {
+  @apply text-center text-gray-500;
+}
+
 .menu .menu-item[aria-checked='true'],
-.menu .checkbox-wrapper:has(input:checked),
-.menu .radio-wrapper:has(input:checked) {
+.menu .menu-item:has(input:checked) {
   @apply bg-gray-50 hover:bg-gray-100;
 }
 
@@ -120,7 +123,7 @@
 }
 
 .group-selection .selected-icon {
-  @apply absolute right-0 aspect-auto h-full w-fit items-center justify-center p-3;
+  @apply absolute right-0 flex aspect-auto h-full w-fit items-center justify-center p-3;
 }
 
 .menu-group:last-child .menu-item {

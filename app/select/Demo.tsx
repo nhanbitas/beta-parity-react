@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { CustomSelect, NativeSelect, SelectDivider, SelectItem, SelectGroup } from '@libComponents/Select';
+import { SelectDivider, SelectItem, SelectGroup, Select } from '@libComponents/Select';
 import { Car } from 'lucide-react';
 
 type Props = {};
@@ -21,32 +21,34 @@ const options = [
 export const DemoNativeSelect = (props: Props) => {
   return (
     <div className='not-prose flex flex-col gap-2'>
-      <NativeSelect disabled options={options} selectSize='sm' onChange={(e) => console.log(e.target.value)} />
-      <NativeSelect options={options} selectSize='md' onChange={(e) => console.log(e.target.value)} />
-      <NativeSelect options={options} selectSize='lg' onChange={(e) => console.log(e.target.value)} />
+      <Select native options={options} selectSize='sm' onChange={(e) => console.log(e.target.value)} />
+      <Select native options={options} selectSize='md' onChange={(e) => console.log(e.target.value)} />
+      <Select native disabled options={options} selectSize='lg' onChange={(e) => console.log(e.target.value)} />
 
-      <NativeSelect selectSize='lg' onChange={(e) => console.log(e.target.value)}>
-        <option value=''>Choose option</option>
-        <option value='1'>Option 1</option>
-        <option value='2' disabled>
+      <Select native selectSize='lg' onChange={(e) => console.log(e.target.value)}>
+        <SelectItem value=''>Choose option</SelectItem>
+        <SelectItem value='1'>Option 1</SelectItem>
+        <SelectItem value='2' disabled>
           Option 2
-        </option>
-        <option value='3'>Option 3</option>
-        <option value='4'>Option 4</option>
-        <option value='5'>Option 5</option>
-      </NativeSelect>
+        </SelectItem>
+        <SelectItem value='3'>Option 3</SelectItem>
+        <SelectItem value='4'>Option 4</SelectItem>
+        <SelectItem value='5'>Option 5</SelectItem>
+      </Select>
     </div>
   );
 };
 
 export const DemoNativeSelectLabel = (props: Props) => {
-  return <NativeSelect options={options} onChange={(e) => console.log(e.target.value)} floatingLabel='Choose option' />;
+  return (
+    <Select native options={options} onChange={(e) => console.log(e.target.value)} floatingLabel='Choose option' />
+  );
 };
 
 export const DemoCustomSelect = (props: Props) => {
   return (
     <>
-      <CustomSelect
+      <Select
         onChange={(e) => console.log(e)}
         options={options}
         placeHolder='Choose option'
@@ -54,20 +56,14 @@ export const DemoCustomSelect = (props: Props) => {
         scrollIndicator
         leftIcon={<Car />}
       />
-      <CustomSelect
-        onChange={(e) => console.log(e)}
-        placeHolder='Choose option'
-        filterable
-        overflowLimit={5}
-        scrollIndicator
-      >
+      <Select onChange={(e) => console.log(e)} placeHolder='Choose option' filterable overflowLimit={5} scrollIndicator>
         <SelectItem value='' label='Choose option' />
         <SelectItem value='1' label='Option 1' />
         <SelectItem value='2' label='Option 2' />
         <SelectItem value='3' label='Option 3' />
-      </CustomSelect>
+      </Select>
 
-      <CustomSelect
+      <Select
         disabled
         onChange={(e) => console.log(e)}
         placeHolder='Choose option'
@@ -78,8 +74,8 @@ export const DemoCustomSelect = (props: Props) => {
         {options.map((option) => (
           <SelectItem key={option.value} value={option.value} label={option.label} />
         ))}
-      </CustomSelect>
-      <CustomSelect
+      </Select>
+      <Select
         onChange={(e) => console.log(e)}
         options={options}
         placeHolder='Choose option'
@@ -95,20 +91,20 @@ export const DemoCustomSelect = (props: Props) => {
 export const DemoCustomMutipleSelect = (props: Props) => {
   return (
     <>
-      <CustomSelect
+      <Select
         onChange={(e) => console.log(e)}
         options={options}
         placeHolder='Choose option'
-        multiSelect
+        multiselect
         filterable
         overflowLimit={5}
         scrollIndicator
       />
 
-      <CustomSelect
+      <Select
         onChange={(e) => console.log(e)}
         placeHolder='Choose option'
-        multiSelect
+        multiselect
         filterable
         overflowLimit={5}
         scrollIndicator
@@ -117,12 +113,12 @@ export const DemoCustomMutipleSelect = (props: Props) => {
         <SelectItem value='1' label='Option 1' />
         <SelectItem value='2' label='Option 2' />
         <SelectItem value='3' label='Option 3' />
-      </CustomSelect>
+      </Select>
 
-      <CustomSelect
+      <Select
         onChange={(e) => console.log(e)}
         placeHolder='Choose option'
-        multiSelect
+        multiselect
         filterable
         overflowLimit={5}
         scrollIndicator
@@ -130,17 +126,17 @@ export const DemoCustomMutipleSelect = (props: Props) => {
         {options.map((option) => (
           <SelectItem key={option.value} value={option.value} label={option.label} />
         ))}
-      </CustomSelect>
+      </Select>
 
-      <CustomSelect
+      <Select
         onChange={(e) => console.log(e)}
         placeHolder='Choose option'
-        multiSelect
+        multiselect
         filterable
         overflowLimit={5}
         scrollIndicator
       >
-        <SelectGroup groupValue='Group 1'>
+        <SelectGroup groupLabel='Group 1'>
           {options.map(
             (item) =>
               !!item.value && (
@@ -149,14 +145,12 @@ export const DemoCustomMutipleSelect = (props: Props) => {
                   label={item.label + ' - 1'}
                   value={item.value + ' - 1'}
                   checkmarkSide='left'
-                  name='Group 1'
-                  useInput='checkbox'
                 />
               )
           )}
         </SelectGroup>
         <SelectDivider />
-        <SelectGroup groupValue='Group 2'>
+        <SelectGroup groupLabel='Group 2'>
           {options.map(
             (item: any) =>
               !!item.value && (
@@ -165,15 +159,13 @@ export const DemoCustomMutipleSelect = (props: Props) => {
                   label={item.label + ' - 2'}
                   value={item.value + ' - 2'}
                   checkmarkSide='left'
-                  name='Group 2'
-                  useInput='checkbox'
                 />
               )
           )}
         </SelectGroup>
-      </CustomSelect>
+      </Select>
 
-      <CustomSelect
+      <Select
         onChange={(e) => console.log(e)}
         options={options}
         placeHolder='Choose option'
@@ -181,10 +173,11 @@ export const DemoCustomMutipleSelect = (props: Props) => {
         countDescription='option(s) selected'
         overflowLimit={5}
         leftIcon={<Car />}
+        defaultSearch='1'
         isStatic
         deselectable
         scrollIndicator
-        multiSelect
+        multiselect
         filterable
         clearButton
       />

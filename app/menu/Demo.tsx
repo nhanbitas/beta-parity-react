@@ -2,23 +2,46 @@
 
 import React from 'react';
 import { Menu, MenuItem, MenuDivider, MenuGroup, MenuHeader, MenuFooter } from '@libComponents/Menu';
-import { CarFront, FlagTriangleRightIcon } from 'lucide-react';
+import { FlagTriangleRightIcon } from 'lucide-react';
 import { Chip } from '@libComponents/Chip';
 import { MenuTrigger } from '@libComponents/Menu';
+
+const searchItems = [
+  'Item 1',
+  'Item 2',
+  'Item 3',
+  'Item 4',
+  'Item 5',
+  'Item 6',
+  'Item 7',
+  'Item 8',
+  'Item 9',
+  'Item 10'
+] as const;
 
 type Props = {};
 
 export const DemoBasicMenu = (props: Props) => {
   const [isOpen, setIsOpen] = React.useState(false);
+  const [value, setValue] = React.useState('');
   const ref = React.useRef<any>(null);
-  const handleClick = (e: any) => {
-    setIsOpen(false);
-    window.alert(`clicked ${e}`);
+
+  const handleClick = (value: any) => {
+    setIsOpen(!isOpen);
+    setValue(value);
   };
 
   return (
     <>
-      <Chip ref={ref} label='Menu' type='dropdown' color='sky' isActive={isOpen} onClick={() => setIsOpen(!isOpen)} />
+      <Chip
+        ref={ref}
+        label={value || 'Menu'}
+        type='dropdown'
+        color='sky'
+        value={value}
+        isActive={isOpen}
+        onClick={() => setIsOpen(!isOpen)}
+      />
 
       <Menu
         anchor={ref.current}
@@ -33,14 +56,9 @@ export const DemoBasicMenu = (props: Props) => {
             <FlagTriangleRightIcon style={{ color: 'red' }} /> This is a header
           </div>
         </MenuHeader>
-        {[...Array(10)].map((_, i) => (
-          <MenuItem
-            key={i}
-            onClick={() => {
-              handleClick(i);
-            }}
-          >
-            Action {i}
+        {searchItems.map((item) => (
+          <MenuItem key={item} onClick={() => handleClick(item)} checked={value === item}>
+            {item}
           </MenuItem>
         ))}
         <MenuFooter>
@@ -52,19 +70,6 @@ export const DemoBasicMenu = (props: Props) => {
     </>
   );
 };
-
-const searchItems = [
-  'Item 1',
-  'Item 2',
-  'Item 3',
-  'Item 4',
-  'Item 5',
-  'Item 6',
-  'Item 7',
-  'Item 8',
-  'Item 9',
-  'Item 10'
-] as const;
 
 export const DemoScrollableMenu = (props: Props) => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -88,7 +93,6 @@ export const DemoScrollableMenu = (props: Props) => {
         >
           {searchItems.map((item) => (
             <MenuItem
-              useInput
               onClick={() => setIsOpen(false)}
               onChange={(e: any) => console.log(e)}
               key={item}
@@ -118,7 +122,8 @@ export const DemoScrollableMenu = (props: Props) => {
               key={item}
               label={item}
               value={item}
-              useInput='checkbox'
+              useInput
+              multiselect
             />
           ))}
         </Menu>
@@ -145,7 +150,7 @@ export const DemoScrollableMenu = (props: Props) => {
               label={item}
               value={item}
               name='radio-dropdown'
-              useInput='radio'
+              useInput
             />
           ))}
         </Menu>
@@ -174,15 +179,15 @@ export const DemoMenuGroup = (props: Props) => {
           searchable
           style={{ maxHeight: '300px' }}
         >
-          <MenuGroup groupValue='Group 1'>
+          <MenuGroup groupLabel='Group 1'>
             {searchItems.map((item) => (
-              <MenuItem useInput key={item} label={item} value={item} checkmarkSide='left' />
+              <MenuItem key={item} label={item} value={item} checkmarkSide='left' />
             ))}
           </MenuGroup>
           <MenuDivider />
-          <MenuGroup groupValue='Group 2'>
+          <MenuGroup groupLabel='Group 2'>
             {searchItems.map((item) => (
-              <MenuItem useInput key={item} label={item} value={item} checkmarkSide='right' />
+              <MenuItem key={item} label={item} value={item} checkmarkSide='right' />
             ))}
           </MenuGroup>
         </Menu>
@@ -201,15 +206,15 @@ export const DemoMenuGroup = (props: Props) => {
           scrollIndicator={true}
           searchable
         >
-          <MenuGroup groupValue='Group 1'>
+          <MenuGroup groupLabel='Group 1'>
             {searchItems.map((item) => (
-              <MenuItem key={item} label={item} value={item} name='Group 1' useInput='radio' />
+              <MenuItem key={item} label={item} value={item} name='Group 1' useInput />
             ))}
           </MenuGroup>
           <MenuDivider />
-          <MenuGroup groupValue='Group 2'>
+          <MenuGroup groupLabel='Group 2'>
             {searchItems.map((item) => (
-              <MenuItem key={item} label={item} value={item} name='Group 2' useInput='radio' />
+              <MenuItem key={item} label={item} value={item} name='Group 2' useInput />
             ))}
           </MenuGroup>
         </Menu>
@@ -228,15 +233,15 @@ export const DemoMenuGroup = (props: Props) => {
           scrollIndicator={true}
           searchable
         >
-          <MenuGroup groupValue='Group 1'>
+          <MenuGroup groupLabel='Group 1'>
             {searchItems.map((item) => (
-              <MenuItem key={item} label={item} value={item} name='Group 1' useInput='checkbox' />
+              <MenuItem key={item} label={item} value={item} name='Group 1' useInput multiselect />
             ))}
           </MenuGroup>
           <MenuDivider />
-          <MenuGroup groupValue='Group 2'>
+          <MenuGroup groupLabel='Group 2'>
             {searchItems.map((item) => (
-              <MenuItem key={item} label={item} value={item} name='Group 2' useInput='checkbox' />
+              <MenuItem key={item} label={item} value={item} name='Group 2' useInput multiselect />
             ))}
           </MenuGroup>
         </Menu>

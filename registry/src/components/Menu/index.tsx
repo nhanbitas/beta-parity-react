@@ -1,10 +1,10 @@
 import React from 'react';
 import classNames from 'classnames';
 import './index.css';
+import '../Checkbox/index.css';
+import '../Radio/index.css';
 import { Check, Search, ChevronUp, ChevronDown } from 'lucide-react';
 import { Input } from '../Input';
-import { Radio } from '../Radio';
-import { Checkbox } from '../Checkbox';
 import useKeyboard from '../hooks/useKeyboard';
 import useDidMountEffect from '../hooks/useDidMountEffect';
 import { autoUpdate, flip, offset, Placement, shift, useFloating } from '@floating-ui/react';
@@ -40,6 +40,7 @@ export interface MenuProps extends React.HTMLAttributes<HTMLDivElement> {
   searchable?: boolean;
   defaultSearch?: string;
   searchPlaceholder?: string;
+  noResultsText?: string;
   usePortal?: boolean;
   isOpen?: boolean;
   isLoading?: boolean;
@@ -58,6 +59,7 @@ export const Menu = React.forwardRef<HTMLDivElement, MenuProps>(
       size = 'md',
       position = 'bottom-start',
       defaultSearch = '',
+      noResultsText = 'No results found',
       className,
       children,
       anchor,
@@ -97,7 +99,7 @@ export const Menu = React.forwardRef<HTMLDivElement, MenuProps>(
           ? child.props.value && child.props.value.toLowerCase().includes(keyword.toLowerCase())
           : true;
 
-        if (isValidItem || (!child.props.value && !child.props.groupValue)) {
+        if (isValidItem || (!child.props.value && !child.props.groupLabel)) {
           return child;
         } else if (child.props.children) {
           const filteredChildren = filterChildren(child.props.children, keyword);
@@ -111,8 +113,8 @@ export const Menu = React.forwardRef<HTMLDivElement, MenuProps>(
       });
 
     React.useEffect(() => {
-      !isOpen && setKeyword('');
-    }, [isOpen]);
+      !isOpen && setKeyword(defaultSearch ? defaultSearch : '');
+    }, [isOpen, defaultSearch]);
 
     // ========================= Assign Variables For Component ========================= //
     const cloneChildren = filterChildren(children, keyword);
@@ -248,7 +250,7 @@ export const Menu = React.forwardRef<HTMLDivElement, MenuProps>(
               <MenuIndicator position='top' isActive={indicator.top} onClick={() => handleIndicatorClick('top')} />
             ) : null}
 
-            {cloneChildren}
+            {countMenuItems(cloneChildren) > 0 ? cloneChildren : <span className='menu-no-items'>{noResultsText}</span>}
 
             {isScrollable && isContainChildren && scrollIndicator ? (
               <MenuIndicator
@@ -279,12 +281,13 @@ export interface MenuItemProps extends Omit<React.HTMLAttributes<HTMLDivElement>
   isLoading?: boolean;
   disabled?: boolean;
   value?: string;
+  label?: string;
   checkmarkSide?: 'left' | 'right';
   checked?: boolean;
-  label?: string;
   icon?: React.ReactNode;
   name?: string;
-  useInput?: 'radio' | 'checkbox' | boolean;
+  multiselect?: boolean;
+  useInput?: boolean;
   onChange?:
     | (({ value, checked }: { value: string | number; checked: boolean }) => void)
     | ((e: React.ChangeEvent<HTMLInputElement>) => void);
@@ -302,6 +305,8 @@ export const MenuItem = React.forwardRef<HTMLDivElement, MenuItemProps>(
       value,
       icon,
       checked,
+      name,
+      multiselect = false,
       useInput = false,
       onClick,
       onChange,
@@ -315,7 +320,6 @@ export const MenuItem = React.forwardRef<HTMLDivElement, MenuItemProps>(
       if (disabled || isLoading) return;
       onClick && onClick(e as React.MouseEvent<HTMLDivElement>);
 
-      if (useInput === 'checkbox' || useInput === 'radio') return;
       checked == undefined && setCurrentSelected(!currentSelected);
       onChange && onChange({ target: { value: value || '' }, checked: !currentSelected } as any);
     };
@@ -333,11 +337,22 @@ export const MenuItem = React.forwardRef<HTMLDivElement, MenuItemProps>(
       role: 'menuitem',
       'aria-disabled': disabled,
       tabIndex: disabled ? -1 : 0,
-      'aria-checked': currentSelected
+      ...(!useInput && { 'aria-checked': currentSelected })
     };
 
     // reseting side check icon to right if it has icon
     const sideOfCheckIcon = checkmarkSide === 'right' || icon ? 'right' : 'left';
+    const CheckMarkInput = multiselect ? (
+      <input type='checkbox' checked={currentSelected} onChange={(e) => setCurrentSelected(e.target.checked)} />
+    ) : (
+      <input
+        type='radio'
+        name={name}
+        checked={currentSelected}
+        onChange={(e) => setCurrentSelected(e.target.checked)}
+      />
+    );
+    const visibleIcon = useInput ? CheckMarkInput : currentSelected && <Check />;
 
     useDidMountEffect(() => {
       if (checked !== undefined) {
@@ -345,68 +360,20 @@ export const MenuItem = React.forwardRef<HTMLDivElement, MenuItemProps>(
       }
     }, [checked]);
 
-    if (!!useInput) {
-      const { 'aria-checked': _, ...rest } = accessibilityProps;
-      switch (useInput) {
-        case 'radio':
-          return (
-            <Radio
-              label={label}
-              value={value}
-              checked={checked}
-              onClick={handleClick}
-              onChange={(e) => onChange && onChange(e as any)}
-              {...props}
-              radioWrapperProps={{ ...rest, ...keyEventHandlers }}
-            />
-          );
-
-        case 'checkbox':
-          return (
-            <Checkbox
-              label={label}
-              value={value}
-              checked={checked}
-              onClick={handleClick}
-              onChange={(e) => onChange && onChange(e as any)}
-              {...props}
-              checkboxWrapperProps={{ ...rest, ...keyEventHandlers }}
-            />
-          );
-
-        default:
-          return (
-            <div
-              className={classNames('menu-item', className)}
-              ref={ref}
-              onClick={handleClick}
-              {...props}
-              {...accessibilityProps}
-              {...keyEventHandlers}
-            >
-              {sideOfCheckIcon === 'left' || icon ? (
-                <span className='menu-item-icon'>{icon ? icon : currentSelected && <Check />}</span>
-              ) : null}
-
-              <span className='menu-item-label'>{label || children}</span>
-
-              {sideOfCheckIcon === 'right' && <span className='menu-item-icon'>{currentSelected && <Check />}</span>}
-            </div>
-          );
-      }
-    }
-
     return (
       <div
         className={classNames('menu-item', className)}
         ref={ref}
-        onClick={(e) => onClick && onClick(e as any)}
+        onClick={handleClick}
         {...props}
         {...accessibilityProps}
         {...keyEventHandlers}
       >
-        {icon ? <span className='menu-item-icon'>{icon}</span> : null}
+        {sideOfCheckIcon === 'left' || icon ? <span className='menu-item-icon'>{icon || visibleIcon}</span> : null}
+
         <span className='menu-item-label'>{label || children}</span>
+
+        {sideOfCheckIcon === 'right' && <span className='menu-item-icon'>{visibleIcon}</span>}
       </div>
     );
   }
@@ -535,15 +502,15 @@ MenuDivider.displayName = 'MenuDivider';
 // Declare and export menu group type and menu group component
 
 export interface MenuGroupProps extends React.HTMLAttributes<HTMLDivElement> {
-  groupValue: string;
+  groupLabel: string;
 }
 
 export const MenuGroup = React.forwardRef<HTMLDivElement, MenuGroupProps>(
-  ({ className, children, groupValue, ...props }, ref) => {
+  ({ className, children, groupLabel, ...props }, ref) => {
     return (
       <>
-        <div className={classNames('menu-group-label', className)} data-value={groupValue} ref={ref} {...props}>
-          {groupValue}
+        <div className={classNames('menu-group-label', className)} data-value={groupLabel} ref={ref} {...props}>
+          {groupLabel}
         </div>
         {children}
       </>
@@ -560,4 +527,15 @@ MenuGroup.displayName = 'MenuGroup';
 
 const getComponent = (children: React.ReactNode, component: string | React.ComponentType) => {
   return React.Children.toArray(children).find((child) => React.isValidElement(child) && child.type === component);
+};
+
+const countMenuItems = (children: React.ReactNode): number => {
+  return React.Children.toArray(children).reduce((count: number, child: React.ReactNode) => {
+    if (React.isValidElement(child)) {
+      const isMenuItem = child.type === MenuItem && child.props.value !== '' ? 1 : 0;
+      const nestedCount = countMenuItems(child.props.children);
+      return count + isMenuItem + nestedCount;
+    }
+    return count;
+  }, 0);
 };
