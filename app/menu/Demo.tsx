@@ -118,7 +118,7 @@ export const DemoScrollableMenu = (props: Props) => {
           {searchItems.map((item) => (
             <MenuItem
               onClick={() => setIsOpenCheckbox(false)}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => console.log(e.target.value)}
+              onChange={(e: any) => console.log(e)}
               key={item}
               label={item}
               value={item}
@@ -145,10 +145,11 @@ export const DemoScrollableMenu = (props: Props) => {
           {searchItems.map((item) => (
             <MenuItem
               onClick={() => setIsOpenRadio(false)}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => console.log(e.target.value)}
+              // onChange={(e: React.ChangeEvent<HTMLInputElement>) => console.log(e.target.value)}
               key={item}
               label={item}
               value={item}
+              onChange={(e: any) => console.log(e)}
               name='radio-dropdown'
               useInput
             />
@@ -208,13 +209,13 @@ export const DemoMenuGroup = (props: Props) => {
         >
           <MenuGroup groupLabel='Group 1'>
             {searchItems.map((item) => (
-              <MenuItem key={item} label={item} value={item} name='Group 1' useInput />
+              <MenuItem key={item} label={item} value={item} name='Group 1' useInput multiselect />
             ))}
           </MenuGroup>
           <MenuDivider />
           <MenuGroup groupLabel='Group 2'>
             {searchItems.map((item) => (
-              <MenuItem key={item} label={item} value={item} name='Group 2' useInput />
+              <MenuItem key={item} label={item} value={item} name='Group 2' useInput multiselect />
             ))}
           </MenuGroup>
         </Menu>
@@ -235,13 +236,13 @@ export const DemoMenuGroup = (props: Props) => {
         >
           <MenuGroup groupLabel='Group 1'>
             {searchItems.map((item) => (
-              <MenuItem key={item} label={item} value={item} name='Group 1' useInput multiselect />
+              <MenuItem key={item} label={item} value={item} name='Group 1' useInput />
             ))}
           </MenuGroup>
           <MenuDivider />
           <MenuGroup groupLabel='Group 2'>
             {searchItems.map((item) => (
-              <MenuItem key={item} label={item} value={item} name='Group 2' useInput multiselect />
+              <MenuItem key={item} label={item} value={item} name='Group 2' useInput />
             ))}
           </MenuGroup>
         </Menu>

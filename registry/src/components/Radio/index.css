@@ -3,7 +3,7 @@ input[type='radio'] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border-radius: 50%;
+  border-radius: 50% !important;
   width: 1rem;
   height: 1rem;
   padding: 0;

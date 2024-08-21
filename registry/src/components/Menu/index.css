@@ -28,7 +28,7 @@
 }
 
 .menu .menu-items {
-  @apply flex flex-col gap-1 overflow-y-auto rounded-md p-1;
+  @apply flex select-none flex-col gap-1 overflow-y-auto rounded-md p-1;
   scrollbar-width: none;
 }
 
@@ -48,6 +48,10 @@
 
 .menu-no-items {
   @apply text-center text-gray-500;
+}
+
+.menu .menu-item .menu-item-icon input {
+  @apply pointer-events-none select-none;
 }
 
 .menu .menu-item[aria-checked='true'],

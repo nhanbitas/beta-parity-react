@@ -75,12 +75,12 @@ export const NativeSelect = React.forwardRef<HTMLSelectElement, NativeSelectProp
 
     if ((options && options.length > 0) || children) {
       const ArrowBtn = (
-        <button
+        <span
           className={classNames('arrow-select-btn', { open: isSelectOpen })}
           onClick={() => mergedRef.current?.focus()}
         >
           <ChevronDown />
-        </button>
+        </span>
       );
 
       return (

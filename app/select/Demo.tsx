@@ -174,8 +174,8 @@ export const DemoCustomMutipleSelect = (props: Props) => {
         overflowLimit={5}
         leftIcon={<Car />}
         defaultSearch='1'
-        isStatic
-        deselectable
+        keepOpen
+        deselectable={false}
         scrollIndicator
         multiselect
         filterable

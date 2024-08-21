@@ -240,6 +240,7 @@ export const Menu = React.forwardRef<HTMLDivElement, MenuProps>(
 
           <div
             className='menu-items'
+            tabIndex={-1}
             ref={itemsRef}
             style={{
               overflow: isScrollable ? 'auto' : 'hidden',
@@ -275,7 +276,7 @@ Menu.displayName = 'Menu';
 // =========================
 // Declare and export menu item type and menu item component
 
-export interface MenuItemProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
+export interface MenuItemProps extends Omit<React.HTMLAttributes<HTMLDivElement | HTMLLabelElement>, 'onChange'> {
   className?: string;
   children?: React.ReactNode;
   isLoading?: boolean;
@@ -287,13 +288,14 @@ export interface MenuItemProps extends Omit<React.HTMLAttributes<HTMLDivElement>
   icon?: React.ReactNode;
   name?: string;
   multiselect?: boolean;
+  deselectable?: boolean;
   useInput?: boolean;
   onChange?:
     | (({ value, checked }: { value: string | number; checked: boolean }) => void)
     | ((e: React.ChangeEvent<HTMLInputElement>) => void);
 }
 
-export const MenuItem = React.forwardRef<HTMLDivElement, MenuItemProps>(
+export const MenuItem = React.forwardRef<HTMLDivElement | HTMLLabelElement, MenuItemProps>(
   (
     {
       className,
@@ -307,26 +309,34 @@ export const MenuItem = React.forwardRef<HTMLDivElement, MenuItemProps>(
       checked,
       name,
       multiselect = false,
+      deselectable = true,
       useInput = false,
       onClick,
       onChange,
+      onKeyUp,
       ...props
     },
     ref
   ) => {
     const [currentSelected, setCurrentSelected] = React.useState(checked || false);
 
-    const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent> | React.KeyboardEvent) => {
+    const handleClick = (e: React.MouseEvent<HTMLDivElement | HTMLLabelElement, MouseEvent> | React.KeyboardEvent) => {
       if (disabled || isLoading) return;
-      onClick && onClick(e as React.MouseEvent<HTMLDivElement>);
+      onClick && onClick(e as any);
+      if (!!useInput) return;
+      const newSelected = deselectable || multiselect ? !currentSelected : true;
+      checked == undefined && setCurrentSelected(newSelected);
+      onChange?.({ target: { value: value || '' }, checked: newSelected } as any);
+    };
 
-      checked == undefined && setCurrentSelected(!currentSelected);
-      onChange && onChange({ target: { value: value || '' }, checked: !currentSelected } as any);
+    const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setCurrentSelected(e.target.checked);
+      onChange?.({ target: { value: value || '' }, checked: e.target.checked } as any);
     };
 
     const keyUpHandler = useKeyboard('Enter', (e: any) => {
-      e.target && e.target.click();
-      props.onKeyUp && props.onKeyUp(e as React.KeyboardEvent<HTMLDivElement>);
+      e.target?.click();
+      onKeyUp?.(e);
     });
 
     const keyEventHandlers = {
@@ -342,15 +352,11 @@ export const MenuItem = React.forwardRef<HTMLDivElement, MenuItemProps>(
 
     // reseting side check icon to right if it has icon
     const sideOfCheckIcon = checkmarkSide === 'right' || icon ? 'right' : 'left';
+    const Component = useInput ? 'label' : 'div';
     const CheckMarkInput = multiselect ? (
-      <input type='checkbox' checked={currentSelected} onChange={(e) => setCurrentSelected(e.target.checked)} />
+      <input tabIndex={-1} type='checkbox' onChange={handleChangeInput} />
     ) : (
-      <input
-        type='radio'
-        name={name}
-        checked={currentSelected}
-        onChange={(e) => setCurrentSelected(e.target.checked)}
-      />
+      <input tabIndex={-1} type='radio' name={name} onChange={handleChangeInput} />
     );
     const visibleIcon = useInput ? CheckMarkInput : currentSelected && <Check />;
 
@@ -361,9 +367,9 @@ export const MenuItem = React.forwardRef<HTMLDivElement, MenuItemProps>(
     }, [checked]);
 
     return (
-      <div
+      <Component
         className={classNames('menu-item', className)}
-        ref={ref}
+        ref={ref as any}
         onClick={handleClick}
         {...props}
         {...accessibilityProps}
@@ -374,7 +380,7 @@ export const MenuItem = React.forwardRef<HTMLDivElement, MenuItemProps>(
         <span className='menu-item-label'>{label || children}</span>
 
         {sideOfCheckIcon === 'right' && <span className='menu-item-icon'>{visibleIcon}</span>}
-      </div>
+      </Component>
     );
   }
 );
@@ -449,7 +455,7 @@ MenuFooter.displayName = 'MenuFooter';
 // =========================
 // Declare and export menu indicator type and menu indicator component
 
-export interface MenuIndicatorProps extends React.HTMLAttributes<HTMLSpanElement> {
+export interface MenuIndicatorProps extends React.HTMLAttributes<HTMLButtonElement> {
   position: 'top' | 'bottom';
   isActive: boolean;
   onClick: () => void;
@@ -457,8 +463,8 @@ export interface MenuIndicatorProps extends React.HTMLAttributes<HTMLSpanElement
   disabled?: boolean;
 }
 
-export const MenuIndicator = React.forwardRef<HTMLSpanElement, MenuIndicatorProps>(
-  ({ className, position, isActive, ...props }, ref) => {
+export const MenuIndicator = React.forwardRef<HTMLButtonElement, MenuIndicatorProps>(
+  ({ className, position, isActive, onClick, ...props }, ref) => {
     if (!isActive) return null;
     return (
       <span
@@ -469,7 +475,7 @@ export const MenuIndicator = React.forwardRef<HTMLSpanElement, MenuIndicatorProp
         ref={ref}
         {...props}
       >
-        {position === 'top' ? <ChevronUp /> : <ChevronDown />}
+        <button onClick={onClick}>{position === 'top' ? <ChevronUp /> : <ChevronDown />}</button>
       </span>
     );
   }
