@@ -26,7 +26,7 @@ const SideBar = (props: Props) => {
               >
                 {component.name}{' '}
                 <span
-                  className={`text-label-01 ml-2 rounded-md p-0.5  ${component.status === 1 ? 'bg-violet-200/50 text-violet-800' : component.status === 2 ? 'bg-sky-200/50 text-sky-800' : 'bg-green-200/50 text-green-800'}`}
+                  className={`text-label-01 ml-2 rounded-md p-0.5  ${component.status === 1 ? 'bg-violet-200/50 text-violet-800' : component.status === 2 ? 'bg-cyan-200/50 text-cyan-800' : 'bg-green-200/50 text-green-800'}`}
                 >
                   {component.status === 1 ? 'next' : component.status === 2 ? 'current' : 'post-queue'}
                 </span>

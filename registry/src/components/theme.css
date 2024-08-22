@@ -55,7 +55,7 @@
 }
 
 .outlined.sky {
-  @apply border border-sky-200 bg-sky-50 text-sky-600;
+  @apply border-cyan-200 bg-cyan-50 text-cyan-600 border;
 }
 
 .filled {
@@ -87,5 +87,5 @@
 }
 
 .filled.sky {
-  @apply bg-sky-50 text-sky-600;
+  @apply bg-cyan-50 text-cyan-600;
 }
