@@ -1,3 +1,232 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer base {
+  :root {
+    --white: #ffffff;
+    --black: #000000;
+
+    --gray-25: #f7f7f7;
+    --gray-50: #f1f1f1;
+    --gray-100: #e3e3e3;
+    --gray-200: #cbcbcb;
+    --gray-300: #ababab;
+    --gray-400: #8a8a8a;
+    --gray-500: #767676;
+    --gray-550: #6b6b6b;
+    --gray-600: #5f5f5f;
+    --gray-700: #4a4a4a;
+    --gray-800: #393939;
+    --gray-900: #262626;
+    --gray-950: #161616;
+
+    --orange-25: #fef5f0;
+    --orange-50: #ffefe7;
+    --orange-100: #ffddcd;
+    --orange-200: #fdbc9e;
+    --orange-300: #f4915c;
+    --orange-400: #e2672b;
+    --orange-500: #d1450c;
+    --orange-550: #c23901;
+    --orange-600: #af3301;
+    --orange-700: #8d2800;
+    --orange-800: #6d2102;
+    --orange-900: #471700;
+    --orange-950: #251000;
+
+    --blue-25: #f3f8ff;
+    --blue-50: #ecf2ff;
+    --blue-100: #d4e5ff;
+    --blue-200: #accdff;
+    --blue-300: #73aeff;
+    --blue-400: #438bf2;
+    --blue-500: #0074e3;
+    --blue-550: #0069d1;
+    --blue-600: #0f5fc0;
+    --blue-700: #004b9d;
+    --blue-800: #013a7b;
+    --blue-900: #002555;
+    --blue-950: #001536;
+
+    --lime-25: #f2faec;
+    --lime-50: #e6f8da;
+    --lime-100: #ccedb5;
+    --lime-200: #a9d885;
+    --lime-300: #82ba50;
+    --lime-400: #609a21;
+    --lime-500: #48850d;
+    --lime-550: #47770a;
+    --lime-600: #426d13;
+    --lime-700: #365715;
+    --lime-800: #2c4417;
+    --lime-900: #1f2e13;
+    --lime-950: #13190e;
+
+    --violet-25: #f9f6fe;
+    --violet-50: #f5efff;
+    --violet-100: #ecdeff;
+    --violet-200: #d7c0fc;
+    --violet-300: #be99fd;
+    --violet-400: #9e73f4;
+    --violet-500: #8259f1;
+    --violet-550: #724aef;
+    --violet-600: #693ce5;
+    --violet-700: #512ac2;
+    --violet-800: #412291;
+    --violet-900: #2e185c;
+    --violet-950: #1b0f31;
+
+    --cyan-25: #f1f9fe;
+    --cyan-50: #e6f5ff;
+    --cyan-100: #c5e9ff;
+    --cyan-200: #93d2fa;
+    --cyan-300: #5ab4e9;
+    --cyan-400: #3692ca;
+    --cyan-500: #1b7eb0;
+    --cyan-550: #1d739c;
+    --cyan-600: #24688d;
+    --cyan-700: #22536f;
+    --cyan-800: #244051;
+    --cyan-900: #1a2a36;
+    --cyan-950: #0f171c;
+
+    --red-25: #fef5f3;
+    --red-50: #ffeeec;
+    --red-100: #fedbdb;
+    --red-200: #ffb8bb;
+    --red-300: #fe8889;
+    --red-400: #f15254;
+    --red-500: #db2d32;
+    --red-550: #cb1c2b;
+    --red-600: #bb142a;
+    --red-700: #960821;
+    --red-800: #750c1a;
+    --red-900: #4d030a;
+    --red-950: #2b0902;
+
+    --yellow-25: #f9f7f0;
+    --yellow-50: #fbf4cb;
+    --yellow-100: #f4e58f;
+    --yellow-200: #eac756;
+    --yellow-300: #d2a524;
+    --yellow-400: #bb8108;
+    --yellow-500: #9f6d00;
+    --yellow-550: #916300;
+    --yellow-600: #865800;
+    --yellow-700: #6c4712;
+    --yellow-800: #543715;
+    --yellow-900: #3a2815;
+    --yellow-950: #211607;
+
+    --green-25: #eefbef;
+    --green-50: #dffae0;
+    --green-100: #bcf0c3;
+    --green-200: #93db9f;
+    --green-300: #57bf6f;
+    --green-400: #219f58;
+    --green-500: #198844;
+    --green-550: #227a41;
+    --green-600: #216f41;
+    --green-700: #22592f;
+    --green-800: #1e452a;
+    --green-900: #152f1e;
+    --green-950: #0e1a12;
+  }
+
+  .primary {
+    --primary-border-color: var(--orange-500);
+    --primary-text-color: var(--orange-500);
+    --primary-bg-color: var(--orange-500);
+
+    --primary-hover-border-color: var(--orange-600);
+    --primary-hover-text-color: var(--orange-600);
+    --primary-hover-bg-color: var(--orange-600);
+
+    --primary-active-border-color: var(--orange-700);
+    --primary-active-text-color: var(--orange-700);
+    --primary-active-bg-color: var(--orange-700);
+  }
+
+  .neutral {
+    --neutral-border-color: var(--gray-700);
+    --neutral-text-color: var(--gray-500);
+    --neutral-bg-color: var(--gray-700);
+
+    --neutral-hover-border-color: var(--gray-800);
+    --neutral-hover-text-color: var(--gray-600);
+    --neutral-hover-bg-color: var(--gray-800);
+
+    --neutral-active-border-color: var(--gray-900);
+    --neutral-active-text-color: var(--gray-700);
+    --neutral-active-bg-color: var(--gray-900);
+  }
+
+  .danger {
+    --danger-border-color: var(--red-500);
+    --danger-text-color: var(--red-500);
+    --danger-bg-color: var(--red-500);
+
+    --danger-hover-border-color: var(--red-600);
+    --danger-hover-text-color: var(--red-600);
+    --danger-hover-bg-color: var(--red-600);
+
+    --danger-active-border-color: var(--red-700);
+    --danger-active-text-color: var(--red-700);
+    --danger-active-bg-color: var(--red-700);
+  }
+
+  .success {
+    --success-border-color: var(--green-500);
+    --success-text-color: var(--green-500);
+    --success-bg-color: var(--green-500);
+
+    --success-hover-border-color: var(--green-600);
+    --success-hover-text-color: var(--green-600);
+    --success-hover-bg-color: var(--green-600);
+
+    --success-active-border-color: var(--green-700);
+    --success-active-text-color: var(--green-700);
+    --success-active-bg-color: var(--green-700);
+  }
+
+  .info {
+    --info-border-color: var(--blue-500);
+    --info-text-color: var(--blue-500);
+    --info-bg-color: var(--blue-500);
+
+    --info-hover-border-color: var(--blue-600);
+    --info-hover-text-color: var(--blue-600);
+    --info-hover-bg-color: var(--blue-600);
+
+    --info-active-border-color: var(--blue-700);
+    --info-active-text-color: var(--blue-700);
+    --info-active-bg-color: var(--blue-700);
+  }
+
+  .btn {
+    --btn-bg-color: transparent;
+    --btn-text-color: inherit;
+    --btn-border-color: currentColor;
+
+    --btn-hover-bg-color: transparent;
+    --btn-hover-text-color: inherit;
+    --btn-hover-border-color: currentColor;
+
+    --btn-active-bg-color: transparent;
+    --btn-active-text-color: inherit;
+    --btn-active-border-color: currentColor;
+
+    --btn-disabled-bg-color: var(--gray-100);
+    --btn-disabled-text-color: var(--gray-400);
+    --btn-disabled-border-color: transparent;
+
+    --btn-custom-bg-color: transparent;
+    --btn-custom-text-color: inherit;
+    --btn-custom-border-color: currentColor;
+  }
+}
+
 *:focus-visible,
 *[data-focus-visible='true'] {
   outline: 2px solid rgba(22, 22, 22, 1);

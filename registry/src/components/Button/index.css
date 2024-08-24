@@ -1,157 +1,155 @@
 @import '../loading-mask.css';
 @import '../global.css';
 
-.btn:not(.hidden) {
-  @apply text-body-compact-02 flex  items-center justify-center gap-2 whitespace-nowrap rounded-md px-4 transition-colors duration-200 ease-out;
-}
+@layer components {
+  .btn:not(.hidden) {
+    @apply text-body-compact-02 flex items-center justify-center gap-2 whitespace-nowrap rounded-md px-4 transition-colors duration-200 ease-out;
+  }
 
-.btn:disabled {
-  @apply cursor-not-allowed border-none !bg-gray-100 !text-gray-400;
-}
+  .btn:disabled {
+    @apply cursor-not-allowed border-none !border-[var(--btn-disabled-border-color)] !bg-[var(--btn-disabled-bg-color)] !text-[var(--btn-disabled-text-color)];
+  }
 
-.btn:active {
-  @apply translate-y-[1px];
-}
+  .btn:active {
+    @apply translate-y-[1px];
+  }
 
-.btn:active:disabled {
-  @apply translate-y-0;
-}
+  .btn:active:disabled {
+    @apply translate-y-0;
+  }
 
-.btn:disabled {
-  @apply cursor-not-allowed border-none !bg-gray-100 !text-gray-400;
-}
+  .btn.small {
+    @apply h-8 min-h-8 px-3;
+  }
 
-.btn.small {
-  @apply h-8 min-h-8 px-3;
-}
+  .btn.medium {
+    @apply h-10 min-h-10 px-4;
+  }
 
-.btn.medium {
-  @apply h-10 min-h-10 px-4;
-}
+  .btn.large {
+    @apply h-12 min-h-12;
+  }
 
-.btn.large {
-  @apply h-12 min-h-12;
-}
+  .btn.icon-only {
+    @apply flex items-center justify-center rounded-md;
+  }
 
-.btn.icon-only {
-  @apply flex items-center justify-center rounded-md;
-}
+  .btn.icon-only.small {
+    @apply h-8 w-8 px-2;
+  }
 
-.btn.icon-only.small {
-  @apply h-8 w-8 px-2;
-}
+  .btn.icon-only.medium {
+    @apply h-10 w-10 px-3;
+  }
 
-.btn.icon-only.medium {
-  @apply h-10 w-10 px-3;
-}
+  .btn.icon-only.large {
+    @apply h-12 w-12 p-4;
+  }
 
-.btn.icon-only.large {
-  @apply h-12 w-12 p-4;
-}
+  .btn.icon-only.xsmall {
+    @apply px-3;
+  }
 
-.btn.icon-only.xsmall {
-  @apply px-3;
-}
+  /* group */
+  .btn-group {
+    @apply text-body-compact-02 relative flex h-10 w-full flex-row items-center justify-start truncate border-gray-200;
+  }
 
-/* group */
-.btn-group {
-  @apply text-body-compact-02 relative flex h-10 w-full flex-row items-center justify-start truncate border-gray-200;
-}
+  .btn-group.start {
+    @apply gap-2 rounded-md rounded-r-none border border-r-0 bg-white px-3 py-2 text-gray-500 after:absolute after:right-0 after:top-1/4 after:h-1/2 after:w-[0.5px] after:bg-gray-200 focus:z-10 focus:after:hidden enabled:hover:text-gray-700 enabled:active:text-black disabled:cursor-not-allowed;
+  }
 
-.btn-group.start {
-  @apply gap-2 rounded-md rounded-r-none border border-r-0 bg-white px-3 py-2 text-gray-500 after:absolute after:right-0 after:top-1/4 after:h-1/2 after:w-[0.5px] after:bg-gray-200 focus:z-10 focus:after:hidden enabled:hover:text-gray-700 enabled:active:text-black disabled:cursor-not-allowed;
-}
+  .btn-group.middle {
+    @apply gap-2 rounded-none border-y bg-white px-3 py-2 text-gray-500 before:absolute before:left-0 before:top-1/4 before:h-1/2 before:w-[0.5px] before:bg-gray-200 after:absolute after:right-0 after:top-1/4 after:h-1/2 after:w-[0.5px] after:bg-gray-200 focus:z-10 focus:before:hidden focus:after:hidden enabled:hover:text-gray-700 enabled:active:text-black disabled:cursor-not-allowed;
+  }
 
-.btn-group.middle {
-  @apply gap-2 rounded-none border-y bg-white px-3 py-2 text-gray-500 before:absolute before:left-0 before:top-1/4 before:h-1/2 before:w-[0.5px] before:bg-gray-200 after:absolute after:right-0 after:top-1/4 after:h-1/2 after:w-[0.5px] after:bg-gray-200 focus:z-10 focus:before:hidden focus:after:hidden enabled:hover:text-gray-700 enabled:active:text-black disabled:cursor-not-allowed;
-}
+  .btn-group.end {
+    @apply gap-2 rounded-md rounded-l-none border border-l-0 bg-white px-3 py-2 text-gray-500 before:absolute before:left-0 before:top-1/4 before:h-1/2 before:w-[0.5px] before:bg-gray-200 focus:z-10 focus:before:hidden enabled:hover:text-gray-700 enabled:active:text-black disabled:cursor-not-allowed;
+  }
 
-.btn-group.end {
-  @apply gap-2 rounded-md rounded-l-none border border-l-0 bg-white px-3 py-2 text-gray-500 before:absolute before:left-0 before:top-1/4 before:h-1/2 before:w-[0.5px] before:bg-gray-200 focus:z-10 focus:before:hidden enabled:hover:text-gray-700 enabled:active:text-black disabled:cursor-not-allowed;
-}
+  .btn-group.active {
+    @apply bg-gray-100 text-black enabled:hover:text-black;
+  }
 
-.btn-group.active {
-  @apply bg-gray-100 text-black enabled:hover:text-black;
-}
+  /* Button themes */
+  .btn.primary {
+    @apply border-[var(--primary-border-color)] bg-[var(--primary-bg-color)] text-[var(--primary-text-color)] enabled:hover:border-[var(--primary-hover-border-color)] enabled:hover:bg-[var(--primary-hover-bg-color)] enabled:hover:text-[var(--primary-hover-text-color)] enabled:active:border-[var(--primary-active-border-color)] enabled:active:bg-[var(--primary-active-bg-color)]  enabled:active:text-[var(--primary-active-text-color)];
+  }
 
-/* Button themes */
-.btn.primary {
-  @apply border-orange-500 bg-orange-500 text-orange-500 enabled:hover:border-orange-600 enabled:hover:bg-orange-600 enabled:hover:text-orange-600 enabled:active:border-orange-700 enabled:active:bg-orange-700  enabled:active:text-orange-700;
-}
+  .btn.neutral {
+    @apply border-[var(--neutral-border-color)] bg-[var(--neutral-bg-color)] text-[var(--neutral-text-color)] enabled:hover:border-[var(--neutral-hover-border-color)] enabled:hover:bg-[var(--neutral-hover-bg-color)] enabled:hover:text-[var(--neutral-hover-text-color)] enabled:active:border-[var(--neutral-active-border-color)] enabled:active:bg-[var(--neutral-active-bg-color)] enabled:active:text-[var(--neutral-active-text-color)];
+  }
 
-.btn.neutral {
-  @apply border-gray-700 bg-gray-500 text-gray-700 enabled:hover:border-gray-800 enabled:hover:bg-gray-600 enabled:hover:text-gray-800 enabled:active:border-gray-900 enabled:active:bg-gray-700 enabled:active:text-gray-900;
-}
+  .btn.danger {
+    @apply border-[var(--danger-border-color)] bg-[var(--danger-bg-color)] text-[var(--danger-text-color)] enabled:hover:border-[var(--danger-hover-border-color)] enabled:hover:bg-[var(--danger-hover-bg-color)] enabled:hover:text-[var(--danger-hover-text-color)] enabled:active:border-[var(--danger-active-border-color)] enabled:active:bg-[var(--danger-active-bg-color)] enabled:active:text-[var(--danger-active-text-color)];
+  }
 
-.btn.danger {
-  @apply border-red-500 bg-red-500 text-red-500 enabled:hover:border-red-600 enabled:hover:bg-red-600 enabled:hover:text-red-600 enabled:active:border-red-700 enabled:active:bg-red-700 enabled:active:text-red-700;
-}
+  .btn.success {
+    @apply border-[var(--success-border-color)] bg-[var(--success-bg-color)] text-[var(--success-text-color)] enabled:hover:border-[var(--success-hover-border-color)] enabled:hover:bg-[var(--success-hover-bg-color)] enabled:hover:text-[var(--success-hover-text-color)] enabled:active:border-[var(--success-active-border-color)] enabled:active:bg-[var(--success-active-bg-color)] enabled:active:text-[var(--success-active-text-color)];
+  }
 
-.btn.success {
-  @apply border-green-500 bg-green-500 text-green-500 enabled:hover:border-green-600 enabled:hover:bg-green-600 enabled:hover:text-green-600 enabled:active:border-green-700 enabled:active:bg-green-700 enabled:active:text-green-700;
-}
+  .btn.info {
+    @apply border-[var(--info-border-color)] bg-[var(--info-bg-color)] text-[var(--info-text-color)] enabled:hover:border-[var(--info-hover-border-color)] enabled:hover:bg-[var(--info-hover-bg-color)] enabled:hover:text-[var(--info-hover-text-color)] enabled:active:border-[var(--info-active-border-color)] enabled:active:bg-[var(--info-active-bg-color)] enabled:active:text-[var(--info-active-text-color)];
+  }
 
-.btn.info {
-  @apply border-blue-500 bg-blue-500 text-blue-500 enabled:hover:border-blue-600 enabled:hover:bg-blue-600 enabled:hover:text-blue-600 enabled:active:border-blue-700 enabled:active:bg-blue-700 enabled:active:text-blue-700;
-}
+  .btn.filled {
+    @apply border-none text-white enabled:hover:text-white enabled:active:text-white;
+  }
 
-.btn.filled {
-  @apply border-none text-white enabled:hover:text-white enabled:active:text-white;
-}
+  .btn.outlined {
+    @apply border bg-transparent;
+  }
 
-.btn.outlined {
-  @apply border bg-transparent;
-}
+  .btn.ghost {
+    @apply border-none bg-transparent;
+  }
 
-.btn.ghost {
-  @apply border-none bg-transparent;
-}
+  .btn.glass {
+    @apply border-none;
+  }
 
-.btn.glass {
-  @apply border-none;
-}
+  .btn.outlined.neutral,
+  .btn.ghost.neutral {
+    @apply enabled:hover:bg-gray-200/50 enabled:active:bg-gray-200;
+  }
 
-.btn.outlined.neutral,
-.btn.ghost.neutral {
-  @apply enabled:hover:bg-gray-200/50 enabled:active:bg-gray-200;
-}
+  .btn.outlined.primary,
+  .btn.ghost.primary {
+    @apply enabled:hover:bg-orange-50/50 enabled:active:bg-orange-50;
+  }
 
-.btn.outlined.primary,
-.btn.ghost.primary {
-  @apply enabled:hover:bg-orange-50/50 enabled:active:bg-orange-50;
-}
+  .btn.outlined.danger,
+  .btn.ghost.danger {
+    @apply enabled:hover:bg-red-50/50 enabled:active:bg-red-50;
+  }
 
-.btn.outlined.danger,
-.btn.ghost.danger {
-  @apply enabled:hover:bg-red-50/50 enabled:active:bg-red-50;
-}
+  .btn.outlined.success,
+  .btn.ghost.success {
+    @apply enabled:hover:bg-green-50/50 enabled:active:bg-green-50;
+  }
 
-.btn.outlined.success,
-.btn.ghost.success {
-  @apply enabled:hover:bg-green-50/50 enabled:active:bg-green-50;
-}
+  .btn.outlined.info,
+  .btn.ghost.info {
+    @apply enabled:hover:bg-blue-50/50 enabled:active:bg-blue-50;
+  }
 
-.btn.outlined.info,
-.btn.ghost.info {
-  @apply enabled:hover:bg-blue-50/50 enabled:active:bg-blue-50;
-}
+  .btn.glass.neutral {
+    @apply bg-gray-100/50  enabled:hover:bg-gray-200/50 enabled:active:bg-gray-300/50;
+  }
 
-.btn.glass.neutral {
-  @apply bg-gray-100/50  enabled:hover:bg-gray-200/50 enabled:active:bg-gray-300/50;
-}
+  .btn.glass.primary {
+    @apply bg-orange-50/50 enabled:hover:bg-orange-100/50 enabled:active:bg-orange-200/50;
+  }
 
-.btn.glass.primary {
-  @apply bg-orange-50/50 enabled:hover:bg-orange-100/50 enabled:active:bg-orange-200/50;
-}
+  .btn.glass.danger {
+    @apply bg-red-50/50 enabled:hover:bg-red-100/50 enabled:active:bg-red-200/50;
+  }
 
-.btn.glass.danger {
-  @apply bg-red-50/50 enabled:hover:bg-red-100/50 enabled:active:bg-red-200/50;
-}
+  .btn.glass.success {
+    @apply bg-green-50/50 enabled:hover:bg-green-100/50 enabled:active:bg-green-200/50;
+  }
 
-.btn.glass.success {
-  @apply bg-green-50/50 enabled:hover:bg-green-100/50 enabled:active:bg-green-200/50;
-}
-
-.btn.glass.info {
-  @apply bg-blue-50/50  enabled:hover:bg-blue-100/50 enabled:active:bg-blue-200/50;
+  .btn.glass.info {
+    @apply bg-blue-50/50  enabled:hover:bg-blue-100/50 enabled:active:bg-blue-200/50;
+  }
 }
