@@ -1,6 +1,6 @@
 @import '../global.css';
 
-select {
+.input-wrapper select {
   @apply text-body-compact-02 m-0 w-full cursor-pointer appearance-none text-ellipsis rounded-md border border-gray-200 bg-white pl-4 pr-10;
 }
 

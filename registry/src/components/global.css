@@ -143,9 +143,17 @@
     --primary-hover-text-color: var(--orange-600);
     --primary-hover-bg-color: var(--orange-600);
 
+    --primary-focus-border-color: var(--orange-600);
+    --primary-focus-text-color: var(--orange-600);
+    --primary-focus-bg-color: var(--orange-600);
+
     --primary-active-border-color: var(--orange-700);
     --primary-active-text-color: var(--orange-700);
     --primary-active-bg-color: var(--orange-700);
+
+    --primary-disabled-border-color: transparent;
+    --primary-disabled-text-color: var(--gray-400);
+    --primary-disabled-bg-color: var(--gray-100);
   }
 
   .neutral {
@@ -157,9 +165,17 @@
     --neutral-hover-text-color: var(--gray-600);
     --neutral-hover-bg-color: var(--gray-800);
 
+    --neutral-focus-border-color: var(--gray-800);
+    --neutral-focus-text-color: var(--gray-600);
+    --neutral-focus-bg-color: var(--gray-800);
+
     --neutral-active-border-color: var(--gray-900);
     --neutral-active-text-color: var(--gray-700);
     --neutral-active-bg-color: var(--gray-900);
+
+    --neutral-disabled-border-color: transparent;
+    --neutral-disabled-text-color: var(--gray-400);
+    --neutral-disabled-bg-color: var(--gray-100);
   }
 
   .danger {
@@ -171,9 +187,17 @@
     --danger-hover-text-color: var(--red-600);
     --danger-hover-bg-color: var(--red-600);
 
+    --danger-focus-border-color: var(--red-600);
+    --danger-focus-text-color: var(--red-600);
+    --danger-focus-bg-color: var(--red-600);
+
     --danger-active-border-color: var(--red-700);
     --danger-active-text-color: var(--red-700);
     --danger-active-bg-color: var(--red-700);
+
+    --danger-disabled-border-color: transparent;
+    --danger-disabled-text-color: var(--gray-400);
+    --danger-disabled-bg-color: var(--gray-100);
   }
 
   .success {
@@ -185,9 +209,17 @@
     --success-hover-text-color: var(--green-600);
     --success-hover-bg-color: var(--green-600);
 
+    --success-focus-border-color: var(--green-600);
+    --success-focus-text-color: var(--green-600);
+    --success-focus-bg-color: var(--green-600);
+
     --success-active-border-color: var(--green-700);
     --success-active-text-color: var(--green-700);
     --success-active-bg-color: var(--green-700);
+
+    --success-disabled-border-color: transparent;
+    --success-disabled-text-color: var(--gray-400);
+    --success-disabled-bg-color: var(--gray-100);
   }
 
   .info {
@@ -199,31 +231,53 @@
     --info-hover-text-color: var(--blue-600);
     --info-hover-bg-color: var(--blue-600);
 
+    --info-focus-border-color: var(--blue-600);
+    --info-focus-text-color: var(--blue-600);
+    --info-focus-bg-color: var(--blue-600);
+
     --info-active-border-color: var(--blue-700);
     --info-active-text-color: var(--blue-700);
     --info-active-bg-color: var(--blue-700);
+
+    --info-disabled-border-color: transparent;
+    --info-disabled-text-color: var(--gray-400);
+    --info-disabled-bg-color: var(--gray-100);
   }
 
-  .btn {
-    --btn-bg-color: transparent;
-    --btn-text-color: inherit;
-    --btn-border-color: currentColor;
+  .default {
+    --default-border-color: transparent;
+    --default-text-color: inherit;
+    --default-bg-color: currentColor;
 
-    --btn-hover-bg-color: transparent;
-    --btn-hover-text-color: inherit;
-    --btn-hover-border-color: currentColor;
+    --default-hover-border-color: transparent;
+    --default-hover-text-color: inherit;
+    --default-hover-bg-color: currentColor;
 
-    --btn-active-bg-color: transparent;
-    --btn-active-text-color: inherit;
-    --btn-active-border-color: currentColor;
+    --default-focus-border-color: transparent;
+    --default-focus-text-color: inherit;
+    --default-focus-bg-color: currentColor;
 
-    --btn-disabled-bg-color: var(--gray-100);
-    --btn-disabled-text-color: var(--gray-400);
-    --btn-disabled-border-color: transparent;
+    --default-active-border-color: transparent;
+    --default-active-text-color: inherit;
+    --default-active-bg-color: currentColor;
+  }
 
-    --btn-custom-bg-color: transparent;
-    --btn-custom-text-color: inherit;
-    --btn-custom-border-color: currentColor;
+  .custom {
+    --custom-border-color: transparent;
+    --custom-text-color: inherit;
+    --custom-bg-color: currentColor;
+
+    --custom-hover-border-color: transparent;
+    --custom-hover-text-color: inherit;
+    --custom-hover-bg-color: currentColor;
+
+    --custom-focus-border-color: transparent;
+    --custom-focus-text-color: inherit;
+    --custom-focus-bg-color: currentColor;
+
+    --custom-active-border-color: transparent;
+    --custom-active-text-color: inherit;
+    --custom-active-bg-color: currentColor;
   }
 }
 

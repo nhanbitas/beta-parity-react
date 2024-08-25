@@ -118,9 +118,26 @@ export const DemoStatesButton = () => {
         </div>
       ))}
       <h3>States</h3>
-      <div className='flex gap-4'>
-        <Button disabled>Button</Button>
-        <Button isPending>Button</Button>
+      <div className='flex flex-col gap-4'>
+        <Button className='w-24' disabled>
+          Button
+        </Button>
+        <Button className='w-24' isPending>
+          Button
+        </Button>
+        <br />
+        'use 3rd party generated css variable to override'
+        <Button
+          kind='outline'
+          className='custom w-24'
+          style={{
+            ['--custom-border-color' as any]: 'red',
+            ['--custom-text-color' as any]: 'blue',
+            ['--custom-bg-color' as any]: 'gray'
+          }}
+        >
+          Custom
+        </Button>
       </div>
     </div>
   );

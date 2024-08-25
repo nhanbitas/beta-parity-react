@@ -187,6 +187,7 @@ module.exports = {
     require('@tailwindcss/container-queries'),
     require('./plugins/scrollbar.tw.js'),
     require('./plugins/typography.tw.js'),
-    require('./plugins/zIndex.tw.js')
+    require('./plugins/zIndex.tw.js'),
+    require('./plugins/theme.tw.js')
   ]
 };
