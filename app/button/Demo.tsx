@@ -3,6 +3,7 @@
 import React from 'react';
 import { Button } from '@libComponents/Button';
 import { Plus } from 'lucide-react';
+import { Chip } from '@libComponents/Chip';
 
 const colors = ['neutral', 'primary', 'danger', 'success', 'info'];
 const kinds = ['filled', 'outline', 'ghost', 'glass'];
@@ -82,6 +83,14 @@ export const DemoColorButton = () => {
           </Button>
         ))}
       </div>
+      <h3>Info</h3>
+      <div className='my-4 flex gap-4'>
+        {kinds.map((kind) => (
+          <Button key={kind} color='info' kind={kind as any}>
+            Button
+          </Button>
+        ))}
+      </div>
     </div>
   );
 };
@@ -101,6 +110,7 @@ export const DemoSizesButton = () => {
 export const DemoStatesButton = () => {
   return (
     <div>
+      <Chip kind='glass' label='Disabled' color='red' />
       <h3>Icons</h3>
       {sizes.map((size) => (
         <div className='mb-4 flex gap-4' key={size}>
@@ -126,14 +136,25 @@ export const DemoStatesButton = () => {
           Button
         </Button>
         <br />
-        'use 3rd party generated css variable to override'
+        use 3rd party generated css variable to override
         <Button
           kind='outline'
           className='custom w-24'
           style={{
-            ['--custom-border-color' as any]: 'red',
+            ['--color-custom-border' as any]: 'red',
             ['--custom-text-color' as any]: 'blue',
             ['--custom-bg-color' as any]: 'gray'
+          }}
+        >
+          Custom
+        </Button>
+        <Button
+          kind='outline'
+          className='custom w-24'
+          style={{
+            ['--custom-border-color' as any]: 'blue',
+            ['--custom-text-color' as any]: 'blue',
+            ['--custom-bg-color' as any]: 'red'
           }}
         >
           Custom
