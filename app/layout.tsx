@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import SideBar from '@components/doc/SideBar';
+import ThemeProvider from '@libComponents/theme';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -17,12 +18,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className='relative flex'>
-        <SideBar />
-        <main className='prose ml-[256px] flex min-h-screen flex-1 flex-col gap-8 overflow-hidden p-24'>
-          {children}
-        </main>
-      </body>
+      <ThemeProvider>
+        <body className='relative flex'>
+          <SideBar />
+          <main className='prose ml-[256px] flex min-h-screen flex-1 flex-col gap-8 overflow-hidden p-24'>
+            {children}
+          </main>
+        </body>
+      </ThemeProvider>
     </html>
   );
 }

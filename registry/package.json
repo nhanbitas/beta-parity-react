@@ -4,7 +4,7 @@
   "description": "Parity React Components",
   "main": "ui/index.js",
   "scripts": {
-    "dev": "npm run delete:ui && concurrently \"npm run dev:postcss\" \"npm run dev:babel\" \"npm run dev:ts\"",
+    "dev": "concurrently \"npm run dev:postcss\" \"npm run dev:babel\" \"npm run dev:ts\"",
     "build": "npm run build:ui",
     "publish": "npm run publish:lib",
     "delete:ui": "if exist ui (rmdir /s /q ui)",

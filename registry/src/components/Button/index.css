@@ -1,5 +1,6 @@
-@import '../loading-mask.css';
-@import '../global.css';
+@import 'tailwindcss/base';
+
+@config "./tailwind.button.config.js";
 
 .btn:not(.hidden) {
   @apply text-body-compact-02 flex items-center justify-center gap-2 whitespace-nowrap rounded-md px-4 transition-colors duration-200 ease-out;
@@ -74,20 +75,10 @@
   color: var(--button-default-text);
 }
 
-.btn:enabled:hover {
-  border-color: var(--button-hover-border);
-  background-color: var(--button-hover-bg);
-  color: var(--button-hover-text);
-}
-
 .btn:enabled:active {
   border-color: var(--button-active-border);
   background-color: var(--button-active-bg);
   color: var(--button-active-text);
-}
-
-.btn.filled {
-  @apply text-white hover:text-white active:text-white;
 }
 
 .btn.outlined {
@@ -100,49 +91,4 @@
 
 .btn.glass {
   @apply border-none;
-}
-
-.btn.outlined.neutral,
-.btn.ghost.neutral {
-  @apply enabled:hover:bg-gray-200/50 enabled:active:bg-gray-200;
-}
-
-.btn.outlined.primary,
-.btn.ghost.primary {
-  @apply enabled:hover:bg-orange-50/50 enabled:active:bg-orange-50;
-}
-
-.btn.outlined.danger,
-.btn.ghost.danger {
-  @apply enabled:hover:bg-red-50/50 enabled:active:bg-red-50;
-}
-
-.btn.outlined.success,
-.btn.ghost.success {
-  @apply enabled:hover:bg-green-50/50 enabled:active:bg-green-50;
-}
-
-.btn.outlined.info,
-.btn.ghost.info {
-  @apply enabled:hover:bg-blue-50/50 enabled:active:bg-blue-50;
-}
-
-.btn.glass.neutral {
-  @apply bg-gray-100/50  enabled:hover:bg-gray-200/50 enabled:active:bg-gray-300/50;
-}
-
-.btn.glass.primary {
-  @apply bg-orange-50/50 enabled:hover:bg-orange-100/50 enabled:active:bg-orange-200/50;
-}
-
-.btn.glass.danger {
-  @apply bg-red-50/50 enabled:hover:bg-red-100/50 enabled:active:bg-red-200/50;
-}
-
-.btn.glass.success {
-  @apply bg-green-50/50 enabled:hover:bg-green-100/50 enabled:active:bg-green-200/50;
-}
-
-.btn.glass.info {
-  @apply bg-blue-50/50  enabled:hover:bg-blue-100/50 enabled:active:bg-blue-200/50;
 }

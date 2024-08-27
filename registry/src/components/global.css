@@ -2,6 +2,8 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+@config '../../tailwind.config.js';
+
 *:focus-visible,
 *[data-focus-visible='true'] {
   outline: 2px solid rgba(22, 22, 22, 1);
