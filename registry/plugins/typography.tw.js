@@ -1,4 +1,4 @@
-const typography = ({ addComponents }) => {
+const typography = ({ addUtilities }) => {
   const typographyStyles = {
     '.text-code-01': {
       '@apply font-mono text-xs font-normal tracking-wider': {}
@@ -64,7 +64,7 @@ const typography = ({ addComponents }) => {
       '@apply font-sans text-[3.375rem] font-light leading-[4rem]': {}
     }
   };
-  addComponents(typographyStyles);
+  addUtilities(typographyStyles);
 };
 
 export default typography;

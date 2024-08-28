@@ -1,6 +1,6 @@
-@import 'tailwindcss/base';
+@import '../theme/alias/background.css';
 
-@config "./tailwind.button.config.js";
+@config "./tailwind.button.config.ts";
 
 .btn:not(.hidden) {
   @apply text-body-compact-02 flex items-center justify-center gap-2 whitespace-nowrap rounded-md px-4 transition-colors duration-200 ease-out;
@@ -69,16 +69,15 @@
 
 /* Button themes */
 .btn {
-  @apply border;
-  border-color: var(--button-default-border);
-  background-color: var(--button-default-bg);
-  color: var(--button-default-text);
+  @apply background-surface-default text-button-primary-filled-default-color border-button-primary-filled-default-border;
+}
+
+.btn:hover {
+  @apply bg-button-primary-filled-hover-bg text-button-primary-filled-hover-color border-button-primary-filled-hover-border;
 }
 
 .btn:enabled:active {
-  border-color: var(--button-active-border);
-  background-color: var(--button-active-bg);
-  color: var(--button-active-text);
+  @apply bg-button-primary-filled-active-bg text-button-primary-filled-active-color border-button-primary-filled-active-border;
 }
 
 .btn.outlined {

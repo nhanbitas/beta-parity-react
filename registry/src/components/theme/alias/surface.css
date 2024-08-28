@@ -1,0 +1,59 @@
+@import 'tailwindcss/components';
+
+@layer components {
+  .surface {
+    @apply bg-[var(--gray-300)];
+  }
+  .surface-default {
+    @apply bg-[var(--gray-100)];
+  }
+  .surface-default-hover {
+    @apply bg-[var(--gray-300)];
+  }
+  .surface-default-active {
+    @apply bg-[var(--gray-300)];
+  }
+  .surface-default-disabled {
+    @apply bg-[var(--gray-300)];
+  }
+  .surface-default-selected {
+    @apply bg-[var(--gray-300)];
+  }
+  .surface-default-selected-hover {
+    @apply bg-[var(--gray-300)];
+  }
+  .surface-default-selected-active {
+    @apply bg-[var(--gray-500)];
+  }
+  .surface-default-selected-disabled {
+    @apply bg-[var(--gray-300)];
+  }
+
+  .background {
+    @apply bg-[var(--gray-300)];
+  }
+  .surface-alternative {
+    @apply bg-[var(--gray-100)];
+  }
+  .surface-alternative-hover {
+    @apply bg-[var(--gray-300)];
+  }
+  .surface-alternative-active {
+    @apply bg-[var(--gray-300)];
+  }
+  .surface-alternative-disabled {
+    @apply bg-[var(--gray-300)];
+  }
+  .surface-alternative-selected {
+    @apply bg-[var(--gray-300)];
+  }
+  .surface-alternative-selected-hover {
+    @apply bg-[var(--gray-300)];
+  }
+  .surface-alternative-selected-active {
+    @apply bg-[var(--gray-500)];
+  }
+  .surface-alternative-selected-disabled {
+    @apply bg-[var(--gray-300)];
+  }
+}

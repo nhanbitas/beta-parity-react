@@ -18,14 +18,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <ThemeProvider>
-        <body className='relative flex'>
+      <body className='relative flex'>
+        <ThemeProvider>
           <SideBar />
           <main className='prose ml-[256px] flex min-h-screen flex-1 flex-col gap-8 overflow-hidden p-24'>
             {children}
           </main>
-        </body>
-      </ThemeProvider>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

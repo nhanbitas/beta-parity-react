@@ -5,7 +5,6 @@ import { createPolymorphicComponent, PolymorphicComponentProps } from '../Base/f
 import './index.css';
 import classNames from 'classnames';
 import Base, { BaseProps } from '../Base';
-import { generateThemeVars } from '../theme/theme';
 
 const sizeMap = {
   sm: 'small',
@@ -111,10 +110,6 @@ export const Button = createPolymorphicComponent<'button', ButtonProps>(
         {...(isPending ? { 'data-loading': 'true' } : {})}
         disabled={disabled || isPending}
         {...props}
-        style={{
-          ...props.style,
-          ...generateThemeVars('button', colorMap[color])
-        }}
       >
         {parsedChildren}
       </Base>
