@@ -27,7 +27,7 @@ const kindMap = {
   glass: 'glass'
 } as const;
 
-export interface ButtonProps extends BaseProps {
+export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   /**
    * The size of the button. It can be one of the keys from the sizeMap.
    *
@@ -67,12 +67,19 @@ export interface ButtonProps extends BaseProps {
    * @memberof ButtonProps
    */
   iconOnly?: boolean;
+
+  /**
+   * Indicates whether the button is disabled.
+   *
+   * @type {boolean}
+   * @memberof ButtonProps
+   */
+  disabled?: boolean;
 }
 
-export const Button = createPolymorphicComponent<'button', ButtonProps>(
-  <C extends React.ElementType = 'button'>(
+export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  (
     {
-      component,
       className = '',
       children,
       size = 'md',
@@ -83,11 +90,9 @@ export const Button = createPolymorphicComponent<'button', ButtonProps>(
       isPending = false,
       onClick,
       ...props
-    }: PolymorphicComponentProps<C, ButtonProps>,
-    ref: React.Ref<any>
+    },
+    ref
   ) => {
-    const Component = component || ('button' as C);
-
     const classes = classNames('btn', colorMap[color], kindMap[kind], sizeMap[size], className, {
       'icon-only': iconOnly,
       loading: isPending
@@ -101,8 +106,7 @@ export const Button = createPolymorphicComponent<'button', ButtonProps>(
     });
 
     return (
-      <Base
-        component={Component}
+      <button
         type='button'
         className={classes}
         onClick={!disabled && !isPending ? onClick : undefined}
@@ -112,7 +116,9 @@ export const Button = createPolymorphicComponent<'button', ButtonProps>(
         {...props}
       >
         {parsedChildren}
-      </Base>
+      </button>
     );
   }
 );
+
+Button.displayName = 'Button';

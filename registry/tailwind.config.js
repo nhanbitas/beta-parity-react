@@ -3,6 +3,7 @@ import { themeConfig } from './src/components/theme/themeConfig.ts';
 /** @type {import('tailwindcss').Config} */
 
 module.exports = {
+  darkMode: 'class',
   future: {
     hoverOnlyWhenSupported: true
   },

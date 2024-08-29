@@ -1,4 +1,4 @@
-@import '../theme/alias/background.css';
+/* @import '../theme/alias/background.css'; */
 
 @config "./tailwind.button.config.ts";
 

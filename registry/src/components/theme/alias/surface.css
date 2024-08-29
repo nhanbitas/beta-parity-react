@@ -29,9 +29,6 @@
     @apply bg-[var(--gray-300)];
   }
 
-  .background {
-    @apply bg-[var(--gray-300)];
-  }
   .surface-alternative {
     @apply bg-[var(--gray-100)];
   }

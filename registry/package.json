@@ -4,10 +4,10 @@
   "description": "Parity React Components",
   "main": "ui/index.js",
   "scripts": {
-    "dev": "concurrently \"npm run dev:postcss\" \"npm run dev:babel\" \"npm run dev:ts\"",
+    "dev": "npm run delete:ui && concurrently \"npm run dev:postcss\" \"npm run dev:babel\" \"npm run dev:ts\"",
     "build": "npm run build:ui",
     "publish": "npm run publish:lib",
-    "delete:ui": "if exist ui (rmdir /s /q ui)",
+    "delete:ui": "if exist ui (rmdir /s /q ui) || [ -d ui ] && rm -rf ui",
     "dev:postcss": "npx postcss src/components/**/*.css --base src/components --dir ui --watch",
     "dev:babel": "npx babel src/components --out-dir ui --extensions \".ts,.tsx\" --watch",
     "dev:ts": "tsc --project tsconfig.lib.json --watch",

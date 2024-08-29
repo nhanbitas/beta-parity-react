@@ -1,4 +1,3 @@
-import { colorPalette, themeColors } from '../theme/colorPalette';
 import { ButtonTheme } from './buttonTheme';
 import { themeConfig } from '../theme/themeConfig';
 
@@ -11,8 +10,7 @@ module.exports = {
   theme: {
     ...themeConfig,
     colors: {
-      ...colorPalette,
-      ...themeColors,
+      ...themeConfig.colors,
       button: ButtonTheme
     }
   },
@@ -21,6 +19,7 @@ module.exports = {
     require('../../../plugins/scrollbar.tw.js'),
     require('../../../plugins/typography.tw.js'),
     require('../../../plugins/zIndex.tw.js'),
+    require('../theme/alias/background.plugin.js'),
     require('../../../plugins/theme.tw.js')
   ]
 };
