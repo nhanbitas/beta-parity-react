@@ -83,7 +83,7 @@
 }
 
 .chip.sky {
-  @apply border-sky-500 bg-sky-500 text-sky-500 hover:border-sky-600 hover:bg-sky-600 hover:text-sky-600 active:border-sky-700 active:bg-sky-700 active:text-sky-700;
+  @apply border-cyan-500 bg-cyan-500 text-cyan-500 hover:border-cyan-600 hover:bg-cyan-600 hover:text-cyan-600 active:border-cyan-700 active:bg-cyan-700 active:text-cyan-700;
 }
 
 .chip.violet {
@@ -124,7 +124,7 @@
 }
 
 .chip.outlined.sky {
-  @apply hover:bg-sky-50/50 active:bg-sky-50 enabled:hover:bg-sky-50/50 enabled:active:bg-sky-50;
+  @apply hover:bg-cyan-50/50 active:bg-cyan-50 enabled:hover:bg-cyan-50/50 enabled:active:bg-cyan-50;
 }
 
 .chip.outlined.violet {
@@ -169,7 +169,7 @@
 }
 
 .chip.glass.sky {
-  @apply bg-sky-50/50 hover:bg-sky-100/50 active:bg-sky-200/50 enabled:hover:bg-sky-100/50 enabled:active:bg-sky-200/50;
+  @apply bg-cyan-50/50 hover:bg-cyan-100/50 active:bg-cyan-200/50 enabled:hover:bg-cyan-100/50 enabled:active:bg-cyan-200/50;
 }
 
 .chip.glass.violet {

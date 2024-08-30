@@ -30,7 +30,7 @@
 }
 
 .badge.sky {
-  @apply border-sky-500 bg-sky-50 text-sky-600;
+  @apply border-cyan-500 bg-cyan-50 text-cyan-600;
 }
 
 .badge.violet {
@@ -62,7 +62,7 @@
 }
 
 .badge.sky.strong {
-  @apply border-sky-500 bg-sky-500 text-white;
+  @apply border-cyan-500 bg-cyan-500 text-white;
 }
 
 .badge.violet.strong {
