@@ -1,9 +1,7 @@
-/* @import '../theme/alias/background.css'; */
-
-@config "./tailwind.button.config.ts";
+@import '../theme/alias/border.variables.css';
 
 .btn:not(.hidden) {
-  @apply text-body-compact-02 flex items-center justify-center gap-2 whitespace-nowrap rounded-md px-4 transition-colors duration-200 ease-out;
+  @apply text-body-compact-02 flex items-center justify-center gap-2 whitespace-nowrap rounded-md border-[var(--par-border-field-disabled)] px-4 transition-colors duration-200 ease-out;
 }
 
 .btn:active {
@@ -68,17 +66,17 @@
 }
 
 /* Button themes */
-.btn {
-  @apply background-surface-default text-button-primary-filled-default-color border-button-primary-filled-default-border;
-}
+/* .btn {
+  @apply text-button-primary-filled-default-color border-button-primary-filled-default-border;
+} */
 
-.btn:hover {
+/* .btn:hover {
   @apply bg-button-primary-filled-hover-bg text-button-primary-filled-hover-color border-button-primary-filled-hover-border;
 }
 
 .btn:enabled:active {
   @apply bg-button-primary-filled-active-bg text-button-primary-filled-active-color border-button-primary-filled-active-border;
-}
+} */
 
 .btn.outlined {
   @apply border bg-transparent;

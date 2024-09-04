@@ -1,0 +1,33 @@
+:root {
+  --par-bg-primary: var(--par-white);
+  --par-bg-alternative: var(--par-gray-25);
+  --par-bg-surface: var(--par-gray-50);
+
+  --par-bg-surface-alternative: var(--par-white);
+  --par-bg-surface-indicator-neutral: var(--par-neutral-500);
+  --par-bg-surface-indicator-accent: var(--par-accent-500);
+  --par-bg-surface-item-enabled: var(--par-transparent);
+  --par-bg-surface-item-hovered: rgba(var(--par-gray-50), 0.5);
+
+  --par-bg-surface-item-neutral-subtle-selected: var(--par-neutral-100);
+  --par-bg-surface-item-neutral-subtle-selected-hovered: var(--par-neutral-200);
+  --par-bg-surface-item-neutral-pronounced-selected: var(--par-neutral-900);
+  --par-bg-surface-item-neutral-pronounced-selected-hovered: var(--par-neutral-800);
+
+  --par-bg-surface-item-accent-subtle-selected: var(--par-accent-100);
+  --par-bg-surface-item-accent-subtle-selected-hovered: var(--par-accent-200);
+  --par-bg-surface-item-accent-pronounced-selected: var(--par-accent-500);
+  --par-bg-surface-item-accent-pronounced-selected-hovered: var(--par-accent-600);
+
+  --par-bg-field-enabled: var(--par-gray-25);
+  --par-bg-field-alternative-enabled: var(--par-white);
+  --par-bg-field-hovered: var(--par-gray-50);
+  --par-bg-field-disabled: rgba(var(--par-gray-25), 0.5);
+  --par-bg-field-alternative-disabled: rgba(var(--par-white), 0.5);
+  --par-bg-field-readonly: var(--par-gray-50);
+  --par-bg-field-invalid: var(--par-red-50);
+  --par-bg-field-button-enabled: var(--par-transparent);
+  --par-bg-field-button-hovered: rgba(var(--par-gray-200), 0.5);
+  --par-bg-field-button-pressed: rgba(var(--par-gray-300), 0.5);
+  --par-bg-field-button-disabled: var(--par-transparent);
+}

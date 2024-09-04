@@ -1,0 +1,15 @@
+:root {
+  --par-color-focus-ring: var(--par-black);
+
+  --par-border-surface: var(--par-gray-200);
+  --par-border-surface-inverse: var(--par-gray-600);
+
+  --par-border-field-enabled: var(--par-gray-200);
+  --par-border-field-hovered: var(--par-gray-300);
+  --par-border-field-readonly: var(--par-gray-200);
+  --par-border-field-invalid: var(--par-red-500);
+  --par-border-field-disabled: rgb(from var(--par-red-200) r g b / 0.5);
+  --par-border-field-focused: var(--par-color-focus-ring);
+
+  --par-outline-surface-item-focused: var(--par-color-focus-ring);
+}

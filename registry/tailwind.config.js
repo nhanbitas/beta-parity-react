@@ -14,6 +14,6 @@ module.exports = {
     require('./plugins/scrollbar.tw.js'),
     require('./plugins/typography.tw.js'),
     require('./plugins/zIndex.tw.js'),
-    require('./plugins/theme.tw.js')
+    require('./plugins/generate-varaiable.tw.js')
   ]
 };

@@ -147,25 +147,11 @@ export const colorPalette = {
   inherit: 'inherit'
 };
 
-export const defaultColors = colorPalette.gray;
+export const neutralColors = colorPalette.gray;
 
 export const accentColors = colorPalette.blue;
 
-export const supportColors = colorPalette.lime;
-
-export const successColors = colorPalette.green;
-
-export const warningColors = colorPalette.yellow;
-
-export const dangerColors = colorPalette.red;
-
-export const infoColors = colorPalette.cyan;
-
 export const themeColors = {
-  default: defaultColors,
-  accent: accentColors,
-  success: supportColors,
-  warning: warningColors,
-  danger: dangerColors,
-  info: colorPalette.cyan
+  neutral: neutralColors,
+  accent: accentColors
 };

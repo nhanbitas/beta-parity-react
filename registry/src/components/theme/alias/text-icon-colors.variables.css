@@ -1,0 +1,32 @@
+:root {
+  --par-color-text-primary: var(--par-gray-950);
+  --par-color-text-primary-inverse: var(--par-white);
+
+  --par-color-text-secondary: var(--par-gray-700);
+  --par-color-text-secondary-inverse: var(--par-gray-200);
+
+  --par-color-text-helper-neutral: var(--par-gray-550);
+  --par-color-text-helper-adverse: var(--par-red-550);
+  --par-color-text-helper-cautionary: var(--par-yellow-550);
+  --par-color-text-helper-affirmative: var(--par-green-550);
+
+  --par-color-text-surface-item-enabled: var(--par-color-text-primary);
+  --par-color-text-surface-item-neutral-subtle-selected: var(--par-color-text-primary);
+  --par-color-text-surface-item-neutral-pronounced-selected: var(--par-color-text-primary-inverse);
+  --par-color-text-surface-item-accent-subtle-selected: var(--par-color-text-primary);
+  --par-color-text-surface-item-accent-pronounced-selected: var(--par-color-text-primary-inverse);
+  --par-color-text-surface-item-disabled: rgba(var(--par-color-text-primary), 0.5);
+
+  --par-color-text-field-placeholder: var(--par-gray-600);
+  --par-color-text-field-alternative-placeholder: var(--par-gray-550);
+  --par-color-text-field-filled: var(--par-color-text-primary);
+  --par-color-text-field-label: var(--par-color-text-secondary);
+  --par-color-text-field-disabled: rgba(var(--par-color-text-field-placeholder), 0.5);
+  --par-color-text-field-readonly: var(--par-color-text-primary);
+  --par-color-text-field-invalid: var(--par-color-text-primary);
+
+  --par-color-icon-field-button-enabled: var(--par-gray-500);
+  --par-color-icon-field-button-hovered: var(--par-gray-600);
+  --par-color-icon-field-button-pressed: var(--par-gray-700);
+  --par-color-icon-field-button-disabled: rgba(var(--par-gray-500), 0.5);
+}
