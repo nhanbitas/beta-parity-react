@@ -7,7 +7,7 @@
   --par-bg-surface-indicator-neutral: var(--par-neutral-500);
   --par-bg-surface-indicator-accent: var(--par-accent-500);
   --par-bg-surface-item-enabled: var(--par-transparent);
-  --par-bg-surface-item-hovered: rgba(var(--par-gray-50), 0.5);
+  --par-bg-surface-item-hovered: rgb(from var(--par-gray-200) r g b / 0.5);
 
   --par-bg-surface-item-neutral-subtle-selected: var(--par-neutral-100);
   --par-bg-surface-item-neutral-subtle-selected-hovered: var(--par-neutral-200);
@@ -22,12 +22,12 @@
   --par-bg-field-enabled: var(--par-gray-25);
   --par-bg-field-alternative-enabled: var(--par-white);
   --par-bg-field-hovered: var(--par-gray-50);
-  --par-bg-field-disabled: rgba(var(--par-gray-25), 0.5);
-  --par-bg-field-alternative-disabled: rgba(var(--par-white), 0.5);
+  --par-bg-field-disabled: rgb(from var(--par-gray-25) r g b / 0.5);
+  --par-bg-field-alternative-disabled: rgb(from var(--par-white) r g b / 0.5);
   --par-bg-field-readonly: var(--par-gray-50);
   --par-bg-field-invalid: var(--par-red-50);
   --par-bg-field-button-enabled: var(--par-transparent);
-  --par-bg-field-button-hovered: rgba(var(--par-gray-200), 0.5);
-  --par-bg-field-button-pressed: rgba(var(--par-gray-300), 0.5);
+  --par-bg-field-button-hovered: rgb(from var(--par-gray-200) r g b / 0.5);
+  --par-bg-field-button-pressed: rgb(from var(--par-gray-300) r g b / 0.5);
   --par-bg-field-button-disabled: var(--par-transparent);
 }
