@@ -1,10 +1,9 @@
 'use Client';
 
 import React from 'react';
-import { createPolymorphicComponent, PolymorphicComponentProps } from '../Base/factory';
+import '../theme/alias/border.variables.css';
 import './index.css';
 import classNames from 'classnames';
-import Base, { BaseProps } from '../Base';
 
 const sizeMap = {
   sm: 'small',

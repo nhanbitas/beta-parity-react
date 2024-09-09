@@ -26,3 +26,18 @@ body {
     text-wrap: balance;
   }
 }
+
+/* test overide colors */
+
+/* body {
+  --par-color-text-badge-glass-lime: #ffffff;
+  --par-color-text-badge-glass-gray: #ffffff;
+  --par-color-text-badge-glass-red: #ffffff;
+  --par-color-text-badge-glass-green: #ffffff;
+  --par-color-text-badge-glass-yellow: #ffffff;
+  --par-color-text-badge-glass-blue: #ffffff;
+  --par-color-text-badge-glass-orange: #ffffff;
+  --par-color-text-badge-glass-cyan: #ffffff;
+  --par-color-text-badge-glass-violet: #ffffff;
+  --par-color-text-badge-glass-lime: #ffffff;
+} */

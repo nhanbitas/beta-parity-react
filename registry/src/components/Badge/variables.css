@@ -1,0 +1,71 @@
+:root {
+  --par-color-text-badge-fill-gray: var(--par-gray-50);
+  --par-color-text-badge-fill-red: var(--par-red-50);
+  --par-color-text-badge-fill-green: var(--par-green-50);
+  --par-color-text-badge-fill-yellow: var(--par-yellow-50);
+  --par-color-text-badge-fill-blue: var(--par-blue-50);
+  --par-color-text-badge-fill-orange: var(--par-orange-50);
+  --par-color-text-badge-fill-cyan: var(--par-cyan-50);
+  --par-color-text-badge-fill-violet: var(--par-violet-50);
+  --par-color-text-badge-fill-lime: var(--par-lime-50);
+
+  --par-color-text-badge-outline-gray: var(--par-gray-600);
+  --par-color-text-badge-outline-red: var(--par-red-600);
+  --par-color-text-badge-outline-green: var(--par-green-600);
+  --par-color-text-badge-outline-yellow: var(--par-yellow-600);
+  --par-color-text-badge-outline-blue: var(--par-blue-600);
+  --par-color-text-badge-outline-orange: var(--par-orange-600);
+  --par-color-text-badge-outline-cyan: var(--par-cyan-600);
+  --par-color-text-badge-outline-violet: var(--par-violet-600);
+  --par-color-text-badge-outline-lime: var(--par-lime-600);
+
+  --par-color-text-badge-glass-gray: var(--par-gray-600);
+  --par-color-text-badge-glass-red: var(--par-red-600);
+  --par-color-text-badge-glass-green: var(--par-green-600);
+  --par-color-text-badge-glass-yellow: var(--par-yellow-600);
+  --par-color-text-badge-glass-blue: var(--par-blue-600);
+  --par-color-text-badge-glass-orange: var(--par-orange-600);
+  --par-color-text-badge-glass-cyan: var(--par-cyan-600);
+  --par-color-text-badge-glass-violet: var(--par-violet-600);
+  --par-color-text-badge-glass-lime: var(--par-lime-600);
+
+  --par-color-bg-badge-fill-gray: var(--par-gray-600);
+  --par-color-bg-badge-fill-red: var(--par-red-600);
+  --par-color-bg-badge-fill-green: var(--par-green-600);
+  --par-color-bg-badge-fill-yellow: var(--par-yellow-600);
+  --par-color-bg-badge-fill-blue: var(--par-blue-600);
+  --par-color-bg-badge-fill-orange: var(--par-orange-600);
+  --par-color-bg-badge-fill-cyan: var(--par-cyan-600);
+  --par-color-bg-badge-fill-violet: var(--par-violet-600);
+  --par-color-bg-badge-fill-lime: var(--par-lime-600);
+
+  --par-color-bg-badge-outline-gray: rgb(from var(--par-gray-100) r g b / 0.5);
+  --par-color-bg-badge-outline-red: rgb(from var(--par-red-100) r g b / 0.5);
+  --par-color-bg-badge-outline-green: rgb(from var(--par-green-100) r g b / 0.5);
+  --par-color-bg-badge-outline-yellow: rgb(from var(--par-yellow-100) r g b / 0.5);
+  --par-color-bg-badge-outline-blue: rgb(from var(--par-blue-100) r g b / 0.5);
+  --par-color-bg-badge-outline-orange: rgb(from var(--par-orange-100) r g b / 0.5);
+  --par-color-bg-badge-outline-cyan: rgb(from var(--par-cyan-100) r g b / 0.5);
+  --par-color-bg-badge-outline-violet: rgb(from var(--par-violet-100) r g b / 0.5);
+  --par-color-bg-badge-outline-lime: rgb(from var(--par-lime-100) r g b / 0.5);
+
+  --par-color-bg-badge-glass-gray: rgb(from var(--par-gray-200) r g b / 0.5);
+  --par-color-bg-badge-glass-red: rgb(from var(--par-red-200) r g b / 0.5);
+  --par-color-bg-badge-glass-green: rgb(from var(--par-green-200) r g b / 0.5);
+  --par-color-bg-badge-glass-yellow: rgb(from var(--par-yellow-200) r g b / 0.5);
+  --par-color-bg-badge-glass-blue: rgb(from var(--par-blue-200) r g b / 0.5);
+  --par-color-bg-badge-glass-orange: rgb(from var(--par-orange-200) r g b / 0.5);
+  --par-color-bg-badge-glass-cyan: rgb(from var(--par-cyan-200) r g b / 0.5);
+  --par-color-bg-badge-glass-violet: rgb(from var(--par-violet-200) r g b / 0.5);
+  --par-color-bg-badge-glass-lime: rgb(from var(--par-lime-200) r g b / 0.5);
+
+  --par-color-border-badge-outline-gray: var(--par-gray-400);
+  --par-color-border-badge-outline-red: var(--par-red-400);
+  --par-color-border-badge-outline-green: var(--par-green-400);
+  --par-color-border-badge-outline-yellow: var(--par-yellow-400);
+  --par-color-border-badge-outline-blue: var(--par-blue-400);
+  --par-color-border-badge-outline-orange: var(--par-orange-400);
+  --par-color-border-badge-outline-cyan: var(--par-cyan-400);
+  --par-color-border-badge-outline-violet: var(--par-violet-400);
+  --par-color-border-badge-outline-lime: var(--par-lime-400);
+}

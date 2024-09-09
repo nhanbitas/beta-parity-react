@@ -10,18 +10,25 @@
   outline-offset: -2px; /* overide border */
 }
 
-svg.lucide.small {
+svg.lucide.small,
+svg.lucide.xsmall,
+svg.lucide.sm,
+svg.lucide.xs {
   @apply h-3 w-3;
 }
 
-svg.lucide {
+svg.lucide,
+svg.lucide.medium,
+svg.lucide.md {
   @apply box-border h-4 w-4;
 }
 
-svg.lucide.large {
+svg.lucide.large,
+svg.lucide.lg {
   @apply h-5 w-5;
 }
 
-svg.lucide.xlarge {
+svg.lucide.xlarge,
+svg.lucide.xl {
   @apply h-6 w-6;
 }
