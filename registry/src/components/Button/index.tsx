@@ -1,7 +1,6 @@
 'use Client';
 
 import React from 'react';
-import '../theme/alias/border.variables.css';
 import './index.css';
 import classNames from 'classnames';
 

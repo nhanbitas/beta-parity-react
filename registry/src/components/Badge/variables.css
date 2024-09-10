@@ -1,4 +1,5 @@
-:root {
+:root,
+[data-scheme='light'] {
   --par-color-text-badge-fill-gray: var(--par-gray-50);
   --par-color-text-badge-fill-red: var(--par-red-50);
   --par-color-text-badge-fill-green: var(--par-green-50);
@@ -70,7 +71,7 @@
   --par-color-border-badge-outline-lime: var(--par-lime-400);
 }
 
-[data-theme='dark'] {
+[data-scheme='dark'] {
   --par-color-text-badge-outline-gray: var(--par-gray-100);
   --par-color-text-badge-outline-red: var(--par-red-100);
   --par-color-text-badge-outline-green: var(--par-green-100);

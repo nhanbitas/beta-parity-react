@@ -1,3 +1,5 @@
+@import '../theme/alias/border.css';
+
 .btn:not(.hidden) {
   @apply text-body-compact-02 flex items-center justify-center gap-2 whitespace-nowrap rounded-md border-[var(--par-border-field-disabled)] px-4 transition-colors duration-200 ease-out;
 }
