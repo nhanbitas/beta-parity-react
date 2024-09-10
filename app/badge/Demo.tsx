@@ -117,3 +117,31 @@ export const DemoDotBadge = (props: Props) => {
     </div>
   );
 };
+
+export const DemoDotBadgeDark = (props: Props) => {
+  return (
+    <div className='flex flex-col gap-4 rounded-md bg-gray-950 p-2' data-theme='dark'>
+      <div className='flex gap-4'>
+        {colors.map((color) => (
+          <Badge dot key={color} color={color as any} variant='outlined'>
+            Badge
+          </Badge>
+        ))}
+      </div>
+      <div className='flex gap-4'>
+        {colors.map((color) => (
+          <Badge dot key={color} color={color as any} size='sm' variant='glass'>
+            <Box /> Badge
+          </Badge>
+        ))}
+      </div>
+      <div className='flex gap-4'>
+        {colors.map((color) => (
+          <Badge dot key={color} color={color as any} size='xs' variant='filled'>
+            Badge
+          </Badge>
+        ))}
+      </div>
+    </div>
+  );
+};

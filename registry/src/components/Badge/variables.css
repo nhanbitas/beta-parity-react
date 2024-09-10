@@ -69,3 +69,45 @@
   --par-color-border-badge-outline-violet: var(--par-violet-400);
   --par-color-border-badge-outline-lime: var(--par-lime-400);
 }
+
+[data-theme='dark'] {
+  --par-color-text-badge-outline-gray: var(--par-gray-100);
+  --par-color-text-badge-outline-red: var(--par-red-100);
+  --par-color-text-badge-outline-green: var(--par-green-100);
+  --par-color-text-badge-outline-yellow: var(--par-yellow-100);
+  --par-color-text-badge-outline-blue: var(--par-blue-100);
+  --par-color-text-badge-outline-orange: var(--par-orange-100);
+  --par-color-text-badge-outline-cyan: var(--par-cyan-100);
+  --par-color-text-badge-outline-violet: var(--par-violet-100);
+  --par-color-text-badge-outline-lime: var(--par-lime-100);
+
+  --par-color-text-badge-glass-gray: var(--par-gray-100);
+  --par-color-text-badge-glass-red: var(--par-red-100);
+  --par-color-text-badge-glass-green: var(--par-green-100);
+  --par-color-text-badge-glass-yellow: var(--par-yellow-100);
+  --par-color-text-badge-glass-blue: var(--par-blue-100);
+  --par-color-text-badge-glass-orange: var(--par-orange-100);
+  --par-color-text-badge-glass-cyan: var(--par-cyan-100);
+  --par-color-text-badge-glass-violet: var(--par-violet-100);
+  --par-color-text-badge-glass-lime: var(--par-lime-100);
+
+  --par-color-bg-badge-outline-gray: rgb(from var(--par-gray-800) r g b / 0.5);
+  --par-color-bg-badge-outline-red: rgb(from var(--par-red-800) r g b / 0.5);
+  --par-color-bg-badge-outline-green: rgb(from var(--par-green-800) r g b / 0.5);
+  --par-color-bg-badge-outline-yellow: rgb(from var(--par-yellow-800) r g b / 0.5);
+  --par-color-bg-badge-outline-blue: rgb(from var(--par-blue-800) r g b / 0.5);
+  --par-color-bg-badge-outline-orange: rgb(from var(--par-orange-800) r g b / 0.5);
+  --par-color-bg-badge-outline-cyan: rgb(from var(--par-cyan-800) r g b / 0.5);
+  --par-color-bg-badge-outline-violet: rgb(from var(--par-violet-800) r g b / 0.5);
+  --par-color-bg-badge-outline-lime: rgb(from var(--par-lime-800) r g b / 0.5);
+
+  --par-color-bg-badge-glass-gray: rgb(from var(--par-gray-700) r g b / 0.5);
+  --par-color-bg-badge-glass-red: rgb(from var(--par-red-700) r g b / 0.5);
+  --par-color-bg-badge-glass-green: rgb(from var(--par-green-700) r g b / 0.5);
+  --par-color-bg-badge-glass-yellow: rgb(from var(--par-yellow-700) r g b / 0.5);
+  --par-color-bg-badge-glass-blue: rgb(from var(--par-blue-700) r g b / 0.5);
+  --par-color-bg-badge-glass-orange: rgb(from var(--par-orange-700) r g b / 0.5);
+  --par-color-bg-badge-glass-cyan: rgb(from var(--par-cyan-700) r g b / 0.5);
+  --par-color-bg-badge-glass-violet: rgb(from var(--par-violet-700) r g b / 0.5);
+  --par-color-bg-badge-glass-lime: rgb(from var(--par-lime-700) r g b / 0.5);
+}
