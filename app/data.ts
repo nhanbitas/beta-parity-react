@@ -15,6 +15,11 @@ export const components = [
     status: 3
   },
   {
+    name: 'Dot',
+    url: '/dot',
+    status: 1
+  },
+  {
     name: 'Radio',
     url: '/radio',
     status: 3
