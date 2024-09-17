@@ -1,9 +1,10 @@
 .dot {
-  @apply m-0 min-h-1 min-w-1 select-none rounded-full p-0;
+  @apply relative m-0 min-h-1 min-w-1 select-none rounded-full bg-[currentColor] p-0;
 }
 
-.dot.pulse {
-  @apply animate-pulse;
+.dot.pulse::before {
+  content: '';
+  @apply absolute inline-flex h-full w-full animate-ping rounded-full bg-inherit opacity-75;
 }
 
 /* sizes */
@@ -21,46 +22,4 @@
 
 .dot.lg {
   @apply h-3 w-3;
-}
-
-/* theme */
-
-.dot.gray {
-  @apply bg-gray-600;
-}
-
-.dot.orange {
-  @apply bg-orange-600;
-}
-
-.dot.cyan {
-  @apply bg-cyan-600;
-}
-
-.dot.violet {
-  @apply bg-violet-600;
-}
-
-.dot.green {
-  @apply bg-green-600;
-}
-
-.dot.red {
-  @apply bg-red-600;
-}
-
-.dot.yellow {
-  @apply bg-yellow-600;
-}
-
-.dot.blue {
-  @apply bg-blue-600;
-}
-
-.dot.lime {
-  @apply bg-lime-600;
-}
-
-.dot.glass {
-  @apply opacity-50;
 }
