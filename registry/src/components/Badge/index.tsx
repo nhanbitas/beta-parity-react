@@ -1,39 +1,40 @@
 import React from 'react';
 import classNames from 'classnames';
 import './index.css';
-import Base, { BaseProps } from '../Base';
-import { PolymorphicComponentProps, createPolymorphicComponent } from '../Base/factory';
+import Dot from '../Dot';
 
-export interface BadgeProps extends BaseProps {
+export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
   children?: string | React.ReactNode;
   className?: string;
-  color?: 'gray' | 'orange' | 'sky' | 'violet' | 'green' | 'red' | 'yellow' | 'blue';
-  size?: 'small' | 'medium' | 'large';
-  variant?: 'strong' | '';
+  label?: string;
+  icon?: React.ReactNode;
+  color?: 'gray' | 'orange' | 'violet' | 'green' | 'red' | 'yellow' | 'blue' | 'lime' | 'cyan' | '';
+  size?: 'md' | 'sm' | 'xs';
+  dot?: boolean;
+  variant?: 'filled' | 'outlined' | 'glass' | '';
 }
 
-const Badge = createPolymorphicComponent<'span', BadgeProps>(
-  <C extends React.ElementType = 'span'>(
-    {
-      component,
-      className,
-      children,
-      color = 'gray',
-      size = 'medium',
-      variant = '',
-      ...props
-    }: PolymorphicComponentProps<C, BadgeProps>,
-    ref: React.Ref<any>
+const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
+  (
+    { className, children, label, icon, color = 'gray', size = 'md', variant = 'outlined', dot = false, ...props },
+    ref
   ) => {
-    const Component = component || ('span' as C);
     return (
-      <Base component={Component} className={classNames('badge', className, variant, color, size)} ref={ref} {...props}>
-        {children}
-      </Base>
+      <span className={classNames('badge', { dotted: dot }, className, variant, color, size)} ref={ref} {...props}>
+        {dot ? (
+          <>
+            <Dot size={size == 'xs' ? 'xs' : 'sm'} /> {label || children}
+          </>
+        ) : (
+          <>
+            {icon} {label || children}
+          </>
+        )}
+      </span>
     );
   }
 );
 
 Badge.displayName = 'Badge';
 
-export { Badge };
+export default Badge;

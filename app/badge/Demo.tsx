@@ -1,80 +1,95 @@
-import { Badge } from '@libComponents/Badge';
+import Badge from '@libComponents/Badge';
+import { Box, Dot } from 'lucide-react';
 import React from 'react';
 
 type Props = {};
 
-export const DemoBasicBadge = (props: Props) => {
+const colors = ['gray', 'red', 'orange', 'yellow', 'green', 'blue', 'cyan', 'violet', 'lime'];
+
+export const DemoOutlinedBadge = (props: Props) => {
   return (
-    <div className='flex gap-4'>
-      <Badge className='' color='sky' size='medium' variant=''>
-        Badge
-      </Badge>
-      <Badge className='' color='orange' size='medium' variant=''>
-        Badge
-      </Badge>
-      <Badge className='' color='gray' size='medium' variant=''>
-        Badge
-      </Badge>
-      <Badge className='' color='green' size='medium' variant=''>
-        Badge
-      </Badge>
-      <Badge className='' color='red' size='medium' variant=''>
-        Badge
-      </Badge>
+    <div className='flex flex-col gap-4'>
+      <div className='flex flex-wrap gap-4'>
+        {colors.map((color) => (
+          <Badge key={color} color={color as any} icon={<Box />} label='Badge' />
+        ))}
+      </div>
+      <div className='flex flex-wrap gap-4'>
+        {colors.map((color) => (
+          <Badge key={color} color={color as any} size='sm' icon={<Box />} label='Badge' />
+        ))}
+      </div>
+      <div className='flex flex-wrap gap-4'>
+        {colors.map((color) => (
+          <Badge key={color} color={color as any} size='xs' icon={<Box />} label='Badge' />
+        ))}
+      </div>
     </div>
   );
 };
 
-export const DemoStrongBadge = (props: Props) => {
+export const DemoGlassBadge = (props: Props) => {
   return (
-    <div className='flex gap-4'>
-      <Badge className='' color='sky' size='medium' variant='strong'>
-        Badge
-      </Badge>
-      <Badge className='' color='orange' size='medium' variant='strong'>
-        Badge
-      </Badge>
-      <Badge className='' color='gray' size='medium' variant='strong'>
-        Badge
-      </Badge>
-      <Badge className='' color='green' size='medium' variant='strong'>
-        Badge
-      </Badge>
-      <Badge className='' color='red' size='medium' variant='strong'>
-        Badge
-      </Badge>
+    <div className='flex flex-col gap-4'>
+      <div className='flex flex-wrap gap-4'>
+        {colors.map((color) => (
+          <Badge key={color} color={color as any} variant='glass' icon={<Box />} label='Badge' />
+        ))}
+      </div>
+      <div className='flex flex-wrap gap-4'>
+        {colors.map((color) => (
+          <Badge key={color} color={color as any} size='sm' variant='glass' icon={<Box />} label='Badge' />
+        ))}
+      </div>
+      <div className='flex flex-wrap gap-4'>
+        {colors.map((color) => (
+          <Badge key={color} color={color as any} size='xs' variant='glass' icon={<Box />} label='Badge' />
+        ))}
+      </div>
     </div>
   );
 };
 
-export const DemoSmallBadge = (props: Props) => {
+export const DemoFilledBadge = (props: Props) => {
   return (
-    <div className='flex gap-4'>
-      <Badge className='' color='sky' size='small' variant=''>
-        Badge
-      </Badge>
-      <Badge className='' color='orange' size='small' variant=''>
-        Badge
-      </Badge>
-      <Badge className='' color='gray' size='small' variant=''>
-        Badge
-      </Badge>
-      <Badge className='' color='green' size='small' variant=''>
-        Badge
-      </Badge>
-      <Badge className='' color='red' size='small' variant=''>
-        Badge
-      </Badge>
+    <div className='flex flex-col gap-4'>
+      <div className='flex flex-wrap gap-4'>
+        {colors.map((color) => (
+          <Badge key={color} color={color as any} variant='filled' icon={<Box />} label='Badge' />
+        ))}
+      </div>
+      <div className='flex flex-wrap gap-4'>
+        {colors.map((color) => (
+          <Badge key={color} color={color as any} size='sm' variant='filled' icon={<Box />} label='Badge' />
+        ))}
+      </div>
+      <div className='flex flex-wrap gap-4'>
+        {colors.map((color) => (
+          <Badge key={color} color={color as any} size='xs' variant='filled' icon={<Box />} label='Badge' />
+        ))}
+      </div>
     </div>
   );
 };
 
-export const DemoBadgeWithLink = (props: Props) => {
+export const DemoDotBadge = (props: Props) => {
   return (
-    <div className='flex gap-4'>
-      <Badge component='a' href='#' color='sky' size='medium' variant=''>
-        Link
-      </Badge>
+    <div className='flex flex-col gap-4'>
+      <div className='flex flex-wrap gap-4'>
+        {colors.map((color) => (
+          <Badge dot key={color} color={color as any} variant='outlined' icon={<Box />} label='Badge' />
+        ))}
+      </div>
+      <div className='flex flex-wrap gap-4'>
+        {colors.map((color) => (
+          <Badge dot key={color} color={color as any} size='sm' variant='glass' icon={<Box />} label='Badge' />
+        ))}
+      </div>
+      <div className='flex flex-wrap gap-4'>
+        {colors.map((color) => (
+          <Badge dot key={color} color={color as any} size='xs' variant='filled' icon={<Box />} label='Badge' />
+        ))}
+      </div>
     </div>
   );
 };

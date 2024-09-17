@@ -1,86 +1,148 @@
-@import '../global.css';
-
 .badge {
-  @apply text-label-01 flex h-6 w-fit select-none items-center gap-1 truncate rounded-full border border-gray-500 bg-gray-50 px-1.5 font-semibold text-gray-600;
+  @apply text-label-01 flex w-fit select-none items-center gap-1 truncate rounded-full border border-none font-semibold;
 }
 
-.badge.small {
-  @apply text-label-01 flex h-5 w-fit select-none items-center gap-0.5 truncate rounded-full border border-gray-500 bg-gray-50 px-1.5 font-semibold text-gray-600;
+.badge.md {
+  @apply min-w-6 px-1.5 py-1;
 }
 
-.badge.dotted::before {
-  content: '';
-  background-color: currentColor;
-  margin: 1px;
-  border-radius: 100%;
-  @apply h-1.5 w-1.5;
+.badge.sm {
+  @apply min-w-5 px-1.5 py-0.5;
+}
+
+.badge.xs {
+  @apply min-w-3.5 gap-0.5 px-[0.1875rem] py-0;
 }
 
 .badge i,
-.badge img {
+.badge img,
+.badge svg {
   @apply h-4 w-4;
 }
 
-.badge.green {
-  @apply border-green-500 bg-green-50 text-green-600;
+.badge.sm i,
+.badge.sm img,
+.badge.sm svg,
+.badge.xs i,
+.badge.xs img,
+.badge.xs svg {
+  @apply h-3 w-3;
 }
 
-.badge.orange {
-  @apply border-orange-500 bg-orange-50 text-orange-600;
+.badge.dotted i,
+.badge.dotted img,
+.badge.dotted svg {
+  @apply hidden;
 }
 
-.badge.sky {
-  @apply border-cyan-500 bg-cyan-50 text-cyan-600;
+.badge.outlined {
+  @apply border-solid;
 }
 
-.badge.violet {
-  @apply border-violet-500 bg-violet-50 text-violet-600;
+.badge.outlined.gray {
+  @apply border-gray-400 bg-gray-100/50 text-gray-600;
 }
 
-.badge.red {
-  @apply border-red-500 bg-red-50 text-red-600;
+.badge.outlined.red {
+  @apply border-red-400 bg-red-100/50 text-red-600;
 }
 
-.badge.yellow {
-  @apply border-yellow-500 bg-yellow-50 text-yellow-600;
+.badge.outlined.green {
+  @apply border-green-400 bg-green-100/50 text-green-600;
 }
 
-.badge.blue {
-  @apply border-blue-500 bg-blue-50 text-blue-600;
+.badge.outlined.yellow {
+  @apply border-yellow-400 bg-yellow-100/50 text-yellow-600;
 }
 
-.badge.gray {
-  @apply border-gray-500 bg-gray-50 text-gray-600;
+.badge.outlined.blue {
+  @apply border-blue-400 bg-blue-100/50 text-blue-600;
 }
 
-.badge.green.strong {
-  @apply border-green-500 bg-green-500 text-white;
+.badge.outlined.orange {
+  @apply border-orange-400 bg-orange-100/50 text-orange-600;
 }
 
-.badge.orange.strong {
-  @apply border-orange-500 bg-orange-500 text-white;
+.badge.outlined.cyan {
+  @apply border-cyan-400 bg-cyan-100/50 text-cyan-600;
 }
 
-.badge.sky.strong {
-  @apply border-cyan-500 bg-cyan-500 text-white;
+.badge.outlined.violet {
+  @apply border-violet-400 bg-violet-100/50 text-violet-600;
 }
 
-.badge.violet.strong {
-  @apply border-violet-500 bg-violet-500 text-white;
+.badge.outlined.lime {
+  @apply border-lime-400 bg-lime-100/50 text-lime-600;
 }
 
-.badge.red.strong {
-  @apply border-red-500 bg-red-500 text-white;
+.badge.glass.gray {
+  @apply border-none bg-gray-200/50 text-gray-600;
 }
 
-.badge.yellow.strong {
-  @apply border-yellow-500 bg-yellow-500 text-white;
+.badge.glass.red {
+  @apply border-none bg-red-200/50 text-red-600;
 }
 
-.badge.blue.strong {
-  @apply border-blue-500 bg-blue-500 text-white;
+.badge.glass.green {
+  @apply border-none bg-green-200/50 text-green-600;
 }
 
-.badge.gray.strong {
-  @apply border-gray-500 bg-gray-500 text-white;
+.badge.glass.yellow {
+  @apply border-none bg-yellow-200/50 text-yellow-600;
+}
+
+.badge.glass.blue {
+  @apply border-none bg-blue-200/50 text-blue-600;
+}
+
+.badge.glass.orange {
+  @apply border-none bg-orange-200/50 text-orange-600;
+}
+
+.badge.glass.cyan {
+  @apply border-none bg-cyan-200/50 text-cyan-600;
+}
+
+.badge.glass.violet {
+  @apply border-none bg-violet-200/50 text-violet-600;
+}
+
+.badge.glass.lime {
+  @apply border-none bg-lime-200/50 text-lime-600;
+}
+
+.badge.filled.gray {
+  @apply border-[var(--par-color-border-badge-fill-gray)] bg-gray-600 text-gray-50;
+}
+
+.badge.filled.red {
+  @apply border-[var(--par-color-border-badge-fill-red)] bg-red-600 text-red-50;
+}
+
+.badge.filled.green {
+  @apply border-[var(--par-color-border-badge-fill-green)] bg-green-600 text-green-50;
+}
+
+.badge.filled.yellow {
+  @apply border-[var(--par-color-border-badge-fill-yellow)] bg-yellow-600 text-yellow-50;
+}
+
+.badge.filled.blue {
+  @apply border-[var(--par-color-border-badge-fill-blue)] bg-blue-600 text-blue-50;
+}
+
+.badge.filled.orange {
+  @apply border-[var(--par-color-border-badge-fill-orange)] bg-orange-600 text-orange-50;
+}
+
+.badge.filled.cyan {
+  @apply border-[var(--par-color-border-badge-fill-cyan)] bg-cyan-600 text-cyan-50;
+}
+
+.badge.filled.violet {
+  @apply border-[var(--par-color-border-badge-fill-violet)] bg-violet-600 text-violet-50;
+}
+
+.badge.filled.lime {
+  @apply border-[var(--par-color-border-badge-fill-lime)] bg-lime-600 text-lime-50;
 }
