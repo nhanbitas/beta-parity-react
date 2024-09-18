@@ -15,6 +15,11 @@ export const components = [
     status: 3
   },
   {
+    name: 'Corner Indicator',
+    url: '/corner-indicator',
+    status: 2
+  },
+  {
     name: 'Dot',
     url: '/dot',
     status: 1

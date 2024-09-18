@@ -1,0 +1,34 @@
+.corner-indicator-container {
+  @apply relative h-fit w-fit;
+}
+
+.corner-indicator-container > .badge,
+.corner-indicator-container > .dot {
+  @apply z-foreground absolute;
+}
+
+.corner-indicator-container.with-border > .badge,
+.corner-indicator-container.with-border > .dot {
+  @apply ring-1 ring-white;
+}
+
+/* position */
+.corner-indicator-container.top-right > .badge,
+.corner-indicator-container.top-right > .dot {
+  @apply right-0 top-0 -translate-y-1/2 translate-x-1/2;
+}
+
+.corner-indicator-container.top-left > .badge,
+.corner-indicator-container.top-left > .dot {
+  @apply left-0 top-0 -translate-x-1/2 -translate-y-1/2;
+}
+
+.corner-indicator-container.bottom-right > .badge,
+.corner-indicator-container.bottom-right > .dot {
+  @apply bottom-0 right-0 translate-x-1/2 translate-y-1/2;
+}
+
+.corner-indicator-container.bottom-left > .badge,
+.corner-indicator-container.bottom-left > .dot {
+  @apply bottom-0 left-0 -translate-x-1/2 translate-y-1/2;
+}
