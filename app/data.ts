@@ -22,7 +22,7 @@ export const components = [
   {
     name: 'Dot',
     url: '/dot',
-    status: 1
+    status: 2
   },
   {
     name: 'Radio',
@@ -32,22 +32,22 @@ export const components = [
   {
     name: 'Chip',
     url: '/chip',
-    status: 2
+    status: 3
   },
   {
     name: 'Menu',
     url: '/menu',
-    status: 2
+    status: 3
   },
   {
     name: 'Select',
     url: '/select',
-    status: 2
+    status: 3
   },
   {
     name: 'Switch',
     url: '/switch',
-    status: 2
+    status: 3
   },
   {
     name: 'Badge',
