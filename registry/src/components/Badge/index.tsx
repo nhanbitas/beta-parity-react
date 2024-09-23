@@ -1,11 +1,14 @@
 import React from 'react';
 import classNames from 'classnames';
-import './variables.css';
 import './index.css';
+import './variables.css';
+import Dot from '../Dot';
 
 export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
   children?: string | React.ReactNode;
   className?: string;
+  label?: string;
+  icon?: React.ReactNode;
   color?: 'gray' | 'orange' | 'violet' | 'green' | 'red' | 'yellow' | 'blue' | 'lime' | 'cyan' | '';
   size?: 'md' | 'sm' | 'xs';
   dot?: boolean;
@@ -13,10 +16,21 @@ export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
 }
 
 const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
-  ({ className, children, color = 'gray', size = 'md', variant = 'outlined', dot = false, ...props }, ref) => {
+  (
+    { className, children, label, icon, color = 'gray', size = 'md', variant = 'outlined', dot = false, ...props },
+    ref
+  ) => {
     return (
       <span className={classNames('badge', { dotted: dot }, className, variant, color, size)} ref={ref} {...props}>
-        {children}
+        {dot ? (
+          <>
+            <Dot size={size == 'xs' ? 'xs' : 'sm'} /> {label || children}
+          </>
+        ) : (
+          <>
+            {icon} {label || children}
+          </>
+        )}
       </span>
     );
   }
@@ -24,4 +38,4 @@ const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
 
 Badge.displayName = 'Badge';
 
-export { Badge };
+export default Badge;

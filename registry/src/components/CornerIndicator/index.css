@@ -1,0 +1,38 @@
+.corner-indicator-container {
+  @apply relative h-fit w-fit;
+}
+
+.corner-indicator-container > .badge,
+.corner-indicator-container > .dot {
+  @apply z-foreground absolute;
+}
+
+.corner-indicator-container.with-border > .badge,
+.corner-indicator-container.with-border > .dot {
+  @apply ring-1 ring-white;
+}
+
+/* position */
+.corner-indicator-container.top-right > .badge,
+.corner-indicator-container.top-right > .dot {
+  transform: translate(calc(50% + var(--par-inset-offset)), calc(-50% - var(--par-inset-offset)));
+  @apply right-0 top-0;
+}
+
+.corner-indicator-container.top-left > .badge,
+.corner-indicator-container.top-left > .dot {
+  transform: translate(calc(-50% - var(--par-inset-offset)), calc(-50% - var(--par-inset-offset)));
+  @apply left-0 top-0;
+}
+
+.corner-indicator-container.bottom-right > .badge,
+.corner-indicator-container.bottom-right > .dot {
+  transform: translate(calc(+50% + var(--par-inset-offset)), calc(+50% + var(--par-inset-offset)));
+  @apply bottom-0 right-0;
+}
+
+.corner-indicator-container.bottom-left > .badge,
+.corner-indicator-container.bottom-left > .dot {
+  transform: translate(calc(-50% - var(--par-inset-offset)), calc(+50% + var(--par-inset-offset)));
+  @apply bottom-0 left-0;
+}

@@ -1,5 +1,5 @@
 .badge {
-  @apply text-label-01 flex w-fit select-none items-center gap-1 truncate rounded-full border border-none font-semibold;
+  @apply text-label-01 flex w-fit min-w-6 select-none items-center justify-center gap-1 truncate rounded-full border border-none px-1.5 py-1 font-semibold;
 }
 
 .badge.md {
@@ -12,16 +12,6 @@
 
 .badge.xs {
   @apply min-w-3.5 gap-0.5 px-[0.1875rem] py-0;
-}
-
-.badge.dotted::before {
-  content: '';
-  background-color: currentColor;
-  @apply m-px h-1.5 w-1.5 rounded-full;
-}
-
-.badge.dotted.xs::before {
-  @apply h-1 w-1;
 }
 
 .badge i,

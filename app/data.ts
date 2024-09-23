@@ -15,6 +15,16 @@ export const components = [
     status: 3
   },
   {
+    name: 'Corner Indicator',
+    url: '/corner-indicator',
+    status: 2
+  },
+  {
+    name: 'Dot',
+    url: '/dot',
+    status: 2
+  },
+  {
     name: 'Radio',
     url: '/radio',
     status: 3
@@ -22,22 +32,22 @@ export const components = [
   {
     name: 'Chip',
     url: '/chip',
-    status: 2
+    status: 3
   },
   {
     name: 'Menu',
     url: '/menu',
-    status: 2
+    status: 3
   },
   {
     name: 'Select',
     url: '/select',
-    status: 2
+    status: 3
   },
   {
     name: 'Switch',
     url: '/switch',
-    status: 2
+    status: 3
   },
   {
     name: 'Badge',

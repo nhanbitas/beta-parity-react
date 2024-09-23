@@ -1,0 +1,67 @@
+.dot {
+  @apply relative m-0 min-h-1 min-w-1 select-none rounded-full bg-[currentColor] p-0;
+}
+
+.dot.pulse::before {
+  content: '';
+  @apply absolute inline-flex h-full w-full animate-ping rounded-full bg-inherit opacity-75;
+}
+
+/* sizes */
+.dot.xs {
+  @apply h-1 w-1;
+}
+
+.dot.sm {
+  @apply h-1.5 w-1.5;
+}
+
+.dot.md {
+  @apply h-2 w-2;
+}
+
+.dot.lg {
+  @apply h-3 w-3;
+}
+
+/* theme */
+
+.dot.gray {
+  @apply bg-[var(--par-color-bg-dot-fill-gray)];
+}
+
+.dot.orange {
+  @apply bg-[var(--par-color-bg-dot-fill-orange)];
+}
+
+.dot.cyan {
+  @apply bg-[var(--par-color-bg-dot-fill-cyan)];
+}
+
+.dot.violet {
+  @apply bg-[var(--par-color-bg-dot-fill-violet)];
+}
+
+.dot.green {
+  @apply bg-[var(--par-color-bg-dot-fill-green)];
+}
+
+.dot.red {
+  @apply bg-[var(--par-color-bg-dot-fill-red)];
+}
+
+.dot.yellow {
+  @apply bg-[var(--par-color-bg-dot-fill-yellow)];
+}
+
+.dot.blue {
+  @apply bg-[var(--par-color-bg-dot-fill-blue)];
+}
+
+.dot.lime {
+  @apply bg-[var(--par-color-bg-dot-fill-lime)];
+}
+
+.dot.glass {
+  @apply opacity-50;
+}
