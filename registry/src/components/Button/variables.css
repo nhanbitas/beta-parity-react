@@ -1,0 +1,195 @@
+:root,
+[data-scheme='light'] {
+  --par-color-text-button-fill-neutral-enabled: var(--par-white);
+  --par-color-text-button-fill-neutral-hovered: var(--par-white);
+  --par-color-text-button-fill-neutral-pressed: var(--par-white);
+  --par-color-text-button-fill-accent-enabled: var(--par-white);
+  --par-color-text-button-fill-accent-hovered: var(--par-white);
+  --par-color-text-button-fill-accent-pressed: var(--par-white);
+  --par-color-text-button-fill-adverse-enabled: var(--par-white);
+  --par-color-text-button-fill-adverse-hovered: var(--par-white);
+  --par-color-text-button-fill-adverse-pressed: var(--par-white);
+  --par-color-text-button-fill-disabled: rgb(from var(--par-white) r g b / 0.5);
+  --par-color-text-button-fill-pending: var(--par-white);
+
+  --par-color-text-button-outline-neutral-enabled: var(--par-neutral-550);
+  --par-color-text-button-outline-neutral-hovered: var(--par-neutral-600);
+  --par-color-text-button-outline-neutral-pressed: var(--par-neutral-700);
+  --par-color-text-button-outline-accent-enabled: var(--par-accent-550);
+  --par-color-text-button-outline-accent-hovered: var(--par-accent-600);
+  --par-color-text-button-outline-accent-pressed: var(--par-accent-700);
+  --par-color-text-button-outline-adverse-enabled: var(--par-red-550);
+  --par-color-text-button-outline-adverse-hovered: var(--par-red-600);
+  --par-color-text-button-outline-adverse-pressed: var(--par-red-700);
+  --par-color-text-button-outline-disabled: rgb(from var(--par-gray-550) r g b / 0.5);
+  --par-color-text-button-outline-pending: var(--par-gray-550);
+
+  --par-color-text-button-ghost-neutral-enabled: var(--par-neutral-550);
+  --par-color-text-button-ghost-neutral-hovered: var(--par-neutral-600);
+  --par-color-text-button-ghost-neutral-pressed: var(--par-neutral-700);
+  --par-color-text-button-ghost-accent-enabled: var(--par-accent-550);
+  --par-color-text-button-ghost-accent-hovered: var(--par-accent-600);
+  --par-color-text-button-ghost-accent-pressed: var(--par-accent-700);
+  --par-color-text-button-ghost-adverse-enabled: var(--par-red-550);
+  --par-color-text-button-ghost-adverse-hovered: var(--par-red-600);
+  --par-color-text-button-ghost-adverse-pressed: var(--par-red-700);
+  --par-color-text-button-ghost-disabled: rgb(from var(--par-gray-550) r g b / 0.5);
+  --par-color-text-button-ghost-pending: var(--par-gray-550);
+
+  --par-color-text-button-glass-neutral-enabled: var(--par-neutral-600);
+  --par-color-text-button-glass-neutral-hovered: var(--par-neutral-700);
+  --par-color-text-button-glass-neutral-pressed: var(--par-neutral-800);
+  --par-color-text-button-glass-accent-enabled: var(--par-accent-600);
+  --par-color-text-button-glass-accent-hovered: var(--par-accent-700);
+  --par-color-text-button-glass-accent-pressed: var(--par-accent-800);
+  --par-color-text-button-glass-adverse-enabled: var(--par-red-600);
+  --par-color-text-button-glass-adverse-hovered: var(--par-red-700);
+  --par-color-text-button-glass-adverse-pressed: var(--par-red-800);
+  --par-color-text-button-glass-disabled: rgb(from var(--par-gray-600) r g b / 0.5);
+  --par-color-text-button-glass-pending: var(--par-gray-600);
+
+  --par-color-bg-button-fill-neutral-enabled: var(--par-neutral-900);
+  --par-color-bg-button-fill-neutral-hovered: var(--par-neutral-800);
+  --par-color-bg-button-fill-neutral-pressed: var(--par-neutral-700);
+  --par-color-bg-button-fill-accent-enabled: var(--par-accent-500);
+  --par-color-bg-button-fill-accent-hovered: var(--par-accent-600);
+  --par-color-bg-button-fill-accent-pressed: var(--par-accent-700);
+  --par-color-bg-button-fill-adverse-enabled: var(--par-red-500);
+  --par-color-bg-button-fill-adverse-hovered: var(--par-red-600);
+  --par-color-bg-button-fill-adverse-pressed: var(--par-red-700);
+  --par-color-bg-button-fill-disabled: rgb(from var(--par-gray-500) r g b / 0.5);
+  --par-color-bg-button-fill-pending: var(--par-gray-500);
+
+  --par-color-bg-button-outline-neutral-enabled: var(--par-transparent);
+  --par-color-bg-button-outline-neutral-hovered: rgb(from var(--par-neutral-100) r g b / 0.5);
+  --par-color-bg-button-outline-neutral-pressed: rgb(from var(--par-neutral-200) r g b / 0.5);
+  --par-color-bg-button-outline-accent-enabled: var(--par-transparent);
+  --par-color-bg-button-outline-accent-hovered: rgb(from var(--par-accent-100) r g b / 0.5);
+  --par-color-bg-button-outline-accent-pressed: rgb(from var(--par-accent-200) r g b / 0.5);
+  --par-color-bg-button-outline-adverse-enabled: var(--par-transparent);
+  --par-color-bg-button-outline-adverse-hovered: rgb(from var(--par-red-100) r g b / 0.5);
+  --par-color-bg-button-outline-adverse-pressed: rgb(from var(--par-red-200) r g b / 0.5);
+  --par-color-bg-button-outline-enabled: var(--par-transparent);
+  --par-color-bg-button-outline-disabled: var(--par-transparent);
+  --par-color-bg-button-outline-pending: var(--par-transparent);
+
+  --par-color-bg-button-ghost-neutral-enabled: var(--par-transparent);
+  --par-color-bg-button-ghost-neutral-hovered: rgb(from var(--par-neutral-100) r g b / 0.5);
+  --par-color-bg-button-ghost-neutral-pressed: rgb(from var(--par-neutral-200) r g b / 0.5);
+  --par-color-bg-button-ghost-accent-enabled: var(--par-transparent);
+  --par-color-bg-button-ghost-accent-hovered: rgb(from var(--par-accent-100) r g b / 0.5);
+  --par-color-bg-button-ghost-accent-pressed: rgb(from var(--par-accent-200) r g b / 0.5);
+  --par-color-bg-button-ghost-adverse-enabled: var(--par-transparent);
+  --par-color-bg-button-ghost-adverse-hovered: rgb(from var(--par-red-100) r g b / 0.5);
+  --par-color-bg-button-ghost-adverse-pressed: rgb(from var(--par-red-200) r g b / 0.5);
+  --par-color-bg-button-ghost-enabled: var(--par-transparent);
+  --par-color-bg-button-ghost-disabled: var(--par-transparent);
+  --par-color-bg-button-ghost-pending: var(--par-transparent);
+
+  --par-color-bg-button-glass-neutral-enabled: rgb(from var(--par-neutral-100) r g b / 0.5);
+  --par-color-bg-button-glass-neutral-hovered: rgb(from var(--par-neutral-200) r g b / 0.5);
+  --par-color-bg-button-glass-neutral-pressed: rgb(from var(--par-neutral-300) r g b / 0.5);
+  --par-color-bg-button-glass-accent-enabled: rgb(from var(--par-accent-100) r g b / 0.5);
+  --par-color-bg-button-glass-accent-hovered: rgb(from var(--par-accent-200) r g b / 0.5);
+  --par-color-bg-button-glass-accent-pressed: rgb(from var(--par-accent-300) r g b / 0.5);
+  --par-color-bg-button-glass-adverse-enabled: rgb(from var(--par-red-100) r g b / 0.5);
+  --par-color-bg-button-glass-adverse-hovered: rgb(from var(--par-red-200) r g b / 0.5);
+  --par-color-bg-button-glass-adverse-pressed: rgb(from var(--par-red-300) r g b / 0.5);
+  --par-color-bg-button-glass-disabled: rgb(from var(--par-gray-100) r g b / 0.25);
+  --par-color-bg-button-glass-pending: rgb(from var(--par-gray-100) r g b / 0.5);
+
+  --par-color-border-button-outline-neutral-enabled: var(--par-neutral-400);
+  --par-color-border-button-outline-neutral-hovered: var(--par-neutral-500);
+  --par-color-border-button-outline-neutral-pressed: var(--par-neutral-500);
+  --par-color-border-button-outline-accent-enabled: var(--par-accent-400);
+  --par-color-border-button-outline-accent-hovered: var(--par-accent-500);
+  --par-color-border-button-outline-accent-pressed: var(--par-accent-500);
+  --par-color-border-button-outline-adverse-enabled: var(--par-red-400);
+  --par-color-border-button-outline-adverse-hovered: var(--par-red-500);
+  --par-color-border-button-outline-adverse-pressed: var(--par-red-500);
+  --par-color-border-button-outline-disabled: rgb(from var(--par-gray-400) r g b / 0.5);
+  --par-color-border-button-outline-pending: var(--par-gray-400);
+}
+
+[data-scheme='dark'] {
+  --par-color-text-button-fill-neutral-enabled: var(--par-gray-950);
+  --par-color-text-button-fill-neutral-hovered: var(--par-gray-950);
+  --par-color-text-button-fill-neutral-pressed: var(--par-gray-950);
+  --par-color-text-button-fill-disabled: rgb(from var(--par-black) r g b / 0.5);
+
+  --par-color-text-button-outline-neutral-enabled: var(--par-neutral-200);
+  --par-color-text-button-outline-neutral-hovered: var(--par-neutral-100);
+  --par-color-text-button-outline-neutral-pressed: var(--par-neutral-100);
+  --par-color-text-button-outline-accent-enabled: var(--par-accent-200);
+  --par-color-text-button-outline-accent-hovered: var(--par-accent-100);
+  --par-color-text-button-outline-accent-pressed: var(--par-accent-100);
+  --par-color-text-button-outline-adverse-enabled: var(--par-red-200);
+  --par-color-text-button-outline-adverse-hovered: var(--par-red-100);
+  --par-color-text-button-outline-adverse-pressed: var(--par-red-100);
+  --par-color-text-button-outline-disabled: rgb(from var(--par-gray-200) r g b / 0.5);
+  --par-color-text-button-outline-pending: var(--par-gray-200);
+
+  --par-color-text-button-ghost-neutral-enabled: var(--par-neutral-200);
+  --par-color-text-button-ghost-neutral-hovered: var(--par-neutral-100);
+  --par-color-text-button-ghost-neutral-pressed: var(--par-neutral-100);
+  --par-color-text-button-ghost-accent-enabled: var(--par-accent-200);
+  --par-color-text-button-ghost-accent-hovered: var(--par-accent-100);
+  --par-color-text-button-ghost-accent-pressed: var(--par-accent-100);
+  --par-color-text-button-ghost-adverse-enabled: var(--par-red-200);
+  --par-color-text-button-ghost-adverse-hovered: var(--par-red-100);
+  --par-color-text-button-ghost-adverse-pressed: var(--par-red-100);
+  --par-color-text-button-ghost-disabled: rgb(from var(--par-gray-200) r g b / 0.5);
+  --par-color-text-button-ghost-pending: var(--par-gray-200);
+
+  --par-color-text-button-glass-neutral-enabled: var(--par-neutral-100);
+  --par-color-text-button-glass-neutral-hovered: var(--par-neutral-100);
+  --par-color-text-button-glass-neutral-pressed: var(--par-neutral-100);
+  --par-color-text-button-glass-accent-enabled: var(--par-accent-100);
+  --par-color-text-button-glass-accent-hovered: var(--par-accent-100);
+  --par-color-text-button-glass-accent-pressed: var(--par-accent-100);
+  --par-color-text-button-glass-adverse-enabled: var(--par-red-100);
+  --par-color-text-button-glass-adverse-hovered: var(--par-red-100);
+  --par-color-text-button-glass-adverse-pressed: var(--par-red-100);
+  --par-color-text-button-glass-disabled: rgba(var(--par-gray-100), 0.5);
+  --par-color-text-button-glass-pending: var(--par-gray-100);
+
+  --par-color-bg-button-fill-neutral-enabled: var(--par-white);
+  --par-color-bg-button-fill-neutral-hovered: var(--par-neutral-100);
+  --par-color-bg-button-fill-neutral-pressed: var(--par-neutral-200);
+  --par-color-bg-button-fill-adverse-pressed: var(--par-red-600);
+  --par-color-bg-button-fill-disabled: rgba(var(--par-white), 0.5);
+  --par-color-bg-button-fill-pending: var(--par-white);
+
+  --par-color-bg-button-outline-neutral-hovered: rgb(from var(--par-neutral-800) r g b / 0.5);
+  --par-color-bg-button-outline-neutral-pressed: rgb(from var(--par-neutral-700) r g b / 0.5);
+  --par-color-bg-button-outline-accent-hovered: rgb(from var(--par-accent-800) r g b / 0.5);
+  --par-color-bg-button-outline-accent-pressed: rgb(from var(--par-accent-700) r g b / 0.5);
+  --par-color-bg-button-outline-adverse-hovered: rgb(from var(--par-red-800) r g b / 0.5);
+  --par-color-bg-button-outline-adverse-pressed: rgb(from var(--par-red-700) r g b / 0.5);
+
+  --par-color-bg-button-ghost-neutral-hovered: rgb(from var(--par-neutral-800) r g b / 0.5);
+  --par-color-bg-button-ghost-neutral-pressed: rgb(from var(--par-neutral-700) r g b / 0.5);
+  --par-color-bg-button-ghost-accent-hovered: rgb(from var(--par-accent-800) r g b / 0.5);
+  --par-color-bg-button-ghost-accent-pressed: rgb(from var(--par-accent-700) r g b / 0.5);
+  --par-color-bg-button-ghost-adverse-hovered: rgb(from var(--par-red-800) r g b / 0.5);
+  --par-color-bg-button-ghost-adverse-pressed: rgb(from var(--par-red-700) r g b / 0.5);
+
+  --par-color-bg-button-glass-neutral-enabled: rgb(from var(--par-neutral-800) r g b / 0.5);
+  --par-color-bg-button-glass-neutral-hovered: rgb(from var(--par-neutral-700) r g b / 0.5);
+  --par-color-bg-button-glass-neutral-pressed: rgb(from var(--par-neutral-600) r g b / 0.5);
+  --par-color-bg-button-glass-accent-enabled: rgb(from var(--par-accent-800) r g b / 0.5);
+  --par-color-bg-button-glass-accent-hovered: rgb(from var(--par-accent-700) r g b / 0.5);
+  --par-color-bg-button-glass-accent-pressed: rgb(from var(--par-accent-600) r g b / 0.5);
+  --par-color-bg-button-glass-adverse-enabled: rgb(from var(--par-red-800) r g b / 0.5);
+  --par-color-bg-button-glass-adverse-hovered: rgb(from var(--par-red-700) r g b / 0.5);
+  --par-color-bg-button-glass-adverse-pressed: rgb(from var(--par-red-600) r g b / 0.5);
+  --par-color-bg-button-glass-disabled: rgb(from var(--par-gray-800) r g b / 0.25);
+  --par-color-bg-button-glass-pending: rgb(from var(--par-gray-800) r g b / 0.5);
+
+  --par-color-border-button-outline-neutral-hovered: var(--par-neutral-300);
+  --par-color-border-button-outline-neutral-pressed: var(--par-neutral-300);
+  --par-color-border-button-outline-accent-hovered: var(--par-accent-300);
+  --par-color-border-button-outline-accent-pressed: var(--par-accent-300);
+  --par-color-border-button-outline-adverse-hovered: var(--par-red-300);
+  --par-color-border-button-outline-adverse-pressed: var(--par-red-300);
+}
