@@ -62,22 +62,27 @@ export const components = [
   {
     name: 'Input',
     url: '/input',
-    status: 1
+    status: 2
   },
   {
     name: 'Password Input',
     url: '/password-input',
-    status: 1
+    status: 2
   },
   {
     name: 'Spinner',
     url: '/spinner',
-    status: 1
+    status: 2
+  },
+  {
+    name: 'Tag',
+    url: '/tag',
+    status: 2
   },
   {
     name: 'Toast',
     url: '/toast',
-    status: 1
+    status: 2
   },
   {
     name: 'Modal',
@@ -87,7 +92,7 @@ export const components = [
   {
     name: 'Number Input',
     url: '/number-input',
-    status: 1
+    status: 2
   },
   {
     name: 'Date picker',

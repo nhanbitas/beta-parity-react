@@ -7,7 +7,7 @@
 *:focus-visible,
 *[data-focus-visible='true'] {
   outline: 2px solid rgba(22, 22, 22, 1);
-  outline-offset: -2px; /* overide border */
+  outline-offset: 1px;
 }
 
 svg.lucide.small,

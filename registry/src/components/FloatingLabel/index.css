@@ -47,11 +47,11 @@
   @apply h-[3.75rem] pt-[1.125rem] placeholder:opacity-0 placeholder:transition-opacity;
 }
 
-.floating-label ~ .non-value,
+.floating-label ~ *.non-value,
 .floating-label ~ * .non-value,
 .floating-label ~ .value-input-wrapper.non-value,
 .floating-label ~ input[value=''] {
-  @apply text-transparent;
+  @apply !text-transparent;
 }
 
 .floating-label-wrapper {

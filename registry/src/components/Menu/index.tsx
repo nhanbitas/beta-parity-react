@@ -354,9 +354,9 @@ export const MenuItem = React.forwardRef<HTMLDivElement | HTMLLabelElement, Menu
     const sideOfCheckIcon = checkmarkSide === 'right' || icon ? 'right' : 'left';
     const Component = useInput ? 'label' : 'div';
     const CheckMarkInput = multiselect ? (
-      <input tabIndex={-1} type='checkbox' onChange={handleChangeInput} />
+      <input className='par-input' tabIndex={-1} type='checkbox' onChange={handleChangeInput} />
     ) : (
-      <input tabIndex={-1} type='radio' name={name} onChange={handleChangeInput} />
+      <input className='par-input' tabIndex={-1} type='radio' name={name} onChange={handleChangeInput} />
     );
     const visibleIcon = useInput ? CheckMarkInput : currentSelected && <Check />;
 

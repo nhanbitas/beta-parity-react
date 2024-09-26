@@ -1,14 +1,14 @@
 @import '../global.css';
 
-select {
+select.native-select {
   @apply text-body-compact-02 m-0 w-full cursor-pointer appearance-none text-ellipsis rounded-md border border-gray-200 bg-white pl-4 pr-10;
 }
 
-select.non-value {
+select.native-select.non-value {
   @apply text-gray-500;
 }
 
-select > option {
+select.native-select > option {
   @apply appearance-none rounded-none py-8 text-gray-950;
 }
 
@@ -16,52 +16,52 @@ select.native-select ~ .right-element-container {
   @apply pointer-events-none;
 }
 
-select:focus {
+select.native-select:focus {
   outline-offset: 0;
   border-radius: 0.375rem;
 }
 
-select.error-state {
+select.native-select.error-state {
   border: 0.125rem solid #d62e42;
   outline-color: #d62e42;
 }
 
-select.error-state:focus {
+select.native-select.error-state:focus {
   border: 0.125rem solid #d62e42;
   outline-color: #d62e42;
 }
 
-select.success-state {
+select.native-select.success-state {
   border: 0.125rem solid #39ac56;
   outline-color: #39ac56;
 }
 
-select.success-state:focus {
+select.native-select.success-state:focus {
   border: 0.125rem solid #39ac56;
   outline-color: #39ac56;
 }
 
-select:disabled,
-select:disabled ~ .right-element-container,
-select:disabled ~ .left-element-container,
+select.native-select:disabled,
+select.native-select:disabled ~ .right-element-container,
+select.native-select:disabled ~ .left-element-container,
 .input-wrapper:has(.value-input-wrapper[aria-disabled='true']) {
   @apply pointer-events-none select-none opacity-50;
 }
 
-option:disabled {
+.native-select option:disabled {
   @apply pointer-events-none text-gray-300/50;
 }
 /* sizes */
 
-select.small {
+select.native-select.small {
   @apply py-1;
 }
 
-select.medium {
+select.native-select.medium {
   @apply py-2;
 }
 
-select.large {
+select.native-select.large {
   @apply py-3;
 }
 

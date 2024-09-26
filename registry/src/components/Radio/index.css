@@ -1,5 +1,5 @@
 /* Override browser's default radio input */
-input[type='radio'] {
+input[type='radio'].par-input {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -15,21 +15,21 @@ input[type='radio'] {
   background-color: white;
 }
 
-input[type='radio']:not(:disabled):not(:checked):hover {
+input[type='radio'].par-input:not(:disabled):not(:checked):hover {
   border: 0.125rem solid #4294ff;
 }
 
-input[type='radio']:checked {
+input[type='radio'].par-input:checked {
   border: 0.3125rem solid #4294ff;
 }
 
-input[type='radio']:disabled {
+input[type='radio'].par-input:disabled {
   pointer-events: none;
   cursor: not-allowed;
   opacity: 0.5;
 }
 
-input[type='radio']:disabled:checked {
+input[type='radio'].par-input:disabled:checked {
   border: 0.3125rem solid #4294ff;
 }
 

@@ -72,31 +72,27 @@ textarea:focus {
   border-radius: 0.375rem;
 }
 
-input.error-state,
+input.par-input.error-state,
 textarea.error-state {
-  border: 0.125rem solid #d62e42;
   outline-color: #d62e42;
 }
 
-input.error-state:focus,
+input.par-input.error-state:focus,
 textarea.error-state:focus {
-  border: 0.125rem solid #d62e42;
   outline-color: #d62e42;
 }
 
-input.success-state,
+input.par-input.success-state,
 textarea.success-state {
-  border: 0.125rem solid #39ac56;
   outline-color: #39ac56;
 }
 
-input.success-state:focus,
+input.par-input.success-state:focus,
 textarea.success-state:focus {
-  border: 0.125rem solid #39ac56;
   outline-color: #39ac56;
 }
 
-input:disabled,
+input.par-input:disabled,
 textarea:disabled {
   @apply bg-gray-100 text-gray-100;
 }
@@ -105,7 +101,7 @@ fieldset:disabled {
   pointer-events: none;
 }
 
-input,
+input.par-input,
 .value-input-wrapper,
 textarea {
   @apply text-body-compact-02 h-10 w-full text-ellipsis rounded-md border border-gray-200 bg-white px-4;
@@ -120,12 +116,12 @@ textarea {
 }
 
 .input-action .value-input-wrapper,
-.input-action input {
+.input-action input.par-input {
   @apply pl-4 pr-10;
 }
 
 .input-actions .value-input-wrapper,
-.input-actions input {
+.input-actions input.par-input {
   @apply pl-4 pr-20;
 }
 
@@ -138,7 +134,7 @@ textarea {
 }
 
 .left-element-container ~ .value-input-wrapper,
-.left-element-container ~ input {
+.left-element-container ~ input.par-input {
   @apply pl-10;
 }
 

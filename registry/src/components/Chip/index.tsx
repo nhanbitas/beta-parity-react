@@ -325,7 +325,9 @@ export const Chip = React.forwardRef<
       );
 
     case 'input':
-      const inputClassname = classNames('chip', className, kindChip, sizeChip, { [colorChip]: type === 'input' });
+      const inputClassname = classNames('chip', className, kindChip, sizeChip, {
+        [colorChip]: type === 'input'
+      });
       const removeHandler = (e: React.MouseEvent<HTMLElement> | React.KeyboardEvent) => {
         e.stopPropagation();
         if ('key' in e) {

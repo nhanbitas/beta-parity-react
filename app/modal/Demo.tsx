@@ -43,7 +43,7 @@ export const DemoStaticModal = (props: Props) => {
         Open
       </Button>
 
-      <Modal isActive={active} onClose={() => setActive(false)} type='static'>
+      <Modal isActive={active} onClose={() => setActive(false)} isStatic>
         <ModalHeader>
           Modal Title
           <Button onClick={() => setActive(false)}>
@@ -68,7 +68,7 @@ export const DemoSmallModal = (props: Props) => {
         Open
       </Button>
 
-      <Modal isActive={active} onClose={() => setActive(false)} type='static' size='small'>
+      <Modal isActive={active} onClose={() => setActive(false)} isStatic size='small'>
         <ModalHeader>
           Modal Title
           <Button onClick={() => setActive(false)}>
@@ -93,7 +93,7 @@ export const DemoLargeModal = (props: Props) => {
         Open
       </Button>
 
-      <Modal isActive={active} onClose={() => setActive(false)} type='static' size='large'>
+      <Modal isActive={active} onClose={() => setActive(false)} isStatic size='large'>
         <ModalHeader>
           Modal Title
           <Button onClick={() => setActive(false)}>
@@ -118,7 +118,7 @@ export const DemoXLargeModal = (props: Props) => {
         Open
       </Button>
 
-      <Modal isActive={active} onClose={() => setActive(false)} type='static' size='extra-large'>
+      <Modal isActive={active} onClose={() => setActive(false)} isStatic size='extra-large'>
         <ModalHeader>
           Modal Title
           <Button onClick={() => setActive(false)}>

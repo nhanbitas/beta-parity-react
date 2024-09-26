@@ -8,7 +8,7 @@ import { Portal } from '../Portal';
 export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
   size?: 'small' | 'medium' | 'large' | 'extra-large';
-  type?: 'static' | 'dynamic';
+  isStatic?: boolean;
   children: React.ReactNode;
   isActive: boolean;
   onClose?: () => void;
@@ -16,7 +16,7 @@ export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export const Modal = React.forwardRef<HTMLDivElement, ModalProps>(
-  ({ className, type, size = 'medium', isActive, onClose, onOpen, children, ...props }, ref) => {
+  ({ className, isStatic = false, size = 'medium', isActive, onClose, onOpen, children, ...props }, ref) => {
     const [isOpen, setIsOpen] = React.useState(isActive);
     const [isDisplay, setIsDisplay] = React.useState(isActive);
     const [isDialogWarning, setIsDialogWarning] = React.useState(false);
@@ -51,7 +51,7 @@ export const Modal = React.forwardRef<HTMLDivElement, ModalProps>(
       const documentClickHandler = (event: MouseEvent) => {
         const target = event.target as HTMLElement;
 
-        if (target && !target.closest('.modal-dialog') && type === 'static') {
+        if (target && !target.closest('.modal-dialog') && isStatic) {
           setIsDialogWarning(true);
           setTimeout(() => setIsDialogWarning(false), 100);
         } else if (target && !target.closest('.modal-dialog')) {
@@ -61,12 +61,12 @@ export const Modal = React.forwardRef<HTMLDivElement, ModalProps>(
 
       document.addEventListener('click', documentClickHandler);
       return () => document.removeEventListener('click', documentClickHandler);
-    }, [type, handleClose]);
+    }, [isStatic, handleClose]);
 
     return (
       isDisplay && (
         <Portal>
-          <div className={classNames('modal', className, type, size, { active: isOpen })} ref={ref} {...props}>
+          <div className={classNames('modal', className, size, { active: isOpen })} ref={ref} {...props}>
             <ModalDialog className={classNames({ 'modal-static-animation': isDialogWarning })}>{children}</ModalDialog>
           </div>
         </Portal>
