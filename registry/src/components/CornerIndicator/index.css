@@ -7,8 +7,8 @@
   @apply z-foreground absolute;
 }
 
-.corner-indicator-container.with-border > .badge,
-.corner-indicator-container.with-border > .dot {
+.corner-indicator-container.bordered > .badge,
+.corner-indicator-container.bordered > .dot {
   @apply ring-1 ring-white;
 }
 
