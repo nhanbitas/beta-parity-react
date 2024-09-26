@@ -19,16 +19,16 @@ import { NativeOption } from './Native';
 // =========================
 // Declare and export custom select type and custom select component
 
-export type SelecItemType = { value: string; label: string; disabled?: boolean };
+export type SelectItemType = { value: string; label: string; disabled?: boolean };
 
 export interface CustomSelectProps extends React.HTMLAttributes<HTMLDivElement>, MenuProps {
-  options?: SelecItemType[];
+  options?: SelectItemType[];
   multiselect?: boolean;
   filterable?: boolean;
   placeHolder?: string;
   clearButton?: boolean;
   deselectable?: boolean;
-  isStatic?: boolean;
+  keepOpen?: boolean;
   floatingLabel?: React.ReactNode;
   leftIcon?: React.ReactNode;
   value?: string | string[];
@@ -51,7 +51,7 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
       filterable = false,
       clearButton = false,
       deselectable = true,
-      isStatic = false,
+      keepOpen = false,
       leftIcon,
       placeHolder = 'Please choose an option',
       countDescription = 'item(s) selected',
@@ -90,7 +90,7 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
       setCurrentValue(multiselect && !value ? [] : changedValue);
       onChange?.(multiselect && !value ? [] : changedValue);
 
-      if (!isStatic) {
+      if (!keepOpen) {
         setIsSelectOpen(false);
         selectInputRef.current?.focus();
       }
@@ -137,13 +137,12 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
     };
 
     const ArrowBtn = (
-      <button
-        disabled={disabled}
+      <span
         className={classNames('arrow-select-btn', { open: isSelectOpen })}
         onClick={() => setIsSelectOpen(!isSelectOpen)}
       >
         <ChevronDown />
-      </button>
+      </span>
     );
 
     const isValueEmpty = Array.isArray(currentValue) ? currentValue.length === 0 : !currentValue;
@@ -159,9 +158,9 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
       </>
     );
     const LeftInputActions = (
-      <button disabled={disabled} onClick={() => setIsSelectOpen(!isSelectOpen)}>
+      <span className='select-left-icon' onClick={() => setIsSelectOpen(!isSelectOpen)}>
         {leftIcon}
-      </button>
+      </span>
     );
 
     const [isShowingChips, setIsShowingChips] = React.useState(
@@ -353,8 +352,8 @@ SelectDivider.displayName = 'SelectDivider';
 // =========================
 // Declare utils for select and children of select component
 
-const getSelectItems = (children: React.ReactNode): SelecItemType[] => {
-  let returnValue: SelecItemType[] = [];
+const getSelectItems = (children: React.ReactNode): SelectItemType[] => {
+  let returnValue: SelectItemType[] = [];
 
   React.Children.forEach(children, (child, index) => {
     if (!React.isValidElement(child)) return;

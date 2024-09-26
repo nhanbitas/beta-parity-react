@@ -90,8 +90,12 @@ select.large {
   @apply w-full shrink-0 grow items-center overflow-hidden text-ellipsis whitespace-nowrap text-gray-500;
 }
 
+.input-wrapper .left-element-container .select-left-icon {
+  @apply pointer-events-none select-none;
+}
+
 .input-wrapper .right-element-container .arrow-select-btn {
-  @apply transition-all duration-150 ease-in-out;
+  @apply pointer-events-none select-none transition-all duration-150 ease-in-out;
 }
 
 .input-wrapper .right-element-container .arrow-select-btn.open {

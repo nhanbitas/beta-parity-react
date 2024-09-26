@@ -3,9 +3,31 @@ import './index.css';
 import './variables.css';
 import classNames from 'classnames';
 
+// =========================
+// Dot
+// =========================
+// Declare and export Dot type and Dot component
+
 export interface DotProps extends React.HTMLAttributes<HTMLSpanElement> {
+  /**
+   * The size of the dot.
+   * @default 'md'
+   * @memberof DotProps
+   */
   size?: 'xs' | 'sm' | 'md' | 'lg';
+
+  /**
+   * Whether the dot has a pulsing animation.
+   * @default false
+   * @memberof DotProps
+   */
   pulse?: boolean;
+
+  /**
+   * The color of the dot.
+   * @default 'gray'
+   * @memberof DotProps
+   */
   color?: 'gray' | 'orange' | 'violet' | 'green' | 'red' | 'yellow' | 'blue' | 'lime' | 'cyan';
 }
 

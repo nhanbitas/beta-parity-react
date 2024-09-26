@@ -59,8 +59,8 @@ export const DemoCornerIndicatorPosition = (props: Props) => {
 export const DemoCornerIndicatorInset = (props: Props) => {
   return (
     <div className='flex  flex-wrap gap-4'>
-      {['top-left', 'top-right', 'bottom-left', 'bottom-right'].map((position) => (
-        <CornerIndicator key={position} size='lg' color='green' position={position as any} outline inset={-6}>
+      {['bottom-left', 'bottom-right'].map((position) => (
+        <CornerIndicator key={position} size='lg' color='green' position={position as any} outline offset={-6}>
           <span className='grid h-10 w-10 place-items-center overflow-hidden rounded-full'>
             <Image
               alt='chip-avatar'
