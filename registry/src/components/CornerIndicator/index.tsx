@@ -40,10 +40,28 @@ export interface CornerIndicatorProps extends React.HTMLAttributes<HTMLDivElemen
   /**
    * Offset from the corner of the container in pixels.
    * Defines how far the indicator is placed from the corner.
-   * If offset larger than 0, the corner indicator is translated to outside
+   * If offset is larger than 0, the corner indicator is translated to outside from current x position
    * @memberof CornerIndicatorProps
    */
   offset?: number;
+
+  /**
+   * xOffset from the corner of the container in pixels.
+   * Defines how far the indicator is placed from the corner.
+   * If xOffset is larger than 0, the corner indicator is translated to outside from 0px with the side of corner
+   * Default value of xOffset is 6px if growDirection is 'inward' | 'outward', is 0px  if growDirection is symmetric
+   * @memberof CornerIndicatorProps
+   */
+  xOffset?: number;
+
+  /**
+   * yOffset from the corner of the container in pixels.
+   * Defines how far the indicator is placed from the corner.
+   * If yOffset is larger than 0, the corner indicator is translated to outside from current y position
+   * Default value of yOffset is 6px if growDirection is 'inward' | 'outward', is 0px  if growDirection is symmetric
+   * @memberof CornerIndicatorProps
+   */
+  yOffset?: number;
 
   /**
    * If true, the corner indicator will be displayed.
@@ -82,12 +100,38 @@ export interface CornerIndicatorProps extends React.HTMLAttributes<HTMLDivElemen
   variant?: 'filled' | 'outlined' | 'glass' | '';
 
   /**
+   * The direction of corner indicator when the content of this grow
+   * @memberof CornerIndicatorProps
+   */
+  growDirection?: 'symmetric' | 'inward' | 'outward';
+
+  /**
    * Additional properties for the indicator BadgeProps | DotProps.
    * Combines certain properties from BadgeProps and DotProps, excluding 'size', 'color', and 'variant'.
    * @memberof CornerIndicatorProps
    */
   indicatorProps?: Omit<BadgeProps, 'size' | 'color' | 'variant'> & Omit<DotProps, 'size' | 'color' | 'pulse'>;
 }
+
+const sizetoBadgeSize = {
+  xs: 'xs',
+  sm: 'sm',
+  md: 'md',
+  lg: 'lg'
+};
+
+const sizetoDotSize = {
+  xs: 'sm',
+  sm: 'md',
+  md: 'lg',
+  lg: 'xl'
+};
+
+const translateXOriginMap = {
+  symmetric: { translatePercent: 50, xOffset: 0 },
+  inward: { translatePercent: 0, xOffset: 6 },
+  outward: { translatePercent: 100, xOffset: 6 }
+};
 
 export const CornerIndicator = React.forwardRef<HTMLDivElement, CornerIndicatorProps>(
   (
@@ -100,16 +144,30 @@ export const CornerIndicator = React.forwardRef<HTMLDivElement, CornerIndicatorP
       outline = false,
       disable = false,
       offset = 0,
+      xOffset = 0,
+      yOffset = 0,
       position = 'top-right',
+      growDirection = 'symmetric',
       color = 'gray',
       size = 'md',
       variant = 'filled',
+      style,
       indicatorProps,
       ...props
     },
     ref
   ) => {
-    const offsetValue = { '--par-offset': `${offset}px` } as React.CSSProperties;
+    const addedXOffset = xOffset || translateXOriginMap[growDirection].xOffset;
+    const addedYOffset = yOffset;
+
+    const offsetValue = {
+      '--par-x-offset': `${offset + (growDirection === 'outward' ? -addedXOffset : addedXOffset)}px`,
+      '--par-y-offset': `${offset + addedYOffset}px`
+    } as React.CSSProperties;
+
+    const translateXOrigin = {
+      '--par-x-origin': `${translateXOriginMap[growDirection].translatePercent}`
+    } as React.CSSProperties;
 
     if (disable) return children;
 
@@ -117,13 +175,20 @@ export const CornerIndicator = React.forwardRef<HTMLDivElement, CornerIndicatorP
       <div
         className={classNames('corner-indicator-container', { bordered: outline }, className, position)}
         ref={ref}
-        style={{ ...offsetValue }}
+        style={{ ...offsetValue, ...translateXOrigin, ...style }}
         {...props}
       >
         {!label ? (
-          <Dot pulse={pulse} size={size} color={color as any} {...indicatorProps} />
+          <Dot pulse={pulse} size={sizetoDotSize[size] as any} color={color as any} {...indicatorProps} />
         ) : (
-          <Badge label={label} icon={icon} color={color} size={size as any} variant={variant} {...indicatorProps} />
+          <Badge
+            label={label}
+            icon={icon}
+            color={color}
+            size={sizetoBadgeSize[size] as any}
+            variant={variant}
+            {...indicatorProps}
+          />
         )}
         {children}
       </div>
