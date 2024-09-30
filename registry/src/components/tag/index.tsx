@@ -187,7 +187,7 @@ export const Tag = React.forwardRef<HTMLElement, TagProps & Omit<React.AllHTMLAt
     return (
       <span className={inputClassname} ref={ref} {...eventHandlers} {...accessibilityProps} {...rest}>
         {InnerTagContent}
-        <button type='button' tabIndex={disabled ? -1 : 0} className='tag-icon tag-close' onClick={removeHandler}>
+        <button type='button' tabIndex={disabled ? -1 : 0} className='tag-icon tag-close-btn' onClick={removeHandler}>
           <X />
         </button>
       </span>

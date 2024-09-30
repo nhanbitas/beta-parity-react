@@ -81,6 +81,7 @@ export const DemoButtonTag = (props: Props) => {
         <Tag
           disabled
           label='Disabled'
+          size='lg'
           icon={
             <Image
               alt='Tag-avatar'
