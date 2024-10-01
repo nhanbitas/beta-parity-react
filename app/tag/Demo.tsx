@@ -24,7 +24,12 @@ export const DemoButtonTag = (props: Props) => {
       {/* filled */}
       <div className='not-prose flex flex-wrap gap-2'>
         {Object.keys(colorMap).map((color: any) => (
-          <Tag key={color} color={color} label={color} onRemove={() => console.log(color)} />
+          <Tag
+            key={color}
+            color={color}
+            label={color.charAt(0).toUpperCase() + color.slice(1)}
+            onRemove={() => console.log(color)}
+          />
         ))}
       </div>
       {/* outline */}
@@ -36,7 +41,7 @@ export const DemoButtonTag = (props: Props) => {
             kind='glass'
             icon={<Container />}
             color={color}
-            label={color}
+            label={color.charAt(0).toUpperCase() + color.slice(1)}
             onRemove={() => console.log(color)}
           />
         ))}
@@ -70,7 +75,10 @@ export const DemoButtonTag = (props: Props) => {
             kind='glass'
             size={size}
             color='accent'
-            label={sizeMap[size as keyof typeof sizeMap]}
+            label={
+              sizeMap[size as keyof typeof sizeMap].charAt(0).toUpperCase() +
+              sizeMap[size as keyof typeof sizeMap].slice(1)
+            }
             onRemove={() => console.log(size)}
           />
         ))}
@@ -81,7 +89,21 @@ export const DemoButtonTag = (props: Props) => {
         <Tag
           disabled
           label='Disabled'
-          size='lg'
+          icon={
+            <Image
+              alt='Tag-avatar'
+              width={20}
+              height={20}
+              src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'
+            />
+          }
+          onRemove={() => console.log('image')}
+        />
+        <Tag disabled kind='glass' label='Disabled' color='accent' onRemove={() => console.log('disabled')} />
+        <Tag
+          disabled
+          label='Disabled'
+          color='accent'
           icon={
             <Image
               alt='Tag-avatar'

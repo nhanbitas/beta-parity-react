@@ -20,8 +20,8 @@
   @apply h-[1.125rem]  w-[1.125rem] rounded-full;
 }
 
-.tag[aria-disabled='true'] img {
-  @apply opacity-50;
+.tag button.tag-close-btn:disabled {
+  @apply pointer-events-none cursor-not-allowed opacity-50;
 }
 
 .tag.small:has(img),
@@ -51,7 +51,7 @@
   @apply border-blue-500 bg-blue-500 text-blue-500;
 }
 
-.tag.accent > .tag-icon.tag-close-btn {
+.tag.accent > .tag-icon.tag-close-btn:enabled {
   @apply text-blue-500 hover:bg-blue-200 hover:text-blue-600 active:bg-blue-300 active:text-blue-700;
 }
 
@@ -59,7 +59,7 @@
   @apply border-gray-500 bg-gray-500 text-gray-500;
 }
 
-.tag.neutral > .tag-icon.tag-close-btn {
+.tag.neutral > .tag-icon.tag-close-btn:enabled {
   @apply text-gray-500 hover:bg-gray-200 hover:text-gray-600 active:bg-gray-300 active:text-gray-700;
 }
 
@@ -68,17 +68,9 @@
   @apply border bg-transparent;
 }
 
-.tag.outlined[aria-disabled='true'] {
-  @apply pointer-events-none border-gray-200 text-gray-400;
-}
-
 /* Glass tag */
 .tag.glass {
   @apply border-none;
-}
-
-.tag.glass[aria-disabled='true'] {
-  @apply pointer-events-none bg-gray-200 text-gray-400;
 }
 
 .tag.glass.accent {
