@@ -147,22 +147,11 @@ export const colorPalette = {
   }
 };
 
-export const defaultColors = colorPalette.gray;
+export const neutralColors = colorPalette.gray;
 
-export const supportColors = colorPalette.lime;
+export const accentColors = colorPalette.blue;
 
-export const successColors = colorPalette.green;
-
-export const warningColors = colorPalette.yellow;
-
-export const dangerColors = colorPalette.red;
-
-export const infoColors = colorPalette.cyan;
-
-export const kindColors = {
-  default: defaultColors,
-  success: supportColors,
-  warning: warningColors,
-  danger: dangerColors,
-  info: infoColors
+export const themeColors = {
+  neutral: neutralColors,
+  accent: accentColors
 };

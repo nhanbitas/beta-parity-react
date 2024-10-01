@@ -2,7 +2,8 @@
 
 /* Base */
 .tag {
-  @apply text-body-compact-01 relative inline-flex w-fit cursor-pointer select-none items-center truncate rounded-md font-medium;
+  @apply text-body-compact-01 relative inline-flex w-fit cursor-pointer select-none items-center truncate rounded-md;
+  font-weight: 500;
   transition:
     padding 0.2s ease-in-out,
     color 0.1s ease-in-out;

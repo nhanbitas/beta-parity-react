@@ -1,0 +1,60 @@
+:root,
+[data-theme='light'] {
+  --par-color-text-tag-outline-neutral: var(--par-neutral-600);
+  --par-color-text-tag-outline-accent: var(--par-accent-600);
+  --par-color-text-tag-glass-neutral: var(--par-neutral-600);
+  --par-color-text-tag-glass-accent: var(--par-accent-600);
+
+  --par-color-icon-tag-button-neutral-enabled: var(--par-neutral-500);
+  --par-color-icon-tag-button-neutral-hovered: var(--par-neutral-600);
+  --par-color-icon-tag-button-neutral-pressed: var(--par-neutral-700);
+  --par-color-icon-tag-button-neutral-disabled: rgb(from var(--par-neutral-500) r g b / 0.5);
+  --par-color-icon-tag-button-accent-enabled: var(--par-accent-500);
+  --par-color-icon-tag-button-accent-hovered: var(--par-accent-600);
+  --par-color-icon-tag-button-accent-pressed: var(--par-accent-700);
+  --par-color-icon-tag-button-accent-disabled: rgb(from var(--par-accent-500) r g b / 0.5);
+
+  --par-color-bg-tag-outline-neutral: rgb(from var(--par-neutral-100) r g b / 0.5);
+  --par-color-bg-tag-outline-accent: rgb(from var(--par-accent-100) r g b / 0.5);
+  --par-color-bg-tag-glass-neutral: rgb(from var(--par-neutral-200) r g b / 0.5);
+  --par-color-bg-tag-glass-accent: rgb(from var(--par-accent-200) r g b / 0.5);
+  --par-color-bg-tag-button-enabled: var(--par-transparent);
+  --par-color-bg-tag-button-disabled: var(--par-transparent);
+  --par-color-bg-tag-button-neutral-hovered: rgb(from var(--par-neutral-200) r g b / 0.5);
+  --par-color-bg-tag-button-neutral-pressed: rgb(from var(--par-neutral-300) r g b / 0.5);
+  --par-color-bg-tag-button-accent-hovered: rgb(from var(--par-accent-200) r g b / 0.5);
+  --par-color-bg-tag-button-accent-pressed: rgb(from var(--par-accent-300) r g b / 0.5);
+
+  --par-color-border-tag-outline-neutral: var(--par-neutral-400);
+  --par-color-border-tag-outline-accent: var(--par-accent-400);
+}
+
+[data-scheme='dark'] {
+  --par-color-text-tag-outline-neutral: var(--par-neutral-100);
+  --par-color-text-tag-outline-accent: var(--par-accent-100);
+  --par-color-text-tag-glass-neutral: var(--par-neutral-100);
+  --par-color-text-tag-glass-accent: var(--par-accent-100);
+
+  --par-color-icon-tag-button-neutral-enabled: var(--par-neutral-300);
+  --par-color-icon-tag-button-neutral-hovered: var(--par-neutral-200);
+  --par-color-icon-tag-button-neutral-pressed: var(--par-neutral-100);
+  --par-color-icon-tag-button-neutral-disabled: rgb(from var(--par-neutral-300) r g b / 0.5);
+  --par-color-icon-tag-button-accent-enabled: var(--par-accent-300);
+  --par-color-icon-tag-button-accent-hovered: var(--par-accent-200);
+  --par-color-icon-tag-button-accent-pressed: var(--par-accent-100);
+  --par-color-icon-tag-button-accent-disabled: rgb(from var(--par-accent-300) r g b / 0.5);
+
+  --par-color-bg-tag-outline-neutral: rgb(from var(--par-neutral-800) r g b / 0.5);
+  --par-color-bg-tag-outline-accent: rgb(from var(--par-accent-800) r g b / 0.5);
+  --par-color-bg-tag-glass-neutral: rgb(from var(--par-neutral-700) r g b / 0.5);
+  --par-color-bg-tag-glass-accent: rgb(from var(--par-accent-700) r g b / 0.5);
+  --par-color-bg-tag-button-enabled: var(--par-transparent);
+  --par-color-bg-tag-button-disabled: var(--par-transparent);
+  --par-color-bg-tag-button-neutral-hovered: rgb(from var(--par-neutral-700) r g b / 0.5);
+  --par-color-bg-tag-button-neutral-pressed: rgb(from var(--par-neutral-600) r g b / 0.5);
+  --par-color-bg-tag-button-accent-hovered: rgb(from var(--par-accent-700) r g b / 0.5);
+  --par-color-bg-tag-button-accent-pressed: rgb(from var(--par-accent-600) r g b / 0.5);
+
+  --par-color-border-tag-outline-neutral: var(--par-neutral-400);
+  --par-color-border-tag-outline-accent: var(--par-accent-400);
+}

@@ -1,4 +1,4 @@
-import { colorPalette } from './src/components/theme/colors';
+import { colorPalette, themeColors } from './src/components/theme/colors';
 
 /** @type {import('tailwindcss').Config} */
 
@@ -18,7 +18,10 @@ module.exports = {
       sans: ['IBM Plex Sans', 'Helvetica Neue', 'Arial', 'sans-serif'],
       mono: ['IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier', 'monospace']
     },
-    colors: colorPalette,
+    colors: {
+      ...colorPalette,
+      ...themeColors
+    },
     letterSpacing: {
       tightest: '-.03em',
       tighter: '-.02em',
