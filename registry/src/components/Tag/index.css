@@ -20,8 +20,8 @@
   @apply h-[1.125rem]  w-[1.125rem] rounded-full;
 }
 
-.tag[aria-disabled='true'] img {
-  @apply opacity-50;
+.tag button.tag-close-btn:disabled {
+  @apply pointer-events-none cursor-not-allowed opacity-50;
 }
 
 .tag.small:has(img),
@@ -47,29 +47,33 @@
 
 /* tag theme*/
 
-.tag.accent {
-  @apply border-blue-500 bg-blue-500 text-blue-500;
+.tag button.tag-close-btn {
+  @apply bg-transparent;
 }
 
-.tag.accent > .tag-icon.tag-close-btn {
-  @apply text-blue-500 hover:bg-blue-200 hover:text-blue-600 active:bg-blue-300 active:text-blue-700;
-}
-
-.tag.neutral {
-  @apply border-gray-500 bg-gray-500 text-gray-500;
+.tag.tag.accent > .tag-icon.tag-close-btn {
+  @apply text-blue-500 hover:bg-blue-200/50 hover:text-blue-600 active:bg-blue-300/50 active:text-blue-700  disabled:text-blue-500/50;
 }
 
 .tag.neutral > .tag-icon.tag-close-btn {
-  @apply text-gray-500 hover:bg-gray-200 hover:text-gray-600 active:bg-gray-300 active:text-gray-700;
+  @apply text-gray-500 hover:bg-gray-200/50 hover:text-gray-600 active:bg-gray-300/50 active:text-gray-700  disabled:text-gray-500/50;
+}
+
+.tag button.tag-close-btn:disabled {
+  @apply pointer-events-none cursor-not-allowed bg-transparent;
 }
 
 /* Outline tag */
 .tag.outlined {
-  @apply border bg-transparent;
+  @apply border;
 }
 
-.tag.outlined[aria-disabled='true'] {
-  @apply pointer-events-none border-gray-200 text-gray-400;
+.tag.outlined.accent {
+  @apply border-blue-400 bg-blue-100/50 text-blue-600;
+}
+
+.tag.outlined.neutral {
+  @apply border-gray-400 bg-gray-100/50 text-gray-600;
 }
 
 /* Glass tag */
@@ -77,14 +81,10 @@
   @apply border-none;
 }
 
-.tag.glass[aria-disabled='true'] {
-  @apply pointer-events-none bg-gray-200 text-gray-400;
-}
-
 .tag.glass.accent {
-  @apply bg-blue-50/50;
+  @apply bg-blue-200/50 text-blue-600;
 }
 
 .tag.glass.neutral {
-  @apply bg-gray-100/50;
+  @apply bg-gray-200/50 text-gray-600;
 }
