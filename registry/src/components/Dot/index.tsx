@@ -14,7 +14,7 @@ export interface DotProps extends React.HTMLAttributes<HTMLSpanElement> {
    * @default 'md'
    * @memberof DotProps
    */
-  size?: 'xs' | 'sm' | 'md' | 'lg';
+  size?: keyof typeof sizeMap;
 
   /**
    * Whether the dot has a pulsing animation.
@@ -31,9 +31,23 @@ export interface DotProps extends React.HTMLAttributes<HTMLSpanElement> {
   color?: 'gray' | 'orange' | 'violet' | 'green' | 'red' | 'yellow' | 'blue' | 'lime' | 'cyan';
 }
 
+const sizeMap = {
+  xs: 'extra-small',
+  sm: 'small',
+  md: 'medium',
+  lg: 'large',
+  xl: 'extra-large'
+};
+
 const Dot = React.forwardRef<HTMLSpanElement, DotProps>(
   ({ className, size = 'md', pulse = false, color, ...props }, ref) => {
-    return <span className={classNames('dot', className, size, color, { pulse: pulse })} ref={ref} {...props}></span>;
+    return (
+      <span
+        className={classNames('dot', className, sizeMap[size], color, { pulse: pulse })}
+        ref={ref}
+        {...props}
+      ></span>
+    );
   }
 );
 

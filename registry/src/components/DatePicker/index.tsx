@@ -53,7 +53,7 @@ export const DatePicker = React.forwardRef<
     <InputWrapper className={classNames(addedClassname, wrapperClassname)} rightElement={RightBtn}>
       {floatingLabel && <ContainedLabel isActive={isFocused || !!currentValue}>{floatingLabel}</ContainedLabel>}
       <Flatpickr
-        className={classNames('date-picker', props.className)}
+        className={classNames('date-picker', 'par-input', props.className)}
         onFocus={handleFocus}
         onClose={handleOnClose}
         options={{ disableMobile: true, ...options }}

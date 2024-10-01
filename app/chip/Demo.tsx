@@ -390,6 +390,7 @@ export const DemoSelectMenu = (props: Props) => {
   return (
     <div className='relative w-56'>
       <Chip
+        ref={ref}
         type='dropdown'
         value={value}
         label={value || 'Select'}
@@ -398,7 +399,7 @@ export const DemoSelectMenu = (props: Props) => {
         isActive={active}
         onChange={(e: any) => setActive(e.active)}
       />
-      <Menu ref={ref} className='not-prose w-64 bg-white' isOpen={active}>
+      <Menu anchor={ref.current} className='not-prose w-fit bg-white' isOpen={active}>
         {['', ...values].map((item) => (
           <MenuItem
             icon={item && <CarFront />}

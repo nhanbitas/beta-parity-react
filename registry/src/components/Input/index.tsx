@@ -130,17 +130,19 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       </>
     );
 
+    const { className: wrapperClassName, rightElement: _, ...restWrapperProps } = wrapperProps || {};
+
     return (
       <InputWrapper
-        className={classNames(addedClassname, wrapperProps?.className)}
+        className={classNames(addedClassname, wrapperClassName)}
         rightElement={RightInputActions}
-        {...wrapperProps}
+        {...restWrapperProps}
       >
         {floatingLabel && <ContainedLabel isActive={isFocused || !!currentValue}>{floatingLabel}</ContainedLabel>}
         <input
           type={type}
           className={classNames(
-            'input',
+            'par-input',
             { 'error-state': isError, 'success-state': isSuccess, 'non-value': !currentValue },
             className
           )}
@@ -181,6 +183,7 @@ export const InputWrapper = createPolymorphicComponent<'div', InputWrapperProps>
     ref: React.Ref<any>
   ) => {
     const Component = component || ('div' as C);
+
     return (
       <Base component={Component} className={classNames('input-wrapper', className)} ref={ref} {...props}>
         {leftElement && <div className='left-element-container'>{leftElement}</div>}

@@ -36,7 +36,7 @@ export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
    * @default 'md'
    * @memberof BadgeProps
    */
-  size?: 'md' | 'sm' | 'xs';
+  size?: keyof typeof sizeMap;
 
   /**
    * Whether to display a small dot in the badge.
@@ -54,16 +54,26 @@ export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
   variant?: 'filled' | 'outlined' | 'glass' | '';
 }
 
+const sizeMap = {
+  xs: 'extra-small',
+  sm: 'small',
+  md: 'medium'
+};
+
 const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
   (
     { className, children, label, icon, color = 'gray', size = 'md', variant = 'outlined', dot = false, ...props },
     ref
   ) => {
     return (
-      <span className={classNames('badge', { dotted: dot }, className, variant, color, size)} ref={ref} {...props}>
+      <span
+        className={classNames('badge', { dotted: dot }, className, variant, color, sizeMap[size])}
+        ref={ref}
+        {...props}
+      >
         {dot ? (
           <>
-            <Dot size={size == 'xs' ? 'xs' : 'sm'} /> {label || children}
+            <Dot size={size} /> {label || children}
           </>
         ) : (
           <>

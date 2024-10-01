@@ -112,7 +112,7 @@ export const NumberInput = React.forwardRef<
       <InputWrapper className={classNames(addedClassname, wrapperProps?.className)} rightElement={RightInputActions}>
         {floatingLabel && <ContainedLabel isActive={isFocused || !!currentValue}>{floatingLabel}</ContainedLabel>}
         <TagName
-          className={classNames('input', { 'error-state': isError }, { 'success-state': isSuccess }, className)}
+          className={classNames('par-input', { 'error-state': isError }, { 'success-state': isSuccess }, className)}
           getInputRef={combinedRef}
           format={format ? format : undefined}
           value={currentValue}

@@ -1,17 +1,17 @@
 .badge {
-  @apply text-label-01 flex w-fit min-w-6 select-none items-center justify-center gap-1 truncate rounded-full border border-none px-1.5 py-1 font-semibold;
+  @apply text-label-01 flex min-h-6 w-fit min-w-6 shrink-0 select-none items-center justify-center gap-1 truncate rounded-full border border-none px-1.5 py-1 font-semibold;
 }
 
-.badge.md {
-  @apply min-w-6 px-1.5 py-1;
+.badge.medium {
+  @apply min-h-6 min-w-6 px-1.5 py-1;
 }
 
-.badge.sm {
-  @apply min-w-5 px-1.5 py-0.5;
+.badge.small {
+  @apply min-h-5 min-w-5 px-1.5 py-0.5;
 }
 
-.badge.xs {
-  @apply min-w-3.5 gap-0.5 px-[0.1875rem] py-0;
+.badge.extra-small {
+  @apply min-h-3.5 min-w-3.5 gap-0.5 px-[0.1875rem] py-0 text-[0.6875rem] leading-[0.875rem];
 }
 
 .badge i,
@@ -20,12 +20,12 @@
   @apply h-4 w-4;
 }
 
-.badge.sm i,
-.badge.sm img,
-.badge.sm svg,
-.badge.xs i,
-.badge.xs img,
-.badge.xs svg {
+.badge.small i,
+.badge.small img,
+.badge.small svg,
+.badge.extra-small i,
+.badge.extra-small img,
+.badge.extra-small svg {
   @apply h-3 w-3;
 }
 

@@ -1,6 +1,6 @@
 import { Button } from '@libComponents/Button';
 import { CornerIndicator } from '@libComponents/CornerIndicator';
-import { BellRing } from 'lucide-react';
+import { BellRing, Globe, PhoneMissed, User } from 'lucide-react';
 import Image from 'next/image';
 import React from 'react';
 
@@ -9,31 +9,29 @@ type Props = {};
 export const DemoCornerIndicator = (props: Props) => {
   return (
     <div className='flex flex-wrap gap-4'>
-      <CornerIndicator label='5' color='red'>
+      {['xs', 'sm', 'md'].map((size) => (
+        <CornerIndicator key={size} label='5' color='red' size={size as any}>
+          <Button iconOnly color='info'>
+            <BellRing />
+          </Button>
+        </CornerIndicator>
+      ))}
+
+      {['xs', 'sm', 'md'].map((size) => (
+        <CornerIndicator key={size} label='5' color='red' size={size as any} outline>
+          <Button iconOnly color='info'>
+            <BellRing />
+          </Button>
+        </CornerIndicator>
+      ))}
+
+      <CornerIndicator color='red'>
         <Button iconOnly color='info'>
           <BellRing />
         </Button>
       </CornerIndicator>
 
-      <CornerIndicator size='lg' color='red'>
-        <Button iconOnly color='info'>
-          <BellRing />
-        </Button>
-      </CornerIndicator>
-
-      <CornerIndicator label='5' color='red' outline>
-        <Button iconOnly color='info'>
-          <BellRing />
-        </Button>
-      </CornerIndicator>
-
-      <CornerIndicator size='lg' color='red' outline>
-        <Button iconOnly color='info'>
-          <BellRing />
-        </Button>
-      </CornerIndicator>
-
-      <CornerIndicator size='lg' color='red' pulse>
+      <CornerIndicator color='red' pulse>
         <Button iconOnly color='info'>
           <BellRing />
         </Button>
@@ -44,15 +42,51 @@ export const DemoCornerIndicator = (props: Props) => {
 
 export const DemoCornerIndicatorPosition = (props: Props) => {
   return (
-    <div className='flex  flex-wrap gap-4'>
-      {['top-left', 'top-right', 'bottom-left', 'bottom-right'].map((position) => (
-        <CornerIndicator key={position} pulse size='lg' color='red' position={position as any} outline>
-          <Button iconOnly color='info' kind='glass'>
-            <BellRing />
-          </Button>
-        </CornerIndicator>
-      ))}
-    </div>
+    <>
+      <div className='flex  flex-wrap gap-8'>
+        {['top-left', 'top-right', 'bottom-left', 'bottom-right'].map((position) => (
+          <CornerIndicator key={position} pulse color='red' position={position as any} label='5' outline>
+            <Button iconOnly color='info' kind='glass'>
+              <BellRing />
+            </Button>
+          </CornerIndicator>
+        ))}
+      </div>
+
+      <div className='flex flex-col flex-wrap gap-8 '>
+        {['top-left', 'top-right', 'bottom-left', 'bottom-right'].map((position) => (
+          <CornerIndicator
+            key={position}
+            growDirection='inward'
+            size='sm'
+            color='red'
+            position={position as any}
+            label='23'
+          >
+            <Button iconOnly color='danger' kind='glass'>
+              <PhoneMissed />
+            </Button>
+          </CornerIndicator>
+        ))}
+      </div>
+
+      <div className='flex flex-col flex-wrap gap-8 '>
+        {['top-left', 'top-right', 'bottom-left', 'bottom-right'].map((position) => (
+          <CornerIndicator
+            key={position}
+            growDirection='outward'
+            size='sm'
+            color='green'
+            position={position as any}
+            label='connected'
+          >
+            <Button iconOnly color='success' kind='glass'>
+              <Globe />
+            </Button>
+          </CornerIndicator>
+        ))}
+      </div>
+    </>
   );
 };
 
