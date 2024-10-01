@@ -120,9 +120,9 @@ export const Tag = React.forwardRef<HTMLElement, TagProps & Omit<React.AllHTMLAt
     } = props;
 
     // Inite states
-    const kindTag = kindMap[kind as keyof typeof kindMap];
-    const sizeTag = sizeMap[size as keyof typeof sizeMap];
-    const colorTag = colorMap[color as keyof typeof colorMap];
+    const kindTag = kindMap[kind as keyof typeof kindMap] || 'outlined';
+    const sizeTag = sizeMap[size as keyof typeof sizeMap] || 'medium';
+    const colorTag = colorMap[color as keyof typeof colorMap] || 'neutral';
 
     // Define click handlers
     const handleButtonClick = (e: React.MouseEvent<HTMLElement> | React.KeyboardEvent) => {
@@ -168,8 +168,7 @@ export const Tag = React.forwardRef<HTMLElement, TagProps & Omit<React.AllHTMLAt
     const accessibilityProps = {
       'aria-disabled': disabled,
       'aria-label': label,
-      role: 'tag',
-      tabIndex: disabled ? -1 : 0
+      role: 'tag'
     };
 
     const inputClassname = classNames('tag', className, kindTag, sizeTag, { [colorTag]: true });
@@ -187,7 +186,7 @@ export const Tag = React.forwardRef<HTMLElement, TagProps & Omit<React.AllHTMLAt
     return (
       <span className={inputClassname} ref={ref} {...eventHandlers} {...accessibilityProps} {...rest}>
         {InnerTagContent}
-        <button type='button' tabIndex={disabled ? -1 : 0} className='tag-icon tag-close-btn' onClick={removeHandler}>
+        <button type='button' disabled={disabled} className='tag-icon tag-close-btn' onClick={removeHandler}>
           <X />
         </button>
       </span>
