@@ -5,7 +5,9 @@ import { Tag } from '@libComponents/Tag';
 import { Container } from 'lucide-react';
 import Image from 'next/image';
 
-type Props = {};
+type Props = {
+  theme?: 'light' | 'dark';
+};
 
 const colorMap = {
   neutral: 'gray',
@@ -19,8 +21,9 @@ const sizeMap = {
 };
 
 export const DemoButtonTag = (props: Props) => {
+  const { theme = 'light' } = props;
   return (
-    <>
+    <div className={`flex flex-col gap-4 rounded-md p-4 ${theme === 'dark' ? 'bg-gray-950' : ''}`} data-scheme={theme}>
       {/* filled */}
       <div className='not-prose flex flex-wrap gap-2'>
         {Object.keys(colorMap).map((color: any) => (
@@ -115,6 +118,6 @@ export const DemoButtonTag = (props: Props) => {
           onRemove={() => console.log('image')}
         />
       </div>
-    </>
+    </div>
   );
 };

@@ -2,8 +2,7 @@
 
 /* Base */
 .tag {
-  @apply text-body-compact-01 relative inline-flex w-fit cursor-pointer select-none items-center truncate rounded-md;
-  font-weight: 500;
+  @apply text-body-compact-01 relative inline-flex w-fit cursor-pointer select-none items-center truncate rounded-md font-medium;
   transition:
     padding 0.2s ease-in-out,
     color 0.1s ease-in-out;
@@ -19,10 +18,6 @@
 
 .tag img {
   @apply h-[1.125rem]  w-[1.125rem] rounded-full;
-}
-
-.tag button.tag-close-btn:disabled {
-  @apply pointer-events-none cursor-not-allowed opacity-50;
 }
 
 .tag.small:has(img),
@@ -48,25 +43,39 @@
 
 /* tag theme*/
 
-.tag.accent {
-  @apply border-blue-500 bg-blue-500 text-blue-500;
+.tag button.tag-close-btn {
+  @apply bg-[var(--par-color-bg-tag-button-enabled)];
 }
 
-.tag.accent > .tag-icon.tag-close-btn:enabled {
-  @apply text-blue-500 hover:bg-blue-200 hover:text-blue-600 active:bg-blue-300 active:text-blue-700;
+.tag.neutral > .tag-icon.tag-close-btn {
+  @apply text-[var(--par-color-icon-tag-button-neutral-enabled)]
+  hover:bg-[var(--par-color-bg-tag-button-neutral-hovered)] hover:text-[var(--par-color-icon-tag-button-neutral-hovered)]
+  active:bg-[var(--par-color-bg-tag-button-neutral-pressed)] active:text-[var(--par-color-icon-tag-button-neutral-pressed)]
+  disabled:text-[var(--par-color-icon-tag-button-neutral-disabled)];
 }
 
-.tag.neutral {
-  @apply border-gray-500 bg-gray-500 text-gray-500;
+.tag.accent > .tag-icon.tag-close-btn {
+  @apply text-[var(--par-color-icon-tag-button-accent-enabled)]
+   hover:bg-[var(--par-color-bg-tag-button-accent-hovered)] hover:text-[var(--par-color-icon-tag-button-accent-hovered)]
+   active:bg-[var(--par-color-bg-tag-button-accent-pressed)] active:text-[var(--par-color-icon-tag-button-accent-pressed)]
+   disabled:text-[var(--par-color-icon-tag-button-accent-disabled)];
 }
 
-.tag.neutral > .tag-icon.tag-close-btn:enabled {
-  @apply text-gray-500 hover:bg-gray-200 hover:text-gray-600 active:bg-gray-300 active:text-gray-700;
+.tag button.tag-close-btn:disabled {
+  @apply pointer-events-none cursor-not-allowed bg-[var(--par-color-bg-tag-button-disabled)];
 }
 
 /* Outline tag */
 .tag.outlined {
-  @apply border bg-transparent;
+  @apply border;
+}
+
+.tag.outlined.accent {
+  @apply border-[var(--par-color-border-tag-outline-accent)] bg-[var(--par-color-bg-tag-outline-accent)] text-[var(--par-color-text-tag-outline-accent)];
+}
+
+.tag.outlined.neutral {
+  @apply border-[var(--par-color-border-tag-outline-neutral)] bg-[var(--par-color-bg-tag-outline-neutral)] text-[var(--par-color-text-tag-outline-neutral)];
 }
 
 /* Glass tag */
@@ -75,9 +84,9 @@
 }
 
 .tag.glass.accent {
-  @apply bg-blue-50/50;
+  @apply border-[var(--par-color-border-tag-glass-accent)] bg-[var(--par-color-bg-tag-glass-accent)] text-[var(--par-color-text-tag-glass-accent)];
 }
 
 .tag.glass.neutral {
-  @apply bg-gray-100/50;
+  @apply border-[var(--par-color-border-tag-glass-neutral)]  bg-[var(--par-color-bg-tag-glass-neutral)] text-[var(--par-color-text-tag-glass-neutral)];
 }
