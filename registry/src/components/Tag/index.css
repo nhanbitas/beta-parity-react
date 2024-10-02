@@ -1,5 +1,3 @@
-@import '../global.css';
-
 /* Base */
 .tag {
   @apply text-body-compact-01 relative inline-flex w-fit cursor-pointer select-none items-center truncate rounded-md font-medium;

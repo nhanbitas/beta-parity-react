@@ -9,14 +9,8 @@ import { Menu, MenuItem } from '@libComponents/Menu';
 type Props = {};
 
 const colorMap = {
-  gray: 'gray',
-  orange: 'orange',
-  sky: 'sky',
-  violet: 'violet',
-  green: 'green',
-  red: 'red',
-  yellow: 'yellow',
-  blue: 'blue'
+  neutral: 'neutral',
+  accent: 'accent'
 } as const;
 
 const sizeMap = {
@@ -77,6 +71,14 @@ export const DemoButtonChip = (props: Props) => {
             kind='glass'
             size={size}
             label={sizeMap[size as keyof typeof sizeMap]}
+            icon={
+              <Image
+                alt='chip-avatar'
+                width={20}
+                height={20}
+                src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'
+              />
+            }
             onClick={() => console.log('click')}
           />
         ))}
@@ -125,6 +127,8 @@ export const DemoRadio = () => {
         ))}
       </div>
       <div className='not-prose flex flex-wrap gap-2'>
+        <Chip disabled label='Disabled' type='radio' />
+        <Chip disabled label='Disabled' kind='glass' type='radio' />
         <Chip disabled label='Disabled' type='radio' checked />
         <Chip disabled label='Disabled' kind='glass' type='radio' checked />
       </div>
@@ -177,13 +181,17 @@ export const DemoCheckbox = () => {
             type='checkbox'
             kind='glass'
             size={size}
+            defaultChecked={true}
             label={sizeMap[size as keyof typeof sizeMap]}
+            icon={<Container />}
           />
         ))}
       </div>
       <div className='not-prose flex flex-wrap gap-2'>
         <Chip disabled label='Disabled' type='checkbox' checked />
         <Chip disabled label='Disabled' kind='glass' type='checkbox' checked />
+        <Chip disabled label='Disabled' type='checkbox' />
+        <Chip disabled label='Disabled' kind='glass' type='checkbox' />
       </div>
     </>
   );
@@ -237,61 +245,6 @@ export const DemoMenu = () => {
   );
 };
 
-export const DemoInput = () => {
-  return (
-    <>
-      {/* input */}
-      <div className='not-prose flex flex-wrap gap-2'>
-        {Object.keys(colorMap).map((color: any) => (
-          <Chip
-            type='input'
-            key={color}
-            value={color}
-            color={color}
-            label={color}
-            onClick={() => console.log('click')}
-            onRemove={() => console.log('remove')}
-          />
-        ))}
-      </div>
-      {/* input with icon*/}
-      <div className='not-prose flex flex-wrap gap-2'>
-        {Object.keys(colorMap).map((color: any) => (
-          <Chip
-            type='input'
-            key={color}
-            icon={<Container />}
-            value={color}
-            color={color}
-            label={color}
-            onClick={() => console.log('click')}
-            onRemove={() => console.log('remove')}
-          />
-        ))}
-      </div>
-      {/* sizes */}
-      <div className='not-prose flex flex-wrap gap-2'>
-        {Object.keys(sizeMap).map((size: any) => (
-          <Chip
-            key={size}
-            value={size}
-            type='input'
-            kind='glass'
-            size={size}
-            label={sizeMap[size as keyof typeof sizeMap]}
-            onClick={() => console.log('click')}
-            onRemove={() => console.log('remove')}
-          />
-        ))}
-      </div>
-      <div className='not-prose flex flex-wrap gap-2'>
-        <Chip disabled type='input' label='Disabled' onClick={() => console.log('click')} />
-        <Chip disabled kind='glass' type='input' label='Disabled' onClick={() => console.log('click')} />
-      </div>
-    </>
-  );
-};
-
 const values = ['Toyota', 'Ford', 'Mazda', 'Vinfast', 'Mercedes', 'BMW'];
 
 export const DemoSingleFilter = () => {
@@ -303,12 +256,29 @@ export const DemoSingleFilter = () => {
         {values.map((item) => (
           <Chip
             type='radio'
-            color='sky'
             icon={<CarFront />}
             key={item}
             value={item}
             label={item}
             checked={value == item || false}
+            onChange={(e) => {
+              setValue(e.value as string);
+              console.log(e);
+            }}
+          />
+        ))}
+      </div>
+      <div className='not-prose flex flex-wrap gap-2'>
+        {values.map((item) => (
+          <Chip
+            type='radio'
+            icon={<CarFront />}
+            key={item}
+            value={item}
+            label={item}
+            checked={value == item || false}
+            kind='glass'
+            color='accent'
             onChange={(e) => {
               setValue(e.value as string);
               console.log(e);
@@ -329,7 +299,7 @@ export const DemoMultiFilter = () => {
         {values.map((item) => (
           <Chip
             type='checkbox'
-            color='red'
+            color='accent'
             icon={<CarFront />}
             key={item}
             value={item}
@@ -345,26 +315,24 @@ export const DemoMultiFilter = () => {
           />
         ))}
       </div>
-    </>
-  );
-};
-
-export const DemoRemoveChip = () => {
-  const [value, setValue] = React.useState(values);
-  console.log(value);
-  return (
-    <>
-      <div className='not-prose flex min-h-8 w-[300px] flex-wrap gap-2 rounded-md bg-gray-100 p-1'>
-        {value.map((item) => (
+      <div className='not-prose flex flex-wrap gap-2'>
+        {values.map((item) => (
           <Chip
-            type='input'
-            color='green'
-            size='sm'
+            type='checkbox'
+            icon={<CarFront />}
             key={item}
             value={item}
             label={item}
-            onClick={() => console.log('click')}
-            onRemove={() => setValue((pre) => pre.filter((i) => i !== item))}
+            checked={value.includes(item)}
+            kind='glass'
+            color='neutral'
+            onChange={(e) =>
+              setValue(
+                value.includes(e.value as string)
+                  ? value.filter((i) => i !== e.value)
+                  : ([...value, e.value] as string[])
+              )
+            }
           />
         ))}
       </div>
@@ -372,7 +340,8 @@ export const DemoRemoveChip = () => {
   );
 };
 
-export const DemoSelectMenu = (props: Props) => {
+export const DemoSelectMenu = (props: any) => {
+  const { kind = 'outline' } = props;
   const [value, setValue] = React.useState('');
   const [active, setActive] = React.useState(false);
   const ref = React.useRef<any>(null);
@@ -394,12 +363,13 @@ export const DemoSelectMenu = (props: Props) => {
         type='dropdown'
         value={value}
         label={value || 'Select'}
-        color='violet'
+        color='accent'
+        kind={kind}
         icon={<CarFront />}
         isActive={active}
         onChange={(e: any) => setActive(e.active)}
       />
-      <Menu anchor={ref.current} className='not-prose w-fit bg-white' isOpen={active}>
+      <Menu anchor={ref.current} className='not-prose !w-fit bg-white' isOpen={active}>
         {['', ...values].map((item) => (
           <MenuItem
             icon={item && <CarFront />}

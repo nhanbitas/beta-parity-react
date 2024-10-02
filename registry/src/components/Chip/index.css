@@ -1,15 +1,13 @@
-@import '../global.css';
-
 /* Base */
 .chip {
-  @apply text-body-compact-01 relative inline-flex w-fit cursor-pointer select-none items-center truncate rounded-md font-medium;
+  @apply text-body-compact-01 relative inline-flex w-fit cursor-pointer select-none items-center truncate rounded-md font-medium focus-visible:-outline-offset-1;
   transition:
     padding 0.2s ease-in-out,
     color 0.1s ease-in-out;
 }
 
 .chip > .chip-icon {
-  @apply rounded-sm p-0 focus-visible:-outline-offset-2;
+  @apply flex items-center justify-center rounded-sm p-0;
 }
 
 .chip > .check-icon {
@@ -21,17 +19,11 @@
 }
 
 .chip img {
-  @apply rounded-full;
+  @apply h-[1.125rem] w-[1.125rem] rounded-full;
 }
 
 .chip[aria-disabled='true'] img {
   @apply opacity-50;
-}
-
-.chip.small:has(img),
-.chip.medium:has(img),
-.chip.large:has(img) {
-  @apply pl-1;
 }
 
 /* Small size */
@@ -49,11 +41,11 @@
 
 /* Medium size */
 .chip.medium {
-  @apply h-7 gap-1.5 px-1.5;
+  @apply h-7 gap-1 px-1.5;
 }
 
 .chip.medium .chip-icon:has(img) {
-  @apply h-[1.375rem] min-h-[1.375rem] w-[1.375rem]  min-w-[1.375rem];
+  @apply h-[1.125rem] min-h-[1.125rem] w-[1.125rem] min-w-[1.125rem];
 }
 
 .chip.medium:has(.check-icon.active) {
@@ -62,136 +54,68 @@
 
 /* Large size */
 .chip.large {
-  @apply h-8 gap-1.5 px-2;
+  @apply h-8 gap-1 px-1.5;
 }
 
 .chip.large .chip-icon:has(img) {
-  @apply h-[1.625rem] min-h-[1.625rem] w-[1.625rem] min-w-[1.625rem];
-}
-
-.chip.large > .check-icon {
-  @apply right-2;
+  @apply h-[1.125rem] min-h-[1.125rem] w-[1.125rem]  min-w-[1.125rem];
 }
 
 .chip.large:has(.check-icon.active) {
-  @apply pr-[1.875rem]; /*padding of chip + width of check icon + gap between label and check icon  */
-}
-
-/* Chip theme*/
-.chip.orange {
-  @apply border-orange-500 bg-orange-500 text-orange-500 hover:border-orange-600 hover:bg-orange-600 hover:text-orange-600 active:border-orange-700 active:bg-orange-700  active:text-orange-700;
-}
-
-.chip.sky {
-  @apply border-cyan-500 bg-cyan-500 text-cyan-500 hover:border-cyan-600 hover:bg-cyan-600 hover:text-cyan-600 active:border-cyan-700 active:bg-cyan-700 active:text-cyan-700;
-}
-
-.chip.violet {
-  @apply border-violet-500 bg-violet-500 text-violet-500 hover:border-violet-600 hover:bg-violet-600 hover:text-violet-600 active:border-violet-700 active:bg-violet-700 active:text-violet-700;
-}
-
-.chip.red {
-  @apply border-red-500 bg-red-500 text-red-500 hover:border-red-600 hover:bg-red-600 hover:text-red-600 active:border-red-700 active:bg-red-700 active:text-red-700;
-}
-
-.chip.yellow {
-  @apply border-yellow-500 bg-yellow-500 text-yellow-500 hover:border-yellow-600 hover:bg-yellow-600 hover:text-yellow-600 active:border-yellow-700 active:bg-yellow-700 active:text-yellow-700;
-}
-
-.chip.green {
-  @apply border-green-500 bg-green-500 text-green-500 hover:border-green-600 hover:bg-green-600 hover:text-green-600 active:border-green-700 active:bg-green-700 active:text-green-700;
-}
-
-.chip.blue {
-  @apply border-blue-500 bg-blue-500 text-blue-500 hover:border-blue-600 hover:bg-blue-600 hover:text-blue-600 active:border-blue-700 active:bg-blue-700 active:text-blue-700;
-}
-
-.chip.gray {
-  @apply border-gray-500 bg-gray-500 text-gray-500 hover:border-gray-600 hover:bg-gray-600 hover:text-gray-600 active:border-gray-700 active:bg-gray-700 active:text-gray-700;
+  @apply pr-[1.625rem]; /*padding of chip + width of check icon + gap between label and check icon  */
 }
 
 /* Outline chip */
 .chip.outlined {
-  @apply border bg-transparent;
+  @apply border border-gray-200 bg-transparent text-gray-550 
+  hover:border-gray-300 hover:bg-gray-100/50 hover:text-gray-600
+  active:border-gray-400 active:bg-gray-200/50  active:text-gray-700;
 }
 
 .chip.outlined[aria-disabled='true'] {
-  @apply pointer-events-none !opacity-50;
+  @apply pointer-events-none !border-gray-200/50 !text-gray-550/50;
 }
 
-.chip.outlined.orange {
-  @apply hover:bg-orange-50/50 active:bg-orange-50 enabled:hover:bg-orange-50/50 enabled:active:bg-orange-50;
+.chip.outlined.neutral[aria-checked='true'],
+.chip.outlined.neutral[role='dropdown'],
+.chip.outlined.neutral[role='button'] {
+  @apply border border-gray-400 bg-gray-100/50 text-gray-900 
+  hover:border-gray-500 hover:bg-gray-200/50 hover:text-gray-900
+  active:border-gray-500 active:bg-gray-300/50  active:text-gray-900;
 }
 
-.chip.outlined.sky {
-  @apply hover:bg-cyan-50/50 active:bg-cyan-50 enabled:hover:bg-cyan-50/50 enabled:active:bg-cyan-50;
-}
-
-.chip.outlined.violet {
-  @apply hover:bg-violet-50/50 active:bg-violet-50 enabled:hover:bg-violet-50/50 enabled:active:bg-violet-50;
-}
-
-.chip.outlined.red {
-  @apply hover:bg-red-50/50 active:bg-red-50 enabled:hover:bg-red-50/50 enabled:active:bg-red-50;
-}
-
-.chip.outlined.yellow {
-  @apply hover:bg-yellow-50/50 active:bg-yellow-50 enabled:hover:bg-yellow-50/50 enabled:active:bg-yellow-50;
-}
-
-.chip.outlined.green {
-  @apply hover:bg-green-50/50 active:bg-green-50 enabled:hover:bg-green-50/50 enabled:active:bg-green-50;
-}
-
-.chip.outlined.blue {
-  @apply hover:bg-blue-50/50 active:bg-blue-50 enabled:hover:bg-blue-50/50 enabled:active:bg-blue-50;
-}
-
-.chip.outlined.gray {
-  @apply hover:bg-gray-50/50 active:bg-gray-100 enabled:hover:bg-gray-50/50 enabled:active:bg-gray-100;
+.chip.outlined.accent[aria-checked='true'],
+.chip.outlined.accent[role='dropdown'],
+.chip.outlined.accent[role='button'] {
+  @apply border border-blue-400 bg-blue-100/50 text-blue-600 
+  hover:border-blue-500 hover:bg-blue-200/50 hover:text-blue-700
+  active:border-blue-500 active:bg-blue-300/50  active:text-blue-800;
 }
 
 /* Glass chip */
+
 .chip.glass {
-  @apply border-none;
+  @apply border-none bg-gray-100/50 text-gray-600 
+  hover:bg-gray-200/50 hover:text-gray-700
+  active:bg-gray-300/50  active:text-gray-800;
 }
 
 .chip.glass[aria-disabled='true'] {
-  @apply pointer-events-none !opacity-50;
+  @apply pointer-events-none  !bg-gray-100/25 !text-gray-600/50;
 }
 
-.chip.glass {
-  @apply border-none;
+.chip.glass.neutral[aria-checked='true'],
+.chip.glass.neutral[role='dropdown'],
+.chip.glass.neutral[role='button'] {
+  @apply border-none bg-gray-200/50 text-gray-700 
+  hover:bg-gray-300/50 hover:text-gray-800
+  active:bg-gray-400/50  active:text-gray-900;
 }
 
-.chip.glass.orange {
-  @apply bg-orange-50/50 hover:bg-orange-100/50 active:bg-orange-200/50 enabled:hover:bg-orange-100/50 enabled:active:bg-orange-200/50;
-}
-
-.chip.glass.sky {
-  @apply bg-cyan-50/50 hover:bg-cyan-100/50 active:bg-cyan-200/50 enabled:hover:bg-cyan-100/50 enabled:active:bg-cyan-200/50;
-}
-
-.chip.glass.violet {
-  @apply bg-violet-50/50 hover:bg-violet-100/50 active:bg-violet-200/50 enabled:hover:bg-violet-100/50 enabled:active:bg-violet-200/50;
-}
-
-.chip.glass.red {
-  @apply bg-red-50/50 hover:bg-red-100/50 active:bg-red-200/50 enabled:hover:bg-red-100/50 enabled:active:bg-red-200/50;
-}
-
-.chip.glass.yellow {
-  @apply bg-yellow-50/50 hover:bg-yellow-100/50 active:bg-yellow-200/50 enabled:hover:bg-yellow-100/50 enabled:active:bg-yellow-200/50;
-}
-
-.chip.glass.green {
-  @apply bg-green-50/50 hover:bg-green-100/50 active:bg-green-200/50 enabled:hover:bg-green-100/50 enabled:active:bg-green-200/50;
-}
-
-.chip.glass.blue {
-  @apply bg-blue-50/50 hover:bg-blue-100/50 active:bg-blue-200/50  enabled:hover:bg-blue-100/50 enabled:active:bg-blue-200/50;
-}
-
-.chip.glass.gray {
-  @apply bg-gray-100/50 hover:bg-gray-200/50 active:bg-gray-300/50  enabled:hover:bg-gray-200/50 enabled:active:bg-gray-300/50;
+.chip.glass.accent[aria-checked='true'],
+.chip.glass.accent[role='dropdown'],
+.chip.glass.accent[role='button'] {
+  @apply border-none  bg-blue-200/50 text-blue-600 
+   hover:bg-blue-300/50 hover:text-blue-700
+   active:bg-blue-400/50  active:text-blue-800;
 }

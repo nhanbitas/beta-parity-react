@@ -5,12 +5,12 @@ import { InputWrapper, ValueInputWrapper } from '../Input';
 import { ChevronDown, X } from 'lucide-react';
 import { Menu, MenuDivider, MenuDividerProps, MenuGroup, MenuGroupProps, MenuItem, MenuProps } from '../Menu';
 import { ContainedLabel } from '../FloatingLabel';
-import { Chip } from '../Chip';
 import { useResizeObserver } from '../hooks/useObserver';
 import { useOutsideClick } from '../hooks/useOutsideClick';
 import useCombinedRefs from '../hooks/useCombinedRefs';
 import useKeyboard from '../hooks/useKeyboard';
 import { NativeOption } from './Native';
+import { Tag } from '../Tag';
 
 // TODO: Write docs for types
 
@@ -234,11 +234,10 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
               ? currentValue.map(
                   (item) =>
                     !!item && (
-                      <Chip
+                      <Tag
                         key={item}
-                        type='input'
                         kind='glass'
-                        color='orange'
+                        color='accent'
                         value={item}
                         label={renderedOptions.filter((i) => i.value === item)[0].label}
                         onRemove={() => handleClick(item, true)}

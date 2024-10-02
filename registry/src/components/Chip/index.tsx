@@ -12,19 +12,12 @@ const typeMap = {
   button: 'button',
   checkbox: 'checkbox',
   radio: 'radio',
-  input: 'input',
   dropdown: 'dropdown'
 };
 
 const colorMap = {
-  gray: 'gray',
-  orange: 'orange',
-  sky: 'sky',
-  violet: 'violet',
-  green: 'green',
-  red: 'red',
-  yellow: 'yellow',
-  blue: 'blue'
+  neutral: 'neutral',
+  accent: 'accent'
 } as const;
 
 const sizeMap = {
@@ -95,22 +88,12 @@ export interface ChipProps extends BaseProps {
   /**
    * The color of the chip, can be one of the keys from the colorMap.
    *
-   * "gray" is default
+   * "neutral" is default
    *
    * @type {keyof typeof colorMap}
    * @memberof ChipProps
    */
   color?: keyof typeof colorMap;
-
-  /**
-   * Whether to display a remove button on the chip, it is usable in button type
-   *
-   * True is default
-   *
-   * @type {boolean}
-   * @memberof ChipProps
-   */
-  removeButton?: boolean;
 
   /**
    * The value of the chip, can be a string or number, it is usable in checkbox, radio, dropdown, input type
@@ -182,10 +165,9 @@ export const Chip = React.forwardRef<
     type = 'button',
     label,
     icon,
-    removeButton = true,
     kind = 'outline',
     size = 'md',
-    color = 'gray',
+    color = 'neutral',
     value,
     checked,
     defaultChecked,
@@ -303,7 +285,7 @@ export const Chip = React.forwardRef<
   // Render chip by type
   switch (type) {
     case 'checkbox':
-      const checkboxClassname = classNames('chip', className, kindChip, sizeChip, active ? colorChip : 'gray');
+      const checkboxClassname = classNames('chip', className, kindChip, sizeChip, active ? colorChip : 'neutral');
       return (
         <span className={checkboxClassname} ref={ref} {...eventHandlers} {...accessibilityProps} {...rest}>
           {InnerChipContent}
@@ -314,7 +296,7 @@ export const Chip = React.forwardRef<
       );
 
     case 'radio':
-      const radioClassname = classNames('chip', className, kindChip, sizeChip, active ? colorChip : 'gray');
+      const radioClassname = classNames('chip', className, kindChip, sizeChip, active ? colorChip : 'neutral');
       return (
         <span className={radioClassname} ref={ref} {...eventHandlers} {...accessibilityProps} {...rest}>
           {InnerChipContent}
@@ -324,34 +306,8 @@ export const Chip = React.forwardRef<
         </span>
       );
 
-    case 'input':
-      const inputClassname = classNames('chip', className, kindChip, sizeChip, {
-        [colorChip]: type === 'input'
-      });
-      const removeHandler = (e: React.MouseEvent<HTMLElement> | React.KeyboardEvent) => {
-        e.stopPropagation();
-        if ('key' in e) {
-          const keyboardEvent = e as React.KeyboardEvent;
-          if (keyboardEvent.key === 'Enter') {
-            onRemove && onRemove(value as string);
-          }
-        } else {
-          onRemove && onRemove(value as string);
-        }
-      };
-      return (
-        <span className={inputClassname} ref={ref} {...eventHandlers} {...accessibilityProps} {...rest}>
-          {InnerChipContent}
-          {removeButton ? (
-            <button tabIndex={disabled ? -1 : 0} className='chip-icon chip-close' onClick={removeHandler}>
-              <X />
-            </button>
-          ) : null}
-        </span>
-      );
-
     case 'dropdown':
-      const dropdownClassname = classNames('chip', className, kindChip, sizeChip, !!value ? colorChip : 'gray');
+      const dropdownClassname = classNames('chip', className, kindChip, sizeChip, !!value ? colorChip : 'neutral');
       return (
         <span className={dropdownClassname} ref={ref} {...eventHandlers} {...accessibilityProps} {...rest}>
           {!!value && !icon ? (
