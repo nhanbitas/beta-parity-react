@@ -80,6 +80,11 @@
   @apply !border-gray-200/50 !bg-transparent !text-gray-550/50;
 }
 
+.chip.outlined[aria-disabled='true'][aria-checked='true'],
+.chip.outlined[aria-disabled='true'][role='dropdown'][aria-valued='true'] {
+  @apply !border-gray-400/50 !bg-gray-100/25 !text-gray-950/50;
+}
+
 .chip.outlined.neutral[aria-checked='true'],
 .chip.outlined.neutral[role='dropdown'][aria-valued='true'] {
   @apply border border-gray-400 bg-gray-100/50 text-gray-900 
@@ -104,6 +109,11 @@
 
 .chip.glass[aria-disabled='true'] {
   @apply !bg-gray-100/25 !text-gray-600/50;
+}
+
+.chip.glass[aria-disabled='true'][aria-checked='true'],
+.chip.glass[aria-disabled='true'][role='dropdown'][aria-valued='true'] {
+  @apply !bg-gray-200/25 !text-gray-950/50;
 }
 
 .chip.glass.neutral[aria-checked='true'],

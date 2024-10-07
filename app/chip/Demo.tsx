@@ -135,6 +135,7 @@ export const DemoMultiFilter = () => {
             key={item}
             value={item}
             label={item}
+            kind='glass'
             checked={value.includes(item)}
             onChange={(e) =>
               setValue(
