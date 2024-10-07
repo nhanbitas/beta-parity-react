@@ -1,6 +1,6 @@
 /* Base */
 .tag {
-  @apply text-body-compact-01 relative inline-flex w-fit cursor-pointer select-none items-center truncate rounded-md font-medium;
+  @apply text-body-compact-01 relative inline-flex w-fit select-none items-center truncate rounded-md font-medium;
   transition:
     padding 0.2s ease-in-out,
     color 0.1s ease-in-out;
@@ -15,11 +15,11 @@
 }
 
 .tag img {
-  @apply h-[1.125rem]  w-[1.125rem] rounded-full;
+  @apply h-[1.125rem] w-[1.125rem] rounded-full;
 }
 
 .tag button.tag-close-btn:disabled {
-  @apply pointer-events-none cursor-not-allowed opacity-50;
+  @apply cursor-not-allowed bg-transparent opacity-50;
 }
 
 .tag.small:has(img),
@@ -45,20 +45,16 @@
 
 /* tag theme*/
 
-.tag button.tag-close-btn {
+.tag button.tag-close-btn:enabled {
   @apply bg-transparent;
 }
 
-.tag.tag.accent > .tag-icon.tag-close-btn {
-  @apply text-blue-500 hover:bg-blue-200/50 hover:text-blue-600 active:bg-blue-300/50 active:text-blue-700  disabled:text-blue-500/50;
+.tag.tag.accent > .tag-icon.tag-close-btn:enabled {
+  @apply text-blue-500 hover:bg-blue-200/50 hover:text-blue-600 active:bg-blue-300/50 active:text-blue-700;
 }
 
-.tag.neutral > .tag-icon.tag-close-btn {
-  @apply text-gray-500 hover:bg-gray-200/50 hover:text-gray-600 active:bg-gray-300/50 active:text-gray-700  disabled:text-gray-500/50;
-}
-
-.tag button.tag-close-btn:disabled {
-  @apply pointer-events-none cursor-not-allowed bg-transparent;
+.tag.neutral > .tag-icon.tag-close-btn:enabled {
+  @apply text-gray-500 hover:bg-gray-200/50 hover:text-gray-600 active:bg-gray-300/50 active:text-gray-700;
 }
 
 /* Outline tag */
