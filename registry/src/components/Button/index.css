@@ -1,15 +1,12 @@
 @import '../theme/alias/border.css';
 
 .btn:not(.hidden) {
-  @apply text-body-compact-02 flex items-center justify-center gap-2 whitespace-nowrap rounded-md border-[var(--par-border-field-disabled)] px-4 transition-colors duration-200 ease-out;
+  @apply text-body-compact-02 flex items-center  justify-center gap-2 whitespace-nowrap rounded-md px-4 font-medium transition-colors duration-200 ease-out;
 }
 
-.btn:active {
-  @apply translate-y-[1px];
-}
-
-.btn:active:disabled {
-  @apply translate-y-0;
+.btn:disabled,
+.btn.loading {
+  @apply cursor-not-allowed;
 }
 
 .btn.small {
@@ -44,60 +41,91 @@
   @apply px-3;
 }
 
-/* group */
-.btn-group {
-  @apply text-body-compact-02 relative flex h-10 w-full flex-row items-center justify-start truncate border-gray-200;
-}
-
-.btn-group.start {
-  @apply gap-2 rounded-md rounded-r-none border border-r-0 bg-white px-3 py-2 text-gray-500 after:absolute after:right-0 after:top-1/4 after:h-1/2 after:w-[0.5px] after:bg-gray-200 focus:z-10 focus:after:hidden enabled:hover:text-gray-700 enabled:active:text-black disabled:cursor-not-allowed;
-}
-
-.btn-group.middle {
-  @apply gap-2 rounded-none border-y bg-white px-3 py-2 text-gray-500 before:absolute before:left-0 before:top-1/4 before:h-1/2 before:w-[0.5px] before:bg-gray-200 after:absolute after:right-0 after:top-1/4 after:h-1/2 after:w-[0.5px] after:bg-gray-200 focus:z-10 focus:before:hidden focus:after:hidden enabled:hover:text-gray-700 enabled:active:text-black disabled:cursor-not-allowed;
-}
-
-.btn-group.end {
-  @apply gap-2 rounded-md rounded-l-none border border-l-0 bg-white px-3 py-2 text-gray-500 before:absolute before:left-0 before:top-1/4 before:h-1/2 before:w-[0.5px] before:bg-gray-200 focus:z-10 focus:before:hidden enabled:hover:text-gray-700 enabled:active:text-black disabled:cursor-not-allowed;
-}
-
-.btn-group.active {
-  @apply bg-gray-100 text-black enabled:hover:text-black;
-}
-
 /* Button themes */
-.btn.primary {
-  @apply border-orange-500 bg-orange-500 text-orange-500 enabled:hover:border-orange-600 enabled:hover:bg-orange-600 enabled:hover:text-orange-600 enabled:active:border-orange-700 enabled:active:bg-orange-700  enabled:active:text-orange-700;
-}
 
-.btn.neutral {
-  @apply border-gray-700 bg-gray-500 text-gray-700 enabled:hover:border-gray-800 enabled:hover:bg-gray-600 enabled:hover:text-gray-800 enabled:active:border-gray-900 enabled:active:bg-gray-700 enabled:active:text-gray-900;
-}
-
-.btn.danger {
-  @apply border-red-500 bg-red-500 text-red-500 enabled:hover:border-red-600 enabled:hover:bg-red-600 enabled:hover:text-red-600 enabled:active:border-red-700 enabled:active:bg-red-700 enabled:active:text-red-700;
-}
-
-.btn.success {
-  @apply border-green-500 bg-green-500 text-green-500 enabled:hover:border-green-600 enabled:hover:bg-green-600 enabled:hover:text-green-600 enabled:active:border-green-700 enabled:active:bg-green-700 enabled:active:text-green-700;
-}
-
-.btn.info {
-  @apply border-blue-500 bg-blue-500 text-blue-500 enabled:hover:border-blue-600 enabled:hover:bg-blue-600 enabled:hover:text-blue-600 enabled:active:border-blue-700 enabled:active:bg-blue-700 enabled:active:text-blue-700;
-}
-
-.btn.solid {
-  @apply border-none text-white enabled:hover:text-white enabled:active:text-white;
-}
-
+/* outlined */
 .btn.outlined {
-  @apply border bg-transparent;
+  @apply border;
 }
 
-.btn.ghost {
-  @apply border-none bg-transparent;
+.btn.outlined:disabled {
+  @apply !border-gray-400/50 !bg-transparent !text-gray-550/50;
+}
+.btn.outlined.loading {
+  @apply !border-gray-400 !bg-transparent !text-gray-550;
 }
 
-.btn.glass {
-  @apply border-none;
+.btn.outlined.neutral {
+  @apply border-gray-400 bg-transparent text-gray-550 enabled:hover:border-gray-500 enabled:hover:bg-gray-100/50 enabled:hover:text-gray-600 enabled:active:border-gray-500 enabled:active:bg-gray-200/50 enabled:active:text-gray-700;
+}
+
+.btn.outlined.accent {
+  @apply border-blue-400 bg-transparent text-blue-500 enabled:hover:border-blue-500 enabled:hover:bg-blue-100/50 enabled:hover:text-blue-600 enabled:active:border-blue-500 enabled:active:bg-blue-200/50 enabled:active:text-blue-700;
+}
+
+.btn.outlined.adverse {
+  @apply border-red-400 bg-transparent text-red-500 enabled:hover:border-red-500 enabled:hover:bg-red-100/50 enabled:hover:text-red-600 enabled:active:border-red-500 enabled:active:bg-red-200/50 enabled:active:text-red-700;
+}
+
+/* solid */
+.btn.solid:disabled {
+  @apply !bg-gray-500/50 !text-white/50;
+}
+
+.btn.solid.loading {
+  @apply !bg-gray-500 !text-white;
+}
+
+.btn.solid.neutral {
+  @apply border-gray-400 bg-gray-900 text-white enabled:hover:border-gray-500 enabled:hover:bg-gray-800 enabled:hover:text-white enabled:active:border-gray-500 enabled:active:bg-gray-700 enabled:active:text-white;
+}
+
+.btn.solid.accent {
+  @apply border-blue-400 bg-blue-500 text-white enabled:hover:border-blue-500 enabled:hover:bg-blue-600 enabled:hover:text-white enabled:active:border-blue-500 enabled:active:bg-blue-700 enabled:active:text-white;
+}
+
+.btn.solid.adverse {
+  @apply border-red-400 bg-red-500 text-white enabled:hover:border-red-500 enabled:hover:bg-red-600 enabled:hover:text-white enabled:active:border-red-500 enabled:active:bg-red-700 enabled:active:text-white;
+}
+
+/* ghost */
+.btn.ghost:disabled {
+  @apply !bg-transparent !text-gray-550/50;
+}
+
+.btn.solid.loading {
+  @apply !bg-transparent !text-gray-550;
+}
+
+.btn.ghost.neutral {
+  @apply border-gray-400 bg-transparent text-gray-550 enabled:hover:border-gray-500 enabled:hover:bg-gray-100/50 enabled:hover:text-gray-600 enabled:active:border-gray-500 enabled:active:bg-gray-200/50 enabled:active:text-gray-700;
+}
+
+.btn.ghost.accent {
+  @apply border-blue-400 bg-transparent text-blue-500 enabled:hover:border-blue-500 enabled:hover:bg-blue-100/50 enabled:hover:text-blue-600 enabled:active:border-blue-500 enabled:active:bg-blue-200/50 enabled:active:text-blue-700;
+}
+
+.btn.ghost.adverse {
+  @apply border-red-400 bg-transparent text-red-500 enabled:hover:border-red-500 enabled:hover:bg-red-100/50 enabled:hover:text-red-600 enabled:active:border-red-500 enabled:active:bg-red-200/50 enabled:active:text-red-700;
+}
+
+/* glass */
+.btn.glass:disabled {
+  @apply !bg-gray-100/50 !text-gray-600/50;
+}
+
+.btn.glass.loading {
+  @apply !bg-gray-100/50 !text-gray-600;
+}
+
+.btn.glass.neutral {
+  @apply border-gray-400 bg-gray-100/50 text-gray-600 enabled:hover:border-gray-500 enabled:hover:bg-gray-200/50 enabled:hover:text-gray-700 enabled:active:border-gray-500 enabled:active:bg-gray-300/50 enabled:active:text-gray-800;
+}
+
+.btn.glass.accent {
+  @apply border-blue-400 bg-blue-100/50 text-blue-600 enabled:hover:border-blue-500 enabled:hover:bg-blue-200/50 enabled:hover:text-blue-700 enabled:active:border-blue-500 enabled:active:bg-blue-300/50 enabled:active:text-blue-800;
+}
+
+.btn.glass.adverse {
+  @apply border-red-400 bg-red-100/50 text-red-600 enabled:hover:border-red-500 enabled:hover:bg-red-200/50 enabled:hover:text-red-700 enabled:active:border-red-500 enabled:active:bg-red-300/50 enabled:active:text-red-800;
 }

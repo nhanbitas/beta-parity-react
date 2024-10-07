@@ -5,7 +5,7 @@ import { Button } from '@libComponents/Button';
 import { Plus } from 'lucide-react';
 import { Chip } from '@libComponents/Chip';
 
-const colors = ['neutral', 'primary', 'danger', 'success', 'info'];
+const colors = ['neutral', 'accent', 'adverse'];
 const kinds = ['solid', 'outlined', 'ghost', 'glass'];
 const sizes = ['sm', 'md', 'lg'];
 
@@ -54,7 +54,7 @@ export const DemoColorButton = () => {
       <h3>Primary</h3>
       <div className='my-4 flex gap-4'>
         {kinds.map((kind) => (
-          <Button key={kind} color='primary' kind={kind as any}>
+          <Button key={kind} color='accent' kind={kind as any}>
             Button
           </Button>
         ))}
@@ -67,26 +67,10 @@ export const DemoColorButton = () => {
           </Button>
         ))}
       </div>
-      <h3>Danger</h3>
+      <h3>Adverse</h3>
       <div className='my-4 flex gap-4'>
         {kinds.map((kind) => (
-          <Button key={kind} color='danger' kind={kind as any}>
-            Button
-          </Button>
-        ))}
-      </div>
-      <h3>Success</h3>
-      <div className='my-4 flex gap-4'>
-        {kinds.map((kind) => (
-          <Button key={kind} color='success' kind={kind as any}>
-            Button
-          </Button>
-        ))}
-      </div>
-      <h3>Info</h3>
-      <div className='my-4 flex gap-4'>
-        {kinds.map((kind) => (
-          <Button key={kind} color='info' kind={kind as any}>
+          <Button key={kind} color='adverse' kind={kind as any}>
             Button
           </Button>
         ))}
@@ -117,48 +101,24 @@ export const DemoStatesButton = () => {
           <Button iconOnly color='neutral' kind='glass' size={size as any}>
             <Plus />
           </Button>
-          <Button color='danger' kind='glass' size={size as any}>
+          <Button color='adverse' kind='glass' size={size as any}>
             <Plus />
             Button
-          </Button>
-          <Button color='success' kind='glass' size={size as any}>
-            Button
-            <Plus />
           </Button>
         </div>
       ))}
       <h3>States</h3>
-      <div className='flex flex-col gap-4'>
-        <Button className='w-24' disabled>
-          Button
-        </Button>
-        <Button className='w-24' isPending>
-          Button
-        </Button>
-        <br />
-        use 3rd party generated css variable to override
-        <Button
-          kind='outlined'
-          className='custom w-24'
-          style={{
-            ['--color-custom-border' as any]: 'red',
-            ['--custom-text-color' as any]: 'blue',
-            ['--custom-bg-color' as any]: 'gray'
-          }}
-        >
-          Custom
-        </Button>
-        <Button
-          kind='outlined'
-          className='custom w-24'
-          style={{
-            ['--custom-border-color' as any]: 'blue',
-            ['--custom-text-color' as any]: 'blue',
-            ['--custom-bg-color' as any]: 'red'
-          }}
-        >
-          Custom
-        </Button>
+      <div className='flex gap-4'>
+        {kinds.map((kind) => (
+          <Button key={kind} color='accent' kind={kind as any} disabled>
+            Disable
+          </Button>
+        ))}
+        {kinds.map((kind) => (
+          <Button key={kind} color='accent' kind={kind as any} isPending>
+            Pending
+          </Button>
+        ))}
       </div>
     </div>
   );
