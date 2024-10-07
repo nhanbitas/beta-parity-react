@@ -111,38 +111,38 @@
   @apply border-none bg-lime-200/50 text-lime-600;
 }
 
-.badge.filled.gray {
+.badge.solid.gray {
   @apply border-gray-600 bg-gray-600 text-gray-50;
 }
 
-.badge.filled.red {
+.badge.solid.red {
   @apply border-red-600 bg-red-600 text-red-50;
 }
 
-.badge.filled.green {
+.badge.solid.green {
   @apply border-green-600 bg-green-600 text-green-50;
 }
 
-.badge.filled.yellow {
+.badge.solid.yellow {
   @apply border-yellow-600 bg-yellow-600 text-yellow-50;
 }
 
-.badge.filled.blue {
+.badge.solid.blue {
   @apply border-blue-600 bg-blue-600 text-blue-50;
 }
 
-.badge.filled.orange {
+.badge.solid.orange {
   @apply border-orange-600 bg-orange-600 text-orange-50;
 }
 
-.badge.filled.cyan {
+.badge.solid.cyan {
   @apply border-cyan-600 bg-cyan-600 text-cyan-50;
 }
 
-.badge.filled.violet {
+.badge.solid.violet {
   @apply border-violet-600 bg-violet-600 text-violet-50;
 }
 
-.badge.filled.lime {
+.badge.solid.lime {
   @apply border-lime-600 bg-lime-600 text-lime-50;
 }

@@ -94,10 +94,10 @@ export interface CornerIndicatorProps extends React.HTMLAttributes<HTMLDivElemen
 
   /**
    * The variant of the corner indicator.
-   * @default 'filled'
+   * @default 'solid'
    * @memberof CornerIndicatorProps
    */
-  variant?: 'filled' | 'outlined' | 'glass' | '';
+  variant?: 'solid' | 'outlined' | 'glass';
 
   /**
    * The direction of corner indicator when the content of this grow
@@ -150,7 +150,7 @@ export const CornerIndicator = React.forwardRef<HTMLDivElement, CornerIndicatorP
       growDirection = 'symmetric',
       color = 'gray',
       size = 'md',
-      variant = 'filled',
+      variant = 'solid',
       style,
       indicatorProps,
       ...props

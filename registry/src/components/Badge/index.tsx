@@ -50,7 +50,7 @@ export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
    * @default 'outlined'
    * @memberof BadgeProps
    */
-  variant?: 'filled' | 'outlined' | 'glass' | '';
+  variant?: 'solid' | 'outlined' | 'glass';
 }
 
 const sizeMap = {

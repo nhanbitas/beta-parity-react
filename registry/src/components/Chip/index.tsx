@@ -21,7 +21,7 @@ const sizeMap = {
 
 const kindMap = {
   glass: 'glass',
-  outline: 'outlined'
+  outlined: 'outlined'
 };
 
 /**
@@ -158,7 +158,7 @@ export const Chip = React.forwardRef<
     type = 'toggle',
     label,
     icon,
-    kind = 'outline',
+    kind = 'outlined',
     size = 'md',
     color = 'neutral',
     value,

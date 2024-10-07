@@ -171,7 +171,7 @@ export const DemoMultiFilter = () => {
 };
 
 export const DemoSelectMenu = (props: any) => {
-  const { kind = 'outline' } = props;
+  const { kind = 'outlined' } = props;
   const [value, setValue] = React.useState('');
   const [active, setActive] = React.useState(false);
   const ref = React.useRef<any>(null);
