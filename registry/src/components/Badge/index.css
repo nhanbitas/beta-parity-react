@@ -111,38 +111,38 @@
   @apply border-[var(--par-color-border-badge-glass-lime)] bg-[var(--par-color-bg-badge-glass-lime)] text-[var(--par-color-text-badge-glass-lime)];
 }
 
-.badge.filled.gray {
+.badge.solid.gray {
   @apply border-[var(--par-color-border-badge-fill-gray)] bg-[var(--par-color-bg-badge-fill-gray)] text-[var(--par-color-text-badge-fill-gray)];
 }
 
-.badge.filled.red {
+.badge.solid.red {
   @apply border-[var(--par-color-border-badge-fill-red)] bg-[var(--par-color-bg-badge-fill-red)] text-[var(--par-color-text-badge-fill-red)];
 }
 
-.badge.filled.green {
+.badge.solid.green {
   @apply border-[var(--par-color-border-badge-fill-green)] bg-[var(--par-color-bg-badge-fill-green)] text-[var(--par-color-text-badge-fill-green)];
 }
 
-.badge.filled.yellow {
+.badge.solid.yellow {
   @apply border-[var(--par-color-border-badge-fill-yellow)] bg-[var(--par-color-bg-badge-fill-yellow)] text-[var(--par-color-text-badge-fill-yellow)];
 }
 
-.badge.filled.blue {
+.badge.solid.blue {
   @apply border-[var(--par-color-border-badge-fill-blue)] bg-[var(--par-color-bg-badge-fill-blue)] text-[var(--par-color-text-badge-fill-blue)];
 }
 
-.badge.filled.orange {
+.badge.solid.orange {
   @apply border-[var(--par-color-border-badge-fill-orange)] bg-[var(--par-color-bg-badge-fill-orange)] text-[var(--par-color-text-badge-fill-orange)];
 }
 
-.badge.filled.cyan {
+.badge.solid.cyan {
   @apply border-[var(--par-color-border-badge-fill-cyan)] bg-[var(--par-color-bg-badge-fill-cyan)] text-[var(--par-color-text-badge-fill-cyan)];
 }
 
-.badge.filled.violet {
+.badge.solid.violet {
   @apply border-[var(--par-color-border-badge-fill-violet)] bg-[var(--par-color-bg-badge-fill-violet)] text-[var(--par-color-text-badge-fill-violet)];
 }
 
-.badge.filled.lime {
+.badge.solid.lime {
   @apply border-[var(--par-color-border-badge-fill-lime)] bg-[var(--par-color-bg-badge-fill-lime)] text-[var(--par-color-text-badge-fill-lime)];
 }

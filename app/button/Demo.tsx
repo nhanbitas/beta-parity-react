@@ -110,7 +110,7 @@ export const DemoSizesButton = () => {
 export const DemoStatesButton = () => {
   return (
     <div>
-      <Chip kind='glass' label='Disabled' color='red' />
+      <Chip kind='glass' label='Disabled' />
       <h3>Icons</h3>
       {sizes.map((size) => (
         <div className='mb-4 flex gap-4' key={size}>
@@ -138,7 +138,7 @@ export const DemoStatesButton = () => {
         <br />
         use 3rd party generated css variable to override
         <Button
-          kind='outline'
+          kind='outlined'
           className='custom w-24'
           style={{
             ['--color-custom-border' as any]: 'red',
@@ -149,7 +149,7 @@ export const DemoStatesButton = () => {
           Custom
         </Button>
         <Button
-          kind='outline'
+          kind='outlined'
           className='custom w-24'
           style={{
             ['--custom-border-color' as any]: 'blue',

@@ -64,7 +64,7 @@
 }
 
 .tag button.tag-close-btn:disabled {
-  @apply pointer-events-none cursor-not-allowed bg-[var(--par-color-bg-tag-button-disabled)];
+  @apply cursor-not-allowed !bg-[var(--par-color-bg-tag-button-disabled)];
 }
 
 /* Outline tag */

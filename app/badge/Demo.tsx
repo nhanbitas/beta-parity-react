@@ -109,7 +109,7 @@ export const DemoDotBadgeDark = (props: Props) => {
       </div>
       <div className='flex flex-wrap gap-4'>
         {colors.map((color) => (
-          <Badge dot key={color} color={color as any} size='xs' variant='filled' icon={<Box />} label='Badge' />
+          <Badge dot key={color} color={color as any} size='xs' variant='solid' icon={<Box />} label='Badge' />
         ))}
       </div>
     </div>
