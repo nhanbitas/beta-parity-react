@@ -11,7 +11,7 @@ export const DemoCornerIndicator = (props: Props) => {
     <div className='flex flex-wrap gap-4'>
       {['xs', 'sm', 'md'].map((size) => (
         <CornerIndicator key={size} label='5' color='red' size={size as any}>
-          <Button iconOnly color='info'>
+          <Button iconOnly color='accent'>
             <BellRing />
           </Button>
         </CornerIndicator>
@@ -19,20 +19,20 @@ export const DemoCornerIndicator = (props: Props) => {
 
       {['xs', 'sm', 'md'].map((size) => (
         <CornerIndicator key={size} label='5' color='red' size={size as any} outline>
-          <Button iconOnly color='info'>
+          <Button iconOnly color='accent'>
             <BellRing />
           </Button>
         </CornerIndicator>
       ))}
 
       <CornerIndicator color='red'>
-        <Button iconOnly color='info'>
+        <Button iconOnly color='accent'>
           <BellRing />
         </Button>
       </CornerIndicator>
 
       <CornerIndicator color='red' pulse>
-        <Button iconOnly color='info'>
+        <Button iconOnly color='accent'>
           <BellRing />
         </Button>
       </CornerIndicator>
@@ -46,7 +46,7 @@ export const DemoCornerIndicatorPosition = (props: Props) => {
       <div className='flex  flex-wrap gap-8'>
         {['top-left', 'top-right', 'bottom-left', 'bottom-right'].map((position) => (
           <CornerIndicator key={position} pulse color='red' position={position as any} label='5' outline>
-            <Button iconOnly color='info' kind='glass'>
+            <Button iconOnly color='accent' kind='glass'>
               <BellRing />
             </Button>
           </CornerIndicator>
@@ -63,7 +63,7 @@ export const DemoCornerIndicatorPosition = (props: Props) => {
             position={position as any}
             label='23'
           >
-            <Button iconOnly color='danger' kind='glass'>
+            <Button iconOnly color='adverse' kind='glass'>
               <PhoneMissed />
             </Button>
           </CornerIndicator>
@@ -80,7 +80,7 @@ export const DemoCornerIndicatorPosition = (props: Props) => {
             position={position as any}
             label='connected'
           >
-            <Button iconOnly color='success' kind='glass'>
+            <Button iconOnly color='neutral' kind='glass'>
               <Globe />
             </Button>
           </CornerIndicator>

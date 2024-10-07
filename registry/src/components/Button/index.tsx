@@ -5,6 +5,7 @@ import { createPolymorphicComponent, PolymorphicComponentProps } from '../Base/f
 import './index.css';
 import classNames from 'classnames';
 import Base, { BaseProps } from '../Base';
+import { Loader } from 'lucide-react';
 
 const sizeMap = {
   sm: 'small',
@@ -13,11 +14,9 @@ const sizeMap = {
 } as const;
 
 const colorMap = {
-  primary: 'primary',
+  accent: 'accent',
   neutral: 'neutral',
-  danger: 'danger',
-  success: 'success',
-  info: 'info'
+  adverse: 'adverse'
 } as const;
 
 const kindMap = {
@@ -109,10 +108,10 @@ export const Button = createPolymorphicComponent<'button', ButtonProps>(
         className={classes}
         onClick={!disabled && !isPending ? onClick : undefined}
         ref={ref}
-        {...(isPending ? { 'data-loading': 'true' } : {})}
         disabled={disabled || isPending}
         {...props}
       >
+        {isPending && <Loader className='animate-spin' />}
         {parsedChildren}
       </Base>
     );
