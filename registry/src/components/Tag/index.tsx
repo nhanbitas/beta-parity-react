@@ -21,7 +21,7 @@ const sizeMap = {
 
 const kindMap = {
   glass: 'glass',
-  outline: 'outlined'
+  outlined: 'outlined'
 };
 
 /**
@@ -110,7 +110,7 @@ export const Tag = React.forwardRef<HTMLElement, TagProps & Omit<React.AllHTMLAt
       children,
       label,
       icon,
-      kind = 'outline',
+      kind = 'outlined',
       size = 'md',
       color = 'neutral',
       value,

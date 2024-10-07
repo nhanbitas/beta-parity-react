@@ -6,13 +6,13 @@ import { Plus } from 'lucide-react';
 import { Chip } from '@libComponents/Chip';
 
 const colors = ['neutral', 'primary', 'danger', 'success', 'info'];
-const kinds = ['filled', 'outline', 'ghost', 'glass'];
+const kinds = ['solid', 'outlined', 'ghost', 'glass'];
 const sizes = ['sm', 'md', 'lg'];
 
 export const DemoKindButton = () => {
   return (
     <div>
-      <h3>Filled</h3>
+      <h3>Solid</h3>
       <div className='my-4 flex gap-4'>
         {colors.map((color) => (
           <Button key={color} color={color as any}>
@@ -23,7 +23,7 @@ export const DemoKindButton = () => {
       <h3>Outline</h3>
       <div className='my-4 flex gap-4'>
         {colors.map((color) => (
-          <Button key={color} color={color as any} kind='outline'>
+          <Button key={color} color={color as any} kind='outlined'>
             Button
           </Button>
         ))}

@@ -19,8 +19,8 @@ const colorMap = {
 } as const;
 
 const kindMap = {
-  filled: 'filled',
-  outline: 'outlined',
+  solid: 'solid',
+  outlined: 'outlined',
   ghost: 'ghost',
   glass: 'glass'
 } as const;
@@ -82,7 +82,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       children,
       size = 'md',
       color = 'neutral',
-      kind = 'filled',
+      kind = 'solid',
       disabled = false,
       iconOnly = false,
       isPending = false,

@@ -50,22 +50,22 @@ export const DemoGlassBadge = (props: Props) => {
   );
 };
 
-export const DemoFilledBadge = (props: Props) => {
+export const DemoSolidBadge = (props: Props) => {
   return (
     <div className='flex flex-col gap-4'>
       <div className='flex flex-wrap gap-4'>
         {colors.map((color) => (
-          <Badge key={color} color={color as any} variant='filled' icon={<Box />} label='Badge' />
+          <Badge key={color} color={color as any} variant='solid' icon={<Box />} label='Badge' />
         ))}
       </div>
       <div className='flex flex-wrap gap-4'>
         {colors.map((color) => (
-          <Badge key={color} color={color as any} size='sm' variant='filled' icon={<Box />} label='Badge' />
+          <Badge key={color} color={color as any} size='sm' variant='solid' icon={<Box />} label='Badge' />
         ))}
       </div>
       <div className='flex flex-wrap gap-4'>
         {colors.map((color) => (
-          <Badge key={color} color={color as any} size='xs' variant='filled' icon={<Box />} label='Badge' />
+          <Badge key={color} color={color as any} size='xs' variant='solid' icon={<Box />} label='Badge' />
         ))}
       </div>
     </div>
@@ -87,7 +87,7 @@ export const DemoDotBadge = (props: Props) => {
       </div>
       <div className='flex flex-wrap gap-4'>
         {colors.map((color) => (
-          <Badge dot key={color} color={color as any} size='xs' variant='filled' icon={<Box />} label='Badge' />
+          <Badge dot key={color} color={color as any} size='xs' variant='solid' icon={<Box />} label='Badge' />
         ))}
       </div>
     </div>

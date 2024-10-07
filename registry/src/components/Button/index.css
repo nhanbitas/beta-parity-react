@@ -66,17 +66,29 @@
 }
 
 /* Button themes */
-/* .btn {
-  @apply text-button-primary-filled-default-color border-button-primary-filled-default-border;
-} */
-
-/* .btn:hover {
-  @apply bg-button-primary-filled-hover-bg text-button-primary-filled-hover-color border-button-primary-filled-hover-border;
+.btn.primary {
+  @apply border-orange-500 bg-orange-500 text-orange-500 enabled:hover:border-orange-600 enabled:hover:bg-orange-600 enabled:hover:text-orange-600 enabled:active:border-orange-700 enabled:active:bg-orange-700  enabled:active:text-orange-700;
 }
 
-.btn:enabled:active {
-  @apply bg-button-primary-filled-active-bg text-button-primary-filled-active-color border-button-primary-filled-active-border;
-} */
+.btn.neutral {
+  @apply border-gray-700 bg-gray-500 text-gray-700 enabled:hover:border-gray-800 enabled:hover:bg-gray-600 enabled:hover:text-gray-800 enabled:active:border-gray-900 enabled:active:bg-gray-700 enabled:active:text-gray-900;
+}
+
+.btn.danger {
+  @apply border-red-500 bg-red-500 text-red-500 enabled:hover:border-red-600 enabled:hover:bg-red-600 enabled:hover:text-red-600 enabled:active:border-red-700 enabled:active:bg-red-700 enabled:active:text-red-700;
+}
+
+.btn.success {
+  @apply border-green-500 bg-green-500 text-green-500 enabled:hover:border-green-600 enabled:hover:bg-green-600 enabled:hover:text-green-600 enabled:active:border-green-700 enabled:active:bg-green-700 enabled:active:text-green-700;
+}
+
+.btn.info {
+  @apply border-blue-500 bg-blue-500 text-blue-500 enabled:hover:border-blue-600 enabled:hover:bg-blue-600 enabled:hover:text-blue-600 enabled:active:border-blue-700 enabled:active:bg-blue-700 enabled:active:text-blue-700;
+}
+
+.btn.solid {
+  @apply border-none text-white enabled:hover:text-white enabled:active:text-white;
+}
 
 .btn.outlined {
   @apply border bg-transparent;
