@@ -8,13 +8,6 @@ import { Check, ChevronDown, ChevronUp, X } from 'lucide-react';
 import useDidMountEffect from '../hooks/useDidMountEffect';
 import useKeyboard from '../hooks/useKeyboard';
 
-const typeMap = {
-  button: 'button',
-  checkbox: 'checkbox',
-  radio: 'radio',
-  dropdown: 'dropdown'
-};
-
 const colorMap = {
   neutral: 'neutral',
   accent: 'accent'
@@ -63,7 +56,7 @@ export interface ChipProps extends BaseProps {
    * @type {keyof typeof typeMap}
    * @memberof ChipProps
    */
-  type?: keyof typeof typeMap;
+  type?: 'dropdown' | 'toggle';
 
   /**
    * The size of the chip, can be one of the keys from the sizeMap.
@@ -96,7 +89,7 @@ export interface ChipProps extends BaseProps {
   color?: keyof typeof colorMap;
 
   /**
-   * The value of the chip, can be a string or number, it is usable in checkbox, radio, dropdown, input type
+   * The value of the chip, can be a string or number
    *
    * @type {string | number}
    * @memberof ChipProps
@@ -104,7 +97,7 @@ export interface ChipProps extends BaseProps {
   value?: string | number;
 
   /**
-   * The checked state of the chip, it is usable in checkbox, radio type
+   * The checked state of the chip, it is usable in toggle type
    *
    * @type {boolean}
    * @memberof ChipProps
@@ -112,7 +105,7 @@ export interface ChipProps extends BaseProps {
   checked?: boolean;
 
   /**
-   * The defaultChecked state of the chip (uncontrolled chip), it is usable in checkbox, radio type
+   * The defaultChecked state of the chip (uncontrolled chip), it is usable in toggle type
    *
    * @type {boolean}
    * @memberof ChipProps
@@ -136,12 +129,12 @@ export interface ChipProps extends BaseProps {
   disabled?: boolean;
 
   /**
-   * Callback when the state of the chip changes for chip with valued chip - checkbox, radio, drodown
+   * Callback when the state of the chip changes for chip with valued chip - toggle, drodown
    *
    * @memberof ChipProps
    * @param {Object} args
    * @param {string | number} args.value - The value of the valued chip.
-   * @param {boolean} [args.checked] - The checked state of the checkbox, radio chip.
+   * @param {boolean} [args.checked] - The checked state of the toggle chip.
    * @param {boolean} [args.active] - The active state of the drodown chip.
    */
   onChange?: (args: { value: string | number; checked?: boolean; active?: boolean }) => void;
@@ -162,7 +155,7 @@ export const Chip = React.forwardRef<
   const {
     className,
     children,
-    type = 'button',
+    type = 'toggle',
     label,
     icon,
     kind = 'outline',
@@ -183,25 +176,15 @@ export const Chip = React.forwardRef<
   const kindChip = kindMap[kind as keyof typeof kindMap];
   const sizeChip = sizeMap[size as keyof typeof sizeMap];
   const colorChip = colorMap[color as keyof typeof colorMap];
-  const defaultActive = type === 'checkbox' || type === 'radio' ? !!checked : !!isActive;
+  const defaultActive = type === 'toggle' ? !!checked : !!isActive;
   const [active, setActive] = React.useState(defaultActive || defaultChecked);
 
   // Define click handlers
-  const handleButtonClick = (e: React.MouseEvent<HTMLElement> | React.KeyboardEvent) => {
-    onClick && onClick(e as React.MouseEvent<HTMLElement>);
-  };
-
-  const handleCheckboxClick = (e: React.MouseEvent<HTMLElement> | React.KeyboardEvent) => {
+  const handleToggleClick = (e: React.MouseEvent<HTMLElement> | React.KeyboardEvent) => {
     if (checked == undefined) {
       setActive(!active);
     }
     onChange && onChange({ value: value || '', checked: !active });
-    onClick && onClick(e as React.MouseEvent<HTMLElement>);
-  };
-
-  const handleRadioClick = (e: React.MouseEvent<HTMLElement> | React.KeyboardEvent) => {
-    setActive(true);
-    onChange && onChange({ value: value || '', checked: true });
     onClick && onClick(e as React.MouseEvent<HTMLElement>);
   };
 
@@ -214,25 +197,17 @@ export const Chip = React.forwardRef<
   };
 
   const clickHandlers = {
-    button: handleButtonClick,
-    checkbox: handleCheckboxClick,
-    radio: handleRadioClick,
-    dropdown: handleDropdownClick,
-    default: handleButtonClick
+    toggle: handleToggleClick,
+    dropdown: handleDropdownClick
   };
 
   // Define keyup handlers - "enter" key
-  const ButtonKeyupHandler = useKeyboard('Enter', handleButtonClick);
-  const RadioKeyupHandler = useKeyboard('Enter', handleRadioClick);
-  const CheckboxKeyupHandler = useKeyboard('Enter', handleCheckboxClick);
+  const ToggleKeyupHandler = useKeyboard('Enter', handleToggleClick);
   const DropdownKeyupHandler = useKeyboard('Enter', handleDropdownClick);
 
   const keyupHandlers = {
-    button: ButtonKeyupHandler,
-    checkbox: CheckboxKeyupHandler,
-    radio: RadioKeyupHandler,
-    dropdown: DropdownKeyupHandler,
-    default: ButtonKeyupHandler
+    toggle: ToggleKeyupHandler,
+    dropdown: DropdownKeyupHandler
   };
 
   // Define content to display
@@ -247,12 +222,12 @@ export const Chip = React.forwardRef<
   const eventHandlers = {
     onClick: (e: React.MouseEvent<HTMLElement>) => {
       if (disabled) return;
-      const handler = clickHandlers[type as keyof typeof clickHandlers] || clickHandlers.default;
+      const handler = clickHandlers[type as keyof typeof clickHandlers] || clickHandlers.toggle;
       handler(e);
     },
     onKeyUp: (e: React.KeyboardEvent) => {
       if (disabled) return;
-      const handler = keyupHandlers[type as keyof typeof keyupHandlers] || keyupHandlers.default;
+      const handler = keyupHandlers[type as keyof typeof keyupHandlers] || keyupHandlers.toggle;
       handler(e);
     }
   };
@@ -261,19 +236,15 @@ export const Chip = React.forwardRef<
   const accessibilityProps = {
     'aria-disabled': disabled,
     'aria-label': label,
-    'aria-checked': type === 'radio' || type === 'checkbox' ? active : undefined,
-    'aria-selected': type === 'dropdown' ? active : undefined,
+    'aria-checked': type === 'toggle' ? active : undefined,
+    'aria-valued': type === 'dropdown' ? !!value : undefined,
     role: type,
     tabIndex: disabled ? -1 : 0
   };
 
   // Update active state when checked, isActive is changed
   useDidMountEffect(() => {
-    if (checked !== undefined && type === 'checkbox') {
-      setActive(checked);
-    }
-
-    if (checked !== undefined && type === 'radio') {
+    if (checked !== undefined && type === 'toggle') {
       setActive(checked);
     }
 
@@ -284,21 +255,10 @@ export const Chip = React.forwardRef<
 
   // Render chip by type
   switch (type) {
-    case 'checkbox':
-      const checkboxClassname = classNames('chip', className, kindChip, sizeChip, active ? colorChip : 'neutral');
+    case 'toggle':
+      const toggleClassname = classNames('chip', className, kindChip, sizeChip, active ? colorChip : 'neutral');
       return (
-        <span className={checkboxClassname} ref={ref} {...eventHandlers} {...accessibilityProps} {...rest}>
-          {InnerChipContent}
-          <span className={`check-icon ${active ? 'active' : ''}`}>
-            <Check />
-          </span>
-        </span>
-      );
-
-    case 'radio':
-      const radioClassname = classNames('chip', className, kindChip, sizeChip, active ? colorChip : 'neutral');
-      return (
-        <span className={radioClassname} ref={ref} {...eventHandlers} {...accessibilityProps} {...rest}>
+        <span className={toggleClassname} ref={ref} {...eventHandlers} {...accessibilityProps} {...rest}>
           {InnerChipContent}
           <span className={`check-icon ${active ? 'active' : ''}`}>
             <Check />
