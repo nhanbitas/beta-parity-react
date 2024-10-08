@@ -81,19 +81,19 @@
 }
 
 .chip.outlined[aria-disabled='true'][aria-checked='true'],
-.chip.outlined[aria-disabled='true'][role='dropdown'][aria-valued='true'] {
+.chip.outlined[aria-disabled='true'][role='dropdown'][aria-selected='true'] {
   @apply !border-gray-400/50 !bg-gray-100/25 !text-gray-950/50;
 }
 
 .chip.outlined.neutral[aria-checked='true'],
-.chip.outlined.neutral[role='dropdown'][aria-valued='true'] {
+.chip.outlined.neutral[role='dropdown'][aria-selected='true'] {
   @apply border border-gray-400 bg-gray-100/50 text-gray-900 
   hover:border-gray-500 hover:bg-gray-200/50 hover:text-gray-900
   active:border-gray-500 active:bg-gray-300/50  active:text-gray-900;
 }
 
 .chip.outlined.accent[aria-checked='true'],
-.chip.outlined.accent[role='dropdown'][aria-valued='true'] {
+.chip.outlined.accent[role='dropdown'][aria-selected='true'] {
   @apply border border-blue-400 bg-blue-100/50 text-blue-600 
   hover:border-blue-500 hover:bg-blue-200/50 hover:text-blue-700
   active:border-blue-500 active:bg-blue-300/50  active:text-blue-800;
@@ -112,19 +112,19 @@
 }
 
 .chip.glass[aria-disabled='true'][aria-checked='true'],
-.chip.glass[aria-disabled='true'][role='dropdown'][aria-valued='true'] {
+.chip.glass[aria-disabled='true'][role='dropdown'][aria-selected='true'] {
   @apply !bg-gray-200/25 !text-gray-950/50;
 }
 
 .chip.glass.neutral[aria-checked='true'],
-.chip.glass.neutral[role='dropdown'][aria-valued='true'] {
+.chip.glass.neutral[role='dropdown'][aria-selected='true'] {
   @apply border-none bg-gray-200/50 text-gray-700 
   hover:bg-gray-300/50 hover:text-gray-800
   active:bg-gray-400/50  active:text-gray-900;
 }
 
 .chip.glass.accent[aria-checked='true'],
-.chip.glass.accent[role='dropdown'][aria-valued='true'] {
+.chip.glass.accent[role='dropdown'][aria-selected='true'] {
   @apply border-none  bg-blue-200/50 text-blue-600 
    hover:bg-blue-300/50 hover:text-blue-700
    active:bg-blue-400/50  active:text-blue-800;
