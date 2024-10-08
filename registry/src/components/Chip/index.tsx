@@ -3,6 +3,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import './index.css';
+import './variables.css';
 import { BaseProps } from '../Base';
 import { Check, ChevronDown, ChevronUp, X } from 'lucide-react';
 import useDidMountEffect from '../hooks/useDidMountEffect';

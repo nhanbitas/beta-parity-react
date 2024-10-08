@@ -8,12 +8,9 @@ const colors = ['neutral', 'accent', 'adverse'];
 const kinds = ['solid', 'outlined', 'ghost', 'glass'];
 const sizes = ['sm', 'md', 'lg'];
 
-export const DemoKindButton = ({ theme = 'light' }: any) => {
+export const DemoKindButton = () => {
   return (
-    <div
-      className={` gap-4 rounded-md ${theme === 'dark' ? 'bg-gray-950 text-white' : 'bg-white text-gray-900'} p-2`}
-      data-scheme={theme}
-    >
+    <div className='gap-4 rounded-md p-2'>
       <h3>Solid</h3>
       <div className='my-4 flex gap-4'>
         {colors.map((color) => (
@@ -93,12 +90,9 @@ export const DemoSizesButton = () => {
   );
 };
 
-export const DemoStatesButton = ({ theme = 'light' }: any) => {
+export const DemoStatesButton = () => {
   return (
-    <div
-      className={` gap-4 rounded-md ${theme === 'dark' ? 'bg-gray-950 text-white' : 'bg-white text-gray-900'} p-2`}
-      data-scheme={theme}
-    >
+    <div className='gap-4 rounded-md p-2'>
       <h3>Icons</h3>
       {sizes.map((size) => (
         <div className='mb-4 flex gap-4' key={size}>

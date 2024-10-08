@@ -1,0 +1,8 @@
+:root,
+[data-scheme='light'] {
+  --par-color-outline-corner-indicator: var(--par-white);
+}
+
+[data-scheme='dark'] {
+  --par-color-outline-corner-indicator: var(--par-black);
+}

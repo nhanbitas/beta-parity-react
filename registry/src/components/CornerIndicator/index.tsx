@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import './index.css';
+import './variables.css';
 import Badge, { BadgeProps } from '../Badge';
 import Dot, { DotProps } from '../Dot';
 

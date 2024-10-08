@@ -50,17 +50,11 @@
 }
 
 .tag.neutral > .tag-icon.tag-close-btn {
-  @apply text-[var(--par-color-icon-tag-button-neutral-enabled)]
-  hover:bg-[var(--par-color-bg-tag-button-neutral-hovered)] hover:text-[var(--par-color-icon-tag-button-neutral-hovered)]
-  active:bg-[var(--par-color-bg-tag-button-neutral-pressed)] active:text-[var(--par-color-icon-tag-button-neutral-pressed)]
-  disabled:text-[var(--par-color-icon-tag-button-neutral-disabled)];
+  @apply text-[var(--par-color-icon-tag-button-neutral-enabled)] hover:bg-[var(--par-color-bg-tag-button-neutral-hovered)] hover:text-[var(--par-color-icon-tag-button-neutral-hovered)] active:bg-[var(--par-color-bg-tag-button-neutral-pressed)] active:text-[var(--par-color-icon-tag-button-neutral-pressed)] disabled:text-[var(--par-color-icon-tag-button-neutral-disabled)];
 }
 
 .tag.accent > .tag-icon.tag-close-btn {
-  @apply text-[var(--par-color-icon-tag-button-accent-enabled)]
-   hover:bg-[var(--par-color-bg-tag-button-accent-hovered)] hover:text-[var(--par-color-icon-tag-button-accent-hovered)]
-   active:bg-[var(--par-color-bg-tag-button-accent-pressed)] active:text-[var(--par-color-icon-tag-button-accent-pressed)]
-   disabled:text-[var(--par-color-icon-tag-button-accent-disabled)];
+  @apply text-[var(--par-color-icon-tag-button-accent-enabled)] hover:bg-[var(--par-color-bg-tag-button-accent-hovered)] hover:text-[var(--par-color-icon-tag-button-accent-hovered)] active:bg-[var(--par-color-bg-tag-button-accent-pressed)] active:text-[var(--par-color-icon-tag-button-accent-pressed)] disabled:text-[var(--par-color-icon-tag-button-accent-disabled)];
 }
 
 .tag button.tag-close-btn:disabled {

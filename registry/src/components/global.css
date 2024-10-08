@@ -4,7 +4,8 @@
 
 @config '../../tailwind.config.js';
 
-:root [data-scheme='light'] {
+:root,
+[data-scheme='light'] {
   --par-focus-visible-ring-color: rgba(22, 22, 22, 1);
 }
 

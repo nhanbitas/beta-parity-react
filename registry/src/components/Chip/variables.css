@@ -1,0 +1,156 @@
+:root,
+[data-theme='light'] {
+  /* TEXT */
+  --par-color-text-chip-outlined-unselected-neutral-enabled: var(--par-neutral-550);
+  --par-color-text-chip-outlined-unselected-neutral-hovered: var(--par-neutral-600);
+  --par-color-text-chip-outlined-unselected-neutral-pressed: var(--par-neutral-700);
+  --par-color-text-chip-outlined-unselected-neutral-disabled: rgb(from var(--par-neutral-550) r g b / 0.5);
+
+  --par-color-text-chip-glass-unselected-neutral-enabled: var(--par-neutral-600);
+  --par-color-text-chip-glass-unselected-neutral-hovered: var(--par-neutral-700);
+  --par-color-text-chip-glass-unselected-neutral-pressed: var(--par-neutral-800);
+  --par-color-text-chip-glass-unselected-neutral-disabled: rgb(from var(--par-neutral-600) r g b / 0.5);
+
+  --par-color-text-chip-outlined-selected-neutral-enabled: var(--par-neutral-900);
+  --par-color-text-chip-outlined-selected-neutral-hovered: var(--par-neutral-900);
+  --par-color-text-chip-outlined-selected-neutral-pressed: var(--par-neutral-900);
+
+  --par-color-text-chip-glass-selected-neutral-enabled: var(--par-neutral-900);
+  --par-color-text-chip-glass-selected-neutral-hovered: var(--par-neutral-900);
+  --par-color-text-chip-glass-selected-neutral-pressed: var(--par-neutral-900);
+
+  --par-color-text-chip-outlined-selected-accent-enabled: var(--par-accent-600);
+  --par-color-text-chip-outlined-selected-accent-hovered: var(--par-accent-700);
+  --par-color-text-chip-outlined-selected-accent-pressed: var(--par-accent-800);
+
+  --par-color-text-chip-glass-selected-accent-enabled: var(--par-accent-700);
+  --par-color-text-chip-glass-selected-accent-hovered: var(--par-accent-800);
+  --par-color-text-chip-glass-selected-accent-pressed: var(--par-accent-900);
+
+  --par-color-text-chip-outlined-selected-disabled: rgb(from var(--par-gray-900) r g b / 0.5);
+  --par-color-text-chip-glass-selected-disabled: rgb(from var(--par-gray-900) r g b / 0.5);
+
+  /* BACKGROUND */
+  --par-color-bg-chip-outlined-unselected-neutral-enabled: var(--par-transparent);
+  --par-color-bg-chip-outlined-unselected-neutral-hovered: rgb(from var(--par-neutral-100) r g b / 0.5);
+  --par-color-bg-chip-outlined-unselected-neutral-pressed: rgb(from var(--par-neutral-200) r g b / 0.5);
+  --par-color-bg-chip-outlined-unselected-neutral-disabled: var(--par-transparent);
+
+  --par-color-bg-chip-glass-unselected-neutral-enabled: rgb(from var(--par-neutral-100) r g b / 0.5);
+  --par-color-bg-chip-glass-unselected-neutral-hovered: rgb(from var(--par-neutral-200) r g b / 0.5);
+  --par-color-bg-chip-glass-unselected-neutral-pressed: rgb(from var(--par-neutral-300) r g b / 0.5);
+  --par-color-bg-chip-glass-unselected-neutral-disabled: rgb(from var(--par-neutral-100) r g b / 0.25);
+
+  --par-color-bg-chip-outlined-selected-neutral-enabled: rgb(from var(--par-neutral-100) r g b / 0.5);
+  --par-color-bg-chip-outlined-selected-neutral-hovered: rgb(from var(--par-neutral-200) r g b / 0.5);
+  --par-color-bg-chip-outlined-selected-neutral-pressed: rgb(from var(--par-neutral-300) r g b / 0.5);
+
+  --par-color-bg-chip-glass-selected-neutral-enabled: rgb(from var(--par-neutral-200) r g b / 0.5);
+  --par-color-bg-chip-glass-selected-neutral-hovered: rgb(from var(--par-neutral-300) r g b / 0.5);
+  --par-color-bg-chip-glass-selected-neutral-pressed: rgb(from var(--par-neutral-400) r g b / 0.5);
+
+  --par-color-bg-chip-outlined-selected-accent-enabled: rgb(from var(--par-accent-100) r g b / 0.5);
+  --par-color-bg-chip-outlined-selected-accent-hovered: rgb(from var(--par-accent-200) r g b / 0.5);
+  --par-color-bg-chip-outlined-selected-accent-pressed: rgb(from var(--par-accent-300) r g b / 0.5);
+
+  --par-color-bg-chip-glass-selected-accent-enabled: rgb(from var(--par-accent-200) r g b / 0.5);
+  --par-color-bg-chip-glass-selected-accent-hovered: rgb(from var(--par-accent-300) r g b / 0.5);
+  --par-color-bg-chip-glass-selected-accent-pressed: rgb(from var(--par-accent-400) r g b / 0.5);
+
+  --par-color-bg-chip-outlined-selected-disabled: rgb(from var(--par-gray-100) r g b / 0.25);
+  --par-color-bg-chip-glass-selected-disabled: rgb(from var(--par-gray-200) r g b / 0.25);
+
+  /* BORDER */
+  --par-color-border-chip-unselected-neutral-enabled: var(--par-neutral-200);
+  --par-color-border-chip-unselected-neutral-hovered: var(--par-neutral-300);
+  --par-color-border-chip-unselected-neutral-pressed: var(--par-neutral-400);
+  --par-color-border-chip-unselected-neutral-disabled: rgb(from var(--par-neutral-200) r g b / 0.5);
+
+  --par-color-border-chip-selected-neutral-enabled: var(--par-neutral-400);
+  --par-color-border-chip-selected-neutral-hovered: var(--par-neutral-500);
+  --par-color-border-chip-selected-neutral-pressed: var(--par-neutral-500);
+
+  --par-color-border-chip-selected-accent-enabled: var(--par-accent-400);
+  --par-color-border-chip-selected-accent-hovered: var(--par-accent-500);
+  --par-color-border-chip-selected-accent-pressed: var(--par-accent-500);
+
+  --par-color-border-chip-selected-disabled: rgb(from var(--par-gray-400) r g b / 0.5);
+}
+
+[data-scheme='dark'] {
+  /* TEXT */
+  --par-color-text-chip-outlined-unselected-neutral-enabled: var(--par-neutral-200);
+  --par-color-text-chip-outlined-unselected-neutral-hovered: var(--par-neutral-200);
+  --par-color-text-chip-outlined-unselected-neutral-pressed: var(--par-neutral-200);
+  --par-color-text-chip-outlined-unselected-neutral-disabled: rgb(from var(--par-neutral-200) r g b / 0.5);
+
+  --par-color-text-chip-glass-unselected-neutral-enabled: var(--par-neutral-200);
+  --par-color-text-chip-glass-unselected-neutral-hovered: var(--par-neutral-200);
+  --par-color-text-chip-glass-unselected-neutral-pressed: var(--par-neutral-200);
+  --par-color-text-chip-glass-unselected-neutral-disabled: rgb(from var(--par-neutral-200) r g b / 0.5);
+
+  --par-color-text-chip-outlined-selected-neutral-enabled: var(--par-neutral-100);
+  --par-color-text-chip-outlined-selected-neutral-hovered: var(--par-neutral-100);
+  --par-color-text-chip-outlined-selected-neutral-pressed: var(--par-neutral-100);
+
+  --par-color-text-chip-glass-selected-neutral-enabled: var(--par-neutral-100);
+  --par-color-text-chip-glass-selected-neutral-hovered: var(--par-neutral-100);
+  --par-color-text-chip-glass-selected-neutral-pressed: var(--par-neutral-100);
+
+  --par-color-text-chip-outlined-selected-accent-enabled: var(--par-accent-100);
+  --par-color-text-chip-outlined-selected-accent-hovered: var(--par-accent-100);
+  --par-color-text-chip-outlined-selected-accent-pressed: var(--par-accent-100);
+
+  --par-color-text-chip-glass-selected-accent-enabled: var(--par-accent-100);
+  --par-color-text-chip-glass-selected-accent-hovered: var(--par-accent-100);
+  --par-color-text-chip-glass-selected-accent-pressed: var(--par-accent-100);
+
+  --par-color-text-chip-outlined-selected-disabled: rgb(from var(--par-gray-100) r g b / 0.5);
+  --par-color-text-chip-glass-selected-disabled: rgb(from var(--par-gray-100) r g b / 0.5);
+
+  /* BACKGROUND */
+  --par-color-bg-chip-outlined-unselected-neutral-enabled: var(--par-transparent);
+  --par-color-bg-chip-outlined-unselected-neutral-hovered: rgb(from var(--par-neutral-800) r g b / 0.5);
+  --par-color-bg-chip-outlined-unselected-neutral-pressed: rgb(from var(--par-neutral-700) r g b / 0.5);
+  --par-color-bg-chip-outlined-unselected-neutral-disabled: var(--par-transparent);
+
+  --par-color-bg-chip-glass-unselected-neutral-enabled: rgb(from var(--par-neutral-800) r g b / 0.5);
+  --par-color-bg-chip-glass-unselected-neutral-hovered: rgb(from var(--par-neutral-700) r g b / 0.5);
+  --par-color-bg-chip-glass-unselected-neutral-pressed: rgb(from var(--par-neutral-600) r g b / 0.5);
+  --par-color-bg-chip-glass-unselected-neutral-disabled: rgb(from var(--par-neutral-800) r g b / 0.25);
+
+  --par-color-bg-chip-outlined-selected-neutral-enabled: rgb(from var(--par-neutral-800) r g b / 0.5);
+  --par-color-bg-chip-outlined-selected-neutral-hovered: rgb(from var(--par-neutral-700) r g b / 0.5);
+  --par-color-bg-chip-outlined-selected-neutral-pressed: rgb(from var(--par-neutral-600) r g b / 0.5);
+
+  --par-color-bg-chip-glass-selected-neutral-enabled: rgb(from var(--par-neutral-700) r g b / 0.5);
+  --par-color-bg-chip-glass-selected-neutral-hovered: rgb(from var(--par-neutral-600) r g b / 0.5);
+  --par-color-bg-chip-glass-selected-neutral-pressed: rgb(from var(--par-neutral-500) r g b / 0.5);
+
+  --par-color-bg-chip-outlined-selected-accent-enabled: rgb(from var(--par-accent-800) r g b / 0.5);
+  --par-color-bg-chip-outlined-selected-accent-hovered: rgb(from var(--par-accent-700) r g b / 0.5);
+  --par-color-bg-chip-outlined-selected-accent-pressed: rgb(from var(--par-accent-600) r g b / 0.5);
+
+  --par-color-bg-chip-glass-selected-accent-enabled: rgb(from var(--par-accent-700) r g b / 0.5);
+  --par-color-bg-chip-glass-selected-accent-hovered: rgb(from var(--par-accent-600) r g b / 0.5);
+  --par-color-bg-chip-glass-selected-accent-pressed: rgb(from var(--par-accent-500) r g b / 0.5);
+
+  --par-color-bg-chip-outlined-selected-disabled: rgb(from var(--par-gray-800) r g b / 0.25);
+  --par-color-bg-chip-glass-selected-disabled: rgb(from var(--par-gray-700) r g b / 0.25);
+
+  /* BORDER */
+  --par-color-border-chip-unselected-neutral-enabled: var(--par-neutral-600);
+  --par-color-border-chip-unselected-neutral-hovered: var(--par-neutral-500);
+  --par-color-border-chip-unselected-neutral-pressed: var(--par-neutral-500);
+  --par-color-border-chip-unselected-neutral-disabled: rgb(from var(--par-neutral-600) r g b / 0.5);
+
+  --par-color-border-chip-selected-neutral-enabled: var(--par-neutral-400);
+  --par-color-border-chip-selected-neutral-hovered: var(--par-neutral-300);
+  --par-color-border-chip-selected-neutral-pressed: var(--par-neutral-300);
+
+  --par-color-border-chip-selected-accent-enabled: var(--par-accent-400);
+  --par-color-border-chip-selected-accent-hovered: var(--par-accent-300);
+  --par-color-border-chip-selected-accent-pressed: var(--par-accent-300);
+
+  --par-color-border-chip-selected-disabled: rgb(from var(--par-gray-400) r g b / 0.5);
+}

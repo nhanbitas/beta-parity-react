@@ -9,7 +9,7 @@
 
 .corner-indicator-container.bordered > .badge,
 .corner-indicator-container.bordered > .dot {
-  @apply ring-1 ring-white;
+  @apply ring-1 ring-[var(--par-color-outline-corner-indicator)];
 }
 
 /* position */

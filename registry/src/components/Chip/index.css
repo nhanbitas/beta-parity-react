@@ -71,61 +71,48 @@
 
 /* Outline chip */
 .chip.outlined {
-  @apply border border-gray-200 bg-transparent text-gray-550 
-  hover:border-gray-300 hover:bg-gray-100/50 hover:text-gray-600
-  active:border-gray-400 active:bg-gray-200/50  active:text-gray-700;
+  @apply border border-[var(--par-color-border-chip-unselected-neutral-enabled)] bg-[var(--par-color-bg-chip-outlined-unselected-neutral-enabled)] text-[var(--par-color-text-chip-outlined-unselected-neutral-enabled)] hover:border-[var(--par-color-border-chip-unselected-neutral-hovered)] hover:bg-[var(--par-color-bg-chip-outlined-unselected-neutral-hovered)] hover:text-[var(--par-color-text-chip-outlined-unselected-neutral-hovered)] active:border-[var(--par-color-border-chip-unselected-neutral-pressed)] active:bg-[var(--par-color-bg-chip-outlined-unselected-neutral-pressed)]  active:text-[var(--par-color-text-chip-outlined-unselected-neutral-pressed)];
 }
 
 .chip.outlined[aria-disabled='true'] {
-  @apply !border-gray-200/50 !bg-transparent !text-gray-550/50;
+  @apply !border-[var(--par-color-border-chip-unselected-neutral-disabled)] !bg-[var(--par-color-bg-chip-outlined-unselected-neutral-disabled)] !text-[var(--par-color-text-chip-outlined-unselected-neutral-disabled)];
 }
 
 .chip.outlined[aria-disabled='true'][aria-checked='true'],
 .chip.outlined[aria-disabled='true'][role='dropdown'][aria-selected='true'] {
-  @apply !border-gray-400/50 !bg-gray-100/25 !text-gray-950/50;
+  @apply !border-[var(--par-color-border-chip-selected-disabled)] !bg-[var(--par-color-bg-chip-outlined-selected-disabled)] !text-[var(--par-color-text-chip-outlined-selected-disabled)];
 }
 
 .chip.outlined.neutral[aria-checked='true'],
 .chip.outlined.neutral[role='dropdown'][aria-selected='true'] {
-  @apply border border-gray-400 bg-gray-100/50 text-gray-900 
-  hover:border-gray-500 hover:bg-gray-200/50 hover:text-gray-900
-  active:border-gray-500 active:bg-gray-300/50  active:text-gray-900;
+  @apply border border-[var(--par-color-border-chip-selected-neutral-enabled)] bg-[var(--par-color-bg-chip-outlined-selected-neutral-enabled)] text-[var(--par-color-text-chip-outlined-selected-neutral-enabled)] hover:border-[var(--par-color-border-chip-selected-neutral-hovered)] hover:bg-[var(--par-color-bg-chip-outlined-selected-neutral-hovered)] hover:text-[var(--par-color-text-chip-outlined-selected-neutral-hovered)] active:border-[var(--par-color-border-chip-selected-neutral-pressed)] active:bg-[var(--par-color-bg-chip-outlined-selected-neutral-pressed)]  active:text-[var(--par-color-text-chip-outlined-selected-neutral-pressed)];
 }
 
 .chip.outlined.accent[aria-checked='true'],
 .chip.outlined.accent[role='dropdown'][aria-selected='true'] {
-  @apply border border-blue-400 bg-blue-100/50 text-blue-600 
-  hover:border-blue-500 hover:bg-blue-200/50 hover:text-blue-700
-  active:border-blue-500 active:bg-blue-300/50  active:text-blue-800;
+  @apply border border-[var(--par-color-border-chip-selected-accent-enabled)] bg-[var(--par-color-bg-chip-outlined-selected-accent-enabled)] text-[var(--par-color-text-chip-outlined-selected-accent-enabled)] hover:border-[var(--par-color-border-chip-selected-accent-hovered)] hover:bg-[var(--par-color-bg-chip-outlined-selected-accent-hovered)] hover:text-[var(--par-color-text-chip-outlined-selected-accent-hovered)] active:border-[var(--par-color-border-chip-selected-accent-pressed)] active:bg-[var(--par-color-bg-chip-outlined-selected-accent-pressed)]  active:text-[var(--par-color-text-chip-outlined-selected-accent-pressed)];
 }
 
 /* Glass chip */
-
 .chip.glass {
-  @apply border-none bg-gray-100/50 text-gray-600 
-  hover:bg-gray-200/50 hover:text-gray-700
-  active:bg-gray-300/50  active:text-gray-800;
+  @apply border-none border-[var(--par-color-border-chip-unselected-neutral-enabled)] bg-[var(--par-color-bg-chip-glass-unselected-neutral-enabled)] text-[var(--par-color-text-chip-glass-unselected-neutral-enabled)] hover:border-[var(--par-color-border-chip-unselected-neutral-hovered)] hover:bg-[var(--par-color-bg-chip-glass-unselected-neutral-hovered)] hover:text-[var(--par-color-text-chip-glass-unselected-neutral-hovered)] active:border-[var(--par-color-border-chip-unselected-neutral-pressed)] active:bg-[var(--par-color-bg-chip-glass-unselected-neutral-pressed)]  active:text-[var(--par-color-text-chip-glass-unselected-neutral-pressed)];
 }
 
 .chip.glass[aria-disabled='true'] {
-  @apply !bg-gray-100/25 !text-gray-600/50;
+  @apply !border-[var(--par-color-border-chip-unselected-neutral-disabled)] !bg-[var(--par-color-bg-chip-glass-unselected-neutral-disabled)] !text-[var(--par-color-text-chip-glass-unselected-neutral-disabled)];
 }
 
 .chip.glass[aria-disabled='true'][aria-checked='true'],
 .chip.glass[aria-disabled='true'][role='dropdown'][aria-selected='true'] {
-  @apply !bg-gray-200/25 !text-gray-950/50;
+  @apply !border-[var(--par-color-border-chip-selected-disabled)] !bg-[var(--par-color-bg-chip-glass-selected-disabled)] !text-[var(--par-color-text-chip-glass-selected-disabled)];
 }
 
 .chip.glass.neutral[aria-checked='true'],
 .chip.glass.neutral[role='dropdown'][aria-selected='true'] {
-  @apply border-none bg-gray-200/50 text-gray-700 
-  hover:bg-gray-300/50 hover:text-gray-800
-  active:bg-gray-400/50  active:text-gray-900;
+  @apply border-none border-[var(--par-color-border-chip-selected-neutral-enabled)] bg-[var(--par-color-bg-chip-glass-selected-neutral-enabled)] text-[var(--par-color-text-chip-glass-selected-neutral-enabled)] hover:border-[var(--par-color-border-chip-selected-neutral-hovered)] hover:bg-[var(--par-color-bg-chip-glass-selected-neutral-hovered)] hover:text-[var(--par-color-text-chip-glass-selected-neutral-hovered)] active:border-[var(--par-color-border-chip-selected-neutral-pressed)] active:bg-[var(--par-color-bg-chip-glass-selected-neutral-pressed)]  active:text-[var(--par-color-text-chip-glass-selected-neutral-pressed)];
 }
 
 .chip.glass.accent[aria-checked='true'],
 .chip.glass.accent[role='dropdown'][aria-selected='true'] {
-  @apply border-none  bg-blue-200/50 text-blue-600 
-   hover:bg-blue-300/50 hover:text-blue-700
-   active:bg-blue-400/50  active:text-blue-800;
+  @apply border-none border-[var(--par-color-border-chip-selected-accent-enabled)] bg-[var(--par-color-bg-chip-glass-selected-accent-enabled)] text-[var(--par-color-text-chip-glass-selected-accent-enabled)] hover:border-[var(--par-color-border-chip-selected-accent-hovered)] hover:bg-[var(--par-color-bg-chip-glass-selected-accent-hovered)] hover:text-[var(--par-color-text-chip-glass-selected-accent-hovered)] active:border-[var(--par-color-border-chip-selected-accent-pressed)] active:bg-[var(--par-color-bg-chip-glass-selected-accent-pressed)]  active:text-[var(--par-color-text-chip-glass-selected-accent-pressed)];
 }
