@@ -37,7 +37,7 @@ export const DemoBasicMenu = (props: Props) => {
         ref={ref}
         label={value || 'Menu'}
         type='dropdown'
-        color='sky'
+        color='accent'
         value={value}
         isActive={isOpen}
         onClick={() => setIsOpen(!isOpen)}

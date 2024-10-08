@@ -235,9 +235,9 @@ export const Chip = React.forwardRef<
   // Define accessibilities for chip
   const accessibilityProps = {
     'aria-disabled': disabled,
-    'aria-label': label,
+    'aria-label': label.toLowerCase(),
     'aria-checked': type === 'toggle' ? active : undefined,
-    'aria-valued': type === 'dropdown' ? !!value : undefined,
+    'aria-selected': type === 'dropdown' ? !!value : undefined,
     role: type,
     tabIndex: disabled ? -1 : 0
   };
