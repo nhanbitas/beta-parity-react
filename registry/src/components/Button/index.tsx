@@ -111,7 +111,7 @@ export const Button = createPolymorphicComponent<'button', ButtonProps>(
         disabled={disabled || isPending}
         {...props}
       >
-        {isPending && <Loader className='animate-spin' />}
+        {isPending && <Loader className='loading-animation' />}
         {parsedChildren}
       </Base>
     );
