@@ -41,6 +41,10 @@
   @apply px-3;
 }
 
+.btn .loading-animation {
+  @apply animate-spin;
+}
+
 /* Button themes */
 
 /* outlined */

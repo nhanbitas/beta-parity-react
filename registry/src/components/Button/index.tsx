@@ -112,7 +112,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         disabled={disabled || isPending}
         {...props}
       >
-        {isPending && <Loader className='animate-spin' />}
+        {isPending && <Loader className='loading-animation' />}
         {parsedChildren}
       </button>
     );
