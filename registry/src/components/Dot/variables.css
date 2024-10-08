@@ -1,24 +1,24 @@
 :root,
 [data-theme='light'] {
-  --par-color-bg-dot-fill-gray: var(--par-gray-600);
-  --par-color-bg-dot-fill-red: var(--par-red-600);
-  --par-color-bg-dot-fill-green: var(--par-green-600);
-  --par-color-bg-dot-fill-yellow: var(--par-yellow-600);
-  --par-color-bg-dot-fill-blue: var(--par-blue-600);
-  --par-color-bg-dot-fill-orange: var(--par-orange-600);
-  --par-color-bg-dot-fill-cyan: var(--par-cyan-600);
-  --par-color-bg-dot-fill-violet: var(--par-violet-600);
-  --par-color-bg-dot-fill-lime: var(--par-lime-600);
+  --par-color-bg-dot-solid-gray: var(--par-gray-600);
+  --par-color-bg-dot-solid-red: var(--par-red-600);
+  --par-color-bg-dot-solid-green: var(--par-green-600);
+  --par-color-bg-dot-solid-yellow: var(--par-yellow-600);
+  --par-color-bg-dot-solid-blue: var(--par-blue-600);
+  --par-color-bg-dot-solid-orange: var(--par-orange-600);
+  --par-color-bg-dot-solid-cyan: var(--par-cyan-600);
+  --par-color-bg-dot-solid-violet: var(--par-violet-600);
+  --par-color-bg-dot-solid-lime: var(--par-lime-600);
 }
 
 [data-theme='dark'] {
-  --par-color-bg-dot-fill-gray: var(--par-gray-100);
-  --par-color-bg-dot-fill-red: var(--par-red-100);
-  --par-color-bg-dot-fill-green: var(--par-green-100);
-  --par-color-bg-dot-fill-yellow: var(--par-yellow-100);
-  --par-color-bg-dot-fill-blue: var(--par-blue-100);
-  --par-color-bg-dot-fill-orange: var(--par-orange-100);
-  --par-color-bg-dot-fill-cyan: var(--par-cyan-100);
-  --par-color-bg-dot-fill-violet: var(--par-violet-100);
-  --par-color-bg-dot-fill-lime: var(--par-lime-100);
+  --par-color-bg-dot-solid-gray: var(--par-gray-100);
+  --par-color-bg-dot-solid-red: var(--par-red-100);
+  --par-color-bg-dot-solid-green: var(--par-green-100);
+  --par-color-bg-dot-solid-yellow: var(--par-yellow-100);
+  --par-color-bg-dot-solid-blue: var(--par-blue-100);
+  --par-color-bg-dot-solid-orange: var(--par-orange-100);
+  --par-color-bg-dot-solid-cyan: var(--par-cyan-100);
+  --par-color-bg-dot-solid-violet: var(--par-violet-100);
+  --par-color-bg-dot-solid-lime: var(--par-lime-100);
 }

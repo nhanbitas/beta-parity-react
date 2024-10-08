@@ -2,8 +2,8 @@
 
 import React from 'react';
 import './index.css';
+import './variables.css';
 import classNames from 'classnames';
-import Base, { BaseProps } from '../Base';
 import { Loader } from 'lucide-react';
 
 const sizeMap = {

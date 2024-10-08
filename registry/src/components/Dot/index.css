@@ -31,39 +31,39 @@
 /* theme */
 
 .dot.gray {
-  @apply bg-[var(--par-color-bg-dot-fill-gray)];
+  @apply bg-[var(--par-color-bg-dot-solid-gray)];
 }
 
 .dot.orange {
-  @apply bg-[var(--par-color-bg-dot-fill-orange)];
+  @apply bg-[var(--par-color-bg-dot-solid-orange)];
 }
 
 .dot.cyan {
-  @apply bg-[var(--par-color-bg-dot-fill-cyan)];
+  @apply bg-[var(--par-color-bg-dot-solid-cyan)];
 }
 
 .dot.violet {
-  @apply bg-[var(--par-color-bg-dot-fill-violet)];
+  @apply bg-[var(--par-color-bg-dot-solid-violet)];
 }
 
 .dot.green {
-  @apply bg-[var(--par-color-bg-dot-fill-green)];
+  @apply bg-[var(--par-color-bg-dot-solid-green)];
 }
 
 .dot.red {
-  @apply bg-[var(--par-color-bg-dot-fill-red)];
+  @apply bg-[var(--par-color-bg-dot-solid-red)];
 }
 
 .dot.yellow {
-  @apply bg-[var(--par-color-bg-dot-fill-yellow)];
+  @apply bg-[var(--par-color-bg-dot-solid-yellow)];
 }
 
 .dot.blue {
-  @apply bg-[var(--par-color-bg-dot-fill-blue)];
+  @apply bg-[var(--par-color-bg-dot-solid-blue)];
 }
 
 .dot.lime {
-  @apply bg-[var(--par-color-bg-dot-fill-lime)];
+  @apply bg-[var(--par-color-bg-dot-solid-lime)];
 }
 
 .dot.glass {

@@ -49,83 +49,84 @@
 }
 
 .btn.outlined:disabled {
-  @apply !border-gray-400/50 !bg-transparent !text-gray-550/50;
+  @apply !border-[var(--par-color-border-button-outlined-disabled)] !bg-[var(--par-color-bg-button-outlined-disabled)] !text-[var(--par-color-text-button-outlined-disabled)];
 }
+
 .btn.outlined.loading {
-  @apply !border-gray-400 !bg-transparent !text-gray-550;
+  @apply !border-[var(--par-color-border-button-outlined-pending)] !bg-[var(--par-color-bg-button-outlined-pending)] !text-[var(--par-color-text-button-outlined-pending)];
 }
 
 .btn.outlined.neutral {
-  @apply border-gray-400 bg-transparent text-gray-550 enabled:hover:border-gray-500 enabled:hover:bg-gray-100/50 enabled:hover:text-gray-600 enabled:active:border-gray-500 enabled:active:bg-gray-200/50 enabled:active:text-gray-700;
+  @apply border-[var(--par-color-border-button-outlined-neutral-enabled)] bg-[var(--par-color-bg-button-outlined-neutral-enabled)] text-[var(--par-color-text-button-outlined-neutral-enabled)] enabled:hover:border-[var(--par-color-border-button-outlined-neutral-hovered)] enabled:hover:bg-[var(--par-color-bg-button-outlined-neutral-hovered)] enabled:hover:text-[var(--par-color-text-button-outlined-neutral-hovered)] enabled:active:border-[var(--par-color-border-button-outlined-neutral-pressed)] enabled:active:bg-[var(--par-color-bg-button-outlined-neutral-pressed)] enabled:active:text-[var(--par-color-text-button-outlined-neutral-pressed)];
 }
 
 .btn.outlined.accent {
-  @apply border-blue-400 bg-transparent text-blue-500 enabled:hover:border-blue-500 enabled:hover:bg-blue-100/50 enabled:hover:text-blue-600 enabled:active:border-blue-500 enabled:active:bg-blue-200/50 enabled:active:text-blue-700;
+  @apply border-[var(--par-color-border-button-outlined-accent-enabled)] bg-[var(--par-color-bg-button-outlined-accent-enabled)] text-[var(--par-color-text-button-outlined-accent-enabled)] enabled:hover:border-[var(--par-color-border-button-outlined-accent-hovered)] enabled:hover:bg-[var(--par-color-bg-button-outlined-accent-hovered)] enabled:hover:text-[var(--par-color-text-button-outlined-accent-hovered)] enabled:active:border-[var(--par-color-border-button-outlined-accent-pressed)] enabled:active:bg-[var(--par-color-bg-button-outlined-accent-pressed)] enabled:active:text-[var(--par-color-text-button-outlined-accent-pressed)];
 }
 
 .btn.outlined.adverse {
-  @apply border-red-400 bg-transparent text-red-500 enabled:hover:border-red-500 enabled:hover:bg-red-100/50 enabled:hover:text-red-600 enabled:active:border-red-500 enabled:active:bg-red-200/50 enabled:active:text-red-700;
+  @apply border-[var(--par-color-border-button-outlined-adverse-enabled)] bg-[var(--par-color-bg-button-outlined-adverse-enabled)] text-[var(--par-color-text-button-outlined-adverse-enabled)] enabled:hover:border-[var(--par-color-border-button-outlined-adverse-hovered)] enabled:hover:bg-[var(--par-color-bg-button-outlined-adverse-hovered)] enabled:hover:text-[var(--par-color-text-button-outlined-adverse-hovered)] enabled:active:border-[var(--par-color-border-button-outlined-adverse-pressed)] enabled:active:bg-[var(--par-color-bg-button-outlined-adverse-pressed)] enabled:active:text-[var(--par-color-text-button-outlined-adverse-pressed)];
 }
 
 /* solid */
 .btn.solid:disabled {
-  @apply !bg-gray-500/50 !text-white/50;
+  @apply !border-[var(--par-color-border-button-solid-disabled)] !bg-[var(--par-color-bg-button-solid-disabled)] !text-[var(--par-color-text-button-solid-disabled)];
 }
 
 .btn.solid.loading {
-  @apply !bg-gray-500 !text-white;
+  @apply !border-[var(--par-color-border-button-solid-pending)] !bg-[var(--par-color-bg-button-solid-pending)] !text-[var(--par-color-text-button-solid-pending)];
 }
 
 .btn.solid.neutral {
-  @apply border-gray-400 bg-gray-900 text-white enabled:hover:border-gray-500 enabled:hover:bg-gray-800 enabled:hover:text-white enabled:active:border-gray-500 enabled:active:bg-gray-700 enabled:active:text-white;
+  @apply border-[var(--par-color-border-button-solid-neutral-enabled)] bg-[var(--par-color-bg-button-solid-neutral-enabled)] text-[var(--par-color-text-button-solid-neutral-enabled)] enabled:hover:border-[var(--par-color-border-button-solid-neutral-hovered)] enabled:hover:bg-[var(--par-color-bg-button-solid-neutral-hovered)] enabled:hover:text-[var(--par-color-text-button-solid-neutral-hovered)] enabled:active:border-[var(--par-color-border-button-solid-neutral-pressed)] enabled:active:bg-[var(--par-color-bg-button-solid-neutral-pressed)] enabled:active:text-[var(--par-color-text-button-solid-neutral-pressed)];
 }
 
 .btn.solid.accent {
-  @apply border-blue-400 bg-blue-500 text-white enabled:hover:border-blue-500 enabled:hover:bg-blue-600 enabled:hover:text-white enabled:active:border-blue-500 enabled:active:bg-blue-700 enabled:active:text-white;
+  @apply border-[var(--par-color-border-button-solid-accent-enabled)] bg-[var(--par-color-bg-button-solid-accent-enabled)] text-[var(--par-color-text-button-solid-accent-enabled)] enabled:hover:border-[var(--par-color-border-button-solid-accent-hovered)] enabled:hover:bg-[var(--par-color-bg-button-solid-accent-hovered)] enabled:hover:text-[var(--par-color-text-button-solid-accent-hovered)] enabled:active:border-[var(--par-color-border-button-solid-accent-pressed)] enabled:active:bg-[var(--par-color-bg-button-solid-accent-pressed)] enabled:active:text-[var(--par-color-text-button-solid-accent-pressed)];
 }
 
 .btn.solid.adverse {
-  @apply border-red-400 bg-red-500 text-white enabled:hover:border-red-500 enabled:hover:bg-red-600 enabled:hover:text-white enabled:active:border-red-500 enabled:active:bg-red-700 enabled:active:text-white;
+  @apply border-[var(--par-color-border-button-solid-adverse-enabled)] bg-[var(--par-color-bg-button-solid-adverse-enabled)] text-[var(--par-color-text-button-solid-adverse-enabled)] enabled:hover:border-[var(--par-color-border-button-solid-adverse-hovered)] enabled:hover:bg-[var(--par-color-bg-button-solid-adverse-hovered)] enabled:hover:text-[var(--par-color-text-button-solid-adverse-hovered)] enabled:active:border-[var(--par-color-border-button-solid-adverse-pressed)] enabled:active:bg-[var(--par-color-bg-button-solid-adverse-pressed)] enabled:active:text-[var(--par-color-text-button-solid-adverse-pressed)];
 }
 
 /* ghost */
 .btn.ghost:disabled {
-  @apply !bg-transparent !text-gray-550/50;
+  @apply !border-[var(--par-color-border-button-ghost-disabled)] !bg-[var(--par-color-bg-button-ghost-disabled)] !text-[var(--par-color-text-button-ghost-disabled)];
 }
 
-.btn.solid.loading {
-  @apply !bg-transparent !text-gray-550;
+.btn.ghost.loading {
+  @apply !border-[var(--par-color-border-button-ghost-pending)] !bg-[var(--par-color-bg-button-ghost-pending)] !text-[var(--par-color-text-button-ghost-pending)];
 }
 
 .btn.ghost.neutral {
-  @apply border-gray-400 bg-transparent text-gray-550 enabled:hover:border-gray-500 enabled:hover:bg-gray-100/50 enabled:hover:text-gray-600 enabled:active:border-gray-500 enabled:active:bg-gray-200/50 enabled:active:text-gray-700;
+  @apply border-[var(--par-color-border-button-ghost-neutral-enabled)] bg-[var(--par-color-bg-button-ghost-neutral-enabled)] text-[var(--par-color-text-button-ghost-neutral-enabled)] enabled:hover:border-[var(--par-color-border-button-ghost-neutral-hovered)] enabled:hover:bg-[var(--par-color-bg-button-ghost-neutral-hovered)] enabled:hover:text-[var(--par-color-text-button-ghost-neutral-hovered)] enabled:active:border-[var(--par-color-border-button-ghost-neutral-pressed)] enabled:active:bg-[var(--par-color-bg-button-ghost-neutral-pressed)] enabled:active:text-[var(--par-color-text-button-ghost-neutral-pressed)];
 }
 
 .btn.ghost.accent {
-  @apply border-blue-400 bg-transparent text-blue-500 enabled:hover:border-blue-500 enabled:hover:bg-blue-100/50 enabled:hover:text-blue-600 enabled:active:border-blue-500 enabled:active:bg-blue-200/50 enabled:active:text-blue-700;
+  @apply border-[var(--par-color-border-button-ghost-accent-enabled)] bg-[var(--par-color-bg-button-ghost-accent-enabled)] text-[var(--par-color-text-button-ghost-accent-enabled)] enabled:hover:border-[var(--par-color-border-button-ghost-accent-hovered)] enabled:hover:bg-[var(--par-color-bg-button-ghost-accent-hovered)] enabled:hover:text-[var(--par-color-text-button-ghost-accent-hovered)] enabled:active:border-[var(--par-color-border-button-ghost-accent-pressed)] enabled:active:bg-[var(--par-color-bg-button-ghost-accent-pressed)] enabled:active:text-[var(--par-color-text-button-ghost-accent-pressed)];
 }
 
 .btn.ghost.adverse {
-  @apply border-red-400 bg-transparent text-red-500 enabled:hover:border-red-500 enabled:hover:bg-red-100/50 enabled:hover:text-red-600 enabled:active:border-red-500 enabled:active:bg-red-200/50 enabled:active:text-red-700;
+  @apply border-[var(--par-color-border-button-ghost-adverse-enabled)] bg-[var(--par-color-bg-button-ghost-adverse-enabled)] text-[var(--par-color-text-button-ghost-adverse-enabled)] enabled:hover:border-[var(--par-color-border-button-ghost-adverse-hovered)] enabled:hover:bg-[var(--par-color-bg-button-ghost-adverse-hovered)] enabled:hover:text-[var(--par-color-text-button-ghost-adverse-hovered)] enabled:active:border-[var(--par-color-border-button-ghost-adverse-pressed)] enabled:active:bg-[var(--par-color-bg-button-ghost-adverse-pressed)] enabled:active:text-[var(--par-color-text-button-ghost-adverse-pressed)];
 }
 
 /* glass */
 .btn.glass:disabled {
-  @apply !bg-gray-100/50 !text-gray-600/50;
+  @apply !border-[var(--par-color-border-button-glass-disabled)] !bg-[var(--par-color-bg-button-glass-disabled)] !text-[var(--par-color-text-button-glass-disabled)];
 }
 
 .btn.glass.loading {
-  @apply !bg-gray-100/50 !text-gray-600;
+  @apply !border-[var(--par-color-border-button-glass-pending)] !bg-[var(--par-color-bg-button-glass-pending)] !text-[var(--par-color-text-button-glass-pending)];
 }
 
 .btn.glass.neutral {
-  @apply border-gray-400 bg-gray-100/50 text-gray-600 enabled:hover:border-gray-500 enabled:hover:bg-gray-200/50 enabled:hover:text-gray-700 enabled:active:border-gray-500 enabled:active:bg-gray-300/50 enabled:active:text-gray-800;
+  @apply border-[var(--par-color-border-button-glass-neutral-enabled)] bg-[var(--par-color-bg-button-glass-neutral-enabled)] text-[var(--par-color-text-button-glass-neutral-enabled)] enabled:hover:border-[var(--par-color-border-button-glass-neutral-hovered)] enabled:hover:bg-[var(--par-color-bg-button-glass-neutral-hovered)] enabled:hover:text-[var(--par-color-text-button-glass-neutral-hovered)] enabled:active:border-[var(--par-color-border-button-glass-neutral-pressed)] enabled:active:bg-[var(--par-color-bg-button-glass-neutral-pressed)] enabled:active:text-[var(--par-color-text-button-glass-neutral-pressed)];
 }
 
 .btn.glass.accent {
-  @apply border-blue-400 bg-blue-100/50 text-blue-600 enabled:hover:border-blue-500 enabled:hover:bg-blue-200/50 enabled:hover:text-blue-700 enabled:active:border-blue-500 enabled:active:bg-blue-300/50 enabled:active:text-blue-800;
+  @apply border-[var(--par-color-border-button-glass-accent-enabled)] bg-[var(--par-color-bg-button-glass-accent-enabled)] text-[var(--par-color-text-button-glass-accent-enabled)] enabled:hover:border-[var(--par-color-border-button-glass-accent-hovered)] enabled:hover:bg-[var(--par-color-bg-button-glass-accent-hovered)] enabled:hover:text-[var(--par-color-text-button-glass-accent-hovered)] enabled:active:border-[var(--par-color-border-button-glass-accent-pressed)] enabled:active:bg-[var(--par-color-bg-button-glass-accent-pressed)] enabled:active:text-[var(--par-color-text-button-glass-accent-pressed)];
 }
 
 .btn.glass.adverse {
-  @apply border-red-400 bg-red-100/50 text-red-600 enabled:hover:border-red-500 enabled:hover:bg-red-200/50 enabled:hover:text-red-700 enabled:active:border-red-500 enabled:active:bg-red-300/50 enabled:active:text-red-800;
+  @apply border-[var(--par-color-border-button-glass-adverse-enabled)] bg-[var(--par-color-bg-button-glass-adverse-enabled)] text-[var(--par-color-text-button-glass-adverse-enabled)] enabled:hover:border-[var(--par-color-border-button-glass-adverse-hovered)] enabled:hover:bg-[var(--par-color-bg-button-glass-adverse-hovered)] enabled:hover:text-[var(--par-color-text-button-glass-adverse-hovered)] enabled:active:border-[var(--par-color-border-button-glass-adverse-pressed)] enabled:active:bg-[var(--par-color-bg-button-glass-adverse-pressed)] enabled:active:text-[var(--par-color-text-button-glass-adverse-pressed)];
 }

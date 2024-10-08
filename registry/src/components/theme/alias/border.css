@@ -11,5 +11,5 @@
   --par-border-field-disabled: rgb(from var(--par-red-200) r g b / 0.5);
   --par-border-field-focused: var(--par-color-focus-ring);
 
-  --par-outline-surface-item-focused: var(--par-color-focus-ring);
+  --par-outlined-surface-item-focused: var(--par-color-focus-ring);
 }

@@ -40,39 +40,39 @@
 }
 
 .badge.outlined.gray {
-  @apply border-[var(--par-color-border-badge-outline-gray)] bg-[var(--par-color-bg-badge-outline-gray)] text-[var(--par-color-text-badge-outline-gray)];
+  @apply border-[var(--par-color-border-badge-outlined-gray)] bg-[var(--par-color-bg-badge-outlined-gray)] text-[var(--par-color-text-badge-outlined-gray)];
 }
 
 .badge.outlined.red {
-  @apply border-[var(--par-color-border-badge-outline-red)] bg-[var(--par-color-bg-badge-outline-red)] text-[var(--par-color-text-badge-outline-red)];
+  @apply border-[var(--par-color-border-badge-outlined-red)] bg-[var(--par-color-bg-badge-outlined-red)] text-[var(--par-color-text-badge-outlined-red)];
 }
 
 .badge.outlined.green {
-  @apply border-[var(--par-color-border-badge-outline-green)] bg-[var(--par-color-bg-badge-outline-green)] text-[var(--par-color-text-badge-outline-green)];
+  @apply border-[var(--par-color-border-badge-outlined-green)] bg-[var(--par-color-bg-badge-outlined-green)] text-[var(--par-color-text-badge-outlined-green)];
 }
 
 .badge.outlined.yellow {
-  @apply border-[var(--par-color-border-badge-outline-yellow)] bg-[var(--par-color-bg-badge-outline-yellow)] text-[var(--par-color-text-badge-outline-yellow)];
+  @apply border-[var(--par-color-border-badge-outlined-yellow)] bg-[var(--par-color-bg-badge-outlined-yellow)] text-[var(--par-color-text-badge-outlined-yellow)];
 }
 
 .badge.outlined.blue {
-  @apply border-[var(--par-color-border-badge-outline-blue)] bg-[var(--par-color-bg-badge-outline-blue)] text-[var(--par-color-text-badge-outline-blue)];
+  @apply border-[var(--par-color-border-badge-outlined-blue)] bg-[var(--par-color-bg-badge-outlined-blue)] text-[var(--par-color-text-badge-outlined-blue)];
 }
 
 .badge.outlined.orange {
-  @apply border-[var(--par-color-border-badge-outline-orange)] bg-[var(--par-color-bg-badge-outline-orange)] text-[var(--par-color-text-badge-outline-orange)];
+  @apply border-[var(--par-color-border-badge-outlined-orange)] bg-[var(--par-color-bg-badge-outlined-orange)] text-[var(--par-color-text-badge-outlined-orange)];
 }
 
 .badge.outlined.cyan {
-  @apply border-[var(--par-color-border-badge-outline-cyan)] bg-[var(--par-color-bg-badge-outline-cyan)] text-[var(--par-color-text-badge-outline-cyan)];
+  @apply border-[var(--par-color-border-badge-outlined-cyan)] bg-[var(--par-color-bg-badge-outlined-cyan)] text-[var(--par-color-text-badge-outlined-cyan)];
 }
 
 .badge.outlined.violet {
-  @apply border-[var(--par-color-border-badge-outline-violet)] bg-[var(--par-color-bg-badge-outline-violet)] text-[var(--par-color-text-badge-outline-violet)];
+  @apply border-[var(--par-color-border-badge-outlined-violet)] bg-[var(--par-color-bg-badge-outlined-violet)] text-[var(--par-color-text-badge-outlined-violet)];
 }
 
 .badge.outlined.lime {
-  @apply border-[var(--par-color-border-badge-outline-lime)] bg-[var(--par-color-bg-badge-outline-lime)] text-[var(--par-color-text-badge-outline-lime)];
+  @apply border-[var(--par-color-border-badge-outlined-lime)] bg-[var(--par-color-bg-badge-outlined-lime)] text-[var(--par-color-text-badge-outlined-lime)];
 }
 
 .badge.glass.gray {
@@ -112,37 +112,37 @@
 }
 
 .badge.solid.gray {
-  @apply border-[var(--par-color-border-badge-fill-gray)] bg-[var(--par-color-bg-badge-fill-gray)] text-[var(--par-color-text-badge-fill-gray)];
+  @apply border-[var(--par-color-border-badge-solid-gray)] bg-[var(--par-color-bg-badge-solid-gray)] text-[var(--par-color-text-badge-solid-gray)];
 }
 
 .badge.solid.red {
-  @apply border-[var(--par-color-border-badge-fill-red)] bg-[var(--par-color-bg-badge-fill-red)] text-[var(--par-color-text-badge-fill-red)];
+  @apply border-[var(--par-color-border-badge-solid-red)] bg-[var(--par-color-bg-badge-solid-red)] text-[var(--par-color-text-badge-solid-red)];
 }
 
 .badge.solid.green {
-  @apply border-[var(--par-color-border-badge-fill-green)] bg-[var(--par-color-bg-badge-fill-green)] text-[var(--par-color-text-badge-fill-green)];
+  @apply border-[var(--par-color-border-badge-solid-green)] bg-[var(--par-color-bg-badge-solid-green)] text-[var(--par-color-text-badge-solid-green)];
 }
 
 .badge.solid.yellow {
-  @apply border-[var(--par-color-border-badge-fill-yellow)] bg-[var(--par-color-bg-badge-fill-yellow)] text-[var(--par-color-text-badge-fill-yellow)];
+  @apply border-[var(--par-color-border-badge-solid-yellow)] bg-[var(--par-color-bg-badge-solid-yellow)] text-[var(--par-color-text-badge-solid-yellow)];
 }
 
 .badge.solid.blue {
-  @apply border-[var(--par-color-border-badge-fill-blue)] bg-[var(--par-color-bg-badge-fill-blue)] text-[var(--par-color-text-badge-fill-blue)];
+  @apply border-[var(--par-color-border-badge-solid-blue)] bg-[var(--par-color-bg-badge-solid-blue)] text-[var(--par-color-text-badge-solid-blue)];
 }
 
 .badge.solid.orange {
-  @apply border-[var(--par-color-border-badge-fill-orange)] bg-[var(--par-color-bg-badge-fill-orange)] text-[var(--par-color-text-badge-fill-orange)];
+  @apply border-[var(--par-color-border-badge-solid-orange)] bg-[var(--par-color-bg-badge-solid-orange)] text-[var(--par-color-text-badge-solid-orange)];
 }
 
 .badge.solid.cyan {
-  @apply border-[var(--par-color-border-badge-fill-cyan)] bg-[var(--par-color-bg-badge-fill-cyan)] text-[var(--par-color-text-badge-fill-cyan)];
+  @apply border-[var(--par-color-border-badge-solid-cyan)] bg-[var(--par-color-bg-badge-solid-cyan)] text-[var(--par-color-text-badge-solid-cyan)];
 }
 
 .badge.solid.violet {
-  @apply border-[var(--par-color-border-badge-fill-violet)] bg-[var(--par-color-bg-badge-fill-violet)] text-[var(--par-color-text-badge-fill-violet)];
+  @apply border-[var(--par-color-border-badge-solid-violet)] bg-[var(--par-color-bg-badge-solid-violet)] text-[var(--par-color-text-badge-solid-violet)];
 }
 
 .badge.solid.lime {
-  @apply border-[var(--par-color-border-badge-fill-lime)] bg-[var(--par-color-bg-badge-fill-lime)] text-[var(--par-color-text-badge-fill-lime)];
+  @apply border-[var(--par-color-border-badge-solid-lime)] bg-[var(--par-color-bg-badge-solid-lime)] text-[var(--par-color-text-badge-solid-lime)];
 }

@@ -73,11 +73,11 @@
 }
 
 .tag.outlined.accent {
-  @apply border-[var(--par-color-border-tag-outline-accent)] bg-[var(--par-color-bg-tag-outline-accent)] text-[var(--par-color-text-tag-outline-accent)];
+  @apply border-[var(--par-color-border-tag-outlined-accent)] bg-[var(--par-color-bg-tag-outlined-accent)] text-[var(--par-color-text-tag-outlined-accent)];
 }
 
 .tag.outlined.neutral {
-  @apply border-[var(--par-color-border-tag-outline-neutral)] bg-[var(--par-color-bg-tag-outline-neutral)] text-[var(--par-color-text-tag-outline-neutral)];
+  @apply border-[var(--par-color-border-tag-outlined-neutral)] bg-[var(--par-color-bg-tag-outlined-neutral)] text-[var(--par-color-text-tag-outlined-neutral)];
 }
 
 /* Glass tag */
