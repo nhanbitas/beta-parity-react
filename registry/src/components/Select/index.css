@@ -44,12 +44,12 @@ select.native-select.success-state:focus {
 select.native-select:disabled,
 select.native-select:disabled ~ .right-element-container,
 select.native-select:disabled ~ .left-element-container,
-.input-wrapper:has(.value-input-wrapper[aria-disabled='true']) {
-  @apply pointer-events-none select-none opacity-50;
+.input-wrapper:has(.value-input-wrapper[aria-disabled='true']) .value-input-wrapper {
+  @apply cursor-not-allowed opacity-50;
 }
 
 .native-select option:disabled {
-  @apply pointer-events-none text-gray-300/50;
+  @apply cursor-not-allowed text-gray-300/50;
 }
 /* sizes */
 

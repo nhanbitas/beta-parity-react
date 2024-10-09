@@ -1,15 +1,34 @@
-:root {
+:root,
+[data-scheme='light'] {
   --par-color-focus-ring: var(--par-black);
 
-  --par-border-surface: var(--par-gray-200);
-  --par-border-surface-inverse: var(--par-gray-600);
+  --par-color-border-surface: var(--par-gray-200);
+  --par-color-border-surface-inverse: var(--par-gray-600);
 
-  --par-border-field-enabled: var(--par-gray-200);
-  --par-border-field-hovered: var(--par-gray-300);
-  --par-border-field-readonly: var(--par-gray-200);
-  --par-border-field-invalid: var(--par-red-500);
-  --par-border-field-disabled: rgb(from var(--par-red-200) r g b / 0.5);
-  --par-border-field-focused: var(--par-color-focus-ring);
+  --par-color-border-field-enabled: var(--par-gray-200);
+  --par-color-border-field-alpha-enabled: rgb(from var(--par-gray-200) r g b / 0.5);
+  --par-color-border-field-hovered: var(--par-gray-300);
+  --par-color-border-field-readonly: var(--par-color-border-field-enabled);
+  --par-color-border-field-invalid: var(--par-red-500);
+  --par-color-border-field-disabled: rgb(from var(--par-color-border-field-enabled) r g b / 0.5);
+  --par-color-border-field-focused: var(--par-color-focus-ring);
+
+  --par-outlined-surface-item-focused: var(--par-color-focus-ring);
+}
+
+[data-scheme='dark'] {
+  --par-color-focus-ring: var(--par-white);
+
+  --par-color-border-surface: var(--par-gray-600);
+  --par-color-border-surface-inverse: var(--par-gray-200);
+
+  --par-color-border-field-enabled: var(--par-gray-600);
+  --par-color-border-field-alpha-enabled: rgb(from var(--par-gray-600) r g b / 0.5);
+  --par-color-border-field-hovered: var(--par-gray-500);
+  --par-color-border-field-readonly: var(--par-color-border-field-enabled);
+  --par-color-border-field-invalid: var(--par-red-200);
+  --par-color-border-field-disabled: rgb(from var(--par-color-border-field-enabled) r g b / 0.5);
+  --par-color-border-field-focused: var(--par-color-focus-ring);
 
   --par-outlined-surface-item-focused: var(--par-color-focus-ring);
 }

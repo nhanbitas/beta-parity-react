@@ -40,6 +40,7 @@ export const NativeSelect = React.forwardRef<HTMLSelectElement, NativeSelectProp
       onBlur,
       onclick,
       value,
+      disabled,
       selectSize = 'md',
       ...props
     },
@@ -65,6 +66,7 @@ export const NativeSelect = React.forwardRef<HTMLSelectElement, NativeSelectProp
     };
 
     const handleClick = (e: React.MouseEvent<HTMLSelectElement>) => {
+      if (disabled) return;
       setIsSelectOpen((pre) => !pre);
       onclick && onclick(e);
     };
@@ -75,12 +77,13 @@ export const NativeSelect = React.forwardRef<HTMLSelectElement, NativeSelectProp
 
     if ((options && options.length > 0) || children) {
       const ArrowBtn = (
-        <span
+        <button
+          disabled={disabled}
           className={classNames('arrow-select-btn', { open: isSelectOpen })}
           onClick={() => mergedRef.current?.focus()}
         >
           <ChevronDown />
-        </span>
+        </button>
       );
 
       return (
@@ -88,10 +91,11 @@ export const NativeSelect = React.forwardRef<HTMLSelectElement, NativeSelectProp
           {floatingLabel && <ContainedLabel isActive={isSelectOpen || !!currentValue}>{floatingLabel}</ContainedLabel>}
           <select
             ref={mergedRef}
-            className={classNames('native-select', className, {
+            className={classNames('native-select', 'par-input', className, {
               'non-value': !currentValue,
               [sizeMap[selectSize]]: !floatingLabel
             })}
+            disabled={disabled}
             onChange={handleChange}
             onFocus={handleFocus}
             onBlur={handleBlur}

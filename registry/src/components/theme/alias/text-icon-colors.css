@@ -1,4 +1,5 @@
-:root {
+:root,
+[data-scheme='light'] {
   --par-color-text-primary: var(--par-gray-950);
   --par-color-text-primary-inverse: var(--par-white);
 
@@ -18,6 +19,7 @@
   --par-color-text-surface-item-disabled: rgb(from var(--par-color-text-primary) r g b / 0.5);
 
   --par-color-text-field-placeholder: var(--par-gray-600);
+  --par-color-text-field-alpha-placeholder: rgb(from var(--par-gray-600) r g b / 0.5);
   --par-color-text-field-alternative-placeholder: var(--par-gray-550);
   --par-color-text-field-filled: var(--par-color-text-primary);
   --par-color-text-field-label: var(--par-color-text-secondary);
@@ -29,4 +31,38 @@
   --par-color-icon-field-button-hovered: var(--par-gray-600);
   --par-color-icon-field-button-pressed: var(--par-gray-700);
   --par-color-icon-field-button-disabled: rgb(from var(--par-gray-500) r g b / 0.5);
+}
+
+[data-scheme='dark'] {
+  --par-color-text-primary: var(--par-white);
+  --par-color-text-primary-inverse: var(--par-gray-950);
+
+  --par-color-text-secondary: var(--par-gray-200);
+  --par-color-text-secondary-inverse: var(--par-gray-700);
+
+  --par-color-text-helper-neutral: var(--par-gray-200);
+  --par-color-text-helper-adverse: var(--par-red-200);
+  --par-color-text-helper-cautionary: var(--par-yellow-200);
+  --par-color-text-helper-affirmative: var(--par-green-200);
+
+  --par-color-text-surface-item-enabled: var(--par-color-text-primary);
+  --par-color-text-surface-item-neutral-subtle-selected: var(--par-color-text-primary);
+  --par-color-text-surface-item-neutral-pronounced-selected: var(--par-color-text-primary-inverse);
+  --par-color-text-surface-item-accent-subtle-selected: var(--par-accent-200);
+  --par-color-text-surface-item-accent-pronounced-selected: var(--par-color-text-primary-inverse);
+  --par-color-text-surface-item-disabled: rgb(from var(--par-color-text-primary) r g b / 0.5);
+
+  --par-color-text-field-placeholder: var(--par-gray-200);
+  --par-color-text-field-alpha-placeholder: rgb(from var(--par-gray-200) r g b / 0.5);
+  --par-color-text-field-alternative-placeholder: var(--par-gray-200);
+  --par-color-text-field-filled: var(--par-color-text-primary);
+  --par-color-text-field-label: var(--par-color-text-secondary);
+  --par-color-text-field-disabled: rgb(from var(--par-color-text-field-placeholder) r g b / 0.5);
+  --par-color-text-field-readonly: var(--par-color-text-primary);
+  --par-color-text-field-invalid: var(--par-color-text-primary);
+
+  --par-color-icon-field-button-enabled: var(--par-gray-200);
+  --par-color-icon-field-button-hovered: var(--par-gray-100);
+  --par-color-icon-field-button-pressed: var(--par-gray-100);
+  --par-color-icon-field-button-disabled: rgb(from var(--par-gray-200) r g b / 0.5);
 }

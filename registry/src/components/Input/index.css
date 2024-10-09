@@ -7,12 +7,6 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-input::placeholder,
-textarea::placeholder {
-  color: #8d8d8d;
-  opacity: 1;
-}
-
 /* Disable default number input arrows on Firefox */
 input[type='number'] {
   -moz-appearance: textfield;
@@ -65,54 +59,54 @@ textarea {
   font-size: 1rem;
 }
 
-/* Set default input outline offset and border-radius when focused to 0 */
-input:focus,
-textarea:focus {
-  outline-offset: 0;
-  border-radius: 0.375rem;
-}
-
-input.par-input.error-state,
-textarea.error-state {
-  outline-color: #d62e42;
-}
-
-input.par-input.error-state:focus,
-textarea.error-state:focus {
-  outline-color: #d62e42;
-}
-
-input.par-input.success-state,
-textarea.success-state {
-  outline-color: #39ac56;
-}
-
-input.par-input.success-state:focus,
-textarea.success-state:focus {
-  outline-color: #39ac56;
-}
-
-input.par-input:disabled,
-textarea:disabled {
-  @apply bg-gray-100 text-gray-100;
-}
-
-fieldset:disabled {
-  pointer-events: none;
-}
+/* Base CSS input */
 
 input.par-input,
 .value-input-wrapper,
-textarea {
-  @apply text-body-compact-02 h-10 w-full text-ellipsis rounded-md border border-gray-200 bg-white px-4;
+textarea.par-input {
+  @apply text-body-compact-02 h-10 w-full text-ellipsis rounded-md border px-4;
 }
 
+input.par-input.medium,
+.value-input-wrapper.medium,
+textarea.par-input.medium {
+  @apply h-12;
+}
+
+input.par-input:focus,
+textarea.par-input:focus {
+  @apply rounded-md -outline-offset-1;
+}
+
+input.par-input:disabled,
+textarea.par-input:disabled {
+  @apply cursor-not-allowed;
+}
+
+input.par-input[readonly],
+textarea.par-input[readonly] {
+  @apply pointer-events-none;
+}
+
+fieldset:disabled {
+  @apply pointer-events-none;
+}
+
+/* This is the input value simulation for custom input instead of native input*/
 .value-input-wrapper {
   @apply cursor-pointer;
 }
 
+/* Base CSS input wrapper*/
 .input-wrapper {
   @apply relative h-min w-full rounded-md;
+}
+
+.input-wrapper:has(input[disabled]),
+.input-wrapper:has(textarea[disabled]),
+.input-wrapper:has(select[disabled]),
+.input-wrapper:has([aria-disabled='true']) {
+  @apply cursor-not-allowed;
 }
 
 .input-action .value-input-wrapper,
@@ -138,12 +132,123 @@ textarea {
   @apply pl-10;
 }
 
-.right-element-container > *,
-.left-element-container > * {
-  @apply m-3 flex items-center justify-center rounded-full  text-gray-500 transition-colors;
+.right-element-container button,
+.right-element-container .input-icon,
+.left-element-container button,
+.left-element-container .input-icon {
+  @apply m-2.5 flex items-center justify-center rounded-full p-0.5 transition-colors;
 }
 
-.right-element-container > *:hover,
-.left-element-container > *:hover {
-  @apply bg-gray-100 text-gray-600;
+.right-element-container button:disabled,
+.left-element-container button:disabled {
+  @apply cursor-not-allowed;
+}
+
+.input-wrapper:has(.input-error-message) {
+  @apply mb-7;
+}
+
+.input-wrapper .input-error-message {
+  @apply text-label-02 absolute left-0 top-[calc(100%+0.25rem)] text-[var(--par-color-text-helper-adverse)];
+}
+
+/* Apply theme tokens */
+/* Base css */
+input.par-input::placeholder,
+textarea.par-input::placeholder {
+  @apply text-[var(--par-color-text-field-placeholder)] opacity-100;
+}
+
+input.par-input.alternative::placeholder,
+textarea.par-input.alternative::placeholder {
+  @apply text-[var(--par-color-text-field-alternative-placeholder)] opacity-100;
+}
+
+input.par-input:disabled::placeholder,
+textarea.par-input:disabled::placeholder {
+  @apply text-[var(--par-color-text-field-alpha-placeholder)] opacity-100;
+}
+
+input.par-input,
+.value-input-wrapper,
+textarea.par-textarea {
+  @apply border-[var(--par-color-border-field-enabled)] bg-[var(--par-color-bg-field-enabled)] text-[var(--par-color-text-field-filled)];
+}
+
+input.par-input.alternative,
+.value-input-wrapper.alternative,
+textarea.par-textarea.alternative {
+  @apply border-[var(--par-color-border-field-enabled)] bg-[var(--par-color-bg-field-alternative-enabled)] text-[var(--par-color-text-field-filled)];
+}
+
+/* State css */
+
+input.par-input:hover,
+.value-input-wrapper:hover,
+textarea.par-input:hover {
+  @apply bg-[var(--par-color-bg-field-hovered)];
+}
+
+input.par-input.alternative:hover,
+.value-input-wrapper.alternative:hover,
+textarea.par-input.alternative:hover {
+  @apply bg-[var(--par-color-bg-field-alternative-hovered)];
+}
+
+input.par-input:disabled,
+textarea.par-input:disabled {
+  @apply border-[var(--par-color-border-field-disabled)] bg-[var(--par-color-bg-field-disabled)] text-[var(--par-color-text-field-disabled)];
+}
+
+input.par-input.alternative:disabled,
+textarea.par-input.alternative:disabled {
+  @apply bg-[var(--par-color-bg-field-alternative-disabled)];
+}
+
+input.par-input[readonly],
+textarea.par-input[readonly] {
+  @apply border-[var(--par-color-border-field-readonly)] bg-[var(--par-color-bg-field-readonly)]  text-[var(--par-color-text-field-readonly)];
+}
+
+input.par-input.error-state,
+textarea.par-input.error-state {
+  @apply border-[var(--par-color-border-field-invalid)] bg-[var(--par-color-bg-field-invalid)] text-[var(--par-color-text-field-invalid)] outline-[var(--par-color-border-field-invalid)];
+}
+
+input.par-input.alternative.error-state:hover,
+textarea.par-input.alternative.error-state:hover {
+  @apply bg-[var(--par-color-bg-field-invalid)];
+}
+
+/* Button, icon css */
+.right-element-container button,
+.left-element-container button {
+  @apply bg-[var(--bg-par-color-bg-field-button-enabled)] text-[var(--par-color-icon-field-button-enabled)];
+}
+
+.right-element-container .input-icon,
+.left-element-container .input-icon {
+  @apply text-[var(--par-color-text-field-placeholder)];
+}
+
+.right-element-container button:hover,
+.left-element-container button:hover {
+  @apply bg-[var(--par-color-bg-field-button-hovered)] text-[var(--par-color-icon-field-button-hovered)];
+}
+
+.right-element-container button:active,
+.left-element-container button:active {
+  @apply bg-[var(--par-color-bg-field-button-pressed)] text-[var(--par-color-icon-field-button-pressed)];
+}
+
+.right-element-container button:disabled,
+.left-element-container button:disabled {
+  @apply bg-[var(--par-color-bg-field-button-disabled)] text-[var(--par-color-icon-field-button-disabled)];
+}
+
+.input-wrapper:has(input[disabled]) .input-icon,
+.input-wrapper:has(textarea[disabled]) .input-icon,
+.input-wrapper:has(select[disabled]) .input-icon,
+.input-wrapper:has([aria-disabled='true']) .input-icon {
+  @apply text-[var(--par-color-text-field-alpha-placeholder)];
 }

@@ -3,11 +3,17 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import './index.css';
+import './variables.css';
 import { X } from 'lucide-react';
 import { ContainedLabel } from '../FloatingLabel';
 import useCombinedRefs from '../hooks/useCombinedRefs';
 import { PolymorphicComponentProps, createPolymorphicComponent } from '../Base/factory';
 import Base, { BaseProps } from '../Base';
+
+const sizeMap = {
+  sm: 'small',
+  md: 'medium'
+} as const;
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   /**
@@ -16,9 +22,9 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
   wrapperProps?: InputWrapperProps & React.HTMLAttributes<HTMLDivElement>;
 
   /**
-   * Added className for the clear button
+   * Added props for the clear button
    */
-  clearBtnClassName?: string;
+  clearBtnProps?: React.ButtonHTMLAttributes<HTMLButtonElement>;
 
   /**
    * Define the visible of clear button
@@ -48,15 +54,30 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
   isError?: boolean;
 
   /**
-   * Define of success state
+   * Define of error message
    */
-  isSuccess?: boolean;
+  errorMessage?: string;
+
+  /**
+   * Define of left icon
+   */
+  leftIcon?: React.ReactNode;
+
+  /**
+   * Define of theme
+   */
+  theme?: 'default' | 'alternative';
+
+  /**
+   * Define of size
+   */
+  inputSize?: keyof typeof sizeMap;
 }
 
 /**
  * Input component with basic usage
  *
- * @see http://localhost:3005/input
+ *  @see {@link http://localhost:3005/input Parity Input}
  */
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
   (
@@ -64,11 +85,17 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       className,
       value,
       type = 'text',
+      disabled = false,
+      readOnly = false,
+      errorMessage = '',
+      inputSize = 'sm',
+      theme = 'default',
       isClearable,
       ActionBtn,
+      leftIcon,
       isError,
-      isSuccess,
       wrapperProps,
+      clearBtnProps,
       floatingLabel,
       onChange,
       onFocus,
@@ -84,6 +111,8 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     const combinedRef = useCombinedRefs(inputRef, ref);
 
     const handleClear = () => {
+      if (disabled || readOnly) return;
+
       if (combinedRef.current) {
         setCurrentValue('');
         combinedRef.current.focus();
@@ -91,9 +120,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
       onClear && onClear();
 
-      if (onChange) {
-        onChange({ target: { value: '' } } as React.ChangeEvent<HTMLInputElement>);
-      }
+      onChange && onChange({ target: { value: '' } } as React.ChangeEvent<HTMLInputElement>);
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -116,13 +143,22 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     }, [value]);
 
     const addedClassname = isClearable && ActionBtn ? 'input-actions' : isClearable || ActionBtn ? 'input-action' : '';
-
     const isHasRightInputAction = isClearable || ActionBtn;
+    const { className: clearBtnClassName, onClick: clearBtnClick, ...restClearBtnProps } = clearBtnProps || {};
 
     const RightInputActions = isHasRightInputAction && (
       <>
         {isClearable && currentValue && (
-          <button type='button' className={classNames('clear-button', props.clearBtnClassName)} onClick={handleClear}>
+          <button
+            type='button'
+            className={classNames('clear-button', clearBtnClassName)}
+            onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+              handleClear();
+              clearBtnClick && clearBtnClick(e);
+            }}
+            disabled={disabled || readOnly}
+            {...restClearBtnProps}
+          >
             <X />
           </button>
         )}
@@ -136,14 +172,17 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       <InputWrapper
         className={classNames(addedClassname, wrapperClassName)}
         rightElement={RightInputActions}
+        leftElement={leftIcon && <span className='input-icon'>{leftIcon}</span>}
         {...restWrapperProps}
       >
         {floatingLabel && <ContainedLabel isActive={isFocused || !!currentValue}>{floatingLabel}</ContainedLabel>}
+
         <input
           type={type}
           className={classNames(
             'par-input',
-            { 'error-state': isError, 'success-state': isSuccess, 'non-value': !currentValue },
+            theme,
+            { 'error-state': isError, [sizeMap[inputSize]]: inputSize },
             className
           )}
           ref={combinedRef}
@@ -151,8 +190,12 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
           onChange={handleChange}
           onFocus={handleFocus}
           onBlur={handleBlur}
+          disabled={disabled}
+          readOnly={readOnly}
           {...props}
         />
+
+        {errorMessage && isError && <ErrorMessage>{errorMessage}</ErrorMessage>}
       </InputWrapper>
     );
   }
@@ -195,6 +238,18 @@ export const InputWrapper = createPolymorphicComponent<'div', InputWrapperProps>
 );
 
 InputWrapper.displayName = 'InputWrapper';
+
+export interface ValueInputWrapperProps extends React.HTMLAttributes<HTMLDivElement> {}
+
+export const ErrorMessage = React.forwardRef<HTMLDivElement, ValueInputWrapperProps>(
+  ({ children, className, ...props }, ref) => (
+    <span className={classNames('input-error-message', className)} {...props} ref={ref}>
+      {children}
+    </span>
+  )
+);
+
+ErrorMessage.displayName = 'ErrorMessage';
 
 export interface ValueInputWrapperProps extends React.HTMLAttributes<HTMLDivElement> {}
 

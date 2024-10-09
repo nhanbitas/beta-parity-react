@@ -11,7 +11,7 @@ export const DemoClearablePasswordInput = () => <PasswordInput wrapperProps={{ c
 
 export const DemoErrorPasswordInput = () => <PasswordInput wrapperProps={{ className: '!w-64' }} isError={true} />;
 
-export const DemoSuccessPasswordInput = () => <PasswordInput wrapperProps={{ className: '!w-64' }} isSuccess={true} />;
+export const DemoSuccessPasswordInput = () => <PasswordInput wrapperProps={{ className: '!w-64' }} />;
 
 export const DemoLabelPasswordInput = () => (
   <PasswordInput floatingLabel='Password' wrapperProps={{ className: '!w-64' }} />

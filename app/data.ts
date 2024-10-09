@@ -60,8 +60,8 @@ export const components = [
     status: 1
   },
   {
-    name: 'Input',
-    url: '/input',
+    name: 'Text Input',
+    url: '/text-input',
     status: 2
   },
   {

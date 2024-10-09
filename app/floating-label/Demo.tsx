@@ -24,7 +24,7 @@ const Page = (props: Props) => {
       </FloatingLabel>
 
       <FloatingLabel label='Floating Label'>
-        <Input type='text' isClearable isSuccess />
+        <Input type='text' isClearable />
       </FloatingLabel>
 
       <FloatingLabel label='Password'>

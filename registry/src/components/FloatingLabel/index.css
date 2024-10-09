@@ -1,11 +1,18 @@
-@import '../global.css';
+@import '../theme/alias/text-icon-colors.css';
 
 .floating-label:not(.active) {
-  @apply z-foreground text-body-compact-02 pointer-events-none absolute left-0 top-1/2 w-full -translate-y-1/2 transform truncate pl-4 pr-10 text-left text-gray-400 transition-all;
+  @apply z-foreground text-body-compact-02 pointer-events-none absolute left-0 top-1/2 w-full -translate-y-1/2 transform truncate pl-4 pr-10 text-left text-[var(--par-color-text-field-label)] transition-all;
 }
 
 .floating-label.active {
-  @apply z-foreground text-label-01 pointer-events-none absolute left-0 top-2 w-full transform truncate pl-[1.0625rem] text-left text-gray-400 transition-all;
+  @apply z-foreground text-label-01 pointer-events-none absolute left-0 top-2 w-full transform truncate pl-[1.0625rem] text-left text-[var(--par-color-text-field-label)] transition-all;
+}
+
+.input-wrapper:has([disabled]) .floating-label,
+*[disabled] ~ .floating-label,
+*:disabled ~ .floating-label,
+.floating-label[disabled] {
+  @apply text-[var(--par-color-text-field-disabled)];
 }
 
 .left-element-container ~ .floating-label:not(.active) {
@@ -22,35 +29,28 @@
   @apply hidden;
 }
 
-/* .floating-label.required {
-      @apply before:absolute before:left-[0.3125rem] before:text-[10px] before:font-bold before:leading-[1.375rem] before:text-red-500 before:content-['\FF0A'];
-    }
-    .floating-label.required.active {
-      @apply before:leading-[unset];
-    } */
-
 .floating-label.active ~ * {
   @apply placeholder:opacity-100 placeholder:transition-opacity;
 }
 
-.floating-label ~ * input,
+.floating-label ~ * input.par-input,
 .floating-label ~ * .value-input-wrapper,
-.floating-label ~ * select,
-.floating-label ~ * textarea {
+.floating-label ~ * select.par-input,
+.floating-label ~ * textarea.par-input {
   @apply h-[3.75rem] pt-[1.125rem] placeholder:opacity-0 placeholder:transition-opacity;
 }
 
-.floating-label ~ input,
+.floating-label ~ input.par-input,
 .floating-label ~ .value-input-wrapper,
-.floating-label ~ select,
-.floating-label ~ textarea {
+.floating-label ~ select.par-input,
+.floating-label ~ textarea.par-input {
   @apply h-[3.75rem] pt-[1.125rem] placeholder:opacity-0 placeholder:transition-opacity;
 }
 
 .floating-label ~ *.non-value,
 .floating-label ~ * .non-value,
 .floating-label ~ .value-input-wrapper.non-value,
-.floating-label ~ input[value=''] {
+.floating-label ~ input[value='']::placeholder {
   @apply !text-transparent;
 }
 

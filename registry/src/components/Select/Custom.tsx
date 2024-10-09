@@ -137,12 +137,12 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
     };
 
     const ArrowBtn = (
-      <span
+      <button
         className={classNames('arrow-select-btn', { open: isSelectOpen })}
         onClick={() => setIsSelectOpen(!isSelectOpen)}
       >
         <ChevronDown />
-      </span>
+      </button>
     );
 
     const isValueEmpty = Array.isArray(currentValue) ? currentValue.length === 0 : !currentValue;
@@ -158,7 +158,7 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
       </>
     );
     const LeftInputActions = (
-      <span className='select-left-icon' onClick={() => setIsSelectOpen(!isSelectOpen)}>
+      <span className='select-left-icon input-icon' onClick={() => setIsSelectOpen(!isSelectOpen)}>
         {leftIcon}
       </span>
     );

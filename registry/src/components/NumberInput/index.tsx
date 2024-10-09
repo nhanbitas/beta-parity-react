@@ -33,11 +33,12 @@ export const NumberInput = React.forwardRef<
       format = '',
       isPattern = false,
       isClearable,
+      disabled = false,
+      readOnly = false,
       ActionBtn,
       isError,
-      isSuccess,
       wrapperProps,
-      clearBtnClassName,
+      clearBtnProps,
       min,
       max,
       minCharacters,
@@ -60,6 +61,7 @@ export const NumberInput = React.forwardRef<
     const TagName = isPattern ? PatternFormat : NumericFormat;
 
     const handleClear = () => {
+      if (disabled || readOnly) return;
       if (combinedRef.current) {
         setCurrentValue('');
         combinedRef.current.focus();
@@ -92,15 +94,23 @@ export const NumberInput = React.forwardRef<
     }, [value]);
 
     const currentProps = isPattern ? { ...(props as PatternFormatProps) } : { ...(props as NumericFormatProps) };
-
     const addedClassname = isClearable && ActionBtn ? 'input-actions' : isClearable || ActionBtn ? 'input-action' : '';
-
     const isHasRightInputAction = isClearable || ActionBtn;
+    const { className: clearBtnClassName, onClick: clearBtnClick, ...restClearBtnProps } = clearBtnProps || {};
 
     const RightInputActions = isHasRightInputAction && (
       <>
         {isClearable && currentValue && (
-          <button type='button' className={classNames('clear-button', clearBtnClassName)} onClick={handleClear}>
+          <button
+            type='button'
+            className={classNames('clear-button', clearBtnClassName)}
+            disabled={disabled || readOnly}
+            onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+              handleClear();
+              clearBtnClick && clearBtnClick(e);
+            }}
+            {...restClearBtnProps}
+          >
             <X />
           </button>
         )}
@@ -112,7 +122,7 @@ export const NumberInput = React.forwardRef<
       <InputWrapper className={classNames(addedClassname, wrapperProps?.className)} rightElement={RightInputActions}>
         {floatingLabel && <ContainedLabel isActive={isFocused || !!currentValue}>{floatingLabel}</ContainedLabel>}
         <TagName
-          className={classNames('par-input', { 'error-state': isError }, { 'success-state': isSuccess }, className)}
+          className={classNames('number-input', 'par-input', { 'error-state': isError }, className)}
           getInputRef={combinedRef}
           format={format ? format : undefined}
           value={currentValue}

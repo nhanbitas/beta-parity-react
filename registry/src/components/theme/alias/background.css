@@ -1,33 +1,70 @@
-:root {
-  --par-bg-primary: var(--par-white);
-  --par-bg-alternative: var(--par-gray-25);
-  --par-bg-surface: var(--par-gray-50);
+:root,
+[data-scheme='light'] {
+  --par-color-bg: var(--par-white);
+  --par-color-bg-alternative: var(--par-gray-25);
+  --par-color-bg-surface: var(--par-gray-50);
 
-  --par-bg-surface-alternative: var(--par-white);
-  --par-bg-surface-indicator-neutral: var(--par-neutral-500);
-  --par-bg-surface-indicator-accent: var(--par-accent-500);
-  --par-bg-surface-item-enabled: var(--par-transparent);
-  --par-bg-surface-item-hovered: rgb(from var(--par-gray-200) r g b / 0.5);
+  --par-color-bg-surface-alternative: var(--par-white);
+  --par-color-bg-surface-indicator-neutral: var(--par-neutral-500);
+  --par-color-bg-surface-indicator-accent: var(--par-accent-500);
+  --par-color-bg-surface-item-enabled: var(--par-transparent);
+  --par-color-bg-surface-item-hovered: rgb(from var(--par-gray-200) r g b / 0.5);
 
-  --par-bg-surface-item-neutral-subtle-selected: var(--par-neutral-100);
-  --par-bg-surface-item-neutral-subtle-selected-hovered: var(--par-neutral-200);
-  --par-bg-surface-item-neutral-pronounced-selected: var(--par-neutral-900);
-  --par-bg-surface-item-neutral-pronounced-selected-hovered: var(--par-neutral-800);
+  --par-color-bg-surface-item-neutral-subtle-selected: var(--par-neutral-100);
+  --par-color-bg-surface-item-neutral-subtle-selected-hovered: var(--par-neutral-200);
+  --par-color-bg-surface-item-neutral-pronounced-selected: var(--par-neutral-900);
+  --par-color-bg-surface-item-neutral-pronounced-selected-hovered: var(--par-neutral-800);
 
-  --par-bg-surface-item-accent-subtle-selected: var(--par-accent-100);
-  --par-bg-surface-item-accent-subtle-selected-hovered: var(--par-accent-200);
-  --par-bg-surface-item-accent-pronounced-selected: var(--par-accent-500);
-  --par-bg-surface-item-accent-pronounced-selected-hovered: var(--par-accent-600);
+  --par-color-bg-surface-item-accent-subtle-selected: var(--par-accent-100);
+  --par-color-bg-surface-item-accent-subtle-selected-hovered: var(--par-accent-200);
+  --par-color-bg-surface-item-accent-pronounced-selected: var(--par-accent-500);
+  --par-color-bg-surface-item-accent-pronounced-selected-hovered: var(--par-accent-600);
 
-  --par-bg-field-enabled: var(--par-gray-25);
-  --par-bg-field-alternative-enabled: var(--par-white);
-  --par-bg-field-hovered: var(--par-gray-50);
-  --par-bg-field-disabled: rgb(from var(--par-gray-25) r g b / 0.5);
-  --par-bg-field-alternative-disabled: rgb(from var(--par-white) r g b / 0.5);
-  --par-bg-field-readonly: var(--par-gray-50);
-  --par-bg-field-invalid: var(--par-red-50);
-  --par-bg-field-button-enabled: var(--par-transparent);
-  --par-bg-field-button-hovered: rgb(from var(--par-gray-200) r g b / 0.5);
-  --par-bg-field-button-pressed: rgb(from var(--par-gray-300) r g b / 0.5);
-  --par-bg-field-button-disabled: var(--par-transparent);
+  --par-color-bg-field-enabled: var(--par-gray-25);
+  --par-color-bg-field-alternative-enabled: var(--par-white);
+  --par-color-bg-field-hovered: var(--par-gray-50);
+  --par-color-bg-field-alternative-hovered: var(--par-gray-50);
+  --par-color-bg-field-disabled: rgb(from var(--par-gray-25) r g b / 0.5);
+  --par-color-bg-field-alternative-disabled: rgb(from var(--par-white) r g b / 0.5);
+  --par-color-bg-field-readonly: var(--par-gray-50);
+  --par-color-bg-field-invalid: var(--par-red-50);
+  --par-color-bg-field-button-enabled: var(--par-transparent);
+  --par-color-bg-field-button-hovered: rgb(from var(--par-gray-200) r g b / 0.5);
+  --par-color-bg-field-button-pressed: rgb(from var(--par-gray-300) r g b / 0.5);
+  --par-color-bg-field-button-disabled: var(--par-transparent);
+}
+
+[data-scheme='dark'] {
+  --par-color-bg: var(--par-gray-950);
+  --par-color-bg-alternative: var(--par-gray-900);
+  --par-color-bg-surface: var(--par-gray-800);
+
+  --par-color-bg-surface-alternative: var(--par-gray-950);
+  --par-color-bg-surface-indicator-neutral: var(--par-neutral-500);
+  --par-color-bg-surface-indicator-accent: var(--par-accent-500);
+  --par-color-bg-surface-item-enabled: var(--par-transparent);
+  --par-color-bg-surface-item-hovered: rgb(from var(--par-gray-700) r g b / 0.5);
+
+  --par-color-bg-surface-item-neutral-subtle-selected: rgb(from var(--par-gray-600) r g b / 0.5);
+  --par-color-bg-surface-item-neutral-subtle-selected-hovered: rgb(from var(--par-gray-500) r g b / 0.5);
+  --par-color-bg-surface-item-neutral-pronounced-selected: var(--par-gray-100);
+  --par-color-bg-surface-item-neutral-pronounced-selected-hovered: var(--par-gray-200);
+
+  --par-color-bg-surface-item-accent-subtle-selected: rgb(from var(--par-gray-600) r g b / 0.5);
+  --par-color-bg-surface-item-accent-subtle-selected-hovered: rgb(from var(--par-gray-500) r g b / 0.5);
+  --par-color-bg-surface-item-accent-pronounced-selected: var(--par-accent-500);
+  --par-color-bg-surface-item-accent-pronounced-selected-hovered: var(--par-accent-600);
+
+  --par-color-bg-field-enabled: var(--par-gray-900);
+  --par-color-bg-field-alternative-enabled: var(--par-gray-800);
+  --par-color-bg-field-hovered: var(--par-gray-800);
+  --par-color-bg-field-alternative-hovered: var(--par-gray-700);
+  --par-color-bg-field-disabled: rgb(from var(--par-gray-900) r g b / 0.5);
+  --par-color-bg-field-alternative-disabled: rgb(from var(--par-gray-800) r g b / 0.5);
+  --par-color-bg-field-readonly: var(--par-gray-800);
+  --par-color-bg-field-invalid: var(--par-red-900);
+  --par-color-bg-field-button-enabled: var(--par-transparent);
+  --par-color-bg-field-button-hovered: rgb(from var(--par-gray-700) r g b / 0.5);
+  --par-color-bg-field-button-pressed: rgb(from var(--par-gray-600) r g b / 0.5);
+  --par-color-bg-field-button-disabled: var(--par-transparent);
 }
