@@ -1,15 +1,165 @@
-import * as Demo from "./Demo"
+import { DemoBasicPasswordInput } from './Demo';
+import { KeyRound } from 'lucide-react';
+
 
 ## Basic
-<Demo.DemoBasicPasswordInput/>
+
+<DemoBasicPasswordInput placeholder='Placeholder' />
+<DemoBasicPasswordInput placeholder='Placeholder' leftIcon={<KeyRound />} />
 
 ## Clearable
-<Demo.DemoClearablePasswordInput/>
+
+<DemoBasicPasswordInput isClearable placeholder='Placeholder' />
+<DemoBasicPasswordInput isClearable placeholder='Placeholder' leftIcon={<KeyRound />} color="accent"/>
 
 ## States
-<Demo.DemoErrorPasswordInput/>
-<Demo.DemoSuccessPasswordInput/>
+
+<DemoBasicPasswordInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder' />
+<DemoBasicPasswordInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder'  leftIcon={<KeyRound />} color="accent"/>
+<DemoBasicPasswordInput disabled isClearable placeholder='Placeholder' color="accent" />
+<DemoBasicPasswordInput disabled isClearable value='This is disabled password' placeholder='Placeholder' leftIcon={<KeyRound />} defaultHidden={false}/>
+<DemoBasicPasswordInput readOnly isClearable value='This is read only password' placeholder='Placeholder' defaultHidden={false}/>
+<DemoBasicPasswordInput readOnly isClearable value='This is read only password' placeholder='Placeholder'  leftIcon={<KeyRound />} />
 
 ## Floating label
-<Demo.DemoLabelPasswordInput/>
 
+<DemoBasicPasswordInput isClearable floatingLabel='Floating Label' placeholder='Placeholder' />
+<DemoBasicPasswordInput isClearable floatingLabel='Floating Label' placeholder='Placeholder' leftIcon={<KeyRound />} />
+<DemoBasicPasswordInput
+  isClearable
+  isError={true}
+  errorMessage='Error message'
+  floatingLabel='Floating Label'
+  placeholder='Placeholder'
+/>
+<DemoBasicPasswordInput
+  isClearable
+  isError={true}
+  errorMessage='Error message'
+  floatingLabel='Floating Label'
+  placeholder='Placeholder'
+  leftIcon={<KeyRound />}
+/>
+<DemoBasicPasswordInput isClearable disabled floatingLabel='Floating Label' placeholder='Placeholder' value='Password' />
+<DemoBasicPasswordInput isClearable disabled floatingLabel='Floating Label' placeholder='Placeholder' leftIcon={<KeyRound />}/>
+<DemoBasicPasswordInput isClearable readOnly floatingLabel='Floating Label' placeholder='Placeholder' value='Password' />
+<DemoBasicPasswordInput isClearable readOnly floatingLabel='Floating Label' placeholder='Placeholder' leftIcon={<KeyRound />}/>
+
+{/* /////////////////////////////////////////////////////////////////////////////////////// */}
+## Size Medium
+
+<DemoBasicPasswordInput placeholder='Placeholder' inputSize="md"/>
+<DemoBasicPasswordInput placeholder='Placeholder' leftIcon={<KeyRound />} inputSize="md"/>
+<DemoBasicPasswordInput isClearable placeholder='Placeholder' inputSize="md"/>
+<DemoBasicPasswordInput isClearable placeholder='Placeholder' leftIcon={<KeyRound />} inputSize="md"/>
+<DemoBasicPasswordInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder' inputSize="md"/>
+<DemoBasicPasswordInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder'  leftIcon={<KeyRound />} inputSize="md"/>
+<DemoBasicPasswordInput disabled isClearable placeholder='Placeholder' inputSize="md"/>
+<DemoBasicPasswordInput disabled isClearable value='This is disabled password' placeholder='Placeholder'  leftIcon={<KeyRound />} inputSize="md"/>
+<DemoBasicPasswordInput readOnly isClearable value='This is read only password' placeholder='Placeholder' inputSize="md"/>
+<DemoBasicPasswordInput readOnly isClearable value='This is read only password' placeholder='Placeholder'  leftIcon={<KeyRound />} inputSize="md"/>
+
+
+{/* /////////////////////////////////////////////////////////////////////////////////////// */}
+
+## Alternative
+
+<div className="bg-gray-25 p-4 rounded-md flex flex-col gap-4">
+
+
+## Basic
+
+<DemoBasicPasswordInput placeholder='Placeholder' />
+<DemoBasicPasswordInput placeholder='Placeholder' leftIcon={<KeyRound />} />
+
+## Clearable
+
+<DemoBasicPasswordInput isClearable placeholder='Placeholder' />
+<DemoBasicPasswordInput isClearable placeholder='Placeholder' leftIcon={<KeyRound />} color="accent"/>
+
+## States
+
+<DemoBasicPasswordInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder' />
+<DemoBasicPasswordInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder'  leftIcon={<KeyRound />} color="accent"/>
+<DemoBasicPasswordInput disabled isClearable placeholder='Placeholder' color="accent" />
+<DemoBasicPasswordInput disabled isClearable value='This is disabled password' placeholder='Placeholder' leftIcon={<KeyRound />} defaultHidden={false}/>
+<DemoBasicPasswordInput readOnly isClearable value='This is read only password' placeholder='Placeholder' defaultHidden={false}/>
+<DemoBasicPasswordInput readOnly isClearable value='This is read only password' placeholder='Placeholder'  leftIcon={<KeyRound />} />
+
+## Floating label
+
+<DemoBasicPasswordInput isClearable floatingLabel='Floating Label' placeholder='Placeholder' />
+<DemoBasicPasswordInput isClearable floatingLabel='Floating Label' placeholder='Placeholder' leftIcon={<KeyRound />} />
+<DemoBasicPasswordInput
+  isClearable
+  isError={true}
+  errorMessage='Error message'
+  floatingLabel='Floating Label'
+  placeholder='Placeholder'
+/>
+<DemoBasicPasswordInput
+  isClearable
+  isError={true}
+  errorMessage='Error message'
+  floatingLabel='Floating Label'
+  placeholder='Placeholder'
+  leftIcon={<KeyRound />}
+/>
+<DemoBasicPasswordInput isClearable disabled floatingLabel='Floating Label' placeholder='Placeholder' value='Password' />
+<DemoBasicPasswordInput isClearable disabled floatingLabel='Floating Label' placeholder='Placeholder' leftIcon={<KeyRound />}/>
+<DemoBasicPasswordInput isClearable readOnly floatingLabel='Floating Label' placeholder='Placeholder' value='Password' />
+<DemoBasicPasswordInput isClearable readOnly floatingLabel='Floating Label' placeholder='Placeholder' leftIcon={<KeyRound />}/>
+
+</div>
+
+
+{/* /////////////////////////////////////////////////////////////////////////////////////// */}
+
+## Dark mode
+
+<div className="bg-gray-950 text-white p-4 rounded-md flex flex-col gap-4" data-scheme="dark">
+
+## Basic
+
+<DemoBasicPasswordInput placeholder='Placeholder' />
+<DemoBasicPasswordInput placeholder='Placeholder' leftIcon={<KeyRound />} />
+
+## Clearable
+
+<DemoBasicPasswordInput isClearable placeholder='Placeholder' />
+<DemoBasicPasswordInput isClearable placeholder='Placeholder' leftIcon={<KeyRound />} color="accent"/>
+
+## States
+
+<DemoBasicPasswordInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder' />
+<DemoBasicPasswordInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder'  leftIcon={<KeyRound />} color="accent"/>
+<DemoBasicPasswordInput disabled isClearable placeholder='Placeholder' color="accent" />
+<DemoBasicPasswordInput disabled isClearable value='This is disabled password' placeholder='Placeholder' leftIcon={<KeyRound />} defaultHidden={false}/>
+<DemoBasicPasswordInput readOnly isClearable value='This is read only password' placeholder='Placeholder' defaultHidden={false}/>
+<DemoBasicPasswordInput readOnly isClearable value='This is read only password' placeholder='Placeholder'  leftIcon={<KeyRound />} />
+
+## Floating label
+
+<DemoBasicPasswordInput isClearable floatingLabel='Floating Label' placeholder='Placeholder' />
+<DemoBasicPasswordInput isClearable floatingLabel='Floating Label' placeholder='Placeholder' leftIcon={<KeyRound />} />
+<DemoBasicPasswordInput
+  isClearable
+  isError={true}
+  errorMessage='Error message'
+  floatingLabel='Floating Label'
+  placeholder='Placeholder'
+/>
+<DemoBasicPasswordInput
+  isClearable
+  isError={true}
+  errorMessage='Error message'
+  floatingLabel='Floating Label'
+  placeholder='Placeholder'
+  leftIcon={<KeyRound />}
+/>
+<DemoBasicPasswordInput isClearable disabled floatingLabel='Floating Label' placeholder='Placeholder' value='Password' />
+<DemoBasicPasswordInput isClearable disabled floatingLabel='Floating Label' placeholder='Placeholder' leftIcon={<KeyRound />}/>
+<DemoBasicPasswordInput isClearable readOnly floatingLabel='Floating Label' placeholder='Placeholder' value='Password' />
+<DemoBasicPasswordInput isClearable readOnly floatingLabel='Floating Label' placeholder='Placeholder' leftIcon={<KeyRound />}/>
+
+</div>

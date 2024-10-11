@@ -5,38 +5,42 @@ import './index.css';
 import { Input } from '../Input';
 import { Eye } from 'lucide-react';
 import useCombinedRefs from '../hooks/useCombinedRefs';
+import { Button } from '../Button';
 
 export interface PasswordInputProps {
   type?: 'password' | 'text';
+  color?: 'accent' | 'neutral';
+  defaultHidden?: boolean;
 }
 
 const PasswordInput = React.forwardRef<
   React.ElementRef<typeof Input>,
   React.ComponentPropsWithoutRef<typeof Input> & PasswordInputProps
->(({ type = 'password', ...props }, ref) => {
-  const inputRef = React.useRef<HTMLInputElement>(null);
-  const combinedRef = useCombinedRefs(inputRef, ref);
-  const [currentType, setCurrentType] = React.useState('password');
+>(({ type = 'password', color = 'neutral', defaultHidden = true, disabled = false, ...props }, ref) => {
+  const [currentType, setCurrentType] = React.useState(defaultHidden ? 'password' : 'text');
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setCurrentType((prevType) => (prevType === 'password' ? 'text' : 'password'));
-    combinedRef.current && combinedRef.current.focus();
   };
 
   const EyeButton = () => {
+    const isHiden = currentType === 'password';
+    const TagName = (isHiden ? 'button' : Button) as React.ElementType;
+
     return (
-      <button
-        type='button'
-        className={`eye-btn ${currentType !== 'password' ? 'showed' : ''}`}
-        onMouseDown={handleClick}
+      <TagName
+        disabled={disabled}
+        {...(isHiden ? { type: 'button' } : { color: color, kind: 'solid', size: 'sm' })}
+        className={`eye-btn input-icon ${!isHiden ? 'showed' : ''}`}
+        onClick={handleClick}
       >
         <Eye />
-      </button>
+      </TagName>
     );
   };
 
-  return <Input ref={combinedRef} type={currentType} {...props} ActionBtn={<EyeButton />} />;
+  return <Input ref={ref} type={currentType} disabled={disabled} {...props} ActionBtn={<EyeButton />} />;
 });
 
 PasswordInput.displayName = 'PasswordInput';
