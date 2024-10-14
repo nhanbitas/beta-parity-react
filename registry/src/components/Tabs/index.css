@@ -1,0 +1,71 @@
+/* Tabs */
+.tabs {
+  @apply relative z-0 w-full;
+}
+
+.tabs-nav {
+  @apply relative z-[99] flex w-full overflow-x-auto overflow-y-visible before:absolute before:bottom-0 before:left-0 before:block before:h-0.5 before:w-full before:bg-gray-200 before:content-[''];
+}
+
+.tab-button {
+  @apply text-body-compact-02 relative min-w-fit px-4 text-left text-gray-500 transition-colors ease-in-out before:absolute before:bottom-0 before:left-0 before:block before:h-0.5 before:w-full before:bg-gray-200 before:content-[''] after:absolute after:bottom-0 after:left-0 after:block after:h-0.5 after:w-full after:scale-x-0 after:transform after:bg-orange after:transition-transform after:content-[''] hover:text-gray-700;
+}
+
+.tabs.medium .tab-button {
+  @apply h-10;
+}
+
+.tabs.large .tab-button {
+  @apply h-14;
+}
+
+.tab-button.active {
+  @apply text-orange after:scale-x-100 hover:text-orange;
+}
+
+.tab-button.from-right {
+  @apply after:origin-right;
+}
+
+.tab-button.from-left {
+  @apply after:origin-left;
+}
+
+.tabs-body {
+  @apply relative z-0;
+}
+
+.tab-content:not(.hidden) {
+  animation: fadeIn ease-in-out 0.3s;
+  @apply py-3;
+}
+
+.tabs.contained > .tabs-nav {
+  @apply rounded-t-md border border-b-0 border-gray-200 bg-gray-50 before:h-px;
+}
+
+.tabs.contained > .tabs-nav > .tab-button {
+  @apply z-10 mt-2 border-b bg-white shadow-md before:top-0 after:top-0;
+}
+
+.tabs.contained > .tabs-nav > .tab-button.active {
+  @apply border-b-0 bg-white;
+}
+
+.tabs.contained > .tabs-body {
+  @apply rounded-b-md border border-t-0 border-gray-200 bg-white;
+}
+
+.tabs.contained > .tabs-body > .tab-content:not(.hidden) {
+  @apply flex flex-col gap-2 px-4;
+}
+/* Tabs */
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

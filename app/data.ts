@@ -85,6 +85,11 @@ export const components = [
     status: 2
   },
   {
+    name: 'Tabs',
+    url: '/tabs',
+    status: 2
+  },
+  {
     name: 'Modal',
     url: '/modal',
     status: 1

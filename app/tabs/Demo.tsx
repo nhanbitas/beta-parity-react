@@ -1,29 +1,32 @@
-import Badge from '@libComponents/Badge';
-import { Box } from 'lucide-react';
+import { Tabs } from '@libComponents/Tabs';
 import React from 'react';
 
 type Props = {};
 
-const colors = ['gray', 'red', 'orange', 'yellow', 'green', 'blue', 'cyan', 'violet', 'lime'];
+const mockTabs = [
+  {
+    id: '1',
+    title: 'Tab 1',
+    content: 'Tab 1 content'
+  },
+  {
+    id: '2',
+    title: 'Tab 2',
+    content: 'Tab 2 content',
+    active: true
+  },
+  {
+    id: '3',
+    title: 'Tab 3',
+    content: 'Tab 3 content'
+  },
+  {
+    id: '4',
+    title: 'Tab 4',
+    content: 'Tab 4 content'
+  }
+];
 
-export const DemoOutlinedBadge = (props: Props) => {
-  return (
-    <div className='flex flex-col gap-4'>
-      <div className='flex flex-wrap gap-4'>
-        {colors.map((color) => (
-          <Badge key={color} color={color as any} icon={<Box />} label='Badge' />
-        ))}
-      </div>
-      <div className='flex flex-wrap gap-4'>
-        {colors.map((color) => (
-          <Badge key={color} color={color as any} size='sm' icon={<Box />} label='Badge' />
-        ))}
-      </div>
-      <div className='flex flex-wrap gap-4'>
-        {colors.map((color) => (
-          <Badge key={color} color={color as any} size='xs' icon={<Box />} label='Badge' />
-        ))}
-      </div>
-    </div>
-  );
+export const DemoTabs = (props: Props) => {
+  return <Tabs data={mockTabs} className='flex flex-col gap-4' />;
 };

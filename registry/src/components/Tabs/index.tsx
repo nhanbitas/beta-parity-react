@@ -1,33 +1,106 @@
+'use client';
+
 import React from 'react';
 import classNames from 'classnames';
 import './index.css';
 import './variables.css';
-import Dot from '../Dot';
 
-export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
-  children?: string | React.ReactNode;
-  className?: string;
-  label?: string;
-  icon?: React.ReactNode;
-  color?: 'gray' | 'orange' | 'violet' | 'green' | 'red' | 'yellow' | 'blue' | 'lime' | 'cyan' | '';
-  size?: 'md' | 'sm' | 'xs';
-  dot?: boolean;
+export type TabItemProps = {
+  active?: boolean;
+  id: string | number;
+  title: string;
+  content: string;
+};
+export interface TabsProps extends React.HTMLAttributes<HTMLDivElement> {
+  data: TabItemProps[];
+  size?: keyof typeof sizeMap;
   variant?: 'filled' | 'outlined' | 'glass' | '';
 }
 
-const Tabs = React.forwardRef<HTMLSpanElement, BadgeProps>(
-  (
-    { className, children, label, icon, color = 'gray', size = 'md', variant = 'outlined', dot = false, ...props },
-    ref
-  ) => {
+const sizeMap = {
+  sm: 'small',
+  md: 'medium',
+  lg: 'large'
+};
+
+export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
+  ({ className, children, data, color = 'gray', size = 'md', ...props }, ref) => {
+    const [activeTab, setActiveTab] = React.useState(
+      data.findIndex((item) => item.active) > 0 ? data.findIndex((item) => item.active) : 0
+    );
+    const preIndex = React.useRef(0);
+    const handleClick = (id: number) => {
+      setActiveTab((pre) => {
+        preIndex.current = pre;
+        return id;
+      });
+    };
+
     return (
-      <span className={classNames('badge', { dotted: dot }, className, variant, color, size)} ref={ref} {...props}>
-        Tabs
-      </span>
+      <div className={classNames('tabs', className, color, sizeMap[size as keyof typeof sizeMap])} ref={ref} {...props}>
+        <div className='tabs-nav'>
+          {data.map((item, index) => {
+            const isActive = activeTab === index;
+
+            let amimatedDirection = activeTab < index ? 'from-left' : 'from-right';
+            amimatedDirection = activeTab > index ? 'from-right' : 'from-left';
+            let currentActiveAnimation = preIndex.current < activeTab ? 'from-left' : 'from-right';
+            currentActiveAnimation = preIndex.current > activeTab ? 'from-right' : 'from-left';
+
+            return (
+              <TabButton
+                key={item.id}
+                amimatedDirection={isActive ? currentActiveAnimation : (amimatedDirection as any)}
+                onClick={() => handleClick(index)}
+                className={classNames('tab-button', isActive ? 'active' : '')}
+              >
+                {item.title}
+              </TabButton>
+            );
+          })}
+        </div>
+        <div className='tabs-body'>
+          {data.map((item, index) => {
+            const isActive = activeTab === index;
+            return isActive && <TabContent key={item.id}>{item.content}</TabContent>;
+          })}
+        </div>
+      </div>
     );
   }
 );
 
 Tabs.displayName = 'Tabs';
 
-export default Tabs;
+export interface TabButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
+  active?: boolean;
+  amimatedDirection?: 'from-right' | 'from-left';
+}
+
+export const TabButton = React.forwardRef<HTMLButtonElement, TabButtonProps>(
+  ({ className, children, amimatedDirection, ...props }, ref) => {
+    return (
+      <button className={classNames('tab-button', className, amimatedDirection)} type='button' ref={ref} {...props}>
+        {children}
+      </button>
+    );
+  }
+);
+
+TabButton.displayName = 'TabButton';
+
+export interface TabContentProps extends React.HTMLAttributes<HTMLDivElement> {
+  active?: boolean;
+}
+
+export const TabContent = React.forwardRef<HTMLDivElement, TabContentProps>(
+  ({ className, children, ...props }, ref) => {
+    return (
+      <div className={classNames('tab-content', className)} ref={ref} {...props}>
+        {children}
+      </div>
+    );
+  }
+);
+
+TabContent.displayName = 'TabContent';
