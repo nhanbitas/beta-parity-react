@@ -5,14 +5,14 @@ import { PolymorphicComponentProps, createPolymorphicComponent } from '../Base/f
 
 export interface BoxProps extends BaseProps {}
 
-const Box = createPolymorphicComponent<'div', BoxProps>(
+export const Box = createPolymorphicComponent<'div', BoxProps>(
   <C extends React.ElementType = 'div'>(
     { component, className, children, ...props }: PolymorphicComponentProps<C, BoxProps>,
     ref: React.Ref<any>
   ) => {
     const Component = component || ('div' as C);
     return (
-      <Base component={Component} className={classNames('Box', className)} ref={ref} {...props}>
+      <Base component={Component} className={classNames('box', className)} ref={ref} {...props}>
         {children}
       </Base>
     );
@@ -20,5 +20,3 @@ const Box = createPolymorphicComponent<'div', BoxProps>(
 );
 
 Box.displayName = 'Box';
-
-export { Box };
