@@ -4,19 +4,24 @@ import * as React from 'react';
 import './index.css';
 import { Input } from '../Input';
 import { Eye } from 'lucide-react';
-import useCombinedRefs from '../hooks/useCombinedRefs';
 import { Button } from '../Button';
 
 export interface PasswordInputProps {
-  type?: 'password' | 'text';
+  /**
+   * The color of eye icon
+   */
   color?: 'accent' | 'neutral';
+
+  /**
+   * Default state of showing password
+   */
   defaultHidden?: boolean;
 }
 
 const PasswordInput = React.forwardRef<
   React.ElementRef<typeof Input>,
   React.ComponentPropsWithoutRef<typeof Input> & PasswordInputProps
->(({ type = 'password', color = 'neutral', defaultHidden = true, disabled = false, ...props }, ref) => {
+>(({ color = 'neutral', defaultHidden = true, disabled = false, ...props }, ref) => {
   const [currentType, setCurrentType] = React.useState(defaultHidden ? 'password' : 'text');
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {

@@ -1,7 +1,7 @@
 @import '../theme/alias/text-icon-colors.css';
 
 .floating-label:not(.active) {
-  @apply z-foreground text-body-compact-02 pointer-events-none absolute left-0 top-1/2 w-full -translate-y-1/2 transform truncate pl-4 pr-10 text-left text-[var(--par-color-text-field-label)] transition-all;
+  @apply z-foreground text-label-01 pointer-events-none absolute left-0 top-1/2 w-full -translate-y-1/2 transform truncate pl-4 pr-10 text-left text-base text-[var(--par-color-text-field-label)] transition-all;
 }
 
 .floating-label.active {
