@@ -98,5 +98,10 @@ export const components = [
     name: 'Date picker',
     url: '/date-picker',
     status: 1
+  },
+  {
+    name: 'Breadcrumb',
+    url: '/breadcrumb',
+    status: 2
   }
 ];

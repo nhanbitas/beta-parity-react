@@ -1,0 +1,36 @@
+/* Breadcrumb */
+.breadcrumb {
+  @apply flex flex-wrap items-center gap-6 p-0;
+}
+
+.breadcrumb-item {
+  @apply text-body-compact-01 flex items-center gap-1 text-gray-500;
+}
+
+.breadcrumb-item > a {
+  @apply flex gap-2;
+}
+
+.breadcrumb-item:not(:last-child) > a {
+  @apply hover:text-gray-700;
+}
+
+.breadcrumb-item svg {
+  @apply h-4 w-4;
+}
+
+.breadcrumb-item:not(:last-child) {
+  @apply relative after:absolute after:left-[calc(100%+0.75rem)] after:-translate-x-1/2 after:font-medium after:content-['>'];
+}
+
+.breadcrumb.slash .breadcrumb-item:not(:last-child) {
+  @apply after:content-['/'];
+}
+
+.breadcrumb.dash .breadcrumb-item:not(:last-child) {
+  @apply after:content-['-'];
+}
+
+.breadcrumb-item:last-child {
+  @apply text-gray-900;
+}

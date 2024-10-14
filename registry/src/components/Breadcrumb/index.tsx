@@ -3,30 +3,36 @@ import classNames from 'classnames';
 import './index.css';
 import './variables.css';
 
-export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
-  children?: string | React.ReactNode;
-  className?: string;
-  label?: string;
-  icon?: React.ReactNode;
-  color?: 'gray' | 'orange' | 'violet' | 'green' | 'red' | 'yellow' | 'blue' | 'lime' | 'cyan' | '';
+export interface BreadcrumbProps extends React.HTMLAttributes<HTMLDivElement> {
   size?: 'md' | 'sm' | 'xs';
-  dot?: boolean;
-  variant?: 'filled' | 'outlined' | 'glass' | '';
+  separator?: 'dash' | 'slash';
 }
 
-const Breadcrumb = React.forwardRef<HTMLSpanElement, BadgeProps>(
-  (
-    { className, children, label, icon, color = 'gray', size = 'md', variant = 'outlined', dot = false, ...props },
-    ref
-  ) => {
+export const Breadcrumb = React.forwardRef<HTMLDivElement, BreadcrumbProps>(
+  ({ className, children, size = 'md', separator = 'dash', ...props }, ref) => {
     return (
-      <span className={classNames('badge', { dotted: dot }, className, variant, color, size)} ref={ref} {...props}>
-        Breadcrumb
-      </span>
+      <div className={classNames('breadcrumb', className, size, separator)} ref={ref} {...props}>
+        {children}
+      </div>
     );
   }
 );
 
 Breadcrumb.displayName = 'Breadcrumb';
 
-export default Breadcrumb;
+export interface BreadcrumbItemProps extends React.HTMLAttributes<HTMLSpanElement> {
+  size?: 'md' | 'sm' | 'xs';
+  seperator?: 'dash' | 'slash';
+}
+
+export const BreadcrumbItem = React.forwardRef<HTMLSpanElement, BreadcrumbItemProps>(
+  ({ className, children, color = 'gray', size = 'md', ...props }, ref) => {
+    return (
+      <span className={classNames('breadcrumb-item', className, color, size)} ref={ref} {...props}>
+        {children}
+      </span>
+    );
+  }
+);
+
+BreadcrumbItem.displayName = 'BreadcrumbItem';
