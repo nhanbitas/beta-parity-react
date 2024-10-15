@@ -1,5 +1,3 @@
-@import '../global.css';
-
 /* Disable default number input arrows on Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -64,7 +62,7 @@ textarea {
 input.par-input,
 .value-input-wrapper,
 textarea.par-input {
-  @apply text-body-compact-02 h-10 w-full text-ellipsis rounded-md border px-4;
+  @apply text-body-compact-02 h-10 w-full text-ellipsis rounded-md border px-3;
 }
 
 input.par-input.medium,
@@ -120,11 +118,11 @@ fieldset:disabled {
 }
 
 .right-element-container {
-  @apply absolute bottom-0 right-0 flex h-full items-center;
+  @apply absolute bottom-0 right-0 flex h-full items-center justify-center gap-2 p-2.5;
 }
 
 .left-element-container {
-  @apply absolute bottom-0 left-0 flex h-full items-center;
+  @apply absolute bottom-0 left-0 flex h-full items-center justify-center gap-2 p-2.5;
 }
 
 .left-element-container ~ .value-input-wrapper,
@@ -136,7 +134,7 @@ fieldset:disabled {
 .right-element-container .input-icon,
 .left-element-container button,
 .left-element-container .input-icon {
-  @apply m-2.5 flex items-center justify-center rounded-full p-0.5 transition-colors;
+  @apply flex items-center justify-center  rounded-full p-0.5 transition-colors;
 }
 
 .right-element-container button:disabled,

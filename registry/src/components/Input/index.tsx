@@ -186,7 +186,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             className
           )}
           ref={combinedRef}
-          value={currentValue}
+          value={value !== undefined ? value : currentValue}
           onChange={handleChange}
           onFocus={handleFocus}
           onBlur={handleBlur}
@@ -225,13 +225,59 @@ export const InputWrapper = createPolymorphicComponent<'div', InputWrapperProps>
     }: PolymorphicComponentProps<C, InputWrapperProps>,
     ref: React.Ref<any>
   ) => {
+    const DEFAULT_PADDING = 12;
     const Component = component || ('div' as C);
+    const leftElementRef = React.useRef<HTMLDivElement | null>(null);
+    const rightElementRef = React.useRef<HTMLDivElement | null>(null);
+
+    const [paddingLeft, setPaddingLeft] = React.useState(DEFAULT_PADDING);
+    const [paddingRight, setPaddingRight] = React.useState(DEFAULT_PADDING);
+
+    React.useLayoutEffect(() => {
+      const resizeObserver = new ResizeObserver(() => {
+        const leftWidth = leftElementRef.current?.offsetWidth || DEFAULT_PADDING;
+        const rightWidth = rightElementRef.current?.offsetWidth || DEFAULT_PADDING;
+        setPaddingLeft(leftWidth);
+        setPaddingRight(rightWidth);
+      });
+
+      if (leftElementRef.current) {
+        resizeObserver.observe(leftElementRef.current);
+      }
+      if (rightElementRef.current) {
+        resizeObserver.observe(rightElementRef.current);
+      }
+      return () => {
+        resizeObserver.disconnect();
+      };
+    }, [leftElement, rightElement, children]);
+
+    let childrenWithPadding = React.Children.map(children, (child) => {
+      if (React.isValidElement(child) && child.type === 'input') {
+        return React.cloneElement(child, {
+          style: {
+            ...(leftElementRef.current ? { paddingLeft } : {}),
+            ...(rightElementRef.current ? { paddingRight } : {}),
+            ...child.props.style // Preserve existing styles
+          }
+        });
+      }
+      return child;
+    });
 
     return (
       <Base component={Component} className={classNames('input-wrapper', className)} ref={ref} {...props}>
-        {leftElement && <div className='left-element-container'>{leftElement}</div>}
-        {children}
-        {rightElement && <div className='right-element-container'>{rightElement}</div>}
+        {leftElement && (
+          <div className='left-element-container' ref={leftElementRef}>
+            {leftElement}
+          </div>
+        )}
+        {childrenWithPadding}
+        {rightElement && (
+          <div className='right-element-container' ref={rightElementRef}>
+            {rightElement}
+          </div>
+        )}
       </Base>
     );
   }
