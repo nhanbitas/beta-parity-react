@@ -1,0 +1,21 @@
+/* Text Area */
+textarea.text-area {
+  @apply text-body-02 block min-h-[4.25rem] w-full resize-y rounded-md bg-white px-4 py-[0.4375rem] pb-9;
+}
+
+.text-area-wrapper {
+  @apply relative flex w-full flex-col rounded-md;
+}
+
+.text-area-footer {
+  @apply text-helper-02 pointer-events-none absolute bottom-0 z-10 flex h-9 w-full items-center justify-between rounded-b-md bg-none px-2.5 text-gray-500;
+}
+
+.text-area-footer.reverse {
+  @apply flex-row-reverse;
+}
+
+.text-area-footer > * {
+  @apply pointer-events-auto flex select-none items-center rounded-full bg-gray-200/50 px-1.5 py-0.5 backdrop-blur-sm;
+}
+/* Text Area */

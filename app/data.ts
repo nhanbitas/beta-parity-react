@@ -65,6 +65,11 @@ export const components = [
     status: 2
   },
   {
+    name: 'Text Area',
+    url: '/text-area',
+    status: 1
+  },
+  {
     name: 'Password Input',
     url: '/password-input',
     status: 2
