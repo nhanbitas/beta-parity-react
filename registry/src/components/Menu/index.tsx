@@ -4,7 +4,7 @@ import './index.css';
 import '../Checkbox/index.css';
 import '../Radio/index.css';
 import { Check, Search, ChevronUp, ChevronDown } from 'lucide-react';
-import { Input } from '../Input';
+import { Input } from '../BaseInput';
 import useKeyboard from '../hooks/useKeyboard';
 import useDidMountEffect from '../hooks/useDidMountEffect';
 import { autoUpdate, flip, offset, Placement, shift, useFloating } from '@floating-ui/react';

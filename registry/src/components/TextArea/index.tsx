@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import './index.css';
-import '../input/index.css';
+import '../BaseInput/index.css';
 import classNames from 'classnames';
 
 export interface TextAreaProps extends React.HTMLAttributes<HTMLTextAreaElement> {

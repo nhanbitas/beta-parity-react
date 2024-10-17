@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Input, InputProps } from '../Input';
+import { Input, InputProps } from '../BaseInput';
 import { createPolymorphicComponent, PolymorphicComponentProps } from '../Base/factory';
 import classNames from 'classnames';
 import Base, { BaseProps } from '../Base';

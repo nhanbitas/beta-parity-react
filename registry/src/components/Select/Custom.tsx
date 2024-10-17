@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import './index.css';
-import { InputWrapper, ValueInputWrapper } from '../Input';
+import { InputWrapper, ValueInputWrapper } from '../BaseInput';
 import { ChevronDown, X } from 'lucide-react';
 import { Menu, MenuDivider, MenuDividerProps, MenuGroup, MenuGroupProps, MenuItem, MenuProps } from '../Menu';
 import { ContainedLabel } from '../FloatingLabel';

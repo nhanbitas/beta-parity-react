@@ -84,6 +84,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     {
       className,
       value,
+      placeholder = '',
       type = 'text',
       disabled = false,
       readOnly = false,
@@ -146,9 +147,9 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     const isHasRightInputAction = isClearable || ActionBtn;
     const { className: clearBtnClassName, onClick: clearBtnClick, ...restClearBtnProps } = clearBtnProps || {};
 
-    const RightInputActions = isHasRightInputAction && (
+    const RightInputActions = isHasRightInputAction && !disabled && (
       <>
-        {isClearable && currentValue && (
+        {isClearable && currentValue && !readOnly && (
           <button
             type='button'
             className={classNames('clear-button', clearBtnClassName)}
@@ -175,10 +176,16 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         leftElement={leftIcon && <span className='input-icon'>{leftIcon}</span>}
         {...restWrapperProps}
       >
-        {floatingLabel && <ContainedLabel isActive={isFocused || !!currentValue}>{floatingLabel}</ContainedLabel>}
+        {floatingLabel &&
+          (!disabled ? (
+            <ContainedLabel isActive={isFocused || !!currentValue}>{floatingLabel}</ContainedLabel>
+          ) : (
+            <ContainedLabel isActive={false}></ContainedLabel>
+          ))}
 
         <input
           type={type}
+          placeholder={!disabled ? placeholder : ''}
           className={classNames(
             'par-input',
             theme,
@@ -186,7 +193,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             className
           )}
           ref={combinedRef}
-          value={value !== undefined ? value : currentValue}
+          value={value !== undefined && !disabled ? value : !disabled ? currentValue : ''}
           onChange={handleChange}
           onFocus={handleFocus}
           onBlur={handleBlur}

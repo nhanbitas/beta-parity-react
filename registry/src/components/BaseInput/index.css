@@ -73,17 +73,12 @@ textarea.par-input.medium {
 
 input.par-input:focus,
 textarea.par-input:focus {
-  @apply rounded-md -outline-offset-1;
+  @apply rounded-md -outline-offset-2;
 }
 
 input.par-input:disabled,
 textarea.par-input:disabled {
   @apply cursor-not-allowed;
-}
-
-input.par-input[readonly],
-textarea.par-input[readonly] {
-  @apply pointer-events-none;
 }
 
 fieldset:disabled {
@@ -205,12 +200,12 @@ textarea.par-input.alternative:disabled {
 
 input.par-input[readonly],
 textarea.par-input[readonly] {
-  @apply border-[var(--par-color-border-field-readonly)] bg-[var(--par-color-bg-field-readonly)]  text-[var(--par-color-text-field-readonly)];
+  @apply border-[var(--par-color-border-field-readonly)] bg-[var(--par-color-bg-field-readonly)] text-[var(--par-color-text-field-readonly)];
 }
 
 input.par-input.error-state,
 textarea.par-input.error-state {
-  @apply border-[var(--par-color-border-field-invalid)] bg-[var(--par-color-bg-field-invalid)] text-[var(--par-color-text-field-invalid)] outline-[var(--par-color-border-field-invalid)];
+  @apply border-[2px] border-[var(--par-color-border-field-invalid)] bg-[var(--par-color-bg-field-invalid)] text-[var(--par-color-text-field-invalid)];
 }
 
 input.par-input.alternative.error-state:hover,

@@ -4,7 +4,7 @@ import './index.css';
 import React from 'react';
 import classNames from 'classnames';
 import Base, { BaseProps } from '../Base';
-import { Input, InputProps } from '../Input';
+import { Input, InputProps } from '../BaseInput';
 import useCombinedRefs from '../hooks/useCombinedRefs';
 import { PolymorphicComponentProps, createPolymorphicComponent } from '../Base/factory';
 

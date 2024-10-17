@@ -7,7 +7,6 @@ type Props = {};
 
 export const DemoBasicPasswordInput = (props: any) => {
   const [password, setPassword] = React.useState('');
-  console.log('password', password);
   return (
     <PasswordInput
       value={password}

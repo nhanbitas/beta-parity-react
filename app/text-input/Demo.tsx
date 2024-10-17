@@ -7,7 +7,6 @@ type Props = any;
 
 export const DemoBasicInput = (props: Props) => {
   const [textInput, setTextInput] = React.useState('');
-  console.log('textInput', textInput);
   return (
     <TextInput
       value={textInput}

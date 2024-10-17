@@ -2,10 +2,10 @@
 
 import React from 'react';
 import './index.css';
-import '../Input/index.css';
+import '../BaseInput/index.css';
 import classNames from 'classnames';
 import Flatpickr, { DateTimePickerProps } from 'react-flatpickr';
-import { InputWrapper } from '../Input';
+import { InputWrapper } from '../BaseInput';
 import { Calendar } from 'lucide-react';
 import useCombinedRefs from '../hooks/useCombinedRefs';
 import { ContainedLabel } from '../FloatingLabel';

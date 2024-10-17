@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import './index.css';
-import { InputWrapper } from '../Input';
+import { InputWrapper } from '../BaseInput';
 import { ContainedLabel } from '../FloatingLabel';
 import { ChevronDown } from 'lucide-react';
 import useCombinedRefs from '../hooks/useCombinedRefs';

@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import './index.css';
-import { Input } from '../Input';
+import { Input } from '../BaseInput';
 
 export interface NumberInputProps extends React.ComponentPropsWithoutRef<typeof Input> {}
 
