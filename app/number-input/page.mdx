@@ -1,8 +1,168 @@
-import {DemoNumberInput} from "./Demo"
-
-## Thousands separator
-<DemoNumberInput isClearable/>
+import { DemoNumberInput } from './Demo';
+import { CircleDollarSign } from 'lucide-react';
 
 
+## Basic
+
+<DemoNumberInput placeholder='Placeholder'  unit="$"/>
+<DemoNumberInput placeholder='Placeholder' leftIcon={<CircleDollarSign />} unit={["USD", "VND", "EUR", "JPY"]} />
+
+## Clearable
+
+<DemoNumberInput isClearable placeholder='Placeholder' unit="$"/>
+<DemoNumberInput isClearable placeholder='Placeholder' leftIcon={<CircleDollarSign />}  unit={["USD", "VND", "EUR", "JPY"]} />
+
+## States
+
+<DemoNumberInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder' unit="$"/>
+<DemoNumberInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder'  leftIcon={<CircleDollarSign />} />
+<DemoNumberInput disabled isClearable placeholder='Placeholder' unit="$" />
+<DemoNumberInput disabled isClearable value='This is disabled number input' placeholder='Placeholder'  leftIcon={<CircleDollarSign />} />
+<DemoNumberInput readOnly isClearable value='This is read only number input' placeholder='Placeholder' unit="$"/>
+<DemoNumberInput readOnly isClearable value='This is read only number input' placeholder='Placeholder'  leftIcon={<CircleDollarSign />} />
+
+## Floating label
+
+<DemoNumberInput isClearable floatingLabel='Floating Label' placeholder='Placeholder' />
+<DemoNumberInput isClearable floatingLabel='Floating Label' placeholder='Placeholder'  leftIcon={<CircleDollarSign />} />
+<DemoNumberInput
+  isClearable
+  isError={true}
+  errorMessage='Error message'
+  floatingLabel='Floating Label'
+  placeholder='Placeholder'
+/>
+<DemoNumberInput
+  isClearable
+  isError={true}
+  errorMessage='Error message'
+  floatingLabel='Floating Label'
+  placeholder='Placeholder'
+  leftIcon={<CircleDollarSign />}
+/>
+<DemoNumberInput isClearable disabled floatingLabel='Floating Label' placeholder='Placeholder' value={1000} />
+<DemoNumberInput isClearable disabled floatingLabel='Floating Label' placeholder='Placeholder' leftIcon={<CircleDollarSign />}/>
+<DemoNumberInput isClearable readOnly floatingLabel='Floating Label' placeholder='Placeholder' value={1000} />
+<DemoNumberInput isClearable readOnly floatingLabel='Floating Label' placeholder='Placeholder' leftIcon={<CircleDollarSign />}/>
+
+{/* /////////////////////////////////////////////////////////////////////////////////////// */}
+## Size Medium
+
+<DemoNumberInput placeholder='Placeholder' inputSize="md"/>
+<DemoNumberInput placeholder='Placeholder' leftIcon={<CircleDollarSign />} inputSize="md"/>
+<DemoNumberInput isClearable placeholder='Placeholder' inputSize="md"/>
+<DemoNumberInput isClearable placeholder='Placeholder' leftIcon={<CircleDollarSign />} inputSize="md"/>
+<DemoNumberInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder' inputSize="md"/>
+<DemoNumberInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder'  leftIcon={<CircleDollarSign />} inputSize="md"/>
+<DemoNumberInput disabled isClearable placeholder='Placeholder' inputSize="md"/>
+<DemoNumberInput disabled isClearable value='This is disabled number input' placeholder='Placeholder'  leftIcon={<CircleDollarSign />} inputSize="md"/>
+<DemoNumberInput readOnly isClearable value='This is read only number input' placeholder='Placeholder' inputSize="md"/>
+<DemoNumberInput readOnly isClearable value='This is read only number input' placeholder='Placeholder'  leftIcon={<CircleDollarSign />} inputSize="md"/>
 
 
+{/* /////////////////////////////////////////////////////////////////////////////////////// */}
+
+## Alternative
+
+<div className="bg-gray-25 p-4 rounded-md flex flex-col gap-4">
+
+## Basic
+
+<DemoNumberInput placeholder='Placeholder' theme="alternative"/>
+<DemoNumberInput placeholder='Placeholder' leftIcon={<CircleDollarSign />} theme="alternative"/>
+
+## Clearable
+
+<DemoNumberInput isClearable placeholder='Placeholder' theme="alternative"/>
+<DemoNumberInput isClearable placeholder='Placeholder' leftIcon={<CircleDollarSign />} theme="alternative"/>
+
+## States
+
+
+<DemoNumberInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder' theme="alternative"/>
+<DemoNumberInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder'  leftIcon={<CircleDollarSign />} theme="alternative"/>
+<DemoNumberInput disabled isClearable placeholder='Placeholder' theme="alternative"/>
+<DemoNumberInput disabled isClearable value='This is disabled number input' placeholder='Placeholder'  leftIcon={<CircleDollarSign />} theme="alternative"/>
+<DemoNumberInput readOnly isClearable value='This is read only number input' placeholder='Placeholder' />
+<DemoNumberInput readOnly isClearable value='This is read only number input' placeholder='Placeholder'  leftIcon={<CircleDollarSign />} theme="alternative" />
+
+## Floating label
+
+<DemoNumberInput isClearable floatingLabel='Floating Label' placeholder='Placeholder' theme="alternative"/>
+<DemoNumberInput isClearable floatingLabel='Floating Label' placeholder='Placeholder'  leftIcon={<CircleDollarSign />} theme="alternative"/>
+<DemoNumberInput
+  isClearable
+  isError={true}
+  errorMessage='Error message'
+  floatingLabel='Floating Label'
+  placeholder='Placeholder' theme="alternative"
+/>
+<DemoNumberInput
+  isClearable
+  isError={true}
+  errorMessage='Error message'
+  floatingLabel='Floating Label'
+  placeholder='Placeholder' 
+  leftIcon={<CircleDollarSign />} theme="alternative"
+/>
+<DemoNumberInput isClearable disabled floatingLabel='Floating Label' placeholder='Placeholder' value={1000} theme="alternative"/>
+<DemoNumberInput isClearable disabled floatingLabel='Floating Label' placeholder='Placeholder' value={1000} leftIcon={<CircleDollarSign />} theme="alternative"/>
+<DemoNumberInput isClearable readOnly floatingLabel='Floating Label' placeholder='Placeholder' value={1000} />
+<DemoNumberInput isClearable readOnly floatingLabel='Floating Label' placeholder='Placeholder' value={1000} leftIcon={<CircleDollarSign />} theme="alternative"/>
+
+</div>
+
+
+
+
+{/* /////////////////////////////////////////////////////////////////////////////////////// */}
+
+## Dark mode
+
+<div className="bg-gray-950 text-white p-4 rounded-md flex flex-col gap-4" data-scheme="dark">
+
+## Basic
+
+<DemoNumberInput placeholder='Placeholder' />
+<DemoNumberInput placeholder='Placeholder' leftIcon={<CircleDollarSign />} />
+
+## Clearable
+
+<DemoNumberInput isClearable placeholder='Placeholder' />
+<DemoNumberInput isClearable placeholder='Placeholder' leftIcon={<CircleDollarSign />} />
+
+## States
+
+
+<DemoNumberInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder' />
+<DemoNumberInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder'  leftIcon={<CircleDollarSign />} />
+<DemoNumberInput disabled isClearable placeholder='Placeholder' />
+<DemoNumberInput disabled isClearable value='This is disabled number input' placeholder='Placeholder'  leftIcon={<CircleDollarSign />} />
+<DemoNumberInput readOnly isClearable value='This is read only number input' placeholder='Placeholder' />
+<DemoNumberInput readOnly isClearable value='This is read only number input' placeholder='Placeholder'  leftIcon={<CircleDollarSign />} />
+
+## Floating label
+
+<DemoNumberInput isClearable floatingLabel='Floating Label' placeholder='Placeholder' />
+<DemoNumberInput isClearable floatingLabel='Floating Label' placeholder='Placeholder'  leftIcon={<CircleDollarSign />} />
+<DemoNumberInput
+  isClearable
+  isError={true}
+  errorMessage='Error message'
+  floatingLabel='Floating Label'
+  placeholder='Placeholder'
+/>
+<DemoNumberInput
+  isClearable
+  isError={true}
+  errorMessage='Error message'
+  floatingLabel='Floating Label'
+  placeholder='Placeholder'
+  leftIcon={<CircleDollarSign />}
+/>
+<DemoNumberInput isClearable disabled floatingLabel='Floating Label' placeholder='Placeholder' value={1000} />
+<DemoNumberInput isClearable disabled floatingLabel='Floating Label' placeholder='Placeholder' value={1000} leftIcon={<CircleDollarSign />}/>
+<DemoNumberInput isClearable readOnly floatingLabel='Floating Label' placeholder='Placeholder' value={1000} />
+<DemoNumberInput isClearable readOnly floatingLabel='Floating Label' placeholder='Placeholder' value={1000} leftIcon={<CircleDollarSign />}/>
+
+</div>

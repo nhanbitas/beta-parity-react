@@ -6,5 +6,13 @@ import { NumberInput } from '@libComponents/NumberInput';
 type Props = {};
 
 export const DemoNumberInput = (props: Props) => {
-  return <NumberInput onChange={(e) => console.log(e.target.value)} {...props} />;
+  return (
+    <NumberInput
+      onChange={(e) => console.log(e.target.value)}
+      wrapperProps={{ className: '!w-96' }}
+      onClear={() => console.log('clear')}
+      onUnitChange={(unit: string) => console.log(unit)}
+      {...props}
+    />
+  );
 };

@@ -69,33 +69,34 @@ import { KeyRound } from 'lucide-react';
 
 ## Basic
 
-<DemoBasicPasswordInput placeholder='Placeholder' />
-<DemoBasicPasswordInput placeholder='Placeholder' leftIcon={<KeyRound />} />
+<DemoBasicPasswordInput placeholder='Placeholder' theme="alternative"/>
+<DemoBasicPasswordInput placeholder='Placeholder' leftIcon={<KeyRound />} theme="alternative"/>
 
 ## Clearable
 
-<DemoBasicPasswordInput isClearable placeholder='Placeholder' />
-<DemoBasicPasswordInput isClearable placeholder='Placeholder' leftIcon={<KeyRound />} color="accent"/>
+<DemoBasicPasswordInput isClearable placeholder='Placeholder' theme="alternative"/>
+<DemoBasicPasswordInput isClearable placeholder='Placeholder' leftIcon={<KeyRound />} color="accent" theme="alternative"/>
 
 ## States
 
-<DemoBasicPasswordInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder' />
-<DemoBasicPasswordInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder'  leftIcon={<KeyRound />} color="accent"/>
-<DemoBasicPasswordInput disabled isClearable placeholder='Placeholder' color="accent" />
-<DemoBasicPasswordInput disabled isClearable value='This is disabled password' placeholder='Placeholder' leftIcon={<KeyRound />} defaultHidden={false}/>
-<DemoBasicPasswordInput readOnly isClearable value='This is read only password' placeholder='Placeholder' defaultHidden={false}/>
-<DemoBasicPasswordInput readOnly isClearable value='This is read only password' placeholder='Placeholder'  leftIcon={<KeyRound />} />
+<DemoBasicPasswordInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder' theme="alternative"/>
+<DemoBasicPasswordInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder'  leftIcon={<KeyRound />} color="accent" theme="alternative"/>
+<DemoBasicPasswordInput disabled isClearable placeholder='Placeholder' color="accent" theme="alternative"/>
+<DemoBasicPasswordInput disabled isClearable value='This is disabled password' placeholder='Placeholder' leftIcon={<KeyRound />} defaultHidden={false} theme="alternative"/>
+<DemoBasicPasswordInput readOnly isClearable value='This is read only password' placeholder='Placeholder' defaultHidden={false} theme="alternative"/>
+<DemoBasicPasswordInput readOnly isClearable value='This is read only password' placeholder='Placeholder'  leftIcon={<KeyRound />} theme="alternative"/>
 
 ## Floating label
 
-<DemoBasicPasswordInput isClearable floatingLabel='Floating Label' placeholder='Placeholder' />
-<DemoBasicPasswordInput isClearable floatingLabel='Floating Label' placeholder='Placeholder' leftIcon={<KeyRound />} />
+<DemoBasicPasswordInput isClearable floatingLabel='Floating Label' placeholder='Placeholder' theme="alternative"/>
+<DemoBasicPasswordInput isClearable floatingLabel='Floating Label' placeholder='Placeholder' leftIcon={<KeyRound />} theme="alternative"/>
 <DemoBasicPasswordInput
   isClearable
   isError={true}
   errorMessage='Error message'
   floatingLabel='Floating Label'
   placeholder='Placeholder'
+  theme="alternative"
 />
 <DemoBasicPasswordInput
   isClearable
@@ -104,11 +105,12 @@ import { KeyRound } from 'lucide-react';
   floatingLabel='Floating Label'
   placeholder='Placeholder'
   leftIcon={<KeyRound />}
+  theme="alternative"
 />
-<DemoBasicPasswordInput isClearable disabled floatingLabel='Floating Label' placeholder='Placeholder' value='Password' />
-<DemoBasicPasswordInput isClearable disabled floatingLabel='Floating Label' placeholder='Placeholder' leftIcon={<KeyRound />}/>
-<DemoBasicPasswordInput isClearable readOnly floatingLabel='Floating Label' placeholder='Placeholder' value='Password' />
-<DemoBasicPasswordInput isClearable readOnly floatingLabel='Floating Label' placeholder='Placeholder' leftIcon={<KeyRound />}/>
+<DemoBasicPasswordInput isClearable disabled floatingLabel='Floating Label' placeholder='Placeholder' value='Password' theme="alternative" />
+<DemoBasicPasswordInput isClearable disabled floatingLabel='Floating Label' placeholder='Placeholder' leftIcon={<KeyRound />} theme="alternative"/>
+<DemoBasicPasswordInput isClearable readOnly floatingLabel='Floating Label' placeholder='Placeholder' value='Password' theme="alternative"/>
+<DemoBasicPasswordInput isClearable readOnly floatingLabel='Floating Label' placeholder='Placeholder' leftIcon={<KeyRound />} theme="alternative"/>
 
 </div>
 

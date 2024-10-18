@@ -10,18 +10,26 @@
   @apply text-black;
 }
 
-.number-input-unit:not(.selectable) {
-  @apply absolute bottom-0 right-0 mx-3 my-2 h-6 rounded-md bg-transparent px-0;
+.input-icon.number-input-unit {
+  @apply min-w-5;
 }
 
 .number-input-unit:not(.selectable) > select {
-  @apply pointer-events-none h-6 w-fit max-w-min select-none rounded-md bg-transparent px-0 text-right text-gray-500;
+  @apply pointer-events-none h-6 w-fit max-w-min select-none rounded-md bg-transparent px-0 text-right;
 }
 
-/* .number-input-unit.selectable {
-  @apply after:chevron-selector-vertical-mini absolute bottom-0 right-0 mx-2 my-2 h-6 rounded-md py-0 transition-colors after:absolute after:right-0.5 after:top-0 after:h-full after:transform after:items-center after:bg-gray-300 after:transition;
-} */
+.number-input-unit.selectable {
+  @apply absolute bottom-0 right-0 mx-2 my-2 h-6 rounded-md py-0 transition-colors after:absolute after:right-0.5 after:top-0 after:h-full after:transform after:items-center after:bg-gray-300 after:transition;
+}
+.number-input-unit.selectable::after {
+  height: 100%;
+  width: 1rem;
+  pointer-events: none;
+  mask-position: center center;
+  mask-repeat: no-repeat;
+  mask-image: url("data:image/svg+xml;utf8,<svg height='12px' width='12px' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' d='M4.667 10 8 13.333 11.334 10M4.667 6 8 2.667 11.334 6' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'></path></svg>");
+}
 
 .number-input-unit.selectable > select {
-  @apply h-6 w-fit max-w-min rounded-md bg-transparent pl-1 pr-5 text-right text-gray-500;
+  @apply h-6 w-fit max-w-min appearance-none rounded-md bg-transparent pl-1 pr-5 text-right;
 }

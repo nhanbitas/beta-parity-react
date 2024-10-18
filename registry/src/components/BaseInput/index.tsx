@@ -178,7 +178,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       >
         {floatingLabel &&
           (!disabled ? (
-            <ContainedLabel isActive={isFocused || !!currentValue}>{floatingLabel}</ContainedLabel>
+            <ContainedLabel isActive={readOnly ? true : isFocused || !!currentValue}>{floatingLabel}</ContainedLabel>
           ) : (
             <ContainedLabel isActive={false}></ContainedLabel>
           ))}
@@ -210,7 +210,12 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
 Input.displayName = 'Input';
 
-export interface InputWrapperProps extends BaseProps {
+// =========================
+// InputWrapper
+// =========================
+// Declare and export select type and InputWrapper component
+
+export interface InputWrapperProps extends React.HTMLAttributes<HTMLDivElement>, BaseProps {
   leftElement?: JSX.Element | React.ReactNode;
   rightElement?: JSX.Element | React.ReactNode;
 }
@@ -220,20 +225,9 @@ export interface InputWrapperProps extends BaseProps {
  *
  * Specific props: leftElement, rightElement
  */
-export const InputWrapper = createPolymorphicComponent<'div', InputWrapperProps>(
-  <C extends React.ElementType = 'div'>(
-    {
-      component,
-      className,
-      children,
-      leftElement,
-      rightElement,
-      ...props
-    }: PolymorphicComponentProps<C, InputWrapperProps>,
-    ref: React.Ref<any>
-  ) => {
+export const InputWrapper = React.forwardRef<HTMLDivElement, InputWrapperProps>(
+  ({ className, children, leftElement, rightElement, ...props }, ref) => {
     const DEFAULT_PADDING = 12;
-    const Component = component || ('div' as C);
     const leftElementRef = React.useRef<HTMLDivElement | null>(null);
     const rightElementRef = React.useRef<HTMLDivElement | null>(null);
 
@@ -261,19 +255,19 @@ export const InputWrapper = createPolymorphicComponent<'div', InputWrapperProps>
 
     let childrenWithPadding = React.Children.map(children, (child) => {
       if (React.isValidElement(child) && child.type === 'input') {
-        return React.cloneElement(child, {
+        return React.cloneElement(child as React.ReactElement, {
           style: {
             ...(leftElementRef.current ? { paddingLeft } : {}),
             ...(rightElementRef.current ? { paddingRight } : {}),
-            ...child.props.style // Preserve existing styles
-          }
+            ...((child.props as React.HTMLAttributes<HTMLInputElement>).style || {}) // Preserve existing styles
+          } as React.CSSProperties | undefined
         });
       }
       return child;
     });
 
     return (
-      <Base component={Component} className={classNames('input-wrapper', className)} ref={ref} {...props}>
+      <div className={classNames('input-wrapper', className)} ref={ref} {...props}>
         {leftElement && (
           <div className='left-element-container' ref={leftElementRef}>
             {leftElement}
@@ -285,16 +279,21 @@ export const InputWrapper = createPolymorphicComponent<'div', InputWrapperProps>
             {rightElement}
           </div>
         )}
-      </Base>
+      </div>
     );
   }
 );
 
 InputWrapper.displayName = 'InputWrapper';
 
-export interface ValueInputWrapperProps extends React.HTMLAttributes<HTMLDivElement> {}
+// =========================
+// ErrorMessage
+// =========================
+// Declare and export select type and ErrorMessage component
 
-export const ErrorMessage = React.forwardRef<HTMLDivElement, ValueInputWrapperProps>(
+export interface ErrorMessageProps extends React.HTMLAttributes<HTMLDivElement> {}
+
+export const ErrorMessage = React.forwardRef<HTMLDivElement, ErrorMessageProps>(
   ({ children, className, ...props }, ref) => (
     <span className={classNames('input-error-message', className)} {...props} ref={ref}>
       {children}
@@ -303,6 +302,11 @@ export const ErrorMessage = React.forwardRef<HTMLDivElement, ValueInputWrapperPr
 );
 
 ErrorMessage.displayName = 'ErrorMessage';
+
+// =========================
+// ValueInputWrapper
+// =========================
+// Declare and export select type and ValueInputWrapper component
 
 export interface ValueInputWrapperProps extends React.HTMLAttributes<HTMLDivElement> {}
 

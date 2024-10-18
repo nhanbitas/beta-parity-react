@@ -129,7 +129,7 @@ fieldset:disabled {
 .right-element-container .input-icon,
 .left-element-container button,
 .left-element-container .input-icon {
-  @apply flex items-center justify-center  rounded-full p-0.5 transition-colors;
+  @apply flex items-center justify-center rounded-full p-0.5 transition-colors;
 }
 
 .right-element-container button:disabled,
