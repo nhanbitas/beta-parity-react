@@ -19,7 +19,7 @@
 }
 
 .number-input-unit.selectable {
-  @apply absolute bottom-0 right-0 mx-2 my-2 h-6 rounded-md py-0 transition-colors after:absolute after:right-0.5 after:top-0 after:h-full after:transform after:items-center after:bg-gray-300 after:transition;
+  @apply relative h-6 rounded-md py-0 transition-colors after:absolute after:right-0.5 after:top-0 after:h-full after:transform after:items-center after:bg-gray-300 after:transition;
 }
 .number-input-unit.selectable::after {
   height: 100%;

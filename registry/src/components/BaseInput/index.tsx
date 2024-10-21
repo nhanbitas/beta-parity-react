@@ -7,8 +7,7 @@ import './variables.css';
 import { X } from 'lucide-react';
 import { ContainedLabel } from '../FloatingLabel';
 import useCombinedRefs from '../hooks/useCombinedRefs';
-import { PolymorphicComponentProps, createPolymorphicComponent } from '../Base/factory';
-import Base, { BaseProps } from '../Base';
+import { BaseProps } from '../Base';
 
 const sizeMap = {
   sm: 'small',
@@ -234,10 +233,12 @@ export const InputWrapper = React.forwardRef<HTMLDivElement, InputWrapperProps>(
     const [paddingLeft, setPaddingLeft] = React.useState(DEFAULT_PADDING);
     const [paddingRight, setPaddingRight] = React.useState(DEFAULT_PADDING);
 
+    // Handle padding of input based on width of left and right elements
     React.useLayoutEffect(() => {
       const resizeObserver = new ResizeObserver(() => {
         const leftWidth = leftElementRef.current?.offsetWidth || DEFAULT_PADDING;
         const rightWidth = rightElementRef.current?.offsetWidth || DEFAULT_PADDING;
+
         setPaddingLeft(leftWidth);
         setPaddingRight(rightWidth);
       });
@@ -245,6 +246,7 @@ export const InputWrapper = React.forwardRef<HTMLDivElement, InputWrapperProps>(
       if (leftElementRef.current) {
         resizeObserver.observe(leftElementRef.current);
       }
+
       if (rightElementRef.current) {
         resizeObserver.observe(rightElementRef.current);
       }
@@ -257,9 +259,9 @@ export const InputWrapper = React.forwardRef<HTMLDivElement, InputWrapperProps>(
       if (React.isValidElement(child) && child.type === 'input') {
         return React.cloneElement(child as React.ReactElement, {
           style: {
+            ...((child.props as React.HTMLAttributes<HTMLInputElement>).style || {}),
             ...(leftElementRef.current ? { paddingLeft } : {}),
-            ...(rightElementRef.current ? { paddingRight } : {}),
-            ...((child.props as React.HTMLAttributes<HTMLInputElement>).style || {}) // Preserve existing styles
+            ...(rightElementRef.current ? { paddingRight } : {})
           } as React.CSSProperties | undefined
         });
       }

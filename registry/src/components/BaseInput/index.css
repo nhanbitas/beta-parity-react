@@ -176,18 +176,6 @@ textarea.par-textarea.alternative {
 
 /* State css */
 
-input.par-input:hover,
-.value-input-wrapper:hover,
-textarea.par-input:hover {
-  @apply bg-[var(--par-color-bg-field-hovered)];
-}
-
-input.par-input.alternative:hover,
-.value-input-wrapper.alternative:hover,
-textarea.par-input.alternative:hover {
-  @apply bg-[var(--par-color-bg-field-alternative-hovered)];
-}
-
 input.par-input:disabled,
 textarea.par-input:disabled {
   @apply border-[var(--par-color-border-field-disabled)] bg-[var(--par-color-bg-field-disabled)] text-[var(--par-color-text-field-disabled)];
@@ -206,11 +194,6 @@ textarea.par-input[readonly] {
 input.par-input.error-state,
 textarea.par-input.error-state {
   @apply border-[2px] border-[var(--par-color-border-field-invalid)] bg-[var(--par-color-bg-field-invalid)] text-[var(--par-color-text-field-invalid)];
-}
-
-input.par-input.alternative.error-state:hover,
-textarea.par-input.alternative.error-state:hover {
-  @apply bg-[var(--par-color-bg-field-invalid)];
 }
 
 /* Button, icon css */
