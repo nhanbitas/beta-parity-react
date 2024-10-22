@@ -256,7 +256,9 @@ export const InputWrapper = React.forwardRef<HTMLDivElement, InputWrapperProps>(
     }, [leftElement, rightElement, children]);
 
     let childrenWithPadding = React.Children.map(children, (child) => {
-      if (React.isValidElement(child) && child.type === 'input') {
+      if (!React.isValidElement(child)) return child;
+
+      if (child.type === 'input' || child.type === 'select') {
         return React.cloneElement(child as React.ReactElement, {
           style: {
             ...((child.props as React.HTMLAttributes<HTMLInputElement>).style || {}),
