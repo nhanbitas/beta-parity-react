@@ -132,6 +132,13 @@ fieldset:disabled {
   @apply flex items-center justify-center rounded-full p-0.5 transition-colors;
 }
 
+.right-element-container button.square-icon,
+.right-element-container .input-icon.square-icon,
+.left-element-container button.square-icon,
+.left-element-container .input-icon.square-icon {
+  @apply m-0 block h-5 min-h-0 w-5 min-w-0 rounded-md p-0.5;
+}
+
 .right-element-container button:disabled,
 .left-element-container button:disabled {
   @apply cursor-not-allowed;

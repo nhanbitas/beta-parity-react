@@ -1,15 +1,3 @@
-.number-input {
-  @apply text-body-compact-02 h-10 w-full text-ellipsis rounded-md bg-white px-4 read-only:bg-gray-100;
-}
-
-.number-input:disabled {
-  @apply bg-gray-100 text-gray-100;
-}
-
-.number-input:not([value='']) {
-  @apply text-black;
-}
-
 .input-icon.number-input-unit {
   @apply min-w-5;
 }
@@ -32,4 +20,21 @@
 
 .number-input-unit.selectable > select {
   @apply h-6 w-fit max-w-min appearance-none rounded-md bg-transparent pl-1 pr-5 text-right;
+}
+
+/* controller styles */
+.input-wrapper .number-controller-wrapper {
+  @apply flex items-center gap-2;
+}
+
+.input-wrapper .number-controller-wrapper.chevron-stepper {
+  @apply -m-2.5 flex flex-col items-center gap-0;
+}
+/* TODO: fix padding */
+.input-wrapper .number-controller-wrapper.chevron-stepper button {
+  @apply flex w-8 flex-col items-center gap-0 rounded-none;
+}
+
+.input-wrapper .number-controller-wrapper .controller-divider {
+  @apply h-5 w-px bg-gray-300;
 }

@@ -37,7 +37,7 @@ const PasswordInput = React.forwardRef<
       <TagName
         disabled={disabled}
         {...(isHiden ? { type: 'button' } : { color: color, kind: 'solid', size: 'sm' })}
-        className={`eye-btn input-icon ${!isHiden ? 'showed' : ''}`}
+        className={`square-icon input-icon ${!isHiden ? 'showed' : ''}`}
         onClick={handleClick}
       >
         <Eye />

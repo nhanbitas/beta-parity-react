@@ -5,7 +5,3 @@ input[type='password']::-webkit-clear-button {
   width: 0;
   height: 0;
 }
-
-.input-wrapper .input-icon.eye-btn {
-  @apply m-0 block h-5 min-h-0 w-5 min-w-0 rounded-md p-0.5;
-}

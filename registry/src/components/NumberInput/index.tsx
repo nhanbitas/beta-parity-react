@@ -2,177 +2,63 @@
 
 import * as React from 'react';
 import './index.css';
-import '../Select/index.css';
-import { Input } from '../BaseInput';
-import { NumericFormatProps, numericFormatter, removeNumericFormat } from 'react-number-format';
+import { NumericFormat, NumericFormatProps } from 'react-number-format';
+import { InputProps, Input } from '../BaseInput';
+import { ChevronDown, ChevronUp, MinusIcon, PlusIcon } from 'lucide-react';
+import classNames from 'classnames';
 
-export interface NumberInputProps extends Omit<React.ComponentPropsWithoutRef<typeof Input>, 'type' | 'min' | 'max'> {
+export interface NumberInputProps extends Omit<InputProps, 'onChange'> {
   unit?: string | string[];
   onUnitChange?: (unit: string) => void;
   min?: number;
   max?: number;
-  value?: number | string;
-  onValueChange?: ({
-    value,
-    floatValue,
-    fomatedValue
-  }: {
-    value: string;
-    floatValue: number;
-    fomatedValue: string;
-  }) => void;
-
-  locales?: string | string[];
-  formatOptions?: Intl.NumberFormatOptions;
+  stepper?: 'auto' | 'chevron' | 'cross';
+  stepControl?: number;
+  format?: any;
 }
 
-const numbericChangeMeta = {
-  from: { start: 0, end: 0 },
-  to: { start: 0, end: 0 },
-  lastValue: ''
-};
-
-// ! Lỗi không sử dụng được dấu "." từ bản phím khi sử dung thousandSeparator: '.', decimalSeparator: ',',
-
-// export const NumberInput = React.forwardRef<React.ElementRef<typeof Input>, NumberInputProps>(
-//   (
-//     {
-//       value,
-//       inputMode = 'decimal',
-//       min,
-//       max,
-//       unit = '',
-//       formatOptions = {},
-//       onChange,
-//       onValueChange,
-//       onUnitChange,
-//       ...props
-//     },
-//     ref
-//   ) => {
-//     const [currentValue, setCurrentValue] = React.useState(value || '');
-
-//     const options: NumericFormatProps = {
-//       allowNegative: true,
-//       thousandSeparator: '.',
-//       decimalSeparator: ',',
-//       allowLeadingZeros: true,
-//       ...formatOptions
-//     };
-
-//     const updateCurrentValue = (stringValue: string) => {
-//       const formatedNumber = numericFormatter(stringValue, options); // format
-//       setCurrentValue(formatedNumber);
-//       onValueChange?.({
-//         value: stringValue,
-//         floatValue: Number(stringValue),
-//         fomatedValue: formatedNumber
-//       });
-//     };
-
-//     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-//       const value = e.target.value;
-//       if (!value) return updateCurrentValue('');
-//       let stringValue = removeNumericFormat(value, numbericChangeMeta, options); // remove format
-//       if (!Number(stringValue)) return updateCurrentValue(stringValue); // not a number, handle for ["-", "+"]
-//       if (min != undefined && Number(stringValue) <= min) stringValue = min.toString(); // set min if less than min
-//       if (max != undefined && Number(stringValue) >= max) stringValue = max.toString(); // set max if greater than max
-
-//       onChange?.(e);
-//       updateCurrentValue(stringValue);
-//     };
-
-//     const isSelectUnit = Array.isArray(unit);
-//     const handleUitChage = (e: React.ChangeEvent<HTMLSelectElement>) => {
-//       onUnitChange?.(e.target.value as string);
-//     };
-
-//     const unitElement = !!unit ? (
-//       <span className={`input-icon number-input-unit ${isSelectUnit ? 'selectable' : ''}`}>
-//         {isSelectUnit ? (
-//           <select onChange={handleUitChage}>
-//             {unit.map((u) => (
-//               <option key={u} value={u}>
-//                 {u}
-//               </option>
-//             ))}
-//           </select>
-//         ) : (
-//           unit
-//         )}
-//       </span>
-//     ) : null;
-
-//     return (
-//       <Input
-//         ref={ref}
-//         type='text'
-//         value={value === undefined ? currentValue : numericFormatter(value.toString(), options)}
-//         inputMode={inputMode}
-//         onChange={handleChange}
-//         ActionBtn={unitElement}
-//         {...props}
-//       />
-//     );
-//   }
-// );
-
-// NumberInput.displayName = 'NumberInput';
-
-export const NumberInput = React.forwardRef<React.ElementRef<typeof Input>, NumberInputProps>(
+export const NumberInput = React.forwardRef<HTMLInputElement, NumberInputProps & NumericFormatProps>(
   (
     {
+      className,
       value,
-      inputMode = 'decimal',
+      defaultValue,
+      unit,
       min,
       max,
-      unit = '',
-      locales = 'en-US',
-      formatOptions = {
-        style: 'decimal'
-      },
-      onChange,
-      onValueChange,
+      stepControl = 1,
+      stepper,
+      type,
       onUnitChange,
+      onClear,
+      onValueChange,
+      onChange,
       ...props
     },
     ref
   ) => {
-    const [currentValue, setCurrentValue] = React.useState(value || '');
+    const [currentValue, setCurrentValue] = React.useState(value || defaultValue || '');
 
-    const numberFormatter = numberFormatterFactory(locales, formatOptions);
+    const handleChange = (e: any) => {
+      let newValue = e.floatValue;
 
-    // TODO: handle cursor
-    const updateCurrentValue = (stringValue: string) => {
-      // TODO: should handle Nan in formatted number
-      const formatedNumber = numberFormatter.format(stringValue);
+      if (min !== undefined && newValue <= min) {
+        newValue = min;
+      } else if (max !== undefined && newValue >= max) {
+        newValue = max;
+      }
 
-      const inputValue = isNaN(Number(stringValue)) || !stringValue ? stringValue : formatedNumber;
-      if (currentValue === inputValue) return;
-      setCurrentValue(inputValue);
-      onValueChange?.({
-        value: inputValue,
-        floatValue: (isNaN(Number(stringValue)) ? stringValue : Number(stringValue)) as number,
-        fomatedValue: formatedNumber
-      });
+      setCurrentValue(newValue);
     };
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      const value = e.target.value;
-
-      if (containsLetters(value)) return;
-      if (!value) return updateCurrentValue('');
-
-      let stringValue = numberFormatter.unformat(value).toString(); // remove format
-
-      if (!Number(stringValue)) return updateCurrentValue(stringValue); // not a number, handle for ["-", "+"]
-
-      if (min != undefined && Number(stringValue) <= min) stringValue = min.toString(); // set min if less than min
-      if (max != undefined && Number(stringValue) >= max) stringValue = max.toString(); // set max if greater than max
-
-      onChange?.(e);
-      updateCurrentValue(stringValue);
+    const handleClear = () => {
+      onClear?.();
+      handleChange({ floatValue: '' });
     };
+
+    React.useEffect(() => {
+      setCurrentValue(value as string | number);
+    }, [value]);
 
     const isSelectUnit = Array.isArray(unit);
     const handleUitChage = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -195,15 +81,37 @@ export const NumberInput = React.forwardRef<React.ElementRef<typeof Input>, Numb
       </span>
     ) : null;
 
+    const inputProps = { ...props, ref, value: currentValue, onClear: handleClear, onChange: undefined };
+    const stepperProps = {
+      value: isNaN(currentValue as number) ? 0 : +currentValue,
+      min: min,
+      max: max,
+      onChange: handleChange,
+      stepControl: stepControl
+    } as StepperProps;
+
+    const leftElement = inputProps.leftIcon ? <span className='input-icon'>{inputProps.leftIcon}</span> : undefined;
+    const rightElement =
+      stepper === 'auto' ? (
+        <NumberButtonStepper {...stepperProps} />
+      ) : stepper === 'chevron' ? (
+        <NumberChevronStepper {...stepperProps} />
+      ) : (
+        unitElement
+      );
+
     return (
-      <Input
-        ref={ref}
-        type='text'
-        value={value === undefined ? currentValue : numberFormatter.format(value.toString())}
-        inputMode={inputMode}
-        onChange={handleChange}
-        ActionBtn={unitElement}
-        {...props}
+      <NumericFormat
+        {...inputProps}
+        className={classNames('number-input', className)}
+        getInputRef={ref}
+        onValueChange={handleChange}
+        wrapperProps={{
+          ...inputProps.wrapperProps,
+          leftElement: leftElement,
+          rightElement: rightElement
+        }}
+        customInput={Input}
       />
     );
   }
@@ -211,46 +119,55 @@ export const NumberInput = React.forwardRef<React.ElementRef<typeof Input>, Numb
 
 NumberInput.displayName = 'NumberInput';
 
-function numberFormatterFactory(locales: string | string[], options: Intl.NumberFormatOptions) {
-  const formatter = new Intl.NumberFormat(locales, options);
+// =========================
+// Stepper
+// =========================
+interface StepperProps extends Pick<NumberInputProps, 'stepControl' | 'min' | 'max' | 'disabled'> {
+  value: number;
+  onChange: (e: any) => void;
+}
 
-  return {
-    format(value: string): string {
-      if (isNaN(Number(value))) return '';
-
-      const stringValue = String(value);
-      const demacialSeparator = formatter.format(1.1).charAt(1);
-
-      if (stringValue.includes(demacialSeparator)) {
-        const [integerPart, decimalPart, ...rest] = stringValue.split(demacialSeparator);
-        const formattedIntegerPart = formatter.format(Number(integerPart));
-
-        if (decimalPart !== undefined && decimalPart !== '') {
-          return `${formattedIntegerPart}${demacialSeparator}${decimalPart}`;
-        } else {
-          return `${formattedIntegerPart}${demacialSeparator}`;
-        }
-      } else {
-        return formatter.format(Number(stringValue));
-      }
-    },
-
-    unformat(formattedValue: string): string {
-      const demacialSeparator = formatter.format(1.1).charAt(1);
-      const [integerPart, decimalPart, ...rest] = formattedValue.split(demacialSeparator);
-
-      let unformattedValue = integerPart
-        .replace(new RegExp(`[^\\d\\-\\${demacialSeparator}]`, 'g'), '')
-        .replace(demacialSeparator, '.');
-
-      if (decimalPart !== undefined) unformattedValue += `.${decimalPart}`;
-
-      return unformattedValue;
-    }
+const NumberButtonStepper = ({ value, onChange, stepControl = 1, min, max, disabled = false }: StepperProps) => {
+  const handleChange = (type: '+' | '-') => {
+    const stepValue = type === '+' ? stepControl : -stepControl;
+    const newValue = value + stepValue;
+    onChange({ floatValue: isNaN(value) ? stepValue : newValue });
   };
-}
 
-function containsLetters(value: string): boolean {
-  const regex = /\p{L}/u; // Biểu thức chính quy để kiểm tra chữ cái Unicode
-  return regex.test(value);
-}
+  const leftDisabled = disabled || (min !== undefined && value <= min) || isNaN(value);
+  const rightDisabled = disabled || (max !== undefined && value >= max) || isNaN(value);
+
+  return (
+    <div className='number-controller-wrapper'>
+      <button className='square-icon' disabled={leftDisabled} onClick={() => handleChange('-')}>
+        <MinusIcon />
+      </button>
+      <div className='controller-divider'></div>
+      <button className='square-icon' disabled={rightDisabled} onClick={() => handleChange('+')}>
+        <PlusIcon />
+      </button>
+    </div>
+  );
+};
+
+const NumberChevronStepper = ({ value, onChange, stepControl = 1, min, max }: StepperProps) => {
+  const handleChange = (type: '+' | '-') => {
+    const stepValue = type === '+' ? stepControl : -stepControl;
+    const newValue = value + stepValue;
+    onChange({ floatValue: isNaN(value) ? stepValue : newValue });
+  };
+
+  const topDisabled = (max !== undefined && value >= max) || isNaN(value);
+  const bottomDisabled = (min !== undefined && value <= min) || isNaN(value);
+
+  return (
+    <div className='number-controller-wrapper chevron-stepper'>
+      <button className='square-icon' disabled={topDisabled} onClick={() => handleChange('+')}>
+        <ChevronUp />
+      </button>
+      <button className='square-icon' disabled={bottomDisabled} onClick={() => handleChange('-')}>
+        <ChevronDown />
+      </button>
+    </div>
+  );
+};

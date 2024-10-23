@@ -4,8 +4,8 @@ import { CircleDollarSign } from 'lucide-react';
 
 ## Basic
 
-<DemoNumberInput placeholder='Placeholder' unit="$" min={0} max={1000} />
-<DemoNumberInput placeholder='Placeholder' leftIcon={<CircleDollarSign />} unit={["USD", "VND", "EUR", "JPY"]} />
+<DemoNumberInput placeholder='Placeholder'  min={0} max={1000} stepControl={10} stepper="auto"/>
+<DemoNumberInput placeholder='Placeholder' leftIcon={<CircleDollarSign />}  stepper="chevron"/>
 
 ## Clearable
 
@@ -17,9 +17,9 @@ import { CircleDollarSign } from 'lucide-react';
 <DemoNumberInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder' unit="$"/>
 <DemoNumberInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder'  leftIcon={<CircleDollarSign />} />
 <DemoNumberInput disabled isClearable placeholder='Placeholder' unit="$" />
-<DemoNumberInput disabled isClearable value='This is disabled number input' placeholder='Placeholder'  leftIcon={<CircleDollarSign />} />
-<DemoNumberInput readOnly isClearable value='This is read only number input' placeholder='Placeholder' unit="$"/>
-<DemoNumberInput readOnly isClearable value='This is read only number input' placeholder='Placeholder'  leftIcon={<CircleDollarSign />} />
+<DemoNumberInput disabled isClearable value={1000} placeholder='Placeholder'  leftIcon={<CircleDollarSign />} />
+<DemoNumberInput readOnly isClearable value={1000} placeholder='Placeholder' unit="$"/>
+<DemoNumberInput readOnly isClearable value={1000} placeholder='Placeholder'  leftIcon={<CircleDollarSign />} />
 
 ## Floating label
 
@@ -55,9 +55,9 @@ import { CircleDollarSign } from 'lucide-react';
 <DemoNumberInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder' inputSize="md"/>
 <DemoNumberInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder'  leftIcon={<CircleDollarSign />} inputSize="md"/>
 <DemoNumberInput disabled isClearable placeholder='Placeholder' inputSize="md"/>
-<DemoNumberInput disabled isClearable value='This is disabled number input' placeholder='Placeholder'  leftIcon={<CircleDollarSign />} inputSize="md"/>
-<DemoNumberInput readOnly isClearable value='This is read only number input' placeholder='Placeholder' inputSize="md"/>
-<DemoNumberInput readOnly isClearable value='This is read only number input' placeholder='Placeholder'  leftIcon={<CircleDollarSign />} inputSize="md"/>
+<DemoNumberInput disabled isClearable value={1000} placeholder='Placeholder'  leftIcon={<CircleDollarSign />} inputSize="md"/>
+<DemoNumberInput readOnly isClearable value={1000} placeholder='Placeholder' inputSize="md"/>
+<DemoNumberInput readOnly isClearable value={1000} placeholder='Placeholder'  leftIcon={<CircleDollarSign />} inputSize="md"/>
 
 
 {/* /////////////////////////////////////////////////////////////////////////////////////// */}
@@ -82,9 +82,9 @@ import { CircleDollarSign } from 'lucide-react';
 <DemoNumberInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder' theme="alternative"/>
 <DemoNumberInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder'  leftIcon={<CircleDollarSign />} theme="alternative"/>
 <DemoNumberInput disabled isClearable placeholder='Placeholder' theme="alternative"/>
-<DemoNumberInput disabled isClearable value='This is disabled number input' placeholder='Placeholder'  leftIcon={<CircleDollarSign />} theme="alternative"/>
-<DemoNumberInput readOnly isClearable value='This is read only number input' placeholder='Placeholder' />
-<DemoNumberInput readOnly isClearable value='This is read only number input' placeholder='Placeholder'  leftIcon={<CircleDollarSign />} theme="alternative" />
+<DemoNumberInput disabled isClearable value={1000} placeholder='Placeholder'  leftIcon={<CircleDollarSign />} theme="alternative"/>
+<DemoNumberInput readOnly isClearable value={1000} placeholder='Placeholder' />
+<DemoNumberInput readOnly isClearable value={1000} placeholder='Placeholder'  leftIcon={<CircleDollarSign />} theme="alternative" />
 
 ## Floating label
 
@@ -137,9 +137,9 @@ import { CircleDollarSign } from 'lucide-react';
 <DemoNumberInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder' />
 <DemoNumberInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder'  leftIcon={<CircleDollarSign />} />
 <DemoNumberInput disabled isClearable placeholder='Placeholder' />
-<DemoNumberInput disabled isClearable value='This is disabled number input' placeholder='Placeholder'  leftIcon={<CircleDollarSign />} />
-<DemoNumberInput readOnly isClearable value='This is read only number input' placeholder='Placeholder' />
-<DemoNumberInput readOnly isClearable value='This is read only number input' placeholder='Placeholder'  leftIcon={<CircleDollarSign />} />
+<DemoNumberInput disabled isClearable value={1000} placeholder='Placeholder'  leftIcon={<CircleDollarSign />} />
+<DemoNumberInput readOnly isClearable value={1000} placeholder='Placeholder' />
+<DemoNumberInput readOnly isClearable value={1000} placeholder='Placeholder'  leftIcon={<CircleDollarSign />} />
 
 ## Floating label
 

@@ -166,7 +166,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       </>
     );
 
-    const { className: wrapperClassName, rightElement: _, ...restWrapperProps } = wrapperProps || {};
+    const { className: wrapperClassName, ...restWrapperProps } = wrapperProps || {};
 
     return (
       <InputWrapper
