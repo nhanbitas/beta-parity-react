@@ -113,11 +113,11 @@ fieldset:disabled {
 }
 
 .right-element-container {
-  @apply absolute bottom-0 right-0 flex h-full items-center justify-center gap-2 rounded-e-md p-2.5;
+  @apply absolute right-0 top-1/2 flex h-full -translate-y-1/2 items-center justify-center gap-2 rounded-e-md p-2.5;
 }
 
 .left-element-container {
-  @apply absolute bottom-0 left-0 flex h-full items-center justify-center gap-2 rounded-s-md p-2.5;
+  @apply absolute left-0 top-1/2 flex h-full -translate-y-1/2 items-center justify-center gap-2 rounded-s-md p-2.5;
 }
 
 .left-element-container ~ .value-input-wrapper,

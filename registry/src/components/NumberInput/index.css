@@ -9,6 +9,7 @@
 .number-input-unit.selectable {
   @apply relative h-6 rounded-md py-0 transition-colors after:absolute after:right-0.5 after:top-0 after:h-full after:transform after:items-center after:bg-gray-300 after:transition;
 }
+
 .number-input-unit.selectable::after {
   height: 100%;
   width: 1rem;
@@ -23,18 +24,35 @@
 }
 
 /* controller styles */
-.input-wrapper .number-controller-wrapper {
-  @apply flex items-center gap-2;
+.input-wrapper .number-stepper-wrapper {
+  @apply flex h-full items-center gap-2;
 }
 
-.input-wrapper .number-controller-wrapper.chevron-stepper {
-  @apply -m-2.5 flex flex-col items-center gap-0;
-}
-/* TODO: fix padding */
-.input-wrapper .number-controller-wrapper.chevron-stepper button {
-  @apply flex w-8 flex-col items-center gap-0 rounded-none;
+.input-wrapper input.cross-stepper {
+  @apply text-center;
 }
 
-.input-wrapper .number-controller-wrapper .controller-divider {
-  @apply h-5 w-px bg-gray-300;
+/* handle chervon css */
+.input-wrapper .number-stepper-wrapper.chevron-stepper {
+  @apply h-full justify-center rounded-e-md border-2 border-l border-transparent;
+}
+
+.input-wrapper .number-stepper-wrapper.chevron-stepper .chevron-stepper-container {
+  @apply -mr-px flex h-[calc(100%+0.25rem)] flex-col items-center gap-0 overflow-hidden border-l border-[color:var(--par-color-border-field-enabled)];
+}
+
+.right-element-container:has(.number-stepper-wrapper.chevron-stepper) {
+  @apply p-0;
+}
+
+input.par-input:focus ~ .right-element-container .number-stepper-wrapper.chevron-stepper {
+  @apply overflow-hidden;
+}
+
+.input-wrapper .number-stepper-wrapper.chevron-stepper button {
+  @apply flex h-1/2 w-8 shrink-0 items-center gap-0 rounded-none -outline-offset-2 first:rounded-tr-md last:rounded-br-md;
+}
+
+.input-wrapper .number-stepper-wrapper .controller-divider {
+  @apply h-5 w-px border-none bg-[var(--par-color-border-field-enabled)];
 }

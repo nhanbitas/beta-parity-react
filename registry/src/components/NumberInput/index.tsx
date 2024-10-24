@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import './index.css';
-import { NumericFormat, NumericFormatProps } from 'react-number-format';
+import { NumericFormat, NumericFormatProps, SourceInfo } from 'react-number-format';
 import { InputProps, Input } from '../BaseInput';
 import { ChevronDown, ChevronUp, MinusIcon, PlusIcon } from 'lucide-react';
 import classNames from 'classnames';
@@ -29,6 +29,7 @@ export const NumberInput = React.forwardRef<HTMLInputElement, NumberInputProps &
       stepControl = 1,
       stepper,
       type,
+      ActionBtn,
       onUnitChange,
       onClear,
       onValueChange,
@@ -39,8 +40,8 @@ export const NumberInput = React.forwardRef<HTMLInputElement, NumberInputProps &
   ) => {
     const [currentValue, setCurrentValue] = React.useState(value || defaultValue || '');
 
-    const handleChange = (e: any) => {
-      let newValue = e.floatValue;
+    const handleChange = (values: any, event?: SourceInfo) => {
+      let newValue = values.floatValue;
 
       if (min !== undefined && newValue <= min) {
         newValue = min;
@@ -49,16 +50,14 @@ export const NumberInput = React.forwardRef<HTMLInputElement, NumberInputProps &
       }
 
       setCurrentValue(newValue);
+      onChange?.({ target: { value: newValue } } as React.ChangeEvent<HTMLInputElement>);
+      onValueChange?.(newValue, { event } as SourceInfo);
     };
 
     const handleClear = () => {
       onClear?.();
       handleChange({ floatValue: '' });
     };
-
-    React.useEffect(() => {
-      setCurrentValue(value as string | number);
-    }, [value]);
 
     const isSelectUnit = Array.isArray(unit);
     const handleUitChage = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -81,37 +80,82 @@ export const NumberInput = React.forwardRef<HTMLInputElement, NumberInputProps &
       </span>
     ) : null;
 
-    const inputProps = { ...props, ref, value: currentValue, onClear: handleClear, onChange: undefined };
+    const inputProps = { ...props, ref, value: currentValue, onClear: handleClear } as any;
+
     const stepperProps = {
       value: isNaN(currentValue as number) ? 0 : +currentValue,
       min: min,
       max: max,
-      onChange: handleChange,
-      stepControl: stepControl
+      hanldeValue: handleChange,
+      stepControl: stepControl,
+      disabled: props.disabled || props.readOnly
     } as StepperProps;
 
-    const leftElement = inputProps.leftIcon ? <span className='input-icon'>{inputProps.leftIcon}</span> : undefined;
-    const rightElement =
-      stepper === 'auto' ? (
-        <NumberButtonStepper {...stepperProps} />
-      ) : stepper === 'chevron' ? (
-        <NumberChevronStepper {...stepperProps} />
-      ) : (
-        unitElement
-      );
+    const renderLeftElement = (originalElement?: React.ReactNode) => {
+      if (stepper === 'cross') {
+        return (
+          <>
+            {originalElement}
+            <NumberButtonStepper {...stepperProps} minusOnly />
+          </>
+        );
+      }
+      return inputProps.leftIcon ? <span className='input-icon'>{inputProps.leftIcon}</span> : undefined;
+    };
+
+    const renderRightElement = (originalElement?: React.ReactNode) => {
+      switch (stepper) {
+        case 'auto':
+          return (
+            <>
+              {originalElement}
+              <NumberButtonStepper {...stepperProps} />
+            </>
+          );
+        case 'chevron':
+          return (
+            <>
+              {originalElement}
+              <NumberButtonStepper {...stepperProps} isChervon />
+            </>
+          );
+        case 'cross':
+          return (
+            <>
+              {originalElement}
+              <NumberButtonStepper {...stepperProps} plusOnly />
+            </>
+          );
+        default:
+          return unitElement || ActionBtn;
+      }
+    };
+
+    React.useEffect(() => {
+      setCurrentValue(value as string | number);
+    }, [value]);
 
     return (
       <NumericFormat
         {...inputProps}
-        className={classNames('number-input', className)}
+        customInput={Input}
+        className={classNames('number-input', className, { [`${stepper}-stepper`]: !!stepper })}
         getInputRef={ref}
+        value={currentValue}
         onValueChange={handleChange}
+        // isAllowed is a pre handle function that returns true if the value is allowed
+        isAllowed={({ floatValue }) => {
+          const isValidValue =
+            floatValue === undefined ||
+            ((min === undefined || floatValue >= min) && (max === undefined || floatValue <= max));
+          return isValidValue;
+        }}
         wrapperProps={{
           ...inputProps.wrapperProps,
-          leftElement: leftElement,
-          rightElement: rightElement
+          leftElement: renderLeftElement(inputProps.wrapperProps?.leftElement)
+          // No overwrite right element because of base input features, use ActionBtn instead
         }}
-        customInput={Input}
+        ActionBtn={renderRightElement(inputProps.ActionBtn)}
       />
     );
   }
@@ -124,49 +168,78 @@ NumberInput.displayName = 'NumberInput';
 // =========================
 interface StepperProps extends Pick<NumberInputProps, 'stepControl' | 'min' | 'max' | 'disabled'> {
   value: number;
-  onChange: (e: any) => void;
+  hanldeValue: (e: any) => void;
+  minusOnly?: boolean;
+  plusOnly?: boolean;
+  isChervon?: boolean;
 }
 
-const NumberButtonStepper = ({ value, onChange, stepControl = 1, min, max, disabled = false }: StepperProps) => {
+// TODO: fix double dispatch events
+const NumberButtonStepper = ({
+  value,
+  hanldeValue,
+  stepControl = 1,
+  min,
+  max,
+  disabled = false,
+  minusOnly = false,
+  plusOnly = false,
+  isChervon = false
+}: StepperProps) => {
   const handleChange = (type: '+' | '-') => {
     const stepValue = type === '+' ? stepControl : -stepControl;
     const newValue = value + stepValue;
-    onChange({ floatValue: isNaN(value) ? stepValue : newValue });
+    hanldeValue({ floatValue: isNaN(value) ? stepValue : newValue });
   };
 
-  const leftDisabled = disabled || (min !== undefined && value <= min) || isNaN(value);
-  const rightDisabled = disabled || (max !== undefined && value >= max) || isNaN(value);
+  const minusDisable = disabled || (min !== undefined && value <= min) || isNaN(value);
+  const plusDisable = disabled || (max !== undefined && value >= max) || isNaN(value);
+
+  if (minusOnly) {
+    return (
+      <div className='number-stepper-wrapper'>
+        <button className='square-icon' disabled={minusDisable} onClick={() => handleChange('-')}>
+          <MinusIcon />
+        </button>
+        <div className='controller-divider'></div>
+      </div>
+    );
+  }
+
+  if (plusOnly) {
+    return (
+      <div className='number-stepper-wrapper'>
+        <div className='controller-divider'></div>
+        <button className='square-icon' disabled={plusDisable} onClick={() => handleChange('+')}>
+          <PlusIcon />
+        </button>
+      </div>
+    );
+  }
+
+  if (isChervon) {
+    return (
+      <div className='number-stepper-wrapper chevron-stepper'>
+        <div className='chevron-stepper-container'>
+          <button className='square-icon' disabled={plusDisable} onClick={() => handleChange('+')}>
+            <ChevronUp />
+          </button>
+          <button className='square-icon' disabled={minusDisable} onClick={() => handleChange('-')}>
+            <ChevronDown />
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div className='number-controller-wrapper'>
-      <button className='square-icon' disabled={leftDisabled} onClick={() => handleChange('-')}>
+    <div className='number-stepper-wrapper'>
+      <button className='square-icon' disabled={minusDisable} onClick={() => handleChange('-')}>
         <MinusIcon />
       </button>
       <div className='controller-divider'></div>
-      <button className='square-icon' disabled={rightDisabled} onClick={() => handleChange('+')}>
+      <button className='square-icon' disabled={plusDisable} onClick={() => handleChange('+')}>
         <PlusIcon />
-      </button>
-    </div>
-  );
-};
-
-const NumberChevronStepper = ({ value, onChange, stepControl = 1, min, max }: StepperProps) => {
-  const handleChange = (type: '+' | '-') => {
-    const stepValue = type === '+' ? stepControl : -stepControl;
-    const newValue = value + stepValue;
-    onChange({ floatValue: isNaN(value) ? stepValue : newValue });
-  };
-
-  const topDisabled = (max !== undefined && value >= max) || isNaN(value);
-  const bottomDisabled = (min !== undefined && value <= min) || isNaN(value);
-
-  return (
-    <div className='number-controller-wrapper chevron-stepper'>
-      <button className='square-icon' disabled={topDisabled} onClick={() => handleChange('+')}>
-        <ChevronUp />
-      </button>
-      <button className='square-icon' disabled={bottomDisabled} onClick={() => handleChange('-')}>
-        <ChevronDown />
       </button>
     </div>
   );
