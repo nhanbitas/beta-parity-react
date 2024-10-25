@@ -28,7 +28,7 @@
   @apply flex h-full items-center gap-2;
 }
 
-.input-wrapper input.cross-stepper {
+.input-wrapper input.separate-stepper {
   @apply text-center;
 }
 
