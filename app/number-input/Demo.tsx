@@ -17,6 +17,7 @@ export const DemoNumberInput = (props: Props) => {
       <NumberInput
         value={value}
         onValueChange={handleChange}
+        allowInput={false}
         thousandSeparator='.'
         decimalSeparator=','
         wrapperProps={{ className: '!w-64' }}

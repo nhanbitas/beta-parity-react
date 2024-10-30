@@ -112,14 +112,12 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
     const handleClear = () => {
       if (disabled || readOnly) return;
-
       if (combinedRef.current) {
         setCurrentValue('');
         combinedRef.current.focus();
       }
 
       onClear && onClear();
-
       onChange && onChange({ target: { value: '' } } as React.ChangeEvent<HTMLInputElement>);
     };
 
@@ -250,6 +248,7 @@ export const InputWrapper = React.forwardRef<HTMLDivElement, InputWrapperProps>(
       if (rightElementRef.current) {
         resizeObserver.observe(rightElementRef.current);
       }
+
       return () => {
         resizeObserver.disconnect();
       };
@@ -257,7 +256,6 @@ export const InputWrapper = React.forwardRef<HTMLDivElement, InputWrapperProps>(
 
     let childrenWithPadding = React.Children.map(children, (child) => {
       if (!React.isValidElement(child)) return child;
-
       if (child.type === 'input' || child.type === 'select') {
         return React.cloneElement(child as React.ReactElement, {
           style: {

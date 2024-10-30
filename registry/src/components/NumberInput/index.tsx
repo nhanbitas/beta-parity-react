@@ -55,6 +55,13 @@ export interface NumberInputProps extends Omit<InputProps, 'onChange'> {
    * @memberof NumberInputProps
    */
   stepControl?: number;
+
+  /**
+   * Prevent or not prevent input when having steppers.
+   *
+   * @memberof NumberInputProps
+   */
+  allowInput?: boolean;
 }
 
 export const NumberInput = React.forwardRef<HTMLInputElement, NumberInputProps & NumericFormatProps>(
@@ -68,7 +75,9 @@ export const NumberInput = React.forwardRef<HTMLInputElement, NumberInputProps &
       max,
       stepControl = 1,
       stepper,
+      allowInput = true,
       type,
+      isClearable,
       ActionBtn,
       onUnitChange,
       onClear,
@@ -79,6 +88,7 @@ export const NumberInput = React.forwardRef<HTMLInputElement, NumberInputProps &
     ref
   ) => {
     const isControlled = value !== undefined;
+    const isClearableNumberInput = !!stepper ? false : isClearable;
     const [currentValue, setCurrentValue] = React.useState(value ?? defaultValue ?? '');
 
     const handleChange = (values: any, event?: SourceInfo) => {
@@ -121,12 +131,12 @@ export const NumberInput = React.forwardRef<HTMLInputElement, NumberInputProps &
     ) : null;
 
     // define needed props for input and stepper
-    const inputProps = { ...props, ref, value: currentValue, onClear: handleClear } as any;
+    const inputProps = { ...props, value: currentValue, onClear: handleClear } as any;
     const stepperProps = {
       value: isNaN(currentValue as number) || currentValue === undefined ? 0 : +currentValue,
       min: min,
       max: max,
-      hanldeValue: handleChange,
+      handleValue: handleChange,
       stepControl: stepControl,
       disabled: props.disabled || props.readOnly,
       formatProps: {
@@ -193,11 +203,13 @@ export const NumberInput = React.forwardRef<HTMLInputElement, NumberInputProps &
       <NumericFormat
         {...inputProps}
         customInput={Input}
+        isClearable={isClearableNumberInput}
         className={classNames('number-input', className, { [`${stepper}-stepper`]: !!stepper })}
         getInputRef={ref}
         onValueChange={handleChange}
         isAllowed={({ floatValue }) => {
-          // TODO: fix case having value but onValueChange not change value - backlog
+          // TODO: fix case having value but onValueChange not change value
+          if (!allowInput && !!stepper) return false;
           if (isControlled && !onValueChange) return false;
           if (floatValue === undefined || floatValue.toString() === '') return true;
           const isValidValue = (min === undefined || floatValue >= min) && (max === undefined || floatValue <= max);
@@ -236,7 +248,7 @@ type FormatProps = Pick<
 
 interface StepperProps extends Pick<NumberInputProps, 'stepControl' | 'min' | 'max' | 'disabled'> {
   value: number;
-  hanldeValue: (e: any) => void;
+  handleValue: (e: any) => void;
   minusOnly?: boolean;
   plusOnly?: boolean;
   isChervon?: boolean;
@@ -245,7 +257,7 @@ interface StepperProps extends Pick<NumberInputProps, 'stepControl' | 'min' | 'm
 
 const NumberButtonStepper = ({
   value,
-  hanldeValue,
+  handleValue,
   stepControl = 1,
   min,
   max,
@@ -256,35 +268,68 @@ const NumberButtonStepper = ({
   formatProps = {}
 }: StepperProps) => {
   // create function handle value from number input, after that, render the suitable stepper button
+  const intervalValue = React.useRef<number>(value);
+  const intervalRef = React.useRef<NodeJS.Timeout | null>(null);
+  const debounceRef = React.useRef<NodeJS.Timeout | null>(null);
+
+  const minusDisable = disabled || (min !== undefined && intervalValue.current <= min) || isNaN(intervalValue.current);
+  const plusDisable = disabled || (max !== undefined && intervalValue.current >= max) || isNaN(intervalValue.current);
+
   const handleChange = (type: '+' | '-') => {
     const stepValue = type === '+' ? stepControl : -stepControl;
-    let newValue = value + stepValue;
+    intervalValue.current = intervalValue.current + stepValue;
 
-    // handle min and max when value is change
-    // if value larger than max, the new value is reset to max value
-    // if value lower than min, the new value is reset to min value
-    if (min !== undefined && newValue <= min) {
-      newValue = min;
-    } else if (max !== undefined && newValue >= max) {
-      newValue = max;
+    if (min !== undefined && intervalValue.current <= min) {
+      intervalValue.current = min;
+    } else if (max !== undefined && intervalValue.current >= max) {
+      intervalValue.current = max;
     }
 
-    hanldeValue({
-      floatValue: isNaN(value) ? stepValue : newValue,
-      value: newValue.toString(),
-      formattedValue: numericFormatter(newValue.toString(), formatProps)
+    handleValue({
+      floatValue: isNaN(value) ? stepValue : intervalValue.current,
+      value: intervalValue.current.toString(),
+      formattedValue: numericFormatter(intervalValue.current.toString(), formatProps)
     });
   };
 
-  const minusDisable = disabled || (min !== undefined && value <= min) || isNaN(value);
-  const plusDisable = disabled || (max !== undefined && value >= max) || isNaN(value);
+  // Recall +/- when user press button
+  const startInterval = (type: '+' | '-') => {
+    handleChange(type);
+    debounceRef.current = setTimeout(() => (intervalRef.current = setInterval(() => handleChange(type), 150)), 1000);
+  };
+
+  // Stop +/- when mouse leave button
+  const stopInterval = () => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    if (debounceRef.current) clearInterval(debounceRef.current);
+  };
+
+  const generateProps = (type: '+' | '-') => {
+    return {
+      className: 'square-icon',
+      disabled: type === '-' ? minusDisable : plusDisable,
+      onMouseDown: () => startInterval(type),
+      onMouseUp: () => stopInterval(),
+      onMouseLeave: () => stopInterval()
+    };
+  };
+
+  React.useEffect(() => {
+    if (value !== intervalValue.current) {
+      intervalValue.current = value;
+    }
+  }, [value]);
+
+  if (plusDisable || minusDisable) stopInterval();
+
+  const MinusButton = <button {...generateProps('-')}>{isChervon ? <ChevronDown /> : <MinusIcon />}</button>;
+
+  const PlusButton = <button {...generateProps('+')}>{isChervon ? <ChevronUp /> : <PlusIcon />}</button>;
 
   if (minusOnly) {
     return (
       <div className='number-stepper-wrapper'>
-        <button className='square-icon' disabled={minusDisable} onClick={() => handleChange('-')}>
-          <MinusIcon />
-        </button>
+        {MinusButton}
         <div className='controller-divider'></div>
       </div>
     );
@@ -294,9 +339,7 @@ const NumberButtonStepper = ({
     return (
       <div className='number-stepper-wrapper'>
         <div className='controller-divider'></div>
-        <button className='square-icon' disabled={plusDisable} onClick={() => handleChange('+')}>
-          <PlusIcon />
-        </button>
+        {PlusButton}
       </div>
     );
   }
@@ -305,12 +348,8 @@ const NumberButtonStepper = ({
     return (
       <div className='number-stepper-wrapper chevron-stepper'>
         <div className='chevron-stepper-container'>
-          <button className='square-icon' disabled={plusDisable} onClick={() => handleChange('+')}>
-            <ChevronUp />
-          </button>
-          <button className='square-icon' disabled={minusDisable} onClick={() => handleChange('-')}>
-            <ChevronDown />
-          </button>
+          {PlusButton}
+          {MinusButton}
         </div>
       </div>
     );
@@ -318,13 +357,9 @@ const NumberButtonStepper = ({
 
   return (
     <div className='number-stepper-wrapper'>
-      <button className='square-icon' disabled={minusDisable} onClick={() => handleChange('-')}>
-        <MinusIcon />
-      </button>
+      {MinusButton}
       <div className='controller-divider'></div>
-      <button className='square-icon' disabled={plusDisable} onClick={() => handleChange('+')}>
-        <PlusIcon />
-      </button>
+      {PlusButton}
     </div>
   );
 };
