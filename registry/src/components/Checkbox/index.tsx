@@ -1,14 +1,28 @@
 'use client';
 
+import './variables.css';
 import './index.css';
 import React from 'react';
 import classNames from 'classnames';
-import Base, { BaseProps } from '../Base';
+import { BaseProps } from '../Base';
 import { Input, InputProps } from '../BaseInput';
 import useCombinedRefs from '../hooks/useCombinedRefs';
-import { PolymorphicComponentProps, createPolymorphicComponent } from '../Base/factory';
+
+const colorMap = {
+  neutral: 'neutral',
+  accent: 'accent'
+} as const;
 
 export interface CheckboxProps extends InputProps {
+  /**
+   * The color of the checkbox, can be one of the keys from the colorMap.
+   *
+   * "neutral" is default
+   *
+   * @type {keyof typeof colorMap}
+   * @memberof CheckboxProps
+   */
+  color?: keyof typeof colorMap;
   /**
    * The label for the checkbox.
    * Can be a string or a React node.
@@ -45,7 +59,10 @@ export interface CheckboxProps extends InputProps {
 }
 
 export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
-  ({ type = 'checkbox', label, sublabel, indeterminate = false, checkboxWrapperProps, ...props }, ref) => {
+  (
+    { type = 'checkbox', color = 'neutral', label, sublabel, indeterminate = false, checkboxWrapperProps, ...props },
+    ref
+  ) => {
     const checkboxRef = React.useRef(null);
     const combinedRef = useCombinedRefs(checkboxRef, ref);
 
@@ -57,7 +74,10 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
 
     return (
       <CheckBoxWrapper aria-disabled={props.disabled} {...checkboxWrapperProps}>
-        <Input className='checkbox' type={type} ref={combinedRef} {...props} />
+        <div className='checkbox-input'>
+          <CheckboxIcon indeterminate={indeterminate} color={color} checked={props.checked || false} />
+          <input className={classNames('par-checkbox', colorMap[color])} type='checkbox' ref={combinedRef} {...props} />
+        </div>
         {label || sublabel ? (
           <div className='input-label-wrapper'>
             {label && <span className='input-label'>{label}</span>}
@@ -298,6 +318,88 @@ export const CheckBoxWrapper = React.forwardRef<
 });
 
 CheckBoxWrapper.displayName = 'CheckBoxWrapper';
+
+const CheckboxIcon = ({
+  indeterminate,
+  checked,
+  color
+}: {
+  indeterminate: boolean;
+  checked: boolean;
+  color: string;
+}) => {
+  if (indeterminate) {
+    return (
+      <svg
+        className='checkbox-icon'
+        xmlns='http://www.w3.org/2000/svg'
+        width={16}
+        height={16}
+        viewBox='0 0 16 16'
+        fill='none'
+      >
+        <rect
+          x={1}
+          y={1}
+          width={14}
+          height={14}
+          rx={1}
+          stroke='var(--par-color-icon-checkbox-indeterminate)'
+          strokeWidth={2}
+        />
+        <path
+          d='M4 8H12'
+          stroke='var(--par-color-icon-checkbox-indeterminate)'
+          strokeWidth={2}
+          strokeLinecap='round'
+          strokeLinejoin='round'
+        />
+      </svg>
+    );
+  }
+  if (checked) {
+    return (
+      <svg className='checkbox-icon' xmlns='http://www.w3.org/2000/svg' width={16} height={16} viewBox='0 0 16 16'>
+        <rect width={16} height={16} rx={2} fill={`var(--par-color-bg-checkbox-${color}-selected)`} />
+        <path
+          d='M4 8L6.66353 11L12 5'
+          className='checkbox-icon-text'
+          stroke={`var(--par-color-icon-checkbox-${color}-selected)`}
+          strokeWidth='1.33'
+          strokeLinecap='round'
+          strokeLinejoin='round'
+        />
+      </svg>
+    );
+  }
+  return (
+    <svg
+      className='checkbox-icon'
+      xmlns='http://www.w3.org/2000/svg'
+      width={16}
+      height={16}
+      viewBox='0 0 16 16'
+      fill='none'
+    >
+      <g clipPath='url(#clip0_831_96869)'>
+        <rect
+          x={1}
+          y={1}
+          width={14}
+          height={14}
+          rx={1}
+          stroke='var(--par-color-icon-checkbox-enabled)'
+          strokeWidth={2}
+        />
+      </g>
+      <defs>
+        <clipPath id='clip0_831_96869'>
+          <rect width={16} height={16} fill='white' />
+        </clipPath>
+      </defs>
+    </svg>
+  );
+};
 
 /**
  * Recursive function to generate the checkboxes

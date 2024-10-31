@@ -1,56 +1,50 @@
 /* Checkbox & Radio */
-input[type='checkbox'].par-input:disabled {
+input[type='checkbox'].par-checkbox:disabled {
   opacity: 0.5;
 }
 
 /* Override browser's default checkbox input */
-input[type='checkbox'].par-input {
+input[type='checkbox'].par-checkbox {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border-radius: 0.1875rem;
-  padding: 0;
+  border-radius: 0.1875rem !important;
+  padding: 0 !important;
   min-width: 1rem;
   min-height: 1rem;
   max-width: 1rem;
   max-height: 1rem;
-  border: 0.125rem solid #a8a8a8;
   position: relative;
-  top: 0.125rem;
-  background-color: white;
+  background-color: var(--par-transparent);
+  /* @apply border-transparent bg-transparent text-transparent; */
 }
 
-input[type='checkbox'].par-input:focus {
-  border-radius: 0.1875rem;
+input[type='checkbox'].par-checkbox:checked {
+  @apply border-transparent bg-transparent text-transparent;
 }
 
-input[type='checkbox'].par-input:checked {
-  border: 0.1875rem solid transparent;
-  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
-  background-color: #4294ff;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-image: url("data:image/svg+xml;utf8,<svg height='12px' width='12px' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='none' d='M20 6L9 17L4 12' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'></path></svg>");
-}
-
-input[type='checkbox'].par-input:indeterminate {
-  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
-  background-color: white;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-image: url("data:image/svg+xml;utf8,<svg height='12px' width='12px' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='none' d='M5 12H19' stroke='%23a8a8a8' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'></path></svg>");
+input[type='checkbox'].par-checkbox:indeterminate {
+  @apply border-transparent bg-transparent text-transparent;
 }
 
 .checkbox-wrapper {
-  @apply flex w-fit gap-3;
+  @apply relative flex w-fit gap-3;
 }
 
 .checkbox-wrapper[aria-disabled='true'] {
   @apply opacity-50;
 }
 
+.checkbox-input {
+  @apply relative flex h-fit w-fit items-center justify-center;
+}
+
+.checkbox-icon {
+  @apply absolute left-1/2 top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-sm p-0;
+}
+
 .checkbox-wrapper .input-wrapper {
-  @apply inline-block w-fit;
+  @apply inline-block h-5 p-0;
 }
 
 .checkbox-wrapper .input-label-wrapper {
@@ -58,11 +52,11 @@ input[type='checkbox'].par-input:indeterminate {
 }
 
 .input-label {
-  @apply text-body-compact-02 w-full select-none flex-col break-words  text-gray-900;
+  @apply text-body-compact-02 w-full select-none flex-col break-words text-gray-900;
 }
 
 .input-sublabel {
-  @apply text-helper-01 line-clamp-4 w-full select-none  text-gray-500;
+  @apply text-helper-01 line-clamp-4 w-full select-none text-gray-500;
 }
 
 .checkbox-group {
@@ -77,4 +71,15 @@ input[type='checkbox'].par-input:indeterminate {
   @apply flex-row flex-wrap gap-4;
 }
 
-/* Checkbox & Radio */
+/* checkbox colors */
+input[type='checkbox'].par-checkbox.neutral:checked ~ .checkbox-icon {
+  @apply bg-[var(--par-color-bg-checkbox-neutral-selected)];
+}
+
+input[type='checkbox'].par-checkbox.neutral:checked ~ .checkbox-icon .checkbox-icon-text {
+  @apply text-[var(--par-color-icon-checkbox-neutral-selected)];
+}
+
+input[type='checkbox'].par-checkbox.accent:checked {
+  @apply bg-[var(--par-color-bg-checkbox-accent-selected)] text-[var(--par-color-icon-checkbox-accent-selected)];
+}
