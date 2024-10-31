@@ -1,0 +1,18 @@
+:root,
+[data-scheme='light'] {
+  --par-color-icon-radio-enabled: var(--par-gray-550);
+  --par-color-icon-radio-disabled: rgb(from var(--par-gray-550) r g b / 0.5);
+  --par-color-icon-radio-neutral-selected: var(--par-neutral-900);
+  --par-color-icon-radio-neutral-disabled: rgb(from var(--par-neutral-900) r g b / 0.5);
+  --par-color-icon-radio-accent-selected: var(--par-accent-900);
+  --par-color-icon-radio-accent-disabled: rgb(from var(--par-accent-900) r g b / 0.5);
+}
+
+[data-scheme='dark'] {
+  --par-color-icon-radio-enabled: var(--par-gray-200);
+  --par-color-icon-radio-disabled: rgb(from var(--par-gray-200) r g b / 0.5);
+  --par-color-icon-radio-neutral-selected: var(--par-neutral-200);
+  --par-color-icon-radio-neutral-disabled: rgb(from var(--par-neutral-200) r g b / 0.5);
+  --par-color-icon-radio-accent-selected: var(--par-accent-500);
+  --par-color-icon-radio-accent-disabled: rgb(from var(--par-accent-500) r g b / 0.5);
+}

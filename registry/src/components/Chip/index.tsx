@@ -18,12 +18,12 @@ const sizeMap = {
   sm: 'small',
   md: 'medium',
   lg: 'large'
-};
+} as const;
 
 const kindMap = {
   glass: 'glass',
   outlined: 'outlined'
-};
+} as const;
 
 /**
  * Props for the Chip component.

@@ -4,22 +4,22 @@
 
 :root,
 [data-scheme='light'] {
-  --par-focus-visible-ring-color: rgba(22, 22, 22, 1);
+  --par-color-ring-visible-focused: rgba(22, 22, 22, 1);
 }
 
 [data-scheme='dark'] {
-  --par-focus-visible-ring-color: rgba(255, 255, 255, 1);
+  --par-color-ring-visible-focused: rgba(255, 255, 255, 1);
 }
 
 *:focus-visible,
 *[data-focus-visible='true'] {
-  outline: 2px solid var(--par-focus-visible-ring-color);
+  outline: 2px solid var(--par-color-ring-visible-focused);
   outline-offset: 1px;
 }
 
 [data-theme='dark'] *:focus-visible,
 [data-theme='dark'] *[data-focus-visible='true'] {
-  outline: 2px solid var(--par-focus-visible-ring-color);
+  outline: 2px solid var(--par-color-ring-visible-focused);
   outline-offset: 1px;
 }
 

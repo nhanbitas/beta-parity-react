@@ -1,0 +1,40 @@
+@import '../theme/alias/text-icon-colors.css';
+
+:root,
+[data-scheme='light'] {
+  --par-color-icon-checkbox-enabled: var(--par-gray-550);
+  --par-color-icon-checkbox-disabled: rgb(from var(--par-gray-550) r g b / 0.5);
+  --par-color-icon-checkbox-indeterminate: var(--par-gray-550);
+  --par-color-icon-checkbox-indeterminate-disabled: rgb(from var(--par-gray-550) r g b / 0.5);
+
+  --par-color-icon-checkbox-neutral-selected: var(--par-white);
+  --par-color-bg-checkbox-neutral-selected: var(--par-neutral-900);
+
+  --par-color-icon-checkbox-accent-selected: var(--par-white);
+  --par-color-bg-checkbox-accent-selected: var(--par-accent-500);
+
+  --par-color-icon-checkbox-neutral-disabled: rgb(from var(--par-white) r g b / 0.5);
+  --par-color-bg-checkbox-neutral-disabled: rgb(from var(--par-neutral-900) r g b / 0.5);
+
+  --par-color-icon-checkbox-accent-disabled: rgb(from var(--par-white) r g b / 0.5);
+  --par-color-bg-checkbox-accent-disabled: rgb(from var(--par-accent-500) r g b / 0.5);
+}
+
+[data-scheme='dark'] {
+  --par-color-icon-checkbox-enabled: var(--par-gray-200);
+  --par-color-icon-checkbox-disabled: rgb(from var(--par-gray-200) r g b / 0.5);
+  --par-color-icon-checkbox-indeterminate: var(--par-gray-200);
+  --par-color-icon-checkbox-indeterminate-disabled: rgb(from var(--par-gray-200) r g b / 0.5);
+
+  --par-color-icon-checkbox-neutral-selected: var(--par-gray-950);
+  --par-color-bg-checkbox-neutral-selected: var(--par-neutral-200);
+
+  --par-color-icon-checkbox-accent-selected: var(--par-white);
+  --par-color-bg-checkbox-accent-selected: var(--par-accent-500);
+
+  --par-color-icon-checkbox-neutral-disabled: rgb(from var(--par-gray-950) r g b / 0.5);
+  --par-color-bg-checkbox-neutral-disabled: rgb(from var(--par-neutral-200) r g b / 0.5);
+
+  --par-color-icon-checkbox-accent-disabled: rgb(from var(--par-white) r g b / 0.5);
+  --par-color-bg-checkbox-accent-disabled: rgb(from var(--par-accent-500) r g b / 0.5);
+}
