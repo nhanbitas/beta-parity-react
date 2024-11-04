@@ -1,12 +1,22 @@
 'use client';
 
 import React from 'react';
-import { Input, InputProps } from '../BaseInput';
+import { InputProps } from '../BaseInput';
 import { createPolymorphicComponent, PolymorphicComponentProps } from '../Base/factory';
 import classNames from 'classnames';
 import Base, { BaseProps } from '../Base';
 import './index.css';
 import useDidMountEffect from '../hooks/useDidMountEffect';
+
+const colorMap = {
+  neutral: 'neutral',
+  accent: 'accent'
+} as const;
+
+// =========================
+// Radio
+// =========================
+// Declare and export Radio type and Radio component
 
 export interface RadioProps extends InputProps {
   /**
@@ -37,10 +47,32 @@ export interface RadioProps extends InputProps {
 }
 
 export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
-  ({ type = 'radio', name, label, sublabel, radioWrapperProps, ...props }, ref) => {
+  ({ name, label, sublabel, radioWrapperProps, color = 'neutral', checked, onChange, ...props }, ref) => {
+    const [currentChecked, setCurrentChecked] = React.useState(checked || false);
+
+    const handleChange = (e: any) => {
+      if (props.disabled || props.readOnly) return;
+      checked !== undefined ? setCurrentChecked(checked || false) : setCurrentChecked(e.target.checked);
+      onChange?.(e);
+    };
+
+    React.useEffect(() => {
+      setCurrentChecked(checked || false);
+    }, [checked]);
+
     return (
       <RadioWrapper aria-disabled={props.disabled} {...radioWrapperProps}>
-        <Input className='radio' name={name} type={type} ref={ref} {...props} />
+        <div className='radio-input'>
+          <RadioIcon color={color} checked={currentChecked || false} disabled={props.disabled || false} />
+          <input
+            className={classNames('par-radio', colorMap[color as keyof typeof colorMap])}
+            type='radio'
+            ref={ref}
+            checked={currentChecked}
+            onChange={handleChange}
+            {...props}
+          />
+        </div>
         {label || sublabel ? (
           <div className='input-label-wrapper'>
             {label && <span className='input-label'>{label}</span>}
@@ -55,6 +87,11 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
 );
 
 Radio.displayName = 'Radio';
+
+// =========================
+// RadioGroup
+// =========================
+// Declare and export RadioGroup type and RadioGroup component
 
 export interface RadioGroupProps extends BaseProps {
   /**
@@ -189,6 +226,11 @@ export const RadioGroup = createPolymorphicComponent<'div', RadioGroupProps>(
   }
 );
 
+// =========================
+// RadioWrapper
+// =========================
+// Declare and export RadioWrapper type and RadioWrapper component
+
 export interface RadioWrapperProps extends BaseProps {}
 
 /**
@@ -208,3 +250,48 @@ export const RadioWrapper = React.forwardRef<
 });
 
 RadioWrapper.displayName = 'RadioWrapper';
+
+// =========================
+// RadioIcon
+// =========================
+// Declare and export RadioIcon type and RadioIcon component
+
+export interface RadioIconProps extends BaseProps {
+  checked?: boolean;
+  disabled?: boolean;
+  color?: string;
+}
+
+export const RadioIcon = React.forwardRef<HTMLLabelElement, RadioIconProps & React.HTMLAttributes<HTMLLabelElement>>(
+  ({ className, children, checked, color, ...props }, ref) => {
+    if (checked) {
+      return (
+        <svg
+          className='radio-icon radio-checked'
+          xmlns='http://www.w3.org/2000/svg'
+          width={16}
+          height={16}
+          viewBox='0 0 16 16'
+          fill='none'
+        >
+          <rect x='2.5' y='2.5' width={11} height={11} rx='5.5' stroke='#262626' strokeWidth={5} />
+        </svg>
+      );
+    }
+
+    return (
+      <svg
+        className='radio-icon'
+        xmlns='http://www.w3.org/2000/svg'
+        width={16}
+        height={16}
+        viewBox='0 0 16 16'
+        fill='none'
+      >
+        <rect x={1} y={1} width={14} height={14} rx={7} stroke='#6B6B6B' strokeWidth={2} />
+      </svg>
+    );
+  }
+);
+
+RadioIcon.displayName = 'RadioIcon';
