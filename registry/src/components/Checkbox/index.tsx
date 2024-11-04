@@ -5,13 +5,18 @@ import './index.css';
 import React from 'react';
 import classNames from 'classnames';
 import { BaseProps } from '../Base';
-import { Input, InputProps } from '../BaseInput';
+import { InputProps } from '../BaseInput';
 import useCombinedRefs from '../hooks/useCombinedRefs';
 
 const colorMap = {
   neutral: 'neutral',
   accent: 'accent'
 } as const;
+
+// =========================
+// Checkbox
+// =========================
+// Declare and export Checkbox type and Checkbox component
 
 export interface CheckboxProps extends InputProps {
   /**
@@ -60,11 +65,28 @@ export interface CheckboxProps extends InputProps {
 
 export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
   (
-    { type = 'checkbox', color = 'neutral', label, sublabel, indeterminate = false, checkboxWrapperProps, ...props },
+    {
+      type = 'checkbox',
+      color = 'neutral',
+      label,
+      sublabel,
+      checked,
+      indeterminate = false,
+      checkboxWrapperProps,
+      onChange,
+      ...props
+    },
     ref
   ) => {
     const checkboxRef = React.useRef(null);
     const combinedRef = useCombinedRefs(checkboxRef, ref);
+    const [currentChecked, setCurrentChecked] = React.useState(checked || false);
+
+    const handleChange = (e: any) => {
+      if (props.disabled || props.readOnly) return;
+      checked !== undefined ? setCurrentChecked(checked || false) : setCurrentChecked(e.target.checked);
+      onChange?.(e);
+    };
 
     React.useEffect(() => {
       if (combinedRef.current) {
@@ -72,11 +94,27 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
       }
     }, [indeterminate, combinedRef]);
 
+    React.useEffect(() => {
+      setCurrentChecked(checked || false);
+    }, [checked]);
+
     return (
       <CheckBoxWrapper aria-disabled={props.disabled} {...checkboxWrapperProps}>
         <div className='checkbox-input'>
-          <CheckboxIcon indeterminate={indeterminate} color={color} checked={props.checked || false} />
-          <input className={classNames('par-checkbox', colorMap[color])} type='checkbox' ref={combinedRef} {...props} />
+          <CheckboxIcon
+            indeterminate={indeterminate}
+            color={color}
+            checked={currentChecked || false}
+            disabled={props.disabled || false}
+          />
+          <input
+            className={classNames('par-checkbox', colorMap[color])}
+            type='checkbox'
+            ref={combinedRef}
+            checked={currentChecked}
+            onChange={handleChange}
+            {...props}
+          />
         </div>
         {label || sublabel ? (
           <div className='input-label-wrapper'>
@@ -93,6 +131,11 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
 
 Checkbox.displayName = 'Checkbox';
 
+// =========================
+// CheckboxGroup
+// =========================
+// Declare and export CheckboxGroup type and CheckboxGroup component
+
 export interface CheckboxTreeItem {
   value: string;
   label: string | React.ReactNode;
@@ -105,7 +148,7 @@ export interface CheckboxTreeItem {
 
 export type DataItems = CheckboxTreeItem[];
 
-export interface CheckboxGroup extends BaseProps {
+export interface CheckboxGroup extends Pick<CheckboxProps, 'color'>, BaseProps {
   /**
    * The children nodes of the CheckboxGroup.
    *
@@ -299,13 +342,13 @@ export const CheckboxGroup = ({
   return <RecursiveCheckbox tree={treeData || rootData || []} handleChange={handleChange} {...props} />;
 };
 
+// =========================
+// CheckBoxWrapper
+// =========================
+// Declare and export CheckBoxWrapper type and CheckBoxWrapper component
+
 export interface CheckBoxWrapperProps extends BaseProps {}
 
-/**
- * Create checkbox wrapper for checkbox component
- *
- * Props of wrapper extends from BaseProps
- */
 export const CheckBoxWrapper = React.forwardRef<
   HTMLLabelElement,
   CheckBoxWrapperProps & React.HTMLAttributes<HTMLLabelElement>
@@ -319,18 +362,27 @@ export const CheckBoxWrapper = React.forwardRef<
 
 CheckBoxWrapper.displayName = 'CheckBoxWrapper';
 
+// =========================
+// CheckboxIcon
+// =========================
+// Declare and export CheckboxIcon type and CheckboxIcon component
+
 const CheckboxIcon = ({
   indeterminate,
   checked,
-  color
+  color,
+  disabled
 }: {
   indeterminate: boolean;
   checked: boolean;
   color: string;
+  disabled: boolean;
+  [key: string]: any;
 }) => {
   if (indeterminate) {
     return (
       <svg
+        tabIndex={1}
         className='checkbox-icon'
         xmlns='http://www.w3.org/2000/svg'
         width={16}
@@ -343,13 +395,13 @@ const CheckboxIcon = ({
           y={1}
           width={14}
           height={14}
-          rx={1}
-          stroke='var(--par-color-icon-checkbox-indeterminate)'
+          rx={2}
+          stroke={`var(--par-color-icon-checkbox-indeterminate${disabled ? '-disabled' : ''})`}
           strokeWidth={2}
         />
         <path
           d='M4 8H12'
-          stroke='var(--par-color-icon-checkbox-indeterminate)'
+          stroke={`var(--par-color-icon-checkbox-indeterminate${disabled ? '-disabled' : ''})`}
           strokeWidth={2}
           strokeLinecap='round'
           strokeLinejoin='round'
@@ -359,12 +411,24 @@ const CheckboxIcon = ({
   }
   if (checked) {
     return (
-      <svg className='checkbox-icon' xmlns='http://www.w3.org/2000/svg' width={16} height={16} viewBox='0 0 16 16'>
-        <rect width={16} height={16} rx={2} fill={`var(--par-color-bg-checkbox-${color}-selected)`} />
+      <svg
+        className='checkbox-icon checked-icon'
+        xmlns='http://www.w3.org/2000/svg'
+        width={16}
+        height={16}
+        viewBox='0 0 16 16'
+        fill='none'
+      >
+        <rect
+          width={16}
+          height={16}
+          rx={3}
+          fill={`var(--par-color-bg-checkbox-${color}${disabled ? '-disabled' : '-selected'})`}
+        />
         <path
           d='M4 8L6.66353 11L12 5'
           className='checkbox-icon-text'
-          stroke={`var(--par-color-icon-checkbox-${color}-selected)`}
+          stroke={`var(--par-color-icon-checkbox-${color}${disabled ? '-disabled' : '-selected'})`}
           strokeWidth='1.33'
           strokeLinecap='round'
           strokeLinejoin='round'
@@ -387,8 +451,8 @@ const CheckboxIcon = ({
           y={1}
           width={14}
           height={14}
-          rx={1}
-          stroke='var(--par-color-icon-checkbox-enabled)'
+          rx={2}
+          stroke={`var(--par-color-icon-checkbox${disabled ? '-disabled' : '-enabled'})`}
           strokeWidth={2}
         />
       </g>
@@ -401,17 +465,20 @@ const CheckboxIcon = ({
   );
 };
 
-/**
- * Recursive function to generate the checkboxes
- */
+// =========================
+// Checkbox utils
+// =========================
+
 export const RecursiveCheckbox = ({
   tree,
   handleChange,
-  indent = false
+  indent = false,
+  color = 'neutral'
 }: {
   tree: DataItems;
   handleChange: any;
   indent?: boolean;
+  [key: string]: any;
 }) => {
   return (
     <div className={classNames({ 'checkbox-group': tree.length > 1 })}>
@@ -429,13 +496,19 @@ export const RecursiveCheckbox = ({
               value={node.value || ''}
               checked={node.checked || false}
               indeterminate={node.indeterminate || false}
+              color={color}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(node, e)}
               {...node.checkboxProps}
             />
           ) : null}
           {/* if  node has children, it will render continously*/}
           {node.children && node.children.length > 0 ? (
-            <RecursiveCheckbox tree={node.children as DataItems} handleChange={handleChange} indent={true} />
+            <RecursiveCheckbox
+              tree={node.children as DataItems}
+              handleChange={handleChange}
+              indent={true}
+              color={color}
+            />
           ) : null}
         </div>
       ))}

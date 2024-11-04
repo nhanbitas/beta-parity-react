@@ -1,8 +1,3 @@
-/* Checkbox & Radio */
-input[type='checkbox'].par-checkbox:disabled {
-  opacity: 0.5;
-}
-
 /* Override browser's default checkbox input */
 input[type='checkbox'].par-checkbox {
   -webkit-appearance: none;
@@ -31,12 +26,24 @@ input[type='checkbox'].par-checkbox:indeterminate {
   @apply relative flex w-fit gap-3;
 }
 
+input[type='checkbox'].par-checkbox:disabled {
+  @apply cursor-not-allowed;
+}
+
 .checkbox-wrapper[aria-disabled='true'] {
-  @apply opacity-50;
+  @apply select-none;
+}
+
+.checkbox-wrapper[aria-disabled='true'] .input-label {
+  @apply text-[var(--par-color-text-surface-item-disabled)];
+}
+
+.checkbox-wrapper[aria-disabled='true'] .input-sublabel {
+  @apply text-[var(--par-color-text-helper-neutral-disabled)];
 }
 
 .checkbox-input {
-  @apply relative flex h-fit w-fit items-center justify-center;
+  @apply relative my-1 flex h-fit w-fit items-center justify-center;
 }
 
 .checkbox-icon {
@@ -52,11 +59,11 @@ input[type='checkbox'].par-checkbox:indeterminate {
 }
 
 .input-label {
-  @apply text-body-compact-02 w-full select-none flex-col break-words text-gray-900;
+  @apply text-body-compact-02 w-full select-none flex-col break-words text-[var(--par-color-text-surface-item-enabled)];
 }
 
 .input-sublabel {
-  @apply text-helper-01 line-clamp-4 w-full select-none text-gray-500;
+  @apply text-helper-01 line-clamp-4 w-full text-[var(--par-color-text-helper-neutral)];
 }
 
 .checkbox-group {
@@ -69,17 +76,4 @@ input[type='checkbox'].par-checkbox:indeterminate {
 
 .checkbox-group.horizontal {
   @apply flex-row flex-wrap gap-4;
-}
-
-/* checkbox colors */
-input[type='checkbox'].par-checkbox.neutral:checked ~ .checkbox-icon {
-  @apply bg-[var(--par-color-bg-checkbox-neutral-selected)];
-}
-
-input[type='checkbox'].par-checkbox.neutral:checked ~ .checkbox-icon .checkbox-icon-text {
-  @apply text-[var(--par-color-icon-checkbox-neutral-selected)];
-}
-
-input[type='checkbox'].par-checkbox.accent:checked {
-  @apply bg-[var(--par-color-bg-checkbox-accent-selected)] text-[var(--par-color-icon-checkbox-accent-selected)];
 }

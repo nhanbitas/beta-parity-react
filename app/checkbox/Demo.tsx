@@ -50,10 +50,17 @@ export const DemoBasicCheckbox = (props: Props) => {
         }}
       />
       <Checkbox label='With Label' />
-      <Checkbox label='With Sublabel' sublabel='This is a sublabel' />
-      <Checkbox checked label='Controlled Checkbox' sublabel='This is a Checkbox with checked = true' />
+      <Checkbox label='With Sublabel' sublabel='This is accent color' color='accent' />
+      <Checkbox checked={true} label='Controlled Checkbox' sublabel='This is a Checkbox with checked = true' />
       <Checkbox label='Disabled Checkbox' sublabel='This is a disabled Checkbox' disabled />
       <Checkbox checked label='Disabled Checkbox' sublabel='This is a disabled Checkbox' disabled />
+      <Checkbox
+        checked
+        label='Disabled Checkbox'
+        sublabel='This is a disabled accent Checkbox'
+        disabled
+        color='accent'
+      />
       <Checkbox
         label='Indeterminate Checkbox'
         sublabel='This is a Checkbox with indeterminate = true'
@@ -90,6 +97,7 @@ export const DemoGroupCheckbox = (props: Props) => {
         sublabel='Parent Checkbox is enabled'
         checked={true}
         onChange={({ value, tree, getGroup }) => console.log(value, tree, getGroup('value-1'))}
+        color='accent'
       >
         {arr.map((item: any) => (
           <Checkbox
