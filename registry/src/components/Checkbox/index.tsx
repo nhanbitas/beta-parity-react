@@ -379,6 +379,11 @@ const CheckboxIcon = ({
   disabled: boolean;
   [key: string]: any;
 }) => {
+  const baseColor = `var(--par-color-icon-checkbox${disabled ? '-disabled' : '-enabled'})`;
+  const selectedColor = `var(--par-color-icon-checkbox-${color}${disabled ? '-disabled' : '-selected'})`;
+  const bgColor = `var(--par-color-bg-checkbox-${color}${disabled ? '-disabled' : '-selected'})`;
+  const indeterminateColor = `var(--par-color-icon-checkbox-indeterminate${disabled ? '-disabled' : ''})`;
+
   if (indeterminate) {
     return (
       <svg
@@ -390,22 +395,8 @@ const CheckboxIcon = ({
         viewBox='0 0 16 16'
         fill='none'
       >
-        <rect
-          x={1}
-          y={1}
-          width={14}
-          height={14}
-          rx={2}
-          stroke={`var(--par-color-icon-checkbox-indeterminate${disabled ? '-disabled' : ''})`}
-          strokeWidth={2}
-        />
-        <path
-          d='M4 8H12'
-          stroke={`var(--par-color-icon-checkbox-indeterminate${disabled ? '-disabled' : ''})`}
-          strokeWidth={2}
-          strokeLinecap='round'
-          strokeLinejoin='round'
-        />
+        <rect x={1} y={1} width={14} height={14} rx={2} stroke={indeterminateColor} strokeWidth={2} />
+        <path d='M4 8H12' stroke={indeterminateColor} strokeWidth={2} strokeLinecap='round' strokeLinejoin='round' />
       </svg>
     );
   }
@@ -419,16 +410,11 @@ const CheckboxIcon = ({
         viewBox='0 0 16 16'
         fill='none'
       >
-        <rect
-          width={16}
-          height={16}
-          rx={3}
-          fill={`var(--par-color-bg-checkbox-${color}${disabled ? '-disabled' : '-selected'})`}
-        />
+        <rect width={16} height={16} rx={3} fill={bgColor} />
         <path
           d='M4 8L6.66353 11L12 5'
           className='checkbox-icon-text'
-          stroke={`var(--par-color-icon-checkbox-${color}${disabled ? '-disabled' : '-selected'})`}
+          stroke={selectedColor}
           strokeWidth='1.33'
           strokeLinecap='round'
           strokeLinejoin='round'
@@ -446,15 +432,7 @@ const CheckboxIcon = ({
       fill='none'
     >
       <g clipPath='url(#clip0_831_96869)'>
-        <rect
-          x={1}
-          y={1}
-          width={14}
-          height={14}
-          rx={2}
-          stroke={`var(--par-color-icon-checkbox${disabled ? '-disabled' : '-enabled'})`}
-          strokeWidth={2}
-        />
+        <rect x={1} y={1} width={14} height={14} rx={2} stroke={baseColor} strokeWidth={2} />
       </g>
       <defs>
         <clipPath id='clip0_831_96869'>

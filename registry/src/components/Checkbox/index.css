@@ -11,7 +11,7 @@ input[type='checkbox'].par-checkbox {
   max-height: 1rem;
   position: relative;
   background-color: var(--par-transparent);
-  /* @apply border-transparent bg-transparent text-transparent; */
+  cursor: pointer;
 }
 
 input[type='checkbox'].par-checkbox:checked {
@@ -23,7 +23,7 @@ input[type='checkbox'].par-checkbox:indeterminate {
 }
 
 .checkbox-wrapper {
-  @apply relative flex w-fit gap-3;
+  @apply relative flex w-fit cursor-pointer gap-3;
 }
 
 input[type='checkbox'].par-checkbox:disabled {
@@ -31,7 +31,7 @@ input[type='checkbox'].par-checkbox:disabled {
 }
 
 .checkbox-wrapper[aria-disabled='true'] {
-  @apply select-none;
+  @apply cursor-not-allowed select-none;
 }
 
 .checkbox-wrapper[aria-disabled='true'] .input-label {
@@ -48,14 +48,6 @@ input[type='checkbox'].par-checkbox:disabled {
 
 .checkbox-icon {
   @apply absolute left-1/2 top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-sm p-0;
-}
-
-.checkbox-wrapper .input-wrapper {
-  @apply inline-block h-5 p-0;
-}
-
-.checkbox-wrapper .input-label-wrapper {
-  @apply p-0;
 }
 
 .input-label {

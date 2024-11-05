@@ -1,11 +1,11 @@
 'use client';
 
 import React from 'react';
-import { InputProps } from '../BaseInput';
-import { createPolymorphicComponent, PolymorphicComponentProps } from '../Base/factory';
-import classNames from 'classnames';
-import Base, { BaseProps } from '../Base';
 import './index.css';
+import './variables.css';
+import { InputProps } from '../BaseInput';
+import classNames from 'classnames';
+import { BaseProps } from '../Base';
 import useDidMountEffect from '../hooks/useDidMountEffect';
 
 const colorMap = {
@@ -93,7 +93,7 @@ Radio.displayName = 'Radio';
 // =========================
 // Declare and export RadioGroup type and RadioGroup component
 
-export interface RadioGroupProps extends BaseProps {
+export interface RadioGroupProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   /**
    * The name of the RadioGroup
    *
@@ -154,34 +154,17 @@ export interface RadioGroupProps extends BaseProps {
   onChange?: (value: string | number) => void;
 }
 
-export const RadioGroup = createPolymorphicComponent<'div', RadioGroupProps>(
-  <C extends React.ElementType = 'div'>(
-    {
-      component,
-      className,
-      children,
-      name,
-      label,
-      defaultValue,
-      value,
-      disabled,
-      items,
-      onChange,
-      ...props
-    }: PolymorphicComponentProps<C, RadioGroupProps>,
-    ref: React.Ref<any>
+export const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(
+  (
+    { className, children, name, label, color = 'neutral', defaultValue, value, disabled, items, onChange, ...props },
+    ref
   ) => {
-    const Component = component || ('div' as C);
-
     const initialValue = value ? value : defaultValue ? defaultValue : '';
-
     const [currentValue, setCurrentValue] = React.useState(initialValue);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       const changedValue = e.target.value;
-
       e.target.checked && setCurrentValue(changedValue);
-
       if (onChange) onChange(changedValue as string | number);
     };
 
@@ -194,6 +177,7 @@ export const RadioGroup = createPolymorphicComponent<'div', RadioGroupProps>(
             handleChange(e);
             rest.onChange && rest.onChange(e);
           },
+          color: color || rest.color,
           checked: currentValue === rest.value,
           disabled: disabled || rest.disabled,
           ...rest
@@ -207,7 +191,7 @@ export const RadioGroup = createPolymorphicComponent<'div', RadioGroupProps>(
     }, [value]);
 
     return (
-      <Base component={Component} className={classNames('radio-group', className)} ref={ref} {...props}>
+      <div className={classNames('radio-group', className)} ref={ref} {...props}>
         <label className='radio-group-label'>{label}</label>
         {items && items.length
           ? items.map((item) => (
@@ -215,16 +199,19 @@ export const RadioGroup = createPolymorphicComponent<'div', RadioGroupProps>(
                 {...item}
                 key={item.value as string}
                 name={name}
+                color={color}
                 onChange={handleChange}
                 disabled={disabled}
                 checked={currentValue === item.value}
               />
             ))
           : cloneChildren}
-      </Base>
+      </div>
     );
   }
 );
+
+RadioGroup.displayName = 'RadioGroup';
 
 // =========================
 // RadioWrapper
@@ -233,11 +220,6 @@ export const RadioGroup = createPolymorphicComponent<'div', RadioGroupProps>(
 
 export interface RadioWrapperProps extends BaseProps {}
 
-/**
- * Create Radio wrapper for Radio component
- *
- * Props of wrapper extends from BaseProps
- */
 export const RadioWrapper = React.forwardRef<
   HTMLLabelElement,
   RadioWrapperProps & React.HTMLAttributes<HTMLLabelElement>
@@ -257,38 +239,30 @@ RadioWrapper.displayName = 'RadioWrapper';
 // Declare and export RadioIcon type and RadioIcon component
 
 export interface RadioIconProps extends BaseProps {
-  checked?: boolean;
-  disabled?: boolean;
-  color?: string;
+  checked: boolean;
+  disabled: boolean;
+  color: string;
 }
 
 export const RadioIcon = React.forwardRef<HTMLLabelElement, RadioIconProps & React.HTMLAttributes<HTMLLabelElement>>(
-  ({ className, children, checked, color, ...props }, ref) => {
-    if (checked) {
-      return (
-        <svg
-          className='radio-icon radio-checked'
-          xmlns='http://www.w3.org/2000/svg'
-          width={16}
-          height={16}
-          viewBox='0 0 16 16'
-          fill='none'
-        >
-          <rect x='2.5' y='2.5' width={11} height={11} rx='5.5' stroke='#262626' strokeWidth={5} />
-        </svg>
-      );
-    }
+  ({ className, children, checked, color, disabled, ...props }, ref) => {
+    const strokeColor = `var(--par-color-icon-radio${disabled ? '-disabled' : '-enabled'})`;
+    const selectedStrokeColor = `var(--par-color-icon-radio-${color}${disabled ? '-disabled' : '-selected'})`;
 
     return (
       <svg
-        className='radio-icon'
+        className={`radio-icon ${checked ? 'radio-checked' : 'radio-unchecked'}`}
         xmlns='http://www.w3.org/2000/svg'
         width={16}
         height={16}
         viewBox='0 0 16 16'
         fill='none'
       >
-        <rect x={1} y={1} width={14} height={14} rx={7} stroke='#6B6B6B' strokeWidth={2} />
+        {checked ? (
+          <rect x={2.5} y={2.5} width={11} height={11} rx={7} stroke={selectedStrokeColor} strokeWidth={5} />
+        ) : (
+          <rect x={1} y={1} width={14} height={14} rx={7} stroke={strokeColor} strokeWidth={2} />
+        )}
       </svg>
     );
   }

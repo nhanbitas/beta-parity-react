@@ -11,6 +11,7 @@ input[type='radio'].par-radio {
   position: relative;
   background-color: var(--par-transparent);
   border: none;
+  cursor: pointer;
 }
 
 input[type='radio'].par-radio:checked {
@@ -22,19 +23,19 @@ input[type='radio'].par-radio:disabled {
 }
 
 .radio-wrapper {
-  @apply flex w-fit gap-3;
+  @apply flex w-fit cursor-pointer gap-3;
 }
 
 .radio-wrapper[aria-disabled='true'] {
-  @apply cursor-not-allowed opacity-50;
+  @apply cursor-not-allowed select-none;
 }
 
-.radio-wrapper .input-wrapper {
-  @apply inline-block w-fit;
+.radio-wrapper[aria-disabled='true'] .input-label {
+  @apply text-[var(--par-color-text-surface-item-disabled)];
 }
 
-.radio-wrapper .input-label-wrapper {
-  @apply p-0;
+.radio-wrapper[aria-disabled='true'] .input-sublabel {
+  @apply text-[var(--par-color-text-helper-neutral-disabled)];
 }
 
 .radio-input {
@@ -46,11 +47,11 @@ input[type='radio'].par-radio:disabled {
 }
 
 .input-label {
-  @apply text-body-compact-02 w-full select-none flex-col break-words text-gray-900;
+  @apply text-body-compact-02 w-full select-none flex-col break-words text-[var(--par-color-text-surface-item-enabled)];
 }
 
 .input-sublabel {
-  @apply text-helper-01 line-clamp-4 w-full select-none  text-gray-500;
+  @apply text-helper-01 line-clamp-4 w-full text-[var(--par-color-text-helper-neutral)];
 }
 
 .radio-group {
@@ -58,7 +59,7 @@ input[type='radio'].par-radio:disabled {
 }
 
 .radio-group-label {
-  @apply text-label-02 text-gray-900;
+  @apply text-label-02 text-[var(--par-color-text-surface-item-enabled)];
 }
 
 .radio-group-item {
@@ -67,4 +68,30 @@ input[type='radio'].par-radio:disabled {
 
 .radio-group.horizontal {
   @apply flex-row flex-wrap gap-4;
+}
+
+@keyframes strokeExpand {
+  from {
+    stroke-width: 2;
+  }
+  to {
+    stroke-width: 5;
+  }
+}
+
+@keyframes strokeShrink {
+  from {
+    stroke-width: 2;
+  }
+  to {
+    stroke-width: 2;
+  }
+}
+
+.radio-checked rect {
+  animation: strokeExpand 0.15s ease-out forwards;
+}
+
+.radio-unchecked rect {
+  animation: strokeShrink 0.15s ease-out forwards;
 }
