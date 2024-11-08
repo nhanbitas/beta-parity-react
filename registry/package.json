@@ -7,7 +7,7 @@
     "dev": "npm run delete:ui && npm run postinstall && concurrently \"npm run dev:postcss\" \"npm run dev:babel\" \"npm run dev:ts\"",
     "build": "npm run build:ui",
     "publish": "npm run publish:lib",
-    "delete:ui": "if exist ui (rmdir /s /q ui) || [ -d ui ] && rm -rf ui",
+    "delete:ui": "rimraf ui",
     "dev:postcss": "npx postcss src/components/**/*.css --base src/components --dir ui --watch",
     "dev:babel": "npx babel src/components --out-dir ui --extensions \".ts,.tsx\" --watch",
     "dev:ts": "tsc --project tsconfig.lib.json --watch",
@@ -37,7 +37,8 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-flatpickr": "^3.10.13",
-    "react-number-format": "^5.4.0"
+    "react-number-format": "^5.4.0",
+    "rimraf": "^6.0.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.24.5",
