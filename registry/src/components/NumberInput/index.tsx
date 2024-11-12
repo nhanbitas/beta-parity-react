@@ -108,8 +108,8 @@ export const NumberInput = React.forwardRef<HTMLInputElement, NumberInputProps &
       // if having value property that provided by HOC, we just dispatch event
       // if value is not provided by HOC, we need update inner value - current value
       if (!isControlled) setCurrentValue(newValue);
-      onValueChange?.({ floatValue: newValue, ...values }, { event } as SourceInfo);
-      onChange?.({ target: { value: newValue } } as React.ChangeEvent<HTMLInputElement>);
+      onValueChange?.({ floatValue: newValue ?? '', ...values }, { event } as SourceInfo);
+      onChange?.({ target: { value: newValue ?? '' } } as React.ChangeEvent<HTMLInputElement>);
     };
 
     // overwrite clear function because react-format-number replace original input value and control value
@@ -201,6 +201,7 @@ export const NumberInput = React.forwardRef<HTMLInputElement, NumberInputProps &
     return (
       <NumericFormat
         {...inputProps}
+        type='text'
         customInput={Input}
         isClearable={isClearableNumberInput}
         className={classNames('number-input', className, { [`${stepper}-stepper`]: !!stepper })}
@@ -214,10 +215,13 @@ export const NumberInput = React.forwardRef<HTMLInputElement, NumberInputProps &
           const isValidValue = (min === undefined || floatValue >= min) && (max === undefined || floatValue <= max);
           return isValidValue;
         }}
+        readOnly={props.readOnly || (!allowInput && !!stepper)}
         wrapperProps={{
           ...inputProps.wrapperProps,
           leftElement: renderLeftElement(inputProps.wrapperProps?.leftElement)
         }}
+        // Add aria-describedby to handle allow input with readonly attribute - fix uncontrolled behavior of react format number
+        {...(!allowInput && !!stepper && !props.readOnly ? ({ 'data-readonly': 'not-allowed-input' } as any) : {})}
         // No overwrite right element because of base input features, use ActionBtn instead
         ActionBtn={renderRightElement(inputProps.ActionBtn)}
       />
@@ -364,6 +368,15 @@ const NumberButtonStepper = ({
 };
 
 export const UnitSelector = ({ units, onUnitChange, unitValue }: any) => {
+  const initialValue = unitValue ?? units[0];
+  const [selectedUnit, setSelectedUnit] = React.useState(initialValue);
+  const [width, setWidth] = React.useState(0);
+
+  const handleUnitChange = (e: any) => {
+    setSelectedUnit(e.target.value);
+    onUnitChange(e);
+  };
+
   const calculateWidth = (currentUnit: string) => {
     if (typeof document === 'undefined') return;
     let termWidth = 0;
@@ -377,15 +390,6 @@ export const UnitSelector = ({ units, onUnitChange, unitValue }: any) => {
     termWidth = textWidth + 24;
     document.body.removeChild(tempSpan);
     return termWidth;
-  };
-
-  const initialValue = unitValue ?? units[0];
-  const [selectedUnit, setSelectedUnit] = React.useState(initialValue);
-  const [width, setWidth] = React.useState(0);
-
-  const handleUnitChange = (e: any) => {
-    setSelectedUnit(e.target.value);
-    onUnitChange(e);
   };
 
   React.useEffect(() => {

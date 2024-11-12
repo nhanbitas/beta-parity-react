@@ -193,8 +193,8 @@ textarea.par-input.alternative:disabled {
   @apply bg-[var(--par-color-bg-field-alternative-disabled)];
 }
 
-input.par-input[readonly],
-textarea.par-input[readonly] {
+input.par-input[readonly]:not([data-readonly='not-allowed-input']),
+textarea.par-input[readonly]:not([data-readonly='not-allowed-input']) {
   @apply border-[var(--par-color-border-field-readonly)] bg-[var(--par-color-bg-field-readonly)] text-[var(--par-color-text-field-readonly)];
 }
 
