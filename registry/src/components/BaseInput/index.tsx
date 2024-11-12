@@ -224,12 +224,14 @@ export interface InputWrapperProps extends React.HTMLAttributes<HTMLDivElement>,
  */
 export const InputWrapper = React.forwardRef<HTMLDivElement, InputWrapperProps>(
   ({ className, children, leftElement, rightElement, ...props }, ref) => {
-    const DEFAULT_PADDING = 12;
+    const DEFAULT_PADDING = 16;
+    const DEFAULT_PADDING_ICON = 40;
+
     const leftElementRef = React.useRef<HTMLDivElement | null>(null);
     const rightElementRef = React.useRef<HTMLDivElement | null>(null);
 
-    const [paddingLeft, setPaddingLeft] = React.useState(DEFAULT_PADDING);
-    const [paddingRight, setPaddingRight] = React.useState(DEFAULT_PADDING);
+    const [paddingLeft, setPaddingLeft] = React.useState(leftElement ? DEFAULT_PADDING_ICON : DEFAULT_PADDING);
+    const [paddingRight, setPaddingRight] = React.useState(rightElement ? DEFAULT_PADDING_ICON : DEFAULT_PADDING);
 
     // Handle padding of input based on width of left and right elements
     React.useLayoutEffect(() => {
@@ -260,8 +262,8 @@ export const InputWrapper = React.forwardRef<HTMLDivElement, InputWrapperProps>(
         return React.cloneElement(child as React.ReactElement, {
           style: {
             ...((child.props as React.HTMLAttributes<HTMLInputElement>).style || {}),
-            ...(leftElementRef.current ? { paddingLeft } : {}),
-            ...(rightElementRef.current ? { paddingRight } : {})
+            ...(leftElementRef.current && { paddingLeft }),
+            ...(rightElementRef.current && { paddingRight })
           } as React.CSSProperties | undefined
         });
       }
