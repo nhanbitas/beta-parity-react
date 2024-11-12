@@ -298,7 +298,7 @@ const NumberButtonStepper = ({
   // Recall +/- when user press button
   const startInterval = (type: '+' | '-') => {
     handleChange(type);
-    debounceRef.current = setTimeout(() => (intervalRef.current = setInterval(() => handleChange(type), 150)), 1000);
+    debounceRef.current = setTimeout(() => (intervalRef.current = setInterval(() => handleChange(type), 100)), 1000);
   };
 
   // Stop +/- when mouse leave button
@@ -311,10 +311,15 @@ const NumberButtonStepper = ({
     return {
       className: 'square-icon',
       disabled: type === '-' ? minusDisable : plusDisable,
+      onKeyDown: (e: React.KeyboardEvent<HTMLButtonElement>) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          handleChange(type);
+        }
+      },
       onMouseDown: () => startInterval(type),
       onMouseUp: () => stopInterval(),
       onMouseLeave: () => stopInterval()
-    };
+    } as React.HTMLAttributes<HTMLButtonElement>;
   };
 
   React.useEffect(() => {

@@ -16,12 +16,12 @@ const sizeMap = {
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   /**
-   * Added className for the wrapper input
+   * More props for the wrapper input
    */
   wrapperProps?: InputWrapperProps & React.HTMLAttributes<HTMLDivElement>;
 
   /**
-   * Added props for the clear button
+   * More props for the clear button
    */
   clearBtnProps?: React.ButtonHTMLAttributes<HTMLButtonElement>;
 
@@ -43,7 +43,7 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
   onClear?: () => void;
 
   /**
-   * Added action button, generate in the right of clear button (if any)
+   * More action button, generate in the right of clear button (if any)
    */
   ActionBtn?: JSX.Element | React.ReactNode;
 
@@ -90,7 +90,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       errorMessage = '',
       inputSize = 'sm',
       theme = 'default',
-      isClearable,
+      isClearable = false,
       ActionBtn,
       leftIcon,
       isError,
