@@ -69,3 +69,17 @@ input[type='checkbox'].par-checkbox:disabled {
 .checkbox-group.horizontal {
   @apply flex-row flex-wrap gap-4;
 }
+
+/* Animations checked icon */
+
+.checkbox-icon-rect {
+  transition: fill 0.15s linear;
+}
+
+.checkbox-icon-path.checked {
+  transition:
+    stroke 0.15s ease,
+    fill 0.15s ease,
+    opacity 0.15s ease,
+    stroke-dashoffset 0.3s ease; /*draw time 0.15s*/
+}

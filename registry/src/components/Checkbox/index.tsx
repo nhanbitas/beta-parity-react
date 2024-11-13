@@ -104,8 +104,8 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
           <CheckboxIcon
             indeterminate={indeterminate}
             color={color}
-            checked={currentChecked || false}
-            disabled={props.disabled || false}
+            checked={currentChecked}
+            disabled={props.disabled}
           />
           <input
             className={classNames('par-checkbox', colorMap[color])}
@@ -376,7 +376,7 @@ const CheckboxIcon = ({
   indeterminate: boolean;
   checked: boolean;
   color: string;
-  disabled: boolean;
+  disabled?: boolean;
   [key: string]: any;
 }) => {
   const baseColor = `var(--par-color-icon-checkbox${disabled ? '-disabled' : '-enabled'})`;
@@ -384,44 +384,75 @@ const CheckboxIcon = ({
   const bgColor = `var(--par-color-bg-checkbox-${color}${disabled ? '-disabled' : '-selected'})`;
   const indeterminateColor = `var(--par-color-icon-checkbox-indeterminate${disabled ? '-disabled' : ''})`;
 
+  const rectIndicator = {
+    x: 1,
+    y: 1,
+    width: 14,
+    height: 14,
+    rx: 2,
+    strokeWidth: 2
+  };
+
+  const pathIndicator = {
+    strokeLinecap: 'round',
+    strokeLinejoin: 'round',
+    strokeWidth: 2,
+    strokeDasharray: 25,
+    strokeDashoffset: 25,
+    opacity: 0
+  };
+
+  let rectProps: any = {
+    ...rectIndicator,
+    className: 'checkbox-icon-rect',
+    fill: 'rgba(0, 0, 0, 0)',
+    stroke: baseColor
+  };
+
+  let pathProps: any = {
+    ...pathIndicator,
+    className: 'checkbox-icon-path',
+    d: 'M4 8H12',
+    stroke: baseColor
+  };
+
   if (indeterminate) {
-    return (
-      <svg
-        tabIndex={1}
-        className='checkbox-icon'
-        xmlns='http://www.w3.org/2000/svg'
-        width={16}
-        height={16}
-        viewBox='0 0 16 16'
-        fill='none'
-      >
-        <rect x={1} y={1} width={14} height={14} rx={2} stroke={indeterminateColor} strokeWidth={2} />
-        <path d='M4 8H12' stroke={indeterminateColor} strokeWidth={2} strokeLinecap='round' strokeLinejoin='round' />
-      </svg>
-    );
+    rectProps = {
+      ...rectIndicator,
+      className: 'checkbox-icon-rect indeterminate',
+      fill: 'rgba(0, 0, 0, 0)',
+      stroke: indeterminateColor
+    };
+    pathProps = {
+      ...pathIndicator,
+      className: 'checkbox-icon-path indeterminate',
+      d: 'M4 8H12',
+      stroke: indeterminateColor,
+      strokeDashoffset: 0,
+      opacity: 1
+    };
   }
+
   if (checked) {
-    return (
-      <svg
-        className='checkbox-icon checked-icon'
-        xmlns='http://www.w3.org/2000/svg'
-        width={16}
-        height={16}
-        viewBox='0 0 16 16'
-        fill='none'
-      >
-        <rect width={16} height={16} rx={3} fill={bgColor} />
-        <path
-          d='M4 8L6.66353 11L12 5'
-          className='checkbox-icon-text'
-          stroke={selectedColor}
-          strokeWidth='1.33'
-          strokeLinecap='round'
-          strokeLinejoin='round'
-        />
-      </svg>
-    );
+    rectProps = {
+      ...rectIndicator,
+      className: 'checkbox-icon-rect checked',
+      fill: bgColor,
+      stroke: bgColor
+    };
+    pathProps = {
+      ...pathIndicator,
+      className: 'checkbox-icon-path checked',
+      d: 'M4 8L6.66353 11L12 5',
+      stroke: selectedColor,
+      strokeWidth: 1.33,
+      strokeDashoffset: 0,
+      opacity: 1
+    };
   }
+
+  const { fill: fillColor, stroke: strokeColor, className: rectClass, ...restRectProps } = rectProps;
+
   return (
     <svg
       className='checkbox-icon'
@@ -431,14 +462,8 @@ const CheckboxIcon = ({
       viewBox='0 0 16 16'
       fill='none'
     >
-      <g clipPath='url(#clip0_831_96869)'>
-        <rect x={1} y={1} width={14} height={14} rx={2} stroke={baseColor} strokeWidth={2} />
-      </g>
-      <defs>
-        <clipPath id='clip0_831_96869'>
-          <rect width={16} height={16} fill='white' />
-        </clipPath>
-      </defs>
+      <rect {...(rectProps as any)} />
+      <path {...(pathProps as any)} />
     </svg>
   );
 };
