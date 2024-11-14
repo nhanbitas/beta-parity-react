@@ -1,0 +1,10 @@
+@import '../theme/alias/text-icon-colors.css';
+@import '../theme/alias/background.css';
+@import '../theme/alias/border.css';
+
+:root,
+[data-scheme='light'] {
+}
+
+[data-scheme='dark'] {
+}

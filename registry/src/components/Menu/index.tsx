@@ -1,8 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
 import './index.css';
-import '../Checkbox/index.css';
-import '../Radio/index.css';
 import { Check, Search, ChevronUp, ChevronDown } from 'lucide-react';
 import { Input } from '../BaseInput';
 import useKeyboard from '../hooks/useKeyboard';
@@ -11,18 +9,30 @@ import { autoUpdate, flip, offset, Placement, shift, useFloating } from '@floati
 import { Portal } from '../Portal';
 import useCombinedRefs from '../hooks/useCombinedRefs';
 import { useArrowKeyNavigation } from '../hooks/useArrowKeyNavigation ';
+import { Checkbox } from '../Checkbox';
+import { Radio } from '../Radio';
 
 const sizeMap = {
   sm: 'small',
   md: 'medium',
   lg: 'large'
-};
+} as const;
+
+const colorMap = {
+  neutral: 'neutral',
+  accent: 'accent'
+} as const;
+
+const prominenceMap = {
+  subtle: 'subtle',
+  pronounced: 'pronounced'
+} as const;
 
 const sizeHeightMap = {
   sm: 32,
   md: 40,
   lg: 48
-};
+} as const;
 
 // TODO: Write docs for types
 
@@ -34,6 +44,9 @@ const sizeHeightMap = {
 export interface MenuProps extends React.HTMLAttributes<HTMLDivElement> {
   position?: Placement;
   size?: keyof typeof sizeMap;
+  menuColor?: keyof typeof colorMap;
+  prominence?: keyof typeof prominenceMap;
+  theme?: 'default' | 'alternative';
   anchor?: HTMLElement | string;
   overflowLimit?: number;
   scrollIndicator?: boolean;
@@ -56,6 +69,9 @@ export const Menu = React.forwardRef<HTMLDivElement, MenuProps>(
       isOpen = false,
       searchable = false,
       scrollIndicator = false,
+      menuColor = 'neutral',
+      prominence = 'subtle',
+      theme = 'default',
       size = 'md',
       position = 'bottom-start',
       defaultSearch = '',
@@ -100,12 +116,11 @@ export const Menu = React.forwardRef<HTMLDivElement, MenuProps>(
           : true;
 
         if (isValidItem || (!child.props.value && !child.props.groupLabel)) {
-          return child;
+          return React.cloneElement(child, { ...child.props, color: menuColor });
         } else if (child.props.children) {
           const filteredChildren = filterChildren(child.props.children, keyword);
-
           if (filteredChildren && React.Children.count(filteredChildren) > 0) {
-            return React.cloneElement(child, { ...child.props }, filteredChildren);
+            return React.cloneElement(child, { ...child.props, color: menuColor }, filteredChildren);
           }
         }
 
@@ -284,6 +299,7 @@ export interface MenuItemProps extends Omit<React.HTMLAttributes<HTMLDivElement 
   value?: string;
   label?: string;
   checkmarkSide?: 'left' | 'right';
+  color?: keyof typeof colorMap;
   checked?: boolean;
   icon?: React.ReactNode;
   name?: string;
@@ -303,6 +319,7 @@ export const MenuItem = React.forwardRef<HTMLDivElement | HTMLLabelElement, Menu
       isLoading,
       disabled,
       checkmarkSide = 'right',
+      color = 'neutral',
       label,
       value,
       icon,
@@ -354,11 +371,11 @@ export const MenuItem = React.forwardRef<HTMLDivElement | HTMLLabelElement, Menu
     const sideOfCheckIcon = checkmarkSide === 'right' || icon ? 'right' : 'left';
     const Component = useInput ? 'label' : 'div';
     const CheckMarkInput = multiselect ? (
-      <input className='par-input' tabIndex={-1} type='checkbox' onChange={handleChangeInput} />
+      <Checkbox tabIndex={-1} onChange={handleChangeInput} color={color} />
     ) : (
-      <input className='par-input' tabIndex={-1} type='radio' name={name} onChange={handleChangeInput} />
+      <Radio tabIndex={-1} onChange={handleChangeInput} color={color} name={name} />
     );
-    const visibleIcon = useInput ? CheckMarkInput : currentSelected && <Check />;
+    const visibleIcon = useInput ? CheckMarkInput : currentSelected ? <Check /> : null;
 
     useDidMountEffect(() => {
       if (checked !== undefined) {
@@ -377,7 +394,7 @@ export const MenuItem = React.forwardRef<HTMLDivElement | HTMLLabelElement, Menu
       >
         {sideOfCheckIcon === 'left' || icon ? <span className='menu-item-icon'>{icon || visibleIcon}</span> : null}
 
-        <span className='menu-item-label'>{label || children}</span>
+        <span className='menu-item-label'>{label ?? children}</span>
 
         {sideOfCheckIcon === 'right' && <span className='menu-item-icon'>{visibleIcon}</span>}
       </Component>

@@ -1,14 +1,10 @@
-@import '../global.css';
-
-/* base */
-
 .menu {
   @apply z-dropdown text-body-02 invisible absolute flex w-full cursor-default flex-col gap-1 rounded-md bg-white text-gray-600 opacity-0 drop-shadow-md;
 }
 
 .menu-header,
 .menu-footer {
-  @apply h-10 shrink-0 truncate border-gray-200;
+  @apply h-10 shrink-0 truncate border-gray-200 py-1;
 }
 
 .menu-header {
@@ -32,14 +28,12 @@
   scrollbar-width: none;
 }
 
-.menu .menu-item,
-.menu .checkbox-wrapper,
-.menu .radio-wrapper {
+.menu .menu-item {
   @apply relative flex w-full shrink-0 items-center gap-3 rounded-md border-gray-200 px-3 hover:bg-gray-100;
 }
 
 .menu-item-icon {
-  @apply inline-flex h-4 w-4 items-center justify-center;
+  @apply flex min-h-4 min-w-4 items-center justify-center;
 }
 
 .menu-item-label {
@@ -85,21 +79,15 @@
 
 /* size */
 
-.menu.small .menu-item,
-.menu.small .checkbox-wrapper,
-.menu.small .radio-wrapper {
+.menu.small .menu-item {
   @apply h-8 gap-2;
 }
 
-.menu.medium .menu-item,
-.menu.medium .checkbox-wrapper,
-.menu.medium .radio-wrapper {
+.menu.medium .menu-item {
   @apply h-10;
 }
 
-.menu.large .menu-item,
-.menu.large .checkbox-wrapper,
-.menu.large .radio-wrapper {
+.menu.large .menu-item {
   @apply h-12 gap-4;
 }
 
@@ -133,40 +121,3 @@
 .menu-group:last-child .menu-item {
   @apply last:rounded-b-md;
 }
-
-/* Positions */
-/* .menu {
-  @apply left-1/2 top-full my-2 -translate-x-1/2 transition-opacity duration-150;
-}
-
-.menu-items.bottom-right {
-  @apply left-1/2 top-full my-2 -translate-x-5 transition-opacity duration-150;
-}
-
-.menu-items.bottom-left {
-  @apply left-auto right-1/2 top-full my-2 translate-x-5 transition-opacity duration-150;
-}
-
-.menu-items.top {
-  @apply bottom-full left-1/2 top-auto my-2 -translate-x-1/2 transition-opacity duration-150;
-}
-
-.menu-items.top-right {
-  @apply bottom-full left-1/2 top-auto  my-2 -translate-x-5  transition-opacity duration-150;
-}
-
-.menu-items.top-left {
-  @apply bottom-full left-auto right-1/2 top-auto my-2 translate-x-5 transition-opacity duration-150;
-}
-
-.menu-items.left {
-  @apply -top-2 left-auto right-full mx-2 translate-x-0 transition-opacity duration-150;
-}
-
-.menu-items.right {
-  @apply -top-2 left-full right-auto mx-2 translate-x-0 transition-opacity duration-150;
-}
-
-.menu-divider {
-  @apply h-px w-full shrink-0 bg-gray-200;
-} */

@@ -52,9 +52,7 @@ export const DemoBasicMenu = (props: Props) => {
         className='max-w-[300px]'
       >
         <MenuHeader>
-          <div className='flex h-full items-center gap-1'>
-            <FlagTriangleRightIcon style={{ color: 'red' }} /> This is a header
-          </div>
+          <span className='flex h-full items-center gap-1 px-4 text-red-500'>This is a header</span>
         </MenuHeader>
         {searchItems.map((item) => (
           <MenuItem key={item} onClick={() => handleClick(item)} checked={value === item}>
@@ -62,9 +60,7 @@ export const DemoBasicMenu = (props: Props) => {
           </MenuItem>
         ))}
         <MenuFooter>
-          <div className='flex h-full items-center gap-1'>
-            <FlagTriangleRightIcon style={{ color: 'skyblue' }} /> This is a footer
-          </div>
+          <span className='flex h-full items-center gap-1 px-4 text-cyan-500'>This is a footer</span>
         </MenuFooter>
       </Menu>
     </>
@@ -228,6 +224,7 @@ export const DemoMenuGroup = (props: Props) => {
         <Menu
           anchor='group-radio-menu'
           size='lg'
+          menuColor='accent'
           className='max-w-[300px]'
           isOpen={isOpenRadioGroup}
           overflowLimit={7}
