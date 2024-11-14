@@ -46,6 +46,18 @@ input[type='radio'].par-radio:disabled {
   @apply absolute left-1/2 top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-sm p-0;
 }
 
+.radio-input .radio-checked {
+  display: none;
+}
+
+.radio-input:has(input[type='radio'].par-radio:checked) .radio-checked {
+  display: unset;
+}
+
+.radio-input:has(input[type='radio'].par-radio:checked) .radio-unchecked {
+  display: none;
+}
+
 .input-label {
   @apply text-body-compact-02 w-full select-none flex-col break-words text-[var(--par-color-text-surface-item-enabled)];
 }

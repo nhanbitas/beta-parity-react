@@ -47,29 +47,18 @@ export interface RadioProps extends InputProps {
 }
 
 export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
-  ({ name, label, sublabel, radioWrapperProps, color = 'neutral', checked, onChange, ...props }, ref) => {
-    const [currentChecked, setCurrentChecked] = React.useState(checked || false);
-
-    const handleChange = (e: any) => {
-      if (props.disabled || props.readOnly) return;
-      checked !== undefined ? setCurrentChecked(checked || false) : setCurrentChecked(e.target.checked);
-      onChange?.(e);
-    };
-
-    React.useEffect(() => {
-      setCurrentChecked(checked || false);
-    }, [checked]);
-
+  ({ label, sublabel, radioWrapperProps, color = 'neutral', ...props }, ref) => {
     return (
       <RadioWrapper aria-disabled={props.disabled} {...radioWrapperProps}>
         <div className='radio-input'>
-          <RadioIcon color={color} checked={currentChecked || false} disabled={props.disabled || false} />
+          {/* Because of "name" dependency (can not catch checked value of radio),
+           it can not approach like checkbox icon (checkbox works independently) */}
+          <RadioIcon color={color} checked={true} disabled={props.disabled || false} />
+          <RadioIcon color={color} checked={false} disabled={props.disabled || false} />
           <input
             className={classNames('par-radio', colorMap[color as keyof typeof colorMap])}
             type='radio'
             ref={ref}
-            checked={currentChecked}
-            onChange={handleChange}
             {...props}
           />
         </div>
@@ -173,20 +162,17 @@ export const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(
         const { ...rest } = child.props;
         return React.cloneElement(child, {
           name,
-          onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
-            handleChange(e);
-            rest.onChange && rest.onChange(e);
-          },
-          color: color || rest.color,
+          onChange: handleChange,
+          color: color ?? rest.color,
           checked: currentValue === rest.value,
-          disabled: disabled || rest.disabled,
+          disabled: disabled ?? rest.disabled,
           ...rest
         });
       }
     });
 
     useDidMountEffect(() => {
-      setCurrentValue(value || '');
+      setCurrentValue(value ?? '');
       if (onChange) onChange(value as string | number);
     }, [value]);
 
@@ -201,8 +187,8 @@ export const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(
                 name={name}
                 color={color}
                 onChange={handleChange}
-                disabled={disabled}
                 checked={currentValue === item.value}
+                disabled={disabled}
               />
             ))
           : cloneChildren}

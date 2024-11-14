@@ -36,10 +36,16 @@ export const DemoBasicRadio = (props: Props) => {
   );
 };
 
-export const DemoGroupRadio = (props: Props) => {
+export const DemoGroupRadio = (props: any) => {
+  const [value, setValue] = React.useState('radio-2');
   return (
     <>
-      <RadioGroup label='This is a group' name='group' defaultValue='radio-2' onChange={(value) => console.log(value)}>
+      <RadioGroup
+        label='This is a group'
+        name={'group-neutral' + (props.type ?? '')}
+        value={value}
+        onChange={(value: any) => setValue(value)}
+      >
         <Radio value='radio-1' label='Radio 1' sublabel='Sublabel radio 1' />
         <Radio value='radio-2' label='Radio 2' sublabel='Sublabel radio 2' />
         <Radio value='radio-3' label='Radio 3' sublabel='Sublabel radio 3' />
@@ -49,7 +55,7 @@ export const DemoGroupRadio = (props: Props) => {
       <RadioGroup
         label='This is a group'
         color='accent'
-        name='group'
+        name={'group-accent' + (props.type ?? '')}
         defaultValue='radio-2'
         onChange={(value) => console.log(value)}
       >
@@ -61,7 +67,7 @@ export const DemoGroupRadio = (props: Props) => {
 
       <RadioGroup
         label='This is a disabled group'
-        name='disabled-group'
+        name={'group-disabled' + props.type}
         defaultValue='radio-1'
         disabled
         onChange={(value) => console.log(value)}
