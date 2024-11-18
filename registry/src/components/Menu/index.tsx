@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import './index.css';
+import './variables.css';
 import { Check, Search, ChevronUp, ChevronDown } from 'lucide-react';
 import { Input } from '../BaseInput';
 import useKeyboard from '../hooks/useKeyboard';
@@ -14,8 +15,8 @@ import { Radio } from '../Radio';
 
 const sizeMap = {
   sm: 'small',
-  md: 'medium',
-  lg: 'large'
+  md: 'medium'
+  // lg: 'large' // **REMOVED
 } as const;
 
 const colorMap = {
@@ -28,10 +29,15 @@ const prominenceMap = {
   pronounced: 'pronounced'
 } as const;
 
+const themeMap = {
+  default: 'default',
+  alternative: 'alternative'
+} as const;
+
 const sizeHeightMap = {
-  sm: 32,
-  md: 40,
-  lg: 48
+  sm: 40,
+  md: 48
+  // lg: 48 // **REMOVED
 } as const;
 
 // TODO: Write docs for types
@@ -46,7 +52,7 @@ export interface MenuProps extends React.HTMLAttributes<HTMLDivElement> {
   size?: keyof typeof sizeMap;
   menuColor?: keyof typeof colorMap;
   prominence?: keyof typeof prominenceMap;
-  theme?: 'default' | 'alternative';
+  theme?: keyof typeof themeMap;
   anchor?: HTMLElement | string;
   overflowLimit?: number;
   scrollIndicator?: boolean;
@@ -72,7 +78,7 @@ export const Menu = React.forwardRef<HTMLDivElement, MenuProps>(
       menuColor = 'neutral',
       prominence = 'subtle',
       theme = 'default',
-      size = 'md',
+      size = 'sm',
       position = 'bottom-start',
       defaultSearch = '',
       noResultsText = 'No results found',
@@ -116,11 +122,15 @@ export const Menu = React.forwardRef<HTMLDivElement, MenuProps>(
           : true;
 
         if (isValidItem || (!child.props.value && !child.props.groupLabel)) {
-          return React.cloneElement(child, { ...child.props, color: menuColor });
+          return React.cloneElement(child, { ...child.props, color: menuColor, prominence: prominence });
         } else if (child.props.children) {
           const filteredChildren = filterChildren(child.props.children, keyword);
           if (filteredChildren && React.Children.count(filteredChildren) > 0) {
-            return React.cloneElement(child, { ...child.props, color: menuColor }, filteredChildren);
+            return React.cloneElement(
+              child,
+              { ...child.props, color: menuColor, prominence: prominence },
+              filteredChildren
+            );
           }
         }
 
@@ -224,7 +234,14 @@ export const Menu = React.forwardRef<HTMLDivElement, MenuProps>(
     return (
       <PortalEl>
         <div
-          className={classNames('menu', className, sizeMap[size as keyof typeof sizeMap])}
+          className={classNames(
+            'menu',
+            className,
+            themeMap[theme as keyof typeof themeMap],
+            sizeMap[size as keyof typeof sizeMap],
+            prominenceMap[prominence as keyof typeof prominenceMap],
+            colorMap[menuColor as keyof typeof colorMap]
+          )}
           ref={menuRef}
           style={combinedStyle}
           {...props}
@@ -300,6 +317,7 @@ export interface MenuItemProps extends Omit<React.HTMLAttributes<HTMLDivElement 
   label?: string;
   checkmarkSide?: 'left' | 'right';
   color?: keyof typeof colorMap;
+  prominence?: keyof typeof prominenceMap;
   checked?: boolean;
   icon?: React.ReactNode;
   name?: string;
@@ -319,6 +337,7 @@ export const MenuItem = React.forwardRef<HTMLDivElement | HTMLLabelElement, Menu
       isLoading,
       disabled,
       checkmarkSide = 'right',
+      prominence = 'subtle',
       color = 'neutral',
       label,
       value,
@@ -362,6 +381,7 @@ export const MenuItem = React.forwardRef<HTMLDivElement | HTMLLabelElement, Menu
 
     const accessibilityProps = {
       role: 'menuitem',
+      'aria-label': label,
       'aria-disabled': disabled,
       tabIndex: disabled ? -1 : 0,
       ...(!useInput && { 'aria-checked': currentSelected })
@@ -371,9 +391,9 @@ export const MenuItem = React.forwardRef<HTMLDivElement | HTMLLabelElement, Menu
     const sideOfCheckIcon = checkmarkSide === 'right' || icon ? 'right' : 'left';
     const Component = useInput ? 'label' : 'div';
     const CheckMarkInput = multiselect ? (
-      <Checkbox tabIndex={-1} onChange={handleChangeInput} color={color} />
+      <Checkbox tabIndex={-1} onChange={handleChangeInput} color={color} disabled={disabled} />
     ) : (
-      <Radio tabIndex={-1} onChange={handleChangeInput} color={color} name={name} />
+      <Radio tabIndex={-1} onChange={handleChangeInput} color={color} name={name} disabled={disabled} />
     );
     const visibleIcon = useInput ? CheckMarkInput : currentSelected ? <Check /> : null;
 
@@ -385,7 +405,12 @@ export const MenuItem = React.forwardRef<HTMLDivElement | HTMLLabelElement, Menu
 
     return (
       <Component
-        className={classNames('menu-item', className)}
+        className={classNames(
+          'menu-item',
+          className,
+          prominenceMap[prominence as keyof typeof prominenceMap],
+          colorMap[color as keyof typeof colorMap]
+        )}
         ref={ref as any}
         onClick={handleClick}
         {...props}

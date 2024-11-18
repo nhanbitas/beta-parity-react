@@ -8,7 +8,7 @@
   --par-color-bg-surface-indicator-neutral: var(--par-neutral-500);
   --par-color-bg-surface-indicator-accent: var(--par-accent-500);
   --par-color-bg-surface-item-enabled: var(--par-transparent);
-  --par-color-bg-surface-item-hovered: rgb(from var(--par-gray-200) r g b / 0.5);
+  --par-color-bg-surface-item-hovered: rgb(from var(--par-gray-100) r g b / 0.5);
 
   --par-color-bg-surface-item-neutral-subtle-selected: var(--par-neutral-100);
   --par-color-bg-surface-item-neutral-subtle-selected-hovered: var(--par-neutral-200);

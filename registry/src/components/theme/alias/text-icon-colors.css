@@ -1,6 +1,7 @@
 :root,
 [data-scheme='light'] {
   --par-color-text-primary: var(--par-gray-950);
+  --par-color-text-primary-disabled: rgb(from var(--par-gray-950) r g b / 0.5);
   --par-color-text-primary-inverse: var(--par-white);
 
   --par-color-text-secondary: var(--par-gray-700);
@@ -14,10 +15,10 @@
 
   --par-color-text-surface-item-enabled: var(--par-color-text-primary);
   --par-color-text-surface-item-neutral-subtle-selected: var(--par-color-text-primary);
-  --par-color-text-surface-item-neutral-pronounced-selected: var(--par-color-text-primary-inverse);
+  --par-color-text-surface-item-neutral-pronounced-selected: var(--par-white);
   --par-color-text-surface-item-accent-subtle-selected: var(--par-color-text-primary);
-  --par-color-text-surface-item-accent-pronounced-selected: var(--par-color-text-primary-inverse);
-  --par-color-text-surface-item-disabled: rgb(from var(--par-color-text-primary) r g b / 0.5);
+  --par-color-text-surface-item-accent-pronounced-selected: var(--par-white);
+  --par-color-text-surface-item-disabled: var(--par-color-text-primary-disabled);
 
   --par-color-text-field-placeholder: var(--par-gray-600);
   --par-color-text-field-alpha-placeholder: rgb(from var(--par-gray-600) r g b / 0.5);
@@ -36,6 +37,7 @@
 
 [data-scheme='dark'] {
   --par-color-text-primary: var(--par-white);
+  --par-color-text-primary-disabled: rgb(from var(--par-white) r g b / 0.5);
   --par-color-text-primary-inverse: var(--par-gray-950);
 
   --par-color-text-secondary: var(--par-gray-200);
@@ -49,10 +51,10 @@
 
   --par-color-text-surface-item-enabled: var(--par-color-text-primary);
   --par-color-text-surface-item-neutral-subtle-selected: var(--par-color-text-primary);
-  --par-color-text-surface-item-neutral-pronounced-selected: var(--par-color-text-primary-inverse);
+  --par-color-text-surface-item-neutral-pronounced-selected: var(--par-gray-950);
   --par-color-text-surface-item-accent-subtle-selected: var(--par-accent-200);
-  --par-color-text-surface-item-accent-pronounced-selected: var(--par-color-text-primary-inverse);
-  --par-color-text-surface-item-disabled: rgb(from var(--par-color-text-primary) r g b / 0.5);
+  --par-color-text-surface-item-accent-pronounced-selected: var(--par-white);
+  --par-color-text-surface-item-disabled: var(--par-color-text-primary-disabled);
 
   --par-color-text-field-placeholder: var(--par-gray-200);
   --par-color-text-field-alpha-placeholder: rgb(from var(--par-gray-200) r g b / 0.5);

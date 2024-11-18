@@ -2,9 +2,8 @@
 
 import React from 'react';
 import { Menu, MenuItem, MenuDivider, MenuGroup, MenuHeader, MenuFooter } from '@libComponents/Menu';
-import { FlagTriangleRightIcon } from 'lucide-react';
 import { Chip } from '@libComponents/Chip';
-import { MenuTrigger } from '@libComponents/Menu';
+import { Button } from '@libComponents/Button';
 
 const searchItems = [
   'Item 1',
@@ -21,7 +20,7 @@ const searchItems = [
 
 type Props = {};
 
-export const DemoBasicMenu = (props: Props) => {
+export const DemoBasicMenu = (props: any) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [value, setValue] = React.useState('');
   const ref = React.useRef<any>(null);
@@ -49,42 +48,58 @@ export const DemoBasicMenu = (props: Props) => {
         size='md'
         overflowLimit={5}
         scrollIndicator={true}
+        prominence='pronounced'
+        theme='alternative'
+        menuColor='accent'
         className='max-w-[300px]'
+        {...props}
       >
         <MenuHeader>
-          <span className='flex h-full items-center gap-1 px-4 text-red-500'>This is a header</span>
+          <span className='flex h-full items-center gap-1 px-4 font-semibold text-[var(--par-color-text-surface-item-enabled)]'>
+            This is a header
+          </span>
         </MenuHeader>
-        {searchItems.map((item) => (
-          <MenuItem key={item} onClick={() => handleClick(item)} checked={value === item}>
+        {searchItems.map((item, i) => (
+          <MenuItem
+            key={item}
+            onClick={() => handleClick(item)}
+            checked={value === item}
+            disabled={i % 2 === 0 ? true : false}
+          >
             {item}
           </MenuItem>
         ))}
         <MenuFooter>
-          <span className='flex h-full items-center gap-1 px-4 text-cyan-500'>This is a footer</span>
+          <span className='flex h-full items-center gap-1 px-4 font-semibold  text-[var(--par-color-text-surface-item-enabled)]'>
+            This is a footer
+          </span>
         </MenuFooter>
       </Menu>
     </>
   );
 };
 
-export const DemoScrollableMenu = (props: Props) => {
+export const DemoScrollableMenu = (props: any) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [isOpenCheckbox, setIsOpenCheckbox] = React.useState(false);
   const [isOpenRadio, setIsOpenRadio] = React.useState(false);
 
   return (
     <div className='mb-96 flex gap-4'>
-      <div className='not-prose relative w-64 bg-white'>
-        <MenuTrigger id='scroll-menu' onClick={() => setIsOpen(!isOpen)}>
-          Click
-        </MenuTrigger>
+      <div className='not-prose relative w-64'>
+        <Button id={'scroll-menu-' + (props.flag ?? '')} onClick={() => setIsOpen(!isOpen)}>
+          Open
+        </Button>
+
         <Menu
           position='top-start'
-          anchor='scroll-menu'
+          anchor={'scroll-menu-' + (props.flag ?? '')}
           className='max-h-[200px] max-w-[300px]'
           size='sm'
+          {...props}
           isOpen={isOpen}
           scrollIndicator={true}
+          prominence='pronounced'
           searchable
         >
           {searchItems.map((item) => (
@@ -99,17 +114,19 @@ export const DemoScrollableMenu = (props: Props) => {
         </Menu>
       </div>
 
-      <div className='not-prose relative w-64 bg-white'>
-        <MenuTrigger id='scroll-menu-checkbox' onClick={() => setIsOpenCheckbox(!isOpenCheckbox)}>
-          Click
-        </MenuTrigger>
+      <div className='not-prose relative w-64'>
+        <Button id={'scroll-menu-checkbox-' + (props.flag ?? '')} onClick={() => setIsOpenCheckbox(!isOpenCheckbox)}>
+          Open
+        </Button>
         <Menu
-          anchor='scroll-menu-checkbox'
+          anchor={'scroll-menu-checkbox-' + (props.flag ?? '')}
           className='max-w-[300px]'
           size='md'
           isOpen={isOpenCheckbox}
+          prominence='pronounced'
           overflowLimit={5}
           scrollIndicator={true}
+          {...props}
         >
           {searchItems.map((item) => (
             <MenuItem
@@ -125,18 +142,19 @@ export const DemoScrollableMenu = (props: Props) => {
         </Menu>
       </div>
 
-      <div className='not-prose relative w-64 bg-white'>
-        <MenuTrigger id='scroll-menu-radio' onClick={() => setIsOpenRadio(!isOpenRadio)}>
-          Click
-        </MenuTrigger>
+      <div className='not-prose relative w-64'>
+        <Button id={'scroll-menu-radio-' + (props.flag ?? '')} onClick={() => setIsOpenRadio(!isOpenRadio)}>
+          Open
+        </Button>
         <Menu
-          anchor='scroll-menu-radio'
+          anchor={'scroll-menu-radio-' + (props.flag ?? '')}
           className='max-w-[300px]'
-          size='lg'
           isOpen={isOpenRadio}
+          prominence='pronounced'
           overflowLimit={5}
           scrollIndicator={true}
           searchable
+          {...props}
         >
           {searchItems.map((item) => (
             <MenuItem
@@ -156,25 +174,27 @@ export const DemoScrollableMenu = (props: Props) => {
   );
 };
 
-export const DemoMenuGroup = (props: Props) => {
+export const DemoMenuGroup = (props: any) => {
   const [isOpenGroup, setIsOpenGroup] = React.useState(false);
   const [isOpenCheckboxGroup, setIsOpenCheckboxGroup] = React.useState(false);
   const [isOpenRadioGroup, setIsOpenRadioGroup] = React.useState(false);
   return (
     <div className='mb-96 flex gap-4'>
-      <div className='not-prose relative w-64 bg-white'>
-        <MenuTrigger id='group-menu' onClick={() => setIsOpenGroup(!isOpenGroup)}>
-          Click
-        </MenuTrigger>
+      <div className='not-prose relative w-64'>
+        <Button id={'group-menu-' + (props.flag ?? '')} onClick={() => setIsOpenGroup(!isOpenGroup)}>
+          Open
+        </Button>
         <Menu
-          anchor='group-menu'
+          anchor={'group-menu-' + (props.flag ?? '')}
           size='sm'
           className='max-w-[300px]'
           isOpen={isOpenGroup}
           overflowLimit={5}
           scrollIndicator={true}
+          menuColor='accent'
           searchable
           style={{ maxHeight: '300px' }}
+          {...props}
         >
           <MenuGroup groupLabel='Group 1'>
             {searchItems.map((item) => (
@@ -190,18 +210,23 @@ export const DemoMenuGroup = (props: Props) => {
         </Menu>
       </div>
 
-      <div className='not-prose relative w-64 bg-white'>
-        <MenuTrigger id='group-checkbox-menu' onClick={() => setIsOpenCheckboxGroup(!isOpenCheckboxGroup)}>
-          Click
-        </MenuTrigger>
+      <div className='not-prose relative w-64'>
+        <Button
+          id={'group-checkbox-menu-' + (props.flag ?? '')}
+          onClick={() => setIsOpenCheckboxGroup(!isOpenCheckboxGroup)}
+        >
+          Open
+        </Button>
         <Menu
-          anchor='group-checkbox-menu'
+          anchor={'group-checkbox-menu-' + (props.flag ?? '')}
           size='md'
           className='max-w-[300px]'
           isOpen={isOpenCheckboxGroup}
+          menuColor='accent'
           overflowLimit={5}
           scrollIndicator={true}
           searchable
+          {...props}
         >
           <MenuGroup groupLabel='Group 1'>
             {searchItems.map((item) => (
@@ -217,19 +242,19 @@ export const DemoMenuGroup = (props: Props) => {
         </Menu>
       </div>
 
-      <div className='not-prose relative w-64 bg-white'>
-        <MenuTrigger id='group-radio-menu' onClick={() => setIsOpenRadioGroup(!isOpenRadioGroup)}>
-          Click
-        </MenuTrigger>
+      <div className='not-prose relative w-64'>
+        <Button id={'group-radio-menu-' + (props.flag ?? '')} onClick={() => setIsOpenRadioGroup(!isOpenRadioGroup)}>
+          Open
+        </Button>
         <Menu
-          anchor='group-radio-menu'
-          size='lg'
+          anchor={'group-radio-menu-' + (props.flag ?? '')}
           menuColor='accent'
           className='max-w-[300px]'
           isOpen={isOpenRadioGroup}
           overflowLimit={7}
           scrollIndicator={true}
           searchable
+          {...props}
         >
           <MenuGroup groupLabel='Group 1'>
             {searchItems.map((item) => (
