@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import './index.css';
+import './variables.css';
 import { InputWrapper, ValueInputWrapper } from '../BaseInput';
 import { ChevronDown, X } from 'lucide-react';
 import { Menu, MenuDivider, MenuDividerProps, MenuGroup, MenuGroupProps, MenuItem, MenuProps } from '../Menu';
@@ -19,6 +20,12 @@ import { Tag, TagProps } from '../Tag';
 // =========================
 // Declare and export custom select type and custom select component
 
+const sizeMap = {
+  sm: 'small',
+  md: 'medium'
+  // lg: 'large' //**REMOVED
+} as const;
+
 export type SelectItemType = { value: string; label: string; disabled?: boolean };
 
 export interface CustomSelectProps extends React.HTMLAttributes<HTMLDivElement>, MenuProps {
@@ -36,6 +43,7 @@ export interface CustomSelectProps extends React.HTMLAttributes<HTMLDivElement>,
   countDescription?: string;
   theme?: 'default' | 'alternative';
   tagProps?: TagProps;
+  selectSize?: keyof typeof sizeMap;
   onChange?: (e: any) => void;
   onFocus?: (e: React.FocusEvent<HTMLDivElement>) => void;
   onBlur?: (e: React.FocusEvent<HTMLDivElement>) => void;
@@ -60,6 +68,7 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
       selectedIcon,
       floatingLabel,
       theme = 'default',
+      selectSize = 'md',
       tagProps,
       onChange,
       onFocus,
@@ -224,7 +233,7 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
 
         <ValueInputWrapper
           ref={selectInputRef}
-          className={classNames({ 'non-value': isValueEmpty })}
+          className={classNames({ 'non-value': isValueEmpty, [sizeMap[selectSize]]: !floatingLabel })}
           onClick={handleFocus}
           theme={theme}
           {...accessibilityWrapperProps}
@@ -268,6 +277,7 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
           isOpen={isSelectOpen}
           data-select-value={currentValue}
           {...props}
+          size={selectSize}
           style={{ width: rect?.width, ...style }}
           searchable={filterable}
         >

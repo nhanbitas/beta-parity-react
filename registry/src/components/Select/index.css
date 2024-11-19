@@ -1,42 +1,25 @@
 select.native-select {
-  @apply text-body-compact-02 m-0 w-full cursor-pointer appearance-none text-ellipsis rounded-md border border-gray-200 bg-white pl-4 pr-10;
+  @apply text-body-compact-02 m-0 w-full cursor-pointer appearance-none text-ellipsis rounded-md border border-[var(--par-color-border-field-enabled)] bg-[var(--par-color-bg-field-enabled)] pl-4 pr-10;
 }
 
 select.native-select.non-value {
-  @apply text-gray-500;
+  @apply text-[var(--par-color-text-field-placeholder)];
+}
+
+select.native-select.alternative {
+  @apply bg-[var(--par-color-bg-field-alternative-enabled)] text-[var(--par-color-text-field-alternative-enabled)];
+}
+
+select.native-select.alternative.non-value {
+  @apply text-[var(--par-color-text-field-alternative-placeholder)];
 }
 
 select.native-select > option {
-  @apply appearance-none rounded-none py-8 text-gray-950;
+  @apply appearance-none rounded-none py-8 text-[var(--par-color-text-surface-item-enabled)];
 }
 
 select.native-select ~ .right-element-container {
   @apply pointer-events-none;
-}
-
-select.native-select:focus {
-  outline-offset: 0;
-  border-radius: 0.375rem;
-}
-
-select.native-select.error-state {
-  border: 0.125rem solid #d62e42;
-  outline-color: #d62e42;
-}
-
-select.native-select.error-state:focus {
-  border: 0.125rem solid #d62e42;
-  outline-color: #d62e42;
-}
-
-select.native-select.success-state {
-  border: 0.125rem solid #39ac56;
-  outline-color: #39ac56;
-}
-
-select.native-select.success-state:focus {
-  border: 0.125rem solid #39ac56;
-  outline-color: #39ac56;
 }
 
 select.native-select:disabled,
@@ -47,21 +30,22 @@ select.native-select:disabled ~ .left-element-container,
 }
 
 .native-select option:disabled {
-  @apply cursor-not-allowed text-gray-300/50;
+  @apply cursor-not-allowed text-[var(--par-color-text-field-disabled)];
 }
 /* sizes */
 
 select.native-select.small {
-  @apply py-1;
-}
-
-select.native-select.medium {
   @apply py-2;
 }
 
-select.native-select.large {
+select.native-select.medium {
   @apply py-3;
 }
+
+/* **REMOVED */
+/* select.native-select.large {
+  @apply py-3;
+} */
 
 /* Custom Select */
 .input-wrapper .value-input-wrapper {
@@ -69,7 +53,11 @@ select.native-select.large {
 }
 
 .input-wrapper .value-input-wrapper.non-value {
-  @apply text-gray-500;
+  @apply text-[var(--par-color-text-field-placeholder)];
+}
+
+.input-wrapper .value-input-wrapper.alternative.non-value {
+  @apply text-[var(--par-color-text-field-alternative-placeholder)];
 }
 
 .input-wrapper .value-input-wrapper .select-label {
@@ -85,7 +73,7 @@ select.native-select.large {
 }
 
 .input-wrapper .value-input-wrapper .select-number-chips-label {
-  @apply w-full shrink-0 grow items-center overflow-hidden text-ellipsis whitespace-nowrap text-gray-500;
+  @apply w-full shrink-0 grow items-center overflow-hidden text-ellipsis whitespace-nowrap text-[var(--par-color-text-field-enabled)];
 }
 
 .input-wrapper .left-element-container .select-left-icon {

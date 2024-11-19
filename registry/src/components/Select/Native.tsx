@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import './index.css';
+import './variables.css';
 import { InputWrapper } from '../BaseInput';
 import { ContainedLabel } from '../FloatingLabel';
 import { ChevronDown } from 'lucide-react';
@@ -8,8 +9,8 @@ import useCombinedRefs from '../hooks/useCombinedRefs';
 
 const sizeMap = {
   sm: 'small',
-  md: 'medium',
-  lg: 'large'
+  md: 'medium'
+  // lg: 'large' //**REMOVED
 } as const;
 
 // =========================
@@ -22,6 +23,7 @@ export interface NativeSelectProps extends React.SelectHTMLAttributes<HTMLSelect
   value?: string;
   floatingLabel?: string;
   selectSize?: keyof typeof sizeMap;
+  theme?: 'default' | 'alternative';
   onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   onFocus?: (e: React.FocusEvent<HTMLSelectElement>) => void;
   onBlur?: (e: React.FocusEvent<HTMLSelectElement>) => void;
@@ -35,13 +37,15 @@ export const NativeSelect = React.forwardRef<HTMLSelectElement, NativeSelectProp
       className,
       children,
       floatingLabel,
+      value,
+      disabled,
+      selectSize = 'md',
+      theme = 'default',
       onChange,
       onFocus,
       onBlur,
       onclick,
-      value,
-      disabled,
-      selectSize = 'md',
+
       ...props
     },
     ref
@@ -91,7 +95,7 @@ export const NativeSelect = React.forwardRef<HTMLSelectElement, NativeSelectProp
           {floatingLabel && <ContainedLabel isActive={isSelectOpen || !!currentValue}>{floatingLabel}</ContainedLabel>}
           <select
             ref={mergedRef}
-            className={classNames('native-select', 'par-input', className, {
+            className={classNames('native-select', 'par-input', className, theme, {
               'non-value': !currentValue,
               [sizeMap[selectSize]]: !floatingLabel
             })}

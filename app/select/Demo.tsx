@@ -22,10 +22,17 @@ export const DemoNativeSelect = (props: Props) => {
   return (
     <div className='not-prose flex flex-col gap-2'>
       <Select native options={options} selectSize='sm' onChange={(e) => console.log(e.target.value)} />
-      <Select native options={options} selectSize='md' onChange={(e) => console.log(e.target.value)} />
-      <Select native disabled options={options} selectSize='lg' onChange={(e) => console.log(e.target.value)} />
+      <Select
+        native
+        theme='alternative'
+        options={options}
+        selectSize='md'
+        onChange={(e) => console.log(e.target.value)}
+      />
+      <Select native disabled options={options} onChange={(e) => console.log(e.target.value)} />
+      <Select native theme='alternative' disabled options={options} onChange={(e) => console.log(e.target.value)} />
 
-      <Select native selectSize='lg' onChange={(e) => console.log(e.target.value)}>
+      <Select native onChange={(e) => console.log(e.target.value)}>
         <SelectItem value=''>Choose option</SelectItem>
         <SelectItem value='1'>Option 1</SelectItem>
         <SelectItem value='2' disabled>
@@ -47,10 +54,11 @@ export const DemoNativeSelectLabel = (props: any) => {
 
 export const DemoCustomSelect = (props: any) => {
   return (
-    <>
+    <div className='not-prose flex flex-col gap-2'>
       <Select
         onChange={(e) => console.log(e)}
         options={options}
+        selectSize='sm'
         placeHolder='Choose option'
         overflowLimit={5}
         scrollIndicator
@@ -89,17 +97,17 @@ export const DemoCustomSelect = (props: any) => {
         options={options}
         placeHolder='Choose option'
         floatingLabel='Choose option'
-        filterable
         overflowLimit={5}
         scrollIndicator
+        {...props}
       />
-    </>
+    </div>
   );
 };
 
 export const DemoCustomMutipleSelect = (props: any) => {
   return (
-    <>
+    <div className='not-prose flex flex-col gap-2'>
       <Select
         onChange={(e) => console.log(e)}
         options={options}
@@ -111,6 +119,7 @@ export const DemoCustomMutipleSelect = (props: any) => {
         tagProps={{
           color: 'accent'
         }}
+        theme='alternative'
         {...props}
       />
 
@@ -121,6 +130,7 @@ export const DemoCustomMutipleSelect = (props: any) => {
         filterable
         overflowLimit={5}
         scrollIndicator
+        theme='alternative'
         {...props}
       >
         <SelectItem value='' label='Choose option' />
@@ -184,21 +194,18 @@ export const DemoCustomMutipleSelect = (props: any) => {
       <Select
         onChange={(e) => console.log(e)}
         options={options}
-        theme='alternative'
         placeHolder='Choose option'
         floatingLabel='Choose option'
         countDescription='option(s) selected'
         overflowLimit={5}
         leftIcon={<Car />}
-        defaultSearch='1'
         keepOpen
         deselectable={false}
         scrollIndicator
         multiselect
-        filterable
         clearButton
         {...props}
       />
-    </>
+    </div>
   );
 };

@@ -251,6 +251,7 @@ export const Menu = React.forwardRef<HTMLDivElement, MenuProps>(
             <MenuHeader>
               <Input
                 theme={theme}
+                // inputSize={size} ** CONSIDERED
                 value={keyword}
                 onChange={(e) => setKeyword(e.target.value)}
                 ref={searchRef}
