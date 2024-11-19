@@ -312,11 +312,13 @@ ErrorMessage.displayName = 'ErrorMessage';
 // =========================
 // Declare and export select type and ValueInputWrapper component
 
-export interface ValueInputWrapperProps extends React.HTMLAttributes<HTMLDivElement> {}
+export interface ValueInputWrapperProps extends React.HTMLAttributes<HTMLDivElement> {
+  theme?: 'default' | 'alternative';
+}
 
 export const ValueInputWrapper = React.forwardRef<HTMLDivElement, ValueInputWrapperProps>(
-  ({ children, className, ...props }, ref) => (
-    <div className={classNames('value-input-wrapper', className)} {...props} ref={ref}>
+  ({ children, className, theme = 'default', ...props }, ref) => (
+    <div className={classNames('value-input-wrapper', className, theme)} {...props} ref={ref}>
       {children}
     </div>
   )

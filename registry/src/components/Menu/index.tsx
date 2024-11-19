@@ -250,6 +250,7 @@ export const Menu = React.forwardRef<HTMLDivElement, MenuProps>(
           {searchable ? (
             <MenuHeader>
               <Input
+                theme={theme}
                 value={keyword}
                 onChange={(e) => setKeyword(e.target.value)}
                 ref={searchRef}

@@ -10,7 +10,7 @@ import { useOutsideClick } from '../hooks/useOutsideClick';
 import useCombinedRefs from '../hooks/useCombinedRefs';
 import useKeyboard from '../hooks/useKeyboard';
 import { NativeOption } from './Native';
-import { Tag } from '../Tag';
+import { Tag, TagProps } from '../Tag';
 
 // TODO: Write docs for types
 
@@ -34,6 +34,8 @@ export interface CustomSelectProps extends React.HTMLAttributes<HTMLDivElement>,
   value?: string | string[];
   selectedIcon?: React.ReactNode;
   countDescription?: string;
+  theme?: 'default' | 'alternative';
+  tagProps?: TagProps;
   onChange?: (e: any) => void;
   onFocus?: (e: React.FocusEvent<HTMLDivElement>) => void;
   onBlur?: (e: React.FocusEvent<HTMLDivElement>) => void;
@@ -57,6 +59,8 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
       countDescription = 'item(s) selected',
       selectedIcon,
       floatingLabel,
+      theme = 'default',
+      tagProps,
       onChange,
       onFocus,
       onBlur,
@@ -222,6 +226,7 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
           ref={selectInputRef}
           className={classNames({ 'non-value': isValueEmpty })}
           onClick={handleFocus}
+          theme={theme}
           {...accessibilityWrapperProps}
           {...keyEventHandlers}
         >
@@ -237,10 +242,11 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
                       <Tag
                         key={item}
                         kind='glass'
-                        color='accent'
+                        color='neutral'
                         value={item}
                         label={renderedOptions.filter((i) => i.value === item)[0].label}
                         onRemove={() => handleClick(item, true)}
+                        {...tagProps}
                       />
                     )
                 )
@@ -257,6 +263,7 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
         <SelectMenu
           ref={setMenu}
           className={classNames('custom-select', className, { 'non-value': isValueEmpty })}
+          theme={theme}
           anchor={wrapperRef.current as unknown as HTMLElement}
           isOpen={isSelectOpen}
           data-select-value={currentValue}

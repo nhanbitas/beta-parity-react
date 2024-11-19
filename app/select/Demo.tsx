@@ -39,13 +39,13 @@ export const DemoNativeSelect = (props: Props) => {
   );
 };
 
-export const DemoNativeSelectLabel = (props: Props) => {
+export const DemoNativeSelectLabel = (props: any) => {
   return (
     <Select native options={options} onChange={(e) => console.log(e.target.value)} floatingLabel='Choose option' />
   );
 };
 
-export const DemoCustomSelect = (props: Props) => {
+export const DemoCustomSelect = (props: any) => {
   return (
     <>
       <Select
@@ -55,8 +55,16 @@ export const DemoCustomSelect = (props: Props) => {
         overflowLimit={5}
         scrollIndicator
         leftIcon={<Car />}
+        {...props}
       />
-      <Select onChange={(e) => console.log(e)} placeHolder='Choose option' filterable overflowLimit={5} scrollIndicator>
+      <Select
+        onChange={(e) => console.log(e)}
+        placeHolder='Choose option'
+        filterable
+        overflowLimit={5}
+        scrollIndicator
+        {...props}
+      >
         <SelectItem value='' label='Choose option' />
         <SelectItem value='1' label='Option 1' />
         <SelectItem value='2' label='Option 2' />
@@ -70,6 +78,7 @@ export const DemoCustomSelect = (props: Props) => {
         filterable
         overflowLimit={5}
         scrollIndicator
+        {...props}
       >
         {options.map((option) => (
           <SelectItem key={option.value} value={option.value} label={option.label} />
@@ -88,7 +97,7 @@ export const DemoCustomSelect = (props: Props) => {
   );
 };
 
-export const DemoCustomMutipleSelect = (props: Props) => {
+export const DemoCustomMutipleSelect = (props: any) => {
   return (
     <>
       <Select
@@ -99,6 +108,10 @@ export const DemoCustomMutipleSelect = (props: Props) => {
         filterable
         overflowLimit={5}
         scrollIndicator
+        tagProps={{
+          color: 'accent'
+        }}
+        {...props}
       />
 
       <Select
@@ -108,6 +121,7 @@ export const DemoCustomMutipleSelect = (props: Props) => {
         filterable
         overflowLimit={5}
         scrollIndicator
+        {...props}
       >
         <SelectItem value='' label='Choose option' />
         <SelectItem value='1' label='Option 1' />
@@ -122,6 +136,7 @@ export const DemoCustomMutipleSelect = (props: Props) => {
         filterable
         overflowLimit={5}
         scrollIndicator
+        {...props}
       >
         {options.map((option) => (
           <SelectItem key={option.value} value={option.value} label={option.label} />
@@ -135,6 +150,7 @@ export const DemoCustomMutipleSelect = (props: Props) => {
         filterable
         overflowLimit={5}
         scrollIndicator
+        {...props}
       >
         <SelectGroup groupLabel='Group 1'>
           {options.map(
@@ -168,6 +184,7 @@ export const DemoCustomMutipleSelect = (props: Props) => {
       <Select
         onChange={(e) => console.log(e)}
         options={options}
+        theme='alternative'
         placeHolder='Choose option'
         floatingLabel='Choose option'
         countDescription='option(s) selected'
@@ -180,6 +197,7 @@ export const DemoCustomMutipleSelect = (props: Props) => {
         multiselect
         filterable
         clearButton
+        {...props}
       />
     </>
   );
