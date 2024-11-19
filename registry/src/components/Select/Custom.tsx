@@ -29,23 +29,100 @@ const sizeMap = {
 export type SelectItemType = { value: string; label: string; disabled?: boolean };
 
 export interface CustomSelectProps extends React.HTMLAttributes<HTMLDivElement>, MenuProps {
+  /**
+   * The list of options available in the select dropdown.
+   * Each option is of type `SelectItemType`, which typically includes `value`, `label`, and disabled.
+   */
   options?: SelectItemType[];
+
+  /**
+   * Whether the select allows multiple selections.
+   * If true, users can select more than one option.
+   */
   multiselect?: boolean;
+
+  /**
+   * Whether the select supports filtering options based on user input.
+   * If true, a search box will be displayed for filtering.
+   */
   filterable?: boolean;
+
+  /**
+   * Placeholder text displayed when no value is selected.
+   */
   placeHolder?: string;
+
+  /**
+   * Whether a clear button is displayed to reset the selected value(s).
+   */
   clearButton?: boolean;
+
+  /**
+   * Whether an already selected option can be deselected by clicking it again.
+   */
   deselectable?: boolean;
+
+  /**
+   * Whether the dropdown remains open after an option is selected.
+   */
   keepOpen?: boolean;
+
+  /**
+   * The floating label for the select component.
+   */
   floatingLabel?: React.ReactNode;
+
+  /**
+   * An icon displayed to the left of the select component.
+   */
   leftIcon?: React.ReactNode;
+
+  /**
+   * The currently selected value(s).
+   * Can be a single string or an array of strings for multi-select mode.
+   */
   value?: string | string[];
+
+  /**
+   * An icon displayed next to the selected option(s) in the dropdown.
+   */
   selectedIcon?: React.ReactNode;
+
+  /**
+   * A description displayed showing the count of selected items.
+   * Ex: "3 items selected".
+   */
   countDescription?: string;
+
+  /**
+   * The theme of the select component.
+   */
   theme?: 'default' | 'alternative';
+
+  /**
+   * Props to customize the appearance or behavior of tags displayed for selected items in multi-select mode.
+   * @see {@link TagProps}
+   */
   tagProps?: TagProps;
+
+  /**
+   * The size of the select component.
+   */
   selectSize?: keyof typeof sizeMap;
+
+  /**
+   * Callback function invoked when the selected value(s) change.
+   */
   onChange?: (e: any) => void;
+
+  /**
+   * Callback function invoked when the select component gains focus.
+   */
   onFocus?: (e: React.FocusEvent<HTMLDivElement>) => void;
+
+  /**
+   * Callback function invoked when the select component loses focus.
+   */
   onBlur?: (e: React.FocusEvent<HTMLDivElement>) => void;
 }
 

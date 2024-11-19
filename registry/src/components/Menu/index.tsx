@@ -48,23 +48,97 @@ const sizeHeightMap = {
 // Declare and export menu type and menu component
 
 export interface MenuProps extends React.HTMLAttributes<HTMLDivElement> {
+  /**
+   * The position of the menu relative to the anchor.
+   * Placements of floating ui react library
+   * @see {@link https://floating-ui.com/docs/tutorial#placements Placement}
+   */
   position?: Placement;
+
+  /**
+   * The size of the menu
+   */
   size?: keyof typeof sizeMap;
+
+  /**
+   * The color of the menu
+   */
   menuColor?: keyof typeof colorMap;
+
+  /**
+   * The prominence of the menu, defining its visual hierarchy.
+   */
   prominence?: keyof typeof prominenceMap;
+
+  /**
+   * The theme of the menu
+   */
   theme?: keyof typeof themeMap;
+
+  /**
+   * The anchor element or selector to which the menu is attached.
+   * Can be an HTMLElement Ref or a CSS selector string.
+   */
   anchor?: HTMLElement | string;
+
+  /**
+   * The maximum number of items before the menu applies overflow behavior.
+   */
   overflowLimit?: number;
+
+  /**
+   * Whether to show scroll indicators when the menu is scrollable.
+   */
   scrollIndicator?: boolean;
+
+  /**
+   * Whether the menu includes a search input for filtering items.
+   */
   searchable?: boolean;
+
+  /**
+   * The default value for the search input when the menu is rendered.
+   */
   defaultSearch?: string;
+
+  /**
+   * The placeholder text for the search input.
+   */
   searchPlaceholder?: string;
+
+  /**
+   * The text displayed when no results are found in the menu search.
+   */
   noResultsText?: string;
+
+  /**
+   * Whether the menu is rendered using a portal (outside of the DOM hierarchy of its parent).
+   */
   usePortal?: boolean;
+
+  /**
+   * Whether the menu is open.
+   */
   isOpen?: boolean;
+
+  /**
+   * Whether the menu is in a loading state, typically showing a loading indicator.
+   */
   isLoading?: boolean;
+
+  /**
+   * Whether the menu is disabled and cannot be interacted with.
+   */
   disabled?: boolean;
+
+  /**
+   * Callback function invoked when the menu is opened.
+   */
   onOpen?: () => void;
+
+  /**
+   * Callback function invoked when the menu is closed.
+   */
   onClose?: () => void;
 }
 

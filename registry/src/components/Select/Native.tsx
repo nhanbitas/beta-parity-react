@@ -19,14 +19,53 @@ const sizeMap = {
 // Declare and export native select type and native select component
 
 export interface NativeSelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
+  /**
+   * The list of options available in the select dropdown.
+   * Each option is an object containing:
+   * - `value`: The value of the option.
+   * - `label`: The text displayed for the option.
+   * - `disabled` (optional): Whether the option is disabled.
+   */
   options?: { value: string; label: string; disabled?: boolean }[];
+
+  /**
+   * The currently selected value of the select component.
+   */
   value?: string;
+
+  /**
+   * The floating label for the select component.
+   */
   floatingLabel?: string;
+
+  /**
+   * The size of the select component.
+   */
   selectSize?: keyof typeof sizeMap;
+
+  /**
+   * The theme of the select component.
+   */
   theme?: 'default' | 'alternative';
+
+  /**
+   * Callback function invoked when the selected value changes.
+   */
   onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+
+  /**
+   * Callback function invoked when the select component gains focus.
+   */
   onFocus?: (e: React.FocusEvent<HTMLSelectElement>) => void;
+
+  /**
+   * Callback function invoked when the select component loses focus.
+   */
   onBlur?: (e: React.FocusEvent<HTMLSelectElement>) => void;
+
+  /**
+   * Callback function invoked when the select component is clicked.
+   */
   onclick?: (e: React.MouseEvent<HTMLSelectElement>) => void;
 }
 
@@ -45,7 +84,6 @@ export const NativeSelect = React.forwardRef<HTMLSelectElement, NativeSelectProp
       onFocus,
       onBlur,
       onclick,
-
       ...props
     },
     ref
