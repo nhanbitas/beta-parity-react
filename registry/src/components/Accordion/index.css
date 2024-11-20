@@ -1,11 +1,11 @@
 @import '../global.css';
 
 .accordion:not(.flush) {
-  @apply flex w-full flex-col rounded-md border border-gray-200;
+  @apply flex w-full flex-col rounded-md border border-[var(--par-color-border-surface)];
 }
 
 .accordion.flush {
-  @apply flex w-full flex-col border-t;
+  @apply flex w-full flex-col;
 }
 
 .accordion-item {
@@ -13,36 +13,40 @@
 }
 
 .accordion-item[aria-disabled='true'] {
-  @apply cursor-not-allowed text-gray-200;
+  @apply cursor-not-allowed bg-[var(--par-color-bg-accordion-item-disabled)] text-[var(--par-color-text-accordion-item-disabled)];
 }
 
 .accordion-item[aria-disabled='true'] button:disabled {
-  @apply cursor-not-allowed text-gray-200;
+  @apply cursor-not-allowed bg-[var(--par-color-bg-accordion-item-disabled)] text-[var(--par-color-text-accordion-item-disabled)];
 }
 
 .accordion:not(.flush) > .accordion-item {
-  @apply border-solid border-gray-200 bg-white first:rounded-t-md last:rounded-b-md last:border-none;
+  @apply border-solid border-[var(--par-color-border-surface)] first:rounded-t-md last:rounded-b-md last:border-none;
 }
 
 .accordion.flush > .accordion-item {
   @apply last:border-none;
 }
 
-.accordion-item-trigger {
-  @apply flex h-14 flex-shrink-0 items-center justify-between text-ellipsis px-4 text-gray-500 hover:text-gray-700;
+.accordion-item-trigger:focus-visible {
+  @apply -outline-offset-1;
 }
 
-.accordion-item:first-of-type > .accordion-item-trigger {
+.accordion-item-trigger {
+  @apply flex h-14 flex-shrink-0 items-center justify-between text-ellipsis px-4 text-[var(--par-color-text-accordion-item-enabled)] hover:bg-[var(--par-color-bg-accordion-item-hovered)] hover:text-[var(--par-color-text-accordion-item-hovered)] active:bg-[var(--par-color-bg-accordion-item-pressed)] active:text-[var(--par-color-text-accordion-item-pressed)];
+}
+
+.accordion:not(.flush) > .accordion-item:first-of-type:not(.active) > .accordion-item-trigger {
   @apply rounded-t-md;
 }
 
-.accordion-item:last-of-type > .accordion-item-trigger,
-.accordion-item:last-of-type > .accordion-item-content {
+.accordion:not(.flush) > .accordion-item:last-of-type:not(.active) > .accordion-item-trigger,
+.accordion:not(.flush) > .accordion-item:last-of-type > .accordion-item-content {
   @apply rounded-b-md;
 }
 
 .accordion-item.active > .accordion-item-trigger {
-  @apply text-black enabled:hover:text-black;
+  @apply bg-[var(--par-color-bg-accordion-item-expanded)] text-[var(--par-color-text-accordion-item-expanded)] hover:bg-[var(--par-color-bg-accordion-item-hovered)] hover:text-[var(--par-color-text-accordion-item-hovered)] active:bg-[var(--par-color-bg-accordion-item-pressed)] active:text-[var(--par-color-text-accordion-item-pressed)];
 }
 
 .accordion-item-trigger-icon {
@@ -65,7 +69,7 @@
 }
 
 .accordion-item-content {
-  @apply text-body-compact-02 flex flex-grow-0 flex-col items-start justify-between gap-4 overflow-hidden px-4 text-black transition-all duration-300 ease-in-out;
+  @apply text-body-compact-02 flex flex-grow-0 flex-col items-start justify-between gap-4 overflow-hidden px-4 text-[var(--par-color-text-accordion-item-expanded)] transition-all duration-150 ease-in-out;
 }
 
 .accordion-item.active .accordion-item-content {

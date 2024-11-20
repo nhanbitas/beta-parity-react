@@ -3,9 +3,11 @@
 import React from 'react';
 import classNames from 'classnames';
 import './index.css';
+import './variables.css';
 import { ChevronDown, Minus, Plus } from 'lucide-react';
 import { BaseProps } from '../Base';
 import useDidMountEffect from '../hooks/useDidMountEffect';
+import useCombinedRefs from '../hooks/useCombinedRefs';
 
 // Accordion
 
