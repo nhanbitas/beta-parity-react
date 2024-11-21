@@ -7,7 +7,6 @@ import './variables.css';
 import { ChevronDown, Minus, Plus } from 'lucide-react';
 import { BaseProps } from '../Base';
 import useDidMountEffect from '../hooks/useDidMountEffect';
-import useCombinedRefs from '../hooks/useCombinedRefs';
 
 // Accordion
 
@@ -85,6 +84,7 @@ export interface AccordionProps extends BaseProps {
     itemProps?: Omit<AccordionItemProps, 'value'> & React.HTMLAttributes<HTMLDivElement>;
   }[];
 }
+
 export const Accordion = React.forwardRef<HTMLDivElement, AccordionProps & React.HTMLAttributes<HTMLDivElement>>(
   (
     {

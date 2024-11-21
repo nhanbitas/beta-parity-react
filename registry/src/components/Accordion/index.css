@@ -33,7 +33,15 @@
 }
 
 .accordion-item-trigger {
-  @apply flex h-14 flex-shrink-0 items-center justify-between text-ellipsis px-4 text-[var(--par-color-text-accordion-item-enabled)] hover:bg-[var(--par-color-bg-accordion-item-hovered)] hover:text-[var(--par-color-text-accordion-item-hovered)] active:bg-[var(--par-color-bg-accordion-item-pressed)] active:text-[var(--par-color-text-accordion-item-pressed)];
+  @apply flex h-14 flex-shrink-0 items-center justify-between text-ellipsis px-4 text-[var(--par-color-text-accordion-item-enabled)];
+}
+
+.accordion-item:not(.active):not([aria-disabled='true']) > .accordion-item-trigger {
+  @apply hover:bg-[var(--par-color-bg-accordion-item-hovered)] hover:text-[var(--par-color-text-accordion-item-hovered)] active:bg-[var(--par-color-bg-accordion-item-pressed)] active:text-[var(--par-color-text-accordion-item-pressed)];
+}
+
+.accordion-item.active > .accordion-item-trigger {
+  @apply bg-[var(--par-color-bg-accordion-item-expanded)] text-[var(--par-color-text-accordion-item-expanded)] hover:bg-[var(--par-color-bg-accordion-item-hovered)] active:bg-[var(--par-color-bg-accordion-item-pressed)];
 }
 
 .accordion:not(.flush) > .accordion-item:first-of-type:not(.active) > .accordion-item-trigger {
@@ -43,10 +51,6 @@
 .accordion:not(.flush) > .accordion-item:last-of-type:not(.active) > .accordion-item-trigger,
 .accordion:not(.flush) > .accordion-item:last-of-type > .accordion-item-content {
   @apply rounded-b-md;
-}
-
-.accordion-item.active > .accordion-item-trigger {
-  @apply bg-[var(--par-color-bg-accordion-item-expanded)] text-[var(--par-color-text-accordion-item-expanded)] hover:bg-[var(--par-color-bg-accordion-item-hovered)] hover:text-[var(--par-color-text-accordion-item-hovered)] active:bg-[var(--par-color-bg-accordion-item-pressed)] active:text-[var(--par-color-text-accordion-item-pressed)];
 }
 
 .accordion-item-trigger-icon {
