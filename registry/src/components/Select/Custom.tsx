@@ -150,7 +150,7 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
       onChange,
       onFocus,
       onBlur,
-      onKeyUp,
+      onKeyDown,
       value,
       ...props
     },
@@ -227,10 +227,7 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
     };
 
     const ArrowBtn = (
-      <button
-        className={classNames('arrow-select-btn', { open: isSelectOpen })}
-        onClick={() => setIsSelectOpen(!isSelectOpen)}
-      >
+      <button tabIndex={-1} className={classNames('arrow-select-btn', { open: isSelectOpen })}>
         <ChevronDown />
       </button>
     );
@@ -247,11 +244,7 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
         {ArrowBtn}
       </>
     );
-    const LeftInputActions = (
-      <span className='select-left-icon input-icon' onClick={() => setIsSelectOpen(!isSelectOpen)}>
-        {leftIcon}
-      </span>
-    );
+    const LeftInputActions = <span className='select-left-icon input-icon'>{leftIcon}</span>;
 
     const [isShowingChips, setIsShowingChips] = React.useState(
       multiselect && Array.isArray(currentValue) && currentValue.length > 0
@@ -289,15 +282,36 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
         })
     };
 
-    const keyUpHandler = useKeyboard('Enter', (e: any) => {
+    const keyDownHandler = useKeyboard(['Enter', ' '], (e: any) => {
+      e.preventDefault();
       if (disabled) return;
-      setIsSelectOpen(!isSelectOpen);
-      onKeyUp?.(e as React.KeyboardEvent<HTMLDivElement>);
+      setIsSelectOpen((pre) => !pre);
+      onKeyDown?.(e as React.KeyboardEvent<HTMLDivElement>);
     });
 
     const keyEventHandlers = {
-      onKeyUp: keyUpHandler
+      onKeyDown: keyDownHandler
     };
+
+    const wrapperKeyDownHandler = useKeyboard('Escape', (e: any) => {
+      e.preventDefault();
+      selectInputRef.current?.focus();
+    });
+
+    const wrapperKeyEventHandlers = {
+      onKeyDown: wrapperKeyDownHandler
+    };
+
+    React.useEffect(() => {
+      const handleGlobalKeyDown = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') {
+          setIsSelectOpen(false);
+        }
+      };
+
+      window.addEventListener('keydown', handleGlobalKeyDown);
+      return () => window.removeEventListener('keydown', handleGlobalKeyDown);
+    }, []);
 
     return (
       <InputWrapper
@@ -305,12 +319,13 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
         leftElement={!!leftIcon ? LeftInputActions : null}
         rightElement={RightInputActions}
         ref={mergedRef}
+        {...wrapperKeyEventHandlers}
       >
         {floatingLabel && <ContainedLabel isActive={isSelectOpen || !isValueEmpty}>{floatingLabel}</ContainedLabel>}
 
         <ValueInputWrapper
           ref={selectInputRef}
-          className={classNames({ 'non-value': isValueEmpty, [sizeMap[selectSize]]: !floatingLabel })}
+          className={classNames('select-input', { 'non-value': isValueEmpty, [sizeMap[selectSize]]: !floatingLabel })}
           onClick={handleFocus}
           theme={theme}
           {...accessibilityWrapperProps}

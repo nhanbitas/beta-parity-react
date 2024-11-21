@@ -17,11 +17,11 @@ export const useArrowKeyNavigation = (containerRef: React.RefObject<HTMLElement>
     const items = itemsRef.current;
     const activeIndex = items.findIndex((item) => document.activeElement === item) ?? -1;
 
-    if (key === 'ArrowDown') {
+    if (key === 'ArrowDown' || (!event.shiftKey && key === 'Tab')) {
       event.preventDefault();
       const nextIndex = isInitial ? 0 : (activeIndex + 1) % items.length;
       items[nextIndex]?.focus();
-    } else if (key === 'ArrowUp') {
+    } else if (key === 'ArrowUp' || (event.shiftKey && key === 'Tab')) {
       event.preventDefault();
       const prevIndex = isInitial ? items.length - 1 : (activeIndex - 1 + items.length) % items.length;
       items[prevIndex]?.focus();

@@ -62,18 +62,13 @@ textarea {
 input.par-input,
 .value-input-wrapper,
 textarea.par-input {
-  @apply text-body-compact-02 h-10 w-full text-ellipsis rounded-md border px-3;
+  @apply text-body-compact-02 h-10 w-full text-ellipsis rounded-md border px-3 -outline-offset-2;
 }
 
 input.par-input.medium,
 .value-input-wrapper.medium,
 textarea.par-input.medium {
   @apply h-12;
-}
-
-input.par-input:focus,
-textarea.par-input:focus {
-  @apply rounded-md -outline-offset-2;
 }
 
 input.par-input:disabled,

@@ -90,8 +90,6 @@ export const NativeSelect = React.forwardRef<HTMLSelectElement, NativeSelectProp
   ) => {
     const [currentValue, setCurrentValue] = React.useState(value || '');
     const [isSelectOpen, setIsSelectOpen] = React.useState(false);
-    const selectRef = React.useRef<HTMLSelectElement>(null);
-    const mergedRef = useCombinedRefs(ref, selectRef);
 
     const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
       setCurrentValue(e.target.value);
@@ -119,11 +117,7 @@ export const NativeSelect = React.forwardRef<HTMLSelectElement, NativeSelectProp
 
     if ((options && options.length > 0) || children) {
       const ArrowBtn = (
-        <button
-          disabled={disabled}
-          className={classNames('arrow-select-btn', { open: isSelectOpen })}
-          onClick={() => mergedRef.current?.focus()}
-        >
+        <button tabIndex={-1} className={classNames('arrow-select-btn', { open: isSelectOpen })}>
           <ChevronDown />
         </button>
       );
@@ -132,7 +126,7 @@ export const NativeSelect = React.forwardRef<HTMLSelectElement, NativeSelectProp
         <InputWrapper rightElement={ArrowBtn}>
           {floatingLabel && <ContainedLabel isActive={isSelectOpen || !!currentValue}>{floatingLabel}</ContainedLabel>}
           <select
-            ref={mergedRef}
+            ref={ref}
             className={classNames('native-select', 'par-input', className, theme, {
               'non-value': !currentValue,
               [sizeMap[selectSize]]: !floatingLabel

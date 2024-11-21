@@ -1,5 +1,5 @@
 select.native-select {
-  @apply text-body-compact-02 m-0 w-full cursor-pointer appearance-none text-ellipsis rounded-md border border-[var(--par-color-border-field-enabled)] bg-[var(--par-color-bg-field-enabled)] pl-4 pr-10;
+  @apply text-body-compact-02 m-0 w-full cursor-pointer appearance-none text-ellipsis rounded-md border border-[var(--par-color-border-field-enabled)] bg-[var(--par-color-bg-field-enabled)] pl-4 pr-10 -outline-offset-2;
 }
 
 select.native-select.non-value {
@@ -18,8 +18,9 @@ select.native-select > option {
   @apply appearance-none rounded-none py-8 text-[var(--par-color-text-surface-item-enabled)];
 }
 
-select.native-select ~ .right-element-container {
-  @apply pointer-events-none;
+.input-wrapper:has(select.native-select) > .right-element-container,
+.input-wrapper:has(select.native-select) > .left-element-container {
+  @apply pointer-events-none select-none;
 }
 
 select.native-select:disabled,
@@ -48,40 +49,41 @@ select.native-select.medium {
 } */
 
 /* Custom Select */
-.input-wrapper .value-input-wrapper {
-  @apply flex w-full items-center overflow-hidden;
+.input-wrapper .select-input {
+  @apply flex w-full items-center overflow-hidden -outline-offset-2;
 }
 
-.input-wrapper .value-input-wrapper.non-value {
+.input-wrapper .select-input.non-value {
   @apply text-[var(--par-color-text-field-placeholder)];
 }
 
-.input-wrapper .value-input-wrapper.alternative.non-value {
+.input-wrapper .select-input.alternative.non-value {
   @apply text-[var(--par-color-text-field-alternative-placeholder)];
 }
 
-.input-wrapper .value-input-wrapper .select-label {
+.input-wrapper .select-input .select-label {
   @apply pointer-events-none w-full select-none overflow-hidden text-ellipsis whitespace-nowrap;
 }
 
-.input-wrapper .value-input-wrapper .select-container {
+.input-wrapper .select-input .select-container {
   @apply flex flex-row gap-1;
 }
 
-.input-wrapper .value-input-wrapper[data-number-of-chips] .select-container > * {
+.input-wrapper .select-input[data-number-of-chips] .select-container > * {
   @apply invisible;
 }
 
-.input-wrapper .value-input-wrapper .select-number-chips-label {
+.input-wrapper .select-input .select-number-chips-label {
   @apply w-full shrink-0 grow items-center overflow-hidden text-ellipsis whitespace-nowrap text-[var(--par-color-text-field-enabled)];
 }
 
-.input-wrapper .left-element-container .select-left-icon {
+.input-wrapper:has(.select-input) > .right-element-container,
+.input-wrapper:has(.select-input) > .left-element-container {
   @apply pointer-events-none select-none;
 }
 
 .input-wrapper .right-element-container .arrow-select-btn {
-  @apply pointer-events-none select-none transition-all duration-150 ease-in-out;
+  @apply transition-all duration-150 ease-in-out;
 }
 
 .input-wrapper .right-element-container .arrow-select-btn.open {
