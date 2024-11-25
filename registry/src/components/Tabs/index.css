@@ -4,11 +4,19 @@
 }
 
 .tabs-nav {
-  @apply relative z-[99] flex w-full overflow-x-auto overflow-y-visible before:absolute before:bottom-0 before:left-0 before:block before:h-0.5 before:w-full before:bg-gray-200 before:content-[''];
+  @apply relative z-[99] flex w-full overflow-x-auto overflow-y-visible before:absolute before:bottom-0 before:left-0 before:block before:h-0.5 before:w-full before:bg-[var(--par-color-border-tab-container)] before:content-[''];
 }
 
 .tab-button {
-  @apply text-body-compact-02 relative min-w-fit px-4 text-left text-gray-500 transition-colors ease-in-out before:absolute before:bottom-0 before:left-0 before:block before:h-0.5 before:w-full before:bg-gray-200 before:content-[''] after:absolute after:bottom-0 after:left-0 after:block after:h-0.5 after:w-full after:scale-x-0 after:transform after:bg-orange after:transition-transform after:content-[''] hover:text-gray-700;
+  @apply text-body-compact-02 relative min-w-fit bg-[var(--par-color-bg-tab-item-enabled)] px-4 text-left text-[var(--par-color-text-tab-item-enabled)] transition-colors ease-in-out hover:bg-[var(--par-color-bg-tab-item-hovered)] hover:text-[var(--par-color-text-tab-item-hovered)];
+}
+
+.tab-button::after {
+  @apply absolute bottom-0 left-0 block h-0.5 w-full scale-x-0 transform transition-transform content-[''];
+}
+
+.tab-button::before {
+  @apply absolute bottom-0 left-0 block h-0.5 w-full content-[''];
 }
 
 .tabs.medium .tab-button {
@@ -19,8 +27,12 @@
   @apply h-14;
 }
 
-.tab-button.active {
-  @apply text-orange after:scale-x-100 hover:text-orange;
+.tabs.neutral .tab-button.active {
+  @apply bg-[var(--par-color-bg-tab-item-neutral-active)] text-[var(--par-color-text-tab-item-neutral-active)] after:scale-x-100 after:bg-[var(--par-color-border-tab-item-neutral-active)];
+}
+
+.tabs.accent .tab-button.active {
+  @apply bg-[var(--par-color-bg-tab-item-accent-active)] text-[var(--par-color-text-tab-item-accent-active)] after:scale-x-100 after:bg-[var(--par-color-border-tab-item-accent-active)];
 }
 
 .tab-button.from-right {

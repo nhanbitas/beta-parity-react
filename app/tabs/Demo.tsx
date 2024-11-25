@@ -1,4 +1,5 @@
 import { Tabs } from '@libComponents/Tabs';
+import { HomeIcon } from 'lucide-react';
 import React from 'react';
 
 type Props = {};
@@ -6,27 +7,50 @@ type Props = {};
 const mockTabs = [
   {
     id: '1',
-    title: 'Tab 1',
-    content: 'Tab 1 content'
+    title: (
+      <span className='flex items-center gap-2'>
+        <HomeIcon /> Tab 1
+      </span>
+    ),
+    content:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore magna aliqua.'
   },
   {
     id: '2',
-    title: 'Tab 2',
-    content: 'Tab 2 content',
+    title: (
+      <span className='flex items-center gap-2'>
+        <HomeIcon /> Tab 2
+      </span>
+    ),
+    content: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
     active: true
   },
   {
     id: '3',
-    title: 'Tab 3',
-    content: 'Tab 3 content'
+    title: (
+      <span className='flex items-center gap-2'>
+        <HomeIcon /> Tab 3
+      </span>
+    ),
+    content:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore magna aliqua.'
   },
   {
     id: '4',
-    title: 'Tab 4',
-    content: 'Tab 4 content'
+    title: (
+      <span className='flex items-center gap-2'>
+        <HomeIcon /> Tab 4
+      </span>
+    ),
+    content:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore magna aliqua.'
   }
 ];
 
 export const DemoTabs = (props: Props) => {
   return <Tabs data={mockTabs} className='flex flex-col gap-4' />;
+};
+
+export const DemoAccentTabs = (props: Props) => {
+  return <Tabs color='accent' data={mockTabs} className='flex flex-col gap-4' />;
 };

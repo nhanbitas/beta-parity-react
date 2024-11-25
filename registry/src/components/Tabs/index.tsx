@@ -8,23 +8,30 @@ import './variables.css';
 export type TabItemProps = {
   active?: boolean;
   id: string | number;
-  title: string;
-  content: string;
+  title: string | React.ReactNode;
+  content: string | React.ReactNode;
 };
+
 export interface TabsProps extends React.HTMLAttributes<HTMLDivElement> {
   data: TabItemProps[];
   size?: keyof typeof sizeMap;
-  variant?: 'filled' | 'outlined' | 'glass' | '';
+  color?: keyof typeof colorMap;
+  theme?: 'default' | 'alternative';
 }
 
 const sizeMap = {
   sm: 'small',
-  md: 'medium',
-  lg: 'large'
+  md: 'medium'
+  // lg: 'large' // **REMOVED
+};
+
+const colorMap = {
+  neutral: 'neutral',
+  accent: 'accent'
 };
 
 export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
-  ({ className, children, data, color = 'gray', size = 'md', ...props }, ref) => {
+  ({ className, children, data, color = 'neutral', theme = 'default', size = 'md', ...props }, ref) => {
     const [activeTab, setActiveTab] = React.useState(
       data.findIndex((item) => item.active) > 0 ? data.findIndex((item) => item.active) : 0
     );
@@ -37,7 +44,17 @@ export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
     };
 
     return (
-      <div className={classNames('tabs', className, color, sizeMap[size as keyof typeof sizeMap])} ref={ref} {...props}>
+      <div
+        className={classNames(
+          'tabs',
+          className,
+          theme,
+          colorMap[color as keyof typeof colorMap],
+          sizeMap[size as keyof typeof sizeMap]
+        )}
+        ref={ref}
+        {...props}
+      >
         <div className='tabs-nav'>
           {data.map((item, index) => {
             const isActive = activeTab === index;
