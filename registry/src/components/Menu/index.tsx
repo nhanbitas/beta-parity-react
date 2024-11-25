@@ -425,7 +425,7 @@ export const MenuItem = React.forwardRef<HTMLDivElement | HTMLLabelElement, Menu
       useInput = false,
       onClick,
       onChange,
-      onKeyUp,
+      onKeyDown,
       ...props
     },
     ref
@@ -446,13 +446,15 @@ export const MenuItem = React.forwardRef<HTMLDivElement | HTMLLabelElement, Menu
       onChange?.({ target: { value: value || '' }, checked: e.target.checked } as any);
     };
 
-    const keyUpHandler = useKeyboard('Enter', (e: any) => {
-      e.target?.click();
-      onKeyUp?.(e);
+    const keyDownHandler = useKeyboard(['Enter', ' '], (e: any) => {
+      e.preventDefault();
+      e.stopPropagation();
+      e.target.click();
+      onKeyDown?.(e);
     });
 
     const keyEventHandlers = {
-      onKeyUp: keyUpHandler
+      onKeyDown: keyDownHandler
     };
 
     const accessibilityProps = {
