@@ -48,9 +48,19 @@ const mockTabs = [
 ];
 
 export const DemoTabs = (props: Props) => {
-  return <Tabs data={mockTabs} className='flex flex-col gap-4' />;
+  return (
+    <>
+      <Tabs data={mockTabs} direction='horizontal' className='mt-8 flex flex-col gap-4' />
+      <Tabs data={mockTabs} direction='vertical' className='mt-8 flex flex-col gap-4' />
+    </>
+  );
 };
 
 export const DemoAccentTabs = (props: Props) => {
-  return <Tabs color='accent' data={mockTabs} className='flex flex-col gap-4' />;
+  return (
+    <>
+      <Tabs data={mockTabs} direction='horizontal' color='accent' className='mt-8 flex flex-col gap-4' />
+      <Tabs data={mockTabs} direction='vertical' color='accent' className='mt-8 flex flex-col gap-4' />
+    </>
+  );
 };

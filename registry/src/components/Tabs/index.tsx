@@ -17,6 +17,9 @@ export interface TabsProps extends React.HTMLAttributes<HTMLDivElement> {
   size?: keyof typeof sizeMap;
   color?: keyof typeof colorMap;
   theme?: 'default' | 'alternative';
+  direction?: 'horizontal' | 'vertical';
+  navProps?: React.HTMLAttributes<HTMLDivElement>;
+  bodyProps?: React.HTMLAttributes<HTMLDivElement>;
 }
 
 const sizeMap = {
@@ -31,13 +34,27 @@ const colorMap = {
 };
 
 export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
-  ({ className, children, data, color = 'neutral', theme = 'default', size = 'md', ...props }, ref) => {
-    const [activeTab, setActiveTab] = React.useState(
+  (
+    {
+      className,
+      children,
+      data,
+      color = 'neutral',
+      theme = 'default',
+      size = 'md',
+      direction = 'horizontal',
+      navProps,
+      bodyProps,
+      ...props
+    },
+    ref
+  ) => {
+    const [activeTabIndex, setActiveTabIndex] = React.useState(
       data.findIndex((item) => item.active) > 0 ? data.findIndex((item) => item.active) : 0
     );
     const preIndex = React.useRef(0);
     const handleClick = (id: number) => {
-      setActiveTab((pre) => {
+      setActiveTabIndex((pre) => {
         preIndex.current = pre;
         return id;
       });
@@ -49,25 +66,22 @@ export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
           'tabs',
           className,
           theme,
+          direction,
           colorMap[color as keyof typeof colorMap],
           sizeMap[size as keyof typeof sizeMap]
         )}
         ref={ref}
         {...props}
       >
-        <div className='tabs-nav'>
+        <div className='tabs-nav' {...navProps}>
           {data.map((item, index) => {
-            const isActive = activeTab === index;
-
-            let amimatedDirection = activeTab < index ? 'from-left' : 'from-right';
-            amimatedDirection = activeTab > index ? 'from-right' : 'from-left';
-            let currentActiveAnimation = preIndex.current < activeTab ? 'from-left' : 'from-right';
-            currentActiveAnimation = preIndex.current > activeTab ? 'from-right' : 'from-left';
-
+            const isActive = activeTabIndex === index;
+            const otherAnimation = generateOtherAnimation({ direction, activeTabIndex, index });
+            const activeAnimation = generateActiveAnimation({ direction, activeTabIndex, preIndex });
             return (
               <TabButton
                 key={item.id}
-                amimatedDirection={isActive ? currentActiveAnimation : (amimatedDirection as any)}
+                amimatedDirection={isActive ? activeAnimation : otherAnimation}
                 onClick={() => handleClick(index)}
                 className={classNames('tab-button', isActive ? 'active' : '')}
               >
@@ -76,9 +90,9 @@ export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
             );
           })}
         </div>
-        <div className='tabs-body'>
+        <div className='tabs-body' {...bodyProps}>
           {data.map((item, index) => {
-            const isActive = activeTab === index;
+            const isActive = activeTabIndex === index;
             return isActive && <TabContent key={item.id}>{item.content}</TabContent>;
           })}
         </div>
@@ -91,7 +105,7 @@ Tabs.displayName = 'Tabs';
 
 export interface TabButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   active?: boolean;
-  amimatedDirection?: 'from-right' | 'from-left';
+  amimatedDirection?: 'from-right' | 'from-left' | 'from-top' | 'from-bottom';
 }
 
 export const TabButton = React.forwardRef<HTMLButtonElement, TabButtonProps>(
@@ -121,3 +135,45 @@ export const TabContent = React.forwardRef<HTMLDivElement, TabContentProps>(
 );
 
 TabContent.displayName = 'TabContent';
+
+const animationMap = {
+  horizontal: {
+    larger: 'from-left',
+    smaller: 'from-right'
+  },
+  vertical: {
+    larger: 'from-top',
+    smaller: 'from-bottom'
+  }
+};
+
+const generateOtherAnimation = ({
+  direction,
+  activeTabIndex,
+  index
+}: {
+  direction: 'horizontal' | 'vertical';
+  activeTabIndex: number;
+  index: number;
+}) => {
+  let amimatedDirection = activeTabIndex < index ? animationMap[direction].larger : animationMap[direction].smaller;
+  amimatedDirection = activeTabIndex > index ? animationMap[direction].smaller : animationMap[direction].larger;
+
+  return amimatedDirection as 'from-right' | 'from-left' | 'from-top' | 'from-bottom';
+};
+
+const generateActiveAnimation = ({
+  direction,
+  activeTabIndex,
+  preIndex
+}: {
+  direction: 'horizontal' | 'vertical';
+  activeTabIndex: number;
+  preIndex: React.MutableRefObject<number>;
+}) => {
+  let currentActiveAnimation =
+    preIndex.current < activeTabIndex ? animationMap[direction].larger : animationMap[direction].smaller;
+  currentActiveAnimation =
+    preIndex.current > activeTabIndex ? animationMap[direction].smaller : animationMap[direction].larger;
+  return currentActiveAnimation as 'from-right' | 'from-left' | 'from-top' | 'from-bottom';
+};
