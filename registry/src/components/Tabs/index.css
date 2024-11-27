@@ -1,18 +1,42 @@
 /* Tabs */
 .tabs {
-  @apply relative z-0 flex w-full;
+  @apply relative z-0 flex w-full gap-4;
 }
 
-.tabs.horizontal {
+.tabs.top {
   @apply flex-col;
 }
 
-.tabs.vertical {
+.tabs.bottom {
+  @apply flex-col-reverse;
+}
+
+.tabs.left {
   @apply flex-row;
 }
 
+.tabs.right {
+  @apply flex-row-reverse;
+}
+
 .tabs-nav {
-  @apply relative z-[99] flex min-w-fit overflow-x-auto overflow-y-visible before:absolute before:bottom-0 before:left-0 before:block before:h-0.5 before:w-full before:bg-[var(--par-color-border-tab-container)] before:content-[''];
+  @apply relative z-[99] flex min-w-fit overflow-x-auto overflow-y-visible;
+}
+
+.tabs.horizontal .tabs-nav:not(.flipped) {
+  @apply before:absolute before:bottom-0 before:left-0 before:-z-10 before:block before:h-0.5 before:w-full before:bg-[var(--par-color-border-tab-container)] before:content-[''];
+}
+
+.tabs.horizontal .tabs-nav.flipped {
+  @apply before:absolute before:left-0 before:top-0 before:-z-10 before:block before:h-0.5 before:w-full before:bg-[var(--par-color-border-tab-container)] before:content-[''];
+}
+
+.tabs.vertical .tabs-nav:not(.flipped) {
+  @apply before:absolute before:left-0 before:top-0 before:-z-10 before:block before:h-full before:w-0.5 before:bg-[var(--par-color-border-tab-container)] before:content-[''];
+}
+
+.tabs.vertical .tabs-nav.flipped {
+  @apply before:absolute before:right-0 before:top-0 before:-z-10 before:block before:h-full before:w-0.5 before:bg-[var(--par-color-border-tab-container)] before:content-[''];
 }
 
 .tabs.horizontal .tabs-nav {
@@ -20,15 +44,25 @@
 }
 
 .tabs.vertical .tabs-nav {
-  @apply flex-col before:h-full before:w-0.5;
+  @apply flex-col;
 }
 
 .tab-button {
-  @apply text-body-compact-02 relative min-w-fit bg-[var(--par-color-bg-tab-item-enabled)] px-4 text-left text-[var(--par-color-text-tab-item-enabled)] transition-colors duration-150 ease-in-out hover:bg-[var(--par-color-bg-tab-item-hovered)] hover:text-[var(--par-color-text-tab-item-hovered)];
+  @apply text-body-compact-02 relative min-w-fit bg-[var(--par-color-bg-tab-item-enabled)] px-4 text-left text-[var(--par-color-text-tab-item-enabled)] -outline-offset-2 transition-colors duration-150 ease-in-out hover:bg-[var(--par-color-bg-tab-item-hovered)] hover:text-[var(--par-color-text-tab-item-hovered)];
 }
 
-.tab-button::after {
+.tab-button:disabled {
+  @apply cursor-not-allowed bg-[var(--par-color-bg-tab-item-disabled)] text-[var(--par-color-text-tab-item-disabled)] hover:bg-[var(--par-color-bg-tab-item-disabled)] hover:text-[var(--par-color-text-tab-item-disabled)];
+}
+
+.tabs.vertical .tabs-nav:not(.flipped) .tab-button::after,
+.tabs.horizontal .tabs-nav:not(.flipped) .tab-button::after {
   @apply absolute bottom-0 left-0 block transform transition-transform content-[''];
+}
+
+.tabs.vertical .tabs-nav.flipped .tab-button::after,
+.tabs.horizontal .tabs-nav.flipped .tab-button::after {
+  @apply absolute right-0 top-0 block transform transition-transform content-[''];
 }
 
 .tabs.vertical .tab-button::after {
@@ -39,11 +73,11 @@
   @apply h-0.5 w-full scale-x-0;
 }
 
-.tabs.medium .tab-button {
+.tabs.small .tab-button {
   @apply h-10;
 }
 
-.tabs.large .tab-button {
+.tabs.medium .tab-button {
   @apply h-14;
 }
 
@@ -83,9 +117,21 @@
   @apply relative z-0 grow;
 }
 
+.tabs.vertical .tab-body {
+  @apply min-h-full;
+}
+
 .tab-content:not(.hidden) {
   animation: fadeIn ease-in-out 0.15s;
-  @apply py-3;
+  @apply h-full w-full p-4;
+}
+
+.tabs.default .tab-content {
+  @apply bg-[var(--par-color-bg-surface)];
+}
+
+.tabs.alternative .tab-content {
+  @apply bg-[var(--par-color-bg-surface-alternative)];
 }
 
 @keyframes fadeIn {

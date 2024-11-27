@@ -13,7 +13,8 @@ const mockTabs = [
       </span>
     ),
     content:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore magna aliqua.'
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore magna aliqua. ',
+    active: true
   },
   {
     id: '2',
@@ -22,8 +23,7 @@ const mockTabs = [
         <HomeIcon /> Tab 2
       </span>
     ),
-    content: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-    active: true
+    content: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
   },
   {
     id: '3',
@@ -33,7 +33,8 @@ const mockTabs = [
       </span>
     ),
     content:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore magna aliqua.'
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore magna aliqua.',
+    disabled: true
   },
   {
     id: '4',
@@ -50,8 +51,10 @@ const mockTabs = [
 export const DemoTabs = (props: Props) => {
   return (
     <>
-      <Tabs data={mockTabs} direction='horizontal' className='mt-8 flex flex-col gap-4' />
-      <Tabs data={mockTabs} direction='vertical' className='mt-8 flex flex-col gap-4' />
+      <Tabs data={mockTabs} side='top' className='mt-8' {...props} />
+      <Tabs data={mockTabs} side='bottom' flip className='mt-8' {...props} />
+      <Tabs data={mockTabs} side='left' className='mt-8' {...props} />
+      <Tabs data={mockTabs} side='right' flip className='mt-8' {...props} />
     </>
   );
 };
@@ -59,8 +62,10 @@ export const DemoTabs = (props: Props) => {
 export const DemoAccentTabs = (props: Props) => {
   return (
     <>
-      <Tabs data={mockTabs} direction='horizontal' color='accent' className='mt-8 flex flex-col gap-4' />
-      <Tabs data={mockTabs} direction='vertical' color='accent' className='mt-8 flex flex-col gap-4' />
+      <Tabs data={mockTabs} color='accent' size='sm' side='top' className='mt-8' {...props} />
+      <Tabs data={mockTabs} color='accent' size='sm' side='bottom' className='mt-8' {...props} />
+      <Tabs data={mockTabs} color='accent' size='sm' side='left' flip className='mt-8' {...props} />
+      <Tabs data={mockTabs} color='accent' size='sm' side='right' flip className='mt-8' {...props} />
     </>
   );
 };

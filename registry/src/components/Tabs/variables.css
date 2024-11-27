@@ -1,3 +1,5 @@
+@import '../theme/alias/background.css';
+
 :root,
 [data-scheme='light'] {
   /* TEXT */

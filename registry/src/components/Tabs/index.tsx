@@ -7,6 +7,7 @@ import './variables.css';
 
 export type TabItemProps = {
   active?: boolean;
+  disabled?: boolean;
   id: string | number;
   title: string | React.ReactNode;
   content: string | React.ReactNode;
@@ -17,7 +18,8 @@ export interface TabsProps extends React.HTMLAttributes<HTMLDivElement> {
   size?: keyof typeof sizeMap;
   color?: keyof typeof colorMap;
   theme?: 'default' | 'alternative';
-  direction?: 'horizontal' | 'vertical';
+  side?: 'left' | 'right' | 'top' | 'bottom';
+  flip?: boolean;
   navProps?: React.HTMLAttributes<HTMLDivElement>;
   bodyProps?: React.HTMLAttributes<HTMLDivElement>;
 }
@@ -42,7 +44,8 @@ export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
       color = 'neutral',
       theme = 'default',
       size = 'md',
-      direction = 'horizontal',
+      side = 'left',
+      flip = false,
       navProps,
       bodyProps,
       ...props
@@ -53,6 +56,7 @@ export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
       data.findIndex((item) => item.active) > 0 ? data.findIndex((item) => item.active) : 0
     );
     const preIndex = React.useRef(0);
+    const direction = ['left', 'right'].includes(side) ? 'vertical' : 'horizontal'; // return direction of nav items
     const handleClick = (id: number) => {
       setActiveTabIndex((pre) => {
         preIndex.current = pre;
@@ -67,13 +71,14 @@ export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
           className,
           theme,
           direction,
+          side,
           colorMap[color as keyof typeof colorMap],
           sizeMap[size as keyof typeof sizeMap]
         )}
         ref={ref}
         {...props}
       >
-        <div className='tabs-nav' {...navProps}>
+        <div className={classNames('tabs-nav', { flipped: flip })} {...navProps}>
           {data.map((item, index) => {
             const isActive = activeTabIndex === index;
             const otherAnimation = generateOtherAnimation({ direction, activeTabIndex, index });
@@ -84,6 +89,7 @@ export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
                 amimatedDirection={isActive ? activeAnimation : otherAnimation}
                 onClick={() => handleClick(index)}
                 className={classNames('tab-button', isActive ? 'active' : '')}
+                disabled={item.disabled}
               >
                 {item.title}
               </TabButton>
@@ -103,7 +109,7 @@ export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
 
 Tabs.displayName = 'Tabs';
 
-export interface TabButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
+export interface TabButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   active?: boolean;
   amimatedDirection?: 'from-right' | 'from-left' | 'from-top' | 'from-bottom';
 }
