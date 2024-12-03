@@ -1,4 +1,6 @@
-import { Tabs } from '@libComponents/Tabs';
+'use client';
+
+import { TabButton, TabContent, Tabs } from '@libComponents/Tabs';
 import { HomeIcon } from 'lucide-react';
 import React from 'react';
 
@@ -6,7 +8,7 @@ type Props = {};
 
 const mockTabs = [
   {
-    id: '1',
+    value: 'tab-1',
     title: (
       <span className='flex items-center gap-2'>
         <HomeIcon /> Tab 1
@@ -17,7 +19,7 @@ const mockTabs = [
     active: true
   },
   {
-    id: '2',
+    value: 'tab-2',
     title: (
       <span className='flex items-center gap-2'>
         <HomeIcon /> Tab 2
@@ -26,7 +28,7 @@ const mockTabs = [
     content: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
   },
   {
-    id: '3',
+    value: 'tab-3',
     title: (
       <span className='flex items-center gap-2'>
         <HomeIcon /> Tab 3
@@ -37,10 +39,50 @@ const mockTabs = [
     disabled: true
   },
   {
-    id: '4',
+    value: 'tab-4',
     title: (
       <span className='flex items-center gap-2'>
         <HomeIcon /> Tab 4
+      </span>
+    ),
+    content:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore magna aliqua.'
+  },
+  {
+    value: 'tab-5',
+    title: (
+      <span className='flex items-center gap-2'>
+        <HomeIcon /> Tab 5
+      </span>
+    ),
+    content:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore magna aliqua.'
+  },
+  {
+    value: 'tab-6',
+    title: (
+      <span className='flex items-center gap-2'>
+        <HomeIcon /> Tab 6
+      </span>
+    ),
+    content:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore magna aliqua.'
+  },
+  {
+    value: 'tab-7',
+    title: (
+      <span className='flex items-center gap-2'>
+        <HomeIcon /> Tab 7
+      </span>
+    ),
+    content:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore magna aliqua.'
+  },
+  {
+    value: 'tab-8',
+    title: (
+      <span className='flex items-center gap-2'>
+        <HomeIcon /> Tab 8
       </span>
     ),
     content:
@@ -67,5 +109,51 @@ export const DemoAccentTabs = (props: Props) => {
       <Tabs data={mockTabs} color='accent' size='sm' side='left' flip className='mt-8' {...props} />
       <Tabs data={mockTabs} color='accent' size='sm' side='right' flip className='mt-8' {...props} />
     </>
+  );
+};
+
+export const DemoTabsWithChildren = (props: Props) => {
+  return (
+    <Tabs>
+      <TabButton value='tab1'>Tab 1</TabButton>
+      <TabButton value='tab2'>Tab 2</TabButton>
+      <TabButton value='tab3' disabled>
+        Tab 3
+      </TabButton>
+
+      <TabContent value='tab1'>
+        <p>Content 1</p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore
+          magna aliqua.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore
+          magna aliqua.
+        </p>
+      </TabContent>
+      <TabContent value='tab2'>
+        <p>Content 2</p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore
+          magna aliqua.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore
+          magna aliqua.
+        </p>
+      </TabContent>
+      <TabContent value='tab3'>
+        <p>Content 2</p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore
+          magna aliqua.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore
+          magna aliqua.
+        </p>
+      </TabContent>
+    </Tabs>
   );
 };

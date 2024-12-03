@@ -4,17 +4,23 @@ import React from 'react';
 import classNames from 'classnames';
 import './index.css';
 import './variables.css';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { Button } from '../Button';
+
+// TODO: doc for types
 
 export type TabItemProps = {
-  active?: boolean;
-  disabled?: boolean;
-  id: string | number;
+  value: string | number;
   title: string | React.ReactNode;
   content: string | React.ReactNode;
+  active?: boolean;
+  disabled?: boolean;
+  buttonProps?: React.HTMLAttributes<HTMLButtonElement>;
+  contentProps?: React.HTMLAttributes<HTMLDivElement>;
 };
 
 export interface TabsProps extends React.HTMLAttributes<HTMLDivElement> {
-  data: TabItemProps[];
+  data?: TabItemProps[];
   size?: keyof typeof sizeMap;
   color?: keyof typeof colorMap;
   theme?: 'default' | 'alternative';
@@ -35,12 +41,17 @@ const colorMap = {
   accent: 'accent'
 };
 
+// =========================
+// Tabs
+// =========================
+// Declare and export Tabs type and Tabs component
+
 export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
   (
     {
       className,
       children,
-      data,
+      data = [],
       color = 'neutral',
       theme = 'default',
       size = 'md',
@@ -64,6 +75,108 @@ export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
       });
     };
 
+    // ========================= Convert Children to Data ========================= //
+    if (children && React.Children.count(children) > 0) {
+      React.Children.forEach(children, (child: React.ReactNode) => {
+        if (React.isValidElement(child)) {
+          if (child.type === TabButton) {
+            const { value, children, disabled, active, ...rest } = child.props;
+            const index = data.findIndex((item) => item.value === value);
+            if (index > -1) {
+              data[index].title = children;
+              data[index].disabled = disabled;
+              data[index].active = active;
+              data[index].buttonProps = rest;
+            } else {
+              data.push({
+                value,
+                title: children,
+                disabled,
+                active,
+                buttonProps: rest,
+                content: '',
+                contentProps: {}
+              });
+            }
+          }
+
+          if (child.type === TabContent) {
+            const { value, children, ...rest } = child.props;
+            const index = data.findIndex((item) => item.value === value);
+            if (index > -1) {
+              data[index].content = children;
+              data[index].contentProps = rest;
+            } else {
+              data.push({
+                value,
+                title: '',
+                disabled: false,
+                active: false,
+                buttonProps: {},
+                content: children || '',
+                contentProps: rest || {}
+              });
+            }
+          }
+        }
+      });
+    }
+
+    // ========================= Hide or Unhide Scroll Buttons ========================= //
+    const containerRef = React.useRef<HTMLDivElement | null>(null);
+    const [isScroll, setIsScroll] = React.useState(false);
+    const [disableBtn, setDisableBtn] = React.useState({
+      left: false,
+      right: false
+    });
+
+    const checkOverflow = () => {
+      if (containerRef.current) {
+        const { scrollWidth, clientWidth } = containerRef.current;
+        setIsScroll(scrollWidth > clientWidth);
+      }
+    };
+
+    const handleScrollLeft = () => {
+      if (containerRef.current) {
+        const { scrollWidth, clientWidth } = containerRef.current;
+        containerRef.current.scrollLeft -= 200;
+        setDisableBtn({
+          left: containerRef.current.scrollLeft === 0,
+          right: containerRef.current.scrollLeft + clientWidth + 1 >= scrollWidth
+        });
+      }
+    };
+
+    const handleScrollRight = () => {
+      if (containerRef.current) {
+        const { scrollWidth, clientWidth } = containerRef.current;
+        containerRef.current.scrollLeft += 200;
+        setDisableBtn({
+          left: containerRef.current.scrollLeft === 0,
+          right: containerRef.current.scrollLeft + clientWidth + 1 >= scrollWidth
+        });
+      }
+    };
+
+    React.useEffect(() => {
+      checkOverflow();
+
+      const handleResize = () => {
+        checkOverflow();
+      };
+
+      const resizeObserver = new ResizeObserver(() => handleResize());
+
+      if (containerRef.current) {
+        resizeObserver.observe(containerRef.current);
+      }
+
+      return () => {
+        resizeObserver.disconnect();
+      };
+    }, []);
+
     return (
       <div
         className={classNames(
@@ -78,28 +191,66 @@ export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
         ref={ref}
         {...props}
       >
-        <div className={classNames('tabs-nav', { flipped: flip })} {...navProps}>
-          {data.map((item, index) => {
-            const isActive = activeTabIndex === index;
-            const otherAnimation = generateOtherAnimation({ direction, activeTabIndex, index });
-            const activeAnimation = generateActiveAnimation({ direction, activeTabIndex, preIndex });
-            return (
-              <TabButton
-                key={item.id}
-                amimatedDirection={isActive ? activeAnimation : otherAnimation}
-                onClick={() => handleClick(index)}
-                className={classNames('tab-button', isActive ? 'active' : '')}
-                disabled={item.disabled}
+        <div className='tabs-nav-wrapper'>
+          <div className={classNames('tabs-nav', { flipped: flip })} {...navProps} ref={containerRef}>
+            {data.map((item, index) => {
+              const isActive = activeTabIndex === index;
+              const otherAnimation = generateOtherAnimation({ direction, activeTabIndex, index });
+              const activeAnimation = generateActiveAnimation({ direction, activeTabIndex, preIndex });
+
+              return (
+                <TabButton
+                  {...item.buttonProps}
+                  key={item.value}
+                  value={item.value}
+                  amimatedDirection={isActive ? activeAnimation : otherAnimation}
+                  onClick={() => handleClick(index)}
+                  className={classNames('tab-button', isActive ? 'active' : '')}
+                  disabled={item.disabled}
+                >
+                  {item.title}
+                </TabButton>
+              );
+            })}
+          </div>
+          {isScroll && direction === 'horizontal' && (
+            <div className='tabs-nav-scroll-actions'>
+              <Button
+                iconOnly
+                className='scroll-left'
+                onClick={handleScrollLeft}
+                color={color}
+                kind='ghost'
+                size='sm'
+                disabled={disableBtn.left}
               >
-                {item.title}
-              </TabButton>
-            );
-          })}
+                <ChevronLeft className='arrow-right' />
+              </Button>
+              <Button
+                iconOnly
+                className='scroll-right'
+                onClick={handleScrollRight}
+                color={color}
+                kind='ghost'
+                size='sm'
+                disabled={disableBtn.right}
+              >
+                <ChevronRight className='arrow-right' />
+              </Button>
+            </div>
+          )}
         </div>
+
         <div className='tabs-body' {...bodyProps}>
           {data.map((item, index) => {
             const isActive = activeTabIndex === index;
-            return isActive && <TabContent key={item.id}>{item.content}</TabContent>;
+            return (
+              isActive && (
+                <TabContent {...item.contentProps} key={item.value} value={item.value}>
+                  {item.content}
+                </TabContent>
+              )
+            );
           })}
         </div>
       </div>
@@ -109,7 +260,13 @@ export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
 
 Tabs.displayName = 'Tabs';
 
+// =========================
+// TabButton
+// =========================
+// Declare and export TabButton type and TabButton component
+
 export interface TabButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  value: string | number;
   active?: boolean;
   amimatedDirection?: 'from-right' | 'from-left' | 'from-top' | 'from-bottom';
 }
@@ -126,8 +283,13 @@ export const TabButton = React.forwardRef<HTMLButtonElement, TabButtonProps>(
 
 TabButton.displayName = 'TabButton';
 
+// =========================
+// TabContent
+// =========================
+// Declare and export TabContent type and TabContent component
+
 export interface TabContentProps extends React.HTMLAttributes<HTMLDivElement> {
-  active?: boolean;
+  value: string | number;
 }
 
 export const TabContent = React.forwardRef<HTMLDivElement, TabContentProps>(

@@ -40,8 +40,6 @@ const sizeHeightMap = {
   // lg: 48 // **REMOVED
 } as const;
 
-// TODO: Write docs for types
-
 // =========================
 // Menu
 // =========================

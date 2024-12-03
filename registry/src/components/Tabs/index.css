@@ -19,28 +19,40 @@
   @apply flex-row-reverse;
 }
 
+.tabs-nav-wrapper {
+  @apply relative overflow-visible border-[var(--par-color-border-tab-container)];
+}
+
+.tabs.horizontal .tabs-nav-wrapper {
+  @apply w-full;
+}
+
+.tabs.vertical .tabs-nav-wrapper {
+  @apply min-w-fit;
+}
+
+.tabs.horizontal .tabs-nav-wrapper:not(.flipped) {
+  @apply border-b;
+}
+
+.tabs.horizontal .tabs-nav-wrapper.flipped {
+  @apply border-t;
+}
+
+.tabs.vertical .tabs-nav-wrapper:not(.flipped) {
+  @apply border-l;
+}
+
+.tabs.vertical .tabs-nav-wrapper.flipped {
+  @apply border-r;
+}
+
 .tabs-nav {
-  @apply relative z-[99] flex min-w-fit overflow-x-auto overflow-y-visible;
-}
-
-.tabs.horizontal .tabs-nav:not(.flipped) {
-  @apply before:absolute before:bottom-0 before:left-0 before:-z-10 before:block before:h-0.5 before:w-full before:bg-[var(--par-color-border-tab-container)] before:content-[''];
-}
-
-.tabs.horizontal .tabs-nav.flipped {
-  @apply before:absolute before:left-0 before:top-0 before:-z-10 before:block before:h-0.5 before:w-full before:bg-[var(--par-color-border-tab-container)] before:content-[''];
-}
-
-.tabs.vertical .tabs-nav:not(.flipped) {
-  @apply before:absolute before:left-0 before:top-0 before:-z-10 before:block before:h-full before:w-0.5 before:bg-[var(--par-color-border-tab-container)] before:content-[''];
-}
-
-.tabs.vertical .tabs-nav.flipped {
-  @apply before:absolute before:right-0 before:top-0 before:-z-10 before:block before:h-full before:w-0.5 before:bg-[var(--par-color-border-tab-container)] before:content-[''];
+  @apply relative flex h-fit scrollbar-none;
 }
 
 .tabs.horizontal .tabs-nav {
-  @apply flex-row;
+  @apply flex-row overflow-x-scroll;
 }
 
 .tabs.vertical .tabs-nav {
@@ -132,6 +144,14 @@
 
 .tabs.alternative .tab-content {
   @apply bg-[var(--par-color-bg-surface-alternative)];
+}
+
+.tabs-nav-scroll-actions {
+  @apply absolute right-0 top-1/2 z-10 flex h-full -translate-y-1/2 items-center justify-center gap-2;
+}
+
+.tabs-nav-wrapper:has(.tabs-nav-scroll-actions) {
+  @apply pr-20;
 }
 
 @keyframes fadeIn {
