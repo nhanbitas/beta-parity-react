@@ -93,10 +93,25 @@ const mockTabs = [
 export const DemoTabs = (props: Props) => {
   return (
     <>
-      <Tabs data={mockTabs} side='top' className='mt-8' {...props} />
-      <Tabs data={mockTabs} side='bottom' flip className='mt-8' {...props} />
+      <Tabs
+        data={Array(40)
+          .fill(1)
+          .map((_, i) => ({
+            value: `Tab-${i + 1}`,
+            title: (
+              <span className='flex items-center gap-2'>
+                <HomeIcon /> {`Tab ${i + 1}`}
+              </span>
+            ),
+            content: `Content for tab ${i + 1}`
+          }))}
+        side='top'
+        className='mt-8'
+        {...props}
+      />
+      <Tabs data={mockTabs} side='bottom' className='mt-8' {...props} />
       <Tabs data={mockTabs} side='left' className='mt-8' {...props} />
-      <Tabs data={mockTabs} side='right' flip className='mt-8' {...props} />
+      <Tabs data={mockTabs} side='right' className='mt-8' {...props} />
     </>
   );
 };
@@ -104,10 +119,19 @@ export const DemoTabs = (props: Props) => {
 export const DemoAccentTabs = (props: Props) => {
   return (
     <>
-      <Tabs data={mockTabs} color='accent' size='sm' side='top' className='mt-8' {...props} />
-      <Tabs data={mockTabs} color='accent' size='sm' side='bottom' className='mt-8' {...props} />
-      <Tabs data={mockTabs} color='accent' size='sm' side='left' flip className='mt-8' {...props} />
-      <Tabs data={mockTabs} color='accent' size='sm' side='right' flip className='mt-8' {...props} />
+      <Tabs data={mockTabs} flipped color='accent' size='sm' side='top' className='mt-8' {...props} />
+      <Tabs data={mockTabs} flipped color='accent' size='sm' side='bottom' className='mt-8' {...props} />
+      <Tabs data={mockTabs} flipped color='accent' size='sm' side='left' className='mt-8' {...props} />
+      <Tabs
+        data={mockTabs}
+        indicatorSide='opposite'
+        flipped
+        color='accent'
+        size='sm'
+        side='right'
+        className='mt-8'
+        {...props}
+      />
     </>
   );
 };

@@ -52,7 +52,7 @@
 }
 
 .tabs.horizontal .tabs-nav {
-  @apply flex-row overflow-x-scroll;
+  @apply flex-row overflow-x-scroll scroll-smooth;
 }
 
 .tabs.vertical .tabs-nav {
@@ -67,14 +67,24 @@
   @apply cursor-not-allowed bg-[var(--par-color-bg-tab-item-disabled)] text-[var(--par-color-text-tab-item-disabled)] hover:bg-[var(--par-color-bg-tab-item-disabled)] hover:text-[var(--par-color-text-tab-item-disabled)];
 }
 
-.tabs.vertical .tabs-nav:not(.flipped) .tab-button::after,
-.tabs.horizontal .tabs-nav:not(.flipped) .tab-button::after {
+.tabs.vertical .tabs-nav-wrapper:not(.flipped).same .tab-button::after,
+.tabs.horizontal .tabs-nav-wrapper:not(.flipped).same .tab-button::after {
   @apply absolute bottom-0 left-0 block transform transition-transform content-[''];
 }
 
-.tabs.vertical .tabs-nav.flipped .tab-button::after,
-.tabs.horizontal .tabs-nav.flipped .tab-button::after {
+.tabs.vertical .tabs-nav-wrapper.flipped.same .tab-button::after,
+.tabs.horizontal .tabs-nav-wrapper.flipped.same .tab-button::after {
   @apply absolute right-0 top-0 block transform transition-transform content-[''];
+}
+
+.tabs.vertical .tabs-nav-wrapper:not(.flipped).opposite .tab-button::after,
+.tabs.horizontal .tabs-nav-wrapper:not(.flipped).opposite .tab-button::after {
+  @apply absolute right-0 top-0 block transform transition-transform content-[''];
+}
+
+.tabs.vertical .tabs-nav-wrapper.flipped.opposite .tab-button::after,
+.tabs.horizontal .tabs-nav-wrapper.flipped.opposite .tab-button::after {
+  @apply absolute bottom-0 left-0 block transform transition-transform content-[''];
 }
 
 .tabs.vertical .tab-button::after {

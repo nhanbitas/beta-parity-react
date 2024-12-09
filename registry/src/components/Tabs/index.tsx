@@ -6,6 +6,7 @@ import './index.css';
 import './variables.css';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '../Button';
+import useDebounce from '../hooks/useDebounce';
 
 // TODO: doc for types
 
@@ -25,7 +26,8 @@ export interface TabsProps extends React.HTMLAttributes<HTMLDivElement> {
   color?: keyof typeof colorMap;
   theme?: 'default' | 'alternative';
   side?: 'left' | 'right' | 'top' | 'bottom';
-  flip?: boolean;
+  flipped?: boolean;
+  indicatorSide?: 'same' | 'opposite';
   navProps?: React.HTMLAttributes<HTMLDivElement>;
   bodyProps?: React.HTMLAttributes<HTMLDivElement>;
 }
@@ -56,7 +58,8 @@ export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
       theme = 'default',
       size = 'md',
       side = 'left',
-      flip = false,
+      flipped = false,
+      indicatorSide = 'same',
       navProps,
       bodyProps,
       ...props
@@ -137,45 +140,84 @@ export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
       }
     };
 
-    const handleScrollLeft = () => {
-      if (containerRef.current) {
-        const { scrollWidth, clientWidth } = containerRef.current;
-        containerRef.current.scrollLeft -= 200;
+    // ========================= Pressed scroll buttons ========================= //
+    const intervalRef = React.useRef<NodeJS.Timeout | null>(null);
+    const timeoutRef = React.useRef<NodeJS.Timeout | null>(null);
+
+    const handleDisableBtn = (container?: HTMLDivElement | null) => {
+      if (container) {
+        const { scrollWidth, clientWidth, scrollLeft } = container;
+        console.log('123set');
         setDisableBtn({
-          left: containerRef.current.scrollLeft === 0,
-          right: containerRef.current.scrollLeft + clientWidth + 1 >= scrollWidth
+          left: scrollLeft === 0,
+          right: scrollLeft + clientWidth + 1 >= scrollWidth
         });
       }
     };
 
-    const handleScrollRight = () => {
-      if (containerRef.current) {
-        const { scrollWidth, clientWidth } = containerRef.current;
-        containerRef.current.scrollLeft += 200;
-        setDisableBtn({
-          left: containerRef.current.scrollLeft === 0,
-          right: containerRef.current.scrollLeft + clientWidth + 1 >= scrollWidth
-        });
+    const handleScroll = (type: '+' | '-', isInterval?: boolean) => {
+      if (containerRef.current && !isInterval) {
+        containerRef.current.scrollBy({ left: type === '+' ? 200 : -200, behavior: 'smooth' });
       }
+
+      if (isInterval) {
+        containerRef.current?.scrollBy({ left: type === '+' ? 3 : -3, behavior: 'instant' });
+      }
+    };
+
+    const handleBtnWhenScroll = useDebounce(() => handleDisableBtn(containerRef.current), 150);
+
+    const startInterval = (type: '+' | '-') => {
+      handleScroll(type);
+      timeoutRef.current = setTimeout(
+        () => (intervalRef.current = setInterval(() => handleScroll(type, true), 1)),
+        300
+      );
+    };
+
+    const stopInterval = () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
 
     React.useEffect(() => {
       checkOverflow();
-
       const handleResize = () => {
         checkOverflow();
+        handleDisableBtn(containerRef.current);
       };
 
       const resizeObserver = new ResizeObserver(() => handleResize());
 
       if (containerRef.current) {
         resizeObserver.observe(containerRef.current);
+        containerRef.current.addEventListener('scroll', handleBtnWhenScroll);
       }
 
       return () => {
         resizeObserver.disconnect();
+        containerRef.current?.removeEventListener('scroll', handleBtnWhenScroll);
       };
     }, []);
+
+    const generateScrollBtnProps = (type: '+' | '-') => {
+      return {
+        iconOnly: true,
+        className: type === '+' ? 'scroll-right' : 'scroll-left',
+        onKeyDown: (e: React.KeyboardEvent<HTMLButtonElement>) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            handleScroll(type);
+          }
+        },
+        onMouseDown: () => startInterval(type),
+        onMouseUp: () => stopInterval(),
+        onMouseLeave: () => stopInterval(),
+        color: 'neutral',
+        kind: 'ghost',
+        size: 'sm',
+        disabled: type === '+' ? disableBtn.right : disableBtn.left
+      } as React.ComponentProps<typeof Button>;
+    };
 
     return (
       <div
@@ -191,8 +233,8 @@ export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
         ref={ref}
         {...props}
       >
-        <div className='tabs-nav-wrapper'>
-          <div className={classNames('tabs-nav', { flipped: flip })} {...navProps} ref={containerRef}>
+        <div className={classNames('tabs-nav-wrapper', { flipped: flipped }, indicatorSide)}>
+          <div className={classNames('tabs-nav')} {...navProps} ref={containerRef}>
             {data.map((item, index) => {
               const isActive = activeTabIndex === index;
               const otherAnimation = generateOtherAnimation({ direction, activeTabIndex, index });
@@ -215,26 +257,10 @@ export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
           </div>
           {isScroll && direction === 'horizontal' && (
             <div className='tabs-nav-scroll-actions'>
-              <Button
-                iconOnly
-                className='scroll-left'
-                onClick={handleScrollLeft}
-                color={color}
-                kind='ghost'
-                size='sm'
-                disabled={disableBtn.left}
-              >
+              <Button {...generateScrollBtnProps('-')}>
                 <ChevronLeft className='arrow-right' />
               </Button>
-              <Button
-                iconOnly
-                className='scroll-right'
-                onClick={handleScrollRight}
-                color={color}
-                kind='ghost'
-                size='sm'
-                disabled={disableBtn.right}
-              >
+              <Button {...generateScrollBtnProps('+')}>
                 <ChevronRight className='arrow-right' />
               </Button>
             </div>
