@@ -4,19 +4,19 @@
 
 :root,
 [data-scheme='light'] {
-  --par-color-indicator-default-from: rgb(from var(--par-color-bg-surface) r g b / 0.85);
-  --par-color-indicator-default-via: rgb(from var(--par-color-bg-surface) r g b / 0.95);
+  --par-color-indicator-default-from: rgb(from var(--par-color-bg-surface) r g b / 0);
+  --par-color-indicator-default-via: rgb(from var(--par-color-bg-surface) r g b / 0.5);
   --par-color-indicator-default-to: var(--par-color-bg-surface);
-  --par-color-indicator-alternative-from: rgb(from var(--par-color-bg-surface-alternative) r g b / 0.85);
-  --par-color-indicator-alternative-via: rgb(from var(--par-color-bg-surface-alternative) r g b / 0.95);
+  --par-color-indicator-alternative-from: rgb(from var(--par-color-bg-surface-alternative) r g b / 0);
+  --par-color-indicator-alternative-via: rgb(from var(--par-color-bg-surface-alternative) r g b / 0.5);
   --par-color-indicator-alternative-to: var(--par-color-bg-surface-alternative);
 }
 
 [data-scheme='dark'] {
-  --par-color-indicator-default-from: rgb(from var(--par-color-bg-surface) r g b / 0.85);
-  --par-color-indicator-default-via: rgb(from var(--par-color-bg-surface) r g b / 0.95);
+  --par-color-indicator-default-from: rgb(from var(--par-color-bg-surface) r g b / 0);
+  --par-color-indicator-default-via: rgb(from var(--par-color-bg-surface) r g b / 0.5);
   --par-color-indicator-default-to: var(--par-color-bg-surface);
-  --par-color-indicator-alternative-from: rgb(from var(--par-color-bg-surface-alternative) r g b / 0.85);
-  --par-color-indicator-alternative-via: rgb(from var(--par-color-bg-surface-alternative) r g b / 0.95);
+  --par-color-indicator-alternative-from: rgb(from var(--par-color-bg-surface-alternative) r g b / 0);
+  --par-color-indicator-alternative-via: rgb(from var(--par-color-bg-surface-alternative) r g b / 0.5);
   --par-color-indicator-alternative-to: var(--par-color-bg-surface-alternative);
 }

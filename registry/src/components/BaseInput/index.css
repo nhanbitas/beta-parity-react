@@ -201,7 +201,7 @@ textarea.par-input.error-state {
 /* Button, icon css */
 .right-element-container button,
 .left-element-container button {
-  @apply bg-[var(--bg-par-color-bg-field-button-enabled)] text-[var(--par-color-icon-field-button-enabled)];
+  @apply bg-[var(--par-color-bg-field-button-enabled)] text-[var(--par-color-icon-field-button-enabled)];
 }
 
 .right-element-container .input-icon,

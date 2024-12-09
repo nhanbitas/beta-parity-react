@@ -82,7 +82,7 @@ export interface MenuProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * The maximum number of items before the menu applies overflow behavior.
    */
-  overflowLimit?: number;
+  menuItemsLimit?: number;
 
   /**
    * Whether to show scroll indicators when the menu is scrollable.
@@ -160,7 +160,7 @@ export const Menu = React.forwardRef<HTMLDivElement, MenuProps>(
       isLoading,
       disabled,
       searchPlaceholder,
-      overflowLimit,
+      menuItemsLimit,
       style,
       ...props
     },
@@ -219,7 +219,7 @@ export const Menu = React.forwardRef<HTMLDivElement, MenuProps>(
     const Footer = getComponent(children, MenuFooter);
     const PortalEl = usePortal ? Portal : React.Fragment;
     const isScrollable =
-      !!overflowLimit || (itemsRef.current?.scrollHeight ?? 0) > (itemsRef.current?.clientHeight ?? 0);
+      !!menuItemsLimit || (itemsRef.current?.scrollHeight ?? 0) > (itemsRef.current?.clientHeight ?? 0);
     const isContainChildren = React.Children.count(searchable ? cloneChildren : children) > 0;
     const combinedStyle = {
       ...style,
@@ -350,7 +350,9 @@ export const Menu = React.forwardRef<HTMLDivElement, MenuProps>(
             ref={itemsRef}
             style={{
               overflow: isScrollable ? 'auto' : 'hidden',
-              ...(overflowLimit ? { maxHeight: (sizeHeightMap[size as keyof typeof sizeMap] + 4) * overflowLimit } : {})
+              ...(menuItemsLimit
+                ? { maxHeight: (sizeHeightMap[size as keyof typeof sizeMap] + 4) * menuItemsLimit }
+                : {})
             }}
           >
             {isScrollable && isContainChildren && scrollIndicator ? (

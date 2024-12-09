@@ -82,8 +82,12 @@ select.native-select.medium {
   @apply pointer-events-none select-none;
 }
 
+.input-wrapper:has(.select-input) > .right-element-container:has(.clear-button) {
+  @apply pointer-events-auto;
+}
+
 .input-wrapper .right-element-container .arrow-select-btn {
-  @apply transition-all duration-150 ease-in-out;
+  @apply transition-all duration-150 ease-in-out hover:bg-transparent focus:bg-transparent;
 }
 
 .input-wrapper .right-element-container .arrow-select-btn.open {

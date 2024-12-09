@@ -46,7 +46,7 @@ export const DemoBasicMenu = (props: any) => {
         anchor={ref.current}
         isOpen={isOpen}
         size='md'
-        overflowLimit={5}
+        menuItemsLimit={5}
         scrollIndicator={true}
         prominence='pronounced'
         theme='alternative'
@@ -124,7 +124,7 @@ export const DemoScrollableMenu = (props: any) => {
           size='md'
           isOpen={isOpenCheckbox}
           prominence='pronounced'
-          overflowLimit={5}
+          menuItemsLimit={5}
           scrollIndicator={true}
           {...props}
         >
@@ -151,7 +151,7 @@ export const DemoScrollableMenu = (props: any) => {
           className='max-w-[300px]'
           isOpen={isOpenRadio}
           prominence='pronounced'
-          overflowLimit={5}
+          menuItemsLimit={5}
           scrollIndicator={true}
           searchable
           {...props}
@@ -189,7 +189,7 @@ export const DemoMenuGroup = (props: any) => {
           size='sm'
           className='max-w-[300px]'
           isOpen={isOpenGroup}
-          overflowLimit={5}
+          menuItemsLimit={5}
           scrollIndicator={true}
           menuColor='accent'
           searchable
@@ -223,7 +223,7 @@ export const DemoMenuGroup = (props: any) => {
           className='max-w-[300px]'
           isOpen={isOpenCheckboxGroup}
           menuColor='accent'
-          overflowLimit={5}
+          menuItemsLimit={5}
           scrollIndicator={true}
           searchable
           {...props}
@@ -251,7 +251,7 @@ export const DemoMenuGroup = (props: any) => {
           menuColor='accent'
           className='max-w-[300px]'
           isOpen={isOpenRadioGroup}
-          overflowLimit={7}
+          menuItemsLimit={7}
           scrollIndicator={true}
           searchable
           {...props}

@@ -13,8 +13,6 @@ import useKeyboard from '../hooks/useKeyboard';
 import { NativeOption } from './Native';
 import { Tag, TagProps } from '../Tag';
 
-// TODO: Write docs for types
-
 // =========================
 // Custom select
 // =========================
@@ -50,7 +48,7 @@ export interface CustomSelectProps extends React.HTMLAttributes<HTMLDivElement>,
   /**
    * Placeholder text displayed when no value is selected.
    */
-  placeHolder?: string;
+  placeholder?: string;
 
   /**
    * Whether a clear button is displayed to reset the selected value(s).
@@ -137,10 +135,10 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
       multiselect = false,
       filterable = false,
       clearButton = false,
-      deselectable = true,
-      keepOpen = false,
+      keepOpen = true,
+      deselectable,
       leftIcon,
-      placeHolder = 'Please choose an option',
+      placeholder = 'Please choose an option',
       countDescription = 'item(s) selected',
       selectedIcon,
       floatingLabel,
@@ -165,16 +163,17 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
     const selectContainerRef = React.useRef<HTMLDivElement>(null);
     const selectInputRef = React.useRef<HTMLInputElement>(null);
     const renderedOptions = options && options.length > 0 ? options : getSelectItems(children);
+    const isDeselectable = deselectable ?? multiselect ?? false;
 
     const handleClick = (value: string, isRemove?: boolean) => {
       if (disabled) return;
       let changedValue: string | string[];
       if (multiselect) {
-        isRemove || (currentValue.includes(value) && deselectable)
+        isRemove || (currentValue.includes(value) && isDeselectable)
           ? (changedValue = (currentValue as string[]).filter((val) => val !== value))
           : (changedValue = Array.from(new Set([...(currentValue as string[]), value])));
       } else {
-        changedValue = value;
+        changedValue = isDeselectable && currentValue === value ? '' : value;
       }
 
       setCurrentValue(multiselect && !value ? [] : changedValue);
@@ -227,7 +226,7 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
     };
 
     const ArrowBtn = (
-      <button tabIndex={-1} className={classNames('arrow-select-btn', { open: isSelectOpen })}>
+      <button tabIndex={-1} className={classNames('arrow-select-btn', { open: isSelectOpen })} onClick={handleFocus}>
         <ChevronDown />
       </button>
     );
@@ -356,7 +355,7 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
 
           <span className='select-label'>
             {isValueEmpty
-              ? placeHolder
+              ? placeholder
               : !multiselect && renderedOptions.filter((item) => item.value === currentValue)[0].label}
           </span>
         </ValueInputWrapper>
@@ -373,22 +372,37 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
           style={{ width: rect?.width, ...style }}
           searchable={filterable}
         >
+          {!isDeselectable && (
+            <MenuItem
+              value=''
+              label={placeholder}
+              checked={Array.isArray(currentValue) ? currentValue.includes('') : '' === currentValue}
+              useInput={false}
+              multiselect={multiselect}
+              onChange={(e: any) => handleClick(e.target.value)}
+              icon={selectedIcon}
+            />
+          )}
+
           {options && options.length > 0
             ? renderedOptions.map(({ value, label }) => {
                 const isChecked = Array.isArray(currentValue)
                   ? currentValue.includes(value) && !!value
                   : value === currentValue && !!value;
+
                 return (
-                  <MenuItem
-                    key={value}
-                    value={value}
-                    label={label}
-                    checked={isChecked}
-                    useInput={false}
-                    multiselect={multiselect}
-                    onChange={(e: any) => handleClick(e.target.value)}
-                    icon={selectedIcon}
-                  />
+                  !!value && (
+                    <MenuItem
+                      key={value}
+                      value={value}
+                      label={label}
+                      checked={isChecked}
+                      useInput={false}
+                      multiselect={multiselect}
+                      onChange={(e: any) => handleClick(e.target.value)}
+                      icon={selectedIcon}
+                    />
+                  )
                 );
               })
             : React.Children.map(children, cloneWithProps)}

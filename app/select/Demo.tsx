@@ -33,7 +33,6 @@ export const DemoNativeSelect = (props: Props) => {
       <Select native theme='alternative' disabled options={options} onChange={(e) => console.log(e.target.value)} />
 
       <Select native onChange={(e) => console.log(e.target.value)}>
-        <SelectItem value=''>Choose option</SelectItem>
         <SelectItem value='1'>Option 1</SelectItem>
         <SelectItem value='2' disabled>
           Option 2
@@ -59,21 +58,21 @@ export const DemoCustomSelect = (props: any) => {
         onChange={(e) => console.log(e)}
         options={options}
         selectSize='sm'
-        placeHolder='Choose option'
-        overflowLimit={5}
+        placeholder='Choose option'
+        menuItemsLimit={5}
         scrollIndicator
+        deselectable={true}
         leftIcon={<Car />}
         {...props}
       />
       <Select
         onChange={(e) => console.log(e)}
-        placeHolder='Choose option'
+        placeholder='Choose option'
         filterable
-        overflowLimit={5}
+        menuItemsLimit={5}
         scrollIndicator
         {...props}
       >
-        <SelectItem value='' label='Choose option' />
         <SelectItem value='1' label='Option 1' />
         <SelectItem value='2' label='Option 2' />
         <SelectItem value='3' label='Option 3' />
@@ -82,9 +81,9 @@ export const DemoCustomSelect = (props: any) => {
       <Select
         disabled
         onChange={(e) => console.log(e)}
-        placeHolder='Choose option'
+        placeholder='Choose option'
         filterable
-        overflowLimit={5}
+        menuItemsLimit={5}
         scrollIndicator
         {...props}
       >
@@ -95,9 +94,9 @@ export const DemoCustomSelect = (props: any) => {
       <Select
         onChange={(e) => console.log(e)}
         options={options}
-        placeHolder='Choose option'
+        placeholder='Choose option'
         floatingLabel='Choose option'
-        overflowLimit={5}
+        menuItemsLimit={5}
         scrollIndicator
         {...props}
       />
@@ -111,10 +110,10 @@ export const DemoCustomMutipleSelect = (props: any) => {
       <Select
         onChange={(e) => console.log(e)}
         options={options}
-        placeHolder='Choose option'
+        placeholder='Choose option'
         multiselect
         filterable
-        overflowLimit={5}
+        menuItemsLimit={5}
         scrollIndicator
         tagProps={{
           color: 'accent'
@@ -125,15 +124,14 @@ export const DemoCustomMutipleSelect = (props: any) => {
 
       <Select
         onChange={(e) => console.log(e)}
-        placeHolder='Choose option'
+        placeholder='Choose option'
         multiselect
         filterable
-        overflowLimit={5}
+        menuItemsLimit={5}
         scrollIndicator
         theme='alternative'
         {...props}
       >
-        <SelectItem value='' label='Choose option' />
         <SelectItem value='1' label='Option 1' />
         <SelectItem value='2' label='Option 2' />
         <SelectItem value='3' label='Option 3' />
@@ -141,24 +139,24 @@ export const DemoCustomMutipleSelect = (props: any) => {
 
       <Select
         onChange={(e) => console.log(e)}
-        placeHolder='Choose option'
+        placeholder='Choose option'
         multiselect
         filterable
-        overflowLimit={5}
+        menuItemsLimit={5}
         scrollIndicator
         {...props}
       >
-        {options.map((option) => (
-          <SelectItem key={option.value} value={option.value} label={option.label} />
-        ))}
+        {options.map(
+          (option) => !!option.value && <SelectItem key={option.value} value={option.value} label={option.label} />
+        )}
       </Select>
 
       <Select
         onChange={(e) => console.log(e)}
-        placeHolder='Choose option'
+        placeholder='Choose option'
         multiselect
         filterable
-        overflowLimit={5}
+        menuItemsLimit={5}
         scrollIndicator
         {...props}
       >
@@ -194,12 +192,12 @@ export const DemoCustomMutipleSelect = (props: any) => {
       <Select
         onChange={(e) => console.log(e)}
         options={options}
-        placeHolder='Choose option'
+        placeholder='Choose option'
         floatingLabel='Choose option'
         countDescription='option(s) selected'
-        overflowLimit={5}
+        menuItemsLimit={5}
         leftIcon={<Car />}
-        keepOpen
+        keepOpen={false}
         deselectable={false}
         scrollIndicator
         multiselect
