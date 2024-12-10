@@ -67,48 +67,44 @@
   @apply cursor-not-allowed bg-[var(--par-color-bg-tab-item-disabled)] text-[var(--par-color-text-tab-item-disabled)] hover:bg-[var(--par-color-bg-tab-item-disabled)] hover:text-[var(--par-color-text-tab-item-disabled)];
 }
 
+.tab-button::after {
+  @apply absolute block transform transition-transform duration-150 ease-in-out content-[''];
+}
+
 .tabs.vertical .tabs-nav-wrapper:not(.flipped).same .tab-button::after,
 .tabs.horizontal .tabs-nav-wrapper:not(.flipped).same .tab-button::after {
-  @apply absolute bottom-0 left-0 block transform transition-transform content-[''];
+  @apply bottom-0 left-0;
 }
 
 .tabs.vertical .tabs-nav-wrapper.flipped.same .tab-button::after,
 .tabs.horizontal .tabs-nav-wrapper.flipped.same .tab-button::after {
-  @apply absolute right-0 top-0 block transform transition-transform content-[''];
+  @apply right-0 top-0;
 }
 
 .tabs.vertical .tabs-nav-wrapper:not(.flipped).opposite .tab-button::after,
 .tabs.horizontal .tabs-nav-wrapper:not(.flipped).opposite .tab-button::after {
-  @apply absolute right-0 top-0 block transform transition-transform content-[''];
+  @apply right-0 top-0;
 }
 
 .tabs.vertical .tabs-nav-wrapper.flipped.opposite .tab-button::after,
 .tabs.horizontal .tabs-nav-wrapper.flipped.opposite .tab-button::after {
-  @apply absolute bottom-0 left-0 block transform transition-transform content-[''];
-}
-
-.tabs.vertical .tab-button::after {
-  @apply h-full w-0.5 scale-y-0;
+  @apply bottom-0 left-0;
 }
 
 .tabs.horizontal .tab-button::after {
   @apply h-0.5 w-full scale-x-0;
 }
 
-.tabs.small .tab-button {
-  @apply h-10;
-}
-
-.tabs.medium .tab-button {
-  @apply h-14;
+.tabs.vertical .tab-button::after {
+  @apply h-full w-0.5 scale-y-0;
 }
 
 .tabs.neutral .tab-button.active {
-  @apply bg-[var(--par-color-bg-tab-item-neutral-active)] text-[var(--par-color-text-tab-item-neutral-active)] after:scale-x-100 after:bg-[var(--par-color-border-tab-item-neutral-active)];
+  @apply bg-[var(--par-color-bg-tab-item-neutral-active)] text-[var(--par-color-text-tab-item-neutral-active)] after:bg-[var(--par-color-border-tab-item-neutral-active)];
 }
 
 .tabs.accent .tab-button.active {
-  @apply bg-[var(--par-color-bg-tab-item-accent-active)] text-[var(--par-color-text-tab-item-accent-active)] after:scale-x-100 after:bg-[var(--par-color-border-tab-item-accent-active)];
+  @apply bg-[var(--par-color-bg-tab-item-accent-active)] text-[var(--par-color-text-tab-item-accent-active)] after:bg-[var(--par-color-border-tab-item-accent-active)];
 }
 
 .tabs.horizontal .tab-button.active {
@@ -133,6 +129,14 @@
 
 .tab-button.from-bottom::after {
   @apply origin-bottom;
+}
+
+.tabs.small .tab-button {
+  @apply h-10;
+}
+
+.tabs.medium .tab-button {
+  @apply h-14;
 }
 
 .tabs-body {

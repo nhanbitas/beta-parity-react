@@ -8,28 +8,97 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '../Button';
 import useDebounce from '../hooks/useDebounce';
 
-// TODO: doc for types
-
 export type TabItemProps = {
+  /**
+   * The unique value of the tab item, used for identification.
+   */
   value: string | number;
+
+  /**
+   * The title displayed for the tab.
+   */
   title: string | React.ReactNode;
+
+  /**
+   * The content displayed when the tab is active.
+   */
   content: string | React.ReactNode;
+
+  /**
+   * Whether the tab is currently active.
+   */
   active?: boolean;
+
+  /**
+   * Whether the tab is disabled.
+   */
   disabled?: boolean;
+
+  /**
+   * Props for the button element controlling the tab.
+   */
   buttonProps?: React.HTMLAttributes<HTMLButtonElement>;
+
+  /**
+   * Props for the content container of the tab.
+   */
   contentProps?: React.HTMLAttributes<HTMLDivElement>;
 };
 
 export interface TabsProps extends React.HTMLAttributes<HTMLDivElement> {
+  /**
+   * Array of tab items to render within the tabs.
+   */
   data?: TabItemProps[];
+
+  /**
+   * The size of the tabs, can be one of the keys from the sizeMap.
+   */
   size?: keyof typeof sizeMap;
+
+  /**
+   * The color of the tabs, can be one of the keys from the colorMap.
+   */
   color?: keyof typeof colorMap;
+
+  /**
+   * The theme of the tabs, such as default or alternative.
+   */
   theme?: 'default' | 'alternative';
+
+  /**
+   * The side where the tabs are positioned.
+   */
   side?: 'left' | 'right' | 'top' | 'bottom';
+
+  /**
+   * Whether the tabs are flipped abs-nav border.
+   */
   flipped?: boolean;
+
+  /**
+   * Determines the side of button indicator in the comparison with the tabs-nav border.
+   */
   indicatorSide?: 'same' | 'opposite';
+
+  /**
+   * Props for the navigation container of the tabs.
+   */
   navProps?: React.HTMLAttributes<HTMLDivElement>;
+
+  /**
+   * Props for the body container of the tabs.
+   */
   bodyProps?: React.HTMLAttributes<HTMLDivElement>;
+
+  /**
+   * Scroll configuration for the tab navigation.
+   * Value is number of px to scroll and duration in ms, default 4px for 1ms
+   */
+  scrollValue?: {
+    value: number;
+    duration: number;
+  };
 }
 
 const sizeMap = {
@@ -60,6 +129,7 @@ export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
       side = 'left',
       flipped = false,
       indicatorSide = 'same',
+      scrollValue = { value: 4, duration: 1 },
       navProps,
       bodyProps,
       ...props
@@ -147,7 +217,6 @@ export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
     const handleDisableBtn = (container?: HTMLDivElement | null) => {
       if (container) {
         const { scrollWidth, clientWidth, scrollLeft } = container;
-        console.log('123set');
         setDisableBtn({
           left: scrollLeft === 0,
           right: scrollLeft + clientWidth + 1 >= scrollWidth
@@ -161,7 +230,10 @@ export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
       }
 
       if (isInterval) {
-        containerRef.current?.scrollBy({ left: type === '+' ? 3 : -3, behavior: 'instant' });
+        containerRef.current?.scrollBy({
+          left: type === '+' ? scrollValue.value : -scrollValue.value,
+          behavior: 'instant'
+        });
       }
     };
 
@@ -170,8 +242,8 @@ export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
     const startInterval = (type: '+' | '-') => {
       handleScroll(type);
       timeoutRef.current = setTimeout(
-        () => (intervalRef.current = setInterval(() => handleScroll(type, true), 1)),
-        300
+        () => (intervalRef.current = setInterval(() => handleScroll(type, true), scrollValue.duration)),
+        250
       );
     };
 
@@ -247,7 +319,7 @@ export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
                   value={item.value}
                   amimatedDirection={isActive ? activeAnimation : otherAnimation}
                   onClick={() => handleClick(index)}
-                  className={classNames('tab-button', isActive ? 'active' : '')}
+                  className={classNames(isActive ? 'active' : '')}
                   disabled={item.disabled}
                 >
                   {item.title}
@@ -366,8 +438,8 @@ const generateActiveAnimation = ({
   preIndex: React.MutableRefObject<number>;
 }) => {
   let currentActiveAnimation =
-    preIndex.current < activeTabIndex ? animationMap[direction].larger : animationMap[direction].smaller;
+    activeTabIndex > preIndex.current ? animationMap[direction].larger : animationMap[direction].smaller;
   currentActiveAnimation =
-    preIndex.current > activeTabIndex ? animationMap[direction].smaller : animationMap[direction].larger;
+    activeTabIndex < preIndex.current ? animationMap[direction].smaller : animationMap[direction].larger;
   return currentActiveAnimation as 'from-right' | 'from-left' | 'from-top' | 'from-bottom';
 };

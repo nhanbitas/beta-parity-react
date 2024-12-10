@@ -47,46 +47,6 @@ const mockTabs = [
     ),
     content:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore magna aliqua.'
-  },
-  {
-    value: 'tab-5',
-    title: (
-      <span className='flex items-center gap-2'>
-        <HomeIcon /> Tab 5
-      </span>
-    ),
-    content:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore magna aliqua.'
-  },
-  {
-    value: 'tab-6',
-    title: (
-      <span className='flex items-center gap-2'>
-        <HomeIcon /> Tab 6
-      </span>
-    ),
-    content:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore magna aliqua.'
-  },
-  {
-    value: 'tab-7',
-    title: (
-      <span className='flex items-center gap-2'>
-        <HomeIcon /> Tab 7
-      </span>
-    ),
-    content:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore magna aliqua.'
-  },
-  {
-    value: 'tab-8',
-    title: (
-      <span className='flex items-center gap-2'>
-        <HomeIcon /> Tab 8
-      </span>
-    ),
-    content:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore magna aliqua.'
   }
 ];
 
@@ -139,13 +99,14 @@ export const DemoAccentTabs = (props: Props) => {
 export const DemoTabsWithChildren = (props: Props) => {
   return (
     <Tabs>
-      <TabButton value='tab1'>Tab 1</TabButton>
-      <TabButton value='tab2'>Tab 2</TabButton>
-      <TabButton value='tab3' disabled>
+      <TabButton value='tab-1'>Tab 1</TabButton>
+      <TabButton value='tab-2'>Tab 2</TabButton>
+      <TabButton value='tab-3' disabled>
         Tab 3
       </TabButton>
+      <TabButton value='tab-4'>Tab 4</TabButton>
 
-      <TabContent value='tab1'>
+      <TabContent value='tab-1'>
         <p>Content 1</p>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore
@@ -156,7 +117,7 @@ export const DemoTabsWithChildren = (props: Props) => {
           magna aliqua.
         </p>
       </TabContent>
-      <TabContent value='tab2'>
+      <TabContent value='tab-2'>
         <p>Content 2</p>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore
@@ -167,7 +128,18 @@ export const DemoTabsWithChildren = (props: Props) => {
           magna aliqua.
         </p>
       </TabContent>
-      <TabContent value='tab3'>
+      <TabContent value='tab-3'>
+        <p>Content 2</p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore
+          magna aliqua.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore
+          magna aliqua.
+        </p>
+      </TabContent>
+      <TabContent value='tab-4'>
         <p>Content 2</p>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore
