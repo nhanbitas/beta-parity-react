@@ -28,7 +28,7 @@ span.loading.error {
 }
 
 .spinner.small,
-.spinnersmall svg {
+.spinner.small svg {
   @apply h-4 w-4;
 }
 
@@ -38,7 +38,7 @@ span.loading.error {
 }
 
 .spinner.large,
-.spinne.larger svg {
+.spinner.large svg {
   @apply h-12 w-12;
 }
 
