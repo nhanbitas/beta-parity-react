@@ -1,0 +1,16 @@
+@import '../theme/alias/background.css';
+@import '../theme/alias/border.css';
+@import '../theme/alias/text-icon-colors.css';
+
+:root,
+[data-scheme='light'] {
+  --par-color-stroke-spinner-interactive-neutral: var(--par-neutral-900);
+  --par-color-stroke-spinner-interactive-accent: var(--par-accent-550);
+  --par-color-stroke-spinner-inactive: var(--par-gray-200);
+}
+
+[data-scheme='dark'] {
+  --par-color-stroke-spinner-interactive-neutral: var(--par-neutral-200);
+  --par-color-stroke-spinner-interactive-accent: var(--par-accent-200);
+  --par-color-stroke-spinner-inactive: var(--par-gray-600);
+}

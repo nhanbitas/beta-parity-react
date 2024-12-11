@@ -3,24 +3,36 @@ import React from 'react';
 
 type Props = {};
 
-const variants = ['circle-01', 'circle-02', 'logo-01', 'logo-02', 'logo-03', 'logo-04'];
+const variants = ['circular', 'dotted', 'sunburst'] as const;
+const colors = ['neutral', 'accent'] as const;
+const sizes = ['sm', 'md', 'lg', 'xl'] as const;
 
 export const DemoVariantsSpinner = () => {
   return (
     <div className='flex gap-4'>
-      {variants.map((variant) => (
-        <Spinner variant={variant as SpinnerProps['variant']} key={variant} />
-      ))}
+      {colors.map((color) =>
+        variants.map((variant) => (
+          <Spinner variant={variant as SpinnerProps['variant']} color={color as SpinnerProps['color']} key={variant} />
+        ))
+      )}
     </div>
   );
 };
 
-export const DemoSizeSpinner = () => {
+export const DemoSizeSpinner = (props: any) => {
   return (
     <div className='flex gap-4'>
-      <Spinner variant='logo-01' size='sm' />
-      <Spinner variant='logo-01' />
-      <Spinner variant='logo-01' size='lg' />
+      {colors.map((color) =>
+        sizes.map((size) => (
+          <Spinner
+            size={size as SpinnerProps['size']}
+            variant='circular'
+            color={color as SpinnerProps['color']}
+            key={size}
+            {...props}
+          />
+        ))
+      )}
     </div>
   );
 };
