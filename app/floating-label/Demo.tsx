@@ -3,7 +3,7 @@
 import { PasswordInput } from '@libComponents/PasswordInput';
 import { FloatingLabel } from '@libComponents/FloatingLabel';
 import React from 'react';
-import { Input } from '@libComponents/Input';
+import { Input } from '@libComponents/BaseInput';
 import { NativeSelect } from '@libComponents/Select';
 
 type Props = {};
