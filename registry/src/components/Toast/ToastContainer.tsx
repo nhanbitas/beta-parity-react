@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import ReactDOM from 'react-dom';
 import Toast, { ToastProps } from './Toast';
+import './variables.css';
 import './index.css';
 
 interface ToastContainerProps {
@@ -25,7 +26,6 @@ const ToastContainer: React.FC<ToastContainerProps> = ({ max = 1 }) => {
     };
 
     window.addEventListener('parity-add-toast', handleAddToast as EventListener);
-
     return () => {
       window.removeEventListener('parity-add-toast', handleAddToast as EventListener);
     };
@@ -62,6 +62,7 @@ const ToastContainer: React.FC<ToastContainerProps> = ({ max = 1 }) => {
             document.body
           )
         : null}
+
       {bottomCenterToasts.length
         ? ReactDOM.createPortal(
             <div className='toast-container bottom-center'>

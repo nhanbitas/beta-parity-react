@@ -1,0 +1,72 @@
+@import '../theme/alias/background.css';
+@import '../theme/alias/border.css';
+@import '../theme/alias/text-icon-colors.css';
+
+:root,
+[data-theme='light'] {
+  /* TEXT */
+  --par-color-text-primary: var(--par-gray-950);
+  --par-color-text-secondary: var(--par-gray-700);
+  --par-color-text-helper-info: var(--par-blue-550);
+  --par-color-text-helper-affirmative: var(--par-green-550);
+  --par-color-text-helper-cautionary: var(--par-yellow-550);
+  --par-color-text-helper-adverse: var(--par-red-550);
+  --par-color-text-button: var(--par-gray-550);
+
+  /* BG */
+  --par-color-bg-toast-emphasis-high-generic: var(--par-gray-50);
+  --par-color-bg-toast-emphasis-high-info: var(--par-blue-50);
+  --par-color-bg-toast-emphasis-high-affirmative: var(--par-green-50);
+  --par-color-bg-toast-emphasis-high-cautionary: var(--par-yellow-50);
+  --par-color-bg-toast-emphasis-high-adverse: var(--par-red-50);
+  --par-color-bg-emphasis-normal: var(--par-white);
+
+  /* BORDER */
+  --par-color-border-toast-emphasis-high-generic: var(--par-gray-200);
+  --par-color-border-toast-emphasis-high-info: var(--par-blue-200);
+  --par-color-border-toast-emphasis-high-affirmative: var(--par-green-200);
+  --par-color-border-toast-emphasis-high-cautionary: var(--par-yellow-200);
+  --par-color-border-toast-emphasis-high-adverse: var(--par-red-200);
+  --par-color-border-emphasis-normal: var(--par-gray-200);
+
+  /* PROGRESS BAR */
+  --par-color-border-progress-bar-generic: var(--par-gray-950);
+  --par-color-border-progress-bar-info: var(--par-blue-550);
+  --par-color-border-progress-bar-affirmative: var(--par-green-550);
+  --par-color-border-progress-bar-cautionary: var(--par-yellow-550);
+  --par-color-border-progress-bar-adverse: var(--par-red-550);
+}
+
+[data-theme='dark'] {
+  /* TEXT */
+  --par-color-text-primary: var(--par-white);
+  --par-color-text-secondary: var(--par-gray-200);
+  --par-color-text-helper-info: var(--par-blue-200);
+  --par-color-text-helper-affirmative: var(--par-green-200);
+  --par-color-text-helper-cautionary: var(--par-yellow-200);
+  --par-color-text-helper-adverse: var(--par-red-200);
+  --par-color-text-button: var(--par-gray-200);
+
+  /* BG */
+  --par-color-bg-toast-emphasis-high-generic: var(--par-gray-900);
+  --par-color-bg-toast-emphasis-high-info: var(--par-blue-900);
+  --par-color-bg-toast-emphasis-high-affirmative: var(--par-green-900);
+  --par-color-bg-toast-emphasis-high-cautionary: var(--par-yellow-900);
+  --par-color-bg-toast-emphasis-high-adverse: var(--par-red-900);
+  --par-color-bg-emphasis-normal: var(--par-gray-900);
+
+  /* BORDER */
+  --par-color-border-toast-emphasis-high-generic: var(--par-gray-600);
+  --par-color-border-toast-emphasis-high-info: var(--par-blue-600);
+  --par-color-border-toast-emphasis-high-affirmative: var(--par-green-600);
+  --par-color-border-toast-emphasis-high-cautionary: var(--par-yellow-600);
+  --par-color-border-toast-emphasis-high-adverse: var(--par-red-600);
+  --par-color-border-emphasis-normal: var(--par-gray-600);
+
+  /* PROGRESS BAR */
+  --par-color-border-progress-bar-generic: var(--par-gray-900);
+  --par-color-border-progress-bar-info: var(--par-blue-600);
+  --par-color-border-progress-bar-affirmative: var(--par-green-600);
+  --par-color-border-progress-bar-cautionary: var(--par-yellow-600);
+  --par-color-border-progress-bar-adverse: var(--par-red-600);
+}
