@@ -48,7 +48,7 @@ export interface SpinnerProps extends React.HTMLAttributes<HTMLSpanElement> {
 const Spinner = React.forwardRef<HTMLSpanElement, SpinnerProps>(
   ({ className, variant = 'circular', color = 'neutral', size = 'md', ...props }, ref) => {
     return (
-      <span className={classNames('spinner', className, size && sizeMap[size])} ref={ref} {...props}>
+      <span className={classNames('spinner', variant, className, color, size && sizeMap[size])} ref={ref} {...props}>
         {generateSpinner(variant, color)}
       </span>
     );
@@ -92,14 +92,70 @@ const generateSpinner = (variant: 'circular' | 'dotted' | 'sunburst', color: 'ne
   if (variant === 'dotted') {
     return (
       <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none'>
-        <circle cx='29.3333' cy={16} r='2.66667' transform='rotate(180 29.3333 16)' fill={theme.inactive} />
-        <circle cx='2.66671' cy={16} r='2.66667' transform='rotate(180 2.66671 16)' fill={theme.inactive} />
-        <circle cx={16} cy='29.3333' r='2.66667' transform='rotate(180 16 29.3333)' fill={theme.inactive} />
-        <circle cx={16} cy='2.66667' r='2.66667' transform='rotate(180 16 2.66667)' fill={theme.interactive} />
-        <circle cx='6.5719' cy='25.4281' r='2.66667' transform='rotate(-135 6.5719 25.4281)' fill={theme.inactive} />
-        <circle cx='25.4281' cy='6.5719' r='2.66667' transform='rotate(-135 25.4281 6.5719)' fill={theme.inactive} />
-        <circle cx='6.5719' cy='6.57194' r='2.66667' transform='rotate(-45 6.5719 6.57194)' fill={theme.inactive} />
-        <circle cx='25.4281' cy='25.4281' r='2.66667' transform='rotate(-45 25.4281 25.4281)' fill={theme.inactive} />
+        <circle
+          cx={16}
+          cy='2.66667'
+          r='2.66667'
+          transform='rotate(180 16 2.66667)'
+          fill={theme.inactive}
+          style={{ animationDelay: '0s' }}
+        />
+        <circle
+          cx='6.5719'
+          cy='6.57194'
+          r='2.66667'
+          transform='rotate(-45 6.5719 6.57194)'
+          fill={theme.inactive}
+          style={{ animationDelay: '0.875s' }}
+        />
+        <circle
+          cx='2.66671'
+          cy={16}
+          r='2.66667'
+          transform='rotate(180 2.66671 16)'
+          fill={theme.inactive}
+          style={{ animationDelay: '0.75s' }}
+        />
+        <circle
+          cx='6.5719'
+          cy='25.4281'
+          r='2.66667'
+          transform='rotate(-135 6.5719 25.4281)'
+          fill={theme.inactive}
+          style={{ animationDelay: '0.625s' }}
+        />
+        <circle
+          cx={16}
+          cy='29.3333'
+          r='2.66667'
+          transform='rotate(180 16 29.3333)'
+          fill={theme.inactive}
+          style={{ animationDelay: '0.5s' }}
+        />
+        <circle
+          cx='25.4281'
+          cy='25.4281'
+          r='2.66667'
+          transform='rotate(-45 25.4281 25.4281)'
+          fill={theme.inactive}
+          style={{ animationDelay: '0.375s' }}
+        />
+        <circle
+          cx='29.3333'
+          cy={16}
+          r='2.66667'
+          transform='rotate(180 29.3333 16)'
+          fill={theme.inactive}
+          style={{ animationDelay: '0.25s' }}
+        />
+        <circle
+          cx='25.4281'
+          cy='6.5719'
+          r='2.66667'
+          transform='rotate(-135 25.4281 6.5719)'
+          fill={theme.inactive}
+          style={{ animationDelay: '0.125s' }}
+        />
       </svg>
     );
   }
@@ -107,18 +163,7 @@ const generateSpinner = (variant: 'circular' | 'dotted' | 'sunburst', color: 'ne
   if (variant === 'sunburst') {
     return (
       <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none'>
-        <rect x='14.6667' width='2.6' height={8} rx='1.3' fill={theme.interactive} />
-        <rect x='14.6667' y={24} width='2.6' height={8} rx='1.3' fill={theme.inactive} />
-        <rect y='17.3333' width='2.6' height={8} rx='1.3' transform='rotate(-90 0 17.3333)' fill={theme.inactive} />
-        <rect
-          x={24}
-          y='17.3333'
-          width='2.6'
-          height={8}
-          rx='1.3'
-          transform='rotate(-90 24 17.3333)'
-          fill={theme.inactive}
-        />
+        <rect x='14.6667' width='2.6' height={8} rx='1.3' fill={theme.inactive} style={{ animationDelay: '0s' }} />
         <rect
           x='3.74341'
           y='5.62907'
@@ -127,15 +172,16 @@ const generateSpinner = (variant: 'circular' | 'dotted' | 'sunburst', color: 'ne
           rx='1.3'
           transform='rotate(-45 3.74341 5.62907)'
           fill={theme.inactive}
+          style={{ animationDelay: '0.875s' }}
         />
         <rect
-          x='20.7141'
-          y='22.5997'
+          y='17.3333'
           width='2.6'
           height={8}
           rx='1.3'
-          transform='rotate(-45 20.7141 22.5997)'
+          transform='rotate(-90 0 17.3333)'
           fill={theme.inactive}
+          style={{ animationDelay: '0.75s' }}
         />
         <rect
           x='5.62915'
@@ -145,6 +191,36 @@ const generateSpinner = (variant: 'circular' | 'dotted' | 'sunburst', color: 'ne
           rx='1.3'
           transform='rotate(-135 5.62915 28.2565)'
           fill={theme.inactive}
+          style={{ animationDelay: '0.625s' }}
+        />
+        <rect
+          x='14.6667'
+          y={24}
+          width='2.6'
+          height={8}
+          rx='1.3'
+          fill={theme.inactive}
+          style={{ animationDelay: '0.5s' }}
+        />
+        <rect
+          x='20.7141'
+          y='22.5997'
+          width='2.6'
+          height={8}
+          rx='1.3'
+          transform='rotate(-45 20.7141 22.5997)'
+          fill={theme.inactive}
+          style={{ animationDelay: '0.375s' }}
+        />
+        <rect
+          x={24}
+          y='17.3333'
+          width='2.6'
+          height={8}
+          rx='1.3'
+          transform='rotate(-90 24 17.3333)'
+          fill={theme.inactive}
+          style={{ animationDelay: '0.25s' }}
         />
         <rect
           x='22.5996'
@@ -154,6 +230,7 @@ const generateSpinner = (variant: 'circular' | 'dotted' | 'sunburst', color: 'ne
           rx='1.3'
           transform='rotate(-135 22.5996 11.2859)'
           fill={theme.inactive}
+          style={{ animationDelay: '0.125s' }}
         />
       </svg>
     );

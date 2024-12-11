@@ -23,8 +23,18 @@ span.loading.error {
   @apply flex items-center justify-center;
 }
 
-.spinner svg {
+.spinner.circular svg {
   @apply animate-spin;
+}
+
+.spinner.accent circle,
+.spinner.accent rect {
+  animation: fillAccentAnimation 1s infinite;
+}
+
+.spinner.neutral circle,
+.spinner.neutral rect {
+  animation: fillNeutralAnimation 1s infinite;
 }
 
 .spinner.small,
@@ -48,3 +58,34 @@ span.loading.error {
 }
 
 /* Spinner */
+
+/* Step animation type */
+/* .spinner.dotted svg,
+.spinner.sunburst svg {
+  animation: l23 1s infinite steps(8);
+}
+
+@keyframes l23 {
+  100% {
+    transform: rotate(1turn);
+  }
+} */
+/* Step animation type */
+
+@keyframes fillAccentAnimation {
+  0% {
+    fill: var(--par-color-stroke-spinner-interactive-accent);
+  }
+  100% {
+    fill: var(--par-color-stroke-spinner-inactive);
+  }
+}
+
+@keyframes fillNeutralAnimation {
+  0% {
+    fill: var(--par-color-stroke-spinner-interactive-neutral);
+  }
+  100% {
+    fill: var(--par-color-stroke-spinner-inactive);
+  }
+}
