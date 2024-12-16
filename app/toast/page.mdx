@@ -1,20 +1,29 @@
-import { DemoInfoToast, DemoSuccessToast, DemoWarningToast, DemoDangerToast, DemoAutoCloseToast, DemoBottomToast} from "./Demo";
+import * as Demo from "./Demo";
 import {ToastContainer} from '@libComponents/Toast';
 
 {/* add container in your page you want to use toast */}
-<ToastContainer max={3} /> 
+{/* <ToastContainer limit={3} stacked={false} sortImportance={true}/> */}
+{/* <ToastContainer limit={1} stacked={true} sortImportance={false}/> */}
+<ToastContainer limit={1} stacked={true} sortImportance={true} />
+{/* <ToastContainer limit={1} stacked={true} sortImportance={true} data-scheme="dark"/> */}
 
 ## Types
-<DemoInfoToast/>
-<DemoSuccessToast/>
-<DemoWarningToast/>
-<DemoDangerToast/>
+<Demo.DemoGenericToast/>
+<Demo.DemoInformationToast/>
+<Demo.DemoAffirmativeToast/>
+<Demo.DemoCautionaryToast/>
+<Demo.DemoAdverseToast/>
 
 ## Duration
-<DemoAutoCloseToast/>
+<Demo.DemoAutoCloseToast/>
 
-## Bottom-center toast
-<DemoBottomToast/>
+## Position
+<Demo.DemoPositionToast/>
 
+## Important
+<Demo.DemoImportantToast/>
+
+## Pending
+<Demo.DemoPendingToast/>
 
 

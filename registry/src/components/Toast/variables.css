@@ -3,16 +3,7 @@
 @import '../theme/alias/text-icon-colors.css';
 
 :root,
-[data-theme='light'] {
-  /* TEXT */
-  --par-color-text-primary: var(--par-gray-950);
-  --par-color-text-secondary: var(--par-gray-700);
-  --par-color-text-helper-info: var(--par-blue-550);
-  --par-color-text-helper-affirmative: var(--par-green-550);
-  --par-color-text-helper-cautionary: var(--par-yellow-550);
-  --par-color-text-helper-adverse: var(--par-red-550);
-  --par-color-text-button: var(--par-gray-550);
-
+[data-scheme='light'] {
   /* BG */
   --par-color-bg-toast-emphasis-high-generic: var(--par-gray-50);
   --par-color-bg-toast-emphasis-high-info: var(--par-blue-50);
@@ -37,16 +28,7 @@
   --par-color-border-progress-bar-adverse: var(--par-red-550);
 }
 
-[data-theme='dark'] {
-  /* TEXT */
-  --par-color-text-primary: var(--par-white);
-  --par-color-text-secondary: var(--par-gray-200);
-  --par-color-text-helper-info: var(--par-blue-200);
-  --par-color-text-helper-affirmative: var(--par-green-200);
-  --par-color-text-helper-cautionary: var(--par-yellow-200);
-  --par-color-text-helper-adverse: var(--par-red-200);
-  --par-color-text-button: var(--par-gray-200);
-
+[data-scheme='dark'] {
   /* BG */
   --par-color-bg-toast-emphasis-high-generic: var(--par-gray-900);
   --par-color-bg-toast-emphasis-high-info: var(--par-blue-900);

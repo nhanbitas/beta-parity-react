@@ -12,6 +12,7 @@
   --par-color-text-helper-adverse: var(--par-red-550);
   --par-color-text-helper-cautionary: var(--par-yellow-550);
   --par-color-text-helper-affirmative: var(--par-green-550);
+  --par-color-text-helper-info: var(--par-blue-550);
 
   --par-color-text-surface-item-enabled: var(--par-color-text-primary);
   --par-color-text-surface-item-neutral-subtle-selected: var(--par-color-text-primary);
@@ -29,6 +30,7 @@
   --par-color-text-field-readonly: var(--par-color-text-primary);
   --par-color-text-field-invalid: var(--par-color-text-primary);
 
+  --par-color-text-button: var(--par-gray-550);
   --par-color-icon-field-button-enabled: var(--par-gray-500);
   --par-color-icon-field-button-hovered: var(--par-gray-600);
   --par-color-icon-field-button-pressed: var(--par-gray-700);
@@ -48,6 +50,7 @@
   --par-color-text-helper-adverse: var(--par-red-200);
   --par-color-text-helper-cautionary: var(--par-yellow-200);
   --par-color-text-helper-affirmative: var(--par-green-200);
+  --par-color-text-helper-info: var(--par-blue-200);
 
   --par-color-text-surface-item-enabled: var(--par-color-text-primary);
   --par-color-text-surface-item-neutral-subtle-selected: var(--par-color-text-primary);
@@ -65,6 +68,7 @@
   --par-color-text-field-readonly: var(--par-color-text-primary);
   --par-color-text-field-invalid: var(--par-color-text-primary);
 
+  --par-color-text-button: var(--par-gray-200);
   --par-color-icon-field-button-enabled: var(--par-gray-200);
   --par-color-icon-field-button-hovered: var(--par-gray-100);
   --par-color-icon-field-button-pressed: var(--par-gray-100);

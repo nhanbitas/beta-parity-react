@@ -7,138 +7,227 @@ import Link from 'next/link';
 
 type Props = ToastOptions;
 
-export const DemoInfoToast = (props: Props) => {
+export const DemoGenericToast = (props: Props) => {
   const notify = () =>
     toast({
-      message: 'This is an info toast',
-      toastTitle: 'Info',
-      type: 'info',
+      message: 'This is an generic toast',
+      title: 'Generic',
+      kind: 'generic',
       position: 'top-right',
-      onClose: () => {
-        console.log('Closed');
+      autoDismiss: false,
+      onDismissed: () => {
+        console.log('Dissmissed');
       },
       ...props
-    });
+    }).start();
   return (
-    <>
-      <Button onClick={notify} className='w-24'>
-        Info
-      </Button>
-    </>
+    <Button onClick={notify} className='w-24' kind='glass'>
+      Generic
+    </Button>
   );
 };
 
-export const DemoSuccessToast = (props: Props) => {
+export const DemoInformationToast = (props: Props) => {
   const notify = () =>
     toast({
-      message: 'This is an success toast',
-      toastTitle: 'Success',
-      type: 'success',
+      message:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore magna aliqua.',
+      title: 'Information',
+      kind: 'information',
       position: 'top-right',
-      onClose: () => {
+      autoDismiss: false,
+      onDismissed: () => {
         console.log('Closed');
       },
       ...props
-    });
+    }).start();
   return (
-    <>
-      <Button onClick={notify} className='w-24'>
-        Success
-      </Button>
-    </>
+    <Button onClick={notify} className='w-24' kind='glass'>
+      Information
+    </Button>
   );
 };
 
-export const DemoWarningToast = (props: Props) => {
+export const DemoAffirmativeToast = (props: Props) => {
   const notify = () =>
     toast({
-      message: 'This is an warning toast',
-      toastTitle: 'Warning',
-      type: 'warning',
-      onClose: () => {
+      message: 'This is an affirmative toast',
+      title: 'Affirmative',
+      kind: 'affirmative',
+      position: 'top-right',
+      autoDismiss: false,
+      onDismissed: () => {
         console.log('Closed');
       },
       ...props
-    });
+    }).start();
   return (
-    <>
-      <Button onClick={notify} className='w-24'>
-        Warning
-      </Button>
-    </>
+    <Button onClick={notify} className='w-24' kind='glass'>
+      Affirmative
+    </Button>
   );
 };
 
-export const DemoDangerToast = (props: Props) => {
+export const DemoCautionaryToast = (props: Props) => {
   const notify = () =>
     toast({
-      message: 'This is an danger toast',
-      toastTitle: 'Danger',
-      type: 'danger',
-      onClose: () => {
+      message: 'This is an cautionary toast',
+      title: 'Cautionary',
+      kind: 'cautionary',
+      autoDismiss: false,
+      onDismissed: () => {
         console.log('Closed');
       },
       ...props
-    });
+    }).start();
   return (
-    <>
-      <Button onClick={notify} className='w-24'>
-        Danger
-      </Button>
-    </>
+    <Button onClick={notify} className='w-24' kind='glass'>
+      Cautionary
+    </Button>
+  );
+};
+
+export const DemoAdverseToast = (props: Props) => {
+  const notify = () =>
+    toast({
+      message: 'This is an adverse toast',
+      title: 'Adverse',
+      kind: 'adverse',
+      autoDismiss: false,
+      onDismissed: () => {
+        console.log('Closed');
+      },
+      ...props
+    }).start();
+  return (
+    <Button onClick={notify} className='w-24' kind='glass'>
+      Adverse
+    </Button>
   );
 };
 
 export const DemoAutoCloseToast = (props: Props) => {
-  const types = ['info', 'success', 'warning', 'danger'] as const;
+  const types = ['information', 'affirmative', 'cautionary', 'adverse'] as const;
   const notify = () =>
     toast({
       message: 'This is an auto close toast',
-      toastTitle: 'Auto Close',
-      type: types[Math.floor(Math.random() * types.length)],
-      details: (
+      title: 'Auto Close',
+      kind: types[Math.floor(Math.random() * types.length)],
+      icon: '👋',
+      action: (
         <Link href='/toast' className='text-blue-500'>
           More
         </Link>
       ),
-      duration: 2000,
-      onClose: () => {
+      autoDismiss: true,
+      duration: 5000,
+      dismissButton: false,
+      progressBar: true,
+      onDismissed: () => {
         console.log('Closed');
       },
       ...props
-    });
+    }).start();
   return (
-    <>
-      <Button onClick={notify} className='w-24'>
-        Duration
-      </Button>
-    </>
+    <Button onClick={notify} className='w-24' kind='glass'>
+      Duration
+    </Button>
   );
 };
 
-export const DemoBottomToast = (props: Props) => {
-  const types = ['info', 'success', 'warning', 'danger'] as const;
+export const DemoPositionToast = (props: Props) => {
+  const types = ['information', 'affirmative', 'cautionary', 'adverse'] as const;
+  const positions = ['top-right', 'top-center', 'bottom-center', 'bottom-right'] as const;
   const notify = () =>
     toast({
-      message: 'This is an bottom toast',
-      toastTitle: 'Bottom',
-      type: types[Math.floor(Math.random() * types.length)],
-      position: 'bottom-center',
-      details: (
+      message:
+        Math.floor(Math.random() * 2) === 1
+          ? 'This is an bottom toast'
+          : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore magna aliqua.',
+      title: 'Bottom',
+      kind: types[Math.floor(Math.random() * types.length)],
+      position: positions[Math.floor(Math.random() * positions.length)],
+      action: (
         <Link href='/toast' className='text-blue-500'>
           More
         </Link>
       ),
-      onClose: () => {
+      onDismissed: () => {
         console.log('Closed');
       },
       ...props
-    });
+    }).start();
   return (
-    <>
-      <Button onClick={notify} className='w-24'>
-        Bottom
-      </Button>
-    </>
+    <Button onClick={notify} className='w-24' kind='glass'>
+      Random
+    </Button>
+  );
+};
+
+export const DemoImportantToast = (props: Props) => {
+  const notify = () =>
+    toast({
+      message:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore magna aliqua.',
+      title: 'Information',
+      kind: 'information',
+      position: 'top-right',
+      autoDismiss: false,
+      importance: 1,
+      onDismissed: () => {
+        console.log('Closed');
+      },
+      ...props
+    }).start();
+  return (
+    <Button onClick={notify} className='w-24' kind='glass'>
+      Important 1
+    </Button>
+  );
+};
+
+export const DemoPendingToast = (props: Props) => {
+  const [loading, setLoading] = React.useState(false);
+  const Toast = toast({
+    title: 'Loading',
+    message: 'Loading data...',
+    autoDismiss: true,
+    duration: 5000,
+    progressBar: true,
+    pending: true
+  });
+
+  const getData = async () => {
+    setLoading(true);
+    Toast.start();
+
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 3000)).then(() => {
+        if (Math.floor(Math.random() * 2) === 1) {
+          throw new Error('Error occurred while fetching data');
+        }
+      });
+      Toast.update({
+        title: 'Success',
+        message: 'Get Data Success',
+        kind: 'affirmative',
+        pending: false
+      });
+    } catch (error: any) {
+      Toast.update({
+        title: 'Error',
+        message: error.message,
+        kind: 'adverse',
+        pending: false
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <Button onClick={getData} className='w-fit' kind='glass' isPending={loading}>
+      Get Data
+    </Button>
   );
 };

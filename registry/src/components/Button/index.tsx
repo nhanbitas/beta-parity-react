@@ -4,7 +4,7 @@ import React from 'react';
 import './index.css';
 import './variables.css';
 import classNames from 'classnames';
-import { Loader } from 'lucide-react';
+import { Spinner } from '../Spinner';
 
 const sizeMap = {
   sm: 'small',
@@ -112,7 +112,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         disabled={disabled || isPending}
         {...props}
       >
-        {isPending && <Loader className='loading-animation' />}
+        {isPending && <Spinner variant='sunburst' color='neutral' size='sm' />}
         {parsedChildren}
       </button>
     );
