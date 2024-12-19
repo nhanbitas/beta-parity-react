@@ -9,11 +9,7 @@ import { Spinner } from '../Spinner';
 import useDidMountEffect from '../hooks/useDidMountEffect';
 
 // TODO:
-// - Pending state => OK
-// - Icon => OK
-// - Action button
-// - Layout: flex/compact
-// - Light/dark/alternative mode
+// - Feat pauseOnFocus
 
 const positions = ['top-right', 'top-center', 'bottom-right', 'bottom-center'] as const;
 
@@ -31,24 +27,171 @@ const closeAnimations = {
   'bottom-center': 'animate-fade-out'
 };
 
+const emphasisClasses = {
+  normal: 'emphasis-normal',
+  high: 'emphasis-high'
+};
+
+const heightClasses = {
+  flexible: 'height-flexible',
+  compact: 'height-compact'
+};
+
 export interface ToastProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
+  /**
+   * Unique identifier for the toast.
+   *
+   * @memberof ToastProps
+   */
   id: string;
+
+  /**
+   * Function to remove the toast, called with the toast's unique identifier.
+   *
+   * @memberof ToastProps
+   */
   removeToast: (id: string) => void;
+
+  /**
+   * The title of the toast, which can be a string or a React node.
+   *
+   * @memberof ToastProps
+   */
   title?: string | React.ReactNode;
+
+  /**
+   * The message displayed in the toast, which can be a string or a React node.
+   *
+   * @memberof ToastProps
+   */
   message?: string | React.ReactNode;
-  action?: string | React.ReactNode;
+
+  /**
+   * Optional action element to display in the toast.
+   *
+   * @memberof ToastProps
+   */
+  action?: React.ReactNode;
+
+  /**
+   * The height of the toast. Determines if the toast is compact or flexible.
+   *
+   * Default is `flexible`
+   *
+   * @memberof ToastProps
+   */
+  height?: 'flexible' | 'compact';
+
+  /**
+   * The emphasis level of the toast.
+   * - `normal`: Default emphasis.
+   * - `high`: Highlighted emphasis for important toasts.
+   *
+   * Default is `normal`
+   *
+   * @memberof ToastProps
+   */
+  emphasis?: 'normal' | 'high';
+
+  /**
+   * The kind of toast, which determines its purpose or styling.
+   * - `generic`: Default styling.
+   * - `information`: For informational messages.
+   * - `affirmative`: For success or positive feedback.
+   * - `cautionary`: For warnings or caution.
+   * - `adverse`: For errors or negative feedback.
+   *
+   * Default is `generic`
+   *
+   * @memberof ToastProps
+   */
   kind?: 'generic' | 'information' | 'affirmative' | 'cautionary' | 'adverse';
+
+  /**
+   * The position of the toast. Should be one of the positions defined in `positions`.
+   *
+   * Default is `top-right`
+   * @memberof ToastProps
+   */
   position?: (typeof positions)[number];
+
+  /**
+   * Whether the toast should automatically dismiss after a certain duration.
+   *
+   * Default is `false`
+   * @memberof ToastProps
+   */
   autoDismiss?: boolean;
+
+  /**
+   * The duration (in milliseconds) before the toast automatically dismisses.
+   * Only applicable if `autoDismiss` is true.
+   *
+   * Default is `5000`
+   *
+   * @memberof ToastProps
+   */
   duration?: number;
+
+  /**
+   * Whether to pause the auto-dismiss timer when the user hovers over the toast.
+   *
+   * Default is `true`
+   *
+   * @memberof ToastProps
+   */
   pauseOnHover?: boolean;
+
+  /**
+   * The icon to display in the toast. This can be any React node.
+   *
+   * Override the default icon based on the `kind` prop.
+   *
+   * @memberof ToastProps
+   */
   icon?: React.ReactNode;
+
+  /**
+   * Whether to display a progress bar for the auto-dismiss timer.
+   *
+   * Default is `false`
+   *
+   * @memberof ToastProps
+   */
   progressBar?: boolean;
-  actionSection?: React.ReactNode;
+
+  /**
+   * Whether to display a dismiss button in the toast.
+   *
+   * Default is `true`
+   *
+   * @memberof ToastProps
+   */
   dismissButton?: boolean;
+
+  /**
+   * The importance level of the toast. Higher values indicate higher priority.
+   *
+   * Default is `0`
+   *
+   * @memberof ToastProps
+   */
   importance?: number;
+
+  /**
+   * Whether the toast is in a pending state, typically used for asynchronous operations.
+   *
+   * Default is `false`
+   *
+   * @memberof ToastProps
+   */
   pending?: boolean;
-  onShown?: () => void;
+
+  /**
+   * Callback function that is triggered when the toast is dismissed.
+   *
+   * @memberof ToastProps
+   */
   onDismissed?: () => void;
 }
 
@@ -60,7 +203,8 @@ const Toast: React.FC<ToastProps> = ({
   message,
   action,
   icon,
-  actionSection,
+  height = 'flexible',
+  emphasis = 'high',
   kind = 'generic',
   position = 'top-right',
   dismissButton = true,
@@ -75,10 +219,11 @@ const Toast: React.FC<ToastProps> = ({
 }) => {
   const { isHovered, isFocused, getEventHandlers } = useHoverFocus();
   const combinedEventHandlers = getEventHandlers(props as EventHandlers);
-  const [closing, setClosing] = React.useState(false);
 
+  const [closing, setClosing] = React.useState(false);
   const [remaining, setRemaining] = React.useState(duration);
   const [end, setEnd] = React.useState(Date.now() + duration);
+  const isCompact = height === 'compact';
 
   const handleCloseToast = useCallback(() => {
     setClosing(true);
@@ -96,14 +241,14 @@ const Toast: React.FC<ToastProps> = ({
     let timer: any;
 
     // Clear timeout, set new duration (remaining) when toast is focused or hovered
-    if (isFocused || isHovered) {
+    if (isHovered) {
       clearTimeout(timer);
       setRemaining(end - Date.now());
     }
 
     // If toast is not focused or hovered and remaining time is greater than 0ms, set a timeout
     // to close the toast with the remaining time
-    if (!isFocused && !isHovered) {
+    if (!isHovered) {
       if (remaining > 0) {
         timer = setTimeout(() => {
           handleCloseToast();
@@ -116,7 +261,7 @@ const Toast: React.FC<ToastProps> = ({
     return () => {
       if (timer) clearTimeout(timer);
     };
-  }, [isFocused, isHovered, duration, autoDismiss, pauseOnHover, pending]);
+  }, [isHovered, duration, autoDismiss, pauseOnHover, pending]);
 
   // Case 2: pauseOnHover is false
   useEffect(() => {
@@ -141,28 +286,43 @@ const Toast: React.FC<ToastProps> = ({
   return (
     <div
       tabIndex={0}
-      className={classNames('toast', pending ? 'generic' : kind, className, {
-        active: true,
-        [openAnimations[position]]: !closing,
-        [closeAnimations[position]]: closing,
-        ...(pauseOnHover && { paused: closing ? false : isFocused || isHovered })
-      })}
+      className={classNames(
+        'toast',
+        pending ? 'generic' : kind,
+        emphasisClasses[emphasis],
+        heightClasses[height],
+        className,
+        {
+          active: true,
+          [openAnimations[position]]: !closing,
+          [closeAnimations[position]]: closing,
+          ...(pauseOnHover && { paused: closing ? false : isHovered })
+        }
+      )}
       {...props}
       {...(combinedEventHandlers as any)}
     >
       <ToastIcon kind={kind} icon={icon} pending={pending} />
 
       <ToastBody>
-        <ToastTitle>{title}</ToastTitle>
-        <ToastMessage>{message}</ToastMessage>
-        <ToastAction>{action}</ToastAction>
+        {!isCompact && title && <ToastTitle>{title}</ToastTitle>}
+
+        {message && <ToastMessage>{message}</ToastMessage>}
+
+        {!isCompact && action && <ToastAction>{action}</ToastAction>}
       </ToastBody>
 
-      {dismissButton && !pending && (
-        <ToastCloseButton onClick={() => handleCloseToast()}>
-          <X />
-        </ToastCloseButton>
-      )}
+      <div className='action-section'>
+        {isCompact && action && <ToastAction>{action}</ToastAction>}
+
+        {isCompact && action && dismissButton && <span className='toast-action-divider'></span>}
+
+        {dismissButton && !pending && (
+          <ToastCloseButton onClick={() => handleCloseToast()}>
+            <X />
+          </ToastCloseButton>
+        )}
+      </div>
 
       {autoDismiss && !pending && progressBar && <ToastProgressBar duration={duration} />}
     </div>
@@ -259,14 +419,14 @@ export const ToastIcon = React.forwardRef<HTMLSpanElement, ToastIconProps>(
   ({ kind = 'generic', icon, pending, ...props }, ref) => {
     if (icon)
       return (
-        <span className='toast-icon' ref={ref}>
+        <span className='toast-icon' ref={ref} {...props}>
           {icon}
         </span>
       );
 
     if (pending)
       return (
-        <span className='toast-icon' ref={ref}>
+        <span className='toast-icon' ref={ref} {...props}>
           <Spinner size='sm' />
         </span>
       );
@@ -276,7 +436,7 @@ export const ToastIcon = React.forwardRef<HTMLSpanElement, ToastIconProps>(
         return null;
       case 'information':
         return (
-          <span className='toast-icon' ref={ref}>
+          <span className='toast-icon' ref={ref} {...props}>
             <svg xmlns='http://www.w3.org/2000/svg' width={20} height={20} viewBox='0 0 20 20' fill='none'>
               <path
                 d='M10 18.3333C14.5833 18.3333 18.3333 14.5833 18.3333 9.99996C18.3333 5.41663 14.5833 1.66663 10 1.66663C5.41667 1.66663 1.66667 5.41663 1.66667 9.99996C1.66667 14.5833 5.41667 18.3333 10 18.3333Z'
@@ -305,7 +465,7 @@ export const ToastIcon = React.forwardRef<HTMLSpanElement, ToastIconProps>(
         );
       case 'affirmative':
         return (
-          <span className='toast-icon' ref={ref}>
+          <span className='toast-icon' ref={ref} {...props}>
             <svg xmlns='http://www.w3.org/2000/svg' width={20} height={20} viewBox='0 0 20 20' fill='none'>
               <path
                 d='M10 18.3333C14.5833 18.3333 18.3333 14.5833 18.3333 9.99996C18.3333 5.41663 14.5833 1.66663 10 1.66663C5.41667 1.66663 1.66667 5.41663 1.66667 9.99996C1.66667 14.5833 5.41667 18.3333 10 18.3333Z'
@@ -327,7 +487,7 @@ export const ToastIcon = React.forwardRef<HTMLSpanElement, ToastIconProps>(
         );
       case 'cautionary':
         return (
-          <span className='toast-icon' ref={ref}>
+          <span className='toast-icon' ref={ref} {...props}>
             <svg xmlns='http://www.w3.org/2000/svg' width={20} height={20} viewBox='0 0 20 20' fill='none'>
               <path
                 d='M10 17.8417H4.95C2.05833 17.8417 0.85 15.775 2.25 13.25L4.85 8.56665L7.3 4.16665C8.78333 1.49165 11.2167 1.49165 12.7 4.16665L15.15 8.57498L17.75 13.2583C19.15 15.7833 17.9333 17.85 15.05 17.85H10V17.8417Z'
@@ -356,7 +516,7 @@ export const ToastIcon = React.forwardRef<HTMLSpanElement, ToastIconProps>(
         );
       case 'adverse':
         return (
-          <span className='toast-icon' ref={ref}>
+          <span className='toast-icon' ref={ref} {...props}>
             <svg xmlns='http://www.w3.org/2000/svg' width={20} height={20} viewBox='0 0 20 20' fill='none'>
               <path
                 d='M9.93333 18.3334C14.5167 18.3334 18.2667 14.5834 18.2667 10.0001C18.2667 5.41675 14.5167 1.66675 9.93333 1.66675C5.35 1.66675 1.6 5.41675 1.6 10.0001C1.6 14.5834 5.35 18.3334 9.93333 18.3334Z'

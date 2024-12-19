@@ -6,9 +6,36 @@ import Toast, { ToastProps } from './Toast';
 import './variables.css';
 import './index.css';
 
-interface ToastContainerProps {
+export interface ToastContainerProps {
+  /**
+   * The maximum number of toasts that can be displayed simultaneously.
+   *
+   * If not specified, the default limit is `1`.
+   *
+   * @memberof ToastContainerProps
+   */
   limit?: number;
+
+  /**
+   * Whether to stack the toasts on top of each other.
+   *
+   * If set to true, toasts will be stacked vertically.
+   *
+   * Default is `true`.
+   *
+   * @memberof ToastContainerProps
+   */
   stacked?: boolean;
+
+  /**
+   * Whether to sort toasts based on their importance.
+   *
+   * If true, more important toasts will be displayed first.
+   *
+   * Default is `true`.
+   *
+   * @memberof ToastContainerProps
+   */
   sortImportance?: boolean;
 }
 
@@ -109,11 +136,11 @@ const ToastContainer: React.FC<ToastContainerProps> = ({
 export default ToastContainer;
 
 const generateToast = (toasts: ToastInstance[], removeToast: (id: string) => void, limit: number, stacked: boolean) => {
-  const ITEMS_IN_STACK = 3;
-  const revertIndex = (index: number) => toasts.length - (index + 1);
-  const scaleIndicator = (index: number) => 1 - 0.05 * revertIndex(index);
-  const bottomIndicator = (index: number) => -10 * revertIndex(index);
-  const isShowing = (index: number) => index >= toasts.length - ITEMS_IN_STACK;
+  const LAYER = 3;
+  const reversedIndex = (index: number) => toasts.length - (index + 1);
+  const scaleRatio = (index: number) => 1 - 0.05 * reversedIndex(index);
+  const recededBottom = (index: number) => -10 * reversedIndex(index);
+  const isShowing = (index: number) => index >= toasts.length - LAYER;
 
   if (!stacked)
     return (
@@ -132,8 +159,8 @@ const generateToast = (toasts: ToastInstance[], removeToast: (id: string) => voi
           removeToast={removeToast}
           className={index !== toasts.length - 1 ? 'collapsed' : ''}
           style={{
-            top: isShowing(index) ? bottomIndicator(index) : 0,
-            scale: isShowing(index) ? scaleIndicator(index) : 0
+            top: isShowing(index) ? recededBottom(index) : 0,
+            scale: isShowing(index) ? scaleRatio(index) : 0
           }}
         />
       ))

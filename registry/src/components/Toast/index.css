@@ -19,16 +19,15 @@
 }
 
 .toast {
-  @apply text-body-compact-01 relative flex h-auto w-full items-center justify-center gap-2 overflow-hidden rounded-md border px-4 py-2 drop-shadow-md transition-all duration-300;
+  box-shadow: 0px 10px 15px -3px rgb(from var(--par-color-text-primary) r g b / 0.1);
+  @apply text-body-compact-01 relative flex h-auto w-full items-center justify-center gap-3 overflow-hidden rounded-md border p-3 transition-all duration-300;
 }
 
 .toast.active.collapsed {
-  animation: fade-in forwards ease-in-out 0.15s;
   @apply absolute right-0 h-full w-full;
 }
 
 .toast.active.collapsed > * {
-  animation: fade-out forwards ease-in-out 0.15s;
   @apply invisible; /* hide all elements inside collapsed toast to maintain the size when using stack layout*/
 }
 
@@ -70,34 +69,61 @@
 }
 
 .toast-body {
-  @apply flex flex-auto flex-col gap-1 text-[var(--par-color-text-primary)];
+  @apply flex flex-auto flex-col text-[var(--par-color-text-primary)];
 }
 
 .toast-title {
   @apply text-heading-01;
 }
 
-.toast-close {
-  @apply flex h-4 w-4 cursor-pointer items-center justify-center self-start text-[var(--par-color-text-button)];
+.toast-message {
+  @apply mt-1;
 }
 
-.toast.generic {
+.toast-action {
+  @apply mt-2;
+}
+
+.toast.height-compact .toast-message {
+  @apply mt-0;
+}
+.toast.height-compact .toast-action {
+  @apply mr-1 mt-0;
+}
+
+.action-section {
+  @apply flex flex-shrink-0 flex-row items-center justify-end gap-1 self-start text-[var(--par-color-text-button)];
+}
+
+.toast-action-divider {
+  @apply block h-4 w-px bg-[var(--par-color-border-surface)];
+}
+
+.toast-close {
+  @apply flex h-5 w-5 cursor-pointer items-center justify-center self-start;
+}
+
+.toast.emphasis-normal {
+  @apply border-[var(--par-color-border-emphasis-normal)] bg-[var(--par-color-bg-emphasis-normal)];
+}
+
+.toast.emphasis-high.generic {
   @apply border-[var(--par-color-border-toast-emphasis-high-generic)] bg-[var(--par-color-bg-toast-emphasis-high-generic)];
 }
 
-.toast.information {
+.toast.emphasis-high.information {
   @apply border-[var(--par-color-border-toast-emphasis-high-info)] bg-[var(--par-color-bg-toast-emphasis-high-info)];
 }
 
-.toast.affirmative {
+.toast.emphasis-high.affirmative {
   @apply border-[var(--par-color-border-toast-emphasis-high-affirmative)] bg-[var(--par-color-bg-toast-emphasis-high-affirmative)];
 }
 
-.toast.cautionary {
+.toast.emphasis-high.cautionary {
   @apply border-[var(--par-color-border-toast-emphasis-high-cautionary)] bg-[var(--par-color-bg-toast-emphasis-high-cautionary)];
 }
 
-.toast.adverse {
+.toast.emphasis-high.adverse {
   @apply border-[var(--par-color-border-toast-emphasis-high-adverse)] bg-[var(--par-color-bg-toast-emphasis-high-adverse)];
 }
 
