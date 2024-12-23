@@ -1,0 +1,24 @@
+:root,
+[data-scheme='light'] {
+  --color-text-link-standard-enabled: var(--par-blue-550);
+  --color-text-link-standard-hovered: var(--par-blue-600);
+  --color-text-link-standard-focused: var(--par-blue-550);
+  --color-text-link-standard-disabled: rgb(from var(--par-blue-550) r g b / 0.5);
+
+  --color-text-link-neutral-enabled: var(--par-gray-600);
+  --color-text-link-neutral-hovered: var(--par-gray-700);
+  --color-text-link-neutral-focused: var(--par-gray-600);
+  --color-text-link-neutral-disabled: rgb(from var(--par-gray-600) r g b / 0.5);
+}
+
+[data-scheme='dark'] {
+  --color-text-link-standard-enabled: var(--par-blue-200);
+  --color-text-link-standard-hovered: var(--par-blue-100);
+  --color-text-link-standard-focused: var(--par-blue-200);
+  --color-text-link-standard-disabled: rgb(from var(--par-blue-200) r g b / 0.5);
+
+  --color-text-link-neutral-enabled: var(--par-gray-200);
+  --color-text-link-neutral-hovered: var(--par-gray-100);
+  --color-text-link-neutral-focused: var(--par-gray-200);
+  --color-text-link-neutral-disabled: rgb(from var(--par-gray-200) r g b / 0.5);
+}

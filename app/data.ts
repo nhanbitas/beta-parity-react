@@ -17,12 +17,12 @@ export const components = [
   {
     name: 'Corner Indicator',
     url: '/corner-indicator',
-    status: 2
+    status: 3
   },
   {
     name: 'Dot',
     url: '/dot',
-    status: 2
+    status: 3
   },
   {
     name: 'Radio',
@@ -52,62 +52,67 @@ export const components = [
   {
     name: 'Badge',
     url: '/badge',
-    status: 2
+    status: 3
   },
   {
     name: 'Form',
     url: '/form',
-    status: 1
+    status: 2
+  },
+  {
+    name: 'Inline Link',
+    url: '/inline-link',
+    status: 2
   },
   {
     name: 'Text Input',
     url: '/text-input',
-    status: 2
+    status: 3
   },
   {
     name: 'Text Area',
     url: '/text-area',
-    status: 1
+    status: 2
   },
   {
     name: 'Password Input',
     url: '/password-input',
-    status: 2
+    status: 3
   },
   {
     name: 'Spinner',
     url: '/spinner',
-    status: 2
+    status: 3
   },
   {
     name: 'Tag',
     url: '/tag',
-    status: 2
+    status: 3
   },
   {
     name: 'Toast',
     url: '/toast',
-    status: 2
+    status: 3
   },
   {
     name: 'Tabs',
     url: '/tabs',
-    status: 2
+    status: 3
   },
   {
     name: 'Modal',
     url: '/modal',
-    status: 1
+    status: 2
   },
   {
     name: 'Number Input',
     url: '/number-input',
-    status: 2
+    status: 3
   },
   {
     name: 'Date picker',
     url: '/date-picker',
-    status: 1
+    status: 2
   },
   {
     name: 'Breadcrumb',

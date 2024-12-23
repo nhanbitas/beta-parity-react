@@ -1,0 +1,39 @@
+/* Base */
+.inline-link {
+  @apply text-body-compact-01 relative inline-flex w-fit cursor-pointer select-none items-center decoration-solid transition-colors duration-100 ease-in-out focus-visible:-outline-offset-1;
+}
+
+/* Underline */
+.inline-link.underline-none {
+  @apply no-underline;
+}
+
+.inline-link.underline-hover {
+  @apply no-underline hover:underline;
+}
+
+.inline-link.underline-always {
+  @apply underline;
+}
+
+/* Color */
+.inline-link.neutral {
+  @apply text-[var(--color-text-link-neutral-enabled)] hover:text-[var(--color-text-link-neutral-hovered)] focus:text-[var(--color-text-link-neutral-focused)] disabled:text-[var(--color-text-link-neutral-disabled)];
+}
+
+.inline-link.standard {
+  @apply text-[var(--color-text-link-standard-enabled)] hover:text-[var(--color-text-link-standard-hovered)] focus:text-[var(--color-text-link-standard-focused)] disabled:text-[var(--color-text-link-standard-disabled)];
+}
+
+/* Size */
+.inline-link.small {
+  @apply text-xs;
+}
+
+.inline-link.medium {
+  @apply text-sm;
+}
+
+.inline-link.large {
+  @apply text-base;
+}
