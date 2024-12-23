@@ -379,10 +379,10 @@ const CheckboxIcon = ({
   disabled?: boolean;
   [key: string]: any;
 }) => {
-  const baseColor = `var(--par-color-icon-checkbox${disabled ? '-disabled' : '-enabled'})`;
-  const selectedColor = `var(--par-color-icon-checkbox-${color}${disabled ? '-disabled' : '-selected'})`;
-  const bgColor = `var(--par-color-bg-checkbox-${color}${disabled ? '-disabled' : '-selected'})`;
-  const indeterminateColor = `var(--par-color-icon-checkbox-indeterminate${disabled ? '-disabled' : ''})`;
+  const baseColor = `var(--par-color-icon-checkbox-enabled)`;
+  const selectedColor = `var(--par-color-icon-checkbox-${color}-selected)`;
+  const bgColor = `var(--par-color-bg-checkbox-${color}-selected)`;
+  const indeterminateColor = `var(--par-color-icon-checkbox-indeterminate)`;
 
   const rectIndicator = {
     x: 1,
@@ -451,8 +451,6 @@ const CheckboxIcon = ({
     };
   }
 
-  const { fill: fillColor, stroke: strokeColor, className: rectClass, ...restRectProps } = rectProps;
-
   return (
     <svg
       className='checkbox-icon'
@@ -461,6 +459,9 @@ const CheckboxIcon = ({
       height={16}
       viewBox='0 0 16 16'
       fill='none'
+      style={{
+        opacity: disabled ? 0.5 : 1
+      }}
     >
       <rect {...(rectProps as any)} />
       <path {...(pathProps as any)} />
