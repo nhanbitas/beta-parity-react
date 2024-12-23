@@ -1,5 +1,6 @@
 import React from 'react';
 import { InlineLink } from '@libComponents/InlineLink';
+import { ArrowUpRight, HomeIcon } from 'lucide-react';
 
 const colors = ['standard', 'neutral'];
 
@@ -18,6 +19,11 @@ export const DemoKindInlineLink = () => {
       <div className='not-prose my-4 flex gap-4 '>
         {colors.map((color) => (
           <InlineLink key={color} color={color as any} underline='hover'>
+            InlineLink
+          </InlineLink>
+        ))}
+        {colors.map((color) => (
+          <InlineLink key={color} color={color as any} underline='hover' disabled>
             InlineLink
           </InlineLink>
         ))}
@@ -41,7 +47,7 @@ export const DemoSizeInlineLink = () => {
       <div className='not-prose my-4 flex gap-4'>
         {colors.map((color) => (
           <InlineLink key={color} color={color as any} size='sm'>
-            InlineLink
+            InlineLink <ArrowUpRight />
           </InlineLink>
         ))}
       </div>
@@ -49,7 +55,12 @@ export const DemoSizeInlineLink = () => {
       <div className='not-prose my-4 flex gap-4'>
         {colors.map((color) => (
           <InlineLink key={color} color={color as any} size='md'>
-            InlineLink
+            InlineLink <ArrowUpRight />
+          </InlineLink>
+        ))}
+        {colors.map((color) => (
+          <InlineLink key={color} color={color as any} size='md' disabled>
+            InlineLink <ArrowUpRight />
           </InlineLink>
         ))}
       </div>
@@ -57,7 +68,43 @@ export const DemoSizeInlineLink = () => {
       <div className='not-prose my-4 flex gap-4'>
         {colors.map((color) => (
           <InlineLink key={color} color={color as any} size='lg'>
-            InlineLink
+            InlineLink <ArrowUpRight />
+          </InlineLink>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export const DemoIconInlineLink = () => {
+  return (
+    <div className=' gap-4 rounded-md p-2'>
+      <h3>Small</h3>
+      <div className='not-prose my-4 flex gap-4'>
+        {colors.map((color) => (
+          <InlineLink key={color} color={color as any} size='sm' iconOnly>
+            <HomeIcon />
+          </InlineLink>
+        ))}
+      </div>
+      <h3>Medium</h3>
+      <div className='not-prose my-4 flex gap-4'>
+        {colors.map((color) => (
+          <InlineLink key={color} color={color as any} size='md' iconOnly>
+            <HomeIcon />
+          </InlineLink>
+        ))}
+        {colors.map((color) => (
+          <InlineLink key={color} color={color as any} size='md' iconOnly disabled>
+            <HomeIcon />
+          </InlineLink>
+        ))}
+      </div>
+      <h3>Large</h3>
+      <div className='not-prose my-4 flex gap-4'>
+        {colors.map((color) => (
+          <InlineLink key={color} color={color as any} size='lg' iconOnly>
+            <HomeIcon />
           </InlineLink>
         ))}
       </div>

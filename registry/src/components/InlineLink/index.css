@@ -1,6 +1,6 @@
 /* Base */
 .inline-link {
-  @apply text-body-compact-01 relative inline-flex w-fit cursor-pointer select-none items-center decoration-solid transition-colors duration-100 ease-in-out focus-visible:-outline-offset-1;
+  @apply relative inline-flex w-fit cursor-pointer select-none items-center gap-2 decoration-solid transition-colors duration-100 ease-in-out;
 }
 
 /* Underline */
@@ -18,22 +18,43 @@
 
 /* Color */
 .inline-link.neutral {
-  @apply text-[var(--color-text-link-neutral-enabled)] hover:text-[var(--color-text-link-neutral-hovered)] focus:text-[var(--color-text-link-neutral-focused)] disabled:text-[var(--color-text-link-neutral-disabled)];
+  @apply text-[var(--color-text-link-neutral-enabled)] hover:text-[var(--color-text-link-neutral-hovered)] focus:text-[var(--color-text-link-neutral-focused)];
+}
+
+.inline-link.neutral.disabled {
+  @apply pointer-events-none text-[var(--color-text-link-neutral-disabled)];
 }
 
 .inline-link.standard {
-  @apply text-[var(--color-text-link-standard-enabled)] hover:text-[var(--color-text-link-standard-hovered)] focus:text-[var(--color-text-link-standard-focused)] disabled:text-[var(--color-text-link-standard-disabled)];
+  @apply text-[var(--color-text-link-standard-enabled)] hover:text-[var(--color-text-link-standard-hovered)] focus:text-[var(--color-text-link-standard-focused)];
+}
+
+.inline-link.standard.disabled {
+  @apply pointer-events-none text-[var(--color-text-link-standard-disabled)];
 }
 
 /* Size */
 .inline-link.small {
-  @apply text-xs;
+  @apply text-label-01 tracking-normal;
 }
 
 .inline-link.medium {
-  @apply text-sm;
+  @apply text-body-compact-01 tracking-normal;
 }
 
 .inline-link.large {
-  @apply text-base;
+  @apply text-body-compact-02 tracking-normal;
+}
+
+/* Icon */
+.inline-link.icon-only.small {
+  @apply min-h-1 min-w-1 p-0;
+}
+
+.inline-link.icon-only.medium {
+  @apply min-h-2 min-w-2 p-[0.125rem];
+}
+
+.inline-link.icon-only.large {
+  @apply min-h-3 min-w-3 p-1.5;
 }

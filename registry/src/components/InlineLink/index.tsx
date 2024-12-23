@@ -23,10 +23,35 @@ const underlineClassMap = {
 } as const;
 
 export interface InlineLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+  /**
+   * Defines the color of the link. It should correspond to a key in the `colorMap` object.
+   * Default: `standard`.
+   */
   color?: keyof typeof colorMap;
+
+  /**
+   * Defines the size of the link. It should correspond to a key in the `sizeMap` object.
+   * Default: `medium`.
+   */
   size?: keyof typeof sizeMap;
+
+  /**
+   * Specifies the underline behavior for the link.
+   * - `always`: The link is always underlined.
+   * - `hover`: The underline is displayed only on hover.
+   * - `none`: No underline is displayed.
+   */
   underline?: 'always' | 'hover' | 'none';
+
+  /**
+   * If true, the link will display an icon without accompanying text.
+   */
   iconOnly?: boolean;
+
+  /**
+   * If true, the link will be disabled and non-interactive.
+   */
+  disabled?: boolean;
 }
 
 export const InlineLink = React.forwardRef<HTMLAnchorElement, InlineLinkProps>(
@@ -38,6 +63,7 @@ export const InlineLink = React.forwardRef<HTMLAnchorElement, InlineLinkProps>(
       size = 'md',
       underline = 'hover',
       iconOnly = false,
+      disabled,
       href = '#',
       ...props
     },
@@ -50,12 +76,20 @@ export const InlineLink = React.forwardRef<HTMLAnchorElement, InlineLinkProps>(
       sizeMap[size],
       underlineClassMap[underline],
       {
-        'icon-only': iconOnly
+        'icon-only': iconOnly,
+        disabled: disabled
       }
     );
 
+    const acessibilityProps = {
+      'aria-disabled': disabled,
+      tabIndex: disabled ? -1 : 0
+    };
+
+    const availableHref = disabled ? undefined : href;
+
     return (
-      <a className={inlineLinkClasses} ref={ref} href={href} {...props}>
+      <a className={inlineLinkClasses} ref={ref} href={availableHref} {...acessibilityProps} {...props}>
         {children}
       </a>
     );
