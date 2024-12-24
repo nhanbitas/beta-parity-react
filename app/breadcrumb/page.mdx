@@ -1,9 +1,26 @@
-import {DemoBreadcrumbBasic} from "./Demo"
+import {DemoBreadcrumbBasic, DemoBreadcrumbList} from "./Demo"
 
 
 ## Basic
-
-<DemoBreadcrumbBasic/>
+<DemoBreadcrumbBasic separator="chevron"/>
+<DemoBreadcrumbBasic separator="dash"/>
 <DemoBreadcrumbBasic separator="slash"/>
 
+# List 
+<DemoBreadcrumbList />
+<DemoBreadcrumbList limit={3}/>
 
+
+
+## Dark mode
+
+<div className="bg-gray-950 text-white p-4 rounded-md flex flex-col gap-4" data-scheme="dark">
+## Basic
+<DemoBreadcrumbBasic separator="chevron"/>
+<DemoBreadcrumbBasic separator="dash"/>
+<DemoBreadcrumbBasic separator="slash"/>
+
+# List 
+<DemoBreadcrumbList />
+<DemoBreadcrumbList limit={3}/>
+</div>

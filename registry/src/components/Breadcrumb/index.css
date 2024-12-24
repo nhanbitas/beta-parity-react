@@ -4,15 +4,11 @@
 }
 
 .breadcrumb-item {
-  @apply text-body-compact-01 flex items-center gap-1 text-gray-500;
+  @apply text-body-compact-01 flex cursor-pointer items-center gap-1;
 }
 
 .breadcrumb-item > a {
   @apply flex gap-2;
-}
-
-.breadcrumb-item:not(:last-child) > a {
-  @apply hover:text-gray-700;
 }
 
 .breadcrumb-item svg {
@@ -20,7 +16,11 @@
 }
 
 .breadcrumb-item:not(:last-child) {
-  @apply relative after:absolute after:left-[calc(100%+0.75rem)] after:-translate-x-1/2 after:font-medium after:content-['>'];
+  @apply relative after:absolute after:left-[calc(100%+0.75rem)] after:-translate-x-1/2 after:font-medium after:text-[var(--par-color-separator-breadcrumb)];
+}
+
+.breadcrumb.chevron .breadcrumb-item:not(:last-child) {
+  @apply after:content-['>'];
 }
 
 .breadcrumb.slash .breadcrumb-item:not(:last-child) {
@@ -31,6 +31,10 @@
   @apply after:content-['-'];
 }
 
-.breadcrumb-item:last-child {
-  @apply text-gray-900;
+.breadcrumb-item.breadcrumb-active {
+  @apply font-medium text-[var(--par-color-text-breadcrumb-item-active)];
+}
+
+.breadcrumb-menu.menu {
+  @apply max-h-56 w-fit overflow-auto;
 }

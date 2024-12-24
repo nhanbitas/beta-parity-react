@@ -1,6 +1,20 @@
 :root,
 [data-scheme='light'] {
+  --par-color-text-breadcrumb-item-neutral-enabled: var(--par-gray-600);
+  --par-color-text-breadcrumb-item-neutral-hovered: var(--par-gray-700);
+  --par-color-text-breadcrumb-item-standard-enabled: var(--par-blue-550);
+  --par-color-text-breadcrumb-item-standard-hovered: var(--par-blue-600);
+  --par-color-text-breadcrumb-item-active: var(--par-gray-900);
+  --par-color-separator-breadcrumb: var(--par-gray-600);
+  --par-color-bg-surface-inverse: var(--par-gray-950);
 }
 
 [data-scheme='dark'] {
+  --par-color-text-breadcrumb-item-neutral-enabled: var(--par-gray-200);
+  --par-color-text-breadcrumb-item-neutral-hovered: var(--par-gray-100);
+  --par-color-text-breadcrumb-item-standard-enabled: var(--par-blue-200);
+  --par-color-text-breadcrumb-item-standard-hovered: var(--par-blue-100);
+  --par-color-text-breadcrumb-item-active: var(--par-white);
+  --par-color-separator-breadcrumb: var(--par-gray-200);
+  --par-color-bg-surface-inverse: var(--par-white);
 }

@@ -13,6 +13,8 @@ import { useArrowKeyNavigation } from '../hooks/useArrowKeyNavigation ';
 import { Checkbox } from '../Checkbox';
 import { Radio } from '../Radio';
 
+// TODO: Add custom menu content/ flexible action in menuItem **CONSIDER
+
 const sizeMap = {
   sm: 'small',
   md: 'medium'
