@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { Form, FormBlock, FormCol, FormControl, FormControlLabel } from '@libComponents/Form';
 import { TextInput } from '@libComponents/TextInput';

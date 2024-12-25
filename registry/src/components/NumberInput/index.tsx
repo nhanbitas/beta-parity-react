@@ -1,5 +1,3 @@
-'use client';
-
 import * as React from 'react';
 import './index.css';
 import { NumericFormat, NumericFormatProps, numericFormatter, SourceInfo } from 'react-number-format';

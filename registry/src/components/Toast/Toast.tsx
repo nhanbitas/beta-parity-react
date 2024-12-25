@@ -1,5 +1,3 @@
-'use client';
-
 import React, { useCallback, useEffect } from 'react';
 import classNames from 'classnames';
 import { X } from 'lucide-react';

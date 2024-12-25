@@ -1,5 +1,3 @@
-'use client';
-
 import React, { useState, useEffect, useCallback } from 'react';
 import ReactDOM from 'react-dom';
 import Toast, { ToastProps } from './Toast';
