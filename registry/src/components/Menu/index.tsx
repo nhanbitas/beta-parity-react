@@ -361,7 +361,16 @@ export const Menu = React.forwardRef<HTMLDivElement, MenuProps>(
               <MenuIndicator position='top' isActive={indicator.top} onClick={() => handleIndicatorClick('top')} />
             ) : null}
 
-            {countMenuItems(cloneChildren) > 0 ? cloneChildren : <span className='menu-no-items'>{noResultsText}</span>}
+            {/* If searchable, render the menuitems with counter, else render valid children */}
+            {searchable ? (
+              countMenuItems(cloneChildren) > 0 ? (
+                cloneChildren
+              ) : (
+                <span className='menu-no-items'>{noResultsText}</span>
+              )
+            ) : (
+              cloneChildren
+            )}
 
             {isScrollable && isContainChildren && scrollIndicator ? (
               <MenuIndicator
