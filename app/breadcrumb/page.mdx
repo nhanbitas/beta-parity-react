@@ -2,13 +2,27 @@ import {DemoBreadcrumbBasic, DemoBreadcrumbList} from "./Demo"
 
 
 ## Basic
-<DemoBreadcrumbBasic separator="chevron"/>
-<DemoBreadcrumbBasic separator="dash"/>
-<DemoBreadcrumbBasic separator="slash"/>
+<DemoBreadcrumbBasic separator="chevron" />
+<DemoBreadcrumbBasic separator="dash" />
+<DemoBreadcrumbBasic separator="slash" />
+
+<DemoBreadcrumbBasic separator="chevron" color='neutral' underline='none'/>
+<DemoBreadcrumbBasic separator="dash" color='neutral' underline='none'/>
+<DemoBreadcrumbBasic separator="slash" color='neutral' underline='none'/>
+
+<DemoBreadcrumbBasic separator="chevron" color='neutral' underline='always'/>
+<DemoBreadcrumbBasic separator="dash" color='neutral' underline='always'/>
+<DemoBreadcrumbBasic separator="slash" color='neutral' underline='always'/>
 
 # List 
-<DemoBreadcrumbList />
 <DemoBreadcrumbList limit={3}/>
+<DemoBreadcrumbList />
+
+<DemoBreadcrumbList limit={3} color='neutral' underline='none'/>
+<DemoBreadcrumbList  color='neutral' underline='none'/>
+
+<DemoBreadcrumbList limit={3} color='neutral' underline='always'/>
+<DemoBreadcrumbList color='neutral' underline='always'/>
 
 
 
@@ -16,11 +30,26 @@ import {DemoBreadcrumbBasic, DemoBreadcrumbList} from "./Demo"
 
 <div className="bg-gray-950 text-white p-4 rounded-md flex flex-col gap-4" data-scheme="dark">
 ## Basic
-<DemoBreadcrumbBasic separator="chevron"/>
-<DemoBreadcrumbBasic separator="dash"/>
-<DemoBreadcrumbBasic separator="slash"/>
+<DemoBreadcrumbBasic separator="chevron" />
+<DemoBreadcrumbBasic separator="dash" />
+<DemoBreadcrumbBasic separator="slash" />
+
+<DemoBreadcrumbBasic separator="chevron" color='neutral' underline='none'/>
+<DemoBreadcrumbBasic separator="dash" color='neutral' underline='none'/>
+<DemoBreadcrumbBasic separator="slash" color='neutral' underline='none'/>
+
+<DemoBreadcrumbBasic separator="chevron" color='neutral' underline='always'/>
+<DemoBreadcrumbBasic separator="dash" color='neutral' underline='always'/>
+<DemoBreadcrumbBasic separator="slash" color='neutral' underline='always'/>
 
 # List 
+<DemoBreadcrumbList limit={3} menuProps={{'data-scheme': 'dark', menuItemsLimit: 3}}/>
 <DemoBreadcrumbList />
-<DemoBreadcrumbList limit={3}/>
+
+<DemoBreadcrumbList limit={3} color='neutral' underline='none' menuProps={{'data-scheme': 'dark', menuItemsLimit: 3}}/>
+<DemoBreadcrumbList  color='neutral' underline='none'/>
+
+<DemoBreadcrumbList limit={3} color='neutral' underline='always' menuProps={{'data-scheme': 'dark', menuItemsLimit: 3}}/>
+<DemoBreadcrumbList color='neutral' underline='always'/>
+
 </div>

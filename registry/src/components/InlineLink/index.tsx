@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import classNames from 'classnames';
 import './index.css';
@@ -26,12 +24,16 @@ export interface InlineLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorEl
   /**
    * Defines the color of the link. It should correspond to a key in the `colorMap` object.
    * Default: `standard`.
+   *
+   * @memberof InlineLink
    */
   color?: keyof typeof colorMap;
 
   /**
    * Defines the size of the link. It should correspond to a key in the `sizeMap` object.
    * Default: `medium`.
+   *
+   * @memberof InlineLink
    */
   size?: keyof typeof sizeMap;
 
@@ -40,18 +42,33 @@ export interface InlineLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorEl
    * - `always`: The link is always underlined.
    * - `hover`: The underline is displayed only on hover.
    * - `none`: No underline is displayed.
+   *
+   * @memberof InlineLink
    */
   underline?: 'always' | 'hover' | 'none';
 
   /**
    * If true, the link will display an icon without accompanying text.
+   *
+   * @memberof InlineLink
    */
   iconOnly?: boolean;
 
   /**
    * If true, the link will be disabled and non-interactive.
+   *
+   * @memberof InlineLink
    */
   disabled?: boolean;
+
+  /**
+   * If true, the component will render as its child element, inheriting the behavior and appearance of the child element.
+   *
+   * Useful for customizing the rendered element while preserving the intended features.
+   *
+   * @memberof InlineLink
+   */
+  asChild?: boolean;
 }
 
 export const InlineLink = React.forwardRef<HTMLAnchorElement, InlineLinkProps>(
@@ -65,6 +82,7 @@ export const InlineLink = React.forwardRef<HTMLAnchorElement, InlineLinkProps>(
       iconOnly = false,
       disabled,
       href = '#',
+      asChild = false,
       ...props
     },
     ref
@@ -87,6 +105,20 @@ export const InlineLink = React.forwardRef<HTMLAnchorElement, InlineLinkProps>(
     };
 
     const availableHref = disabled ? undefined : href;
+
+    if (asChild) {
+      return React.Children.map(children, (child) => {
+        if (React.isValidElement(child)) {
+          return React.cloneElement(child, {
+            ...child.props,
+            className: classNames(child.props.className, inlineLinkClasses),
+            ...acessibilityProps,
+            ...props
+          });
+        }
+        return child;
+      });
+    }
 
     return (
       <a className={inlineLinkClasses} ref={ref} href={availableHref} {...acessibilityProps} {...props}>

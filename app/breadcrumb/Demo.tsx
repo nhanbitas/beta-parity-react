@@ -1,3 +1,5 @@
+'use client';
+
 import { BreadcrumbItem, Breadcrumb } from '@libComponents/Breadcrumb';
 import React from 'react';
 
@@ -7,10 +9,10 @@ export const DemoBreadcrumbBasic = (props: Props) => {
   return (
     <div className='not-prose'>
       <Breadcrumb {...props}>
-        <BreadcrumbItem>Home</BreadcrumbItem>
-        <BreadcrumbItem>Docs</BreadcrumbItem>
-        <BreadcrumbItem>Components</BreadcrumbItem>
-        <BreadcrumbItem>Breadcrumb</BreadcrumbItem>
+        <BreadcrumbItem href='#home'>Home</BreadcrumbItem>
+        <BreadcrumbItem href='#docs'>Docs</BreadcrumbItem>
+        <BreadcrumbItem href='#components'>Components</BreadcrumbItem>
+        <BreadcrumbItem href='#breadcrumb'>Breadcrumb</BreadcrumbItem>
       </Breadcrumb>
     </div>
   );
@@ -27,22 +29,26 @@ export const DemoBreadcrumbList = (props: Props) => {
 const mockItems = [
   {
     children: 'Home',
-    href: '#'
+    href: '#home'
   },
   {
     children: 'Docs',
-    href: '#'
+    href: '#docs'
   },
   {
     children: 'Components',
-    href: '#'
+    href: '#components'
   },
   {
     children: 'React',
-    href: '#'
+    href: '#react'
+  },
+  {
+    children: 'V.1.0',
+    href: '#v-1-0'
   },
   {
     children: 'Breadcrumb',
-    href: '#'
+    href: '#breadcrumb'
   }
 ];

@@ -1,6 +1,7 @@
 import React from 'react';
 import { InlineLink } from '@libComponents/InlineLink';
 import { ArrowUpRight, HomeIcon } from 'lucide-react';
+import Link from 'next/link';
 
 const colors = ['standard', 'neutral'];
 
@@ -18,8 +19,10 @@ export const DemoKindInlineLink = () => {
       <h3>Hover to Underline</h3>
       <div className='not-prose my-4 flex gap-4 '>
         {colors.map((color) => (
-          <InlineLink key={color} color={color as any} underline='hover'>
-            InlineLink
+          <InlineLink key={color} color={color as any} underline='hover' asChild>
+            <Link href='#' prefetch={true}>
+              InlineLink
+            </Link>
           </InlineLink>
         ))}
         {colors.map((color) => (
