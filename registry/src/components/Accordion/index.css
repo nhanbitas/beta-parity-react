@@ -1,5 +1,3 @@
-@import '../global.css';
-
 .accordion:not(.flush) {
   @apply flex w-full flex-col rounded-md border border-[var(--par-color-border-surface)];
 }

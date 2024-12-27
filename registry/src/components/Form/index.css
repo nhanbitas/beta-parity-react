@@ -1,5 +1,3 @@
-@import '../global.css';
-
 .form {
   @apply @container mb-4;
 }

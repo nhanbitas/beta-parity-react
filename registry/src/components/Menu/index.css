@@ -1,5 +1,6 @@
 .menu {
-  @apply z-dropdown text-body-02 invisible absolute flex w-full cursor-default flex-col gap-1 rounded-md border opacity-0 shadow-md shadow-[var(--par-color-bg-surface)];
+  box-shadow: 0px 10px 15px -3px var(--par-color-effect-shadow);
+  @apply z-dropdown text-body-02 invisible absolute flex w-full cursor-default flex-col gap-1 rounded-md border opacity-0;
 }
 
 .menu-header,

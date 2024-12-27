@@ -1,5 +1,3 @@
-@import '../global.css';
-
 /* base */
 .switch {
   @apply relative box-content inline-flex shrink-0 cursor-pointer items-center rounded-full transition-colors duration-300;
