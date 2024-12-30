@@ -1,27 +1,45 @@
+'use client';
+
+import { Button } from '@libComponents/Button';
 import Badge from '@libComponents/Badge';
-import { Box } from 'lucide-react';
+import { Tooltip } from '@libComponents/Tooltip';
 import React from 'react';
+import { Info, InfoIcon, Plus } from 'lucide-react';
 
 type Props = {};
 
-const colors = ['gray', 'red', 'orange', 'yellow', 'green', 'blue', 'cyan', 'violet', 'lime'];
+const positions = [
+  'top',
+  'bottom',
+  'left',
+  'right',
+  'top-start',
+  'bottom-start',
+  'left-start',
+  'right-start',
+  'top-end',
+  'bottom-end',
+  'left-end',
+  'right-end'
+] as const;
 
-export const DemoOutlinedBadge = (props: Props) => {
+export const DemoOutlinedTooltip = (props: Props) => {
   return (
     <div className='flex flex-col gap-4'>
       <div className='flex flex-wrap gap-4'>
-        {colors.map((color) => (
-          <Badge key={color} color={color as any} icon={<Box />} label='Badge' />
+        {positions.map((position) => (
+          <Tooltip key={position} {...props} position={position}>
+            <InfoIcon />
+          </Tooltip>
         ))}
       </div>
       <div className='flex flex-wrap gap-4'>
-        {colors.map((color) => (
-          <Badge key={color} color={color as any} size='sm' icon={<Box />} label='Badge' />
-        ))}
-      </div>
-      <div className='flex flex-wrap gap-4'>
-        {colors.map((color) => (
-          <Badge key={color} color={color as any} size='xs' icon={<Box />} label='Badge' />
+        {positions.map((position) => (
+          <Tooltip key={position} {...props} position={position}>
+            <Button kind='glass' iconOnly>
+              <Plus />
+            </Button>
+          </Tooltip>
         ))}
       </div>
     </div>

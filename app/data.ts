@@ -118,5 +118,10 @@ export const components = [
     name: 'Breadcrumb',
     url: '/breadcrumb',
     status: 2
+  },
+  {
+    name: 'Tooltip',
+    url: '/tooltip',
+    status: 2
   }
 ];
