@@ -86,25 +86,31 @@ export const Breadcrumb = React.forwardRef<
   const firstItem = liList[0];
   const menuItems = liList.slice(1, liList.length - 1);
 
+  const accessibility = {
+    'aria-label': 'Breadcrumb'
+  };
+
   return (
-    <ul className={classNames('breadcrumb', className, separator)} ref={ref} {...props}>
-      {limit ? (
-        <>
-          <BreadcrumbItem {...firstItem} />
-          <BreadcrumbMenu items={menuItems} menuProps={menuProps} />
-          <BreadcrumbActive item={lastItem} />
-        </>
-      ) : (
-        <>
-          <BreadcrumbItem {...firstItem} />
-          {menuItems.map((item, index) => {
-            const key = index.toString() + (item.href ?? Date.now()).toString();
-            return <BreadcrumbItem {...item} key={key} />;
-          })}
-          <BreadcrumbActive item={lastItem} />
-        </>
-      )}
-    </ul>
+    <nav className={classNames('breadcrumb', className, separator)} ref={ref} {...props} {...accessibility}>
+      <ol>
+        {limit ? (
+          <>
+            <BreadcrumbItem {...firstItem} />
+            <BreadcrumbMenu items={menuItems} menuProps={menuProps} />
+            <BreadcrumbActive item={lastItem} />
+          </>
+        ) : (
+          <>
+            <BreadcrumbItem {...firstItem} />
+            {menuItems.map((item, index) => {
+              const key = index.toString() + (item.href ?? Date.now()).toString();
+              return <BreadcrumbItem {...item} key={key} />;
+            })}
+            <BreadcrumbActive item={lastItem} />
+          </>
+        )}
+      </ol>
+    </nav>
   );
 });
 
@@ -197,7 +203,7 @@ export const BreadcrumbActive = React.forwardRef<HTMLLIElement, BreadcrumbActive
   ({ className, item, ...props }, ref) => {
     return (
       <li className={classNames('breadcrumb-item breadcrumb-active', className)} ref={ref} {...props}>
-        {item.children}
+        <span>{item.children}</span>
       </li>
     );
   }

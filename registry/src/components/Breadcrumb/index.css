@@ -1,6 +1,6 @@
 /* Breadcrumb */
-.breadcrumb {
-  @apply flex flex-wrap items-center gap-6 p-0;
+.breadcrumb ol {
+  @apply flex list-none flex-wrap items-center gap-6 p-0;
 }
 
 .breadcrumb-item {
@@ -37,4 +37,8 @@
 
 .breadcrumb-menu.menu {
   @apply max-h-56 w-fit overflow-auto;
+}
+
+.inline-link.menu-item {
+  @apply w-full;
 }
