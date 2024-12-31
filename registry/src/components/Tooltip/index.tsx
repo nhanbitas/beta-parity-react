@@ -10,40 +10,120 @@ import {
   useDismiss,
   useRole,
   useInteractions,
-  FloatingPortal,
   Placement,
-  useClick
+  useClick,
+  arrow,
+  FloatingArrow,
+  safePolygon
 } from '@floating-ui/react';
 import './index.css';
 import { Portal } from '../Portal';
 import classNames from 'classnames';
 
+// TODO: custom useTouch to optimize UX on mobile (touch 1-2s to open instead of touch)
+
 export interface TooltipProps {
-  children: React.ReactNode;
+  /**
+   * The position of the tooltip relative to the target element. Based on the `Placement` type from the floating-ui library.
+   *
+   *  Acceptable values include:
+   * `top`,
+   * `bottom`,
+   * `left`,
+   * `right`,
+   * `top-start`,
+   * `bottom-start`,
+   * `left-start`,
+   * `right-start`,
+   * `top-end`,
+   * `bottom-end`,
+   * `left-end`,
+   * `right-end`
+   *
+   * Default value is `top`
+   *
+   * @memberof Tooltip
+   */
   position?: Placement;
+
+  /**
+   * Determines if the tooltip is static (does not auto-adjust position) or dynamic.
+   * If `true`, the tooltip will be a toggle tooltip.
+   *
+   * Default value is `false`
+   *
+   * @memberof Tooltip
+   */
+  isToggle?: boolean;
+
+  /**
+   * The text or content to display inside the tooltip.
+   *
+   * @memberof Tooltip
+   */
+  content: string;
+
+  /**
+   * The delay time (ms) to show tooltip when hovering the tooltip
+   *
+   * Default value is `0`
+   *
+   * @memberof Tooltip
+   */
+  delay?: number;
+
+  /**
+   * If `true`, it is allows the user to move the cursor off the reference element and towards the floating element without it closing (e.g. it has interactive content inside).
+   *
+   * Default value is `false`
+   *
+   * @memberof Tooltip
+   */
+  isSafePolygon?: boolean;
 }
 
-export const Tooltip = ({ children, position = 'top', ...props }: TooltipProps) => {
+export const Tooltip = ({
+  children,
+  className,
+  content,
+  position = 'top',
+  isToggle = false,
+  delay = 0,
+  isSafePolygon = false,
+  ...props
+}: TooltipProps & React.HTMLAttributes<HTMLDivElement>) => {
   const [isOpen, setIsOpen] = React.useState(false);
+  const arrowRef = React.useRef(null);
 
+  // Initialize floating-ui
   const { refs, floatingStyles, context, placement } = useFloating({
     open: isOpen,
     onOpenChange: setIsOpen,
     placement: position,
     whileElementsMounted: autoUpdate,
     middleware: [
-      offset(5),
+      offset(8),
       flip({
         fallbackAxisSideDirection: 'start'
       }),
-      shift()
+      shift(),
+      arrow({
+        element: arrowRef
+      })
     ]
   });
 
   // Event listeners to change the open state
-  const click = useClick(context);
-  const hover = useHover(context, { move: false });
-  const focus = useFocus(context);
+  const click = useClick(context, {
+    enabled: isToggle
+  });
+  const hover = useHover(context, {
+    mouseOnly: false,
+    move: false,
+    handleClose: isSafePolygon ? safePolygon() : undefined,
+    delay: { open: delay, close: 0 }
+  });
+  const focus = useFocus(context, { visibleOnly: false });
   const dismiss = useDismiss(context);
   const role = useRole(context, { role: 'tooltip' });
 
@@ -51,6 +131,15 @@ export const Tooltip = ({ children, position = 'top', ...props }: TooltipProps) 
   const { getReferenceProps, getFloatingProps } = useInteractions([click, hover, focus, dismiss, role]);
 
   const cloneChildren = React.Children.map(children, (child) => {
+    // If child is string or number, add a wrapper for them
+    if (typeof child === 'string' || typeof child === 'number') {
+      return (
+        <span className='tooltip' tabIndex={0} ref={refs.setReference} {...getReferenceProps()}>
+          {child}
+        </span>
+      );
+    }
+    // If child is a component, clone and pass ref and reference props from floating-ui to them
     if (React.isValidElement(child)) {
       return React.cloneElement(child, {
         ...child.props,
@@ -59,6 +148,7 @@ export const Tooltip = ({ children, position = 'top', ...props }: TooltipProps) 
         ...getReferenceProps()
       });
     }
+
     return child;
   });
 
@@ -69,12 +159,15 @@ export const Tooltip = ({ children, position = 'top', ...props }: TooltipProps) 
       <Portal>
         {isOpen && (
           <div
-            className={`tooltip-content ${placement}`}
+            {...props}
+            className={classNames('tooltip-content', className, placement)}
             ref={refs.setFloating}
             style={floatingStyles}
             {...getFloatingProps()}
           >
-            {placement} tooltip! Compiled in 804ms (606 modules)
+            {content}
+
+            <FloatingArrow width={8} height={4} className='tooltip-caret' ref={arrowRef} context={context} />
           </div>
         )}
       </Portal>

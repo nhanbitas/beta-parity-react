@@ -4,80 +4,11 @@
 
 .tooltip-content {
   animation: fade-in 0.3s ease-in-out;
-  @apply text-helper-01 visible absolute z-[99] h-fit w-max max-w-[12rem] cursor-default whitespace-normal rounded-md bg-gray-900 px-3 py-2 text-left text-white opacity-100 drop-shadow-md transition-opacity duration-300;
+  @apply text-helper-01 visible absolute z-[99] h-fit w-max max-w-[12rem] cursor-default whitespace-normal rounded-md bg-[var(--par-color-bg-surface-inverse)] px-3 py-2 text-left text-[var(--par-color-text-primary-inverse)] opacity-100 transition-opacity duration-300;
 }
 
-.tooltip-content .breakline {
-  @apply inline-block h-px w-full bg-gray-500;
-}
-
-.tooltip-content .actions {
-  @apply grid grid-cols-2 items-center gap-2 py-0.5;
-}
-
-.tooltip-content .actions > button {
-  @apply text-body-compact-01;
-}
-
-.tooltip-content .actions > .btn-left {
-  @apply col-start-1 place-self-start text-left text-gray-500 hover:text-gray-600 active:text-gray-700;
-}
-
-.tooltip-content .actions > .btn-right {
-  @apply col-start-2 place-self-end text-right text-blue-500 hover:text-blue-600 active:text-blue-700;
-}
-
-.tooltip-content::before {
-  content: '';
-  @apply absolute h-2 w-2 origin-center rotate-45 transform bg-inherit;
-}
-
-.tooltip-content.top::before {
-  @apply -bottom-1 left-1/2 -translate-x-1/2;
-}
-
-.tooltip-content.bottom::before {
-  @apply -top-1 left-1/2 -translate-x-1/2;
-}
-
-.tooltip-content.right::before {
-  @apply -left-1 top-1/2 -translate-y-1/2 translate-x-0;
-}
-
-.tooltip-content.left::before {
-  @apply -right-1 left-auto top-1/2 -translate-y-1/2 translate-x-0;
-}
-
-.tooltip-content.top-start::before {
-  @apply -bottom-1 left-2;
-}
-
-.tooltip-content.bottom-start::before {
-  @apply -top-1 left-2;
-}
-
-.tooltip-content.left-start::before {
-  @apply -right-1 top-2;
-}
-
-.tooltip-content.right-start::before {
-  @apply -left-1 top-2;
-}
-
-.tooltip-content.top-end::before {
-  @apply -bottom-1 right-2;
-}
-
-.tooltip-content.bottom-end::before {
-  @apply -top-1 right-2;
-}
-
-.tooltip-content.left-end::before {
-  @apply -right-1 bottom-2;
-}
-
-.tooltip-content.right-end::before {
-  @apply -left-1 bottom-2;
+.tooltip-caret {
+  fill: var(--par-color-bg-surface-inverse);
 }
 
 @keyframes fade-in {
