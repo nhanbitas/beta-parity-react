@@ -19,6 +19,7 @@ import {
 import './index.css';
 import { Portal } from '../Portal';
 import classNames from 'classnames';
+import { useTouch } from './useTouch';
 
 // TODO: custom useTouch to optimize UX on mobile (touch 1-2s to open instead of touch)
 
@@ -73,6 +74,17 @@ export interface TooltipProps {
   delay?: number;
 
   /**
+   * The delay time (ms) to show tooltip when touching the tooltip on mobile
+   *
+   * If touchDelay is `undefined`, it will not show tooltip when touching the tooltip on mobile
+   *
+   * If touchDelay is valid (number), it will show tooltip when touching the tooltip on mobile with delay
+   *
+   * @memberof Tooltip
+   */
+  touchDelay?: number;
+
+  /**
    * If `true`, it is allows the user to move the cursor off the reference element and towards the floating element without it closing (e.g. it has interactive content inside).
    *
    * Default value is `false`
@@ -89,6 +101,7 @@ export const Tooltip = ({
   position = 'top',
   isToggle = false,
   delay = 0,
+  touchDelay,
   isSafePolygon = false,
   ...props
 }: TooltipProps & React.HTMLAttributes<HTMLDivElement>) => {
@@ -124,11 +137,17 @@ export const Tooltip = ({
     delay: { open: delay, close: 0 }
   });
   const focus = useFocus(context, { visibleOnly: false });
+  const touch = useTouch(context, {
+    delay: touchDelay || 1500
+  });
   const dismiss = useDismiss(context);
   const role = useRole(context, { role: 'tooltip' });
 
+  const interactions = [click, hover, focus, dismiss, role];
+  if (touchDelay !== undefined) interactions.push(touch);
+
   // Merge all the interactions into prop getters
-  const { getReferenceProps, getFloatingProps } = useInteractions([click, hover, focus, dismiss, role]);
+  const { getReferenceProps, getFloatingProps } = useInteractions(interactions);
 
   const cloneChildren = React.Children.map(children, (child) => {
     // If child is string or number, add a wrapper for them
