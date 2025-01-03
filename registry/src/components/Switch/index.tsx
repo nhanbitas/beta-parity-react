@@ -1,5 +1,6 @@
 import React from 'react';
 import './index.css';
+import './variables.css';
 import classNames from 'classnames';
 import { Check, Minus } from 'lucide-react';
 import useCombinedRefs from '../hooks/useCombinedRefs';
@@ -16,7 +17,7 @@ const iconSizeMap = {
   lg: 24
 } as const;
 
-// TODO: Write docs for types
+// TODO: Write docs for types, add container for icon when scale
 
 // =========================
 // Switch
