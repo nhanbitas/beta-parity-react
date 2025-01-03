@@ -62,7 +62,7 @@ export const components = [
   {
     name: 'Inline Link',
     url: '/inline-link',
-    status: 2
+    status: 3
   },
   {
     name: 'Text Input',
@@ -117,11 +117,46 @@ export const components = [
   {
     name: 'Breadcrumb',
     url: '/breadcrumb',
-    status: 2
+    status: 3
   },
   {
     name: 'Tooltip',
     url: '/tooltip',
+    status: 3
+  },
+  {
+    name: 'Progress',
+    url: '/progress',
+    status: 2
+  },
+  {
+    name: 'Date Input',
+    url: '/date-input',
+    status: 2
+  },
+  {
+    name: 'File Input',
+    url: '/file-input',
+    status: 2
+  },
+  {
+    name: 'Email Input',
+    url: '/email-input',
+    status: 2
+  },
+  {
+    name: 'Search Input',
+    url: '/search-input',
+    status: 2
+  },
+  {
+    name: 'Slider',
+    url: '/slider',
+    status: 2
+  },
+  {
+    name: 'Pagination',
+    url: '/pagination',
     status: 2
   }
 ];
