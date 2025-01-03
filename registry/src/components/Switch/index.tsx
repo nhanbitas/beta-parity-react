@@ -17,8 +17,6 @@ const iconSizeMap = {
   lg: 24
 } as const;
 
-// TODO: Write docs for types, add container for icon when scale
-
 // =========================
 // Switch
 // =========================
@@ -34,10 +32,10 @@ export interface SwitchProps extends React.ComponentPropsWithoutRef<'button'> {
 }
 
 export const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
-  ({ defaultActive, active, icon = false, switchSize = 'md', disabled, onToggle, onClick, ...props }, ref) => {
+  ({ defaultActive = false, active, icon = false, switchSize = 'md', disabled, onToggle, onClick, ...props }, ref) => {
     const switcherRef = React.useRef<HTMLButtonElement | null>(null);
     const combinedRef = useCombinedRefs(ref, switcherRef);
-    const [isActive, setIsActive] = React.useState(defaultActive || false);
+    const [isActive, setIsActive] = React.useState(defaultActive);
 
     const handleChange = (e: React.MouseEvent) => {
       active === undefined && setIsActive(!isActive);
@@ -57,7 +55,9 @@ export const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
       : icon && <Minus className='switch-icon' size={iconSizeMap[switchSize]} />;
 
     React.useEffect(() => {
-      setIsActive(!!active);
+      if (active !== undefined) {
+        setIsActive(active);
+      }
     }, [active]);
 
     // ========================= Support Swipe For Mobile ========================= //
@@ -100,13 +100,16 @@ export const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
 
     return (
       <button
+        {...props}
+        {...accessibilityProps}
         ref={combinedRef}
         onClick={handleChange}
         className={classNames('switch', sizeMap[switchSize as keyof typeof sizeMap])}
-        {...props}
-        {...accessibilityProps}
+        disabled={disabled}
       >
-        <span className='switch-slider'>{ToggleIcon}</span>
+        <span className='switch-target-wrapper'>
+          <span className='switch-target'>{ToggleIcon}</span>
+        </span>
       </button>
     );
   }
