@@ -21,8 +21,6 @@ import { Portal } from '../Portal';
 import classNames from 'classnames';
 import { useTouch } from './useTouch';
 
-// TODO: custom useTouch to optimize UX on mobile (touch 1-2s to open instead of touch)
-
 export interface TooltipProps {
   /**
    * The position of the tooltip relative to the target element. Based on the `Placement` type from the floating-ui library.
