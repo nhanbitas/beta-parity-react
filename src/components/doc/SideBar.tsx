@@ -17,14 +17,16 @@ const SideBar = (props: Props) => {
     >
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`absolute right-0 ${isOpen ? 'translate-x-0' : 'translate-x-full'} top-2 z-10 h-8 w-8 cursor-pointer bg-white p-2 text-gray-950 transition-all duration-300 ease-in-out hover:text-gray-900 active:text-gray-700`}
+        className={`absolute right-0 ${isOpen ? 'translate-x-0' : 'translate-x-full'} top-2 z-10 h-8 w-8 cursor-pointer p-2 text-gray-950 transition-all duration-300 ease-in-out hover:text-gray-900 active:text-gray-700`}
       >
         <Menu />
       </button>
 
-      <Link href='/' className='block w-full overflow-hidden border-b border-gray-200 text-black'>
-        <span className='text-heading-02 block px-4 py-3 hover:underline'>Components</span>
-      </Link>
+      <span className='block overflow-hidden border-b border-gray-200 text-black'>
+        <Link className='text-heading-02 block w-fit px-4 py-3 hover:underline' href='/'>
+          Parity React
+        </Link>
+      </span>
 
       <ul className='h-[calc(100vh-4rem)] overflow-hidden overflow-y-auto pb-20'>
         {components

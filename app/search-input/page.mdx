@@ -1,4 +1,10 @@
-import { DemoBasicTextArea } from './Demo';
-
+import { DemoBasicSearchInput } from './Demo';
+import { FilterIcon } from 'lucide-react';
 
 ## Basic
+
+<DemoBasicSearchInput />
+<DemoBasicSearchInput isClearable searchIconSide="right" />
+<DemoBasicSearchInput isClearable searchIconSide="right" customAction={<FilterIcon />}/>
+
+<DemoBasicSearchInput isPending/>
