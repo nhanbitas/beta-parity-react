@@ -230,3 +230,7 @@ textarea.par-input.error-state {
 .input-wrapper:has([aria-disabled='true']) .input-icon {
   @apply text-[var(--par-color-text-field-alpha-placeholder)];
 }
+
+.input-wrapper .input-divider {
+  @apply inline-block h-5 w-px border-none bg-[var(--par-color-border-field-enabled)];
+}

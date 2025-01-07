@@ -1,10 +1,22 @@
-import { DemoBasicSearchInput } from './Demo';
-import { FilterIcon } from 'lucide-react';
+import { DemoBasicSearchInput, DemoAuxiliarySearchInput } from './Demo';
 
 ## Basic
 
 <DemoBasicSearchInput />
-<DemoBasicSearchInput isClearable searchIconSide="right" />
-<DemoBasicSearchInput isClearable searchIconSide="right" customAction={<FilterIcon />}/>
+
+<DemoBasicSearchInput isClearable searchButton/>
+<DemoBasicSearchInput isClearable searchButton />
 
 <DemoBasicSearchInput isPending/>
+<DemoBasicSearchInput isPending searchButton />
+
+
+## Auxiliary
+
+<DemoAuxiliarySearchInput />
+
+<DemoAuxiliarySearchInput isClearable searchButton/>
+<DemoAuxiliarySearchInput isClearable searchButton />
+
+<DemoAuxiliarySearchInput isPending/>
+<DemoAuxiliarySearchInput isPending searchButton />
