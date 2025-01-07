@@ -13,28 +13,32 @@ const SideBar = (props: Props) => {
   const [isOpen, setIsOpen] = React.useState(true);
   return (
     <aside
-      className={`side-bar sticky left-0 top-0 z-10 h-screen border-r border-gray-200 ${isOpen ? 'w-64 translate-x-0' : 'w-0 -translate-x-full'} transform duration-300 ease-in-out`}
+      className={`side-bar sticky left-0 top-0 z-10 h-screen border-r border-gray-200 ${isOpen ? 'w-64' : 'w-0'} transform duration-300 ease-in-out`}
     >
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`absolute right-0 ${isOpen ? 'translate-x-0' : 'translate-x-full'} top-2 z-10 h-8 w-8 cursor-pointer p-2 text-gray-950 transition-all duration-300 ease-in-out hover:text-gray-900 active:text-gray-700`}
+        className={`absolute right-0 ${isOpen ? 'translate-x-0' : 'translate-x-full'} top-2 z-10 h-8 w-8 cursor-pointer p-2 transition-transform duration-300 ease-in-out hover:text-[var(--text-hover)] active:text-[var(--text-active)]`}
       >
         <Menu />
       </button>
 
-      <span className='block overflow-hidden border-b border-gray-200 text-black'>
-        <Link className='text-heading-02 block w-fit px-4 py-3 hover:underline' href='/'>
+      <span
+        className={`block h-[3rem] overflow-hidden border-b border-gray-200 ${isOpen ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300 ease-in-out`}
+      >
+        <Link className='text-heading-02 block w-fit min-w-64 px-4 py-3 hover:underline' href='/'>
           Parity React
         </Link>
       </span>
 
-      <ul className='h-[calc(100vh-4rem)] overflow-hidden overflow-y-auto pb-20'>
+      <ul
+        className={`h-[calc(100vh-3rem)] overflow-hidden overflow-y-auto pb-20 scrollbar-none ${isOpen ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300 ease-in-out`}
+      >
         {components
           .sort((a, b) => a.name.localeCompare(b.name))
           .map((component: { name: string; url: string; status: number }) => (
-            <li className='group h-fit w-full min-w-64 hover:bg-gray-100' key={component.url}>
+            <li className='group h-fit w-full min-w-64' key={component.url}>
               <Link
-                className={`z-10 block w-full px-4 py-2 ${pathname.startsWith(component.url) ? 'bg-orange-50/50 text-orange-500' : 'text-gray-900'}`}
+                className={`z-10 block w-full px-4 py-2 ${pathname.startsWith(component.url) ? 'text-orange-500' : ''}`}
                 href={component.url}
               >
                 <span className='mr-2 group-hover:underline'>{component.name}</span>
