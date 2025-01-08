@@ -20,14 +20,25 @@ const searchItems = [
   'Filter 10'
 ] as const;
 
-export const DemoBasicSearchInput = (props: Props) => (
-  <SearchInput
-    wrapperProps={{ className: '!w-96', ...props.wrapperProps }}
-    placeholder='Enter your search'
-    onSearch={() => console.log('Search')}
-    {...props}
-  />
-);
+export const DemoBasicSearchInput = (props: Props) => {
+  const [value, setValue] = React.useState('');
+
+  const handleChange = (e: any) => {
+    setValue(e.target.value);
+  };
+
+  const handleSearch = () => console.log('Search ' + value + ' ...');
+
+  return (
+    <SearchInput
+      wrapperProps={{ className: '!w-96', ...props.wrapperProps }}
+      placeholder='Enter your search'
+      onChange={handleChange}
+      onSearch={handleSearch}
+      {...props}
+    />
+  );
+};
 
 export const DemoAuxiliarySearchInput = (props: Props) => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -44,9 +55,9 @@ export const DemoAuxiliarySearchInput = (props: Props) => {
     }
 
     setIsOpen(!isOpen);
+    console.log(values);
   };
 
-  console.log(values);
   return (
     <>
       <SearchInput
@@ -73,5 +84,25 @@ export const DemoAuxiliarySearchInput = (props: Props) => {
         ))}
       </Menu>
     </>
+  );
+};
+
+export const DemoShortCutsSearchInput = (props: Props) => {
+  const [value, setValue] = React.useState('');
+
+  const handleChange = (e: any) => {
+    setValue(e.target.value);
+  };
+
+  const handleSearch = () => console.log('Search ' + value + ' ...');
+
+  return (
+    <SearchInput
+      wrapperProps={{ className: '!w-96', ...props.wrapperProps }}
+      placeholder='Enter your search'
+      onChange={handleChange}
+      onSearch={handleSearch}
+      {...props}
+    />
   );
 };

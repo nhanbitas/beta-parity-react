@@ -20,3 +20,58 @@ import { DemoBasicSearchInput, DemoAuxiliarySearchInput } from './Demo';
 
 <DemoAuxiliarySearchInput isPending/>
 <DemoAuxiliarySearchInput isPending searchButton />
+
+
+## ShortCut Indicator
+
+<DemoBasicSearchInput shortCut='Shift + K'/>
+
+<DemoBasicSearchInput isClearable shortCut='Shift + K'/>
+<DemoBasicSearchInput isClearable shortCut='Shift + K' />
+
+<DemoBasicSearchInput isPending shortCut='Shift + K'/>
+<DemoBasicSearchInput isPending shortCut='Shift + K' />
+
+
+
+## States
+
+<DemoBasicSearchInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder' />
+<DemoBasicSearchInput isError={true} errorMessage='Error message' shortCut='Shift + K' placeholder='Placeholder' />
+<DemoBasicSearchInput disabled shortCut='Shift + K' value='This is disabled search input' placeholder='Placeholder' />
+<DemoBasicSearchInput disabled searchButton value='This is disabled search input' placeholder='Placeholder' />
+<DemoBasicSearchInput readOnly searchButton value='This is read only search input' placeholder='Placeholder' />
+<DemoBasicSearchInput readOnly isPending shortCut='Shift + K' value='This is read only search input' placeholder='Placeholder' />
+
+## Floating label
+
+<DemoBasicSearchInput isClearable floatingLabel='Floating Label' placeholder='Placeholder' />
+<DemoBasicSearchInput isClearable floatingLabel='Floating Label' placeholder='Placeholder'  />
+<DemoBasicSearchInput
+  isClearable
+  isError={true}
+  errorMessage='Error message'
+  floatingLabel='Floating Label'
+  placeholder='Placeholder'
+/>
+<DemoBasicSearchInput
+  isClearable
+  isError={true}
+  errorMessage='Error message'
+  floatingLabel='Floating Label'
+  placeholder='Placeholder'
+/>
+<DemoBasicSearchInput isClearable disabled floatingLabel='Floating Label' placeholder='Placeholder' shortCut='Shift + K' value='This is disabled search input' />
+<DemoBasicSearchInput isClearable disabled floatingLabel='Floating Label' placeholder='Placeholder' />
+
+## Size Medium
+
+
+<DemoBasicSearchInput inputSize="md"/>
+<DemoAuxiliarySearchInput inputSize="md"/>
+
+<DemoBasicSearchInput isClearable searchButton inputSize="md"/>
+<DemoBasicSearchInput isClearable isPending searchButton inputSize="md"/>
+
+<DemoBasicSearchInput shortCut='Shift + K' inputSize="md"/>
+<DemoBasicSearchInput isPending shortCut='Shift + K' inputSize="md"/>

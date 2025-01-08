@@ -2,9 +2,9 @@ import * as React from 'react';
 import './index.css';
 import './variables.css';
 import { Input } from '../BaseInput';
-import { Search, Settings2 } from 'lucide-react';
+import { Search } from 'lucide-react';
 import { Spinner } from '../Spinner';
-import { Button } from '../Button';
+import { Button, ButtonProps } from '../Button';
 
 export interface SearchInputProps extends React.ComponentPropsWithoutRef<typeof Input> {
   isPending?: boolean;
@@ -13,6 +13,8 @@ export interface SearchInputProps extends React.ComponentPropsWithoutRef<typeof 
   auxiliaryIcon?: React.ReactNode;
   auxiliaryActive?: boolean;
   auxiliaryActionProps?: React.ButtonHTMLAttributes<HTMLButtonElement>;
+  shortCut?: string;
+  shortCutButtonProps?: React.PropsWithoutRef<ButtonProps>;
   onSearch?: () => void | any;
   onAuxiliaryAction?: () => void | any;
 }
@@ -27,6 +29,8 @@ export const SearchInput = React.forwardRef<React.ElementRef<typeof Input>, Sear
       auxiliaryIcon,
       auxiliaryActive = false,
       auxiliaryActionProps,
+      shortCut,
+      shortCutButtonProps,
       onSearch,
       onAuxiliaryAction,
       ...props
@@ -53,6 +57,7 @@ export const SearchInput = React.forwardRef<React.ElementRef<typeof Input>, Sear
         <TagName
           className='input-icon square-icon'
           onClick={handleAuxiliaryAction}
+          disabled={props.disabled || props.readOnly}
           {...(auxiliaryActive ? { color: 'neutral', kind: 'solid', size: 'sm' } : { type: 'button' })}
           {...auxiliaryActionProps}
         >
@@ -65,11 +70,27 @@ export const SearchInput = React.forwardRef<React.ElementRef<typeof Input>, Sear
     const rightSearchIcon = isPending ? (
       <span className='input-icon'>{searchIcon}</span>
     ) : (
-      <button type='button' className='input-icon' onClick={handleSearch} {...searchButtonProps}>
+      <button
+        type='button'
+        className='input-icon square-icon'
+        onClick={handleSearch}
+        disabled={props.disabled || props.readOnly}
+        {...searchButtonProps}
+      >
         {searchIcon}
       </button>
     );
-    const rightElement = (
+    const rightElement = shortCut ? (
+      <Button
+        size='sm'
+        kind='glass'
+        className='search-shortcut'
+        disabled={props.disabled || props.readOnly}
+        {...shortCutButtonProps}
+      >
+        {shortCut}
+      </Button>
+    ) : (
       <>
         {inputDevider}
         {searchButton && rightSearchIcon}
@@ -80,7 +101,11 @@ export const SearchInput = React.forwardRef<React.ElementRef<typeof Input>, Sear
     const leftSearchIcon = searchButton ? undefined : searchIcon;
     const leftElement = leftSearchIcon;
 
-    return <Input ref={ref} type={type} {...props} leftIcon={leftElement} ActionBtn={rightElement} />;
+    return (
+      <>
+        <Input ref={ref} type={type} {...props} leftIcon={leftElement} ActionBtn={rightElement} />
+      </>
+    );
   }
 );
 
