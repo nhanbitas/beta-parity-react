@@ -142,9 +142,13 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     const isHasRightInputAction = isClearable || ActionBtn;
     const { className: clearBtnClassName, onClick: clearBtnClick, ...restClearBtnProps } = clearBtnProps || {};
 
-    const RightInputActions = isHasRightInputAction && !disabled && (
+    const isShowRightInputAction = floatingLabel
+      ? (currentValue || isFocused) && isHasRightInputAction
+      : isHasRightInputAction;
+    const isShowClearButton = isClearable && currentValue && !readOnly && !disabled;
+    const RightInputActions = isShowRightInputAction && (
       <>
-        {isClearable && currentValue && !readOnly && (
+        {isShowClearButton && (
           <button
             type='button'
             className={classNames('clear-button', clearBtnClassName)}
