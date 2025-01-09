@@ -7,6 +7,11 @@ import { Check, ChevronDown, ChevronUp, X } from 'lucide-react';
 import useDidMountEffect from '../hooks/useDidMountEffect';
 import useKeyboard from '../hooks/useKeyboard';
 
+// =========================
+// Chip
+// =========================
+// Declare and export Chip type and Chip component
+
 const colorMap = {
   neutral: 'neutral',
   accent: 'accent'
@@ -26,15 +31,12 @@ const kindMap = {
 /**
  * Props for the Chip component.
  *
- * @export
- * @interface ChipProps
  * @extends {BaseProps}
  */
 export interface ChipProps extends BaseProps {
   /**
    * The label of the chip, displaying text.
    *
-   * @type {string}
    * @memberof ChipProps
    */
   label: string;
@@ -42,7 +44,6 @@ export interface ChipProps extends BaseProps {
   /**
    * Optional icon to display in the chip, image is supported
    *
-   * @type {React.ReactNode}
    * @memberof ChipProps
    */
   icon?: React.ReactNode;
@@ -50,19 +51,15 @@ export interface ChipProps extends BaseProps {
   /**
    * The type of the chip, can be one of the keys from the typeMap.
    *
-   * "button" is default
-   *
-   * @type {keyof typeof typeMap}
+   * @default 'toggle'
    * @memberof ChipProps
    */
-  type?: 'dropdown' | 'toggle';
+  type?: 'toggle' | 'dropdown';
 
   /**
    * The size of the chip, can be one of the keys from the sizeMap.
    *
-   * "md" is default
-   *
-   * @type {keyof typeof sizeMap}
+   * @default 'md'
    * @memberof ChipProps
    */
   size?: keyof typeof sizeMap;
@@ -70,9 +67,7 @@ export interface ChipProps extends BaseProps {
   /**
    * The kind of the chip, can be one of the keys from the kindMap.
    *
-   * "outline" is default
-   *
-   * @type {keyof typeof kindMap}
+   * @default 'outline'
    * @memberof ChipProps
    */
   kind?: keyof typeof kindMap;
@@ -80,9 +75,7 @@ export interface ChipProps extends BaseProps {
   /**
    * The color of the chip, can be one of the keys from the colorMap.
    *
-   * "neutral" is default
-   *
-   * @type {keyof typeof colorMap}
+   * @default 'neutral'
    * @memberof ChipProps
    */
   color?: keyof typeof colorMap;
@@ -90,7 +83,6 @@ export interface ChipProps extends BaseProps {
   /**
    * The value of the chip, can be a string or number
    *
-   * @type {string | number}
    * @memberof ChipProps
    */
   value?: string | number;
@@ -98,7 +90,6 @@ export interface ChipProps extends BaseProps {
   /**
    * The checked state of the chip, it is usable in toggle type
    *
-   * @type {boolean}
    * @memberof ChipProps
    */
   checked?: boolean;
@@ -106,7 +97,6 @@ export interface ChipProps extends BaseProps {
   /**
    * The defaultChecked state of the chip (uncontrolled chip), it is usable in toggle type
    *
-   * @type {boolean}
    * @memberof ChipProps
    */
   defaultChecked?: boolean;
@@ -114,7 +104,6 @@ export interface ChipProps extends BaseProps {
   /**
    * The active state of the chip, it is usable in dropdown type
    *
-   * @type {boolean}
    * @memberof ChipProps
    */
   isActive?: boolean;
@@ -122,7 +111,6 @@ export interface ChipProps extends BaseProps {
   /**
    * Whether the chip is disabled.
    *
-   * @type {boolean}
    * @memberof ChipProps
    */
   disabled?: boolean;
@@ -147,6 +135,11 @@ export interface ChipProps extends BaseProps {
   onRemove?: (value: string | number) => void;
 }
 
+/**
+ * **Parity Chip** - A chip is a small block of content, such as a label or avatar, that is used to display related information or actions.
+ *
+ *  @see {@link http://localhost:3005/chip Parity Chip}
+ */
 export const Chip = React.forwardRef<
   HTMLElement,
   ChipProps & Omit<React.AllHTMLAttributes<HTMLElement>, keyof ChipProps>

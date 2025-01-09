@@ -21,18 +21,24 @@ const options = [
 export const DemoNativeSelect = (props: Props) => {
   return (
     <div className='not-prose flex flex-col gap-2'>
-      <Select native options={options} selectSize='sm' onChange={(e) => console.log(e.target.value)} />
+      <Select native options={options} selectSize='sm' onChange={(e: any) => console.log(e.target.value)} />
       <Select
         native
         theme='alternative'
         options={options}
         selectSize='md'
-        onChange={(e) => console.log(e.target.value)}
+        onChange={(e: any) => console.log(e.target.value)}
       />
-      <Select native disabled options={options} onChange={(e) => console.log(e.target.value)} />
-      <Select native theme='alternative' disabled options={options} onChange={(e) => console.log(e.target.value)} />
+      <Select native disabled options={options} onChange={(e: any) => console.log(e.target.value)} />
+      <Select
+        native
+        theme='alternative'
+        disabled
+        options={options}
+        onChange={(e: any) => console.log(e.target.value)}
+      />
 
-      <Select native onChange={(e) => console.log(e.target.value)}>
+      <Select native onChange={(e: any) => console.log(e.target.value)}>
         <SelectItem value='1'>Option 1</SelectItem>
         <SelectItem value='2' disabled>
           Option 2
@@ -47,7 +53,7 @@ export const DemoNativeSelect = (props: Props) => {
 
 export const DemoNativeSelectLabel = (props: any) => {
   return (
-    <Select native options={options} onChange={(e) => console.log(e.target.value)} floatingLabel='Choose option' />
+    <Select native options={options} onChange={(e: any) => console.log(e.target.value)} floatingLabel='Choose option' />
   );
 };
 

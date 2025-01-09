@@ -6,14 +6,22 @@ import { ChevronDown, Minus, Plus } from 'lucide-react';
 import { BaseProps } from '../Base';
 import useDidMountEffect from '../hooks/useDidMountEffect';
 
+// =========================
 // Accordion
+// =========================
+// Declare and export accordion type and accordion component
 
+/**
+ * Props for the Accordion component.
+ *
+ * Extends properties from the `Base` component.
+ */
 export interface AccordionProps extends BaseProps {
   /**
    * The type of accordion. It can be either 'single' for a single open item at a time,
    * or 'multiple' for allowing multiple items to be open at the same time.
    *
-   * @type {'single' | 'multiple'}
+   * @default 'single'
    * @memberof AccordionProps
    */
   type?: 'single' | 'multiple';
@@ -22,7 +30,7 @@ export interface AccordionProps extends BaseProps {
    * The kind of accordion. It can be 'flush' for items without borders,
    * or 'contained' for items with borders.
    *
-   * @type {'flush' | 'contained'}
+   * @default 'contained'
    * @memberof AccordionProps
    */
   kind?: 'flush' | 'contained';
@@ -30,7 +38,7 @@ export interface AccordionProps extends BaseProps {
   /**
    * The icon used for the accordion trigger. It can be either 'chevron' or 'cross'.
    *
-   * @type {'chevron' | 'cross'}
+   * @default 'chevron'
    * @memberof AccordionProps
    */
   icon?: 'chevron' | 'cross';
@@ -38,7 +46,7 @@ export interface AccordionProps extends BaseProps {
   /**
    * The side where the icon will be displayed in the accordion trigger. It can be either 'left' or 'right'.
    *
-   * @type {'left' | 'right'}
+   * @default 'right'
    * @memberof AccordionProps
    */
   iconSide?: 'left' | 'right';
@@ -47,7 +55,6 @@ export interface AccordionProps extends BaseProps {
    * The default value of the accordion. It can be a string or an array of strings.
    * This defines which item(s) are open by default.
    *
-   * @type {string | string[]}
    * @memberof AccordionProps
    */
   defaultValue?: string | string[];
@@ -56,7 +63,6 @@ export interface AccordionProps extends BaseProps {
    * The controlled value of the accordion. It can be a string or an array of strings.
    * This defines which item(s) are open and should be managed externally.
    *
-   * @type {string | string[]}
    * @memberof AccordionProps
    */
   value?: string | string[];
@@ -83,6 +89,11 @@ export interface AccordionProps extends BaseProps {
   }[];
 }
 
+/**
+ * **Parity Accordion**
+ *
+ *  @see {@link http://localhost:3005/accordion Parity Accordion}
+ */
 export const Accordion = React.forwardRef<HTMLDivElement, AccordionProps & React.HTMLAttributes<HTMLDivElement>>(
   (
     {
@@ -175,13 +186,17 @@ export const Accordion = React.forwardRef<HTMLDivElement, AccordionProps & React
 
 Accordion.displayName = 'Accordion';
 
+// =========================
 // Accordion Item
+// =========================
 
+/**
+ * Props for the AccordionItem component.
+ */
 export interface AccordionItemProps {
   /**
    * The unique value for the accordion item, used to identify it.
    *
-   * @type {string}
    * @memberof AccordionItemProps
    */
   value: string;
@@ -189,9 +204,8 @@ export interface AccordionItemProps {
   /**
    * Indicates whether the accordion item is disabled.
    *
-   * @type {boolean}
-   * @memberof AccordionItemProps
    * @default false
+   * @memberof AccordionItemProps
    */
   disabled?: boolean;
 
@@ -202,6 +216,12 @@ export interface AccordionItemProps {
   handleChange?: any;
   type?: any;
 }
+
+/**
+ * **Parity Accordion Item**
+ *
+ *  @see {@link http://localhost:3005/accordion Parity Accordion}
+ */
 
 export const AccordionItem = React.forwardRef<
   HTMLDivElement,
@@ -248,8 +268,13 @@ export const AccordionItem = React.forwardRef<
 
 AccordionItem.displayName = 'AccordionItem';
 
+// =========================
 // Accordion Trigger
+// =========================
 
+/**
+ * Props for the AccordionItemTrigger component.
+ */
 export interface AccordionItemTriggerProps {
   /**
    * Clone props
@@ -260,6 +285,12 @@ export interface AccordionItemTriggerProps {
   icon?: any;
   iconSide?: any;
 }
+
+/**
+ * **Parity Accordion Item Trigger**
+ *
+ *  @see {@link http://localhost:3005/accordion Parity Accordion}
+ */
 
 export const AccordionItemTrigger = React.forwardRef<
   HTMLButtonElement,
@@ -299,8 +330,13 @@ export const AccordionItemTrigger = React.forwardRef<
 
 AccordionItemTrigger.displayName = 'AccordionItemTrigger';
 
+// =========================
 // Accordion Content
+// =========================
 
+/**
+ * Props for the AccordionItemContent component.
+ */
 export interface AccordionItemContentProps {
   /**
    * Clone props
@@ -308,6 +344,11 @@ export interface AccordionItemContentProps {
   isExpanded?: any;
 }
 
+/**
+ * **Parity Accordion Item Content**
+
+ *  @see {@link http://localhost:3005/accordion Parity Accordion}
+ */
 export const AccordionItemContent = React.forwardRef<
   HTMLDivElement,
   AccordionItemContentProps & React.HTMLAttributes<HTMLDivElement>
@@ -321,7 +362,10 @@ export const AccordionItemContent = React.forwardRef<
 
 AccordionItemContent.displayName = 'AccordionItemContent';
 
+// =========================
 // The function is used to pass props to parts of accordion
+// =========================
+
 const cloneChildren = (
   children: React.ReactNode,
   extraProps: AccordionProps & { currentValue: string | string[]; handleChange: any }

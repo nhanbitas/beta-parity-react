@@ -21,6 +21,15 @@ import { Portal } from '../Portal';
 import classNames from 'classnames';
 import { useTouch } from './useTouch';
 
+// =========================
+// Tooltip
+// =========================
+// Declare and export Tooltip type and Tooltip component
+
+/**
+ * Props for the Tooltip component.
+ *
+ */
 export interface TooltipProps {
   /**
    * The position of the tooltip relative to the target element. Based on the `Placement` type from the floating-ui library.
@@ -39,8 +48,7 @@ export interface TooltipProps {
    * `left-end`,
    * `right-end`
    *
-   * Default value is `top`
-   *
+   * @default 'top'
    * @memberof Tooltip
    */
   position?: Placement;
@@ -49,8 +57,7 @@ export interface TooltipProps {
    * Determines if the tooltip is static (does not auto-adjust position) or dynamic.
    * If `true`, the tooltip will be a toggle tooltip.
    *
-   * Default value is `false`
-   *
+   * @default false
    * @memberof Tooltip
    */
   isToggle?: boolean;
@@ -65,8 +72,7 @@ export interface TooltipProps {
   /**
    * The delay time (ms) to show tooltip when hovering the tooltip
    *
-   * Default value is `0`
-   *
+   * @default 0
    * @memberof Tooltip
    */
   delay?: number;
@@ -85,13 +91,17 @@ export interface TooltipProps {
   /**
    * If `true`, it is allows the user to move the cursor off the reference element and towards the floating element without it closing (e.g. it has interactive content inside).
    *
-   * Default value is `false`
-   *
+   * @default false
    * @memberof Tooltip
    */
   isSafePolygon?: boolean;
 }
 
+/**
+ * **Parity Tooltip**.
+ *
+ *  @see {@link http://localhost:3005/tooltip Parity Tooltip}
+ */
 export const Tooltip = ({
   children,
   className,

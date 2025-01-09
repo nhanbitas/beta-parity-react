@@ -8,9 +8,15 @@ import classNames from 'classnames';
 // =========================
 // Declare and export Dot type and Dot component
 
+/**
+ * Props for the Dot component.
+ *
+ * Extends properties from the `span` element.
+ */
 export interface DotProps extends React.HTMLAttributes<HTMLSpanElement> {
   /**
    * The size of the dot.
+   *
    * @default 'md'
    * @memberof DotProps
    */
@@ -18,6 +24,7 @@ export interface DotProps extends React.HTMLAttributes<HTMLSpanElement> {
 
   /**
    * Whether the dot has a pulsing animation.
+   *
    * @default false
    * @memberof DotProps
    */
@@ -25,6 +32,7 @@ export interface DotProps extends React.HTMLAttributes<HTMLSpanElement> {
 
   /**
    * The color of the dot.
+   *
    * @default 'gray'
    * @memberof DotProps
    */
@@ -39,6 +47,11 @@ const sizeMap = {
   xl: 'extra-large'
 };
 
+/**
+ * **Parity Dot**.
+ *
+ *  @see {@link http://localhost:3005/dot Parity Dot}
+ */
 const Dot = React.forwardRef<HTMLSpanElement, DotProps>(
   ({ className, size = 'md', pulse = false, color, ...props }, ref) => {
     return (

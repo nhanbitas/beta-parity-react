@@ -7,6 +7,16 @@ import { Menu, MenuProps } from '../Menu';
 import { useOutsideClick } from '../hooks/useOutsideClick';
 import useCombinedRefs from '../hooks/useCombinedRefs';
 
+// =========================
+// Breadcrumb
+// =========================
+// Declare and export select type and Breadcrumb component
+
+/**
+ * Props for the Breadcrumb component.
+ *
+ * Extends properties from the `ul` element.
+ */
 export interface BreadcrumbProps extends React.HTMLAttributes<HTMLUListElement> {
   /**
    * Specifies the separator style to use between breadcrumb items.
@@ -14,8 +24,7 @@ export interface BreadcrumbProps extends React.HTMLAttributes<HTMLUListElement> 
    * - `'dash'`: Uses a dash (e.g., `-`).
    * - `'slash'`: Uses a slash (e.g., `/`).
    *
-   * Default is `'chevron'`
-   *
+   * @default 'chevron'
    * @memberof Breadcrumb
    *
    */
@@ -35,6 +44,7 @@ export interface BreadcrumbProps extends React.HTMLAttributes<HTMLUListElement> 
    * Limits the number of visible breadcrumb items. If the number of items exceeds this value,
    * a truncation mechanism will be applied (e.g., showing a menu for overflowed items).
    *
+   * @default 'undefined' -> infinite
    * @memberof Breadcrumb
    */
   limit?: number;
@@ -47,6 +57,12 @@ export interface BreadcrumbProps extends React.HTMLAttributes<HTMLUListElement> 
    */
   menuProps?: Omit<MenuProps, 'children'>;
 }
+
+/**
+ * **Parity Breadcrumb**.
+ *
+ *  @see {@link http://localhost:3005/breadcrumb Parity Breadcrumb}
+ */
 
 export const Breadcrumb = React.forwardRef<
   HTMLUListElement,
@@ -116,10 +132,25 @@ export const Breadcrumb = React.forwardRef<
 
 Breadcrumb.displayName = 'Breadcrumb';
 
+// =========================
+// BreadcrumbItem
+// =========================
+// Declare and export select type and BreadcrumbItem component
+
+/**
+ * Props for the BreadcrumbItem component.
+ *
+ * Extends properties from the `a` element.
+ */
 export interface BreadcrumbItemProps extends InlineLinkProps {
   isMenuItem?: boolean;
 }
 
+/**
+ * **Parity BreadcrumbItem**.
+ *
+ *  @see {@link http://localhost:3005/breadcrumb Parity BreadcrumbItem}
+ */
 export const BreadcrumbItem = React.forwardRef<HTMLAnchorElement, BreadcrumbItemProps>(
   ({ children, isMenuItem = false, ...props }, ref) => {
     const menuProps = {
@@ -141,11 +172,26 @@ export const BreadcrumbItem = React.forwardRef<HTMLAnchorElement, BreadcrumbItem
 
 BreadcrumbItem.displayName = 'BreadcrumbItem';
 
+// =========================
+// BreadcrumbMenu
+// =========================
+// Declare and export select type and BreadcrumbMenu component
+
+/**
+ * Props for the BreadcrumbMenu component.
+ *
+ * Extends properties from the `button` element.
+ */
 export interface BreadcrumbMenuProps extends React.HTMLAttributes<HTMLButtonElement> {
   items: BreadcrumbItemProps[];
   menuProps?: Omit<MenuProps, 'children'>;
 }
 
+/**
+ * **Parity BreadcrumbMenu**.
+ *
+ *  @see {@link http://localhost:3005/breadcrumb Parity BreadcrumbMenu}
+ */
 export const BreadcrumbMenu = React.forwardRef<HTMLButtonElement, BreadcrumbMenuProps>(
   ({ className, items, menuProps, ...props }, ref) => {
     const [open, setOpen] = React.useState(false);

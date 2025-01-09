@@ -4,12 +4,23 @@ import Toast, { ToastProps } from './Toast';
 import './variables.css';
 import './index.css';
 
+// =========================
+// ToastContainer
+// =========================
+// Declare and export ToastContainer type and ToastContainer component
+
+/**
+ * Props for the ToastContainer component.
+ *
+ * Extends properties from the `div` element.
+ */
 export interface ToastContainerProps {
   /**
    * The maximum number of toasts that can be displayed simultaneously.
    *
    * If not specified, the default limit is `1`.
    *
+   * @default 1
    * @memberof ToastContainerProps
    */
   limit?: number;
@@ -19,8 +30,7 @@ export interface ToastContainerProps {
    *
    * If set to true, toasts will be stacked vertically.
    *
-   * Default is `true`.
-   *
+   * @default true
    * @memberof ToastContainerProps
    */
   stacked?: boolean;
@@ -30,15 +40,24 @@ export interface ToastContainerProps {
    *
    * If true, more important toasts will be displayed first.
    *
-   * Default is `true`.
-   *
+   * @default true
    * @memberof ToastContainerProps
    */
   sortImportance?: boolean;
 }
 
+/**
+ * Props for the ToastInstance.
+ *
+ * Extends properties from the ToastProps.
+ */
 interface ToastInstance extends ToastProps {}
 
+/**
+ * **Parity Toast Container**.
+ *
+ *  @see {@link http://localhost:3005/toast Parity Toast Container}
+ */
 const ToastContainer: React.FC<ToastContainerProps> = ({
   limit = 1,
   stacked = true,

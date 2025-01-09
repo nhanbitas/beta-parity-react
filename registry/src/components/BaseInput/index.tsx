@@ -7,24 +7,42 @@ import { ContainedLabel } from '../FloatingLabel';
 import useCombinedRefs from '../hooks/useCombinedRefs';
 import { BaseProps } from '../Base';
 
+// =========================
+// Input
+// =========================
+// Declare and export select type and Input component
+
 const sizeMap = {
   sm: 'small',
   md: 'medium'
 } as const;
 
+/**
+ * Props for the Input component.
+ *
+ * Extends properties from the `input` element.
+ */
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   /**
    * More props for the wrapper input
+   *
+   * @memberof InputProps
    */
   wrapperProps?: InputWrapperProps & React.HTMLAttributes<HTMLDivElement>;
 
   /**
    * More props for the clear button
+   *
+   * @memberof InputProps
    */
   clearBtnProps?: React.ButtonHTMLAttributes<HTMLButtonElement>;
 
   /**
    * Define the visible of clear button
+   *
+   * @default false
+   *
+   * @memberof InputProps
    */
   isClearable?: boolean;
 
@@ -32,47 +50,67 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
    * Define of floating label of input
    *
    * If the value is component, the floating label will be generate by that component
+   *
+   * @memberof InputProps
    */
   floatingLabel?: React.ReactNode;
 
   /**
    * Callback function when clear value of input
+   *
+   * @memberof InputProps
    */
   onClear?: () => void;
 
   /**
    * More action button, generate in the right of clear button (if any)
+   *
+   *
+   * @memberof InputProps
    */
   ActionBtn?: JSX.Element | React.ReactNode;
 
   /**
    * Define of error state
+   *
+   * @default false
+   * @memberof InputProps
    */
   isError?: boolean;
 
   /**
    * Define of error message
+   *
+   * @memberof InputProps
    */
   errorMessage?: string;
 
   /**
    * Define of left icon
+   *
+   * @memberof InputProps
    */
   leftIcon?: React.ReactNode;
 
   /**
    * Define of theme
+   *
+   * @default 'default'
+   * @memberof InputProps
    */
   theme?: 'default' | 'alternative';
 
   /**
    * Define of size
+   *
+   * @default 'sm'
+   * @memberof InputProps
    */
   inputSize?: keyof typeof sizeMap;
 }
 
 /**
- * Input component with basic usage
+ * **Parity Input**
  *
  *  @see {@link http://localhost:3005/input Parity Input}
  */
@@ -219,11 +257,6 @@ export interface InputWrapperProps extends React.HTMLAttributes<HTMLDivElement>,
   rightElement?: JSX.Element | React.ReactNode;
 }
 
-/**
- * Input wrapper fo input tag
- *
- * Specific props: leftElement, rightElement
- */
 export const InputWrapper = React.forwardRef<HTMLDivElement, InputWrapperProps>(
   ({ className, children, leftElement, rightElement, ...props }, ref) => {
     const DEFAULT_PADDING = 16;

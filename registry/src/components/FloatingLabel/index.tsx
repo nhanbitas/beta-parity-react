@@ -1,7 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import './index.css';
-// import { Input } from '@components/Input';
 
 export interface ContainedLabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
   isActive?: boolean;

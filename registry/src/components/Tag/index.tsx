@@ -6,6 +6,11 @@ import { BaseProps } from '../Base';
 import { X } from 'lucide-react';
 import useKeyboard from '../hooks/useKeyboard';
 
+// =========================
+// Tag
+// =========================
+// Declare and export Tag type and Tag component
+
 const colorMap = {
   neutral: 'neutral',
   accent: 'accent'
@@ -25,15 +30,12 @@ const kindMap = {
 /**
  * Props for the Tag component.
  *
- * @export
- * @interface TagProps
- * @extends {BaseProps}
+ * Extends properties from the `span` element.
  */
 export interface TagProps extends BaseProps {
   /**
    * The label of the Tag, displaying text.
    *
-   * @type {string}
    * @memberof TagProps
    */
   label: string;
@@ -41,7 +43,6 @@ export interface TagProps extends BaseProps {
   /**
    * Optional icon to display in the Tag, image is supported
    *
-   * @type {React.ReactNode}
    * @memberof TagProps
    */
   icon?: React.ReactNode;
@@ -49,9 +50,7 @@ export interface TagProps extends BaseProps {
   /**
    * The size of the Tag, can be one of the keys from the sizeMap.
    *
-   * "md" is default
-   *
-   * @type {keyof typeof sizeMap}
+   * @default 'md'
    * @memberof TagProps
    */
   size?: keyof typeof sizeMap;
@@ -59,9 +58,7 @@ export interface TagProps extends BaseProps {
   /**
    * The kind of the Tag, can be one of the keys from the kindMap.
    *
-   * "outline" is default
-   *
-   * @type {keyof typeof kindMap}
+   * @default 'outlined'
    * @memberof TagProps
    */
   kind?: keyof typeof kindMap;
@@ -69,9 +66,7 @@ export interface TagProps extends BaseProps {
   /**
    * The color of the Tag, can be one of the keys from the colorMap.
    *
-   * "gray" is default
-   *
-   * @type {keyof typeof colorMap}
+   * @default 'neutral'
    * @memberof TagProps
    */
   color?: keyof typeof colorMap;
@@ -79,7 +74,6 @@ export interface TagProps extends BaseProps {
   /**
    * The value of the Tag, can be a string or number, it is usable in checkbox, radio, dropdown, input type
    *
-   * @type {string | number}
    * @memberof TagProps
    */
   value?: string | number;
@@ -87,7 +81,6 @@ export interface TagProps extends BaseProps {
   /**
    * Whether the Tag is disabled.
    *
-   * @type {boolean}
    * @memberof TagProps
    */
   disabled?: boolean;
@@ -95,12 +88,17 @@ export interface TagProps extends BaseProps {
   /**
    * Callback when the remove button is clicked. it is avaiable for button Tag
    *
-   * @memberof TagProps
    * @param {string | number} value - The value of the Tag to be removed.
+   * @memberof TagProps
    */
   onRemove?: (value: string | number) => void;
 }
 
+/**
+ * **Parity Tag**.
+ *
+ *  @see {@link http://localhost:3005/tag Parity Tag}
+ */
 export const Tag = React.forwardRef<HTMLElement, TagProps & Omit<React.AllHTMLAttributes<HTMLElement>, keyof TagProps>>(
   (props, ref: any) => {
     const {

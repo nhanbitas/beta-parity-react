@@ -6,98 +6,10 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '../Button';
 import useDebounce from '../hooks/useDebounce';
 
-export type TabItemProps = {
-  /**
-   * The unique value of the tab item, used for identification.
-   */
-  value: string | number;
-
-  /**
-   * The title displayed for the tab.
-   */
-  title: string | React.ReactNode;
-
-  /**
-   * The content displayed when the tab is active.
-   */
-  content: string | React.ReactNode;
-
-  /**
-   * Whether the tab is currently active.
-   */
-  active?: boolean;
-
-  /**
-   * Whether the tab is disabled.
-   */
-  disabled?: boolean;
-
-  /**
-   * Props for the button element controlling the tab.
-   */
-  buttonProps?: React.HTMLAttributes<HTMLButtonElement>;
-
-  /**
-   * Props for the content container of the tab.
-   */
-  contentProps?: React.HTMLAttributes<HTMLDivElement>;
-};
-
-export interface TabsProps extends React.HTMLAttributes<HTMLDivElement> {
-  /**
-   * Array of tab items to render within the tabs.
-   */
-  data?: TabItemProps[];
-
-  /**
-   * The size of the tabs, can be one of the keys from the sizeMap.
-   */
-  size?: keyof typeof sizeMap;
-
-  /**
-   * The color of the tabs, can be one of the keys from the colorMap.
-   */
-  color?: keyof typeof colorMap;
-
-  /**
-   * The theme of the tabs, such as default or alternative.
-   */
-  theme?: 'default' | 'alternative';
-
-  /**
-   * The side where the tabs are positioned.
-   */
-  side?: 'left' | 'right' | 'top' | 'bottom';
-
-  /**
-   * Whether the tabs are flipped abs-nav border.
-   */
-  flipped?: boolean;
-
-  /**
-   * Determines the side of button indicator in the comparison with the tabs-nav border.
-   */
-  indicatorSide?: 'same' | 'opposite';
-
-  /**
-   * Props for the navigation container of the tabs.
-   */
-  navProps?: React.HTMLAttributes<HTMLDivElement>;
-
-  /**
-   * Props for the body container of the tabs.
-   */
-  bodyProps?: React.HTMLAttributes<HTMLDivElement>;
-
-  /**
-   * Scroll configuration for the tab navigation.
-   * Value is number of px to scroll and duration in ms, default 4px for 1ms
-   */
-  scrollValue?: {
-    value: number;
-    duration: number;
-  };
-}
+// =========================
+// Tabs
+// =========================
+// Declare and export Tabs type and Tabs component
 
 const sizeMap = {
   sm: 'small',
@@ -110,11 +22,156 @@ const colorMap = {
   accent: 'accent'
 };
 
-// =========================
-// Tabs
-// =========================
-// Declare and export Tabs type and Tabs component
+/**
+ * Props for the TabItem component.
+ */
+export type TabItemProps = {
+  /**
+   * The unique value of the tab item, used for identification.
+   *
+   * @required
+   * @memberof TabItemProps
+   */
+  value: string | number;
 
+  /**
+   * The title displayed for the tab.
+   *
+   * @required
+   * @memberof TabItemProps
+   */
+  title: string | React.ReactNode;
+
+  /**
+   * The content displayed when the tab is active.
+   *
+   * @required
+   * @memberof TabItemProps
+   */
+  content: string | React.ReactNode;
+
+  /**
+   * Whether the tab is currently active.
+   *
+   * @memberof TabItemProps
+   */
+  active?: boolean;
+
+  /**
+   * Whether the tab is disabled.
+   *
+   * @memberof TabItemProps
+   */
+  disabled?: boolean;
+
+  /**
+   * Props for the button element controlling the tab.
+   *
+   * @memberof TabItemProps
+   */
+  buttonProps?: React.HTMLAttributes<HTMLButtonElement>;
+
+  /**
+   * Props for the content container of the tab.
+   *
+   * @memberof TabItemProps
+   */
+  contentProps?: React.HTMLAttributes<HTMLDivElement>;
+};
+
+/**
+ * Props for the Tabs component.
+ *
+ * Extends properties from the `div` element.
+ */
+export interface TabsProps extends React.HTMLAttributes<HTMLDivElement> {
+  /**
+   * Array of tab items to render within the tabs.
+   *
+   * @memberof TabsProps
+   */
+  data?: TabItemProps[];
+
+  /**
+   * The size of the tabs, can be one of the keys from the sizeMap.
+   *
+   * @default  'md'
+   * @memberof TabsProps
+   */
+  size?: keyof typeof sizeMap;
+
+  /**
+   * The color of the tabs, can be one of the keys from the colorMap.
+   *
+   * @default 'neutral'
+   * @memberof TabsProps
+   */
+  color?: keyof typeof colorMap;
+
+  /**
+   * The theme of the tabs, such as default or alternative.
+   *
+   * @default 'default'
+   * @memberof TabsProps
+   */
+  theme?: 'default' | 'alternative';
+
+  /**
+   * The side where the tabs are positioned.
+   *
+   * @default 'left'
+   * @memberof TabsProps
+   */
+  side?: 'left' | 'right' | 'top' | 'bottom';
+
+  /**
+   * Whether the tabs are flipped abs-nav border.
+   *
+   * @default false
+   * @memberof TabsProps
+   */
+  flipped?: boolean;
+
+  /**
+   * Determines the side of button indicator in the comparison with the tabs-nav border.
+   *
+   * @default 'same'
+   * @memberof TabsProps
+   */
+  indicatorSide?: 'same' | 'opposite';
+
+  /**
+   * Props for the navigation container of the tabs.
+   *
+   * @memberof TabsProps
+   */
+  navProps?: React.HTMLAttributes<HTMLDivElement>;
+
+  /**
+   * Props for the body container of the tabs.
+   *
+   * @memberof TabsProps
+   */
+  bodyProps?: React.HTMLAttributes<HTMLDivElement>;
+
+  /**
+   * Scroll configuration for the tab navigation.
+   * Value is number of px to scroll and duration in ms, default 4px for 1ms
+   *
+   * @default scrollValue = { value: 4, duration: 1 }
+   * @memberof TabsProps
+   */
+  scrollValue?: {
+    value: number;
+    duration: number;
+  };
+}
+
+/**
+ * **Parity Tabs**.
+ *
+ *  @see {@link http://localhost:3005/tabs Parity Tabs}
+ */
 export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
   (
     {
@@ -361,12 +418,41 @@ Tabs.displayName = 'Tabs';
 // =========================
 // Declare and export TabButton type and TabButton component
 
+/**
+ * Props for the TabButton component.
+ *
+ * Extends properties from the `button` element.
+ */
 export interface TabButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  /**
+   * The value of the tab button,
+   * which is used to sync with the tab content to show the correct tab content.
+   *
+   * @required
+   * @memberof TabButtonProps
+   */
   value: string | number;
+
+  /**
+   * The active state of the tab button.
+   *
+   * @memberof TabButtonProps
+   */
   active?: boolean;
+
+  /**
+   * The animation direction of the tab button.
+   *
+   * @memberof TabButtonProps
+   */
   amimatedDirection?: 'from-right' | 'from-left' | 'from-top' | 'from-bottom';
 }
 
+/**
+ * **Parity TabButton**.
+ *
+ *  @see {@link http://localhost:3005/tabs Parity TabButton}
+ */
 export const TabButton = React.forwardRef<HTMLButtonElement, TabButtonProps>(
   ({ className, children, amimatedDirection, ...props }, ref) => {
     return (
@@ -385,9 +471,21 @@ TabButton.displayName = 'TabButton';
 // Declare and export TabContent type and TabContent component
 
 export interface TabContentProps extends React.HTMLAttributes<HTMLDivElement> {
+  /**
+   * The value of the tab content,
+   * which is used to sync with the tab button to show the correct tab content.
+   *
+   * @required
+   * @memberof TabContentProps
+   */
   value: string | number;
 }
 
+/**
+ * **Parity TabContent**.
+ *
+ *  @see {@link http://localhost:3005/tabs Parity TabContent}
+ */
 export const TabContent = React.forwardRef<HTMLDivElement, TabContentProps>(
   ({ className, children, ...props }, ref) => {
     return (

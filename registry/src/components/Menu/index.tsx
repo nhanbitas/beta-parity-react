@@ -14,6 +14,12 @@ import { Checkbox } from '../Checkbox';
 import { Radio } from '../Radio';
 
 // TODO: Add custom menu content/ flexible action in menuItem **CONSIDER
+// TODO: Write jsdoc for types of MenuItem
+
+// =========================
+// Menu
+// =========================
+// Declare and export menu type and menu component
 
 const sizeMap = {
   sm: 'small',
@@ -42,102 +48,147 @@ const sizeHeightMap = {
   // lg: 48 // **REMOVED
 } as const;
 
-// =========================
-// Menu
-// =========================
-// Declare and export menu type and menu component
-
+/**
+ * Props for the Menu component.
+ *
+ * Extends properties from the `div` element.
+ */
 export interface MenuProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * The position of the menu relative to the anchor.
    * Placements of floating ui react library
-   * @see {@link https://floating-ui.com/docs/tutorial#placements Placement}
+   *
+   * @default 'bottom-start'
+   * @see {@link https://floating-ui.com/docs/tutorial#placements Placement Floating UI}
    */
   position?: Placement;
 
   /**
    * The size of the menu
+   *
+   * @default 'sm'
+   * @memberof MenuProps
    */
   size?: keyof typeof sizeMap;
 
   /**
    * The color of the menu
+   *
+   * @default 'neutral'
+   * @memberof MenuProps
    */
   menuColor?: keyof typeof colorMap;
 
   /**
    * The prominence of the menu, defining its visual hierarchy.
+   *
+   * @default 'subtle'
+   * @memberof MenuProps
    */
   prominence?: keyof typeof prominenceMap;
 
   /**
    * The theme of the menu
+   *
+   * @default 'default'
+   * @memberof MenuProps
    */
   theme?: keyof typeof themeMap;
 
   /**
    * The anchor element or selector to which the menu is attached.
    * Can be an HTMLElement Ref or a CSS selector string.
+   *
+   * @memberof MenuProps
    */
   anchor?: HTMLElement | string;
 
   /**
    * The maximum number of items before the menu applies overflow behavior.
+   *
+   * @memberof MenuProps
    */
   menuItemsLimit?: number;
 
   /**
    * Whether to show scroll indicators when the menu is scrollable.
+   *
+   * @default false
+   * @memberof MenuProps
    */
   scrollIndicator?: boolean;
 
   /**
    * Whether the menu includes a search input for filtering items.
+   *
+   * @default false
+   * @memberof MenuProps
    */
   searchable?: boolean;
 
   /**
    * The default value for the search input when the menu is rendered.
+   *
+   * @memberof MenuProps
    */
   defaultSearch?: string;
 
   /**
    * The placeholder text for the search input.
+   *
+   * @memberof MenuProps
    */
   searchPlaceholder?: string;
 
   /**
    * The text displayed when no results are found in the menu search.
+   *
+   * @memberof MenuProps
    */
   noResultsText?: string;
 
   /**
    * Whether the menu is rendered using a portal (outside of the DOM hierarchy of its parent).
+   *
+   * @memberof MenuProps
    */
   usePortal?: boolean;
 
   /**
    * Whether the menu is open.
+   *
+   * @default false
+   * @memberof MenuProps
    */
   isOpen?: boolean;
 
   /**
    * Whether the menu is in a loading state, typically showing a loading indicator.
+   *
+   * @default false
+   * @memberof MenuProps
    */
   isLoading?: boolean;
 
   /**
    * Whether the menu is disabled and cannot be interacted with.
+   *
+   * @default false
+   * @memberof MenuProps
    */
   disabled?: boolean;
 
   /**
    * Callback function invoked when the menu is opened.
+   *
+   * @memberof MenuProps
    */
   onOpen?: () => void;
 
   /**
    * Callback function invoked when the menu is closed.
+   *
+   * @memberof MenuProps
    */
   onClose?: () => void;
 }

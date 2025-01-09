@@ -9,22 +9,36 @@ import Dot from '../Dot';
 // =========================
 // Declare and export Badge type and Badge component
 
+const sizeMap = {
+  xs: 'extra-small',
+  sm: 'small',
+  md: 'medium'
+};
+
+/**
+ * Props for the Badge component.
+ *
+ * Extends properties from the `span` element.
+ */
 export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
   /**
    * The label text for the badge.
    * If provided, it will display as the main content of the badge.
+   *
    * @memberof BadgeProps
    */
   label?: string;
 
   /**
    * Icon to be displayed alongside the label or content.
+   *
    * @memberof BadgeProps
    */
   icon?: React.ReactNode;
 
   /**
    * Color of the badge.
+   *
    * @default 'gray'
    * @memberof BadgeProps
    */
@@ -33,6 +47,7 @@ export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
   /**
    * Size of the badge.
    * Available options are 'md' (medium), 'sm' (small), and 'xs' (extra small).
+   *
    * @default 'md'
    * @memberof BadgeProps
    */
@@ -41,6 +56,7 @@ export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
   /**
    * Whether to display a small dot in the badge.
    * If `true`, a small dot will be rendered (override icon).
+   *
    * @default false
    * @memberof BadgeProps
    */
@@ -48,18 +64,18 @@ export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
 
   /**
    * The variant of the badge.
+   *
    * @default 'outlined'
    * @memberof BadgeProps
    */
-  variant?: 'solid' | 'outlined' | 'glass';
+  variant?: 'outlined' | 'solid' | 'glass';
 }
 
-const sizeMap = {
-  xs: 'extra-small',
-  sm: 'small',
-  md: 'medium'
-};
+/**
+ * **Parity Badge**
 
+ *  @see {@link http://localhost:3005/badge Parity Badge}
+ */
 const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
   (
     { className, children, label, icon, color = 'gray', size = 'md', variant = 'outlined', dot = false, ...props },

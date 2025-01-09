@@ -4,6 +4,11 @@ import './variables.css';
 import classNames from 'classnames';
 import { Spinner } from '../Spinner';
 
+// =========================
+// Button
+// =========================
+// Declare and export select type and Button component
+
 const sizeMap = {
   sm: 'small',
   md: 'medium',
@@ -23,11 +28,16 @@ const kindMap = {
   glass: 'glass'
 } as const;
 
+/**
+ * Props for the Button component.
+ *
+ * Extends properties from the `button` element.
+ */
 export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   /**
    * The size of the button. It can be one of the keys from the sizeMap.
    *
-   * @type {keyof typeof sizeMap}
+   * @default 'md'
    * @memberof ButtonProps
    */
   size?: keyof typeof sizeMap;
@@ -35,7 +45,7 @@ export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   /**
    * The color of the button. It can be one of the keys from the colorMap.
    *
-   * @type {keyof typeof colorMap}
+   * @default 'neutral'
    * @memberof ButtonProps
    */
   color?: keyof typeof colorMap;
@@ -43,7 +53,7 @@ export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   /**
    * The kind of button style. It can be one of the keys from the kindMap.
    *
-   * @type {keyof typeof kindMap}
+   * @default 'solid'
    * @memberof ButtonProps
    */
   kind?: keyof typeof kindMap;
@@ -51,7 +61,7 @@ export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   /**
    * Indicates whether the button is in a loading state.
    *
-   * @type {boolean}
+   * @default false
    * @memberof ButtonProps
    */
   isPending?: boolean;
@@ -59,7 +69,7 @@ export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   /**
    * Indicates whether the button is icon-only, without any text.
    *
-   * @type {boolean}
+   * @default false
    * @memberof ButtonProps
    */
   iconOnly?: boolean;
@@ -67,12 +77,17 @@ export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   /**
    * Indicates whether the button is disabled.
    *
-   * @type {boolean}
+   * @default false
    * @memberof ButtonProps
    */
   disabled?: boolean;
 }
 
+/**
+ * **Parity Button**.
+ *
+ *  @see {@link http://localhost:3005/button Parity Button}
+ */
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {

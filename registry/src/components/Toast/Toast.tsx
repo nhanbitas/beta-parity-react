@@ -6,8 +6,11 @@ import useHoverFocus, { EventHandlers } from '../hooks/useHoverFocus';
 import { Spinner } from '../Spinner';
 import useDidMountEffect from '../hooks/useDidMountEffect';
 
-// TODO:
-// - Feat pauseOnFocus
+// TODO: - Feat pauseOnFocus
+
+// =========================
+// Toast
+// =========================
 
 const positions = ['top-right', 'top-center', 'bottom-right', 'bottom-center'] as const;
 
@@ -35,6 +38,11 @@ const heightClasses = {
   compact: 'height-compact'
 };
 
+/**
+ * Props for the Toast component.
+ *
+ * Extends properties from the `div` element.
+ */
 export interface ToastProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
   /**
    * Unique identifier for the toast.
@@ -45,7 +53,7 @@ export interface ToastProps extends Omit<React.HTMLAttributes<HTMLDivElement>, '
 
   /**
    * Function to remove the toast, called with the toast's unique identifier.
-   *
+   * @param id The unique identifier of the toast to remove.
    * @memberof ToastProps
    */
   removeToast: (id: string) => void;
@@ -74,8 +82,7 @@ export interface ToastProps extends Omit<React.HTMLAttributes<HTMLDivElement>, '
   /**
    * The height of the toast. Determines if the toast is compact or flexible.
    *
-   * Default is `flexible`
-   *
+   * @default 'flexible'
    * @memberof ToastProps
    */
   height?: 'flexible' | 'compact';
@@ -85,8 +92,7 @@ export interface ToastProps extends Omit<React.HTMLAttributes<HTMLDivElement>, '
    * - `normal`: Default emphasis.
    * - `high`: Highlighted emphasis for important toasts.
    *
-   * Default is `normal`
-   *
+   * @default 'high'
    * @memberof ToastProps
    */
   emphasis?: 'normal' | 'high';
@@ -99,8 +105,7 @@ export interface ToastProps extends Omit<React.HTMLAttributes<HTMLDivElement>, '
    * - `cautionary`: For warnings or caution.
    * - `adverse`: For errors or negative feedback.
    *
-   * Default is `generic`
-   *
+   * @default 'generic'
    * @memberof ToastProps
    */
   kind?: 'generic' | 'information' | 'affirmative' | 'cautionary' | 'adverse';
@@ -108,7 +113,7 @@ export interface ToastProps extends Omit<React.HTMLAttributes<HTMLDivElement>, '
   /**
    * The position of the toast. Should be one of the positions defined in `positions`.
    *
-   * Default is `top-right`
+   * @default 'top-right'
    * @memberof ToastProps
    */
   position?: (typeof positions)[number];
@@ -116,7 +121,7 @@ export interface ToastProps extends Omit<React.HTMLAttributes<HTMLDivElement>, '
   /**
    * Whether the toast should automatically dismiss after a certain duration.
    *
-   * Default is `false`
+   * @default false
    * @memberof ToastProps
    */
   autoDismiss?: boolean;
@@ -125,8 +130,7 @@ export interface ToastProps extends Omit<React.HTMLAttributes<HTMLDivElement>, '
    * The duration (in milliseconds) before the toast automatically dismisses.
    * Only applicable if `autoDismiss` is true.
    *
-   * Default is `5000`
-   *
+   * @default 5000
    * @memberof ToastProps
    */
   duration?: number;
@@ -134,8 +138,7 @@ export interface ToastProps extends Omit<React.HTMLAttributes<HTMLDivElement>, '
   /**
    * Whether to pause the auto-dismiss timer when the user hovers over the toast.
    *
-   * Default is `true`
-   *
+   * @default true
    * @memberof ToastProps
    */
   pauseOnHover?: boolean;
@@ -152,8 +155,7 @@ export interface ToastProps extends Omit<React.HTMLAttributes<HTMLDivElement>, '
   /**
    * Whether to display a progress bar for the auto-dismiss timer.
    *
-   * Default is `false`
-   *
+   * @default false
    * @memberof ToastProps
    */
   progressBar?: boolean;
@@ -161,8 +163,7 @@ export interface ToastProps extends Omit<React.HTMLAttributes<HTMLDivElement>, '
   /**
    * Whether to display a dismiss button in the toast.
    *
-   * Default is `true`
-   *
+   * @default true
    * @memberof ToastProps
    */
   dismissButton?: boolean;
@@ -170,8 +171,7 @@ export interface ToastProps extends Omit<React.HTMLAttributes<HTMLDivElement>, '
   /**
    * The importance level of the toast. Higher values indicate higher priority.
    *
-   * Default is `0`
-   *
+   * @default 0
    * @memberof ToastProps
    */
   importance?: number;
@@ -179,8 +179,7 @@ export interface ToastProps extends Omit<React.HTMLAttributes<HTMLDivElement>, '
   /**
    * Whether the toast is in a pending state, typically used for asynchronous operations.
    *
-   * Default is `false`
-   *
+   * @default false
    * @memberof ToastProps
    */
   pending?: boolean;

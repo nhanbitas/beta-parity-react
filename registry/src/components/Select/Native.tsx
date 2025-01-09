@@ -5,7 +5,11 @@ import './variables.css';
 import { InputWrapper } from '../BaseInput';
 import { ContainedLabel } from '../FloatingLabel';
 import { ChevronDown } from 'lucide-react';
-import useCombinedRefs from '../hooks/useCombinedRefs';
+
+// =========================
+// Native Select
+// =========================
+// Declare and export native select type and native select component
 
 const sizeMap = {
   sm: 'small',
@@ -13,11 +17,11 @@ const sizeMap = {
   // lg: 'large' //**REMOVED
 } as const;
 
-// =========================
-// Native Select
-// =========================
-// Declare and export native select type and native select component
-
+/**
+ * Props for the NativeSelect component.
+ *
+ * Extends properties from the `select` element.
+ */
 export interface NativeSelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   /**
    * The list of options available in the select dropdown.
@@ -25,50 +29,79 @@ export interface NativeSelectProps extends React.SelectHTMLAttributes<HTMLSelect
    * - `value`: The value of the option.
    * - `label`: The text displayed for the option.
    * - `disabled` (optional): Whether the option is disabled.
+   *
+   * @memberof NativeSelectProps
    */
   options?: { value: string; label: string; disabled?: boolean }[];
 
   /**
    * The currently selected value of the select component.
+   *
+   * @memberof NativeSelectProps
    */
   value?: string;
 
   /**
    * The floating label for the select component.
+   *
+   * @memberof NativeSelectProps
    */
   floatingLabel?: string;
 
   /**
    * The size of the select component.
+   *
+   * @default 'md'
+   * @memberof NativeSelectProps
    */
   selectSize?: keyof typeof sizeMap;
 
   /**
    * The theme of the select component.
+   *
+   * @default 'default'
+   * @memberof NativeSelectProps
    */
   theme?: 'default' | 'alternative';
 
   /**
    * Callback function invoked when the selected value changes.
+   *
+   * @param event - The change event of the select element.
+   * @memberof NativeSelectProps
    */
   onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 
   /**
    * Callback function invoked when the select component gains focus.
+   *
+   * @param event - The focus event of the select element.
+   * @memberof NativeSelectProps
    */
   onFocus?: (e: React.FocusEvent<HTMLSelectElement>) => void;
 
   /**
    * Callback function invoked when the select component loses focus.
+   *
+   * @param event - The blur event of the select element.
+   * @memberof NativeSelectProps
    */
   onBlur?: (e: React.FocusEvent<HTMLSelectElement>) => void;
 
   /**
    * Callback function invoked when the select component is clicked.
+   *
+   * @param event - The click event of the select element.
+   * @memberof NativeSelectProps
    */
   onclick?: (e: React.MouseEvent<HTMLSelectElement>) => void;
 }
 
+/**
+ * **Parity NativeSelect**.
+ *
+ *  @see {@link http://localhost:3005/select Parity NativeSelect}
+ */
 export const NativeSelect = React.forwardRef<HTMLSelectElement, NativeSelectProps>(
   (
     {
@@ -161,11 +194,32 @@ NativeSelect.displayName = 'NativeSelect';
 // =========================
 // Declare and export native option type and native option component
 
+/**
+ * Props for the NativeOption component.
+ *
+ * Extends properties from the `option` element.
+ */
 export interface NativeOptionProps extends React.OptionHTMLAttributes<HTMLOptionElement> {
+  /**
+   * The value of the option.
+   *
+   * @memberof NativeOptionProps
+   */
   value?: string;
+
+  /**
+   * The label of the option.
+   *
+   * @memberof NativeOptionProps
+   */
   label?: string;
 }
 
+/**
+ * **Parity NativeOption**.
+ *
+ *  @see {@link http://localhost:3005/select Parity NativeOption}
+ */
 export const NativeOption = React.forwardRef<HTMLOptionElement, NativeOptionProps>(
   ({ className, children, value, label, ...props }, ref) => (
     <option ref={ref} className={classNames('native-option', className)} value={value} {...props}>

@@ -20,19 +20,24 @@ const underlineClassMap = {
   none: 'underline-none'
 } as const;
 
+/**
+ * Props for the InlineLink component.
+ *
+ * Extends properties from the `a` element.
+ */
 export interface InlineLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   /**
    * Defines the color of the link. It should correspond to a key in the `colorMap` object.
-   * Default: `standard`.
    *
+   * @default 'standard'
    * @memberof InlineLink
    */
   color?: keyof typeof colorMap;
 
   /**
    * Defines the size of the link. It should correspond to a key in the `sizeMap` object.
-   * Default: `medium`.
    *
+   * @default 'md'
    * @memberof InlineLink
    */
   size?: keyof typeof sizeMap;
@@ -43,6 +48,7 @@ export interface InlineLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorEl
    * - `hover`: The underline is displayed only on hover.
    * - `none`: No underline is displayed.
    *
+   * @default 'hover'
    * @memberof InlineLink
    */
   underline?: 'always' | 'hover' | 'none';
@@ -50,6 +56,7 @@ export interface InlineLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorEl
   /**
    * If true, the link will display an icon without accompanying text.
    *
+   * @default false
    * @memberof InlineLink
    */
   iconOnly?: boolean;
@@ -57,6 +64,7 @@ export interface InlineLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorEl
   /**
    * If true, the link will be disabled and non-interactive.
    *
+   * @default false
    * @memberof InlineLink
    */
   disabled?: boolean;
@@ -66,11 +74,17 @@ export interface InlineLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorEl
    *
    * Useful for customizing the rendered element while preserving the intended features.
    *
+   * @default false
    * @memberof InlineLink
    */
   asChild?: boolean;
 }
 
+/**
+ * **Parity Inline Link**.
+ *
+ *  @see {@link http://localhost:3005/inline-link Parity Inline Link}
+ */
 export const InlineLink = React.forwardRef<HTMLAnchorElement, InlineLinkProps>(
   (
     {

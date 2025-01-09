@@ -6,6 +6,11 @@ import { Search } from 'lucide-react';
 import { Spinner } from '../Spinner';
 import { Button, ButtonProps } from '../Button';
 
+// =========================
+// SearchInput
+// =========================
+// Declare and export SearchInput type and SearchInput component
+
 /**
  * Props for the SearchInput component.
  *
@@ -15,18 +20,16 @@ export interface SearchInputProps extends React.ComponentPropsWithoutRef<typeof 
   /**
    * Indicates whether the search input is in a pending state.
    *
-   * @memberof SearchInputProps
-   *
    * @default false
+   * @memberof SearchInputProps
    */
   isPending?: boolean;
 
   /**
    * Determines if a search button should be displayed.
    *
-   * @memberof SearchInputProps
-   *
    * @default false
+   * @memberof SearchInputProps
    */
   searchButton?: boolean;
 
@@ -47,9 +50,8 @@ export interface SearchInputProps extends React.ComponentPropsWithoutRef<typeof 
   /**
    * Indicates whether the auxiliary icon/action is active.
    *
-   * @memberof SearchInputProps
-   *
    * @default false
+   * @memberof SearchInputProps
    */
   auxiliaryActive?: boolean;
 
@@ -91,6 +93,11 @@ export interface SearchInputProps extends React.ComponentPropsWithoutRef<typeof 
   onAuxiliaryAction?: () => void | any;
 }
 
+/**
+ * **Parity SearchInput**.
+ *
+ *  @see {@link http://localhost:3005/search-input Parity SearchInput}
+ */
 export const SearchInput = React.forwardRef<React.ElementRef<typeof Input>, SearchInputProps>(
   (
     {

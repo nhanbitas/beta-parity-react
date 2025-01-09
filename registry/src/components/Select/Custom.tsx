@@ -26,104 +26,163 @@ const sizeMap = {
 
 export type SelectItemType = { value: string; label: string; disabled?: boolean };
 
-export interface CustomSelectProps extends React.HTMLAttributes<HTMLDivElement>, MenuProps {
+/**
+ * Props for the CustomSelect component.
+ *
+ * Extends properties from the `div` element.
+ */
+export interface CustomSelectProps
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>,
+    Omit<MenuProps, 'onChange'> {
   /**
    * The list of options available in the select dropdown.
    * Each option is of type `SelectItemType`, which typically includes `value`, `label`, and disabled.
+   *
+   * @memberof CustomSelectProps
    */
   options?: SelectItemType[];
 
   /**
    * Whether the select allows multiple selections.
    * If true, users can select more than one option.
+   *
+   * @default false
+   * @memberof CustomSelectProps
    */
   multiselect?: boolean;
 
   /**
    * Whether the select supports filtering options based on user input.
    * If true, a search box will be displayed for filtering.
+   *
+   * @default false
+   * @memberof CustomSelectProps
    */
   filterable?: boolean;
 
   /**
    * Placeholder text displayed when no value is selected.
+   *
+   * @default 'Please choose an option'
+   * @memberof CustomSelectProps
    */
   placeholder?: string;
 
   /**
    * Whether a clear button is displayed to reset the selected value(s).
+   *
+   * @default false
+   * @memberof CustomSelectProps
    */
   clearButton?: boolean;
 
   /**
    * Whether an already selected option can be deselected by clicking it again.
+   *
+   * @default false
+   * @memberof CustomSelectProps
    */
   deselectable?: boolean;
 
   /**
    * Whether the dropdown remains open after an option is selected.
+   *
+   * @default true
+   * @memberof CustomSelectProps
    */
   keepOpen?: boolean;
 
   /**
    * The floating label for the select component.
+   *
+   * @memberof CustomSelectProps
    */
   floatingLabel?: React.ReactNode;
 
   /**
    * An icon displayed to the left of the select component.
+   *
+   * @memberof CustomSelectProps
    */
   leftIcon?: React.ReactNode;
 
   /**
    * The currently selected value(s).
    * Can be a single string or an array of strings for multi-select mode.
+   *
+   * @memberof CustomSelectProps
    */
   value?: string | string[];
 
   /**
    * An icon displayed next to the selected option(s) in the dropdown.
+   *
+   * @memberof CustomSelectProps
    */
   selectedIcon?: React.ReactNode;
 
   /**
    * A description displayed showing the count of selected items.
    * Ex: "3 items selected".
+   *
+   * @default 'item(s) selected'
+   * @memberof CustomSelectProps
    */
   countDescription?: string;
 
   /**
    * The theme of the select component.
+   *
+   * @default 'default'
+   * @memberof CustomSelectProps
    */
   theme?: 'default' | 'alternative';
 
   /**
    * Props to customize the appearance or behavior of tags displayed for selected items in multi-select mode.
-   * @see {@link TagProps}
+   *
+   * @memberof CustomSelectProps
    */
   tagProps?: TagProps;
 
   /**
    * The size of the select component.
+   *
+   * @default 'md'
+   * @memberof CustomSelectProps
    */
   selectSize?: keyof typeof sizeMap;
 
   /**
    * Callback function invoked when the selected value(s) change.
+   *
+   * @param value The currently selected value(s).
+   * @memberof CustomSelectProps
    */
-  onChange?: (e: any) => void;
+  onChange?: (value: string | string[]) => void;
 
   /**
    * Callback function invoked when the select component gains focus.
+   *
+   * @param event The focus event of the div element.
+   * @memberof CustomSelectProps
    */
   onFocus?: (e: React.FocusEvent<HTMLDivElement>) => void;
 
   /**
    * Callback function invoked when the select component loses focus.
+   *
+   * @param event The blur event of the div element
+   * @memberof CustomSelectProps
    */
   onBlur?: (e: React.FocusEvent<HTMLDivElement>) => void;
 }
 
+/**
+ * **Parity CustomSelect**.
+ *
+ *  @see {@link http://localhost:3005/select Parity CustomSelect}
+ */
 export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
   (
     {
@@ -433,8 +492,21 @@ SelectMenu.displayName = 'SelectMenu';
 // Declare and export select item type and select item component
 
 type SelectItemProps = React.ComponentProps<typeof MenuItem> &
-  React.ComponentProps<typeof NativeOption> & { type?: 'input' | 'native' };
+  React.ComponentProps<typeof NativeOption> & {
+    /**
+     * The type of the select item.
+     *
+     * @default 'input'
+     * @memberof SelectItemProps
+     */
+    type?: 'input' | 'native';
+  };
 
+/**
+ * **Parity SelectItem**.
+ *
+ *  @see {@link http://localhost:3005/select Parity SelectItem}
+ */
 export const SelectItem = React.forwardRef<HTMLDivElement | HTMLOptionElement, SelectItemProps>((props, ref: any) => {
   const { type, ...rest } = props;
   let Component = type === 'input' ? MenuItem : NativeOption;
@@ -450,6 +522,11 @@ SelectItem.displayName = 'SelectItem';
 
 export interface SelectGroupProps extends MenuGroupProps {}
 
+/**
+ * **Parity SelectGroup**.
+ *
+ *  @see {@link http://localhost:3005/select Parity SelectGroup}
+ */
 export const SelectGroup = React.forwardRef<HTMLDivElement, SelectGroupProps>((props, ref) => {
   return <MenuGroup {...props} ref={ref} />;
 });
@@ -463,6 +540,11 @@ SelectGroup.displayName = 'SelectGroup';
 
 export interface SelectDividerProps extends MenuDividerProps {}
 
+/**
+ * **Parity SelectDivider**.
+ *
+ *  @see {@link http://localhost:3005/select Parity SelectDivider}
+ */
 export const SelectDivider = React.forwardRef<HTMLDivElement, SelectDividerProps>((props, ref) => {
   return <MenuDivider {...props} ref={ref} />;
 });

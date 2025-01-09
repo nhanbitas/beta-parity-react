@@ -5,6 +5,11 @@ import classNames from 'classnames';
 import { Check, Minus } from 'lucide-react';
 import useCombinedRefs from '../hooks/useCombinedRefs';
 
+// =========================
+// Switch
+// =========================
+// Declare and export Switch type and Switch component
+
 const sizeMap = {
   sm: 'small',
   md: 'medium',
@@ -17,20 +22,66 @@ const iconSizeMap = {
   lg: 24
 } as const;
 
-// =========================
-// Switch
-// =========================
-// Declare and export Switch type and Switch component
-
+/**
+ * Props for the Switch component.
+ *
+ * Extends properties from the `button` element.
+ */
 export interface SwitchProps extends React.ComponentPropsWithoutRef<'button'> {
+  /**
+   * The state of the switch (controlled).
+   *
+   * @default undefined
+   * @memberof SwitchProps
+   */
   active?: boolean;
+
+  /**
+   * The default state of the switch (initially).
+   *
+   * @default false
+   * @memberof SwitchProps
+   */
   defaultActive?: boolean;
+
+  /**
+   * The size of the switch.
+   *
+   * @default 'md'
+   * @memberof SwitchProps
+   */
   switchSize?: keyof typeof sizeMap;
+
+  /**
+   * The disabled state of the switch.
+   *
+   * @default false
+   * @memberof SwitchProps
+   */
   disabled?: boolean;
+
+  /**
+   * The icon state of the switch (on/off the icon).
+   *
+   * @default false
+   * @memberof SwitchProps
+   */
   icon?: boolean;
+
+  /**
+   * The toggle handler of the switch.
+   *
+   * @param active The new state of the switch.
+   * @memberof SwitchProps
+   */
   onToggle?: (active: boolean) => void;
 }
 
+/**
+ * **Parity Switch**.
+ *
+ *  @see {@link http://localhost:3005/switch Parity Switch}
+ */
 export const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
   ({ defaultActive = false, active, icon = false, switchSize = 'md', disabled, onToggle, onClick, ...props }, ref) => {
     const switcherRef = React.useRef<HTMLButtonElement | null>(null);

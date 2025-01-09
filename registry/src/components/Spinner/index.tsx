@@ -3,6 +3,11 @@ import classNames from 'classnames';
 import './variables.css';
 import './index.css';
 
+// =========================
+// Spinner
+// =========================
+// Declare and export Spinner type and Spinner component
+
 export const sizeMap = {
   sm: 'small',
   md: 'medium',
@@ -10,6 +15,11 @@ export const sizeMap = {
   xl: 'extra-large'
 } as const;
 
+/**
+ * Props for the Spinner component.
+ *
+ * Extends properties from the `span` element.
+ */
 export interface SpinnerProps extends React.HTMLAttributes<HTMLSpanElement> {
   /**
    * The variant/style of the spinner.
@@ -19,6 +29,7 @@ export interface SpinnerProps extends React.HTMLAttributes<HTMLSpanElement> {
    * - `sunburst`: A spinner resembling a sunburst pattern.
    *
    * @default 'circular'
+   * @memberof SpinnerProps
    */
   variant?: 'circular' | 'dotted' | 'sunburst';
 
@@ -29,6 +40,7 @@ export interface SpinnerProps extends React.HTMLAttributes<HTMLSpanElement> {
    * - `accent`: An accent color, often used for highlighting.
    *
    * @default 'neutral'
+   * @memberof SpinnerProps
    */
   color?: 'neutral' | 'accent';
 
@@ -41,10 +53,16 @@ export interface SpinnerProps extends React.HTMLAttributes<HTMLSpanElement> {
    * - `xl`: Extra-large size, suitable for larger loading indicators.
    *
    * @default 'md'
+   * @memberof SpinnerProps
    */
   size?: 'sm' | 'md' | 'lg' | 'xl';
 }
 
+/**
+ * **Parity Spinner**.
+ *
+ *  @see {@link http://localhost:3005/spinner Parity Spinner}
+ */
 const Spinner = React.forwardRef<HTMLSpanElement, SpinnerProps>(
   ({ className, variant = 'circular', color = 'neutral', size = 'md', ...props }, ref) => {
     return (

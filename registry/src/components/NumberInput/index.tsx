@@ -5,6 +5,16 @@ import { InputProps, Input } from '../BaseInput';
 import { ChevronDown, ChevronUp, MinusIcon, PlusIcon } from 'lucide-react';
 import classNames from 'classnames';
 
+// =========================
+// NumberInput
+// =========================
+// Declare and export NumberInput type and NumberInput component
+
+/**
+ * Props for the NumberInput component.
+ *
+ * Extends properties from the `Input` component.
+ */
 export interface NumberInputProps extends Omit<InputProps, 'onChange'> {
   /**
    * The unit or list of units displayed alongside the input value.
@@ -50,6 +60,7 @@ export interface NumberInputProps extends Omit<InputProps, 'onChange'> {
    * - `'chevron'`: Chevron-style increment/decrement buttons.
    * - `'separate'`: Cross-style button allowing put left and rigt buttons particularly.
    *
+   * @default 'auto'
    * @memberof NumberInputProps
    */
   stepper?: 'auto' | 'chevron' | 'separate';
@@ -58,6 +69,7 @@ export interface NumberInputProps extends Omit<InputProps, 'onChange'> {
    * The increment or decrement value for the stepper control.
    * Defaults to 1 if not specified.
    *
+   * @default 1
    * @memberof NumberInputProps
    */
   stepControl?: number;
@@ -65,11 +77,17 @@ export interface NumberInputProps extends Omit<InputProps, 'onChange'> {
   /**
    * Prevent or not prevent input when having steppers.
    *
+   * @default true
    * @memberof NumberInputProps
    */
   allowInput?: boolean;
 }
 
+/**
+ * **Parity NumberInput**.
+ *
+ *  @see {@link http://localhost:3005/number-input Parity NumberInput}
+ */
 export const NumberInput = React.forwardRef<HTMLInputElement, NumberInputProps & NumericFormatProps>(
   (
     {

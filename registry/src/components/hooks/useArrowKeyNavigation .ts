@@ -1,5 +1,36 @@
 import { useEffect, useRef, useCallback } from 'react';
 
+/**
+ * Custom hook for managing keyboard navigation with arrow keys and tab within a container element.
+ * This is particularly useful for accessible navigation of a list of focusable items like buttons.
+ *
+ * @param {React.RefObject<HTMLElement>} containerRef - A React ref object pointing to the container element
+ *                                                      that contains the focusable items.
+ *
+ * @returns {Object} An object containing methods and properties to manage navigation:
+ * - `setItemsRef`: A callback ref to assign individual items to be navigated.
+ * - `resetItemsRef`: A function to reset the tracked list of items.
+ * - `items`: The current list of items being tracked.
+ * - `handleKeyDown`: A function to manually handle key down events for navigation.
+ * - `focusItem`: The first focusable item in the list.
+ * - `initFocus`: A function to initialize focus handling on the first key event.
+ *
+ * @example
+ * const containerRef = useRef(null);
+ * const { setItemsRef, resetItemsRef, initFocus } = useArrowKeyNavigation(containerRef);
+ *
+ * useEffect(() => {
+ *   resetItemsRef();
+ * }, []);
+ *
+ * return (
+ *   <div ref={containerRef}>
+ *     <button ref={(el) => setItemsRef(el)}>Item 1</button>
+ *     <button ref={(el) => setItemsRef(el)}>Item 2</button>
+ *     <button ref={(el) => setItemsRef(el)}>Item 3</button>
+ *   </div>
+ * );
+ */
 export const useArrowKeyNavigation = (containerRef: React.RefObject<HTMLElement>) => {
   const itemsRef = useRef<HTMLButtonElement[]>([]);
   const setItemsRef = useCallback((el: HTMLButtonElement | null) => {

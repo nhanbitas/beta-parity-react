@@ -5,14 +5,30 @@ import { Eye } from 'lucide-react';
 import { Button } from '../Button';
 import useDidMountEffect from '../hooks/useDidMountEffect';
 
+// =========================
+// PasswordInput
+// =========================
+// Declare and export PasswordInput type and PasswordInput component
+
+/**
+ * Props for the PasswordInput component.
+ *
+ * Extends properties from the `Input` component.
+ */
 export interface PasswordInputProps extends React.ComponentPropsWithoutRef<typeof Input> {
   /**
    * The color of eye icon
+   *
+   * @default 'neutral'
+   * @memberof PasswordInputProps
    */
   color?: 'accent' | 'neutral';
 
   /**
    * Default state of showing password
+   *
+   * @default true
+   * @memberof PasswordInputProps
    */
   defaultHidden?: boolean;
 }

@@ -8,6 +8,21 @@ export type UseCloneChildrenOptions = {
   recursive?: boolean;
 };
 
+/**
+ * A utility function to clone React children and inject additional props into them.
+ * Optionally, it can recursively clone nested children.
+ *
+ * @template T - The type of the additional props to inject.
+ * @param {React.ReactNode} children - The React children to clone.
+ * @param {T} props - Additional props to inject into each cloned child.
+ * @param {UseCloneChildrenOptions} [options] - Optional settings for cloning:
+ * - `recursive` (boolean): Whether to recursively clone nested children.
+ *
+ * @returns {React.ReactNode} The cloned children with the additional props injected.
+ *
+ * @example
+ * const newChildren = useCloneChildren(children, { onClick: () => alert('Clicked!') }, { recursive: true });
+ */
 export function useCloneChildren<T extends object>(
   children: React.ReactNode,
   props: T,

@@ -6,23 +6,28 @@ import { BaseProps } from '../Base';
 import { InputProps } from '../BaseInput';
 import useCombinedRefs from '../hooks/useCombinedRefs';
 
-const colorMap = {
-  neutral: 'neutral',
-  accent: 'accent'
-} as const;
-
 // =========================
 // Checkbox
 // =========================
 // Declare and export Checkbox type and Checkbox component
 
+const colorMap = {
+  neutral: 'neutral',
+  accent: 'accent'
+} as const;
+
+/**
+ * Props for the Checkbox component.
+ *
+ * Extends properties from the `Input` component.
+ */
 export interface CheckboxProps extends InputProps {
   /**
    * The color of the checkbox, can be one of the keys from the colorMap.
    *
    * "neutral" is default
    *
-   * @type {keyof typeof colorMap}
+   * @default 'neutral'
    * @memberof CheckboxProps
    */
   color?: keyof typeof colorMap;
@@ -30,7 +35,6 @@ export interface CheckboxProps extends InputProps {
    * The label for the checkbox.
    * Can be a string or a React node.
    *
-   * @type {string | React.ReactNode}
    * @memberof CheckboxProps
    */
   label?: string | React.ReactNode;
@@ -39,7 +43,6 @@ export interface CheckboxProps extends InputProps {
    * The sub-label for the checkbox.
    * Can be a string or a React node.
    *
-   * @type {string | React.ReactNode}
    * @memberof CheckboxProps
    */
   sublabel?: string | React.ReactNode;
@@ -47,7 +50,7 @@ export interface CheckboxProps extends InputProps {
   /**
    * Indicates whether the checkbox is in an indeterminate state.
    *
-   * @type {boolean}
+   * @default false
    * @memberof CheckboxProps
    */
   indeterminate?: boolean;
@@ -55,12 +58,16 @@ export interface CheckboxProps extends InputProps {
   /**
    * Additional props for the checkbox wrapper.
    *
-   * @type {any}
    * @memberof CheckboxProps
    */
   checkboxWrapperProps?: any;
 }
 
+/**
+ * **Parity Checkbox**.
+ *
+ *  @see {@link http://localhost:3005/checkbox Parity Checkbox}
+ */
 export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
   (
     {
@@ -146,11 +153,13 @@ export interface CheckboxTreeItem {
 
 export type DataItems = CheckboxTreeItem[];
 
+/**
+ * Props for the CheckboxGroup component.
+ */
 export interface CheckboxGroup extends Pick<CheckboxProps, 'color'>, BaseProps {
   /**
    * The children nodes of the CheckboxGroup.
    *
-   * @type {React.ReactNode}
    * @memberof CheckboxGroup
    */
   children?: React.ReactNode;
@@ -158,15 +167,15 @@ export interface CheckboxGroup extends Pick<CheckboxProps, 'color'>, BaseProps {
   /**
    * The tree structure representing the data items for the CheckboxGroup.
    *
-   * @type {DataItems}
    * @memberof CheckboxGroup
    */
   tree?: DataItems;
 
   /**
    * The function to handle changes in the CheckboxGroup.
-   *
-   * @type {Function}
+   * @param {any} value - The value of the CheckboxGroup.
+   * @param {DataItems} tree - The tree structure of the CheckboxGroup.
+   * @param {function} getGroup - The function to get the group value.
    * @memberof CheckboxGroup
    */
   onChange?: ({
@@ -182,7 +191,7 @@ export interface CheckboxGroup extends Pick<CheckboxProps, 'color'>, BaseProps {
   /**
    * The function to handle the parsed value of the CheckboxGroup.
    *
-   * @type {Function}
+   * @param {DataItems} value - The parsed tree structure of the CheckboxGroup.
    * @memberof CheckboxGroup
    */
   onParse?: (value: DataItems) => void;
@@ -192,7 +201,6 @@ export interface CheckboxGroup extends Pick<CheckboxProps, 'color'>, BaseProps {
    *
    *  When CheckboxGroup have label and value, CheckboxGroup will have a parent node to control CheckboxGroup's children
    *
-   * @type {string | React.ReactNode}
    * @memberof CheckboxGroup
    */
   label?: string | React.ReactNode;
@@ -201,7 +209,6 @@ export interface CheckboxGroup extends Pick<CheckboxProps, 'color'>, BaseProps {
    * The sub-label for the CheckboxGroup.
    * Can be a string or a React node.
    *
-   * @type {string | React.ReactNode}
    * @memberof CheckboxProps
    */
   sublabel?: string | React.ReactNode;
@@ -211,13 +218,17 @@ export interface CheckboxGroup extends Pick<CheckboxProps, 'color'>, BaseProps {
    *
    * When CheckboxGroup have label and value, CheckboxGroup will have a parent node to control CheckboxGroup's children
    *
-   * @type {string}
    * @memberof CheckboxGroup
    */
   value?: string;
   checked?: boolean;
 }
 
+/**
+ * The CheckboxGroup component.
+ *
+ * @see {@link http://localhost:3005/checkbox Parity CheckboxGroup}
+ */
 export const CheckboxGroup = ({
   tree,
   children,

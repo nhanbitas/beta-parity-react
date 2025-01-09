@@ -6,22 +6,26 @@ import classNames from 'classnames';
 import { BaseProps } from '../Base';
 import useDidMountEffect from '../hooks/useDidMountEffect';
 
-const colorMap = {
-  neutral: 'neutral',
-  accent: 'accent'
-} as const;
-
 // =========================
 // Radio
 // =========================
 // Declare and export Radio type and Radio component
 
+const colorMap = {
+  neutral: 'neutral',
+  accent: 'accent'
+} as const;
+
+/**
+ * Props for the Radio component.
+ *
+ * Extends properties from the `Input` component.
+ */
 export interface RadioProps extends InputProps {
   /**
    * The label for the Radio.
    * Can be a string or a React node.
    *
-   * @type {string | React.ReactNode}
    * @memberof RadioProps
    */
   label?: string | React.ReactNode;
@@ -30,7 +34,6 @@ export interface RadioProps extends InputProps {
    * The sub-label for the Radio.
    * Can be a string or a React node.
    *
-   * @type {string | React.ReactNode}
    * @memberof RadioProps
    */
   sublabel?: string | React.ReactNode;
@@ -38,12 +41,16 @@ export interface RadioProps extends InputProps {
   /**
    * Additional props for the Radio wrapper.
    *
-   * @type {any}
    * @memberof RadioProps
    */
   radioWrapperProps?: any;
 }
 
+/**
+ * **Parity Radio**.
+ *
+ *  @see {@link http://localhost:3005/radio Parity Radio}
+ */
 export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
   ({ label, sublabel, radioWrapperProps, color = 'neutral', ...props }, ref) => {
     return (
@@ -80,13 +87,17 @@ Radio.displayName = 'Radio';
 // =========================
 // Declare and export RadioGroup type and RadioGroup component
 
+/**
+ * Props for the RadioGroup component.
+ *
+ * Extends properties from the `div` element.
+ */
 export interface RadioGroupProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   /**
    * The name of the RadioGroup
    *
    * It defines name property for children
    *
-   * @type {string}
    * @memberof RadioGroupProps
    */
   name: string;
@@ -94,7 +105,6 @@ export interface RadioGroupProps extends Omit<React.HTMLAttributes<HTMLDivElemen
   /**
    * The label of the RadioGroup
    *
-   * @type {string}
    * @memberof RadioGroupProps
    */
   label?: string | React.ReactNode;
@@ -102,7 +112,6 @@ export interface RadioGroupProps extends Omit<React.HTMLAttributes<HTMLDivElemen
   /**
    * The default value of the RadioGroup if radio is not controlled
    *
-   * @type {string | number}
    * @memberof RadioGroupProps
    */
   defaultValue?: string | number;
@@ -110,7 +119,6 @@ export interface RadioGroupProps extends Omit<React.HTMLAttributes<HTMLDivElemen
   /**
    * The default value of the RadioGroup
    *
-   * @type {string | number}
    * @memberof RadioGroupProps
    */
   value?: string | number;
@@ -118,7 +126,6 @@ export interface RadioGroupProps extends Omit<React.HTMLAttributes<HTMLDivElemen
   /**
    * The checkboxs of group will be disabled
    *
-   * @type {boolean}
    * @memberof RadioGroupProps
    */
   disabled?: boolean;
@@ -126,7 +133,6 @@ export interface RadioGroupProps extends Omit<React.HTMLAttributes<HTMLDivElemen
   /**
    * The checkboxs of group will be generate automatically by data
    *
-   * @type {RadioProps[]}
    * @memberof RadioGroupProps
    */
   items?: RadioProps[];
@@ -136,11 +142,17 @@ export interface RadioGroupProps extends Omit<React.HTMLAttributes<HTMLDivElemen
    *
    * It returns the once of value in radio group
    *
+   * @param value - the value of changed radio
    * @memberof RadioGroupProps
    */
   onChange?: (value: string | number) => void;
 }
 
+/**
+ * **Parity Radio**.
+ *
+ *  @see {@link http://localhost:3005/radio Parity Radio}
+ */
 export const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(
   (
     { className, children, name, label, color = 'neutral', defaultValue, value, disabled, items, onChange, ...props },
