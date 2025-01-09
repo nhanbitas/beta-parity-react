@@ -5,6 +5,7 @@ import { components } from '../../../app/data';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { Menu } from 'lucide-react';
+import Badge from '@libComponents/Badge';
 
 type Props = {};
 
@@ -38,15 +39,19 @@ const SideBar = (props: Props) => {
           .map((component: { name: string; url: string; status: number }) => (
             <li className='group h-fit w-full min-w-64' key={component.url}>
               <Link
-                className={`z-10 block w-full px-4 py-2 ${pathname.startsWith(component.url) ? 'text-orange-500' : ''}`}
+                className={`z-10 flex w-full items-center justify-start gap-2 px-4 py-2 ${pathname.startsWith(component.url) ? 'text-orange-500' : ''}`}
                 href={component.url}
               >
-                <span className='mr-2 group-hover:underline'>{component.name}</span>
-                <span
-                  className={`text-label-01 ml-2 rounded-md p-0.5 ${component.status === 1 ? 'bg-violet-200/50 text-violet-800' : component.status === 2 ? 'bg-cyan-200/50 text-cyan-800' : 'bg-green-200/50 text-green-800'}`}
+                <span className='group-hover:underline'>{component.name}</span>
+
+                <Badge
+                  variant='glass'
+                  dot
+                  size='xs'
+                  color={component.status === 1 ? 'violet' : component.status === 2 ? 'cyan' : 'green'}
                 >
                   {component.status === 1 ? 'next' : component.status === 2 ? 'current' : 'post-queue'}
-                </span>
+                </Badge>
               </Link>
             </li>
           ))}
