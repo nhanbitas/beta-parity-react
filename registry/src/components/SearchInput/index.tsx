@@ -6,16 +6,88 @@ import { Search } from 'lucide-react';
 import { Spinner } from '../Spinner';
 import { Button, ButtonProps } from '../Button';
 
+/**
+ * Props for the SearchInput component.
+ *
+ * Extends properties from the `Input` component.
+ */
 export interface SearchInputProps extends React.ComponentPropsWithoutRef<typeof Input> {
+  /**
+   * Indicates whether the search input is in a pending state.
+   *
+   * @memberof SearchInputProps
+   *
+   * @default false
+   */
   isPending?: boolean;
+
+  /**
+   * Determines if a search button should be displayed.
+   *
+   * @memberof SearchInputProps
+   *
+   * @default false
+   */
   searchButton?: boolean;
+
+  /**
+   * Props for the search button, if displayed.
+   *
+   * @memberof SearchInputProps
+   */
   searchButtonProps?: React.ButtonHTMLAttributes<HTMLButtonElement>;
+
+  /**
+   * An auxiliary icon displayed alongside the input field.
+   *
+   * @memberof SearchInputProps
+   */
   auxiliaryIcon?: React.ReactNode;
+
+  /**
+   * Indicates whether the auxiliary icon/action is active.
+   *
+   * @memberof SearchInputProps
+   *
+   * @default false
+   */
   auxiliaryActive?: boolean;
+
+  /**
+   * Props for the auxiliary action button, if applicable.
+   *
+   * @memberof SearchInputProps
+   */
   auxiliaryActionProps?: React.ButtonHTMLAttributes<HTMLButtonElement>;
+
+  /**
+   * A keyboard shortcut string to trigger the search action.
+   *
+   * Example: `"Ctrl+K"` or `"Cmd+K"`
+   *
+   * @memberof SearchInputProps
+   */
   shortCut?: string;
+
+  /**
+   * Props for the button displaying the shortcut.
+   *
+   * @memberof SearchInputProps
+   */
   shortCutButtonProps?: React.PropsWithoutRef<ButtonProps>;
+
+  /**
+   * Callback triggered when the search action is performed.
+   *
+   * @memberof SearchInputProps
+   */
   onSearch?: () => void | any;
+
+  /**
+   * Callback triggered when the auxiliary action is performed.
+   *
+   * @memberof SearchInputProps
+   */
   onAuxiliaryAction?: () => void | any;
 }
 
@@ -37,20 +109,19 @@ export const SearchInput = React.forwardRef<React.ElementRef<typeof Input>, Sear
     },
     ref
   ) => {
+    // Generate search icon state
     const searchIcon = isPending ? <Spinner size='sm' /> : <Search width={16} height={16} />;
 
+    // Handle actions
     const handleSearch = () => {
-      if (onSearch) {
-        onSearch();
-      }
+      onSearch?.();
     };
 
     const handleAuxiliaryAction = () => {
-      if (onAuxiliaryAction) {
-        onAuxiliaryAction();
-      }
+      onAuxiliaryAction?.();
     };
 
+    // Generate right element
     const AuxiliaryActionElement = () => {
       const TagName = (auxiliaryActive ? Button : 'button') as React.ElementType;
       return (
@@ -98,14 +169,11 @@ export const SearchInput = React.forwardRef<React.ElementRef<typeof Input>, Sear
       </>
     );
 
+    // Generate left element
     const leftSearchIcon = searchButton ? undefined : searchIcon;
     const leftElement = leftSearchIcon;
 
-    return (
-      <>
-        <Input ref={ref} type={type} {...props} leftIcon={leftElement} ActionBtn={rightElement} />
-      </>
-    );
+    return <Input ref={ref} type={type} {...props} leftIcon={leftElement} ActionBtn={rightElement} />;
   }
 );
 
