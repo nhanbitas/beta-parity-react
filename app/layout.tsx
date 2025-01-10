@@ -20,10 +20,11 @@ export default async function RootLayout({
 }>) {
   const cookieStore = await cookies();
   const theme = cookieStore.get('theme') as any;
+  const isValidTheme = theme ? ['light', 'dark'].includes(theme.value) : false;
 
   return (
     <html lang='en'>
-      <ThemeProvider initialTheme={theme.value}>
+      <ThemeProvider initialTheme={isValidTheme ? theme.value : 'light'}>
         <SideBar />
         <main className='prose flex min-h-screen flex-1 flex-col gap-8 overflow-hidden p-24'>{children}</main>
       </ThemeProvider>
