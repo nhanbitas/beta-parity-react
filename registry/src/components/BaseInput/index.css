@@ -147,6 +147,42 @@ fieldset:disabled {
   @apply text-label-02 absolute left-0 top-[calc(100%+0.25rem)] text-[var(--par-color-text-helper-adverse)];
 }
 
+/* Unit Selector */
+.input-icon.input-unit {
+  @apply min-w-5;
+}
+
+.input-unit:not(.selectable) > select {
+  background-color: initial;
+  color: inherit;
+  border: initial;
+  @apply pointer-events-none h-6 w-fit max-w-min select-none appearance-none rounded-md bg-transparent px-0 text-right outline-none;
+}
+
+.input-unit.selectable > select {
+  background-color: initial;
+  color: inherit;
+  border: initial;
+  @apply h-6 w-fit max-w-min appearance-none rounded-md bg-transparent pl-1 pr-5 text-right;
+}
+
+.input-unit.selectable > select > option {
+  @apply px-4 text-gray-950;
+}
+
+.input-unit.selectable {
+  @apply relative h-6 rounded-md py-0;
+}
+
+.input-unit.selectable .unit-selector-arrow {
+  @apply pointer-events-none absolute right-0.5 top-0 flex h-full w-4 items-center justify-center;
+}
+
+.input-unit.selectable > select:disabled,
+.input-unit.selectable > select.alternative:disabled {
+  @apply cursor-not-allowed bg-transparent text-[var(--par-color-text-surface-item-disabled)];
+}
+
 /* Apply theme tokens */
 /* Base css */
 input.par-input::placeholder,

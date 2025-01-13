@@ -2,7 +2,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import './index.css';
 import './variables.css';
-import { X } from 'lucide-react';
+import { ChevronsUpDown, X } from 'lucide-react';
 import { ContainedLabel } from '../FloatingLabel';
 import useCombinedRefs from '../hooks/useCombinedRefs';
 import { BaseProps } from '../Base';
@@ -360,3 +360,88 @@ export const ValueInputWrapper = React.forwardRef<HTMLDivElement, ValueInputWrap
 );
 
 ValueInputWrapper.displayName = 'ValueInputWrapper';
+
+// =========================
+// UnitSelector
+// =========================
+
+export interface UnitSelectorProps extends React.HTMLAttributes<HTMLSelectElement> {
+  unit?: string | string[];
+  onUnitChange?: (e: any) => void;
+  unitValue?: string;
+  disabled?: boolean;
+  theme?: 'default' | 'alternative';
+}
+
+export const UnitSelector = ({
+  unit,
+  theme = 'default',
+  onUnitChange,
+  unitValue,
+  disabled,
+  ...props
+}: UnitSelectorProps) => {
+  const isSelectUnit = Array.isArray(unit);
+
+  const initialValue = unitValue ?? unit?.[0];
+  const [selectedUnit, setSelectedUnit] = React.useState(initialValue);
+  const [width, setWidth] = React.useState(0);
+
+  const handleUnitChange = (e: any) => {
+    if (disabled) return;
+    setSelectedUnit(e.target.value);
+    onUnitChange?.(e);
+  };
+
+  const calculateWidth = (currentUnit: string) => {
+    if (typeof document === 'undefined') return;
+    let termWidth = 0;
+    const tempSpan = document.createElement('span');
+    tempSpan.style.visibility = 'hidden';
+    tempSpan.style.position = 'absolute';
+    tempSpan.style.whiteSpace = 'nowrap';
+    tempSpan.textContent = currentUnit;
+    document?.body?.appendChild(tempSpan);
+    const textWidth = tempSpan.offsetWidth;
+    termWidth = textWidth + 24;
+    document.body.removeChild(tempSpan);
+    return termWidth;
+  };
+
+  React.useEffect(() => {
+    setSelectedUnit(unitValue);
+  }, [unitValue]);
+
+  React.useLayoutEffect(() => {
+    if (!selectedUnit) return;
+    setWidth(calculateWidth(selectedUnit) || 0);
+  }, [selectedUnit]);
+
+  return !!unit ? (
+    <span className={`input-icon input-unit ${isSelectUnit ? 'selectable' : ''}`}>
+      {isSelectUnit ? (
+        <>
+          <select
+            className={classNames('unit-selector', theme)}
+            value={selectedUnit}
+            onChange={handleUnitChange}
+            style={{ width: width ? `${width}px` : 'auto' }}
+            disabled={disabled}
+            {...props}
+          >
+            {unit.map((unit: any) => (
+              <option key={unit} value={unit}>
+                {unit}
+              </option>
+            ))}
+          </select>
+          <span className='unit-selector-arrow'>
+            <ChevronsUpDown />
+          </span>
+        </>
+      ) : (
+        unit
+      )}
+    </span>
+  ) : null;
+};

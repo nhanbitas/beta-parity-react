@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './index.css';
 import { NumericFormat, NumericFormatProps, numericFormatter, SourceInfo } from 'react-number-format';
-import { InputProps, Input } from '../BaseInput';
+import { InputProps, Input, UnitSelector } from '../BaseInput';
 import { ChevronDown, ChevronUp, MinusIcon, PlusIcon } from 'lucide-react';
 import classNames from 'classnames';
 
@@ -135,15 +135,18 @@ export const NumberInput = React.forwardRef<HTMLInputElement, NumberInputProps &
     };
 
     // generate unit selector
-    const isSelectUnit = Array.isArray(unit);
-    const handleUitChage = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const handleUnitChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
       onUnitChange?.(e.target.value as string);
     };
-    const unitElement = !!unit ? (
-      <span className={`input-icon number-input-unit ${isSelectUnit ? 'selectable' : ''}`}>
-        {isSelectUnit ? <UnitSelector units={unit} onUnitChange={handleUitChage} unitValue={selectedUnit} /> : unit}
-      </span>
-    ) : null;
+    const unitElement = (
+      <UnitSelector
+        unit={unit}
+        onUnitChange={handleUnitChange}
+        unitValue={selectedUnit}
+        disabled={props.disabled}
+        theme={props.theme}
+      />
+    );
 
     // define needed props for input and stepper
     const inputProps = { ...props, value: currentValue, onClear: handleClear } as any;
@@ -385,49 +388,5 @@ const NumberButtonStepper = ({
       <div className='controller-divider'></div>
       {PlusButton}
     </div>
-  );
-};
-
-export const UnitSelector = ({ units, onUnitChange, unitValue }: any) => {
-  const initialValue = unitValue ?? units[0];
-  const [selectedUnit, setSelectedUnit] = React.useState(initialValue);
-  const [width, setWidth] = React.useState(0);
-
-  const handleUnitChange = (e: any) => {
-    setSelectedUnit(e.target.value);
-    onUnitChange(e);
-  };
-
-  const calculateWidth = (currentUnit: string) => {
-    if (typeof document === 'undefined') return;
-    let termWidth = 0;
-    const tempSpan = document.createElement('span');
-    tempSpan.style.visibility = 'hidden';
-    tempSpan.style.position = 'absolute';
-    tempSpan.style.whiteSpace = 'nowrap';
-    tempSpan.textContent = currentUnit;
-    document?.body?.appendChild(tempSpan);
-    const textWidth = tempSpan.offsetWidth;
-    termWidth = textWidth + 24;
-    document.body.removeChild(tempSpan);
-    return termWidth;
-  };
-
-  React.useEffect(() => {
-    setSelectedUnit(unitValue);
-  }, [unitValue]);
-
-  React.useLayoutEffect(() => {
-    setWidth(calculateWidth(selectedUnit) || 0);
-  }, [selectedUnit]);
-
-  return (
-    <select value={selectedUnit} onChange={handleUnitChange} style={{ width: width ? `${width}px` : 'auto' }}>
-      {units.map((unit: any) => (
-        <option key={unit} value={unit}>
-          {unit}
-        </option>
-      ))}
-    </select>
   );
 };
