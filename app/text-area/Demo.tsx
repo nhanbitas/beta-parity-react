@@ -6,5 +6,9 @@ import React from 'react';
 type Props = any;
 
 export const DemoBasicTextArea = (props: Props) => (
-  <TextArea wrapperProps={{ className: '!w-96', ...props.wrapperProps }} {...props} placeholder='Enter your message' />
+  <TextArea
+    wrapperProps={{ className: '!max-w-96', ...props.wrapperProps }}
+    {...props}
+    placeholder='Enter your message'
+  />
 );

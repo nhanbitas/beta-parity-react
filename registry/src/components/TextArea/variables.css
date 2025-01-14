@@ -1,0 +1,8 @@
+:root,
+[data-scheme='light'] {
+  --par-color-text-field-count: var(--par-gray-550);
+}
+
+[data-scheme='dark'] {
+  --par-color-text-field-count: var(--par-gray-100);
+}

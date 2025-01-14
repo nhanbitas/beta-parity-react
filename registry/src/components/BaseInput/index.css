@@ -120,22 +120,29 @@ fieldset:disabled {
   @apply pl-10;
 }
 
+.par-input-action-btn {
+  @apply pointer-events-auto select-none;
+}
+
 .right-element-container button,
 .right-element-container .input-icon,
 .left-element-container button,
-.left-element-container .input-icon {
+.left-element-container .input-icon,
+.par-input-action-btn {
   @apply flex items-center justify-center rounded-full p-0.5 transition-colors;
 }
 
 .right-element-container button.square-icon,
 .right-element-container .input-icon.square-icon,
 .left-element-container button.square-icon,
-.left-element-container .input-icon.square-icon {
+.left-element-container .input-icon.square-icon,
+.par-input-action-btn.square-icon {
   @apply m-0 block h-5 min-h-0 w-5 min-w-0 rounded-md p-0.5;
 }
 
 .right-element-container button:disabled,
-.left-element-container button:disabled {
+.left-element-container button:disabled,
+.par-input-action-btn:disabled {
   @apply cursor-not-allowed;
 }
 
@@ -202,13 +209,13 @@ textarea.par-input:disabled::placeholder {
 
 input.par-input,
 .value-input-wrapper,
-textarea.par-textarea {
+textarea.par-input {
   @apply border-[var(--par-color-border-field-enabled)] bg-[var(--par-color-bg-field-enabled)] text-[var(--par-color-text-field-filled)];
 }
 
 input.par-input.alternative,
 .value-input-wrapper.alternative,
-textarea.par-textarea.alternative {
+textarea.par-input.alternative {
   @apply border-[var(--par-color-border-field-enabled)] bg-[var(--par-color-bg-field-alternative-enabled)] text-[var(--par-color-text-field-filled)];
 }
 
@@ -236,7 +243,8 @@ textarea.par-input.error-state {
 
 /* Button, icon css */
 .right-element-container button,
-.left-element-container button {
+.left-element-container button,
+.par-input-action-btn {
   @apply bg-[var(--par-color-bg-field-button-enabled)] text-[var(--par-color-icon-field-button-enabled)];
 }
 
@@ -246,17 +254,19 @@ textarea.par-input.error-state {
 }
 
 .right-element-container button:hover,
-.left-element-container button:hover {
+.left-element-container button:hover,
+.par-input-action-btn:hover {
   @apply bg-[var(--par-color-bg-field-button-hovered)] text-[var(--par-color-icon-field-button-hovered)];
 }
 
 .right-element-container button:active,
-.left-element-container button:active {
+.left-element-container button:active .par-input-action-btn:active {
   @apply bg-[var(--par-color-bg-field-button-pressed)] text-[var(--par-color-icon-field-button-pressed)];
 }
 
 .right-element-container button:disabled,
-.left-element-container button:disabled {
+.left-element-container button:disabled,
+.par-input-action-btn:disabled {
   @apply bg-[var(--par-color-bg-field-button-disabled)] text-[var(--par-color-icon-field-button-disabled)];
 }
 
