@@ -70,8 +70,8 @@ export const components = [
     status: 3
   },
   {
-    name: 'Text Area',
-    url: '/text-area',
+    name: 'Textarea',
+    url: '/textarea',
     status: 2
   },
   {
