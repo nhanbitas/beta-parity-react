@@ -1,6 +1,6 @@
 'use client';
 
-import { Textarea } from '@libComponents/TextArea';
+import { Textarea } from '@libComponents/Textarea';
 import React from 'react';
 
 type Props = any;
