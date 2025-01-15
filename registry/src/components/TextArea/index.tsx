@@ -6,17 +6,66 @@ import useCombinedRefs from '../hooks/useCombinedRefs';
 import { ErrorMessage, InputProps, InputWrapper } from '../BaseInput';
 import { Button } from '../Button';
 
-export interface TextAreaProps
+// =========================
+// Textarea
+// =========================
+// Declare and export Textarea type and Textarea component
+
+/**
+ * Props for the Textarea component.
+ *
+ * Extends properties from the `span` element and some of the `InputProps`.
+ */
+export interface TextareaProps
   extends React.HTMLAttributes<HTMLTextAreaElement>,
     Pick<
       InputProps,
       'value' | 'theme' | 'isError' | 'wrapperProps' | 'isClearable' | 'errorMessage' | 'disabled' | 'readOnly'
     > {
+  /**
+   * Specifies the maximum number of characters that the textarea can contain.
+   * If provided, the component enforces this limit on user input.
+   *
+   * Example:
+   * ```tsx
+   * <Textarea maxLength={200} />
+   * ```
+   *
+   * @memberof Textarea
+   */
   maxLength?: number;
+
+  /**
+   * Sets the number of visible text lines in the textarea.
+   *
+   * Example:
+   * ```tsx
+   * <Textarea rows={4} />
+   * ```
+   *
+   * @memberof Textarea
+   */
   rows?: number;
+
+  /**
+   * Text displayed on the clear button when `isClearable` is true.
+   * If not provided, a default value may be used.
+   *
+   * Example:
+   * ```tsx
+   * <Textarea isClearable clearBtnText="Remove" />
+   * ```
+   *  @memberof Textarea
+   */
+  clearBtnText?: string;
 }
 
-export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
+/**
+ * **Parity Textarea**
+
+ *  @see {@link http://localhost:3005/textarea Parity Textarea}
+ */
+export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
   (
     {
       className,
@@ -27,6 +76,7 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
       readOnly = false,
       isClearable = false,
       errorMessage = '',
+      clearBtnText = 'Clear',
       value,
       defaultValue,
       maxLength,
@@ -78,14 +128,17 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
         />
 
         {isHasFootter && (
-          <div className={classNames('par-textarea-footer', { reverse: isClearable && !maxLength })}>
-            {maxLength ? <span>{`${currentValue.toString().split('').length}/${maxLength}`}</span> : null}
-            {isShowClearButton ? (
-              <Button size='sm' kind='glass' color='neutral' className='textarea-clear-btn' onClick={handleClear}>
-                Clear
-              </Button>
-            ) : null}
-          </div>
+          <>
+            <div className='par-textarea-footer-mask'></div>
+            <div className={classNames('par-textarea-footer', { reverse: isClearable && !maxLength })}>
+              {maxLength ? <span>{`${currentValue.toString().split('').length}/${maxLength}`}</span> : null}
+              {isShowClearButton ? (
+                <Button size='sm' kind='glass' color='neutral' className='textarea-clear-btn' onClick={handleClear}>
+                  {clearBtnText}
+                </Button>
+              ) : null}
+            </div>
+          </>
         )}
 
         {errorMessage && isError && <ErrorMessage>{errorMessage}</ErrorMessage>}
@@ -94,4 +147,4 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
   }
 );
 
-TextArea.displayName = 'TextArea';
+Textarea.displayName = 'Textarea';

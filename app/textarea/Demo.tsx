@@ -1,12 +1,12 @@
 'use client';
 
-import { TextArea } from '@libComponents/TextArea';
+import { Textarea } from '@libComponents/TextArea';
 import React from 'react';
 
 type Props = any;
 
 export const DemoBasicTextArea = (props: Props) => (
-  <TextArea
+  <Textarea
     wrapperProps={{ className: '!max-w-96', ...props.wrapperProps }}
     {...props}
     placeholder='Enter your message'
