@@ -69,6 +69,7 @@ export const EmailInput = React.forwardRef<React.ElementRef<typeof Input>, Email
     const handleDomainChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
       onDomainChange?.(e.target.value as string);
     };
+
     const unitElement = (
       <UnitSelector
         unit={domain}

@@ -6,6 +6,7 @@ import { ChevronsUpDown, X } from 'lucide-react';
 import { ContainedLabel } from '../FloatingLabel';
 import useCombinedRefs from '../hooks/useCombinedRefs';
 import { BaseProps } from '../Base';
+import { useOutsideClick } from '../hooks/useOutsideClick';
 
 // =========================
 // Input
@@ -168,25 +169,34 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     };
 
     const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-      setIsFocused(false);
+      // setIsFocused(false); ** REMOVE
       onBlur && onBlur(e);
     };
+
+    const wrapperRef = useOutsideClick(() => {
+      // should check (floatingLabel && isFocused) for performance
+      if (floatingLabel && isFocused) {
+        setIsFocused(false);
+      }
+    });
 
     React.useEffect(() => {
       setCurrentValue(value || '');
     }, [value]);
 
     const addedClassname = isClearable && ActionBtn ? 'input-actions' : isClearable || ActionBtn ? 'input-action' : '';
-    const isHasRightInputAction = isClearable || ActionBtn;
     const { className: clearBtnClassName, onClick: clearBtnClick, ...restClearBtnProps } = clearBtnProps || {};
 
-    const isShowRightInputAction = floatingLabel
+    const isHasRightInputAction = isClearable || ActionBtn;
+    const isActiveRightInputAction = floatingLabel
       ? (currentValue || isFocused) && isHasRightInputAction
       : isHasRightInputAction;
-    const isShowClearButton = isClearable && currentValue && !readOnly && !disabled;
-    const RightInputActions = isShowRightInputAction && (
+    const isActiveClearButton = isClearable && currentValue && !readOnly && !disabled;
+    const isActiveFloatingLabel = readOnly ? true : isFocused || !!currentValue;
+
+    const RightInputActions = isActiveRightInputAction && (
       <>
-        {isShowClearButton && (
+        {isActiveClearButton && (
           <button
             type='button'
             className={classNames('clear-button', clearBtnClassName)}
@@ -208,6 +218,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
     return (
       <InputWrapper
+        ref={floatingLabel ? wrapperRef : undefined}
         className={classNames(addedClassname, wrapperClassName)}
         rightElement={RightInputActions}
         leftElement={leftIcon && <span className='input-icon'>{leftIcon}</span>}
@@ -215,7 +226,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       >
         {floatingLabel &&
           (!disabled ? (
-            <ContainedLabel isActive={readOnly ? true : isFocused || !!currentValue}>{floatingLabel}</ContainedLabel>
+            <ContainedLabel isActive={isActiveFloatingLabel}>{floatingLabel}</ContainedLabel>
           ) : (
             <ContainedLabel isActive={false}></ContainedLabel>
           ))}
