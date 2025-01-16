@@ -8,26 +8,70 @@
 }
 
 /* handle chervon css */
-.input-wrapper .number-stepper-wrapper.chevron-stepper {
-  @apply h-full justify-center rounded-e-md border-2 border-l border-transparent;
-}
-
-.input-wrapper .number-stepper-wrapper.chevron-stepper .chevron-stepper-container {
-  @apply -mr-px flex h-[calc(100%+0.25rem)] flex-col items-center gap-0 overflow-hidden border-l border-[color:var(--par-color-border-field-enabled)];
-}
-
+/* Container styling */
 .right-element-container:has(.number-stepper-wrapper.chevron-stepper) {
   @apply p-0;
 }
 
+/* borderleft 2px to get area for buttons of base state (overflow is visible),
+  when focusing, overflow will be hidden => hide apart of chevron buttons (-margin right 2px)  
+ */
+
+/* Number stepper wrapper styling */
+.input-wrapper .number-stepper-wrapper.chevron-stepper {
+  @apply relative h-full justify-center rounded-e-md border-2 border-l border-transparent;
+}
+
+/* Divider inside stepper wrapper */
+.input-wrapper .number-stepper-wrapper .controller-divider {
+  @apply h-5 w-px border-none bg-[var(--par-color-border-field-enabled)];
+}
+
+.input-wrapper .number-stepper-wrapper.chevron-stepper .controller-divider {
+  @apply absolute left-0 top-1/2 -z-10 h-[calc(100%+0.125rem)] -translate-y-1/2 rounded-none;
+}
+
+/* Chevron stepper container */
+.input-wrapper .number-stepper-wrapper.chevron-stepper .chevron-stepper-container {
+  @apply -mr-0.5 flex h-[calc(100%+0.25rem)] flex-col items-center gap-0 overflow-hidden;
+}
+
+/* Input focus states */
 input.par-input:focus ~ .right-element-container .number-stepper-wrapper.chevron-stepper {
   @apply overflow-hidden;
 }
 
+input.par-input:focus ~ .right-element-container .number-stepper-wrapper.chevron-stepper .controller-divider {
+  @apply h-[calc(100%+0.25rem)];
+}
+
+/* Input disabled states */
+input.par-input:disabled ~ .right-element-container .number-stepper-wrapper.chevron-stepper .chevron-stepper-container {
+  @apply border-[color:var(--par-color-border-field-disabled)];
+}
+
+input.par-input:disabled ~ .right-element-container .controller-divider {
+  @apply bg-[var(--par-color-border-field-disabled)];
+}
+
+/* Error state styling */
+input.par-input.error-state ~ .right-element-container .number-stepper-wrapper.chevron-stepper .controller-divider {
+  @apply h-full;
+}
+
+/* Buttons inside the number stepper wrapper */
 .input-wrapper .number-stepper-wrapper.chevron-stepper button {
   @apply flex h-1/2 w-8 shrink-0 items-center gap-0 rounded-none -outline-offset-2 first:rounded-tr-md last:rounded-br-md;
 }
 
-.input-wrapper .number-stepper-wrapper .controller-divider {
-  @apply h-5 w-px border-none bg-[var(--par-color-border-field-enabled)];
+/* modify button for error state */
+input.par-input.error-state
+  ~ .right-element-container
+  .number-stepper-wrapper.chevron-stepper
+  .chevron-stepper-container {
+  @apply -mr-0 h-[calc(100%)];
+}
+
+input.par-input.error-state ~ .right-element-container .number-stepper-wrapper.chevron-stepper button {
+  @apply first:rounded-tr-[0.25rem] last:rounded-br-[0.25rem];
 }

@@ -374,6 +374,7 @@ const NumberButtonStepper = ({
   if (isChervon) {
     return (
       <div className='number-stepper-wrapper chevron-stepper'>
+        <div className='controller-divider'></div>
         <div className='chevron-stepper-container'>
           {PlusButton}
           {MinusButton}
