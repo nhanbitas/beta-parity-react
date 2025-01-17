@@ -2,6 +2,7 @@
   "name": "beta-parity-react-web",
   "version": "0.1.1",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev --port 3005",
     "build": "npm run build:lib && next build",
@@ -22,7 +23,10 @@
     "lucide-react": "^0.390.0",
     "next": "14.2.3",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "rehype-highlight": "^7.0.1",
+    "remark-directive": "^3.0.0",
+    "remark-gfm": "^4.0.0"
   },
   "devDependencies": {
     "@types/node": "^20",

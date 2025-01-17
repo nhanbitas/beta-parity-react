@@ -49,6 +49,6 @@ const config: Config = {
     }
   },
 
-  plugins: [require('./plugins/scrollbar.tw.js'), require('./plugins/typography.tw.js')]
+  plugins: [require('./registry/plugins/scrollbar.tw.js'), require('./registry/plugins/typography.tw.js')]
 };
 export default config;

@@ -58,7 +58,7 @@ const SideBar = (props: Props) => {
 
   return (
     <aside
-      className={`side-bar sticky left-0 top-0 z-10 h-screen border-r border-gray-200 ${isOpen ? 'w-64' : 'w-0'} transform duration-300 ease-in-out`}
+      className={`side-bar sticky left-0 top-0 z-[9999] h-screen border-r border-gray-200 ${isOpen ? 'w-64' : 'w-0'} transform duration-300 ease-in-out`}
     >
       <button
         onClick={() => setIsOpen(!isOpen)}
