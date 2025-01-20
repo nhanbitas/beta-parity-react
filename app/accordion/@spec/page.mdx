@@ -1,3 +1,116 @@
-:::callout[experimental]
-This is **experimental** page and may change in the future.
+import Badge from '@libComponents/Badge';
+import Image from '@components/Showcase/ImageSection';
+import imageSrc from '@public/images/accordion';
+
+:::callout[note]
+A component that organizes content into vertically stacked collapsible and expandable sections.
 :::
+
+## Design checklist
+
+| Status | Item                                 | Description                                                                                                                                                                                                                       |
+| ------ | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ✔️     | Anatomy                              | Includes descriptions of all parts of the component and its major variants.                                                                                                                                                       |
+| ✔️     | States                               | Includes all applicable interaction, display and value states.                                                                                                                                                                    |
+| ✔️     | Options                              | Includes all relevant options (functional type, stylistic kind, semantic color, size, orientation, optional iconography, decorations, etc.)                                                                                       |
+| ✔️     | Color schemes                        | Includes both light and dark color schemes.                                                                                                                                                                                       |
+|        | Behaviors                            | Includes descriptions of behaviors related to other components and responsive behaviors related to media breakpoints, size (minimums and maximums), orientation, alignment, position and layout (wrapping, truncation, overflow). |
+|        | Accessibility: Keyboard interactions | Includes descriptions of all keyboard interactions, focus indication and navigation order.                                                                                                                                        |
+|        | Accessibility: Text contrast         | Text meets a contrast ratio of at least 4.5:1 for small text and 3:1 for large text (WCAG 2.0 1.4.3) and/or a lightness contrast value of at least Lc 75 for standard text and Lc 60 for large text (APCA).                       |
+|        | Accessibility: UI component contrast | Visual information required to identify states and boundaries of active UI components has a contrast ratio against adjacent colors of at least 3:1 (WCAG 2.1 1.4.11) and/or a lightness contrast value of at least Lc 60 (APCA).  |
+|        | Usage guidelines                     | Includes a list of recommended and discouraged usages.                                                                                                                                                                            |
+|        | Content guidelines                   | Includes content standards and guidelines for how to write or format in-product content for the component.                                                                                                                        |
+|        | Internationalization                 | Includes support for various locales and bi-directionality (RTL).                                                                                                                                                                 |
+|        | Design tokens                        | All design attributes (color, typography, layout, animation, etc.) are available as design tokens.                                                                                                                                |
+
+## Anatomy
+
+### Accordion
+
+- **Container**: The outermost encompassing element.
+- **Divider**: A horizontal line that separates accordion items.
+
+### Accordion item
+
+- **Container**: The outermost encompassing element.
+- **Trigger**: The element that users interact with to expand or collapse the content area.
+- **Label**: The text that represents the title of the accordion item.
+- **Sublabel**: An optional text that provides additional context for the accordion item.
+- **Expanded/collapsed indicator**: An icon that visually represents the expanded or collapsed state of the accordion item.
+- **Content area**: The area that contains the content of the accordion item.
+- **Content body**: The content text of the accordion item.
+
+## States
+
+### Accordion item
+
+#### Interaction states
+
+##### Enabled
+
+- Interaction with the accordion item trigger is available, allowing users to expand or collapse the content.
+
+<Image src={imageSrc.enabled.src} alt='enabled' />
+
+##### Hovered
+
+- The cursor is currently positioned over the accordion item trigger, indicated by a different color shade and the pointer cursor.
+
+<Image src={imageSrc.hovered.src} alt='hovered' />
+
+##### Pressed
+
+- The accordion item trigger is being pressed, indicated by a different color shade.
+
+<Image src={imageSrc.pressed.src} alt='pressed' />
+
+##### Focused
+
+- The accordion item trigger is focused via keyboard interaction, indicated by a ring outline.
+
+<Image src={imageSrc.focused.src} alt='focused' />
+
+##### Disabled
+
+- Interaction with the accordion item trigger is disallowed, indicated by a muted appearance and the disallowed cursor.
+
+<Image src={imageSrc.disabled.src} alt='disabled' />
+
+#### Display states
+
+##### Collapsed
+
+- The content area of the accordion item is hidden, indicated by the down-chevron or plus icon.
+
+##### Expanded
+
+- The content area of the accordion item is visible, indicated by the up-chevron or minus icon.
+
+## Options
+
+##### Kind
+
+- **Contained**: The accordion's boundary is defined by its border.
+- **Flush**: The accordion is borderless and has no background, allowing it to fit fully in parent containers.
+
+##### Sublabel
+
+- A sublabel can be displayed below the accordion item label to provide additional context.
+
+##### Indicator side
+
+- **Left**: A plus icon and a minus icon are placed to the left of the accordion item title, representing collapsed and expanded states respectively.
+- **Right**: An up-chevron icon and a down-chevron icon are placed to the right of the accordion item title, representing collapsed and expanded states respectively.
+
+## Behaviors
+
+
+
+## Changelog
+
+| Date       | Type                                                        | Description                                                                                 | Author      | Associated issue(s)  |
+|:-----------|:------------------------------------------------------------|---------------------------------------------------------------------------------------------|:------------|:---------------------|
+| 2024-10-09 | <Badge size='sm' kind='glass' color='cyan' label="new"/>    | Initial design                                                                              | Oanh Nguyen | PAR-52               |
+| 2024-10-23 | <Badge size='sm' kind='glass' color='blue' label="update"/> | Specifications:<br/> - Merged sub-components into one sheet<br/> - Improved states examples | Hi Do       |                      |
+| 2024-11-20 | <Badge size='sm' kind='glass' color='blue' label="update"/> | Change value của par-color-bg-accordion-menu => par-transparent                           | Oanh Nguyen |                      |
+
