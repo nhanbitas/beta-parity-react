@@ -1,0 +1,43 @@
+import { DemoBasicTextArea } from './demo-components';
+
+
+## Basic
+
+<DemoBasicTextArea placeholder='Enter your message' rows={0} />
+
+<DemoBasicTextArea placeholder='Enter your message' maxLength={500}/>
+
+<DemoBasicTextArea placeholder='Enter your message' isClearable/>
+
+<DemoBasicTextArea placeholder='Enter your message' maxLength={500} isClearable/>
+
+<DemoBasicTextArea placeholder='Enter your message' rows={6} maxLength={2000} isClearable/>
+
+
+## States
+
+<DemoBasicTextArea placeholder='Enter your message' rows={0} defaultValue='This is error value' isError={true} errorMessage='Error message' />
+
+<DemoBasicTextArea placeholder='Enter your message' maxLength={500} defaultValue='This is error value' isError={true} errorMessage='Error message'/>
+
+<DemoBasicTextArea placeholder='Enter your message' isClearable defaultValue='This is disabled text area' disabled/>
+
+<DemoBasicTextArea placeholder='Enter your message' maxLength={500} isClearable defaultValue='This is read only text area' readOnly/>
+
+<DemoBasicTextArea placeholder='Enter your message' rows={6} maxLength={2000} isClearable/>
+
+
+## Alternative
+
+<div className="bg-[var(--background-alternative)] p-4 rounded-md flex flex-col gap-4">
+
+<DemoBasicTextArea theme="alternative" placeholder='Enter your message' rows={0} defaultValue='This is error value' isError={true} errorMessage='Error message' />
+
+<DemoBasicTextArea theme="alternative" placeholder='Enter your message' maxLength={500} defaultValue='This is error value' isError={true} errorMessage='Error message'/>
+
+<DemoBasicTextArea theme="alternative" placeholder='Enter your message' isClearable defaultValue='This is disabled text area' disabled/>
+
+<DemoBasicTextArea theme="alternative" placeholder='Enter your message' maxLength={500} isClearable defaultValue='This is read only text area' readOnly/>
+
+<DemoBasicTextArea theme="alternative" placeholder='Enter your message' rows={6} maxLength={2000} isClearable/>
+</div>

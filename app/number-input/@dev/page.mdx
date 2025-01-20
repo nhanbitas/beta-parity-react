@@ -1,0 +1,202 @@
+import { DemoNumberInput } from './demo-components';
+import { CircleDollarSign } from 'lucide-react';
+
+
+## Basic
+
+<DemoNumberInput placeholder='Placeholder'/>
+<DemoNumberInput placeholder='Placeholder' min={0} max={1000} stepControl={10} stepper="auto"/>
+<DemoNumberInput placeholder='Placeholder' min={0} max={1000} stepControl={10} stepper="separate"/>
+<DemoNumberInput placeholder='Placeholder' leftIcon={<CircleDollarSign />} stepControl={10} stepper="chevron"/>
+<DemoNumberInput placeholder='Placeholder' unit={["USD", "VND", "EUR", "JPY"]} />
+
+## Clearable
+
+<DemoNumberInput isClearable placeholder='Placeholder'/>
+<DemoNumberInput isClearable placeholder='Placeholder' min={0} max={1000} stepControl={10} stepper="auto"/>
+<DemoNumberInput isClearable placeholder='Placeholder' min={0} max={1000} stepControl={10} stepper="separate"/>
+<DemoNumberInput isClearable placeholder='Placeholder' leftIcon={<CircleDollarSign />} stepControl={10} stepper="chevron"/>
+<DemoNumberInput isClearable placeholder='Placeholder' leftIcon={<CircleDollarSign />}/>
+<DemoNumberInput isClearable placeholder='Placeholder' unit={["USD", "VND", "EUR", "JPY"]} />
+
+
+
+## States
+
+<DemoNumberInput isError={true} errorMessage='Error message' placeholder='Placeholder'  stepper="auto"/>
+<DemoNumberInput isError={true} errorMessage='Error message' placeholder='Placeholder' unit="$"/>
+<DemoNumberInput isError={true} errorMessage='Error message' placeholder='Placeholder' leftIcon={<CircleDollarSign />} stepControl={10} stepper="chevron"/>
+<DemoNumberInput isError={true} errorMessage='Error message' placeholder='Placeholder' leftIcon={<CircleDollarSign />} />
+<DemoNumberInput disabled stepper="auto" />
+<DemoNumberInput disabled leftIcon={<CircleDollarSign />} />
+<DemoNumberInput disabled placeholder='Placeholder' leftIcon={<CircleDollarSign />} stepControl={10} stepper="chevron"/>
+<DemoNumberInput disabled placeholder='Placeholder' leftIcon={<CircleDollarSign />} />
+<DemoNumberInput readOnly value={1000} placeholder='Placeholder' unit="$"/>
+<DemoNumberInput readOnly value={1000} placeholder='Placeholder' stepper="separate"/>
+<DemoNumberInput readOnly value={1000} placeholder='Placeholder' leftIcon={<CircleDollarSign />} stepper="chevron"/>
+
+## Floating label
+
+<DemoNumberInput isClearable floatingLabel='Enter Number' placeholder='Placeholder'  stepper="chevron"/>
+<DemoNumberInput isClearable floatingLabel='Enter Number' placeholder='Placeholder'  leftIcon={<CircleDollarSign />} />
+
+<DemoNumberInput floatingLabel='Enter Number' placeholder='Placeholder' unit="USD" />
+<DemoNumberInput floatingLabel='Enter Number' placeholder='Placeholder' unit={["USD", "VND", "EUR", "JPY"]} />
+
+<DemoNumberInput
+  isClearable
+  isError={true}
+  errorMessage='Error message'
+  floatingLabel='Enter Number'
+  placeholder='Placeholder'
+/>
+<DemoNumberInput
+  isClearable
+  isError={true}
+  errorMessage='Error message'
+  floatingLabel='Enter Number'
+  placeholder='Placeholder'
+  leftIcon={<CircleDollarSign />}
+/>
+<DemoNumberInput isClearable disabled floatingLabel='Enter Number' placeholder='Placeholder' value={1000} />
+<DemoNumberInput isClearable disabled floatingLabel='Enter Number' placeholder='Placeholder' leftIcon={<CircleDollarSign />}/>
+<DemoNumberInput isClearable readOnly floatingLabel='Enter Number' placeholder='Placeholder' value={1000} />
+<DemoNumberInput isClearable readOnly floatingLabel='Enter Number' placeholder='Placeholder' leftIcon={<CircleDollarSign />}/>
+
+
+
+{/* /////////////////////////////////////////////////////////////////////////////////////// */}
+## Size Medium
+
+<DemoNumberInput placeholder='Placeholder' inputSize="md" stepper="chevron"/>
+<DemoNumberInput placeholder='Placeholder' leftIcon={<CircleDollarSign />} inputSize="md" stepper="auto"/>
+<DemoNumberInput isClearable placeholder='Placeholder' inputSize="md"/>
+<DemoNumberInput isClearable placeholder='Placeholder' leftIcon={<CircleDollarSign />} inputSize="md"/>
+<DemoNumberInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder' inputSize="md"/>
+<DemoNumberInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder'  leftIcon={<CircleDollarSign />} inputSize="md"/>
+<DemoNumberInput disabled isClearable placeholder='Placeholder' inputSize="md"/>
+<DemoNumberInput disabled isClearable value={1000} placeholder='Placeholder'  leftIcon={<CircleDollarSign />} inputSize="md"/>
+<DemoNumberInput readOnly isClearable value={1000} placeholder='Placeholder' inputSize="md"/>
+<DemoNumberInput readOnly isClearable value={1000} placeholder='Placeholder'  leftIcon={<CircleDollarSign />} inputSize="md"/>
+
+
+{/* /////////////////////////////////////////////////////////////////////////////////////// */}
+
+## Alternative
+
+<div className="bg-[var(--background-alternative)] p-4 rounded-md flex flex-col gap-4">
+
+## Basic
+
+<DemoNumberInput placeholder='Placeholder' theme="alternative"/>
+<DemoNumberInput placeholder='Placeholder' leftIcon={<CircleDollarSign />} theme="alternative"/>
+
+## Clearable
+
+<DemoNumberInput isClearable placeholder='Placeholder' theme="alternative"/>
+<DemoNumberInput isClearable placeholder='Placeholder' leftIcon={<CircleDollarSign />} theme="alternative"/>
+<DemoNumberInput isClearable placeholder='Placeholder' leftIcon={<CircleDollarSign />} stepControl={10} stepper="chevron" theme="alternative"/>
+
+## States
+
+
+<DemoNumberInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder' theme="alternative"/>
+<DemoNumberInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder'  leftIcon={<CircleDollarSign />} theme="alternative"/>
+<DemoNumberInput disabled isClearable placeholder='Placeholder' theme="alternative"/>
+<DemoNumberInput disabled isClearable value={1000} placeholder='Placeholder'  leftIcon={<CircleDollarSign />} theme="alternative"/>
+<DemoNumberInput readOnly isClearable value={1000} placeholder='Placeholder' />
+<DemoNumberInput readOnly isClearable value={1000} placeholder='Placeholder'  leftIcon={<CircleDollarSign />} theme="alternative" />
+
+## Floating label
+
+<DemoNumberInput isClearable floatingLabel='Enter Number' placeholder='Placeholder' theme="alternative"/>
+<DemoNumberInput isClearable floatingLabel='Enter Number' placeholder='Placeholder'  leftIcon={<CircleDollarSign />} theme="alternative"/>
+
+<DemoNumberInput floatingLabel='Enter Number' placeholder='Placeholder' unit="USD" theme="alternative"/>
+<DemoNumberInput floatingLabel='Enter Number' placeholder='Placeholder' unit={["USD", "VND", "EUR", "JPY"]} theme="alternative"/>
+
+<DemoNumberInput
+  isClearable
+  isError={true}
+  errorMessage='Error message'
+  floatingLabel='Enter Number'
+  placeholder='Placeholder' theme="alternative"
+/>
+<DemoNumberInput
+  isClearable
+  isError={true}
+  errorMessage='Error message'
+  floatingLabel='Enter Number'
+  placeholder='Placeholder' 
+  leftIcon={<CircleDollarSign />} theme="alternative"
+/>
+<DemoNumberInput isClearable disabled floatingLabel='Enter Number' placeholder='Placeholder' value={1000} theme="alternative"/>
+<DemoNumberInput isClearable disabled floatingLabel='Enter Number' placeholder='Placeholder' value={1000} leftIcon={<CircleDollarSign />} theme="alternative"/>
+<DemoNumberInput isClearable readOnly floatingLabel='Enter Number' placeholder='Placeholder' value={1000} />
+<DemoNumberInput isClearable readOnly floatingLabel='Enter Number' placeholder='Placeholder' value={1000} leftIcon={<CircleDollarSign />} theme="alternative"/>
+
+</div>
+
+
+
+
+{/* /////////////////////////////////////////////////////////////////////////////////////// */}
+
+{/* ## Dark mode
+
+<div className="bg-gray-950 text-white p-4 rounded-md flex flex-col gap-4" data-scheme="dark">
+## Basic
+
+<DemoNumberInput placeholder='Placeholder'/>
+<DemoNumberInput placeholder='Placeholder' min={0} max={1000} stepControl={10} stepper="auto"/>
+<DemoNumberInput placeholder='Placeholder' min={0} max={1000} stepControl={10} stepper="separate"/>
+<DemoNumberInput placeholder='Placeholder' leftIcon={<CircleDollarSign />} stepControl={10} stepper="chevron"/>
+<DemoNumberInput placeholder='Placeholder' unit={["USD", "VND", "EUR", "JPY"]} />
+
+## Clearable
+
+<DemoNumberInput isClearable placeholder='Placeholder'/>
+<DemoNumberInput isClearable placeholder='Placeholder' min={0} max={1000} stepControl={10} stepper="auto"/>
+<DemoNumberInput isClearable placeholder='Placeholder' min={0} max={1000} stepControl={10} stepper="separate"/>
+<DemoNumberInput isClearable placeholder='Placeholder' leftIcon={<CircleDollarSign />} stepControl={10} stepper="chevron"/>
+<DemoNumberInput isClearable placeholder='Placeholder' leftIcon={<CircleDollarSign />}/>
+<DemoNumberInput isClearable placeholder='Placeholder' unit={["USD", "VND", "EUR", "JPY"]} />
+
+
+
+## States
+
+<DemoNumberInput isError={true} errorMessage='Error message' placeholder='Placeholder'  stepper="auto"/>
+<DemoNumberInput isError={true} errorMessage='Error message' placeholder='Placeholder' unit="$"/>
+<DemoNumberInput isError={true} errorMessage='Error message' placeholder='Placeholder' leftIcon={<CircleDollarSign />} />
+<DemoNumberInput disabled stepper="auto" />
+<DemoNumberInput disabled leftIcon={<CircleDollarSign />} />
+<DemoNumberInput readOnly value={1000} placeholder='Placeholder' unit="$"/>
+<DemoNumberInput readOnly value={1000} placeholder='Placeholder' stepper="separate"/>
+<DemoNumberInput readOnly value={1000} placeholder='Placeholder' leftIcon={<CircleDollarSign />} stepper="chevron"/>
+
+## Floating label
+
+<DemoNumberInput isClearable floatingLabel='Enter Number' placeholder='Placeholder'  stepper="chevron"/>
+<DemoNumberInput isClearable floatingLabel='Enter Number' placeholder='Placeholder'  leftIcon={<CircleDollarSign />} />
+<DemoNumberInput
+  isClearable
+  isError={true}
+  errorMessage='Error message'
+  floatingLabel='Enter Number'
+  placeholder='Placeholder'
+/>
+<DemoNumberInput
+  isClearable
+  isError={true}
+  errorMessage='Error message'
+  floatingLabel='Enter Number'
+  placeholder='Placeholder'
+  leftIcon={<CircleDollarSign />}
+/>
+<DemoNumberInput isClearable disabled floatingLabel='Enter Number' placeholder='Placeholder' value={1000} />
+<DemoNumberInput isClearable disabled floatingLabel='Enter Number' placeholder='Placeholder' leftIcon={<CircleDollarSign />}/>
+<DemoNumberInput isClearable readOnly floatingLabel='Enter Number' placeholder='Placeholder' value={1000} />
+<DemoNumberInput isClearable readOnly floatingLabel='Enter Number' placeholder='Placeholder' leftIcon={<CircleDollarSign />}/>
+
+</div> */}

@@ -1,1 +1,1 @@
-export { default } from '@components/doc/DocLayout';
+export { default } from '@components/doc/BaseLayout';

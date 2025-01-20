@@ -1,0 +1,158 @@
+import { DemoBasicSearchInput, DemoAuxiliarySearchInput } from './demo-components';
+
+## Basic
+
+<DemoBasicSearchInput />
+
+<DemoBasicSearchInput isClearable searchButton/>
+<DemoBasicSearchInput isClearable searchButton />
+
+<DemoBasicSearchInput isPending/>
+<DemoBasicSearchInput isPending searchButton />
+
+
+## Auxiliary
+
+<DemoAuxiliarySearchInput />
+
+<DemoAuxiliarySearchInput isClearable searchButton/>
+<DemoAuxiliarySearchInput isClearable searchButton />
+
+<DemoAuxiliarySearchInput isPending/>
+<DemoAuxiliarySearchInput isPending searchButton />
+
+
+## ShortCut Indicator
+
+<DemoBasicSearchInput shortCut='Shift + K'/>
+
+<DemoBasicSearchInput isClearable shortCut='Shift + K'/>
+<DemoBasicSearchInput isClearable shortCut='Shift + K' />
+
+<DemoBasicSearchInput isPending shortCut='Shift + K'/>
+<DemoBasicSearchInput isPending shortCut='Shift + K' />
+
+
+
+## States
+
+<DemoBasicSearchInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder' />
+<DemoBasicSearchInput isError={true} errorMessage='Error message' shortCut='Shift + K' placeholder='Placeholder' />
+<DemoBasicSearchInput disabled shortCut='Shift + K' value='This is disabled search input' placeholder='Placeholder' />
+<DemoBasicSearchInput disabled searchButton value='This is disabled search input' placeholder='Placeholder' />
+<DemoBasicSearchInput readOnly searchButton value='This is read only search input' placeholder='Placeholder' />
+<DemoBasicSearchInput readOnly isPending shortCut='Shift + K' value='This is read only search input' placeholder='Placeholder' />
+
+## Floating label
+
+<DemoBasicSearchInput isClearable floatingLabel='Floating Label' placeholder='Placeholder' />
+<DemoBasicSearchInput isClearable floatingLabel='Floating Label' placeholder='Placeholder'  />
+<DemoBasicSearchInput
+  isClearable
+  isError={true}
+  errorMessage='Error message'
+  floatingLabel='Floating Label'
+  placeholder='Placeholder'
+/>
+<DemoBasicSearchInput
+  isClearable
+  isError={true}
+  errorMessage='Error message'
+  floatingLabel='Floating Label'
+  placeholder='Placeholder'
+/>
+<DemoBasicSearchInput isClearable disabled floatingLabel='Floating Label' placeholder='Placeholder' shortCut='Shift + K' value='This is disabled search input' />
+<DemoBasicSearchInput isClearable disabled floatingLabel='Floating Label' placeholder='Placeholder' />
+
+## Size Medium
+
+
+<DemoBasicSearchInput inputSize="md"/>
+<DemoAuxiliarySearchInput inputSize="md"/>
+
+<DemoBasicSearchInput isClearable searchButton inputSize="md"/>
+<DemoBasicSearchInput isClearable isPending searchButton inputSize="md"/>
+
+<DemoBasicSearchInput shortCut='Shift + K' inputSize="md"/>
+<DemoBasicSearchInput isPending shortCut='Shift + K' inputSize="md"/>
+
+{/* /////////////////////////////////////////////////////////////////////////////////////// */}
+
+
+<div className="bg-[var(--background-alternative)] p-4 rounded-md flex flex-col gap-4">
+## Basic
+
+<DemoBasicSearchInput  theme="alternative"/>
+
+<DemoBasicSearchInput isClearable searchButton theme="alternative"/>
+<DemoBasicSearchInput isClearable searchButton  theme="alternative"/>
+
+<DemoBasicSearchInput isPending theme="alternative"/>
+<DemoBasicSearchInput isPending searchButton  theme="alternative"/>
+
+
+## Auxiliary
+
+<DemoAuxiliarySearchInput  theme="alternative"/>
+
+<DemoAuxiliarySearchInput isClearable searchButton theme="alternative"/>
+<DemoAuxiliarySearchInput isClearable searchButton  theme="alternative"/>
+
+<DemoAuxiliarySearchInput isPending theme="alternative"/>
+<DemoAuxiliarySearchInput isPending searchButton  theme="alternative"/>
+
+
+## ShortCut Indicator
+
+<DemoBasicSearchInput shortCut='Shift + K' theme="alternative"/>
+
+<DemoBasicSearchInput isClearable shortCut='Shift + K' theme="alternative"/>
+<DemoBasicSearchInput isClearable shortCut='Shift + K'  theme="alternative"/>
+
+<DemoBasicSearchInput isPending shortCut='Shift + K' theme="alternative"/>
+<DemoBasicSearchInput isPending shortCut='Shift + K'  theme="alternative"/>
+
+
+
+## States
+
+<DemoBasicSearchInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder'  theme="alternative"/>
+<DemoBasicSearchInput isError={true} errorMessage='Error message' shortCut='Shift + K' placeholder='Placeholder'  theme="alternative"/>
+<DemoBasicSearchInput disabled shortCut='Shift + K' value='This is disabled search input' placeholder='Placeholder'  theme="alternative"/>
+<DemoBasicSearchInput disabled searchButton value='This is disabled search input' placeholder='Placeholder'  theme="alternative"/>
+<DemoBasicSearchInput readOnly searchButton value='This is read only search input' placeholder='Placeholder'  theme="alternative"/>
+<DemoBasicSearchInput readOnly isPending shortCut='Shift + K' value='This is read only search input' placeholder='Placeholder'  theme="alternative"/>
+
+## Floating label
+
+<DemoBasicSearchInput isClearable floatingLabel='Floating Label' placeholder='Placeholder'  theme="alternative"/>
+<DemoBasicSearchInput isClearable floatingLabel='Floating Label' placeholder='Placeholder'   theme="alternative"/>
+<DemoBasicSearchInput
+  isClearable
+  isError={true}
+  errorMessage='Error message'
+  floatingLabel='Floating Label'
+  placeholder='Placeholder'
+ theme="alternative"/>
+<DemoBasicSearchInput
+  isClearable
+  isError={true}
+  errorMessage='Error message'
+  floatingLabel='Floating Label'
+  placeholder='Placeholder'
+ theme="alternative"/>
+<DemoBasicSearchInput isClearable disabled floatingLabel='Floating Label' placeholder='Placeholder' shortCut='Shift + K' value='This is disabled search input'  theme="alternative"/>
+<DemoBasicSearchInput isClearable disabled floatingLabel='Floating Label' placeholder='Placeholder'  theme="alternative"/>
+
+## Size Medium
+
+
+<DemoBasicSearchInput inputSize="md" theme="alternative"/>
+<DemoAuxiliarySearchInput inputSize="md" theme="alternative"/>
+
+<DemoBasicSearchInput isClearable searchButton inputSize="md" theme="alternative"/>
+<DemoBasicSearchInput isClearable isPending searchButton inputSize="md" theme="alternative"/>
+
+<DemoBasicSearchInput shortCut='Shift + K' inputSize="md" theme="alternative"/>
+<DemoBasicSearchInput isPending shortCut='Shift + K' inputSize="md" theme="alternative"/>
+</div>

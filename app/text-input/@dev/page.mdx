@@ -1,0 +1,168 @@
+import { DemoBasicInput } from './demo-components';
+import { Box } from 'lucide-react';
+
+
+## Basic
+
+<DemoBasicInput placeholder='Placeholder' />
+<DemoBasicInput placeholder='Placeholder' leftIcon={<Box />} />
+
+## Clearable
+
+<DemoBasicInput isClearable placeholder='Placeholder' />
+<DemoBasicInput isClearable placeholder='Placeholder' leftIcon={<Box />} />
+
+## States
+
+<DemoBasicInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder' />
+<DemoBasicInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder'  leftIcon={<Box />} />
+<DemoBasicInput disabled isClearable placeholder='Placeholder' />
+<DemoBasicInput disabled isClearable value='This is disabled text input' placeholder='Placeholder'  leftIcon={<Box />} />
+<DemoBasicInput readOnly isClearable value='This is read only text input' placeholder='Placeholder' />
+<DemoBasicInput readOnly isClearable value='This is read only text input' placeholder='Placeholder'  leftIcon={<Box />} />
+
+## Floating label
+
+<DemoBasicInput isClearable floatingLabel='Floating Label' placeholder='Placeholder' />
+<DemoBasicInput isClearable floatingLabel='Floating Label' placeholder='Placeholder'  leftIcon={<Box />} />
+<DemoBasicInput
+  isClearable
+  isError={true}
+  errorMessage='Error message'
+  floatingLabel='Floating Label'
+  placeholder='Placeholder'
+/>
+<DemoBasicInput
+  isClearable
+  isError={true}
+  errorMessage='Error message'
+  floatingLabel='Floating Label'
+  placeholder='Placeholder'
+  leftIcon={<Box />}
+/>
+<DemoBasicInput isClearable disabled floatingLabel='Floating Label' placeholder='Placeholder' value='Text' />
+<DemoBasicInput isClearable disabled floatingLabel='Floating Label' placeholder='Placeholder' leftIcon={<Box />}/>
+<DemoBasicInput isClearable readOnly floatingLabel='Floating Label' placeholder='Placeholder' value='Text' />
+<DemoBasicInput isClearable readOnly floatingLabel='Floating Label' placeholder='Placeholder' leftIcon={<Box />}/>
+
+{/* /////////////////////////////////////////////////////////////////////////////////////// */}
+## Size Medium
+
+<DemoBasicInput placeholder='Placeholder' inputSize="md"/>
+<DemoBasicInput placeholder='Placeholder' leftIcon={<Box />} inputSize="md"/>
+<DemoBasicInput isClearable placeholder='Placeholder' inputSize="md"/>
+<DemoBasicInput isClearable placeholder='Placeholder' leftIcon={<Box />} inputSize="md"/>
+<DemoBasicInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder' inputSize="md"/>
+<DemoBasicInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder'  leftIcon={<Box />} inputSize="md"/>
+<DemoBasicInput disabled isClearable placeholder='Placeholder' inputSize="md"/>
+<DemoBasicInput disabled isClearable value='This is disabled text input' placeholder='Placeholder'  leftIcon={<Box />} inputSize="md"/>
+<DemoBasicInput readOnly isClearable value='This is read only text input' placeholder='Placeholder' inputSize="md"/>
+<DemoBasicInput readOnly isClearable value='This is read only text input' placeholder='Placeholder'  leftIcon={<Box />} inputSize="md"/>
+
+
+{/* /////////////////////////////////////////////////////////////////////////////////////// */}
+
+## Alternative
+
+<div className="bg-[var(--background-alternative)] p-4 rounded-md flex flex-col gap-4">
+
+## Basic
+
+<DemoBasicInput placeholder='Placeholder' theme="alternative"/>
+<DemoBasicInput placeholder='Placeholder' leftIcon={<Box />} theme="alternative"/>
+
+## Clearable
+
+<DemoBasicInput isClearable placeholder='Placeholder' theme="alternative"/>
+<DemoBasicInput isClearable placeholder='Placeholder' leftIcon={<Box />} theme="alternative"/>
+
+## States
+
+
+<DemoBasicInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder' theme="alternative"/>
+<DemoBasicInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder'  leftIcon={<Box />} theme="alternative"/>
+<DemoBasicInput disabled isClearable placeholder='Placeholder' theme="alternative"/>
+<DemoBasicInput disabled isClearable value='This is disabled text input' placeholder='Placeholder'  leftIcon={<Box />} theme="alternative"/>
+<DemoBasicInput readOnly isClearable value='This is read only text input' placeholder='Placeholder' />
+<DemoBasicInput readOnly isClearable value='This is read only text input' placeholder='Placeholder'  leftIcon={<Box />} theme="alternative" />
+
+## Floating label
+
+<DemoBasicInput isClearable floatingLabel='Floating Label' placeholder='Placeholder' theme="alternative"/>
+<DemoBasicInput isClearable floatingLabel='Floating Label' placeholder='Placeholder'  leftIcon={<Box />} theme="alternative"/>
+<DemoBasicInput
+  isClearable
+  isError={true}
+  errorMessage='Error message'
+  floatingLabel='Floating Label'
+  placeholder='Placeholder' theme="alternative"
+/>
+<DemoBasicInput
+  isClearable
+  isError={true}
+  errorMessage='Error message'
+  floatingLabel='Floating Label'
+  placeholder='Placeholder' 
+  leftIcon={<Box />} theme="alternative"
+/>
+<DemoBasicInput isClearable disabled floatingLabel='Floating Label' placeholder='Placeholder' value='Text' theme="alternative"/>
+<DemoBasicInput isClearable disabled floatingLabel='Floating Label' placeholder='Placeholder' value='Text' leftIcon={<Box />} theme="alternative"/>
+<DemoBasicInput isClearable readOnly floatingLabel='Floating Label' placeholder='Placeholder' value='Text' />
+<DemoBasicInput isClearable readOnly floatingLabel='Floating Label' placeholder='Placeholder' value='Text' leftIcon={<Box />} theme="alternative"/>
+
+</div>
+
+
+
+
+{/* /////////////////////////////////////////////////////////////////////////////////////// */}
+
+{/* ## Dark mode
+
+<div className="bg-gray-950 text-white p-4 rounded-md flex flex-col gap-4" data-scheme="dark">
+
+## Basic
+
+<DemoBasicInput placeholder='Placeholder' />
+<DemoBasicInput placeholder='Placeholder' leftIcon={<Box />} />
+
+## Clearable
+
+<DemoBasicInput isClearable placeholder='Placeholder' />
+<DemoBasicInput isClearable placeholder='Placeholder' leftIcon={<Box />} />
+
+## States
+
+
+<DemoBasicInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder' />
+<DemoBasicInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder'  leftIcon={<Box />} />
+<DemoBasicInput disabled isClearable placeholder='Placeholder' />
+<DemoBasicInput disabled isClearable value='This is disabled text input' placeholder='Placeholder'  leftIcon={<Box />} />
+<DemoBasicInput readOnly isClearable value='This is read only text input' placeholder='Placeholder' />
+<DemoBasicInput readOnly isClearable value='This is read only text input' placeholder='Placeholder'  leftIcon={<Box />} />
+
+## Floating label
+
+<DemoBasicInput isClearable floatingLabel='Floating Label' placeholder='Placeholder' />
+<DemoBasicInput isClearable floatingLabel='Floating Label' placeholder='Placeholder'  leftIcon={<Box />} />
+<DemoBasicInput
+  isClearable
+  isError={true}
+  errorMessage='Error message'
+  floatingLabel='Floating Label'
+  placeholder='Placeholder'
+/>
+<DemoBasicInput
+  isClearable
+  isError={true}
+  errorMessage='Error message'
+  floatingLabel='Floating Label'
+  placeholder='Placeholder'
+  leftIcon={<Box />}
+/>
+<DemoBasicInput isClearable disabled floatingLabel='Floating Label' placeholder='Placeholder' value='Text' />
+<DemoBasicInput isClearable disabled floatingLabel='Floating Label' placeholder='Placeholder' value='Text' leftIcon={<Box />}/>
+<DemoBasicInput isClearable readOnly floatingLabel='Floating Label' placeholder='Placeholder' value='Text' />
+<DemoBasicInput isClearable readOnly floatingLabel='Floating Label' placeholder='Placeholder' value='Text' leftIcon={<Box />}/>
+
+</div> */}

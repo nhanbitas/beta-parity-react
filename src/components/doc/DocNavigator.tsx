@@ -1,5 +1,6 @@
 'use client';
 
+import { useRouter, useSearchParams } from 'next/navigation';
 import { Button } from '@libComponents/Button';
 import React from 'react';
 
@@ -10,19 +11,31 @@ type Props = {
 
 const NavigatorComponent = (props: Props) => {
   const { dev, spec } = props;
-  const [current, setCurrent] = React.useState('dev');
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const tab = searchParams.get('tab');
+  const [currentTab, setCurrentTab] = React.useState(tab ?? 'dev');
+
+  const handleNavigate = (tab: 'dev' | 'spec') => {
+    router.push(`?tab=${tab ?? 'dev'}`);
+  };
+
+  React.useEffect(() => {
+    setCurrentTab(tab ?? 'dev');
+  }, [tab]);
+
   return (
     <>
       <nav className='fixed right-0 top-0 z-50 flex w-full justify-end gap-1 rounded-lg p-2 px-8 backdrop-blur-sm'>
-        <Button size='sm' kind={current === 'dev' ? 'solid' : 'ghost'} onClick={() => setCurrent('dev')}>
+        <Button size='sm' kind={currentTab === 'dev' ? 'solid' : 'glass'} onClick={() => handleNavigate('dev')}>
           Dev
         </Button>
-        <Button size='sm' kind={current === 'spec' ? 'solid' : 'ghost'} onClick={() => setCurrent('spec')}>
+        <Button size='sm' kind={currentTab === 'spec' ? 'solid' : 'glass'} onClick={() => handleNavigate('spec')}>
           Spec
         </Button>
       </nav>
-      {current === 'dev' && dev}
-      {current === 'spec' && spec}
+      {currentTab === 'dev' && dev}
+      {currentTab === 'spec' && spec}
     </>
   );
 };

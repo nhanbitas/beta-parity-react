@@ -1,0 +1,29 @@
+import * as Demo from "./demo-components";
+import {ToastContainer} from '@libComponents/Toast';
+
+{/* add container in your page you want to use toast */}
+{/* <ToastContainer limit={3} stacked={false} sortImportance={true}/> */}
+{/* <ToastContainer limit={1} stacked={true} sortImportance={false}/> */}
+<ToastContainer limit={1} stacked={true} sortImportance={true} />
+{/* <ToastContainer limit={1} stacked={true} sortImportance={true} data-scheme="dark"/> */}
+
+## Types
+<Demo.DemoGenericToast/>
+<Demo.DemoInformationToast/>
+<Demo.DemoAffirmativeToast/>
+<Demo.DemoCautionaryToast/>
+<Demo.DemoAdverseToast/>
+
+## Duration
+<Demo.DemoAutoCloseToast/>
+
+## Position
+<Demo.DemoPositionToast/>
+
+## Important
+<Demo.DemoImportantToast/>
+
+## Pending
+<Demo.DemoPendingToast/>
+
+

@@ -1,0 +1,100 @@
+import { DemoDomainEmailInput, DemoBasicEmailInput } from './demo-components';
+
+
+
+## Basic
+
+<DemoBasicEmailInput />
+<DemoBasicEmailInput isClearable/>
+
+## Domain
+
+<DemoDomainEmailInput isClearable/>
+<DemoDomainEmailInput domain="@gmail.com"/>
+
+<DemoDomainEmailInput disabled isClearable/>
+<DemoDomainEmailInput disabled domain="@gmail.com"/>
+
+## State 
+
+<DemoBasicEmailInput isError={true} errorMessage='Error message' isClearable/>
+<DemoDomainEmailInput isError={true} errorMessage='Error message' isClearable/>
+<DemoBasicEmailInput readOnly value="bitas@example.com" isClearable/>
+<DemoDomainEmailInput readOnly value="bitas" isClearable/>
+<DemoBasicEmailInput disabled isClearable/>
+<DemoDomainEmailInput disabled isClearable/>
+
+## Floating label
+
+<DemoBasicEmailInput floatingLabel='Your Email' />
+<DemoDomainEmailInput floatingLabel='Your Email' />
+
+<DemoBasicEmailInput floatingLabel='Your Email' isClearable/>
+<DemoDomainEmailInput floatingLabel='Your Email' domain="@gmail.com"/>
+
+<DemoBasicEmailInput isError={true} errorMessage='Error message' isClearable floatingLabel='Your Email'/>
+<DemoDomainEmailInput isError={true} errorMessage='Error message' isClearable floatingLabel='Your Email'/>
+
+<DemoBasicEmailInput readOnly value="bitas@example.com" isClearable floatingLabel='Your Email'/>
+<DemoDomainEmailInput readOnly value="bitas" isClearable floatingLabel='Your Email'/>
+
+<DemoBasicEmailInput disabled isClearable floatingLabel='Your Email'/>
+<DemoDomainEmailInput disabled isClearable floatingLabel='Your Email'/>
+
+## Size Medium
+
+<DemoBasicEmailInput inputSize="md"/>
+<DemoDomainEmailInput inputSize="md"/>
+<DemoDomainEmailInput inputSize="md" domain="@gmail.com"/>
+
+
+## Alternative
+
+<div className="bg-[var(--background-alternative)] p-4 rounded-md flex flex-col gap-4">
+## Basic
+
+<DemoBasicEmailInput theme="alternative"/>
+<DemoBasicEmailInput theme="alternative" isClearable/>
+
+## Domain
+
+<DemoDomainEmailInput theme="alternative" isClearable/>
+<DemoDomainEmailInput theme="alternative" domain="@gmail.com"/>
+
+<DemoDomainEmailInput theme="alternative" disabled isClearable/>
+<DemoDomainEmailInput theme="alternative" disabled domain="@gmail.com"/>
+
+## State 
+
+<DemoBasicEmailInput theme="alternative" isError={true} errorMessage='Error message' isClearable/>
+<DemoDomainEmailInput theme="alternative" isError={true} errorMessage='Error message' isClearable/>
+
+<DemoBasicEmailInput theme="alternative" readOnly value="bitas@example.com" isClearable/>
+<DemoDomainEmailInput theme="alternative" readOnly value="bitas" isClearable/>
+
+<DemoBasicEmailInput theme="alternative" disabled isClearable/>
+<DemoDomainEmailInput theme="alternative" disabled isClearable/>
+
+## Floating label
+
+<DemoBasicEmailInput theme="alternative" floatingLabel='Your Email' />
+<DemoDomainEmailInput theme="alternative" floatingLabel='Your Email' />
+
+<DemoBasicEmailInput theme="alternative" floatingLabel='Your Email' isClearable/>
+<DemoDomainEmailInput theme="alternative" floatingLabel='Your Email' domain="@gmail.com"/>
+
+<DemoBasicEmailInput theme="alternative" isError={true} errorMessage='Error message' isClearable floatingLabel='Your Email'/>
+<DemoDomainEmailInput theme="alternative" isError={true} errorMessage='Error message' isClearable floatingLabel='Your Email'/>
+
+<DemoBasicEmailInput theme="alternative" readOnly value="bitas@example.com" isClearable floatingLabel='Your Email'/>
+<DemoDomainEmailInput theme="alternative" readOnly value="bitas" isClearable floatingLabel='Your Email'/>
+
+<DemoBasicEmailInput theme="alternative" disabled isClearable floatingLabel='Your Email'/>
+<DemoDomainEmailInput theme="alternative" disabled isClearable floatingLabel='Your Email'/>
+
+## Size Medium
+
+<DemoBasicEmailInput theme="alternative" inputSize="md"/>
+<DemoDomainEmailInput theme="alternative" inputSize="md"/>
+<DemoDomainEmailInput theme="alternative" inputSize="md" domain="@gmail.com"/>
+</div>
