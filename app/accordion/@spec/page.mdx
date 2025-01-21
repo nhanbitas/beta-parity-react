@@ -1,6 +1,8 @@
 import Badge from '@libComponents/Badge';
 import Image from '@components/Showcase/ImageSection';
+import Component from '@components/Showcase/ComponentSection';
 import imageSrc from '@public/images/accordion';
+import * as Demo from "../@dev/demo-components"
 
 :::callout[note]
 A component that organizes content into vertically stacked collapsible and expandable sections.
@@ -78,6 +80,10 @@ A component that organizes content into vertically stacked collapsible and expan
 
 #### Display states
 
+<Component>
+  <Demo.BasicAccordion/>
+</Component>
+
 ##### Collapsed
 
 - The content area of the accordion item is hidden, indicated by the down-chevron or plus icon.
@@ -93,6 +99,9 @@ A component that organizes content into vertically stacked collapsible and expan
 - **Contained**: The accordion's boundary is defined by its border.
 - **Flush**: The accordion is borderless and has no background, allowing it to fit fully in parent containers.
 
+<Image src={imageSrc.contained.src} alt='contained' />
+<Image src={imageSrc.flush.src} alt='flush' />
+
 ##### Sublabel
 
 - A sublabel can be displayed below the accordion item label to provide additional context.
@@ -101,6 +110,8 @@ A component that organizes content into vertically stacked collapsible and expan
 
 - **Left**: A plus icon and a minus icon are placed to the left of the accordion item title, representing collapsed and expanded states respectively.
 - **Right**: An up-chevron icon and a down-chevron icon are placed to the right of the accordion item title, representing collapsed and expanded states respectively.
+
+<Image src={imageSrc.icon.src} alt='icon' />
 
 ## Behaviors
 

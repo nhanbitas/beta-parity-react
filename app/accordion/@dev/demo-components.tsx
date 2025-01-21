@@ -29,6 +29,8 @@ export const accordionItems = [
   }
 ];
 
+export const BasicAccordion = (props: Props) => <Accordion items={accordionItems} />;
+
 export const DemoSingle = (props: Props) => {
   return (
     <>
