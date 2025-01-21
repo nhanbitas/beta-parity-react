@@ -169,11 +169,16 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     };
 
     const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-      // setIsFocused(false); ** REMOVE
-      onBlur && onBlur(e);
+      // Because right or left element can be focused (not mount permanently), we need check relatedTarget is inside wrapper for maintain focus
+      const relatedTarget = e.relatedTarget as HTMLElement; // New focus element
+      if (!relatedTarget || !(wrapperRef.current as HTMLElement | null)?.contains(relatedTarget)) {
+        setIsFocused(false);
+        onBlur && onBlur(e);
+      }
     };
 
     const wrapperRef = useOutsideClick(() => {
+      // Because right or left element can be focused (not mount permanently), we need handle outside click for maintain focus
       // should check (floatingLabel && isFocused) for performance
       if (floatingLabel && isFocused) {
         setIsFocused(false);
@@ -222,6 +227,8 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         className={classNames(addedClassname, wrapperClassName)}
         rightElement={RightInputActions}
         leftElement={leftIcon && <span className='input-icon'>{leftIcon}</span>}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
         {...restWrapperProps}
       >
         {floatingLabel &&
@@ -243,8 +250,6 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
           ref={combinedRef}
           value={value !== undefined && !disabled ? value : !disabled ? currentValue : ''}
           onChange={handleChange}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
           disabled={disabled}
           readOnly={readOnly}
           {...props}
