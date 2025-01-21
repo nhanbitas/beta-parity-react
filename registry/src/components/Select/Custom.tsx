@@ -341,9 +341,8 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
     };
 
     const keyDownHandler = useKeyboard(['Enter', ' '], (e: any) => {
-      e.preventDefault();
       if (disabled) return;
-      setIsSelectOpen((pre) => !pre);
+      e.target === selectInputRef.current && setIsSelectOpen((pre) => !pre);
       onKeyDown?.(e as React.KeyboardEvent<HTMLDivElement>);
     });
 
