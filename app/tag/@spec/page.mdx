@@ -1,3 +1,88 @@
-:::callout[experimental]
-This is **experimental** layout and may change in the future.
+:::callout[note]
+An element used for representing user-authored content.
 :::
+
+## Design checklist
+
+| Status | Item                                 | Description                                                                                                                                                                                                                       |
+| ------ | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ✔️     | Anatomy                              | Includes descriptions of all parts of the component and its major variants.                                                                                                                                                       |
+| ✔️     | States                               | Includes all applicable interaction, display and value states.                                                                                                                                                                    |
+| ✔️     | Options                              | Includes all relevant options (functional type, stylistic kind, semantic color, size, orientation, optional iconography, decorations, etc.)                                                                                       |
+| ✔️     | Color schemes                        | Includes both light and dark color schemes.                                                                                                                                                                                       |
+|        | Behaviors                            | Includes descriptions of behaviors related to other components and responsive behaviors related to media breakpoints, size (minimums and maximums), orientation, alignment, position and layout (wrapping, truncation, overflow). |
+| ✔️     | Accessibility: Keyboard interactions | Includes descriptions of all keyboard interactions, focus indication and navigation order.                                                                                                                                        |
+|        | Accessibility: Text contrast         | Text meets a contrast ratio of at least 4.5:1 for small text and 3:1 for large text (WCAG 2.0 1.4.3) and/or a lightness contrast value of at least Lc 75 for standard text and Lc 60 for large text (APCA).                       |
+|        | Accessibility: UI component contrast | Visual information required to identify states and boundaries of active UI components has a contrast ratio against adjacent colors of at least 3:1 (WCAG 2.1 1.4.11) and/or a lightness contrast value of at least Lc 60 (APCA).  |
+|        | Usage guidelines                     | Includes a list of recommended and discouraged usages.                                                                                                                                                                            |
+|        | Content guidelines                   | Includes content standards and guidelines for how to write or format in-product content for the component.                                                                                                                        |
+|        | Internationalization                 | Includes support for various locales and bi-directionality (RTL).                                                                                                                                                                 |
+|        | Design tokens                        | All design attributes (color, typography, layout, animation, etc.) are available as design tokens.                                                                                                                                |
+
+## Anatomy
+
+- **Container**: The outermost encompassing element.
+- **Label**: The text that describes the tag’s content.
+- **Icon**: An optional visual element that accompanies the tag’s content.
+- **Avatar**: An optional visual representation of a user or entity associated with the tag.
+- **Remove button**: An optional button that removes the tag from the interface.
+
+## States
+
+### Container
+
+#### Interaction states
+
+##### Focused
+
+- The container is focused via keyboard interaction, indicated by a ring outline.
+
+### Remove button
+
+This sub-component has the same interaction states as [[Button]] except for the pending state.
+
+## Options
+
+##### Kind
+
+- **Outlined**: Medium visual emphasis with a border and a light color fill.
+- **Glass**: Medium-low emphasis with a translucent, frosted appearance.
+
+##### Color
+
+- Tags are available in the default neutral color, the theme's accent color and any color derived from a valid color code.
+
+##### Size
+
+- Tags are available in small, medium, and large sizes.
+- Medium is the default tag size.
+
+##### Icon
+
+- An icons can be optionally added next to the tag label to provide additional visual context.
+
+##### Avatar
+
+- An avatar can be optionally added next to the tag label to represent a user or entity associated with the tag.
+
+##### Remove button
+
+- A remove button is included by default to the right of the tag.
+- Disabling the remove button also removes it from the tag.
+
+##### Focusable container
+
+- The container can optionally be allowed to receive keyboard focus.
+
+## Behaviors
+
+> [!missing] Section is incomplete
+
+## Keyboard interactions
+
+| Key                                    | Focus              | Interaction                                                                                                                                                                                      |
+| -------------------------------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| <kbd>Tab</kbd>                         | Focusable elements | Moves focus in the forward sequence, as follows: previous external element → container → remove button → next external element.<br></br>Non-focusable elements are skipped in the above sequence.|
+| <kbd>Shift</kbd>+<kbd>Tab</kbd>        | Focusable elements | Moves focus in the reverse sequence.                                                                                                                                                             |
+| <kbd>Del</kbd> or <kbd>Backspace</kbd> | Container          | Removes the tag from the user interface.                                                                                                                                                         |
+| <kbd>Space</kbd> or <kbd>Enter</kbd>   | Remove button      | Removes the tag from the user interface.                                                                                                                                                         |
