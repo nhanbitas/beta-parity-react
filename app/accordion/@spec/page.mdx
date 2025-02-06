@@ -8,6 +8,8 @@ import * as Demo from "../@dev/demo-components"
 A component that organizes content into vertically stacked collapsible and expandable sections.
 :::
 
+<Image src={imageSrc.accordion.src} alt='accordion' />
+
 ## Design checklist
 
 | Status | Item                                 | Description                                                                                                                                                                                                                       |
@@ -32,6 +34,9 @@ A component that organizes content into vertically stacked collapsible and expan
 - **Container**: The outermost encompassing element.
 - **Divider**: A horizontal line that separates accordion items.
 
+<Image src={imageSrc.anatomy1.src} alt='anatomy1' />
+
+
 ### Accordion item
 
 - **Container**: The outermost encompassing element.
@@ -41,6 +46,8 @@ A component that organizes content into vertically stacked collapsible and expan
 - **Expanded/collapsed indicator**: An icon that visually represents the expanded or collapsed state of the accordion item.
 - **Content area**: The area that contains the content of the accordion item.
 - **Content body**: The content text of the accordion item.
+
+<Image src={imageSrc.anatomy2.src} alt='anatomy2' style={{objectFit: 'contain', objectPosition: 'center'}}/>
 
 ## States
 
@@ -84,9 +91,14 @@ A component that organizes content into vertically stacked collapsible and expan
 
 - The content area of the accordion item is hidden, indicated by the down-chevron or plus icon.
 
+<Image src={imageSrc.collapsed.src} alt='collapsed' />
+
 ##### Expanded
 
 - The content area of the accordion item is visible, indicated by the up-chevron or minus icon.
+
+<Image src={imageSrc.expanded.src} alt='expanded' />
+
 
 <Component>
   <Demo.BasicAccordion/>
@@ -105,6 +117,8 @@ A component that organizes content into vertically stacked collapsible and expan
 ##### Sublabel
 
 - A sublabel can be displayed below the accordion item label to provide additional context.
+
+<Image src={imageSrc.sublabel.src} alt='sublabel' />
 
 ##### Indicator side
 

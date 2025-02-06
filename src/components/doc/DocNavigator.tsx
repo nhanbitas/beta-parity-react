@@ -35,7 +35,7 @@ const NavigatorComponent = (props: Props) => {
         </Button>
       </nav>
       {currentTab === 'dev' && dev}
-      {currentTab === 'spec' && spec}
+      {currentTab === 'spec' && <div className='spec-content'>{spec}</div>}
     </>
   );
 };
