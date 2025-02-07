@@ -1,8 +1,14 @@
+import Badge from '@libComponents/Badge';
+import Image from '@components/showcase/ImageSection';
+import Component from '@components/showcase/ComponentSection';
+import imageSrc from '@public/images/button';
+
 
 :::callout[note]
 An element that performs an action when clicked.
 :::
 
+<Image src={imageSrc.button.src} alt='button' />
 
 ## Design checklist
 
@@ -27,6 +33,8 @@ An element that performs an action when clicked.
 - **Icon**: An optional visual element that represents the button.
 - **Label**: The text that describes the action the button performs.
 
+<Image src={imageSrc.anatomy.src} alt='anatomy' />
+
 ## States
 
 #### Interaction states
@@ -35,26 +43,38 @@ An element that performs an action when clicked.
 
 - Interaction with the button is available.
 
+<Image src={imageSrc.enabled.src} alt='enabled' />
+
 ##### Hovered
 
 - The cursor is currently positioned over the button, indicated by a different color shade and the pointer cursor.
+
+<Image src={imageSrc.hovered.src} alt='hovered' />
 
 ##### Pressed
 
 - The button is being clicked on, indicated by a different color shade.
 
+<Image src={imageSrc.pressed.src} alt='pressed' />
+
 ##### Focused
 
 - The button is focused via keyboard interaction, indicated by a ring outline.
+
+<Image src={imageSrc.focused.src} alt='focused' />
 
 ##### Disabled
 
 - Interaction with the button is disallowed, indicated by a muted appearance and the disallowed cursor.
 
+<Image src={imageSrc.disabled.src} alt='disabled' />
+
 ##### Pending
 
 - Action assigned to the button is being processed, indicated by an animated spinner and optional labeling.
 - No further interaction is available to the user while the button is in this state.
+
+<Image src={imageSrc.pending.src} alt='pending' />
 
 ## Options
 
@@ -65,21 +85,33 @@ An element that performs an action when clicked.
 - **Glass**: Medium-low visual emphasis with a translucent, frosted appearance.
 - **Ghost**: Low visual emphasis with a transparent background.
 
+<Image src={imageSrc.kind.src} alt='kind' />
+
 ##### Color
 
 - Buttons are neutral-colored or achromatic by default.
 - An accent color can be chosen via theme configuration and applied to buttons for enhanced visual emphasis.
 - For actions that are negative or destructive in nature, an adverse color can be used.
 
+<Image src={imageSrc.color.src} alt='color' />
+<Image src={imageSrc.color2.src} alt='color2' />
+<Image src={imageSrc.color3.src} alt='color3' />
+
 ##### Size
 
 - Small, medium and large buttons differ in container height, minimum width and padding.
 - Medium is the default button size.
 
+<Image src={imageSrc.sizeSmall.src} alt='sizeSmall' />
+<Image src={imageSrc.sizeMedium.src} alt='sizeMedium' />
+<Image src={imageSrc.sizeLarge.src} alt='sizeLarge' />
+
 ##### Icon
 
 - An icon can be added next to the button label.
 - Buttons may also be icon-only.
+
+<Image src={imageSrc.icon.src} alt='icon' />
 
 ## Behaviors
 
@@ -87,11 +119,17 @@ An element that performs an action when clicked.
 
 - A minimum width of 2.25× the height of the button ensures that buttons with short labels maintain identifiable shape.
 
+<Image src={imageSrc.minWidth.src} alt='minWidth' />
+
 ##### Alignment
 
 - Content within the button container is always center-aligned.
 - The label text is also center-justified.
 
+<Image src={imageSrc.alignment.src} alt='alignment' />
+
 ##### Text overflow
 
 - When the button label is too long for the horizontal space available, it wraps to form another line.
+
+<Image src={imageSrc.overflow.src} alt='overflow' />

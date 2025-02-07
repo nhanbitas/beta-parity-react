@@ -1,3 +1,4 @@
+import badge from './badge.png';
 import anatomy from './anatomy.png';
 import anatomyDot from './anatomy-dot.png';
 import color from './color.png';
@@ -10,9 +11,9 @@ import overflow from './overflow.png';
 import sizeSmall from './size-small.png';
 import sizeMedium from './size-medium.png';
 import sizeLarge from './size-large.png';
-import sizes from './sizes.png';
 
 export default {
+  badge,
   anatomy,
   anatomyDot,
   color,
@@ -24,6 +25,5 @@ export default {
   overflow,
   sizeSmall,
   sizeMedium,
-  sizeLarge,
-  sizes
+  sizeLarge
 };
