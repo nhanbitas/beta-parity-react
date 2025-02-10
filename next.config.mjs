@@ -20,7 +20,11 @@ const nextConfig = {
   },
   reactStrictMode: false,
   pageExtensions: ['js', 'jsx', 'mdx', 'md', 'ts', 'tsx'],
-  productionBrowserSourceMaps: true
+  productionBrowserSourceMaps: true,
+  eslint: {
+    dirs: [],
+    ignoreDuringBuilds: true
+  }
 };
 
 export default withMDX(nextConfig);

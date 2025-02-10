@@ -5,8 +5,8 @@
   font-weight: 100;
   font-display: swap;
   src:
-    url('./plex/IBM-Plex-Sans/fonts/complete/woff2/IBMPlexSans-Thin.woff2') format('woff2'),
-    url('./plex/IBM-Plex-Sans/fonts/complete/woff/IBMPlexSans-Thin.woff') format('woff');
+    url('./_plex/IBM-Plex-Sans/fonts/complete/woff2/IBMPlexSans-Thin.woff2') format('woff2'),
+    url('./_plex/IBM-Plex-Sans/fonts/complete/woff/IBMPlexSans-Thin.woff') format('woff');
 }
 
 @font-face {
@@ -15,8 +15,8 @@
   font-weight: 100;
   font-display: swap;
   src:
-    url('./plex/IBM-Plex-Sans/fonts/complete/woff2/IBMPlexSans-ThinItalic.woff2') format('woff2'),
-    url('./plex/IBM-Plex-Sans/fonts/complete/woff/IBMPlexSans-ThinItalic.woff') format('woff');
+    url('./_plex/IBM-Plex-Sans/fonts/complete/woff2/IBMPlexSans-ThinItalic.woff2') format('woff2'),
+    url('./_plex/IBM-Plex-Sans/fonts/complete/woff/IBMPlexSans-ThinItalic.woff') format('woff');
 }
 
 @font-face {
@@ -25,8 +25,8 @@
   font-weight: 200;
   font-display: swap;
   src:
-    url('./plex/IBM-Plex-Sans/fonts/complete/woff2/IBMPlexSans-ExtraLight.woff2') format('woff2'),
-    url('./plex/IBM-Plex-Sans/fonts/complete/woff/IBMPlexSans-ExtraLight.woff') format('woff');
+    url('./_plex/IBM-Plex-Sans/fonts/complete/woff2/IBMPlexSans-ExtraLight.woff2') format('woff2'),
+    url('./_plex/IBM-Plex-Sans/fonts/complete/woff/IBMPlexSans-ExtraLight.woff') format('woff');
 }
 
 @font-face {
@@ -35,8 +35,8 @@
   font-weight: 200;
   font-display: swap;
   src:
-    url('./plex/IBM-Plex-Sans/fonts/complete/woff2/IBMPlexSans-ExtraLightItalic.woff2') format('woff2'),
-    url('./plex/IBM-Plex-Sans/fonts/complete/woff/IBMPlexSans-ExtraLightItalic.woff') format('woff');
+    url('./_plex/IBM-Plex-Sans/fonts/complete/woff2/IBMPlexSans-ExtraLightItalic.woff2') format('woff2'),
+    url('./_plex/IBM-Plex-Sans/fonts/complete/woff/IBMPlexSans-ExtraLightItalic.woff') format('woff');
 }
 
 @font-face {
@@ -45,8 +45,8 @@
   font-weight: 300;
   font-display: swap;
   src:
-    url('./plex/IBM-Plex-Sans/fonts/complete/woff2/IBMPlexSans-Light.woff2') format('woff2'),
-    url('./plex/IBM-Plex-Sans/fonts/complete/woff/IBMPlexSans-Light.woff') format('woff');
+    url('./_plex/IBM-Plex-Sans/fonts/complete/woff2/IBMPlexSans-Light.woff2') format('woff2'),
+    url('./_plex/IBM-Plex-Sans/fonts/complete/woff/IBMPlexSans-Light.woff') format('woff');
 }
 
 @font-face {
@@ -55,8 +55,8 @@
   font-weight: 300;
   font-display: swap;
   src:
-    url('./plex/IBM-Plex-Sans/fonts/complete/woff2/IBMPlexSans-LightItalic.woff2') format('woff2'),
-    url('./plex/IBM-Plex-Sans/fonts/complete/woff/IBMPlexSans-LightItalic.woff') format('woff');
+    url('./_plex/IBM-Plex-Sans/fonts/complete/woff2/IBMPlexSans-LightItalic.woff2') format('woff2'),
+    url('./_plex/IBM-Plex-Sans/fonts/complete/woff/IBMPlexSans-LightItalic.woff') format('woff');
 }
 
 @font-face {
@@ -65,8 +65,8 @@
   font-weight: 400;
   font-display: swap;
   src:
-    url('./plex/IBM-Plex-Sans/fonts/complete/woff2/IBMPlexSans-Regular.woff2') format('woff2'),
-    url('./plex/IBM-Plex-Sans/fonts/complete/woff/IBMPlexSans-Regular.woff') format('woff');
+    url('./_plex/IBM-Plex-Sans/fonts/complete/woff2/IBMPlexSans-Regular.woff2') format('woff2'),
+    url('./_plex/IBM-Plex-Sans/fonts/complete/woff/IBMPlexSans-Regular.woff') format('woff');
 }
 
 @font-face {
@@ -75,8 +75,8 @@
   font-weight: 400;
   font-display: swap;
   src:
-    url('./plex/IBM-Plex-Sans/fonts/complete/woff2/IBMPlexSans-Italic.woff2') format('woff2'),
-    url('./plex/IBM-Plex-Sans/fonts/complete/woff/IBMPlexSans-Italic.woff') format('woff');
+    url('./_plex/IBM-Plex-Sans/fonts/complete/woff2/IBMPlexSans-Italic.woff2') format('woff2'),
+    url('./_plex/IBM-Plex-Sans/fonts/complete/woff/IBMPlexSans-Italic.woff') format('woff');
 }
 
 @font-face {
@@ -85,8 +85,8 @@
   font-weight: 450;
   font-display: swap;
   src:
-    url('./plex/IBM-Plex-Sans/fonts/complete/woff2/IBMPlexSans-Text.woff2') format('woff2'),
-    url('./plex/IBM-Plex-Sans/fonts/complete/woff/IBMPlexSans-Text.woff') format('woff');
+    url('./_plex/IBM-Plex-Sans/fonts/complete/woff2/IBMPlexSans-Text.woff2') format('woff2'),
+    url('./_plex/IBM-Plex-Sans/fonts/complete/woff/IBMPlexSans-Text.woff') format('woff');
 }
 
 @font-face {
@@ -95,8 +95,8 @@
   font-weight: 450;
   font-display: swap;
   src:
-    url('./plex/IBM-Plex-Sans/fonts/complete/woff2/IBMPlexSans-TextItalic.woff2') format('woff2'),
-    url('./plex/IBM-Plex-Sans/fonts/complete/woff/IBMPlexSans-TextItalic.woff') format('woff');
+    url('./_plex/IBM-Plex-Sans/fonts/complete/woff2/IBMPlexSans-TextItalic.woff2') format('woff2'),
+    url('./_plex/IBM-Plex-Sans/fonts/complete/woff/IBMPlexSans-TextItalic.woff') format('woff');
 }
 
 @font-face {
@@ -105,8 +105,8 @@
   font-weight: 500;
   font-display: swap;
   src:
-    url('./plex/IBM-Plex-Sans/fonts/complete/woff2/IBMPlexSans-Medium.woff2') format('woff2'),
-    url('./plex/IBM-Plex-Sans/fonts/complete/woff/IBMPlexSans-Medium.woff') format('woff');
+    url('./_plex/IBM-Plex-Sans/fonts/complete/woff2/IBMPlexSans-Medium.woff2') format('woff2'),
+    url('./_plex/IBM-Plex-Sans/fonts/complete/woff/IBMPlexSans-Medium.woff') format('woff');
 }
 
 @font-face {
@@ -115,8 +115,8 @@
   font-weight: 500;
   font-display: swap;
   src:
-    url('./plex/IBM-Plex-Sans/fonts/complete/woff2/IBMPlexSans-MediumItalic.woff2') format('woff2'),
-    url('./plex/IBM-Plex-Sans/fonts/complete/woff/IBMPlexSans-MediumItalic.woff') format('woff');
+    url('./_plex/IBM-Plex-Sans/fonts/complete/woff2/IBMPlexSans-MediumItalic.woff2') format('woff2'),
+    url('./_plex/IBM-Plex-Sans/fonts/complete/woff/IBMPlexSans-MediumItalic.woff') format('woff');
 }
 
 @font-face {
@@ -125,8 +125,8 @@
   font-weight: 600;
   font-display: swap;
   src:
-    url('./plex/IBM-Plex-Sans/fonts/complete/woff2/IBMPlexSans-SemiBold.woff2') format('woff2'),
-    url('./plex/IBM-Plex-Sans/fonts/complete/woff/IBMPlexSans-SemiBold.woff') format('woff');
+    url('./_plex/IBM-Plex-Sans/fonts/complete/woff2/IBMPlexSans-SemiBold.woff2') format('woff2'),
+    url('./_plex/IBM-Plex-Sans/fonts/complete/woff/IBMPlexSans-SemiBold.woff') format('woff');
 }
 
 @font-face {
@@ -135,8 +135,8 @@
   font-weight: 600;
   font-display: swap;
   src:
-    url('./plex/IBM-Plex-Sans/fonts/complete/woff2/IBMPlexSans-SemiBoldItalic.woff2') format('woff2'),
-    url('./plex/IBM-Plex-Sans/fonts/complete/woff/IBMPlexSans-SemiBoldItalic.woff') format('woff');
+    url('./_plex/IBM-Plex-Sans/fonts/complete/woff2/IBMPlexSans-SemiBoldItalic.woff2') format('woff2'),
+    url('./_plex/IBM-Plex-Sans/fonts/complete/woff/IBMPlexSans-SemiBoldItalic.woff') format('woff');
 }
 
 @font-face {
@@ -145,8 +145,8 @@
   font-weight: 700;
   font-display: swap;
   src:
-    url('./plex/IBM-Plex-Sans/fonts/complete/woff2/IBMPlexSans-Bold.woff2') format('woff2'),
-    url('./plex/IBM-Plex-Sans/fonts/complete/woff/IBMPlexSans-Bold.woff') format('woff');
+    url('./_plex/IBM-Plex-Sans/fonts/complete/woff2/IBMPlexSans-Bold.woff2') format('woff2'),
+    url('./_plex/IBM-Plex-Sans/fonts/complete/woff/IBMPlexSans-Bold.woff') format('woff');
 }
 
 @font-face {
@@ -155,8 +155,8 @@
   font-weight: 700;
   font-display: swap;
   src:
-    url('./plex/IBM-Plex-Sans/fonts/complete/woff2/IBMPlexSans-BoldItalic.woff2') format('woff2'),
-    url('./plex/IBM-Plex-Sans/fonts/complete/woff/IBMPlexSans-BoldItalic.woff') format('woff');
+    url('./_plex/IBM-Plex-Sans/fonts/complete/woff2/IBMPlexSans-BoldItalic.woff2') format('woff2'),
+    url('./_plex/IBM-Plex-Sans/fonts/complete/woff/IBMPlexSans-BoldItalic.woff') format('woff');
 }
 
 @font-face {
@@ -165,8 +165,8 @@
   font-weight: 100;
   font-display: swap;
   src:
-    url('./plex/IBM-Plex-Mono/fonts/complete/woff2/IBMPlexMono-Thin.woff2') format('woff2'),
-    url('./plex/IBM-Plex-Mono/fonts/complete/woff/IBMPlexMono-Thin.woff') format('woff');
+    url('/_plex/IBM-Plex-Mono/fonts/complete/woff2/IBMPlexMono-Thin.woff2') format('woff2'),
+    url('/_plex/IBM-Plex-Mono/fonts/complete/woff/IBMPlexMono-Thin.woff') format('woff');
 }
 
 @font-face {
@@ -175,8 +175,8 @@
   font-weight: 100;
   font-display: swap;
   src:
-    url('./plex/IBM-Plex-Mono/fonts/complete/woff2/IBMPlexMono-ThinItalic.woff2') format('woff2'),
-    url('./plex/IBM-Plex-Mono/fonts/complete/woff/IBMPlexMono-ThinItalic.woff') format('woff');
+    url('/_plex/IBM-Plex-Mono/fonts/complete/woff2/IBMPlexMono-ThinItalic.woff2') format('woff2'),
+    url('/_plex/IBM-Plex-Mono/fonts/complete/woff/IBMPlexMono-ThinItalic.woff') format('woff');
 }
 
 @font-face {
@@ -185,8 +185,8 @@
   font-weight: 200;
   font-display: swap;
   src:
-    url('./plex/IBM-Plex-Mono/fonts/complete/woff2/IBMPlexMono-ExtraLight.woff2') format('woff2'),
-    url('./plex/IBM-Plex-Mono/fonts/complete/woff/IBMPlexMono-ExtraLight.woff') format('woff');
+    url('/_plex/IBM-Plex-Mono/fonts/complete/woff2/IBMPlexMono-ExtraLight.woff2') format('woff2'),
+    url('/_plex/IBM-Plex-Mono/fonts/complete/woff/IBMPlexMono-ExtraLight.woff') format('woff');
 }
 
 @font-face {
@@ -195,8 +195,8 @@
   font-weight: 200;
   font-display: swap;
   src:
-    url('./plex/IBM-Plex-Mono/fonts/complete/woff2/IBMPlexMono-ExtraLightItalic.woff2') format('woff2'),
-    url('./plex/IBM-Plex-Mono/fonts/complete/woff/IBMPlexMono-ExtraLightItalic.woff') format('woff');
+    url('/_plex/IBM-Plex-Mono/fonts/complete/woff2/IBMPlexMono-ExtraLightItalic.woff2') format('woff2'),
+    url('/_plex/IBM-Plex-Mono/fonts/complete/woff/IBMPlexMono-ExtraLightItalic.woff') format('woff');
 }
 
 @font-face {
@@ -205,8 +205,8 @@
   font-weight: 300;
   font-display: swap;
   src:
-    url('./plex/IBM-Plex-Mono/fonts/complete/woff2/IBMPlexMono-Light.woff2') format('woff2'),
-    url('./plex/IBM-Plex-Mono/fonts/complete/woff/IBMPlexMono-Light.woff') format('woff');
+    url('/_plex/IBM-Plex-Mono/fonts/complete/woff2/IBMPlexMono-Light.woff2') format('woff2'),
+    url('/_plex/IBM-Plex-Mono/fonts/complete/woff/IBMPlexMono-Light.woff') format('woff');
 }
 
 @font-face {
@@ -215,8 +215,8 @@
   font-weight: 300;
   font-display: swap;
   src:
-    url('./plex/IBM-Plex-Mono/fonts/complete/woff2/IBMPlexMono-LightItalic.woff2') format('woff2'),
-    url('./plex/IBM-Plex-Mono/fonts/complete/woff/IBMPlexMono-LightItalic.woff') format('woff');
+    url('/_plex/IBM-Plex-Mono/fonts/complete/woff2/IBMPlexMono-LightItalic.woff2') format('woff2'),
+    url('/_plex/IBM-Plex-Mono/fonts/complete/woff/IBMPlexMono-LightItalic.woff') format('woff');
 }
 
 @font-face {
@@ -225,8 +225,8 @@
   font-weight: 400;
   font-display: swap;
   src:
-    url('./plex/IBM-Plex-Mono/fonts/complete/woff2/IBMPlexMono-Regular.woff2') format('woff2'),
-    url('./plex/IBM-Plex-Mono/fonts/complete/woff/IBMPlexMono-Regular.woff') format('woff');
+    url('/_plex/IBM-Plex-Mono/fonts/complete/woff2/IBMPlexMono-Regular.woff2') format('woff2'),
+    url('/_plex/IBM-Plex-Mono/fonts/complete/woff/IBMPlexMono-Regular.woff') format('woff');
 }
 
 @font-face {
@@ -235,8 +235,8 @@
   font-weight: 400;
   font-display: swap;
   src:
-    url('./plex/IBM-Plex-Mono/fonts/complete/woff2/IBMPlexMono-Italic.woff2') format('woff2'),
-    url('./plex/IBM-Plex-Mono/fonts/complete/woff/IBMPlexMono-Italic.woff') format('woff');
+    url('/_plex/IBM-Plex-Mono/fonts/complete/woff2/IBMPlexMono-Italic.woff2') format('woff2'),
+    url('/_plex/IBM-Plex-Mono/fonts/complete/woff/IBMPlexMono-Italic.woff') format('woff');
 }
 
 @font-face {
@@ -245,8 +245,8 @@
   font-weight: 450;
   font-display: swap;
   src:
-    url('./plex/IBM-Plex-Mono/fonts/complete/woff2/IBMPlexMono-Text.woff2') format('woff2'),
-    url('./plex/IBM-Plex-Mono/fonts/complete/woff/IBMPlexMono-Text.woff') format('woff');
+    url('/_plex/IBM-Plex-Mono/fonts/complete/woff2/IBMPlexMono-Text.woff2') format('woff2'),
+    url('/_plex/IBM-Plex-Mono/fonts/complete/woff/IBMPlexMono-Text.woff') format('woff');
 }
 
 @font-face {
@@ -255,8 +255,8 @@
   font-weight: 450;
   font-display: swap;
   src:
-    url('./plex/IBM-Plex-Mono/fonts/complete/woff2/IBMPlexMono-TextItalic.woff2') format('woff2'),
-    url('./plex/IBM-Plex-Mono/fonts/complete/woff/IBMPlexMono-TextItalic.woff') format('woff');
+    url('/_plex/IBM-Plex-Mono/fonts/complete/woff2/IBMPlexMono-TextItalic.woff2') format('woff2'),
+    url('/_plex/IBM-Plex-Mono/fonts/complete/woff/IBMPlexMono-TextItalic.woff') format('woff');
 }
 
 @font-face {
@@ -265,8 +265,8 @@
   font-weight: 500;
   font-display: swap;
   src:
-    url('./plex/IBM-Plex-Mono/fonts/complete/woff2/IBMPlexMono-Medium.woff2') format('woff2'),
-    url('./plex/IBM-Plex-Mono/fonts/complete/woff/IBMPlexMono-Medium.woff') format('woff');
+    url('/_plex/IBM-Plex-Mono/fonts/complete/woff2/IBMPlexMono-Medium.woff2') format('woff2'),
+    url('/_plex/IBM-Plex-Mono/fonts/complete/woff/IBMPlexMono-Medium.woff') format('woff');
 }
 
 @font-face {
@@ -275,8 +275,8 @@
   font-weight: 500;
   font-display: swap;
   src:
-    url('./plex/IBM-Plex-Mono/fonts/complete/woff2/IBMPlexMono-MediumItalic.woff2') format('woff2'),
-    url('./plex/IBM-Plex-Mono/fonts/complete/woff/IBMPlexMono-MediumItalic.woff') format('woff');
+    url('/_plex/IBM-Plex-Mono/fonts/complete/woff2/IBMPlexMono-MediumItalic.woff2') format('woff2'),
+    url('/_plex/IBM-Plex-Mono/fonts/complete/woff/IBMPlexMono-MediumItalic.woff') format('woff');
 }
 
 @font-face {
@@ -285,8 +285,8 @@
   font-weight: 600;
   font-display: swap;
   src:
-    url('./plex/IBM-Plex-Mono/fonts/complete/woff2/IBMPlexMono-SemiBold.woff2') format('woff2'),
-    url('./plex/IBM-Plex-Mono/fonts/complete/woff/IBMPlexMono-SemiBold.woff') format('woff');
+    url('/_plex/IBM-Plex-Mono/fonts/complete/woff2/IBMPlexMono-SemiBold.woff2') format('woff2'),
+    url('/_plex/IBM-Plex-Mono/fonts/complete/woff/IBMPlexMono-SemiBold.woff') format('woff');
 }
 
 @font-face {
@@ -295,8 +295,8 @@
   font-weight: 600;
   font-display: swap;
   src:
-    url('./plex/IBM-Plex-Mono/fonts/complete/woff2/IBMPlexMono-SemiBoldItalic.woff2') format('woff2'),
-    url('./plex/IBM-Plex-Mono/fonts/complete/woff/IBMPlexMono-SemiBoldItalic.woff') format('woff');
+    url('/_plex/IBM-Plex-Mono/fonts/complete/woff2/IBMPlexMono-SemiBoldItalic.woff2') format('woff2'),
+    url('/_plex/IBM-Plex-Mono/fonts/complete/woff/IBMPlexMono-SemiBoldItalic.woff') format('woff');
 }
 
 @font-face {
@@ -305,8 +305,8 @@
   font-weight: 700;
   font-display: swap;
   src:
-    url('./plex/IBM-Plex-Mono/fonts/complete/woff2/IBMPlexMono-Bold.woff2') format('woff2'),
-    url('./plex/IBM-Plex-Mono/fonts/complete/woff/IBMPlexMono-Bold.woff') format('woff');
+    url('/_plex/IBM-Plex-Mono/fonts/complete/woff2/IBMPlexMono-Bold.woff2') format('woff2'),
+    url('/_plex/IBM-Plex-Mono/fonts/complete/woff/IBMPlexMono-Bold.woff') format('woff');
 }
 
 @font-face {
@@ -315,6 +315,6 @@
   font-weight: 700;
   font-display: swap;
   src:
-    url('./plex/IBM-Plex-Mono/fonts/complete/woff2/IBMPlexMono-BoldItalic.woff2') format('woff2'),
-    url('./plex/IBM-Plex-Mono/fonts/complete/woff/IBMPlexMono-BoldItalic.woff') format('woff');
+    url('/_plex/IBM-Plex-Mono/fonts/complete/woff2/IBMPlexMono-BoldItalic.woff2') format('woff2'),
+    url('/_plex/IBM-Plex-Mono/fonts/complete/woff/IBMPlexMono-BoldItalic.woff') format('woff');
 }

@@ -26,7 +26,8 @@
     "react-dom": "^18",
     "rehype-highlight": "^7.0.1",
     "remark-directive": "^3.0.0",
-    "remark-gfm": "^4.0.0"
+    "remark-gfm": "^4.0.0",
+    "sharp": "^0.33.5"
   },
   "devDependencies": {
     "@types/node": "^20",
