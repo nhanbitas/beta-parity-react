@@ -1,6 +1,15 @@
+import Badge from '@libComponents/Badge';
+import Image from '@components/showcase/ImageSection';
+import Component from '@components/showcase/ComponentSection';
+import  imageSrc from '@public/images/password-input';
+import * as Demo from "../@dev/demo-components"
+
+
 :::callout[note]
 An input field for entering sensitive strings such as passwords with masked visibility.
 :::
+
+<Image src={imageSrc.passwordInput.src} alt='password-input' />
 
 ## Design checklist
 
@@ -30,9 +39,13 @@ An input field for entering sensitive strings such as passwords with masked visi
 - **Password visibility button**: A button that toggles the visibility of the sensitive string.
 - **Clear button**: An optional button that clears the input value.
 
+<Image src={imageSrc.anatomy.src} alt='anatomy' />
+
 ### Floating label
 
 - **Label**: A text label that transitions from an in-field placeholder to a label above the field when focused or filled.
+
+<Image src={imageSrc.anatomy2.src} alt='anatomy2' />
 
 ## States
 
@@ -44,17 +57,33 @@ An input field for entering sensitive strings such as passwords with masked visi
 
 - Interaction with the input field is available.
 
+<Image src={imageSrc.enabled.src} alt='enabled' />
+
+<Image src={imageSrc.enabled2.src} alt='enabled2' />
+
 ##### Hovered
 
 - The cursor is currently positioned over the input field, indicated by the text cursor and a slightly different border color.
+
+<Image src={imageSrc.hovered.src} alt='hovered' />
+
+<Image src={imageSrc.hovered2.src} alt='hovered2' />
 
 ##### Focused
 
 - The input field is focused via keyboard or mouse interaction, indicated by a thickened border.
 
+<Image src={imageSrc.focused.src} alt='focused' />
+
+<Image src={imageSrc.focused2.src} alt='focused2' />
+
 ##### Read-only
 
 - The input field is not editable, but its content can still be selected.
+
+<Image src={imageSrc.readonly.src} alt='readonly' />
+
+<Image src={imageSrc.readonly2.src} alt='readonly2' />
 
 ##### Disabled
 
@@ -66,13 +95,25 @@ An input field for entering sensitive strings such as passwords with masked visi
 
 - The field does not contain any input value.
 
+<Image src={imageSrc.empty.src} alt='empty' />
+
+<Image src={imageSrc.empty2.src} alt='empty2' />
+
 ##### Filled
 
 - The field contains some input value.
 
+<Image src={imageSrc.filled.src} alt='filled' />
+
+<Image src={imageSrc.filled2.src} alt='filled2' />
+
 ##### Invalid
 
 - The input value does not meet specified criteria, indicated by a red border color and an error message.
+
+<Image src={imageSrc.invalid.src} alt='invalid' />
+
+<Image src={imageSrc.invalid2.src} alt='invalid2' />
 
 #### Display states
 
@@ -80,9 +121,17 @@ An input field for entering sensitive strings such as passwords with masked visi
 
 - The sensitive string is displayed as plaintext.
 
+<Image src={imageSrc.plaintext.src} alt='plaintext' />
+
+<Image src={imageSrc.plaintext2.src} alt='plaintext2' />
+
 ##### Masked
 
 - The sensitive string is masked by bullet characters.
+
+<Image src={imageSrc.masked.src} alt='masked' />
+
+<Image src={imageSrc.masked2.src} alt='masked2' />
 
 ### Password visibility button
 
@@ -92,16 +141,28 @@ An input field for entering sensitive strings such as passwords with masked visi
 
 This sub-component has the same states as [[Button]].
 
+<Image src={imageSrc.clearButton.src} alt='clearButton' />
+
+<Image src={imageSrc.clearButton2.src} alt='clearButton2' />
+
 ## Options
 
 ##### Layering
 
 - Password inputs are available in default or alternative [[Layering]].
 
+<Image src={imageSrc.layerDefault.src} alt='layerDefault' />
+
+<Image src={imageSrc.alternative.src} alt='alternative' />
+
 ##### Size
 
 - Small and medium password inputs differ in field height.
 - Medium is the default password input size.
+
+<Image src={imageSrc.small.src} alt='small' />
+
+<Image src={imageSrc.medium.src} alt='medium' />
 
 ##### Floating label
 
@@ -109,22 +170,34 @@ This sub-component has the same states as [[Button]].
 - The label is maximized within the middle of the field when the input value is empty and the input field has not received focus.
 - The label is minimized and floats towards the top when the input field receives focus.
 
+<Image src={imageSrc.floatingLabel.src} alt='floatingLabel' />
+
 ##### Placeholder
 
 - A placeholder text can be optionally displayed for the purpose of providing the user an input hint.
+
+<Image src={imageSrc.placeholder.src} alt='placeholder' />
 
 ##### Toggle visibility button
 
 - By default, password inputs include a toggle button which displays the sensitive string in plaintext when on and masks it when off.
 - Toggle visibility button can be optionally omitted.
 
+<Image src={imageSrc.toggleVisibilityButton.src} alt='toggleVisibilityButton' />
+
+<Image src={imageSrc.toggleVisibilityButton2.src} alt='toggleVisibilityButton2' />
+
 ##### Clear button
 
 - A clear button can be added to the input field to allow quick clearing of the entered value when clicked.
 
+<Image src={imageSrc.clearButtonOption.src} alt='clearButtonOption' />
+
 ##### Icon
 
 - An icon can be optionally added to the leftmost position within the input field.
+
+<Image src={imageSrc.icon.src} alt='icon' />
 
 ## Behaviors
 
