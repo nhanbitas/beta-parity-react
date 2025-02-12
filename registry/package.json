@@ -1,10 +1,10 @@
 {
   "name": "beta-parity-react",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Parity React Components",
   "main": "ui/index.js",
   "scripts": {
-    "dev": "npm run delete:ui && npm run postinstall && concurrently \"npm run dev:postcss\" \"npm run dev:babel\" \"npm run dev:ts\"",
+    "dev": "npm run delete:ui && concurrently \"npm run dev:postcss\" \"npm run dev:babel\" \"npm run dev:ts\"",
     "build": "npm run build:ui",
     "publish": "npm run publish:lib",
     "delete:ui": "rimraf ui",
@@ -14,10 +14,9 @@
     "build:postcss": "cross-env NODE_ENV=production npx postcss src/components/**/*.css --base src/components --dir ui",
     "build:babel": "npx babel src/components --out-dir ui --extensions \".ts,.tsx\"",
     "build:ts": "tsc --project tsconfig.lib.json",
-    "build:ui": "npm run postinstall && npm run build:postcss && npm run build:ts && npm run build:babel",
+    "build:ui": "npm run build:postcss && npm run build:ts && npm run build:babel",
     "install:package": "npm install",
-    "publish:lib": "npm run build && npm publish",
-    "postinstall": "patch-package"
+    "publish:lib": "npm run build && npm publish"
   },
   "keywords": [
     "react",
@@ -35,7 +34,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-flatpickr": "^3.10.13",
-    "react-number-format": "^5.4.0",
+    "react-number-format": "^5.4.3",
     "rimraf": "^6.0.1"
   },
   "devDependencies": {
@@ -55,7 +54,6 @@
     "cross-env": "^7.0.3",
     "css-loader": "^7.1.1",
     "cssnano": "^7.0.1",
-    "patch-package": "^8.0.0",
     "postcss": "^8.4.38",
     "postcss-cli": "^11.0.0",
     "postcss-import": "^16.1.0",

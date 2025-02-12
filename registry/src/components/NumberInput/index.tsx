@@ -131,7 +131,9 @@ export const NumberInput = React.forwardRef<HTMLInputElement, NumberInputProps &
     // overwrite clear function because react-format-number replace original input value and control value
     const handleClear = () => {
       onClear?.();
-      handleChange({ floatValue: '', value: '', floatValueAsString: '' });
+      // react-format-number 5.4.3 does not need to update inner value - current value in ClearButton
+      // Update inner value is updated by BaseInput component
+      // handleChange({ floatValue: '', value: '', floatValueAsString: '' });
     };
 
     // generate unit selector
