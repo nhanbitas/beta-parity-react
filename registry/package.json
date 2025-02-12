@@ -1,6 +1,6 @@
 {
   "name": "beta-parity-react",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Parity React Components",
   "main": "ui/index.js",
   "scripts": {
@@ -17,8 +17,6 @@
     "build:ui": "npm run postinstall && npm run build:postcss && npm run build:ts && npm run build:babel",
     "install:package": "npm install",
     "publish:lib": "npm run build && npm publish",
-    "dev:storybook": "storybook dev -p 6006",
-    "build:storybook": "storybook build",
     "postinstall": "patch-package"
   },
   "keywords": [
@@ -46,17 +44,6 @@
     "@babel/preset-env": "^7.24.5",
     "@babel/preset-react": "^7.24.1",
     "@babel/preset-typescript": "^7.24.1",
-    "@chromatic-com/storybook": "^1.5.0",
-    "@radix-ui/react-label": "^2.0.2",
-    "@storybook/addon-essentials": "^8.1.4",
-    "@storybook/addon-interactions": "^8.1.4",
-    "@storybook/addon-links": "^8.1.4",
-    "@storybook/addon-onboarding": "^8.1.4",
-    "@storybook/addon-webpack5-compiler-swc": "^1.0.2",
-    "@storybook/blocks": "^8.1.4",
-    "@storybook/react": "^8.1.4",
-    "@storybook/react-webpack5": "^8.1.4",
-    "@storybook/test": "^8.1.4",
     "@tailwindcss/container-queries": "^0.1.1",
     "@types/react": "^18.3.2",
     "@types/react-dom": "^18.3.0",
@@ -74,7 +61,6 @@
     "postcss-import": "^16.1.0",
     "postcss-nested": "^6.0.1",
     "postinstall-postinstall": "^2.1.0",
-    "storybook": "^8.1.4",
     "style-loader": "^4.0.0",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.4.5"
