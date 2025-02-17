@@ -1,5 +1,5 @@
 textarea.par-input.par-textarea {
-  @apply text-body-02 block h-auto w-full resize-y rounded-md px-4 py-3 pb-9;
+  @apply text-body-02 block h-auto min-h-[4.25rem] w-full resize-y rounded-md px-4 py-3 pb-9;
 }
 
 .par-textarea-footer {
