@@ -151,11 +151,14 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       if (disabled || readOnly) return;
       if (combinedRef.current) {
         setCurrentValue('');
+        combinedRef.current.value = '';
+        const event = new Event('change', { bubbles: true }) as unknown as React.ChangeEvent<HTMLInputElement>;
+        Object.defineProperty(event, 'target', { value: combinedRef.current, writable: false });
+        onChange && onChange(event);
         combinedRef.current.focus();
       }
 
       onClear && onClear();
-      onChange && onChange({ target: { value: '' } } as React.ChangeEvent<HTMLInputElement>);
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
