@@ -1,7 +1,15 @@
+import Badge from '@libComponents/Badge';
+import Image from '@components/showcase/ImageSection';
+import Component from '@components/showcase/ComponentSection';
+import imageSrc from '@public/images/switch';
+import * as Demo from "../@dev/demo-components"
+
 :::callout[note]
 An element that toggles between two binary options.
 :::
 
+
+<Image src={imageSrc.switchDefault.src} alt='switchDefault' />
 
 ## Design checklist
 
@@ -26,6 +34,8 @@ An element that toggles between two binary options.
 - **Thumb**: The element that moves along the track to indicate the current state.
 - **Icon**: An optional visual element on the thumb that represents the value state of the switch.
 
+<Image src={imageSrc.anatomy.src} alt='anatomy' />
+
 ## States
 
 #### Interaction states
@@ -34,19 +44,31 @@ An element that toggles between two binary options.
 
 - Interaction with the switch is available.
 
+<Image src={imageSrc.enabled.src} alt='enabled' />
+
 ##### Hovered
 
 - The cursor is currently positioned over the track or thumb, indicated by the pointer cursor and a dim halo surrounding the thumb.
+
+<Image src={imageSrc.hovered.src} alt='hovered' />
 
 ##### Pressed
 
 - The cursor is currently clicking on the track or thumb, indicated by the enlargement of the thumb.
 
+<Image src={imageSrc.pressed.src} alt='pressed' />
+
 ##### Focused
 
 - The switch is focused via keyboard interaction, indicated by a ring outline around the track.
 
+<Image src={imageSrc.focused.src} alt='focused' />
+
 ##### Disabled
+
+- Interaction with the switch is disallowed, indicated by a muted appearance and the disallowed cursor.
+
+<Image src={imageSrc.disabled.src} alt='disabled' />
 
 - Interaction with the switch is disallowed, indicated by a muted appearance and the disallowed cursor.
 
@@ -56,9 +78,13 @@ An element that toggles between two binary options.
 
 - The switch's unchecked state is indicated by the thumb being positioned on the left side of the track, the gray color track, and an optional dash icon.
 
+<Image src={imageSrc.unchecked.src} alt='unchecked' />
+
 ##### Checked
 
 - The switch's checked state is indicated by the thumb being positioned on the right side of the track, the green or accent color track, and an optional checkmark icon.
+
+<Image src={imageSrc.checked.src} alt='checked' />
 
 ## Options
 
@@ -67,14 +93,23 @@ An element that toggles between two binary options.
 - By default, in the checked state, the track and its optional icon are colored green.
 - The theme's accent color can be used instead to indicate the checked state.
 
+<Image src={imageSrc.defaultColor.src} alt='defaultColor' />
+
 ##### Size
 
 - Switches are available in small, medium and large sizes.
 - Small is the default switch size.
 
+<Image src={imageSrc.sizeSmall.src} alt='sizeSmall' />
+<Image src={imageSrc.sizeMedium.src} alt='sizeMedium' />
+<Image src={imageSrc.sizeLarge.src} alt='sizeLarge' />
+
 ##### Icon
 
 - Icons can be optionally displayed on the thumb to represent the value state of the switch.
+
+<Image src={imageSrc.iconOff.src} alt='iconOff' />
+<Image src={imageSrc.iconOn.src} alt='iconOn' />
 
 ## Behaviors
 
