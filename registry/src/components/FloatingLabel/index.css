@@ -8,7 +8,7 @@
   @apply z-foreground text-label-01 pointer-events-none absolute left-0 top-2 w-full transform truncate pl-[1.0625rem] text-left text-[var(--par-color-text-field-label)] transition-all;
 }
 
-.input-wrapper:has([disabled]) .floating-label,
+.input-wrapper:has(input[disabled]) .floating-label,
 *[disabled] ~ .floating-label,
 *:disabled ~ .floating-label,
 .floating-label[disabled] {

@@ -434,7 +434,7 @@ export const UnitSelector = ({
   }, [selectedUnit]);
 
   return !!unit ? (
-    <span className={`input-icon input-unit ${isSelectUnit ? 'selectable' : ''}`}>
+    <span className={`input-unit ${isSelectUnit ? 'selectable' : ''}`}>
       {isSelectUnit ? (
         <>
           <select
@@ -451,7 +451,7 @@ export const UnitSelector = ({
               </option>
             ))}
           </select>
-          <span className='unit-selector-arrow'>
+          <span className='unit-selector-arrow input-icon'>
             <ChevronsUpDown />
           </span>
         </>

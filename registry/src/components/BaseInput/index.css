@@ -185,6 +185,10 @@ fieldset:disabled {
   @apply pointer-events-none absolute right-0.5 top-0 flex h-full w-4 items-center justify-center;
 }
 
+.input-unit:has(select:disabled) .unit-selector-arrow {
+  @apply text-[var(--par-color-text-field-disabled)];
+}
+
 .input-unit.selectable > select:disabled,
 .input-unit.selectable > select.alternative:disabled {
   @apply cursor-not-allowed bg-transparent text-[var(--par-color-text-surface-item-disabled)];
@@ -272,7 +276,7 @@ textarea.par-input.error-state {
 
 .input-wrapper:has(input[disabled]) .input-icon,
 .input-wrapper:has(textarea[disabled]) .input-icon,
-.input-wrapper:has(select[disabled]) .input-icon,
+/* .input-wrapper:has(select[disabled]) .input-icon, */
 .input-wrapper:has([aria-disabled='true']) .input-icon {
   @apply text-[var(--par-color-text-field-alpha-placeholder)];
 }
