@@ -1,43 +1,40 @@
-import Badge from '@libComponents/Badge';
-import Image from '@components/showcase/ImageSection';
-import Component from '@components/showcase/ComponentSection';
+
 import * as Demo from "../@dev/demo-components"
 
-{/* Image => Image Example */}
-{/* Component => Component Example */}
 
-:::callout[note]
-A component that organizes content into vertically stacked collapsible and expandable sections.
-:::
+## Bar progress
 
+<Demo.DemoBasicProgress value={20}/>
+<Demo.DemoBasicProgress value={25} title="Title" helperText="Helper text"/>
 
-## Design checklist <span id="design-checklist"></span>
-{/* Design checklist specification */}
+## Circle progress
 
-| Status | Item                                 | Description                                                                                                                                                                                                                       |
-| ------ | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ✔️     | Anatomy                              | Includes descriptions of all parts of the component and its major variants.                                                                                                                                                       |
-| ✔️     | States                               | Includes all applicable interaction, display and value states.                                                                                                                                                                    |
-| ✔️     | Options                              | Includes all relevant options (functional type, stylistic kind, semantic color, size, orientation, optional iconography, decorations, etc.)                                                                                       |
-| ✔️     | Color schemes                        | Includes both light and dark color schemes.                                                                                                                                                                                       |
-|        | Behaviors                            | Includes descriptions of behaviors related to other components and responsive behaviors related to media breakpoints, size (minimums and maximums), orientation, alignment, position and layout (wrapping, truncation, overflow). |
+<Demo.DemoBasicProgress value={27} kind="circle"/>
+<Demo.DemoBasicProgress value={82} title="Title" helperText="Helper text" kind="circle"/>
 
-## Anatomy <span id="anatomy"></span>
-{/* Anatomy specification */}
+## Color 
 
-## States <span id="states"></span>
-{/* States specification */}
+<Demo.DemoBasicProgress value={25} title="Title" helperText="Helper text"/>
+<Demo.DemoBasicProgress value={82} title="Title" helperText="Helper text" kind="circle"/>
 
-## Options <span id="options"></span>
-{/* Options specification */}
+<Demo.DemoBasicProgress value={25} title="Title" helperText="Helper text" color="accent"/>
+<Demo.DemoBasicProgress value={82} title="Title" helperText="Helper text" kind="circle" color="accent"/>
 
-## Behaviors <span id="behaviors"></span>
-{/* Behaviors specification */}
+## State 
 
-## Changelog <span id="changelog"></span>
-{/* Changelog specification */}
+<Demo.DemoBasicProgress value={25} title="Title" helperText="Helper text"/>
+<Demo.DemoBasicProgress value={82} title="Title" helperText="Helper text" kind="circle"/>
 
-| Date       | Type                                                        | Description                                                                                 | Author      | Associated issue(s)  |
-|:-----------|:------------------------------------------------------------|---------------------------------------------------------------------------------------------|:------------|:---------------------|
-| YYYY-MM-DD | <Badge size='sm' kind='glass' color='cyan' label="new"/>    | Initial design                                                                              | Oanh Nguyen | PAR-52               |
+<Demo.DemoBasicProgress value={25} title="Title" helperText="Helper text" state="success"/>
+<Demo.DemoBasicProgress value={82} title="Title" helperText="Helper text" kind="circle" state="success"/>
 
+<Demo.DemoBasicProgress value={25} title="Title" helperText="Helper text" state="error"/>
+<Demo.DemoBasicProgress value={82} title="Title" helperText="Helper text" kind="circle" state="error"/>
+
+## Demo
+
+<Demo.DemoSuccessProgress/>
+<Demo.DemoSuccessProgress kind="circle"/>
+
+<Demo.DemoErrorProgress color="accent"/>
+<Demo.DemoErrorProgress color="accent" kind="circle"/>

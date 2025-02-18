@@ -1,0 +1,16 @@
+:root,
+[data-scheme='light'] {
+  --par-color-progress-thumb-active-neutral: var(--par-neutral-950);
+  --par-color-progress-thumb-active-accent: var(--par-accent-550);
+  --par-color-progress-thumb-success: var(--par-green-550);
+  --par-color-progress-thumb-error: var(--par-red-550);
+  --par-color-progress-track: var(--par-gray-100);
+}
+
+[data-scheme='dark'] {
+  --par-color-progress-thumb-active-neutral: var(--par-neutral-200);
+  --par-color-progress-thumb-active-accent: var(--par-accent-200);
+  --par-color-progress-thumb-success: var(--par-green-200);
+  --par-color-progress-thumb-error: var(--par-red-200);
+  --par-color-progress-track: var(--par-gray-600);
+}

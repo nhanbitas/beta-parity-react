@@ -1,3 +1,71 @@
 @import '../theme/alias/text-icon-colors.css';
-@import '../theme/alias/background.css';
-@import '../theme/alias/border.css';
+/* @import '../theme/alias/background.css';
+@import '../theme/alias/border.css'; */
+
+.progress {
+  @apply flex flex-col gap-1;
+}
+
+.progress.circle {
+  @apply w-fit items-center;
+}
+
+.progress-track {
+  stroke: var(--par-color-progress-track);
+  @apply relative my-1 h-2  min-w-64 rounded-full bg-[var(--par-color-progress-track)];
+}
+
+.progress-thumb {
+  @apply absolute left-0 top-0 h-full rounded-full transition-[width] duration-200 ease-linear;
+}
+
+.progress.circle .progress-thumb {
+  transition: stroke-dashoffset 0.2s linear;
+}
+
+.progress-title-wrapper {
+  @apply flex items-center justify-between;
+}
+
+.progress-title {
+  fill: var(--par-color-text-primary);
+  @apply text-heading-01 grow font-medium text-[var(--par-color-text-primary)];
+}
+
+.progress-numeral {
+  @apply text-label-01 font-semibold text-[var(--par-color-text-helper-neutral)];
+}
+
+.progress-helper-text {
+  @apply text-label-01 text-[var(--par-color-text-helper-neutral)];
+}
+
+/* color */
+.progress.active.neutral .progress-thumb {
+  stroke: var(--par-color-progress-thumb-active-neutral);
+  @apply bg-[var(--par-color-progress-thumb-active-neutral)];
+}
+
+.progress.active.accent .progress-thumb {
+  stroke: var(--par-color-progress-thumb-active-accent);
+  @apply bg-[var(--par-color-progress-thumb-active-accent)];
+}
+
+/* state */
+.progress.success .progress-thumb {
+  stroke: var(--par-color-progress-thumb-success);
+  @apply bg-[var(--par-color-progress-thumb-success)];
+}
+
+.progress.success .progress-helper-text {
+  @apply text-[var(--par-color-text-helper-affirmative)];
+}
+
+.progress.error .progress-thumb {
+  stroke: var(--par-color-progress-thumb-error);
+  @apply bg-[var(--par-color-progress-thumb-error)];
+}
+
+.progress.error .progress-helper-text {
+  @apply text-[var(--par-color-text-helper-adverse)];
+}
