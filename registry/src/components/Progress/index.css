@@ -1,6 +1,4 @@
 @import '../theme/alias/text-icon-colors.css';
-/* @import '../theme/alias/background.css';
-@import '../theme/alias/border.css'; */
 
 .progress {
   @apply flex flex-col gap-1;
@@ -32,12 +30,24 @@
   @apply text-heading-01 grow font-medium text-[var(--par-color-text-primary)];
 }
 
+.progress.circle.small .progress-title {
+  @apply text-sm;
+}
+
+.progress.circle.medium .progress-title {
+  @apply text-xl;
+}
+
 .progress-numeral {
-  @apply text-label-01 font-semibold text-[var(--par-color-text-helper-neutral)];
+  @apply text-label-01 flex items-center gap-1 font-semibold text-[var(--par-color-text-helper-neutral)];
 }
 
 .progress-helper-text {
   @apply text-label-01 text-[var(--par-color-text-helper-neutral)];
+}
+
+.progress.circle .progress-helper-text {
+  @apply text-label-01 w-28 text-center;
 }
 
 /* color */

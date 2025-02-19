@@ -12,6 +12,7 @@ export function DemoSuccessProgress(props: any) {
   const [progress, setProgress] = React.useState(0);
   const [state, setState] = React.useState<'active' | 'success' | 'error'>('active');
 
+  // Fake loading
   React.useEffect(() => {
     const interval = setInterval(() => {
       setProgress((prevProgress) => {
@@ -19,36 +20,6 @@ export function DemoSuccessProgress(props: any) {
           clearInterval(interval);
           setState('success');
           return 100;
-        }
-        return prevProgress + 10;
-      });
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <Progress
-      title='File '
-      value={progress}
-      state={state}
-      helperText={state === 'success' ? 'Completed' : 'Uploading...'}
-      {...props}
-    />
-  );
-}
-
-export function DemoErrorProgress(props: any) {
-  const [progress, setProgress] = React.useState(0);
-  const [state, setState] = React.useState<'active' | 'success' | 'error'>('active');
-
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      setProgress((prevProgress) => {
-        if (prevProgress >= 87) {
-          clearInterval(interval);
-          setState('error');
-          return 87;
         }
         return prevProgress + 1;
       });
@@ -59,10 +30,45 @@ export function DemoErrorProgress(props: any) {
 
   return (
     <Progress
-      title='File '
+      title='File'
+      size='sm'
+      numeral
       value={progress}
       state={state}
-      helperText={state === 'error' ? 'File is too large' : 'Uploading...'}
+      helperText={state === 'success' ? 'You can now close this window!' : 'Uploading...'}
+      {...props}
+    />
+  );
+}
+
+export function DemoErrorProgress(props: any) {
+  const [progress, setProgress] = React.useState(0);
+  const [state, setState] = React.useState<'active' | 'success' | 'error'>('active');
+
+  // Fake loading
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setProgress((prevProgress) => {
+        if (prevProgress >= 80) {
+          clearInterval(interval);
+          setState('error');
+          return 87;
+        }
+        return prevProgress + 10;
+      });
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <Progress
+      title='File'
+      size='md'
+      numeral
+      value={progress}
+      state={state}
+      helperText={state === 'error' ? 'File is too large, please try again!' : 'Uploading...'}
       {...props}
     />
   );

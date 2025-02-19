@@ -22,14 +22,26 @@ import * as Demo from "../@dev/demo-components"
 
 ## State 
 
-<Demo.DemoBasicProgress value={25} title="Title" helperText="Helper text"/>
-<Demo.DemoBasicProgress value={82} title="Title" helperText="Helper text" kind="circle"/>
+<Demo.DemoBasicProgress value={25} helperText="Helper text"/>
+<Demo.DemoBasicProgress value={82} helperText="Helper text" kind="circle"/>
 
 <Demo.DemoBasicProgress value={25} title="Title" helperText="Helper text" state="success"/>
 <Demo.DemoBasicProgress value={82} title="Title" helperText="Helper text" kind="circle" state="success"/>
 
 <Demo.DemoBasicProgress value={25} title="Title" helperText="Helper text" state="error"/>
 <Demo.DemoBasicProgress value={82} title="Title" helperText="Helper text" kind="circle" state="error"/>
+
+## Numeral
+
+<Demo.DemoBasicProgress value={25} title="Title" helperText="Helper text" numeral/>
+<Demo.DemoBasicProgress value={25} title="Title" helperText="Helper text" numeral color="accent"/>
+<Demo.DemoBasicProgress value={25} title="Title" helperText="Helper text" state="success" numeral/>
+<Demo.DemoBasicProgress value={25} title="Title" helperText="Helper text" state="error" numeral/>
+
+## Size
+
+<Demo.DemoBasicProgress value={82} helperText="Helper text" kind="circle" size="sm" color="accent"/>
+<Demo.DemoBasicProgress value={82} helperText="Helper text" kind="circle" size="md" color="accent"/>
 
 ## Demo
 
