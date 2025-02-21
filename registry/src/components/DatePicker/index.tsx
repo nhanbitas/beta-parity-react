@@ -1,16 +1,17 @@
 import React from 'react';
 import './index.css';
+import './variables.css';
 import '../BaseInput/index.css';
 import classNames from 'classnames';
 import Flatpickr, { DateTimePickerProps } from 'react-flatpickr';
-import { InputWrapper } from '../BaseInput';
-import { Calendar } from 'lucide-react';
+import { InputWrapper, InputWrapperProps } from '../BaseInput';
+import { Calendar, ChevronLeft, ChevronRight } from 'lucide-react';
 import useCombinedRefs from '../hooks/useCombinedRefs';
 import { ContainedLabel } from '../FloatingLabel';
 
 export interface DatePikerProps extends DateTimePickerProps {
   floatingLabel?: React.ReactNode;
-  wrapperClassname?: string;
+  wrapperProps?: InputWrapperProps;
 }
 
 export const DatePicker = React.forwardRef<
@@ -19,7 +20,7 @@ export const DatePicker = React.forwardRef<
     onFocus?: (e: any) => void;
     onBlur?: (e: any) => void;
   } & DatePikerProps
->(({ options, floatingLabel, wrapperClassname, ...props }, ref) => {
+>(({ options, floatingLabel, wrapperProps, ...props }, ref) => {
   const inputRef = React.useRef<any>(null);
   const combinedRefs = useCombinedRefs(ref, inputRef);
   const [isFocused, setIsFocused] = React.useState(false);
@@ -48,13 +49,20 @@ export const DatePicker = React.forwardRef<
   };
 
   return (
-    <InputWrapper className={classNames(addedClassname, wrapperClassname)} rightElement={RightBtn}>
+    <InputWrapper
+      className={classNames(addedClassname, wrapperProps?.className)}
+      rightElement={RightBtn}
+      {...wrapperProps}
+    >
       {floatingLabel && <ContainedLabel isActive={isFocused || !!currentValue}>{floatingLabel}</ContainedLabel>}
       <Flatpickr
         className={classNames('date-picker', 'par-input', props.className)}
         onFocus={handleFocus}
         onClose={handleOnClose}
-        options={{ disableMobile: true, ...options }}
+        options={{
+          disableMobile: true,
+          ...options
+        }}
         {...props}
         ref={combinedRefs as any}
       />

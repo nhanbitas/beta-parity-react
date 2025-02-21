@@ -1,0 +1,91 @@
+@import url('../theme/alias/text-icon-colors.css');
+@import url('../theme/alias/border.css');
+@import url('../theme/alias/background.css');
+@import url('../Button/variables.css');
+
+:root,
+[data-theme='light'] {
+  /* TEXT */
+  --par-color-text-datepicker-days-today-neutral-enabled: var(--par-neutral-950);
+  --par-color-text-datepicker-days-today-neutral-hovered: var(--par-neutral-950);
+  --par-color-text-datepicker-days-today-neutral-active: var(--par-white);
+  --par-color-text-datepicker-days-today-accent-enabled: var(--par-accent-550);
+  --par-color-text-datepicker-days-today-accent-hovered: var(--par-accent-550);
+  --par-color-text-datepicker-days-today-accent-active: var(--par-white);
+  --par-color-text-datepicker-days-normal-enabled: var(--par-gray-950);
+  --par-color-text-datepicker-days-normal-neutral-hovered: var(--par-gray-950);
+  --par-color-text-datepicker-days-normal-accent-hovered: var(--par-gray-950);
+  --par-color-text-datepicker-days-normal-neutral-active: var(--par-white);
+  --par-color-text-datepicker-days-normal-accent-active: var(--par-white);
+  --par-color-text-datepicker-days-normal-disabled: rgb(from var(--par-gray-950) r g b / 0.5);
+  --par-color-text-datepicker-days-normal-drag-neutral: var(--par-gray-950);
+  --par-color-text-datepicker-days-normal-drag-accent: var(--par-gray-950);
+  --par-color-text-datepicker-days-today-drag-neutral: var(--par-neutral-950);
+  --par-color-text-datepicker-days-today-drag-accent: var(--par-accent-550);
+  --par-color-text-datepicker-time: var(--par-color-text-primary);
+  --par-color-text-datepicker-caret-enabled: var(--par-gray-550);
+  --par-color-text-datepicker-caret-hovered: var(--par-gray-950);
+  --par-color-text-datepicker-caret-disabled: rgb(from var(--par-gray-550) r g b / 0.5);
+
+  /* BG */
+  --par-color-bg-datepicker-days-neutral-enabled: var(--par-transparent);
+  --par-color-bg-datepicker-days-neutral-hovered: var(--par-neutral-50);
+  --par-color-bg-datepicker-days-neutral-active: var(--par-neutral-950);
+  --par-color-bg-datepicker-days-neutral-disabled: var(--par-transparent);
+  --par-color-bg-datepicker-days-accent-enabled: var(--par-transparent);
+  --par-color-bg-datepicker-days-accent-hovered: var(--par-accent-50);
+  --par-color-bg-datepicker-days-accent-active: var(--par-accent-550);
+  --par-color-bg-datepicker-days-accent-disabled: var(--par-transparent);
+  --par-color-bg-datepicker-days-drag-neutral: var(--par-neutral-50);
+  --par-color-bg-datepicker-days-drag-accent: var(--par-accent-50);
+  --par-color-bg-datepicker-month-select-dropdown-enabled: var(--par-transparent);
+  --par-color-bg-datepicker-month-select-dropdown-hovered: var(--par-gray-50);
+  --par-color-bg-datepicker: var(--par-white);
+
+  /* BORDER */
+  --par-color-border-datepicker: var(--par-gray-200);
+  --par-color-border-datepicker-month-select-list: var(--par-gray-950);
+}
+
+[data-scheme='dark'] {
+  /* TEXT */
+  --par-color-text-datepicker-days-today-neutral-enabled: var(--par-white);
+  --par-color-text-datepicker-days-today-neutral-hovered: var(--par-white);
+  --par-color-text-datepicker-days-today-neutral-active: var(--par-neutral-950);
+  --par-color-text-datepicker-days-today-accent-enabled: var(--par-accent-200);
+  --par-color-text-datepicker-days-today-accent-hovered: var(--par-white);
+  --par-color-text-datepicker-days-today-accent-active: var(--par-accent-550);
+  --par-color-text-datepicker-days-normal-enabled: var(--par-white);
+  --par-color-text-datepicker-days-normal-neutral-hovered: var(--par-white);
+  --par-color-text-datepicker-days-normal-accent-hovered: var(--par-white);
+  --par-color-text-datepicker-days-normal-neutral-active: var(--par-neutral-950);
+  --par-color-text-datepicker-days-normal-accent-active: var(--par-white);
+  --par-color-text-datepicker-days-normal-disabled: rgb(from var(--par-white) r g b / 0.5);
+  --par-color-text-datepicker-days-normal-drag-neutral: var(--par-white);
+  --par-color-text-datepicker-days-normal-drag-accent: var(--par-white);
+  --par-color-text-datepicker-days-today-drag-neutral: var(--par-white);
+  --par-color-text-datepicker-days-today-drag-accent: var(--par-white);
+  --par-color-text-datepicker-time: var(--par-color-text-primary);
+  --par-color-text-datepicker-caret-enabled: var(--par-gray-200);
+  --par-color-text-datepicker-caret-hovered: var(--par-white);
+  --par-color-text-datepicker-caret-disabled: rgb(from var(--par-gray-200) r g b / 0.5);
+
+  /* BG */
+  --par-color-bg-datepicker-days-neutral-enabled: var(--par-transparent);
+  --par-color-bg-datepicker-days-neutral-hovered: rgb(from var(--par-neutral-600) r g b / 0.5);
+  --par-color-bg-datepicker-days-neutral-active: var(--par-white);
+  --par-color-bg-datepicker-days-neutral-disabled: var(--par-transparent);
+  --par-color-bg-datepicker-days-accent-enabled: var(--par-transparent);
+  --par-color-bg-datepicker-days-accent-hovered: rgb(from var(--par-accent-700) r g b / 0.5);
+  --par-color-bg-datepicker-days-accent-active: var(--par-accent-550);
+  --par-color-bg-datepicker-days-accent-disabled: var(--par-transparent);
+  --par-color-bg-datepicker-days-drag-neutral: rgb(from var(--par-neutral-600) r g b / 0.5);
+  --par-color-bg-datepicker-days-drag-accent: rgb(from var(--par-accent-700) r g b / 0.5);
+  --par-color-bg-datepicker-month-select-dropdown-enabled: var(--par-transparent);
+  --par-color-bg-datepicker-month-select-dropdown-hovered: rgb(from var(--par-gray-600) r g b / 0.5);
+  --par-color-bg-datepicker: var(--par-gray-800);
+
+  /* BORDER */
+  --par-color-border-datepicker: var(--par-gray-600);
+  --par-color-border-datepicker-month-select-list: var(--par-white);
+}
