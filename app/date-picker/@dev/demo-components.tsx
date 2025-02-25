@@ -56,12 +56,6 @@ export const DemoDatePickerWithOptions = (props: Props) => {
 };
 
 export const DemoLabelDatePicker = (props: Props) => {
-  const [date, setDate] = React.useState(new Date('2025-02-24'));
-
-  const handleChange = (selectedDates: any, dateStr: any, instance: any) => {
-    setDate(dateStr);
-  };
-
   return (
     <DatePicker
       wrapperProps={{
@@ -69,8 +63,6 @@ export const DemoLabelDatePicker = (props: Props) => {
           width: '353px'
         }
       }}
-      value={date}
-      onChange={handleChange}
       options={{ dateFormat: 'd/m/Y', weekNumbers: true }}
       floatingLabel='Choose date'
       {...props}

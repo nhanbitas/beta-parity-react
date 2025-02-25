@@ -2,17 +2,24 @@ import * as Demo from './demo-components'
 
 ## Basic
 
+### Neutral
 <Demo.DemoDatePicker  />
 
+### Accent
+<Demo.DemoDatePicker color="accent" />
+
+### Readonly
 <Demo.DemoDatePicker readOnly />
 
+### Disabled
 <Demo.DemoDatePicker disabled />
 
 ## Options
 <Demo.DemoDatePickerWithOptions options={{dateFormat: 'd/m/Y', allowInput: true,  mode: 'range', showMonths: 2}} />
 
-<Demo.DemoDatePickerWithOptions options={{allowInput: true, enableTime: true, enableSeconds: true}} />
-   
+<Demo.DemoDatePickerWithOptions options={{dateFormat: 'd/m/Y', allowInput: true,  mode: 'range', showMonths: 2}} color="accent"/>
+
+<Demo.DemoDatePicker options={{allowInput: true, enableTime: true, enableSeconds: true}} />   
 
 ## Floating label
 <Demo.DemoLabelDatePicker /> 
