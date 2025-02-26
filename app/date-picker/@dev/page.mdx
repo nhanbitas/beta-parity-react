@@ -3,10 +3,10 @@ import * as Demo from './demo-components'
 ## Basic
 
 ### Neutral
-<Demo.DemoDatePicker  />
+<Demo.DemoDatePicker locale="vn" placeholder="Chọn ngày"/>
 
 ### Accent
-<Demo.DemoDatePicker color="accent" />
+<Demo.DemoDatePicker color="accent"/>
 
 ### Readonly
 <Demo.DemoDatePicker readOnly />
@@ -15,11 +15,13 @@ import * as Demo from './demo-components'
 <Demo.DemoDatePicker disabled />
 
 ## Options
-<Demo.DemoDatePickerWithOptions options={{dateFormat: 'd/m/Y', allowInput: true,  mode: 'range', showMonths: 2}} />
+<Demo.DemoDatePickerWithOptions options={{mode: 'range'}} />
 
-<Demo.DemoDatePickerWithOptions options={{dateFormat: 'd/m/Y', allowInput: true,  mode: 'range', showMonths: 2}} color="accent"/>
+<Demo.DemoDatePickerWithOptions options={{dateFormat: 'd/m/Y', showMonths: 2}} />
 
-<Demo.DemoDatePicker options={{allowInput: true, enableTime: true, enableSeconds: true}} />   
+<Demo.DemoDatePickerWithOptions options={{dateFormat: 'd/m/Y', mode: 'multiple'}} color="accent" locale="vn" placeholder="Chọn ngày" />
+
+<Demo.DemoDatePicker locale="vn" options={{enableTime: true, enableSeconds: true, dateFormat: 'G:i K, \\ngà\\y d t\\há\\ng m \\nă\\m Y'}} />   
 
 ## Floating label
 <Demo.DemoLabelDatePicker /> 

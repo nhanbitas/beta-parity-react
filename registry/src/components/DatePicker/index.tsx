@@ -9,11 +9,24 @@ import { Calendar } from 'lucide-react';
 import useCombinedRefs from '../hooks/useCombinedRefs';
 import { ContainedLabel } from '../FloatingLabel';
 import { Instance } from 'flatpickr/dist/types/instance';
+import { Vietnamese } from 'flatpickr/dist/l10n/vn.js';
+import { default as defaultLocale } from 'flatpickr/dist/l10n/default.js';
+import { MandarinTraditional } from 'flatpickr/dist/l10n/zh-tw.js';
+import { Mandarin } from 'flatpickr/dist/l10n/zh.js';
+
+export const DatePickerLocales = {
+  default: defaultLocale,
+  en: defaultLocale,
+  vn: Vietnamese,
+  'zh-cn': Mandarin,
+  'zh-tw': MandarinTraditional
+};
 
 export interface DatePickerProps extends DateTimePickerProps {
   floatingLabel?: React.ReactNode;
   wrapperProps?: InputWrapperProps;
   color?: 'neutral' | 'accent';
+  locale?: keyof typeof DatePickerLocales;
 }
 
 export const DatePicker = React.forwardRef<
@@ -25,11 +38,15 @@ export const DatePicker = React.forwardRef<
 >(
   (
     {
+      className,
       options,
       floatingLabel,
       value,
+      defaultValue,
       wrapperProps,
       color = 'neutral',
+      locale = 'default',
+      onReady,
       onFocus,
       onClose,
       onChange,
@@ -42,14 +59,20 @@ export const DatePicker = React.forwardRef<
     const inputRef = React.useRef<any>(null);
     const combinedRefs = useCombinedRefs(ref, inputRef);
     const [isFocused, setIsFocused] = React.useState(false);
-    const [currentValue, setCurrentValue] = React.useState(value || '');
+    const [currentValue, setCurrentValue] = React.useState(defaultValue || value || '');
 
     const handleIconclick = (e: any) => {
       combinedRefs.current && combinedRefs.current.flatpickr.input.focus();
     };
 
     const RightBtn = (
-      <button type='button' className='cursor-pointer' onClick={handleIconclick} disabled={disabled || readOnly}>
+      <button
+        type='button'
+        className='cursor-pointer'
+        tabIndex={-1}
+        onClick={handleIconclick}
+        disabled={disabled || readOnly}
+      >
         <Calendar />
       </button>
     );
@@ -58,22 +81,33 @@ export const DatePicker = React.forwardRef<
 
     const handleFocus = (e: any) => {
       setIsFocused(true);
-      onFocus && onFocus(e);
+      onFocus?.(e);
     };
 
-    const handleOnClose = (selectedDates: Date[], dateStr: string, instance: Instance) => {
+    const handleOnClose = (selectedDates: Date[], dateStr: string, instance: Instance, data: any) => {
       setIsFocused(false);
-      onClose && onClose(selectedDates, dateStr, instance);
+      onClose?.(selectedDates, dateStr, instance, data);
     };
 
-    const handleOnReady = (_: Date[], __: string, instance: Instance) => {
+    const handleOnReady = (selectedDates: Date[], dateStr: string, instance: Instance, data: any) => {
       instance.calendarContainer.classList.add(`flatpickr-calendar-${color}`);
+
+      // **CONSIDER
+      // const element = document.createElement('div');
+      // element.innerHTML = 'This is select';
+      // instance.calendarContainer.prepend(element);
+
+      onReady?.(selectedDates, dateStr, instance, data);
     };
 
     const handleChange = (dates: Date[], currentDateString: string, self: Instance, data?: any) => {
-      setCurrentValue(currentDateString);
-      onChange && onChange(dates, currentDateString, self, data);
+      // setCurrentValue(currentDateString);
+      onChange?.(dates, currentDateString, self, data);
     };
+
+    React.useEffect(() => {
+      setCurrentValue(value || '');
+    }, [value]);
 
     return (
       <InputWrapper
@@ -83,18 +117,22 @@ export const DatePicker = React.forwardRef<
       >
         {floatingLabel && <ContainedLabel isActive={isFocused || !!currentValue}>{floatingLabel}</ContainedLabel>}
         <Flatpickr
-          className={classNames('date-picker', 'par-input', props.className)}
-          onChange={handleChange}
+          className={classNames('date-picker', 'par-input', className)}
+          value={currentValue}
+          defaultValue={defaultValue}
           onFocus={handleFocus}
           onClose={handleOnClose}
           onReady={handleOnReady}
-          options={{
-            disableMobile: true,
-            clickOpens: !readOnly && !disabled,
-            ...options
-          }}
           disabled={disabled}
           readOnly={readOnly}
+          options={{
+            // disableMobile: true,
+            onChange: handleChange,
+            clickOpens: !readOnly && !disabled,
+            locale: DatePickerLocales[locale],
+            dateFormat: 'd/m/Y',
+            ...options
+          }}
           {...props}
           ref={combinedRefs as any}
         />

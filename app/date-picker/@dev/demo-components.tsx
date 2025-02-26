@@ -6,39 +6,8 @@ import { DatePicker } from '@libComponents/DatePicker';
 type Props = any;
 
 export const DemoDatePicker = (props: Props) => {
-  const [date, setDate] = React.useState(new Date('2025-02-24'));
-
-  const handleChange = (date: any) => {
-    console.log(date);
-    setDate(date);
-  };
-
-  return (
-    <DatePicker
-      value={date}
-      wrapperProps={{
-        style: {
-          width: '312px'
-        }
-      }}
-      onChange={handleChange}
-      options={{
-        dateFormat: 'd/m/Y',
-        static: true,
-        allowInput: true,
-        ...props.options
-      }}
-      {...props}
-    />
-  );
-};
-
-export const DemoDatePickerWithOptions = (props: Props) => {
-  const [date, setDate] = React.useState(new Date('2025-02-24'));
-
-  const handleChange = (date: any) => {
-    console.log(date);
-    setDate(date);
+  const handleChange = (...args: any) => {
+    console.log(args[0]);
   };
 
   return (
@@ -48,7 +17,31 @@ export const DemoDatePickerWithOptions = (props: Props) => {
           width: '626px'
         }
       }}
-      value={date}
+      placeholder='Select date'
+      locale={props.locale || 'default'}
+      onChange={handleChange}
+      options={{
+        ...props.options
+      }}
+      {...props}
+    />
+  );
+};
+
+export const DemoDatePickerWithOptions = (props: Props) => {
+  const handleChange = (...args: any) => {
+    console.log(args[0]);
+  };
+
+  return (
+    <DatePicker
+      wrapperProps={{
+        style: {
+          width: '626px'
+        }
+      }}
+      placeholder='Select date'
+      locale={props.locale || 'default'}
       onChange={handleChange}
       {...props}
     />
@@ -56,15 +49,21 @@ export const DemoDatePickerWithOptions = (props: Props) => {
 };
 
 export const DemoLabelDatePicker = (props: Props) => {
+  const handleChange = (...args: any) => {
+    console.log(args[0]);
+  };
+
   return (
     <DatePicker
       wrapperProps={{
         style: {
-          width: '353px'
+          width: '626px'
         }
       }}
+      onChange={handleChange}
+      locale={props.locale || 'default'}
       options={{ dateFormat: 'd/m/Y', weekNumbers: true }}
-      floatingLabel='Choose date'
+      floatingLabel='Select date'
       {...props}
     />
   );
