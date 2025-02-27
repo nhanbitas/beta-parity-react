@@ -13,7 +13,7 @@ import { useOutsideClick } from '../hooks/useOutsideClick';
 // =========================
 // Declare and export select type and Input component
 
-const sizeMap = {
+export const sizeMap = {
   sm: 'small',
   md: 'medium'
 } as const;

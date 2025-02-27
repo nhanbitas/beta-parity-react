@@ -1,10 +1,11 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import './index.css';
 import './variables.css';
 import '../BaseInput/index.css';
 import classNames from 'classnames';
 import Flatpickr, { DateTimePickerProps } from 'react-flatpickr';
-import { InputWrapper, InputWrapperProps } from '../BaseInput';
+import { ErrorMessage, InputProps, InputWrapper, InputWrapperProps, sizeMap } from '../BaseInput';
 import { Calendar } from 'lucide-react';
 import useCombinedRefs from '../hooks/useCombinedRefs';
 import { ContainedLabel } from '../FloatingLabel';
@@ -26,7 +27,10 @@ export interface DatePickerProps extends DateTimePickerProps {
   floatingLabel?: React.ReactNode;
   wrapperProps?: InputWrapperProps;
   color?: 'neutral' | 'accent';
+  icon?: React.ReactNode;
+  sideIcon?: 'left' | 'right';
   locale?: keyof typeof DatePickerLocales;
+  calenderHeader?: React.ReactNode;
 }
 
 export const DatePicker = React.forwardRef<
@@ -34,50 +38,57 @@ export const DatePicker = React.forwardRef<
   {
     onFocus?: (e: any) => void;
     onBlur?: (e: any) => void;
-  } & DatePickerProps
+  } & DatePickerProps &
+    Pick<InputProps, 'isError' | 'errorMessage' | 'theme' | 'inputSize'>
 >(
   (
     {
       className,
-      options,
-      floatingLabel,
       value,
-      defaultValue,
+      options = {},
+      floatingLabel,
       wrapperProps,
+      calenderHeader,
+      icon,
+      sideIcon = 'right',
       color = 'neutral',
       locale = 'default',
-      onReady,
+      theme = 'default',
+      isError = false,
+      errorMessage = '',
+      inputSize = 'md',
+      placeholder,
       onFocus,
-      onClose,
-      onChange,
       readOnly,
       disabled,
       ...props
     },
     ref
   ) => {
+    const { defaultDate, onClose, onOpen, onReady, ...restOptions } = options;
     const inputRef = React.useRef<any>(null);
     const combinedRefs = useCombinedRefs(ref, inputRef);
+    const calenderHeaderRef = React.useRef<HTMLElement | null>(null);
     const [isFocused, setIsFocused] = React.useState(false);
-    const [currentValue, setCurrentValue] = React.useState(defaultValue || value || '');
+    const [currentValue, setCurrentValue] = React.useState(defaultDate || value || '');
 
     const handleIconclick = (e: any) => {
       combinedRefs.current && combinedRefs.current.flatpickr.input.focus();
     };
 
-    const RightBtn = (
+    const CalenderIcon = (
       <button
         type='button'
-        className='cursor-pointer'
+        className='square-icon input-icon cursor-pointer'
         tabIndex={-1}
         onClick={handleIconclick}
         disabled={disabled || readOnly}
       >
-        <Calendar />
+        {icon ? icon : <Calendar />}
       </button>
     );
 
-    const addedClassname = RightBtn && 'input-action';
+    const addedClassname = CalenderIcon && sideIcon === 'right' && 'input-action';
 
     const handleFocus = (e: any) => {
       setIsFocused(true);
@@ -85,25 +96,33 @@ export const DatePicker = React.forwardRef<
     };
 
     const handleOnClose = (selectedDates: Date[], dateStr: string, instance: Instance, data: any) => {
+      setCurrentValue(dateStr);
       setIsFocused(false);
-      onClose?.(selectedDates, dateStr, instance, data);
+      (onClose as Function)?.(selectedDates, dateStr, instance, data);
     };
 
     const handleOnReady = (selectedDates: Date[], dateStr: string, instance: Instance, data: any) => {
       instance.calendarContainer.classList.add(`flatpickr-calendar-${color}`);
 
-      // **CONSIDER
-      // const element = document.createElement('div');
-      // element.innerHTML = 'This is select';
-      // instance.calendarContainer.prepend(element);
+      if (calenderHeader) {
+        const headerElement = document.createElement('div');
+        headerElement.classList.add('flatpickr-calendar-header');
+        instance.calendarContainer.prepend(headerElement);
+        calenderHeaderRef.current = headerElement;
+      }
 
-      onReady?.(selectedDates, dateStr, instance, data);
+      (onReady as Function)?.(selectedDates, dateStr, instance, data);
     };
 
-    const handleChange = (dates: Date[], currentDateString: string, self: Instance, data?: any) => {
-      // setCurrentValue(currentDateString);
-      onChange?.(dates, currentDateString, self, data);
+    const handleOnOpen = (selectedDates: Date[], dateStr: string, instance: Instance, data: any) => {
+      if (readOnly || disabled) return instance.close();
+      (onOpen as Function)?.(selectedDates, dateStr, instance, data);
     };
+
+    const floatingLabelActive = disabled ? undefined : floatingLabel;
+    const inputValueActive = disabled ? undefined : defaultDate || value || '';
+    const defaultValueActive = disabled ? undefined : defaultDate;
+    const placeholderActive = disabled ? undefined : placeholder;
 
     React.useEffect(() => {
       setCurrentValue(value || '');
@@ -112,30 +131,45 @@ export const DatePicker = React.forwardRef<
     return (
       <InputWrapper
         className={classNames(addedClassname, wrapperProps?.className)}
-        rightElement={RightBtn}
+        rightElement={sideIcon === 'right' && CalenderIcon}
+        leftElement={sideIcon === 'left' && CalenderIcon}
         {...wrapperProps}
       >
-        {floatingLabel && <ContainedLabel isActive={isFocused || !!currentValue}>{floatingLabel}</ContainedLabel>}
+        {floatingLabel && <ContainedLabel isActive={isFocused || !!currentValue}>{floatingLabelActive}</ContainedLabel>}
+
+        {calenderHeader &&
+          calenderHeaderRef.current &&
+          ReactDOM.createPortal(calenderHeader, calenderHeaderRef.current)}
+
         <Flatpickr
-          className={classNames('date-picker', 'par-input', className)}
-          value={currentValue}
-          defaultValue={defaultValue}
+          ref={combinedRefs as any}
+          className={classNames(
+            'date-picker',
+            'par-input',
+            theme,
+            { 'error-state': isError, [sizeMap[inputSize]]: inputSize },
+            className
+          )}
+          placeholder={placeholderActive}
+          value={inputValueActive}
           onFocus={handleFocus}
-          onClose={handleOnClose}
-          onReady={handleOnReady}
           disabled={disabled}
           readOnly={readOnly}
           options={{
-            // disableMobile: true,
-            onChange: handleChange,
+            disableMobile: true,
             clickOpens: !readOnly && !disabled,
             locale: DatePickerLocales[locale],
+            defaultDate: defaultValueActive,
             dateFormat: 'd/m/Y',
-            ...options
+            onClose: handleOnClose,
+            onOpen: handleOnOpen,
+            onReady: handleOnReady,
+            ...restOptions
           }}
           {...props}
-          ref={combinedRefs as any}
         />
+
+        {errorMessage && isError && <ErrorMessage>{errorMessage}</ErrorMessage>}
       </InputWrapper>
     );
   }

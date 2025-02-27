@@ -21,6 +21,8 @@ export const DemoDatePicker = (props: Props) => {
       locale={props.locale || 'default'}
       onChange={handleChange}
       options={{
+        static: true,
+        allowInput: true,
         ...props.options
       }}
       {...props}

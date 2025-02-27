@@ -116,6 +116,7 @@ fieldset:disabled {
 }
 
 .left-element-container ~ .value-input-wrapper,
+.left-element-container ~ .flatpickr-wrapper input.par-input,
 .left-element-container ~ input.par-input {
   @apply pl-10;
 }
@@ -242,7 +243,7 @@ textarea.par-input[readonly]:not([data-readonly='not-allowed-input']) {
 
 input.par-input.error-state,
 textarea.par-input.error-state {
-  @apply border-[2px] border-[var(--par-color-border-field-invalid)] bg-[var(--par-color-bg-field-invalid)] text-[var(--par-color-text-field-invalid)];
+  @apply !border-[2px] !border-[var(--par-color-border-field-invalid)] !bg-[var(--par-color-bg-field-invalid)] !text-[var(--par-color-text-field-invalid)];
 }
 
 /* Button, icon css */

@@ -15,15 +15,31 @@ import * as Demo from './demo-components'
 <Demo.DemoDatePicker disabled />
 
 ## Options
-<Demo.DemoDatePickerWithOptions options={{mode: 'range'}} />
+<Demo.DemoDatePickerWithOptions placeholder="Chọn ngày" locale="vn"  options={{mode: 'range'}} />
 
-<Demo.DemoDatePickerWithOptions options={{dateFormat: 'd/m/Y', showMonths: 2}} />
+<Demo.DemoDatePickerWithOptions options={{ defaultDate: ["25/02/2025"], showMonths: 2}} />
 
-<Demo.DemoDatePickerWithOptions options={{dateFormat: 'd/m/Y', mode: 'multiple'}} color="accent" locale="vn" placeholder="Chọn ngày" />
+<Demo.DemoDatePicker locale="vn" options={{defaultDate: ["25/02/2025"],enableTime: true, enableSeconds: true, dateFormat: 'G:i K, \\ngà\\y d t\\há\\ng m \\nă\\m Y'}} />   
 
-<Demo.DemoDatePicker locale="vn" options={{enableTime: true, enableSeconds: true, dateFormat: 'G:i K, \\ngà\\y d t\\há\\ng m \\nă\\m Y'}} />   
+<Demo.DemoDatePickerWithOptions isError errorMessage="This is a required field" options={{ allowInput: true}} />
 
 ## Floating label
 <Demo.DemoLabelDatePicker /> 
+
+<Demo.DemoLabelDatePicker sideIcon="left" isError errorMessage="This is a required field" /> 
+
+
+## Sizes
+<Demo.DemoDatePicker color="accent" sideIcon="left"/>
+
+<Demo.DemoDatePicker color="accent" sideIcon="left" inputSize="sm" />
+
+
+## Alternative
+
+<div className="bg-[var(--background-alternative)] p-4 rounded-md flex flex-col gap-4">
+<Demo.DemoLabelDatePicker theme="alternative"/>
+<Demo.DemoDatePicker color="accent" sideIcon="left" theme="alternative"/>
+</div>
 
 <div className='h-96'></div>
