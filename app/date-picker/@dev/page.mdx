@@ -15,11 +15,11 @@ import * as Demo from './demo-components'
 <Demo.DemoDatePicker disabled />
 
 ## Options
-<Demo.DemoDatePickerWithOptions placeholder="Chọn ngày" locale="vn"  options={{mode: 'range'}} />
+<Demo.DemoDatePickerWithOptions placeholder="Chọn ngày" locale="vn"   options={{defaultDate: ["22/02/2025", "28/02/2025"],mode: 'range'}} />
 
 <Demo.DemoDatePickerWithOptions options={{ defaultDate: ["25/02/2025"], showMonths: 2}} />
 
-<Demo.DemoDatePicker locale="vn" options={{defaultDate: ["25/02/2025"],enableTime: true, enableSeconds: true, dateFormat: 'G:i K, \\ngà\\y d t\\há\\ng m \\nă\\m Y'}} />   
+<Demo.DemoDatePicker locale="vn" options={{ defaultDate: ["25/02/2025"],enableTime: true, enableSeconds: true, dateFormat: 'G:i K, \\ngà\\y d t\\há\\ng m \\nă\\m Y'}} />   
 
 <Demo.DemoDatePickerWithOptions isError errorMessage="This is a required field" options={{ allowInput: true}} />
 
@@ -34,12 +34,47 @@ import * as Demo from './demo-components'
 
 <Demo.DemoDatePicker color="accent" sideIcon="left" inputSize="sm" />
 
+## Controlled
+<Demo.DemoControlledDatePicker />
 
 ## Alternative
 
 <div className="bg-[var(--background-alternative)] p-4 rounded-md flex flex-col gap-4">
-<Demo.DemoLabelDatePicker theme="alternative"/>
+### Neutral
+<Demo.DemoDatePicker locale="vn" placeholder="Chọn ngày"theme="alternative"/>
+
+### Accent
+<Demo.DemoDatePicker color="accent" theme="alternative"/>
+
+### Readonly
+<Demo.DemoDatePicker readOnly theme="alternative"/>
+
+### Disabled
+<Demo.DemoDatePicker disabled theme="alternative"/>
+
+## Options
+<Demo.DemoDatePickerWithOptions placeholder="Chọn ngày" locale="vn"   options={{defaultDate: ["22/02/2025", "28/02/2025"],mode: 'range'}} theme="alternative"/>
+
+<Demo.DemoDatePickerWithOptions options={{ defaultDate: ["25/02/2025"], showMonths: 2}} theme="alternative"/>
+
+<Demo.DemoDatePicker locale="vn" options={{ defaultDate: ["25/02/2025"],enableTime: true, enableSeconds: true, dateFormat: 'G:i K, \\ngà\\y d t\\há\\ng m \\nă\\m Y'}} theme="alternative"/>   
+
+<Demo.DemoDatePickerWithOptions isError errorMessage="This is a required field" options={{ allowInput: true}} theme="alternative"/>
+
+## Floating label
+<Demo.DemoLabelDatePicker theme="alternative"/> 
+
+<Demo.DemoLabelDatePicker sideIcon="left" isError errorMessage="This is a required field" theme="alternative"/> 
+
+
+## Sizes
 <Demo.DemoDatePicker color="accent" sideIcon="left" theme="alternative"/>
+
+<Demo.DemoDatePicker color="accent" sideIcon="left" inputSize="sm" theme="alternative"/>
+
+## Controlled
+<Demo.DemoControlledDatePicker theme="alternative" />
+
 </div>
 
 <div className='h-96'></div>

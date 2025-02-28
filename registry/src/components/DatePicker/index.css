@@ -632,7 +632,9 @@
 }
 
 .flatpickr-time {
-  padding-top: 1rem;
+  width: calc(var(--par-width-board-item, 2.5rem) * 7 + 1rem);
+  padding-top: 0.5rem;
+  border-bottom-left-radius: 0.375rem;
   outline: 0;
   display: flex;
   align-items: center;
@@ -995,11 +997,8 @@ span.flatpickr-weekday {
   font-weight: 500;
 }
 
-.flatpickr-time {
-  border-bottom-left-radius: 0.375rem;
-}
-
-.flatpickr-calendar.hasTime .flatpickr-time {
+.flatpickr-calendar.hasTime .flatpickr-time:not(:only-child) {
+  padding-top: 1rem;
   border-top: 1px solid var(--par-color-border-datepicker, rgba(203, 203, 203, 1));
 }
 
@@ -1059,7 +1058,7 @@ span.flatpickr-weekday {
 }
 
 .flatpickr-day {
-  font-size: 0.875rem;
+  @apply text-code-02;
   border-radius: 0.375rem;
   box-shadow: none !important;
   height: var(--par-width-board-item, 2.5rem);

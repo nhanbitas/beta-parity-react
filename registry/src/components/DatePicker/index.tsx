@@ -1,19 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import classNames from 'classnames';
+import { Calendar } from 'lucide-react';
+import { Instance } from 'flatpickr/dist/types/instance';
+import { BaseOptions } from 'flatpickr/dist/types/options';
+import Flatpickr, { DateTimePickerProps } from 'react-flatpickr';
+
+// Import CSS
 import './index.css';
 import './variables.css';
 import '../BaseInput/index.css';
-import classNames from 'classnames';
-import Flatpickr, { DateTimePickerProps } from 'react-flatpickr';
-import { ErrorMessage, InputProps, InputWrapper, InputWrapperProps, sizeMap } from '../BaseInput';
-import { Calendar } from 'lucide-react';
-import useCombinedRefs from '../hooks/useCombinedRefs';
+
+// Import components and hooks
 import { ContainedLabel } from '../FloatingLabel';
-import { Instance } from 'flatpickr/dist/types/instance';
-import { Vietnamese } from 'flatpickr/dist/l10n/vn.js';
-import { default as defaultLocale } from 'flatpickr/dist/l10n/default.js';
-import { MandarinTraditional } from 'flatpickr/dist/l10n/zh-tw.js';
+import useCombinedRefs from '../hooks/useCombinedRefs';
+import { ErrorMessage, InputProps, InputWrapper, InputWrapperProps, sizeMap } from '../BaseInput';
+
+// Import locales
 import { Mandarin } from 'flatpickr/dist/l10n/zh.js';
+import { Vietnamese } from 'flatpickr/dist/l10n/vn.js';
+import { MandarinTraditional } from 'flatpickr/dist/l10n/zh-tw.js';
+import { default as defaultLocale } from 'flatpickr/dist/l10n/default.js';
 
 export const DatePickerLocales = {
   default: defaultLocale,
@@ -23,24 +30,109 @@ export const DatePickerLocales = {
   'zh-tw': MandarinTraditional
 };
 
-export interface DatePickerProps extends DateTimePickerProps {
+// =========================
+// DatePicker
+// =========================
+// Declare and export select type and DatePicker component
+
+/**
+ * Extended props for `DatePicker`
+ *
+ * Inheriting from `DateTimePickerProps`.
+ */
+export interface DatePickerPropsExtend extends DateTimePickerProps {
+  /**
+   * Floating label displayed inside the input field.
+   *
+   * @default undefined
+   */
   floatingLabel?: React.ReactNode;
+
+  /**
+   * Custom wrapper properties for styling the input container.
+   *
+   * @default undefined
+   */
   wrapperProps?: InputWrapperProps;
+
+  /**
+   * Theme color for the DatePicker.
+   * - `'neutral'`: Uses a neutral color.
+   * - `'accent'`: Uses an accent color.
+   *
+   * @default 'neutral'
+   */
   color?: 'neutral' | 'accent';
+
+  /**
+   * Icon displayed inside the input field.
+   * @default undefined
+   */
   icon?: React.ReactNode;
+
+  /**
+   * Position of the secondary icon inside the input.
+   * - `'left'`: Displays on the left.
+   * - `'right'`: Displays on the right.
+   *
+   * @default 'right'
+   */
   sideIcon?: 'left' | 'right';
+
+  /**
+   * Locale for the DatePicker, based on `DatePickerLocales`.
+   *
+   * - `'de
+   *
+   * @default 'default'
+   */
   locale?: keyof typeof DatePickerLocales;
+
+  /**
+   * Custom component displayed at the top of the calendar.
+   * @default undefined
+   */
   calenderHeader?: React.ReactNode;
+
+  /**
+   * Additional options for the Flatpickr component.
+   * @default undefined
+   *
+   * @see {@link https://flatpickr.js.org/options/ Flatpickr options}
+   */
+  options?: Partial<BaseOptions>;
 }
 
-export const DatePicker = React.forwardRef<
-  HTMLInputElement,
-  {
-    onFocus?: (e: any) => void;
-    onBlur?: (e: any) => void;
-  } & DatePickerProps &
-    Pick<InputProps, 'isError' | 'errorMessage' | 'theme' | 'inputSize'>
->(
+/**
+ * Props for `DatePicker`, including inherited properties from `DatePickerPropsExtend`.
+ * @extends DatePickerPropsExtend
+ * @memberof DatePicker
+ */
+type DatePickerProps = {
+  /**
+   * Callback function triggered when the input gains focus.
+   * @param e - Focus event.
+   * @default undefined
+   */
+  onFocus?: (e: any) => void;
+
+  /**
+   * Callback function triggered when the input loses focus.
+   * @param e - Blur event.
+   * @default undefined
+   */
+  onBlur?: (e: any) => void;
+} & DatePickerPropsExtend &
+  Pick<InputProps, 'isError' | 'errorMessage' | 'theme' | 'inputSize'>;
+
+/**
+ * **Parity DatePicker**.
+ *
+ * @see {@link http://localhost:3005/datepicker Parity DatePicker}
+ *
+ * @see {@link https://flatpickr.js.org/options/ Flatpickr options}
+ */
+export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
   (
     {
       className,
@@ -66,29 +158,18 @@ export const DatePicker = React.forwardRef<
     ref
   ) => {
     const { defaultDate, onClose, onOpen, onReady, ...restOptions } = options;
+
+    // State and refs
     const inputRef = React.useRef<any>(null);
     const combinedRefs = useCombinedRefs(ref, inputRef);
     const calenderHeaderRef = React.useRef<HTMLElement | null>(null);
     const [isFocused, setIsFocused] = React.useState(false);
     const [currentValue, setCurrentValue] = React.useState(defaultDate || value || '');
 
-    const handleIconclick = (e: any) => {
+    // Event handlers
+    const handleIconClick = (e: any) => {
       combinedRefs.current && combinedRefs.current.flatpickr.input.focus();
     };
-
-    const CalenderIcon = (
-      <button
-        type='button'
-        className='square-icon input-icon cursor-pointer'
-        tabIndex={-1}
-        onClick={handleIconclick}
-        disabled={disabled || readOnly}
-      >
-        {icon ? icon : <Calendar />}
-      </button>
-    );
-
-    const addedClassname = CalenderIcon && sideIcon === 'right' && 'input-action';
 
     const handleFocus = (e: any) => {
       setIsFocused(true);
@@ -119,11 +200,28 @@ export const DatePicker = React.forwardRef<
       (onOpen as Function)?.(selectedDates, dateStr, instance, data);
     };
 
+    // UI elements
+    const CalenderIcon = (
+      <button
+        type='button'
+        className='square-icon input-icon cursor-pointer'
+        tabIndex={-1}
+        onClick={handleIconClick}
+        disabled={disabled || readOnly}
+      >
+        {icon ? icon : <Calendar />}
+      </button>
+    );
+
+    // Skip rendering elements if disabled
     const floatingLabelActive = disabled ? undefined : floatingLabel;
-    const inputValueActive = disabled ? undefined : defaultDate || value || '';
+    const inputValueActive = disabled ? undefined : value || defaultDate || '';
     const defaultValueActive = disabled ? undefined : defaultDate;
     const placeholderActive = disabled ? undefined : placeholder;
 
+    const addedClassname = CalenderIcon && sideIcon === 'right' && 'input-action';
+
+    // Update currentValue when value prop changes
     React.useEffect(() => {
       setCurrentValue(value || '');
     }, [value]);
@@ -150,6 +248,7 @@ export const DatePicker = React.forwardRef<
             { 'error-state': isError, [sizeMap[inputSize]]: inputSize },
             className
           )}
+          {...(!readOnly ? { 'data-readonly': 'not-allowed-input' } : {})}
           placeholder={placeholderActive}
           value={inputValueActive}
           onFocus={handleFocus}
@@ -176,5 +275,3 @@ export const DatePicker = React.forwardRef<
 );
 
 DatePicker.displayName = 'DatePicker';
-
-// https://flatpickr.js.org/options/
