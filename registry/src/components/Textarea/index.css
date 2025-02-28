@@ -1,5 +1,5 @@
 textarea.par-input.par-textarea {
-  @apply text-body-02 block h-auto min-h-[4.25rem] w-full resize-y rounded-md px-4 py-3 pb-9;
+  @apply text-body-02 block h-auto min-h-[5rem] w-full resize-y rounded-md px-4 py-3 pb-9;
 }
 
 .par-textarea-footer {
@@ -10,42 +10,10 @@ textarea.par-input.par-textarea {
   @apply flex-row-reverse;
 }
 
-.par-textarea-footer-mask {
-  @apply pointer-events-none absolute bottom-0 left-4 z-10 h-9 w-[calc(100%-2rem)] border-b;
-}
-
 .par-textarea-footer > button.textarea-clear-btn {
   @apply text-label-02 pointer-events-auto h-fit min-h-fit w-fit select-none rounded-full px-1.5 py-0.5 backdrop-blur-sm;
 }
 
-textarea.par-input.par-textarea:focus ~ .par-textarea-footer-mask {
-  @apply border-b-2 border-[var(--par-color-border-field-focused)] !important;
-}
-
-/* footer colors */
-
-textarea.par-input ~ .par-textarea-footer-mask {
-  @apply border-[var(--par-color-border-field-enabled)] bg-[var(--par-color-bg-field-enabled)];
-}
-
-textarea.par-input.alternative ~ .par-textarea-footer-mask {
-  @apply border-[var(--par-color-border-field-enabled)] bg-[var(--par-color-bg-field-alternative-enabled)];
-}
-
-/* State css */
-
-textarea.par-input:disabled ~ .par-textarea-footer-mask {
-  @apply border-[var(--par-color-border-field-disabled)] bg-[var(--par-color-bg-field-disabled)];
-}
-
-textarea.par-input.alternative:disabled ~ .par-textarea-footer-mask {
-  @apply bg-[var(--par-color-bg-field-alternative-disabled)];
-}
-
-textarea.par-input[readonly]:not([data-readonly='not-allowed-input']) ~ .par-textarea-footer-mask {
-  @apply border-[var(--par-color-border-field-readonly)] bg-[var(--par-color-bg-field-readonly)];
-}
-
-textarea.par-input.error-state ~ .par-textarea-footer-mask {
-  @apply border-b-2 border-[var(--par-color-border-field-invalid)] bg-[var(--par-color-bg-field-invalid)];
+.par-textarea-footer > span.textarea-footer-count {
+  @apply text-label-02 -ml-1.5 h-fit min-h-fit w-fit select-none rounded-full px-1.5 py-0.5 backdrop-blur-sm;
 }

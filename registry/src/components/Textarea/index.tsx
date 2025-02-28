@@ -129,9 +129,10 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
 
         {isHasFootter && (
           <>
-            <div className='par-textarea-footer-mask'></div>
             <div className={classNames('par-textarea-footer', { reverse: isClearable && !maxLength })}>
-              {maxLength ? <span>{`${currentValue.toString().split('').length}/${maxLength}`}</span> : null}
+              {maxLength ? (
+                <span className='textarea-footer-count'>{`${currentValue.toString().split('').length}/${maxLength}`}</span>
+              ) : null}
               {isShowClearButton ? (
                 <Button size='sm' kind='glass' color='neutral' className='textarea-clear-btn' onClick={handleClear}>
                   {clearBtnText}
