@@ -129,11 +129,12 @@ export const components = [
     url: '/progress',
     status: 2
   },
-  {
-    name: 'Date Input',
-    url: '/date-input',
-    status: 2
-  },
+  // ** REMOVE
+  // {
+  //   name: 'Date Input',
+  //   url: '/date-input',
+  //   status: 2
+  // },
   {
     name: 'File Input',
     url: '/file-input',

@@ -114,14 +114,21 @@ type DatePickerProps = {
    * @param e - Focus event.
    * @default undefined
    */
-  onFocus?: (e: any) => void;
+  onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
 
   /**
    * Callback function triggered when the input loses focus.
    * @param e - Blur event.
    * @default undefined
    */
-  onBlur?: (e: any) => void;
+  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
+
+  /**
+   * Callback function triggered when the input change (allowInput =`true`).
+   * @param e - Change event.
+   * @default undefined
+   */
+  onInputChange?: (e: React.ChangeEvent<HTMLInputElement>, flatPickrInstance: Instance | null) => void;
 } & DatePickerPropsExtend &
   Pick<InputProps, 'isError' | 'errorMessage' | 'theme' | 'inputSize'>;
 
@@ -151,6 +158,7 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
       inputSize = 'md',
       placeholder,
       onFocus,
+      onInputChange,
       readOnly,
       disabled,
       ...props
@@ -162,6 +170,7 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
     // State and refs
     const inputRef = React.useRef<any>(null);
     const combinedRefs = useCombinedRefs(ref, inputRef);
+    const flatPickrInstance = React.useRef<Instance | null>(null);
     const calenderHeaderRef = React.useRef<HTMLElement | null>(null);
     const [isFocused, setIsFocused] = React.useState(false);
     const [currentValue, setCurrentValue] = React.useState(defaultDate || value || '');
@@ -183,6 +192,9 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
     };
 
     const handleOnReady = (selectedDates: Date[], dateStr: string, instance: Instance, data: any) => {
+      if (readOnly || disabled) return instance.close();
+
+      flatPickrInstance.current = instance;
       instance.calendarContainer.classList.add(`flatpickr-calendar-${color}`);
 
       if (calenderHeader) {
@@ -196,8 +208,11 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
     };
 
     const handleOnOpen = (selectedDates: Date[], dateStr: string, instance: Instance, data: any) => {
-      if (readOnly || disabled) return instance.close();
       (onOpen as Function)?.(selectedDates, dateStr, instance, data);
+    };
+
+    const handleOnInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      onInputChange?.(e, flatPickrInstance.current);
     };
 
     // UI elements
@@ -259,13 +274,13 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
             clickOpens: !readOnly && !disabled,
             locale: DatePickerLocales[locale],
             defaultDate: defaultValueActive,
-            dateFormat: 'd/m/Y',
             onClose: handleOnClose,
             onOpen: handleOnOpen,
             onReady: handleOnReady,
             ...restOptions
           }}
           {...props}
+          render={({ value, ...props }, ref) => <input ref={ref} {...props} onChange={handleOnInputChange} />}
         />
 
         {errorMessage && isError && <ErrorMessage>{errorMessage}</ErrorMessage>}
