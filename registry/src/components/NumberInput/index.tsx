@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './index.css';
 import { NumericFormat, NumericFormatProps, numericFormatter, SourceInfo } from 'react-number-format';
-import { InputProps, Input, UnitSelector } from '../BaseInput';
+import { InputProps, Input, UnitSelector } from '@ui/BaseInput';
 import { ChevronDown, ChevronUp, MinusIcon, PlusIcon } from 'lucide-react';
 import classNames from 'classnames';
 

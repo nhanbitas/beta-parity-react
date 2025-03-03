@@ -3,7 +3,7 @@ import './index.css';
 import './variables.css';
 import classNames from 'classnames';
 import { Check, Minus } from 'lucide-react';
-import useCombinedRefs from '../hooks/useCombinedRefs';
+import useCombinedRefs from '@ui/hooks/useCombinedRefs';
 
 // =========================
 // Switch

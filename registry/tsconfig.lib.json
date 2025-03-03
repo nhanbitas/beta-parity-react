@@ -1,13 +1,15 @@
 {
-    "extends": "./tsconfig.json",
-    "compilerOptions": {
-      "declaration": true,
-      "outDir": "ui",
-      "noEmit": false, 
-      "emitDeclarationOnly": true,
-      "declarationMap": true
-    },
-    "exclude": ["src/stories"],
-    "include": ["src"]
-  }
-  
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "ui",
+   "declaration": true,
+    "noEmit": false, 
+    "emitDeclarationOnly": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "paths": {
+      "@ui/*": ["src/components/*"],
+    }
+  },
+  "include": ["src/components"]
+}

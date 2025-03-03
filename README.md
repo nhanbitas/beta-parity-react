@@ -1,23 +1,23 @@
 
 ## About Parity React:
 
-This project is reusable components for web/app built in react components, that was built based on Parity Design System [Parity Design System](#about-parity-react), [Radix UI](https://www.radix-ui.com/), [Nextjs](https://nextjs.org/),  [Storybook](https://storybook.js.org/)
+This project is reusable components for web/app built in react components, that was built based on Parity Design System [Parity Design System](#about-parity-react), [Nextjs](https://nextjs.org/),
 
 ## How to start repository?
 
 - Clone repository
 
->Node version: 10.5.0
-
 - Install packages: `npm run install:packages`
-  
+
 - Dev mode: 
-  - `npm run dev:lib` to build and watch component changes
-  - `npm run dev` to run nextjs site or `npm run dev:storybook` to run storybook site
-  
+  - `npm run dev:lib` to build and watch all component changes
+  - Low-performance machine: `cd registry` => `npm run build` => `npm run dev <component-name>`  to build and watch single component changes (ex: `npm run dev Accordion`)
+
+- Preview:
+  - `npm run dev` to run nextjs site
+
 - Production mode:
-  - `npm run build:lib` to build registry/ui
-  - `npm run build` to build nextjs site or `npm run build:storybook` to build storybook site
+  - `npm run build` to build lib and nextjs site (root directory)
 
 - Publish:
   - `cd registry` for moving to registry folder

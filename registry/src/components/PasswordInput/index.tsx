@@ -1,9 +1,9 @@
 import * as React from 'react';
 import './index.css';
-import { Input } from '../BaseInput';
+import { Input } from '@ui/BaseInput';
 import { Eye } from 'lucide-react';
-import { Button } from '../Button';
-import useDidMountEffect from '../hooks/useDidMountEffect';
+import { Button } from '@ui/Button';
+import useDidMountEffect from '@ui/hooks/useDidMountEffect';
 
 // =========================
 // PasswordInput

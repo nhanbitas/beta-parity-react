@@ -2,9 +2,9 @@ import './variables.css';
 import './index.css';
 import React from 'react';
 import classNames from 'classnames';
-import { BaseProps } from '../Base';
-import { InputProps } from '../BaseInput';
-import useCombinedRefs from '../hooks/useCombinedRefs';
+import { BaseProps } from '@ui/Base';
+import { InputProps } from '@ui/BaseInput';
+import useCombinedRefs from '@ui/hooks/useCombinedRefs';
 
 // =========================
 // Checkbox

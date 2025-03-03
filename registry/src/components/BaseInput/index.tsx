@@ -3,10 +3,10 @@ import classNames from 'classnames';
 import './index.css';
 import './variables.css';
 import { ChevronsUpDown, X } from 'lucide-react';
-import { ContainedLabel } from '../FloatingLabel';
-import useCombinedRefs from '../hooks/useCombinedRefs';
-import { BaseProps } from '../Base';
-import { useOutsideClick } from '../hooks/useOutsideClick';
+import { ContainedLabel } from '@ui/FloatingLabel';
+import useCombinedRefs from '@ui/hooks/useCombinedRefs';
+import { BaseProps } from '@ui/Base';
+import { useOutsideClick } from '@ui/hooks/useOutsideClick';
 
 // =========================
 // Input

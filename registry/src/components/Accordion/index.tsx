@@ -3,8 +3,8 @@ import classNames from 'classnames';
 import './index.css';
 import './variables.css';
 import { ChevronDown, Minus, Plus } from 'lucide-react';
-import { BaseProps } from '../Base';
-import useDidMountEffect from '../hooks/useDidMountEffect';
+import { BaseProps } from '@ui/Base';
+import useDidMountEffect from '@ui/hooks/useDidMountEffect';
 
 // =========================
 // Accordion

@@ -2,9 +2,9 @@ import React from 'react';
 import classNames from 'classnames';
 import './index.css';
 import './variables.css';
-import { BaseProps } from '../Base';
+import { BaseProps } from '@ui/Base';
 import { X } from 'lucide-react';
-import useKeyboard from '../hooks/useKeyboard';
+import useKeyboard from '@ui/hooks/useKeyboard';
 
 // =========================
 // Tag

@@ -1,10 +1,10 @@
 import * as React from 'react';
 import './index.css';
 import './variables.css';
-import { Input } from '../BaseInput';
+import { Input } from '@ui/BaseInput';
 import { Search } from 'lucide-react';
-import { Spinner } from '../Spinner';
-import { Button, ButtonProps } from '../Button';
+import { Spinner } from '@ui/Spinner';
+import { Button, ButtonProps } from '@ui/Button';
 
 // =========================
 // SearchInput

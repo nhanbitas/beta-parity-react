@@ -4,19 +4,20 @@
   "description": "Parity React Components",
   "main": "ui/index.js",
   "scripts": {
-    "dev": "npm run delete:ui && concurrently \"npm run dev:postcss\" \"npm run dev:babel\" \"npm run dev:ts\"",
+    "dev": "node scripts/dev.js",
     "build": "npm run build:ui",
     "publish": "npm run publish:lib",
     "delete:ui": "rimraf ui",
+    "dev:all": "npm run delete:ui && concurrently \"npm run dev:postcss\" \"npm run dev:babel\" \"npm run dev:ts\"",
     "dev:postcss": "npx postcss src/components/**/*.css --base src/components --dir ui --watch",
     "dev:babel": "npx babel src/components --out-dir ui --extensions \".ts,.tsx\" --watch",
     "dev:ts": "tsc --project tsconfig.lib.json --watch",
     "build:postcss": "cross-env NODE_ENV=production npx postcss src/components/**/*.css --base src/components --dir ui",
     "build:babel": "npx babel src/components --out-dir ui --extensions \".ts,.tsx\"",
     "build:ts": "tsc --project tsconfig.lib.json",
-    "build:ui": "npm run build:postcss && npm run build:ts && npm run build:babel",
+    "build:ui": "npm run delete:ui && npm run build:postcss && npm run build:babel && npm run build:ts",
     "install:package": "npm install",
-    "publish:lib": "npm run build && npm publish"
+    "publish:lib": "npm run build:ui && npm publish"
   },
   "keywords": [
     "react",

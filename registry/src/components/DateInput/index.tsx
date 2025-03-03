@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './index.css';
-import { Input } from '../BaseInput';
+import { Input } from '@ui/BaseInput';
 
 export interface DateInputProps extends React.ComponentPropsWithoutRef<typeof Input> {}
 

@@ -10,10 +10,8 @@
     "lint": "next lint",
     "install:packages": "npm install && npm run install:lib",
     "install:lib": "npm run install:package --prefix registry",
-    "dev:lib": "npm run dev --prefix registry",
-    "dev:storybook": "npm run dev:storybook --prefix registry",
-    "build:lib": "npm run build --prefix registry",
-    "build:storybook": "npm run build:storybook --prefix registry"
+    "dev:lib": "npm run dev:all --prefix registry",
+    "build:lib": "npm run build --prefix registry"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.0.1",

@@ -1,0 +1,15 @@
+{
+  "extends": "../../../tsconfig.lib.json",
+  "compilerOptions": {
+    "outDir": "./../../../ui/Badge",
+   "declaration": true,
+    "noEmit": false, 
+    "emitDeclarationOnly": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "paths": {
+      "@ui/*": ["ui/*"],
+    }
+  },
+  "include": ["."]
+}

@@ -72,7 +72,7 @@ export const components = [
   {
     name: 'Textarea',
     url: '/textarea',
-    status: 2
+    status: 3
   },
   {
     name: 'Password Input',
@@ -127,7 +127,7 @@ export const components = [
   {
     name: 'Progress',
     url: '/progress',
-    status: 2
+    status: 3
   },
   // ** REMOVE
   // {
@@ -143,12 +143,12 @@ export const components = [
   {
     name: 'Email Input',
     url: '/email-input',
-    status: 2
+    status: 3
   },
   {
     name: 'Search Input',
     url: '/search-input',
-    status: 2
+    status: 3
   },
   {
     name: 'Slider',

@@ -2,9 +2,9 @@ import React, { useCallback, useEffect } from 'react';
 import classNames from 'classnames';
 import { X } from 'lucide-react';
 import './index.css';
-import useHoverFocus, { EventHandlers } from '../hooks/useHoverFocus';
-import { Spinner } from '../Spinner';
-import useDidMountEffect from '../hooks/useDidMountEffect';
+import useHoverFocus, { EventHandlers } from '@ui/hooks/useHoverFocus';
+import { Spinner } from '@ui/Spinner';
+import useDidMountEffect from '@ui/hooks/useDidMountEffect';
 
 // TODO: - Feat pauseOnFocus
 

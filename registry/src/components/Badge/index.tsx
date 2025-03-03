@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import './index.css';
 import './variables.css';
-import Dot from '../Dot';
+import Dot from '@ui/Dot';
 
 // =========================
 // Badge

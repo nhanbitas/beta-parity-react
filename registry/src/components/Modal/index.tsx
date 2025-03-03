@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import './index.css';
-import { Portal } from '../Portal';
+import { Portal } from '@ui/Portal';
 
 export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
