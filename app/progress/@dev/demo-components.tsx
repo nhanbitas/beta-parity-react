@@ -18,7 +18,9 @@ export function DemoSuccessProgress(props: any) {
       setProgress((prevProgress) => {
         if (prevProgress >= 100) {
           clearInterval(interval);
-          setState('success');
+          setTimeout(() => {
+            setState('success');
+          }, 500); // animation delay
           return 100;
         }
         return prevProgress + 1;
@@ -51,7 +53,9 @@ export function DemoErrorProgress(props: any) {
       setProgress((prevProgress) => {
         if (prevProgress >= 80) {
           clearInterval(interval);
-          setState('error');
+          setTimeout(() => {
+            setState('error');
+          }, 500); // animation delay
           return 87;
         }
         return prevProgress + 10;

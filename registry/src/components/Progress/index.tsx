@@ -159,13 +159,21 @@ export const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
       );
     };
 
+    const accessibilityProps = {
+      role: 'progressbar',
+      'aria-valuemin': 0,
+      'aria-valuemax': 100,
+      'aria-valuenow': clampedValue
+    };
+
     return (
       <div
         ref={ref}
-        {...props}
         className={classNames('progress', kind, color, state, className, {
           [sizeMap[size]]: isCircle
         })}
+        {...accessibilityProps}
+        {...props}
       >
         {!isCircle && (
           <div className='progress-title-wrapper'>
