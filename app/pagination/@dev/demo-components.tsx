@@ -1,10 +1,18 @@
 'use client';
 
-import { Textarea } from '@libComponents/Textarea';
+import { useSearchParams } from 'next/navigation';
+import { Pagination } from '@libComponents/Pagination';
 import React from 'react';
 
 type Props = any;
 
-export const DemoBasicTextArea = (props: Props) => (
-  <Textarea wrapperProps={{ className: '!w-96', ...props.wrapperProps }} {...props} placeholder='Enter your message' />
-);
+export const DemoBasicPagination = (props: Props) => {
+  const searchParams = useSearchParams();
+  const currentPage = searchParams.get('page') || '1';
+
+  return (
+    <div className='not-prose'>
+      <Pagination pageSize={10} currentPage={parseInt(currentPage)} totalPage={100} {...props} />
+    </div>
+  );
+};

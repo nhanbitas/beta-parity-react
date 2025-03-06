@@ -1,0 +1,58 @@
+@import '../theme/alias/text-icon-colors.css';
+
+:root,
+[data-theme='light'] {
+  /* TEXT */
+  --par-color-text-pagination-item-control-enabled: var(--par-gray-550);
+  --par-color-text-pagination-item-control-hovered: var(--par-gray-600);
+  --par-color-text-pagination-item-control-disabled: rgb(from var(--par-gray-550) r g b / 0.5);
+  --par-color-text-pagination-item-page-enabled: var(--par-gray-950);
+  --par-color-text-pagination-item-page-hovered: var(--par-gray-950);
+  --par-color-text-pagination-item-page-selected-neutral: var(--par-neutral-950);
+  --par-color-text-pagination-item-page-selected-accent: var(--par-accent-550);
+  --par-color-text-pagination-item-page-disabled: rgb(from var(--par-gray-950) r g b / 0.5);
+  --par-color-text-pagination-item-overflow-enabled: var(--par-gray-950);
+  --par-color-text-pagination-item-overflow-hovered: var(--par-gray-950);
+  --par-color-text-pagination-item-overflow-opened: var(--par-gray-950);
+  --par-color-text-pagination-item-overflow-disabled: rgb(from var(--par-gray-950) r g b / 0.5);
+
+  /* BG */
+  --par-color-bg-pagination-item-enabled: var(--par-transparent);
+  --par-color-bg-pagination-item-hovered: var(--par-gray-50);
+  --par-color-bg-pagination-item-opened: var(--par-gray-50);
+  --par-color-bg-pagination-item-selected-neutral: var(--par-neutral-50);
+  --par-color-bg-pagination-item-selected-accent: var(--par-neutral-50);
+  --par-color-bg-pagination-item-disabled: var(--par-transparent);
+
+  /* BORDER */
+  --par-color-border-pagination-item: var(--par-gray-200);
+  --par-color-border-pagination-item-disabled: rgb(from var(--par-gray-200) r g b / 0.5);
+}
+
+[data-scheme='dark'] {
+  /* TEXT */
+  --par-color-text-pagination-item-control-enabled: var(--par-gray-200);
+  --par-color-text-pagination-item-control-hovered: var(--par-gray-100);
+  --par-color-text-pagination-item-control-disabled: rgb(from var(--par-gray-200) r g b / 0.5);
+  --par-color-text-pagination-item-page-enabled: var(--par-white);
+  --par-color-text-pagination-item-page-hovered: var(--par-white);
+  --par-color-text-pagination-item-page-selected-neutral: var(--par-white);
+  --par-color-text-pagination-item-page-selected-accent: var(--par-accent-200);
+  --par-color-text-pagination-item-page-disabled: rgb(from var(--par-white) r g b / 0.5);
+  --par-color-text-pagination-item-overflow-enabled: var(--par-white);
+  --par-color-text-pagination-item-overflow-hovered: var(--par-white);
+  --par-color-text-pagination-item-overflow-opened: var(--par-white);
+  --par-color-text-pagination-item-overflow-disabled: rgb(from var(--par-white) r g b / 0.5);
+
+  /* BG */
+  --par-color-bg-pagination-item-enabled: var(--par-transparent);
+  --par-color-bg-pagination-item-hovered: rgb(from var(--par-gray-600) r g b / 0.5);
+  --par-color-bg-pagination-item-opened: rgb(from var(--par-gray-600) r g b / 0.5);
+  --par-color-bg-pagination-item-selected-neutral: rgb(from var(--par-neutral-600) r g b / 0.5);
+  --par-color-bg-pagination-item-selected-accent: rgb(from var(--par-neutral-600) r g b / 0.5);
+  --par-color-bg-pagination-item-disabled: var(--par-transparent);
+
+  /* BORDER */
+  --par-color-border-pagination-item: var(--par-gray-600);
+  --par-color-border-pagination-item-disabled: rgb(from var(--par-gray-600) r g b / 0.5);
+}

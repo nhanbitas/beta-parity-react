@@ -1,43 +1,6 @@
-import Badge from '@libComponents/Badge';
-import Image from '@components/showcase/ImageSection';
-import Component from '@components/showcase/ComponentSection';
-import * as Demo from "../@dev/demo-components"
-
-{/* Image => Image Example */}
-{/* Component => Component Example */}
-
-:::callout[note]
-A component that organizes content into vertically stacked collapsible and expandable sections.
-:::
+import * as Demo from "./demo-components"
 
 
-## Design checklist <span id="design-checklist"></span>
-{/* Design checklist specification */}
+## Basic
 
-| Status | Item                                 | Description                                                                                                                                                                                                                       |
-| ------ | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ✔️     | Anatomy                              | Includes descriptions of all parts of the component and its major variants.                                                                                                                                                       |
-| ✔️     | States                               | Includes all applicable interaction, display and value states.                                                                                                                                                                    |
-| ✔️     | Options                              | Includes all relevant options (functional type, stylistic kind, semantic color, size, orientation, optional iconography, decorations, etc.)                                                                                       |
-| ✔️     | Color schemes                        | Includes both light and dark color schemes.                                                                                                                                                                                       |
-|        | Behaviors                            | Includes descriptions of behaviors related to other components and responsive behaviors related to media breakpoints, size (minimums and maximums), orientation, alignment, position and layout (wrapping, truncation, overflow). |
-
-## Anatomy <span id="anatomy"></span>
-{/* Anatomy specification */}
-
-## States <span id="states"></span>
-{/* States specification */}
-
-## Options <span id="options"></span>
-{/* Options specification */}
-
-## Behaviors <span id="behaviors"></span>
-{/* Behaviors specification */}
-
-## Changelog <span id="changelog"></span>
-{/* Changelog specification */}
-
-| Date       | Type                                                        | Description                                                                                 | Author      | Associated issue(s)  |
-|:-----------|:------------------------------------------------------------|---------------------------------------------------------------------------------------------|:------------|:---------------------|
-| YYYY-MM-DD | <Badge size='sm' kind='glass' color='cyan' label="new"/>    | Initial design                                                                              | Oanh Nguyen | PAR-52               |
-
+<Demo.DemoBasicPagination totalPage={5} pageSize={5} />

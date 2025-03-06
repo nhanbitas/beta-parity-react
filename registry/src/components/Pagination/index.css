@@ -1,3 +1,35 @@
 @import '../theme/alias/text-icon-colors.css';
 @import '../theme/alias/background.css';
 @import '../theme/alias/border.css';
+
+.pagination {
+  @apply flex items-center gap-1;
+}
+
+.pagination-item {
+  @apply text-code-02 relative flex h-10 w-10 cursor-pointer items-center justify-center rounded bg-[var(--par-color-bg-pagination-item-enabled)] text-[var(--par-color-text-pagination-item-page-enabled)] transition-colors duration-200 ease-out;
+}
+
+.pagination-item.active {
+  @apply bg-[var(--par-color-bg-pagination-item-selected-neutral)] font-bold text-[var(--par-color-text-pagination-item-page-selected-neutral)];
+}
+
+.pagination-item.active::after {
+  @apply absolute bottom-2.5 h-0.5 w-1.5 bg-[var(--par-color-text-pagination-item-page-selected-neutral)] content-[''];
+}
+
+.pagination-item:hover {
+  @apply bg-[var(--par-color-bg-pagination-item-hovered)] text-[var(--par-color-text-pagination-item-page-hovered)];
+}
+
+.pagination-item:disabled {
+  @apply bg-[var(--par-color-bg-pagination-item-disabled)] text-[var(--par-color-text-pagination-item-page-disabled)];
+}
+
+.pagination-item.pagination-start {
+  @apply text-[var(--par-color-text-pagination-item-control-enabled)];
+}
+
+.pagination-item.pagination-end {
+  @apply text-[var(--par-color-text-pagination-item-control-enabled)];
+}
