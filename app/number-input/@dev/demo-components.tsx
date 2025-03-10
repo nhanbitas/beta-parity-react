@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { NumberInput } from '@libComponents/NumberInput';
+import { NumberInput } from 'beta-parity-react/ui/NumberInput';
 
 type Props = any;
 

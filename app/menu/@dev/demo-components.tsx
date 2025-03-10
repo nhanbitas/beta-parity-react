@@ -1,9 +1,9 @@
 'use client';
 
 import React from 'react';
-import { Menu, MenuItem, MenuDivider, MenuGroup, MenuHeader, MenuFooter } from '@libComponents/Menu';
-import { Chip } from '@libComponents/Chip';
-import { Button } from '@libComponents/Button';
+import { Menu, MenuItem, MenuDivider, MenuGroup, MenuHeader, MenuFooter } from 'beta-parity-react/ui/Menu';
+import { Chip } from 'beta-parity-react/ui/Chip';
+import { Button } from 'beta-parity-react/ui/Button';
 
 const searchItems = [
   'Item 1',

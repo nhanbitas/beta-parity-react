@@ -1,9 +1,9 @@
 'use client';
 
 import { Settings2 } from 'lucide-react';
-import { SearchInput } from '@libComponents/SearchInput';
+import { SearchInput } from 'beta-parity-react/ui/SearchInput';
 import React from 'react';
-import { Menu, MenuItem } from '@libComponents/Menu';
+import { Menu, MenuItem } from 'beta-parity-react/ui/Menu';
 
 type Props = any;
 

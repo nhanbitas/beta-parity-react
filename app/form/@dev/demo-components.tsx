@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import { Form, FormBlock, FormCol, FormControl, FormControlLabel } from '@libComponents/Form';
-import { TextInput } from '@libComponents/TextInput';
+import { Form, FormBlock, FormCol, FormControl, FormControlLabel } from 'beta-parity-react/ui/Form';
+import { TextInput } from 'beta-parity-react/ui/TextInput';
 
 type Props = {};
 

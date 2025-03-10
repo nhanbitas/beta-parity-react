@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dot } from '@libComponents/Dot';
+import { Dot } from 'beta-parity-react/ui/Dot';
 
 const sizes = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
 

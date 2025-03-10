@@ -3,7 +3,7 @@
 @import '../theme/alias/border.css';
 
 .pagination {
-  @apply flex items-center gap-1;
+  @apply flex w-fit items-center gap-1;
 }
 
 .pagination-item {

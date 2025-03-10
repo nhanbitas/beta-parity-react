@@ -14,6 +14,7 @@
     "build:lib": "npm run build --prefix registry"
   },
   "dependencies": {
+    "beta-parity-react": "file:registry",
     "@mdx-js/loader": "^3.0.1",
     "@mdx-js/react": "^3.0.1",
     "@next/mdx": "^14.2.3",

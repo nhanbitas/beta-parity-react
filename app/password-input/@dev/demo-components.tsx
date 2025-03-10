@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { PasswordInput } from '@libComponents/PasswordInput';
+import { PasswordInput } from 'beta-parity-react/ui/PasswordInput';
 
 type Props = {};
 

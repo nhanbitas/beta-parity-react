@@ -1,6 +1,6 @@
 'use client';
 
-import { TextInput } from '@libComponents/TextInput';
+import { TextInput } from 'beta-parity-react/ui/TextInput';
 import React from 'react';
 
 type Props = any;

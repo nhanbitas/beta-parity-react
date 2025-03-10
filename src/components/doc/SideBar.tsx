@@ -5,9 +5,9 @@ import { components } from '../../../app/data';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { Menu } from 'lucide-react';
-import { Badge } from '@libComponents/Badge';
-import { SearchInput } from '@libComponents/SearchInput';
-import { Select } from '@libComponents/Select';
+import { Badge } from 'beta-parity-react/ui/Badge';
+import { SearchInput } from 'beta-parity-react/ui/SearchInput';
+import { Select } from 'beta-parity-react/ui/Select';
 
 type Props = {};
 

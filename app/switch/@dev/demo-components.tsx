@@ -1,6 +1,6 @@
 'use client';
 
-import { Switch } from '@libComponents/Switch';
+import { Switch } from 'beta-parity-react/ui/Switch';
 import React from 'react';
 
 type Props = any;

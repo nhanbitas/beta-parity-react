@@ -1,7 +1,7 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
-import { Pagination } from '@libComponents/Pagination';
+import { Pagination } from 'beta-parity-react/ui/Pagination';
 import React from 'react';
 
 type Props = any;

@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import { Radio, RadioGroup } from '@libComponents/Radio';
-import { Button } from '@libComponents/Button';
+import { Radio, RadioGroup } from 'beta-parity-react/ui/Radio';
+import { Button } from 'beta-parity-react/ui/Button';
 
 type Props = {};
 

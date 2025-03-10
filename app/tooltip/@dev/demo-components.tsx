@@ -1,10 +1,10 @@
 'use client';
 
-import { Button } from '@libComponents/Button';
-import { Tooltip } from '@libComponents/Tooltip';
+import { Button } from 'beta-parity-react/ui/Button';
+import { Tooltip } from 'beta-parity-react/ui/Tooltip';
 import React from 'react';
 import { InfoIcon, Plus } from 'lucide-react';
-import { InlineLink } from '@libComponents/InlineLink';
+import { InlineLink } from 'beta-parity-react/ui/InlineLink';
 import Link from 'next/link';
 
 type Props = {};

@@ -21,7 +21,6 @@
       "@": ["./*"],
       "@components/*": ["./src/components/*"],
       "@public/*": ["./public/*"],
-      "@libComponents/*": ["./registry/ui/*"],
       "@ui/*": ["./registry/ui/*"]
     }
   },

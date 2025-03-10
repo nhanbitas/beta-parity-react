@@ -1,6 +1,6 @@
 'use client';
 
-import { Accordion, AccordionItemContent, AccordionItem, AccordionItemTrigger } from '@libComponents/Accordion';
+import { Accordion, AccordionItemContent, AccordionItem, AccordionItemTrigger } from 'beta-parity-react/ui/Accordion';
 import React from 'react';
 
 type Props = {};

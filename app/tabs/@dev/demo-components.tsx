@@ -1,6 +1,6 @@
 'use client';
 
-import { TabButton, TabContent, Tabs } from '@libComponents/Tabs';
+import { TabButton, TabContent, Tabs } from 'beta-parity-react/ui/Tabs';
 import { HomeIcon } from 'lucide-react';
 import React from 'react';
 

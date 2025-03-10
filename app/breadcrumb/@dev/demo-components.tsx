@@ -1,7 +1,7 @@
 // Define  demo components
 'use client';
 
-import { BreadcrumbItem, Breadcrumb } from '@libComponents/Breadcrumb';
+import { BreadcrumbItem, Breadcrumb } from 'beta-parity-react/ui/Breadcrumb';
 import React from 'react';
 
 type Props = {};

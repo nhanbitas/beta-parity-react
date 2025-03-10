@@ -1,10 +1,10 @@
 'use client';
 
 import React from 'react';
-import { Chip } from '@libComponents/Chip';
+import { Chip } from 'beta-parity-react/ui/Chip';
 import { CarFront, Container } from 'lucide-react';
 import Image from 'next/image';
-import { Menu, MenuItem } from '@libComponents/Menu';
+import { Menu, MenuItem } from 'beta-parity-react/ui/Menu';
 
 type Props = {};
 

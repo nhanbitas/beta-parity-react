@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Button } from '@libComponents/Button';
+import { Button } from 'beta-parity-react/ui/Button';
 import { Plus } from 'lucide-react';
 
 const colors = ['neutral', 'accent', 'adverse'];

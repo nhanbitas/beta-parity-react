@@ -1,7 +1,7 @@
 'use client';
 
 import { MailOpen } from 'lucide-react';
-import { EmailInput } from '@libComponents/EmailInput';
+import { EmailInput } from 'beta-parity-react/ui/EmailInput';
 import React from 'react';
 
 type Props = any;

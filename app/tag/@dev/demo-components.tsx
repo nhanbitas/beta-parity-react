@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Tag } from '@libComponents/Tag';
+import { Tag } from 'beta-parity-react/ui/Tag';
 import { Container } from 'lucide-react';
 import Image from 'next/image';
 

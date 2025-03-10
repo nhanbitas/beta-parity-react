@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { cookies } from 'next/headers';
 import { Inter } from 'next/font/google';
 import './globals.css';
-import '@libComponents/theme/index.css';
+import 'beta-parity-react/ui/theme/index.css';
 import SideBar from '@components/doc/SideBar';
 import ThemeProvider from '@components/doc/ThemeProvider';
 

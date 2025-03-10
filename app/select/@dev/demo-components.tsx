@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { SelectDivider, SelectItem, SelectGroup, Select } from '@libComponents/Select';
+import { SelectDivider, SelectItem, SelectGroup, Select } from 'beta-parity-react/ui/Select';
 import { Car } from 'lucide-react';
 
 type Props = {};

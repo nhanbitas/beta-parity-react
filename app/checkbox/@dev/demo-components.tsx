@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Checkbox, CheckboxGroup } from '@libComponents/Checkbox';
+import { Checkbox, CheckboxGroup } from 'beta-parity-react/ui/Checkbox';
 
 const arrData = ['value-1', 'value-2', 'value-3', 'value-4'];
 const treeData = [

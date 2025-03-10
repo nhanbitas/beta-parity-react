@@ -1,6 +1,6 @@
 'use client';
 
-import { Textarea } from '@libComponents/Textarea';
+import { Textarea } from 'beta-parity-react/ui/Textarea';
 import React from 'react';
 
 type Props = any;

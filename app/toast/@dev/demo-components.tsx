@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import { toast, ToastOptions } from '@libComponents/Toast';
-import { Button } from '@libComponents/Button';
+import { toast, ToastOptions } from 'beta-parity-react/ui/Toast';
+import { Button } from 'beta-parity-react/ui/Button';
 import Link from 'next/link';
 
 type Props = ToastOptions;

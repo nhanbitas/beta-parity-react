@@ -1,5 +1,5 @@
 import React from 'react';
-import { InlineLink } from '@libComponents/InlineLink';
+import { InlineLink } from 'beta-parity-react/ui/InlineLink';
 import { ArrowUpRight, HomeIcon } from 'lucide-react';
 import Link from 'next/link';
 

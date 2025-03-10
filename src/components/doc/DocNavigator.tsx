@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter, useSearchParams } from 'next/navigation';
-import { Button } from '@libComponents/Button';
+import { Button } from 'beta-parity-react/ui/Button';
 import React from 'react';
 
 type Props = {

@@ -1,4 +1,4 @@
-import { Spinner, SpinnerProps } from '@libComponents/Spinner';
+import { Spinner, SpinnerProps } from 'beta-parity-react/ui/Spinner';
 import React from 'react';
 
 type Props = {};

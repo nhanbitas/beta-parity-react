@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import { Modal, ModalBody, ModalFooter, ModalHeader } from '@libComponents/Modal';
-import { Button } from '@libComponents/Button';
+import { Modal, ModalBody, ModalFooter, ModalHeader } from 'beta-parity-react/ui/Modal';
+import { Button } from 'beta-parity-react/ui/Button';
 import { X } from 'lucide-react';
 
 const mockText =

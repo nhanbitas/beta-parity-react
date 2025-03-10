@@ -1,5 +1,5 @@
 // Define  demo components
-import { Badge } from '@libComponents/Badge';
+import { Badge } from 'beta-parity-react/ui/Badge';
 import { Box } from 'lucide-react';
 import React from 'react';
 

@@ -1,9 +1,9 @@
 'use client';
 
 import React from 'react';
-import { DatePicker } from '@libComponents/DatePicker';
-import { Button } from '@libComponents/Button';
-import { Select } from '@libComponents/Select';
+import { DatePicker } from 'beta-parity-react/ui/DatePicker';
+import { Button } from 'beta-parity-react/ui/Button';
+import { Select } from 'beta-parity-react/ui/Select';
 
 type Props = any;
 

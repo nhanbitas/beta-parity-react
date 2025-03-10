@@ -1,5 +1,5 @@
-import { Button } from '@libComponents/Button';
-import { CornerIndicator } from '@libComponents/CornerIndicator';
+import { Button } from 'beta-parity-react/ui/Button';
+import { CornerIndicator } from 'beta-parity-react/ui/CornerIndicator';
 import { BellRing, Globe, PhoneMissed, User } from 'lucide-react';
 import Image from 'next/image';
 import React from 'react';

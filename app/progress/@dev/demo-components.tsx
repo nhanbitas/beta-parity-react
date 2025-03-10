@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Progress } from '@libComponents/Progress';
+import { Progress } from 'beta-parity-react/ui/Progress';
 
 // Define  demo components
 export function DemoBasicProgress(props: any) {
