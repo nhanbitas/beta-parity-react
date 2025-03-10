@@ -10,9 +10,11 @@ export const DemoBasicPagination = (props: Props) => {
   const searchParams = useSearchParams();
   const currentPage = searchParams.get('page') || '1';
 
+  const [page, setPage] = React.useState(Number(currentPage));
+
   return (
     <div className='not-prose'>
-      <Pagination pageSize={10} currentPage={parseInt(currentPage)} totalPage={100} {...props} />
+      <Pagination pageSize={10} page={page} totalPage={100} onPageChange={setPage} {...props} />
     </div>
   );
 };

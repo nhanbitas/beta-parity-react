@@ -6,16 +6,36 @@
   @apply flex w-fit items-center gap-1;
 }
 
+.pagination.bordered {
+  @apply gap-0 rounded-md border border-[var(--par-color-border-pagination-item)];
+}
+
 .pagination-item {
   @apply text-code-02 relative flex h-10 w-10 cursor-pointer items-center justify-center rounded bg-[var(--par-color-bg-pagination-item-enabled)] text-[var(--par-color-text-pagination-item-page-enabled)] transition-colors duration-200 ease-out;
 }
 
-.pagination-item.active {
-  @apply bg-[var(--par-color-bg-pagination-item-selected-neutral)] font-bold text-[var(--par-color-text-pagination-item-page-selected-neutral)];
+.pagination.bordered .pagination-item {
+  @apply rounded-none border-l border-r border-l-transparent border-r-[var(--par-color-border-pagination-item)] last:border-r-0;
 }
 
 .pagination-item.active::after {
-  @apply absolute bottom-2.5 h-0.5 w-1.5 bg-[var(--par-color-text-pagination-item-page-selected-neutral)] content-[''];
+  @apply absolute bottom-2.5 h-0.5 w-1.5 content-[''];
+}
+
+.pagination.neutral .pagination-item.active {
+  @apply bg-[var(--par-color-bg-pagination-item-selected-neutral)] text-[var(--par-color-text-pagination-item-page-selected-neutral)];
+}
+
+.pagination.neutral .pagination-item.active::after {
+  @apply bg-[var(--par-color-text-pagination-item-page-selected-neutral)];
+}
+
+.pagination.accent .pagination-item.active {
+  @apply bg-[var(--par-color-bg-pagination-item-selected-accent)] text-[var(--par-color-text-pagination-item-page-selected-accent)];
+}
+
+.pagination.accent .pagination-item.active::after {
+  @apply bg-[var(--par-color-text-pagination-item-page-selected-accent)];
 }
 
 .pagination-item:hover {
@@ -23,7 +43,7 @@
 }
 
 .pagination-item:disabled {
-  @apply bg-[var(--par-color-bg-pagination-item-disabled)] text-[var(--par-color-text-pagination-item-page-disabled)];
+  @apply cursor-not-allowed border-[var(--par-color-border-pagination-item-disabled)] !bg-[var(--par-color-bg-pagination-item-disabled)] !text-[var(--par-color-text-pagination-item-page-disabled)];
 }
 
 .pagination-item.pagination-start {
