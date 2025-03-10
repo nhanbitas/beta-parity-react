@@ -1,6 +1,6 @@
 {
   "name": "beta-parity-react",
-  "version": "0.1.6",
+  "version": "0.1.8",
   "description": "Parity React Components",
   "main": "ui/index.js",
   "scripts": {
@@ -8,18 +8,20 @@
     "build": "npm run build:ui",
     "publish": "npm run publish:lib",
     "delete:ui": "rimraf ui",
+    "install:package": "npm install",
+    "publish:lib": "npm run build:ui && npm publish",
     "dev:all": "npm run delete:ui && concurrently \"npm run dev:postcss\" \"npm run dev:babel\" \"npm run dev:ts\"",
     "dev:postcss": "npx postcss src/components/**/*.css --base src/components --dir ui --watch",
     "dev:babel": "npx babel src/components --out-dir ui --extensions \".ts,.tsx\" --watch",
     "dev:ts": "tsc --project tsconfig.lib.json --watch",
+    "build:ui": "npm run delete:ui && npm run build:postcss && npm run build:babel && npm run build:ts && npm run build:ts-alias",
     "build:postcss": "cross-env NODE_ENV=production npx postcss src/components/**/*.css --base src/components --dir ui",
     "build:babel": "npx babel src/components --out-dir ui --extensions \".ts,.tsx\"",
     "build:ts": "tsc --project tsconfig.lib.json",
-    "build:ui": "npm run delete:ui && npm run build:postcss && npm run build:babel && npm run build:ts",
-    "install:package": "npm install",
-    "publish:lib": "npm run build:ui && npm publish"
+    "build:ts-alias": "tsc-alias --project tsconfig.lib.json"
   },
   "keywords": [
+    "parity",
     "react",
     "components",
     "ui"
@@ -62,6 +64,7 @@
     "postinstall-postinstall": "^2.1.0",
     "style-loader": "^4.0.0",
     "tailwindcss": "^3.4.3",
+    "tsc-alias": "^1.8.11",
     "typescript": "^5.4.5"
   },
   "publishConfig": {
