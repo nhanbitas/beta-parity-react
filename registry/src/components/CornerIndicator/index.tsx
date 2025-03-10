@@ -2,8 +2,8 @@ import React from 'react';
 import classNames from 'classnames';
 import './index.css';
 import './variables.css';
-import Badge, { BadgeProps } from '@ui/Badge';
-import Dot, { DotProps } from '@ui/Dot';
+import { Badge, BadgeProps } from '@ui/Badge';
+import { Dot, DotProps } from '@ui/Dot';
 
 // =========================
 // Corner Indicator

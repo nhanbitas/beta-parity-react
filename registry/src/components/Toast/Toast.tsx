@@ -192,7 +192,7 @@ export interface ToastProps extends Omit<React.HTMLAttributes<HTMLDivElement>, '
   onDismissed?: () => void;
 }
 
-const Toast: React.FC<ToastProps> = ({
+export const Toast: React.FC<ToastProps> = ({
   id,
   removeToast,
   className,
@@ -325,8 +325,6 @@ const Toast: React.FC<ToastProps> = ({
     </div>
   );
 };
-
-export default Toast;
 
 export interface ToastBodyProps extends React.HTMLAttributes<HTMLDivElement> {}
 

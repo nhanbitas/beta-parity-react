@@ -10,7 +10,7 @@ export interface BaseProps extends StyleProps {}
 
 type BaseComponentProps<C extends ElementType> = PolymorphicComponentProps<C>;
 
-const Base = forwardRef(
+export const Base = forwardRef(
   <C extends ElementType = 'div'>(
     { component: Component = 'div' as C, children, style, ...props }: BaseComponentProps<C>,
     ref: PolymorphicRef<C>
@@ -50,5 +50,3 @@ export const convertPropsToStyle = (props: any) => {
   });
   return styles;
 };
-
-export default Base;

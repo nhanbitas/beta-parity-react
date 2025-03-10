@@ -2,7 +2,6 @@ import React from 'react';
 import classNames from 'classnames';
 import './index.css';
 import './variables.css';
-import Dot from '@ui/Dot';
 
 export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
   children?: string | React.ReactNode;
@@ -15,7 +14,7 @@ export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
   variant?: 'filled' | 'outlined' | 'glass' | '';
 }
 
-const Popover = React.forwardRef<HTMLSpanElement, BadgeProps>(
+export const Popover = React.forwardRef<HTMLSpanElement, BadgeProps>(
   (
     { className, children, label, icon, color = 'gray', size = 'md', variant = 'outlined', dot = false, ...props },
     ref
@@ -29,5 +28,3 @@ const Popover = React.forwardRef<HTMLSpanElement, BadgeProps>(
 );
 
 Popover.displayName = 'Popover';
-
-export default Popover;

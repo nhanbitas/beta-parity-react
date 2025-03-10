@@ -5,7 +5,7 @@ import { components } from '../../../app/data';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { Menu } from 'lucide-react';
-import Badge from '@libComponents/Badge';
+import { Badge } from '@libComponents/Badge';
 import { SearchInput } from '@libComponents/SearchInput';
 import { Select } from '@libComponents/Select';
 

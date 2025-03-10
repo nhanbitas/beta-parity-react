@@ -1,7 +1,7 @@
 'use client';
 
-import Toast, { ToastProps } from './Toast';
-import ToastContainer from './ToastContainer';
+import { Toast, ToastProps } from './Toast';
+import { ToastContainer } from './ToastContainer';
 
 export interface ToastOptions extends Omit<ToastProps, 'id' | 'removeToast'> {}
 

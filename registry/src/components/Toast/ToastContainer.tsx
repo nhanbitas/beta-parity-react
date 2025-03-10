@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import ReactDOM from 'react-dom';
-import Toast, { ToastProps } from './Toast';
+import { Toast, ToastProps } from './Toast';
 import './variables.css';
 import './index.css';
 
@@ -58,7 +58,7 @@ interface ToastInstance extends ToastProps {}
  *
  *  @see {@link http://localhost:3005/toast Parity Toast Container}
  */
-const ToastContainer: React.FC<ToastContainerProps> = ({
+export const ToastContainer: React.FC<ToastContainerProps> = ({
   limit = 1,
   stacked = true,
   sortImportance = true,
@@ -149,8 +149,6 @@ const ToastContainer: React.FC<ToastContainerProps> = ({
     </>
   );
 };
-
-export default ToastContainer;
 
 const generateToast = (toasts: ToastInstance[], removeToast: (id: string) => void, limit: number, stacked: boolean) => {
   const LAYER = 3;

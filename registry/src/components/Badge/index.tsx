@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import './index.css';
 import './variables.css';
-import Dot from '@ui/Dot';
+import { Dot } from '@ui/Dot';
 
 // =========================
 // Badge
@@ -76,7 +76,7 @@ export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
 
  *  @see {@link http://localhost:3005/badge Parity Badge}
  */
-const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
+export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
   (
     { className, children, label, icon, color = 'gray', size = 'md', variant = 'outlined', dot = false, ...props },
     ref
@@ -102,5 +102,3 @@ const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
 );
 
 Badge.displayName = 'Badge';
-
-export default Badge;

@@ -52,7 +52,7 @@ const sizeMap = {
  *
  *  @see {@link http://localhost:3005/dot Parity Dot}
  */
-const Dot = React.forwardRef<HTMLSpanElement, DotProps>(
+export const Dot = React.forwardRef<HTMLSpanElement, DotProps>(
   ({ className, size = 'md', pulse = false, color, ...props }, ref) => {
     return (
       <span
@@ -65,5 +65,3 @@ const Dot = React.forwardRef<HTMLSpanElement, DotProps>(
 );
 
 Dot.displayName = 'Dot';
-
-export default Dot;
