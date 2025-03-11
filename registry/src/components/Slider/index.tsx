@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './index.css';
-import { Input } from '@ui/BaseInput';
+import { Input } from '../BaseInput';
 
 export interface SliderProps extends React.ComponentPropsWithoutRef<typeof Input> {}
 

@@ -2,16 +2,16 @@ import React from 'react';
 import classNames from 'classnames';
 import './index.css';
 import './variables.css';
-import { InputWrapper, ValueInputWrapper } from '@ui/BaseInput';
+import { InputWrapper, ValueInputWrapper } from '../BaseInput';
 import { ChevronDown, X } from 'lucide-react';
-import { Menu, MenuDivider, MenuDividerProps, MenuGroup, MenuGroupProps, MenuItem, MenuProps } from '@ui/Menu';
-import { ContainedLabel } from '@ui/FloatingLabel';
-import { useResizeObserver } from '@ui/hooks/useObserver';
-import { useOutsideClick } from '@ui/hooks/useOutsideClick';
-import useCombinedRefs from '@ui/hooks/useCombinedRefs';
-import useKeyboard from '@ui/hooks/useKeyboard';
+import { Menu, MenuDivider, MenuDividerProps, MenuGroup, MenuGroupProps, MenuItem, MenuProps } from '../Menu';
+import { ContainedLabel } from '../FloatingLabel';
+import { useResizeObserver } from '../hooks/useObserver';
+import { useOutsideClick } from '../hooks/useOutsideClick';
+import useCombinedRefs from '../hooks/useCombinedRefs';
+import useKeyboard from '../hooks/useKeyboard';
 import { NativeOption } from './Native';
-import { Tag, TagProps } from '@ui/Tag';
+import { Tag, TagProps } from '../Tag';
 
 // =========================
 // Custom select

@@ -2,7 +2,7 @@ import React from 'react';
 import './index.css';
 import './variables.css';
 import classNames from 'classnames';
-import { Spinner } from '@ui/Spinner';
+import { Spinner } from '../Spinner';
 
 // =========================
 // Button

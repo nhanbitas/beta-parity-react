@@ -21,9 +21,7 @@
     "declarationMap": true,
     "sourceMap": true,
     "baseUrl": ".",
-    "paths": {
-      "@ui/*": ["ui/*"],
-    }
+    "paths": {}
   },
   "exclude": ["node_modules"],
   "include": ["."]

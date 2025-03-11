@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './index.css';
-import { Input, UnitSelector } from '@ui/BaseInput';
+import { Input, UnitSelector } from '../BaseInput';
 
 // =========================
 // EmailInput

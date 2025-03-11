@@ -1,15 +1,15 @@
 {
-  "extends": "../../../tsconfig.lib.json",
+  "extends": "./../../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "./../../../ui/InlineLink",
-   "declaration": true,
+    "rootDir": "../",
+    "outDir": "./../../../ui",
+    "declaration": true,
     "noEmit": false, 
     "emitDeclarationOnly": true,
     "declarationMap": true,
     "sourceMap": true,
-    "paths": {
-      "@ui/*": ["ui/*"],
-    }
+    "skipLibCheck": true,
+    "isolatedModules": true
   },
-  "include": ["."]
+  "include": ["./**/*.ts", "./**/*.tsx"]
 }

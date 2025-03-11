@@ -2,9 +2,9 @@ import * as React from 'react';
 import './index.css';
 import './variables.css';
 import classNames from 'classnames';
-import useCombinedRefs from '@ui/hooks/useCombinedRefs';
-import { ErrorMessage, InputProps, InputWrapper } from '@ui/BaseInput';
-import { Button } from '@ui/Button';
+import useCombinedRefs from '../hooks/useCombinedRefs';
+import { ErrorMessage, InputProps, InputWrapper } from '../BaseInput';
+import { Button } from '../Button';
 
 // =========================
 // Textarea

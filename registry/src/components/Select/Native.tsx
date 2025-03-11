@@ -2,8 +2,8 @@ import React from 'react';
 import classNames from 'classnames';
 import './index.css';
 import './variables.css';
-import { InputWrapper } from '@ui/BaseInput';
-import { ContainedLabel } from '@ui/FloatingLabel';
+import { InputWrapper } from '../BaseInput';
+import { ContainedLabel } from '../FloatingLabel';
 import { ChevronDown } from 'lucide-react';
 
 // =========================

@@ -34,15 +34,15 @@
 
 ### build:lib
 
-- clean ui folder => build css => build babel => build types with ts => change '@ui/' to relative paths in .d.ts files with ts-alias 
+- clean ui folder => build css => build babel => build types with ts
 
 ### dev:lib
 
-- clean ui folder => build css => build babel => build types
+- clean ui folder => watch css => watch babel => watch types
 
- >Note: ts-alias do not support --watch, in dev mode, we can not change '@ui/' to relative paths in .d.ts
+### dev component
 
- >Solution: in the tsconfig.json of nextjs (tsconfig of preview project), add  "paths": {"@ui/*": ["./registry/ui/*"]} for handle `@ui`
+- clean ui folder => build:lib (provide dependent component) => watch css (single component) => watch babel (single component) => watch types (all components - trade performance off against code readability)
 
 ### publish 
 

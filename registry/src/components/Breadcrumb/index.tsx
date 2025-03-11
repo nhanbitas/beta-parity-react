@@ -2,10 +2,10 @@ import React from 'react';
 import classNames from 'classnames';
 import './index.css';
 import './variables.css';
-import { InlineLink, InlineLinkProps } from '@ui/InlineLink';
-import { Menu, MenuProps } from '@ui/Menu';
-import { useOutsideClick } from '@ui/hooks/useOutsideClick';
-import useCombinedRefs from '@ui/hooks/useCombinedRefs';
+import { InlineLink, InlineLinkProps } from '../InlineLink';
+import { Menu, MenuProps } from '../Menu';
+import { useOutsideClick } from '../hooks/useOutsideClick';
+import useCombinedRefs from '../hooks/useCombinedRefs';
 
 // =========================
 // Breadcrumb

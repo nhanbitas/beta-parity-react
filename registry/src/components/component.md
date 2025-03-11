@@ -19,9 +19,9 @@ import './variables.css';
 import '../BaseInput/index.css';
 
 // Import components and hooks
-import { ContainedLabel } from '@ui/FloatingLabel';
-import useCombinedRefs from '@ui/hooks/useCombinedRefs';
-import { ErrorMessage, InputProps, InputWrapper, InputWrapperProps, sizeMap } from '@ui/BaseInput';
+import { ContainedLabel } from '../FloatingLabel';
+import useCombinedRefs from '../hooks/useCombinedRefs';
+import { ErrorMessage, InputProps, InputWrapper, InputWrapperProps, sizeMap } from '../BaseInput';
 
 // Import locales
 import { Mandarin } from 'flatpickr/dist/l10n/zh.js';

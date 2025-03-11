@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
-import { Base, BaseProps } from '@ui/Base';
-import { PolymorphicComponentProps, createPolymorphicComponent } from '@ui/Base/factory';
+import { Base, BaseProps } from '../Base';
+import { PolymorphicComponentProps, createPolymorphicComponent } from '../Base/factory';
 
 export interface BoxProps extends BaseProps {}
 

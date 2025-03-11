@@ -1,10 +1,10 @@
 import React from 'react';
 import './index.css';
 import './variables.css';
-import { InputProps } from '@ui/BaseInput';
+import { InputProps } from '../BaseInput';
 import classNames from 'classnames';
-import { BaseProps } from '@ui/Base';
-import useDidMountEffect from '@ui/hooks/useDidMountEffect';
+import { BaseProps } from '../Base';
+import useDidMountEffect from '../hooks/useDidMountEffect';
 
 // =========================
 // Radio

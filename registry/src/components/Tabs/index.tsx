@@ -3,8 +3,8 @@ import classNames from 'classnames';
 import './index.css';
 import './variables.css';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { Button } from '@ui/Button';
-import useDebounce from '@ui/hooks/useDebounce';
+import { Button } from '../Button';
+import useDebounce from '../hooks/useDebounce';
 
 // =========================
 // Tabs

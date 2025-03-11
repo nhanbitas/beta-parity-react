@@ -3,15 +3,15 @@ import classNames from 'classnames';
 import './index.css';
 import './variables.css';
 import { Check, Search, ChevronUp, ChevronDown } from 'lucide-react';
-import { Input } from '@ui/BaseInput';
-import useKeyboard from '@ui/hooks/useKeyboard';
-import useDidMountEffect from '@ui/hooks/useDidMountEffect';
+import { Input } from '../BaseInput';
+import useKeyboard from '../hooks/useKeyboard';
+import useDidMountEffect from '../hooks/useDidMountEffect';
 import { autoUpdate, flip, offset, Placement, shift, useFloating } from '@floating-ui/react';
-import { Portal } from '@ui/Portal';
-import useCombinedRefs from '@ui/hooks/useCombinedRefs';
-import { useArrowKeyNavigation } from '@ui/hooks/useArrowKeyNavigation ';
-import { Checkbox } from '@ui/Checkbox';
-import { Radio } from '@ui/Radio';
+import { Portal } from '../Portal';
+import useCombinedRefs from '../hooks/useCombinedRefs';
+import { useArrowKeyNavigation } from '../hooks/useArrowKeyNavigation ';
+import { Checkbox } from '../Checkbox';
+import { Radio } from '../Radio';
 
 // TODO: Add custom menu content/ flexible action in menuItem **CONSIDER
 // TODO: Write jsdoc for types of MenuItem

@@ -17,7 +17,7 @@ import {
   safePolygon
 } from '@floating-ui/react';
 import './index.css';
-import { Portal } from '@ui/Portal';
+import { Portal } from '../Portal';
 import classNames from 'classnames';
 import { useTouch } from './useTouch';
 
