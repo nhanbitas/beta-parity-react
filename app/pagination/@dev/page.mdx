@@ -1,8 +1,17 @@
 import * as Demo from "./demo-components"
+import Link from 'next/link'
 
 
 ## Basic
 
+### Neutral
 <Demo.DemoBasicPagination totalPage={5} pageSize={5} />
-<Demo.DemoBasicPagination totalPage={5} pageSize={5} color="accent" />
 <Demo.DemoBasicPagination totalPage={5} pageSize={5} bordered />
+
+### Accent
+<Demo.DemoBasicPagination totalPage={5} pageSize={5} color="accent" />
+<Demo.DemoBasicPagination totalPage={5} pageSize={5} bordered color="accent"/>
+
+### Pagination component
+<Demo.DemoCustomPagination totalPage={5} pageSize={5} />
+<Demo.DemoCustomPagination component='a' totalPage={5} pageSize={5}/>

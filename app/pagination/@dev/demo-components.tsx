@@ -1,20 +1,43 @@
 'use client';
 
-import { useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { Pagination } from 'beta-parity-react/ui/Pagination';
 import React from 'react';
+import Link from 'next/link';
 
 type Props = any;
 
 export const DemoBasicPagination = (props: Props) => {
-  const searchParams = useSearchParams();
-  const currentPage = searchParams.get('page') || '1';
+  const router = useRouter();
+  const currentPage = 1;
 
   const [page, setPage] = React.useState(Number(currentPage));
 
+  const handlePageChange = (page: number) => {
+    // router.push(`?page=${page}`);
+    setPage(page);
+  };
+
   return (
     <div className='not-prose'>
-      <Pagination pageSize={10} page={page} totalPage={100} onPageChange={setPage} {...props} />
+      <Pagination pageSize={5} page={page} totalPage={10} onPageChange={handlePageChange} {...props} />
+    </div>
+  );
+};
+
+export const DemoCustomPagination = (props: Props) => {
+  const params = useSearchParams();
+  const page = params.get('page') || '1';
+  return (
+    <div className='not-prose'>
+      <Pagination
+        pageSize={5}
+        page={Number(page)}
+        totalPage={10}
+        component={Link}
+        to={(page) => `?page=${page}`}
+        {...props}
+      />
     </div>
   );
 };

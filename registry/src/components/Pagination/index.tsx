@@ -4,6 +4,8 @@ import './variables.css';
 import classNames from 'classnames';
 import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from 'lucide-react';
 
+// ** TODO: Controls as links
+
 export interface PaginationProps extends React.HTMLAttributes<HTMLDivElement> {
   totalPage?: number;
   pageSize?: number;
@@ -13,7 +15,11 @@ export interface PaginationProps extends React.HTMLAttributes<HTMLDivElement> {
   color?: 'neutral' | 'accent';
   boundaries?: number;
   onPageChange?: (page: number) => void;
-  component: 'button' | 'a' | React.ComponentType<any>;
+  component?: 'button' | 'a' | React.ComponentType;
+  componentProps?: Record<string, any>;
+  renderItem: (props: PaginationItemProps) => React.ReactNode;
+  renderControl: (props: ControlButtonProps) => React.ReactNode;
+  to?: (page: number) => string;
 }
 
 export const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
@@ -22,19 +28,20 @@ export const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
       className,
       totalPage = 0,
       pageSize = 0,
-      page,
+      page = 1,
       bordered = false,
       onlyControl = false,
       color = 'neutral',
       boundaries = 1,
+      component: Component = 'button',
+      componentProps,
       onPageChange,
-      component = 'button',
+      to: generateHref,
       ...props
     },
     ref
   ) => {
-    const PaginationItem = component as any;
-    const [currentPage, setCurrentPage] = React.useState(page || 1);
+    const [currentPage, setCurrentPage] = React.useState(page);
 
     const handlePageChange = (page: number) => {
       setCurrentPage(page);
@@ -58,8 +65,35 @@ export const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
       }
     };
 
+    const controlProps = {
+      start: {
+        onClick: () => handleControlClick('start'),
+        disabled: currentPage === 1,
+        'aria-label': 'Go to First Page',
+        ...(Component !== 'button' && { href: generateHref?.(1) || '#' })
+      },
+      prev: {
+        onClick: () => handleControlClick('prev'),
+        disabled: currentPage === 1,
+        'aria-label': 'Go to Previous Page',
+        ...(Component !== 'button' && { href: generateHref?.(currentPage - 1) || '#' })
+      },
+      next: {
+        onClick: () => handleControlClick('next'),
+        disabled: currentPage === totalPage,
+        'aria-label': 'Go to Next Page',
+        ...(Component !== 'button' && { href: generateHref?.(currentPage + 1) || '#' })
+      },
+      end: {
+        onClick: () => handleControlClick('end'),
+        disabled: currentPage === totalPage,
+        'aria-label': 'Go to Last Page',
+        ...(Component !== 'button' && { href: generateHref?.(totalPage) || '#' })
+      }
+    };
+
     React.useEffect(() => {
-      setCurrentPage(page || 1);
+      setCurrentPage(page);
     }, [page]);
 
     return (
@@ -72,57 +106,91 @@ export const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
         role='navigation'
         {...props}
       >
-        <button
-          aria-label='Go to First Page'
-          className='pagination-item pagination-start'
-          onClick={() => handleControlClick('start')}
-          disabled={currentPage === 1}
-        >
+        <ControlButton className=' pagination-start' component={Component} {...controlProps.start}>
           <ChevronsLeft />
-        </button>
-        <button
-          aria-label='Go to Previous Page'
-          className='pagination-item pagination-prev'
-          onClick={() => handleControlClick('prev')}
-          disabled={currentPage === 1}
-        >
+        </ControlButton>
+
+        {bordered && <div className='pagination-separator'></div>}
+
+        <ControlButton className=' pagination-prev' component={Component} {...controlProps.prev}>
           <ChevronLeft />
-        </button>
+        </ControlButton>
+
+        {bordered && <div className='pagination-separator'></div>}
 
         {Array(totalPage)
           .fill('_')
-          .map((_, index) => (
-            <PaginationItem
-              key={index}
-              className={classNames('pagination-item', { active: index + 1 === currentPage })}
-              {...(component === 'a'
-                ? { href: '#', onClick: () => handlePageChange(index + 1) }
-                : { onClick: () => handlePageChange(index + 1) })}
-              aria-current={index + 1 === currentPage ? 'page' : undefined}
-            >
-              {index + 1}
-            </PaginationItem>
-          ))}
+          .map((_, index) => {
+            const page = index + 1;
+            return (
+              <React.Fragment key={`page-${index}`}>
+                <PaginationItem
+                  component={Component}
+                  page={page}
+                  active={page === currentPage}
+                  {...(Component !== 'button'
+                    ? { href: generateHref?.(page) || '#', onClick: () => handlePageChange(page) }
+                    : { onClick: () => handlePageChange(page) })}
+                  {...componentProps}
+                />
 
-        <button
-          aria-label='Go to Next Page'
-          className='pagination-item pagination-next'
-          onClick={() => handleControlClick('next')}
-          disabled={currentPage === totalPage}
-        >
+                {bordered && <div className='pagination-separator'></div>}
+              </React.Fragment>
+            );
+          })}
+
+        <ControlButton className='pagination-next' component={Component} {...controlProps.next}>
           <ChevronRight />
-        </button>
-        <button
-          aria-label='Go to Last Page'
-          className='pagination-item pagination-end'
-          onClick={() => handleControlClick('end')}
-          disabled={currentPage === totalPage}
-        >
+        </ControlButton>
+
+        {bordered && <div className='pagination-separator'></div>}
+
+        <ControlButton className='pagination-end' component={Component} {...controlProps.end}>
           <ChevronsRight />
-        </button>
+        </ControlButton>
       </div>
     );
   }
 );
 
 Pagination.displayName = 'Pagination';
+
+export interface PaginationItemProps extends React.HTMLAttributes<HTMLElement>, Pick<PaginationProps, 'component'> {
+  page: number;
+  active?: boolean;
+}
+
+export const PaginationItem = React.forwardRef<HTMLElement, PaginationItemProps>(
+  ({ className, component: Component = 'button', page, active = false, ...props }, ref) => {
+    return (
+      <Component
+        ref={ref as any}
+        aria-label={`Go to Page ${page}`}
+        className={classNames('pagination-item', className, { active: active })}
+        aria-current={active ? 'page' : undefined}
+        {...props}
+      >
+        <span className='pagination-page-number'>{page}</span>
+      </Component>
+    );
+  }
+);
+
+PaginationItem.displayName = 'PaginationItem';
+
+export interface ControlButtonProps extends React.HTMLAttributes<HTMLElement>, Pick<PaginationProps, 'component'> {
+  disabled?: boolean;
+}
+
+export const ControlButton = React.forwardRef<HTMLElement, ControlButtonProps>(
+  ({ className, component = 'button', children, disabled = false, ...props }, ref) => {
+    const Component = disabled ? 'button' : component;
+    return (
+      <Component ref={ref as any} disabled={disabled} className={classNames('pagination-item', className)} {...props}>
+        {children}
+      </Component>
+    );
+  }
+);
+
+ControlButton.displayName = 'ControlButton';
