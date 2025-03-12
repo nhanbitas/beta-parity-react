@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 
 ## Basic
-
+{/* 
 ### Neutral
 <Demo.DemoBasicPagination totalPage={5} pageSize={5} />
 <Demo.DemoBasicPagination totalPage={5} pageSize={5} bordered />
@@ -14,4 +14,10 @@ import Link from 'next/link'
 
 ### Pagination component
 <Demo.DemoCustomPagination totalPage={5} pageSize={5} />
-<Demo.DemoCustomPagination component='a' totalPage={5} pageSize={5}/>
+<Demo.DemoCustomPagination component='a' totalPage={5} pageSize={5}/> */}
+
+### Pagination siblings
+<Demo.DemoBasicPagination totalPage={5} siblings={1} />
+
+<Demo.DemoBasicPagination totalPage={15} siblings={1}/>
+<Demo.DemoBasicPagination totalPage={1024} siblings={1} bordered color="accent"/>

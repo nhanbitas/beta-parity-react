@@ -3,8 +3,9 @@ import './index.css';
 import './variables.css';
 import classNames from 'classnames';
 import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from 'lucide-react';
-
-// ** TODO: Controls as links
+import { Menu, MenuProps } from '../Menu';
+import { useOutsideClick } from '../hooks/useOutsideClick';
+import useCombinedRefs from '../hooks/useCombinedRefs';
 
 export interface PaginationProps extends React.HTMLAttributes<HTMLDivElement> {
   totalPage?: number;
@@ -13,7 +14,11 @@ export interface PaginationProps extends React.HTMLAttributes<HTMLDivElement> {
   bordered?: boolean;
   onlyControl?: boolean;
   color?: 'neutral' | 'accent';
-  boundaries?: number;
+
+  // nghiên cứu lại rules sử dụng chung với totalPage
+  // bật/tắt 4 nút start/end
+  // only control
+  siblings?: number;
   onPageChange?: (page: number) => void;
   component?: 'button' | 'a' | React.ComponentType;
   componentProps?: Record<string, any>;
@@ -27,12 +32,12 @@ export const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
     {
       className,
       totalPage = 0,
+      siblings = 0,
       pageSize = 0,
       page = 1,
       bordered = false,
       onlyControl = false,
       color = 'neutral',
-      boundaries = 1,
       component: Component = 'button',
       componentProps,
       onPageChange,
@@ -92,6 +97,29 @@ export const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
       }
     };
 
+    const items = Array.from({ length: totalPage }, (_, index) => index + 1);
+
+    // get middle active, ensure 1 < index < items.length -2 ( 0 is first => plus 1 for start of array, items.length - 1 is last => minus 1 for end of array)
+    const middleIndex = Math.min(items.length - 1 - siblings - 1, Math.max(siblings + 1, currentPage - 1));
+    const paginationParts = {
+      firstItems: items.slice(0, 1),
+      preMenuItems: items.slice(1, middleIndex - siblings),
+      preActiveItems: items.slice(middleIndex - siblings, middleIndex),
+      middleItems: items[middleIndex] ? [items[middleIndex]] : [],
+      postActiveItems: items.slice(middleIndex + 1, middleIndex + 1 + siblings),
+      postMenuItems: items.slice(middleIndex + siblings + 1, items.length - 1),
+      lastItems: items.slice(-1)
+    };
+
+    const renderProps = {
+      currentPage,
+      handlePageChange,
+      component: Component,
+      bordered,
+      componentProps,
+      generateHref
+    };
+
     React.useEffect(() => {
       setCurrentPage(page);
     }, [page]);
@@ -118,26 +146,21 @@ export const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
 
         {bordered && <div className='pagination-separator'></div>}
 
-        {Array(totalPage)
-          .fill('_')
-          .map((_, index) => {
-            const page = index + 1;
-            return (
-              <React.Fragment key={`page-${index}`}>
-                <PaginationItem
-                  component={Component}
-                  page={page}
-                  active={page === currentPage}
-                  {...(Component !== 'button'
-                    ? { href: generateHref?.(page) || '#', onClick: () => handlePageChange(page) }
-                    : { onClick: () => handlePageChange(page) })}
-                  {...componentProps}
-                />
+        {items.length === 1 ? (
+          <RenderItem items={paginationParts.firstItems} flag='firstItems' {...renderProps} />
+        ) : (
+          <>
+            <RenderItem items={paginationParts.firstItems} flag='firstItems' {...renderProps} />
+            <RenderItem items={paginationParts.preMenuItems} flag='preMenuItems' {...renderProps} isMenu />
 
-                {bordered && <div className='pagination-separator'></div>}
-              </React.Fragment>
-            );
-          })}
+            <RenderItem items={paginationParts.preActiveItems} flag='preActiveItems' {...renderProps} />
+            <RenderItem items={paginationParts.middleItems} flag='activeItems' {...renderProps} />
+            <RenderItem items={paginationParts.postActiveItems} flag='postActiveItems' {...renderProps} />
+
+            <RenderItem items={paginationParts.postMenuItems} flag='postMenuItems' {...renderProps} isMenu />
+            <RenderItem items={paginationParts.lastItems} flag='lastItems' {...renderProps} />
+          </>
+        )}
 
         <ControlButton className='pagination-next' component={Component} {...controlProps.next}>
           <ChevronRight />
@@ -194,3 +217,142 @@ export const ControlButton = React.forwardRef<HTMLElement, ControlButtonProps>(
 );
 
 ControlButton.displayName = 'ControlButton';
+
+type renderProps = {
+  items: number[];
+  currentPage: number;
+  handlePageChange: (page: number) => void;
+  component: 'button' | 'a' | React.ComponentType;
+  bordered: boolean;
+  componentProps?: any;
+  generateHref?: (page: number) => string;
+  flag?: string;
+  isMenu?: boolean;
+};
+
+const RenderItem = ({
+  items,
+  currentPage,
+  handlePageChange,
+  component,
+  bordered,
+  componentProps,
+  generateHref,
+  flag,
+  isMenu = false
+}: renderProps) => {
+  console.log(flag, ':', items);
+  if (!items || items.length === 0) return null;
+
+  if (isMenu) {
+    return (
+      <PaginationMenu
+        items={items}
+        component={component}
+        componentProps={componentProps}
+        generateHref={generateHref}
+        currentPage={currentPage}
+        handlePageChange={handlePageChange}
+        bordered={bordered}
+        flag={flag}
+      />
+    );
+  }
+
+  return items.map((item) => {
+    const page = item;
+    return (
+      <React.Fragment key={`page-${flag}-${item}`}>
+        <PaginationItem
+          component={component}
+          page={page}
+          active={page === currentPage}
+          {...(component !== 'button'
+            ? { href: generateHref?.(page) || '#', onClick: () => handlePageChange(page) }
+            : { onClick: () => handlePageChange(page) })}
+          {...componentProps}
+        />
+
+        {bordered && <div className='pagination-separator'></div>}
+      </React.Fragment>
+    );
+  });
+};
+
+export interface PaginationMenuProps extends React.HTMLAttributes<HTMLButtonElement>, renderProps {
+  menuProps?: Omit<MenuProps, 'children'>;
+}
+
+export const PaginationMenu = React.forwardRef<HTMLButtonElement, PaginationMenuProps>(
+  (
+    {
+      className,
+      items,
+      menuProps,
+      component,
+      componentProps,
+      generateHref,
+      currentPage,
+      handlePageChange,
+      bordered,
+      ...props
+    },
+    ref
+  ) => {
+    const [open, setOpen] = React.useState(false);
+
+    const buttonRef = React.useRef<HTMLButtonElement | null>(null);
+    const conbineButtonRef = useCombinedRefs(buttonRef, ref);
+
+    const refOutsideClick = useOutsideClick(() => setOpen(false), ['click', 'touchstart']);
+
+    React.useEffect(() => {
+      const handleGlobalKeyDown = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') {
+          setOpen(false);
+        }
+      };
+
+      window.addEventListener('keydown', handleGlobalKeyDown);
+      return () => window.removeEventListener('keydown', handleGlobalKeyDown);
+    }, []);
+
+    return (
+      <>
+        <button
+          ref={conbineButtonRef}
+          className={classNames('pagination-item', className, { active: items.includes(currentPage) })}
+          onClick={() => setOpen(true)}
+          {...props}
+        >
+          ...
+        </button>
+        {bordered && <div className='pagination-separator'></div>}
+
+        <Menu
+          {...menuProps}
+          ref={refOutsideClick}
+          anchor={buttonRef.current as any}
+          className='pagination-menu'
+          isOpen={open}
+        >
+          {items.map((page) => (
+            <PaginationItem
+              className='menu-item'
+              key={page}
+              page={page}
+              component={component}
+              active={page === currentPage}
+              {...(component !== 'button'
+                ? { href: generateHref?.(page) || '#', onClick: () => handlePageChange(page) }
+                : { onClick: () => handlePageChange(page) })}
+              {...componentProps}
+            />
+          ))}
+        </Menu>
+      </>
+    );
+  }
+);
+
+PaginationMenu.displayName = 'PaginationMenu';

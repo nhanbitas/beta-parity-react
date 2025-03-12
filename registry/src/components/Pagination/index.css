@@ -11,7 +11,7 @@
 }
 
 .pagination-item {
-  @apply text-code-02 relative flex h-10 w-10 cursor-pointer items-center justify-center rounded bg-[var(--par-color-bg-pagination-item-enabled)] text-[var(--par-color-text-pagination-item-page-enabled)] transition-colors duration-200 ease-out;
+  @apply text-code-02 relative flex h-10 w-fit min-w-10 cursor-pointer items-center justify-center rounded bg-[var(--par-color-bg-pagination-item-enabled)] px-1 text-[var(--par-color-text-pagination-item-page-enabled)] transition-colors duration-200 ease-out;
 }
 
 .pagination-item:focus-visible {
@@ -78,4 +78,12 @@
 
 .pagination-separator {
   @apply h-10 w-px bg-[var(--par-color-border-pagination-item)];
+}
+
+.pagination-menu {
+  @apply max-h-56 !w-fit;
+}
+
+.pagination-item.menu-item {
+  @apply !min-w-fit;
 }
