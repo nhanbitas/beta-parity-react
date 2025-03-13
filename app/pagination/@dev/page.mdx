@@ -3,21 +3,56 @@ import Link from 'next/link'
 
 
 ## Basic
-{/* 
+
 ### Neutral
-<Demo.DemoBasicPagination totalPage={5} pageSize={5} />
-<Demo.DemoBasicPagination totalPage={5} pageSize={5} bordered />
+<Demo.DemoBasicPagination totalPage={5} />
+<Demo.DemoBasicPagination totalPage={5} bordered />
 
 ### Accent
-<Demo.DemoBasicPagination totalPage={5} pageSize={5} color="accent" />
-<Demo.DemoBasicPagination totalPage={5} pageSize={5} bordered color="accent"/>
+<Demo.DemoBasicPagination totalPage={5} color="accent" />
+<Demo.DemoBasicPagination totalPage={5} bordered color="accent"/>
+
+### Controls
+<Demo.DemoBasicPagination totalPage={5} controlConfig={{
+          next: {
+            icon: 'next'
+          },
+          prev: {
+            icon: 'previous'
+          },
+          first: {
+            isActive: false
+          },
+          last: {
+            isActive: false
+          }
+        }}/>
+
+<Demo.DemoOnlyControlPagination totalPage={10} controlConfig={{
+          first: {
+            isActive: false
+          },
+          last: {
+            isActive: false
+          }
+        }}/>
+
 
 ### Pagination component
-<Demo.DemoCustomPagination totalPage={5} pageSize={5} />
-<Demo.DemoCustomPagination component='a' totalPage={5} pageSize={5}/> */}
+<Demo.DemoCustomPagination totalPage={5} />
+<Demo.DemoCustomPagination component='a' totalPage={5}/>
 
 ### Pagination siblings
-<Demo.DemoBasicPagination totalPage={5} siblings={1} />
+<Demo.DemoBasicPagination totalPage={3} />
 
-<Demo.DemoBasicPagination totalPage={15} siblings={1}/>
-<Demo.DemoBasicPagination totalPage={1024} siblings={1} bordered color="accent"/>
+<Demo.DemoBasicPagination totalPage={7} siblings={0}/>
+
+<Demo.DemoBasicPagination totalPage={10} siblings={1}/>
+
+<Demo.DemoBasicPagination totalPage={20} siblings={2} bordered/>
+
+<Demo.DemoBasicPagination totalPage={20} siblings={3} bordered color="accent"/>
+
+
+
+
