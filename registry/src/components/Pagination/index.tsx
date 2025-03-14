@@ -8,8 +8,6 @@ import { useOutsideClick } from '../hooks/useOutsideClick';
 import useCombinedRefs from '../hooks/useCombinedRefs';
 import { deepMerge } from '../utils';
 
-// TODO: wrapper by unordered list and move separator to inside li
-
 export type controlType = {
   className?: string;
   isActive?: boolean;
@@ -42,7 +40,7 @@ const totalPageOfSiblingRules = [5, 7, 9, 12] as const;
  * Props for the Pagination component.
  *
  */
-export interface PaginationProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface PaginationProps extends React.HTMLAttributes<HTMLUListElement> {
   /**
    * The total number of pages.
    *
@@ -123,7 +121,12 @@ export interface PaginationProps extends React.HTMLAttributes<HTMLDivElement> {
   to?: (page: number) => string;
 }
 
-export const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
+/**
+ * **Parity Pagination**.
+ *
+ * @see {@link http://localhost:3005/pagination Parity Pagination}
+ */
+export const Pagination = React.forwardRef<HTMLUListElement, PaginationProps>(
   (
     {
       className,
@@ -142,18 +145,28 @@ export const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
     },
     ref
   ) => {
+    const paginationRef = React.useRef<HTMLUListElement>(null);
+    const combinedRef = useCombinedRefs(paginationRef, ref);
+    const firstItemRef = React.useRef<HTMLElement>(null);
     const [currentPage, setCurrentPage] = React.useState<number>(page);
 
+    // Overwrite new control configs
     const updatedControlConfig = deepMerge(
       defaultControlConfig as controlConfigType,
       controlConfig as controlConfigType
     );
+
+    // Focus first item when blur from menu
+    const handleReFocus = () => {
+      firstItemRef.current?.focus();
+    };
 
     const handlePageChange = (page: number) => {
       setCurrentPage(page);
       onPageChange?.(page);
     };
 
+    // Define action when clicking to controls
     const handleControlClick = (type: 'prev' | 'next' | 'start' | 'end') => {
       switch (type) {
         case 'prev':
@@ -171,7 +184,7 @@ export const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
       }
     };
 
-    // define all props for ControlButtons
+    // Define all props for ControlButtons
     const controlProps = {
       start: {
         className: classNames('pagination-start', updatedControlConfig?.first?.className),
@@ -207,8 +220,8 @@ export const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
       }
     };
 
+    // Get middle active, ensure 2 < index < items.length - 3 ( 0 is first => plus 1 for start of array, items.length - 1 is last => minus 1 for end of array)
     const items = Array.from({ length: totalPage }, (_, index) => index + 1);
-    // get middle active, ensure 2 < index < items.length - 3 ( 0 is first => plus 1 for start of array, items.length - 1 is last => minus 1 for end of array)
     const middleIndex = Math.min(items.length - 1 - siblings - 2, Math.max(siblings + 2, currentPage - 1));
     const paginationParts = {
       firstItems: items.slice(0, 1),
@@ -220,7 +233,7 @@ export const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
       lastItems: items.slice(-1)
     };
 
-    // define all props for RenderItems
+    // Define all props for RenderItems
     const renderProps = {
       currentPage,
       handlePageChange,
@@ -235,8 +248,8 @@ export const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
     }, [page]);
 
     return (
-      <div
-        ref={ref}
+      <ul
+        ref={combinedRef}
         className={classNames('pagination', className, color, {
           bordered: bordered,
           'only-control': onlyControl
@@ -244,19 +257,9 @@ export const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
         role='navigation'
         {...props}
       >
-        {updatedControlConfig.first?.isActive && (
-          <>
-            <ControlButton component={Component} {...controlProps.start} />
-            {bordered && <div className='pagination-separator'></div>}
-          </>
-        )}
+        {updatedControlConfig.first?.isActive && <ControlButton component={Component} {...controlProps.start} />}
 
-        {updatedControlConfig.prev?.isActive && (
-          <>
-            <ControlButton component={Component} {...controlProps.prev} />
-            {bordered && <div className='pagination-separator'></div>}
-          </>
-        )}
+        {updatedControlConfig.prev?.isActive && <ControlButton component={Component} {...controlProps.prev} />}
 
         {/* onlyControl => null */}
         {/* items.length is not fit with siblings rules => do not show menu */}
@@ -266,12 +269,16 @@ export const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
           <RenderItem items={items} flag='firstItems' {...renderProps} />
         ) : (
           <>
-            <RenderItem items={paginationParts.firstItems} flag='firstItems' {...renderProps} />
+            <RenderItem ref={firstItemRef} items={paginationParts.firstItems} flag='firstItems' {...renderProps} />
             <RenderItem
               items={paginationParts.preMenuItems}
               flag='preMenuItems'
               isMenu={paginationParts.preMenuItems.length > 1}
               {...renderProps}
+              handlePageChange={(page: number) => {
+                handlePageChange(page);
+                handleReFocus();
+              }}
             />
 
             <RenderItem items={paginationParts.preActiveItems} flag='preActiveItems' {...renderProps} />
@@ -283,53 +290,68 @@ export const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
               flag='postMenuItems'
               isMenu={paginationParts.postMenuItems.length > 1}
               {...renderProps}
+              handlePageChange={(page: number) => {
+                handlePageChange(page);
+                handleReFocus();
+              }}
             />
             <RenderItem items={paginationParts.lastItems} flag='lastItems' {...renderProps} />
           </>
         )}
 
-        {updatedControlConfig.next?.isActive && (
-          <>
-            <ControlButton component={Component} {...controlProps.next} />
-            {/* is not show separator if bordered is false and the last control is not active */}
-            {bordered && updatedControlConfig.last?.isActive && <div className='pagination-separator'></div>}
-          </>
-        )}
+        {updatedControlConfig.next?.isActive && <ControlButton component={Component} {...controlProps.next} />}
 
-        {updatedControlConfig.last?.isActive && (
-          <>
-            <ControlButton component={Component} {...controlProps.end} />
-          </>
-        )}
-      </div>
+        {updatedControlConfig.last?.isActive && <ControlButton component={Component} {...controlProps.end} />}
+      </ul>
     );
   }
 );
 
 Pagination.displayName = 'Pagination';
 
+// =========================
+// PaginationItem
+// =========================
+// Declare and export select type and PaginationItem component
+
 export interface PaginationItemProps extends React.HTMLAttributes<HTMLElement>, Pick<PaginationProps, 'component'> {
   page: number;
   active?: boolean;
+  isMenuItem?: boolean;
 }
 
 export const PaginationItem = React.forwardRef<HTMLElement, PaginationItemProps>(
-  ({ className, component: Component = 'button', page, active = false, ...props }, ref) => {
+  ({ className, component: Component = 'button', page, active = false, isMenuItem = false, ...props }, ref) => {
+    const menuProps = {
+      ...(isMenuItem && {
+        role: 'menuitem'
+      })
+    };
+
     return (
-      <Component
-        ref={ref as any}
-        aria-label={`Go to Page ${page}`}
-        className={classNames('pagination-item', className, { active: active })}
-        aria-current={active ? 'page' : undefined}
-        {...props}
-      >
-        <span className='pagination-page-number'>{page}</span>
-      </Component>
+      <li>
+        <Component
+          ref={ref as any}
+          aria-label={`${page}`}
+          data-page={page}
+          className={classNames('pagination-item', className, { active: active })}
+          aria-current={active ? 'page' : undefined}
+          {...props}
+          {...menuProps}
+        >
+          <span className='pagination-page-number'>{page}</span>
+        </Component>
+      </li>
     );
   }
 );
 
 PaginationItem.displayName = 'PaginationItem';
+
+// =========================
+// ControlButton
+// =========================
+// Declare and export select type and ControlButton component
 
 export interface ControlButtonProps extends React.HTMLAttributes<HTMLElement>, Pick<PaginationProps, 'component'> {
   disabled?: boolean;
@@ -339,14 +361,21 @@ export const ControlButton = React.forwardRef<HTMLElement, ControlButtonProps>(
   ({ className, component = 'button', children, disabled = false, ...props }, ref) => {
     const Component = disabled ? 'button' : component;
     return (
-      <Component ref={ref as any} disabled={disabled} className={classNames('pagination-item', className)} {...props}>
-        {children}
-      </Component>
+      <li>
+        <Component ref={ref as any} disabled={disabled} className={classNames('pagination-item', className)} {...props}>
+          {children}
+        </Component>
+      </li>
     );
   }
 );
 
 ControlButton.displayName = 'ControlButton';
+
+// =========================
+// RenderItem
+// =========================
+// Declare and export select type and RenderItem component
 
 type renderProps = {
   items: number[];
@@ -360,54 +389,49 @@ type renderProps = {
   isMenu?: boolean;
 };
 
-const RenderItem = ({
-  items,
-  currentPage,
-  handlePageChange,
-  component,
-  bordered,
-  componentProps,
-  generateHref,
-  flag,
-  isMenu = false
-}: renderProps) => {
-  if (!items || items.length === 0) return null;
+export const RenderItem = React.forwardRef<HTMLElement, renderProps>(
+  (
+    { items, currentPage, handlePageChange, component, bordered, componentProps, generateHref, flag, isMenu = false },
+    ref
+  ) => {
+    if (!items || items.length === 0) return null;
 
-  if (isMenu) {
-    return (
-      <PaginationMenu
-        items={items}
-        component={component}
-        componentProps={componentProps}
-        generateHref={generateHref}
-        currentPage={currentPage}
-        handlePageChange={handlePageChange}
-        bordered={bordered}
-        flag={flag}
-      />
-    );
-  }
-
-  return items.map((item) => {
-    const page = item;
-    return (
-      <React.Fragment key={`page-${flag}-${item}`}>
-        <PaginationItem
+    if (isMenu) {
+      return (
+        <PaginationMenu
+          items={items}
           component={component}
-          page={page}
-          active={page === currentPage}
-          {...(component !== 'button'
-            ? { href: generateHref?.(page) || '#', onClick: () => handlePageChange(page) }
-            : { onClick: () => handlePageChange(page) })}
-          {...componentProps}
+          componentProps={componentProps}
+          currentPage={currentPage}
+          generateHref={generateHref}
+          handlePageChange={handlePageChange}
+          bordered={bordered}
+          flag={flag}
         />
+      );
+    }
 
-        {bordered && <div className='pagination-separator'></div>}
-      </React.Fragment>
-    );
-  });
-};
+    return items.map((item) => {
+      const page = item;
+      return (
+        <React.Fragment key={`page-${flag}-${item}`}>
+          <PaginationItem
+            ref={ref as any}
+            component={component}
+            page={page}
+            active={page === currentPage}
+            {...(component !== 'button'
+              ? { href: generateHref?.(page) || '#', onClick: () => handlePageChange(page) }
+              : { onClick: () => handlePageChange(page) })}
+            {...componentProps}
+          />
+        </React.Fragment>
+      );
+    });
+  }
+);
 
+RenderItem.displayName = 'RenderItem';
 export interface PaginationMenuProps extends React.HTMLAttributes<HTMLButtonElement>, renderProps {
   menuProps?: Omit<MenuProps, 'children'>;
 }
@@ -420,8 +444,8 @@ export const PaginationMenu = React.forwardRef<HTMLButtonElement, PaginationMenu
       menuProps,
       component,
       componentProps,
-      generateHref,
       currentPage,
+      generateHref,
       handlePageChange,
       bordered,
       ...props
@@ -431,9 +455,12 @@ export const PaginationMenu = React.forwardRef<HTMLButtonElement, PaginationMenu
     const [open, setOpen] = React.useState(false);
 
     const buttonRef = React.useRef<HTMLButtonElement | null>(null);
-    const conbineButtonRef = useCombinedRefs(buttonRef, ref);
 
     const refOutsideClick = useOutsideClick(() => setOpen(false), ['click', 'touchstart']);
+
+    const handleClick = (page: number) => {
+      handlePageChange(page);
+    };
 
     React.useEffect(() => {
       const handleGlobalKeyDown = (e: KeyboardEvent) => {
@@ -448,15 +475,16 @@ export const PaginationMenu = React.forwardRef<HTMLButtonElement, PaginationMenu
 
     return (
       <>
-        <button
-          ref={conbineButtonRef}
-          className={classNames('pagination-item', className, { active: items.includes(currentPage) })}
-          onClick={() => setOpen(true)}
-          {...props}
-        >
-          ...
-        </button>
-        {bordered && <div className='pagination-separator'></div>}
+        <li>
+          <button
+            ref={buttonRef}
+            className={classNames('pagination-item', className, { active: items.includes(currentPage) })}
+            onClick={() => setOpen(true)}
+            {...props}
+          >
+            ...
+          </button>
+        </li>
 
         <Menu
           {...menuProps}
@@ -465,19 +493,22 @@ export const PaginationMenu = React.forwardRef<HTMLButtonElement, PaginationMenu
           className='pagination-menu'
           isOpen={open}
         >
-          {items.map((page) => (
-            <PaginationItem
-              className='menu-item'
-              key={page}
-              page={page}
-              component={component}
-              active={page === currentPage}
-              {...(component !== 'button'
-                ? { href: generateHref?.(page) || '#', onClick: () => handlePageChange(page) }
-                : { onClick: () => handlePageChange(page) })}
-              {...componentProps}
-            />
-          ))}
+          <ul>
+            {items.map((page) => (
+              <PaginationItem
+                className='menu-item'
+                key={page}
+                page={page}
+                component={component}
+                active={page === currentPage}
+                isMenuItem
+                {...(component !== 'button'
+                  ? { href: generateHref?.(page) || '#', onClick: () => handleClick(page) }
+                  : { onClick: () => handleClick(page) })}
+                {...componentProps}
+              />
+            ))}
+          </ul>
         </Menu>
       </>
     );

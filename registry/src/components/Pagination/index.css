@@ -10,8 +10,12 @@
   @apply gap-0 rounded-md border border-[var(--par-color-border-pagination-item)];
 }
 
+.pagination li {
+  @apply relative flex h-10 w-fit items-center;
+}
+
 .pagination-item {
-  @apply text-code-02 relative flex h-10 w-fit min-w-10 cursor-pointer items-center justify-center rounded bg-[var(--par-color-bg-pagination-item-enabled)] px-1 text-[var(--par-color-text-pagination-item-page-enabled)] transition-colors duration-200 ease-out;
+  @apply text-code-02 relative flex h-full w-fit min-w-10 cursor-pointer items-center justify-center rounded bg-[var(--par-color-bg-pagination-item-enabled)] px-1 text-[var(--par-color-text-pagination-item-page-enabled)] transition-colors duration-200 ease-out;
 }
 
 .pagination-item:focus-visible {
@@ -19,7 +23,19 @@
 }
 
 .pagination.bordered .pagination-item {
-  @apply rounded-none first:rounded-l-md last:rounded-r-md;
+  @apply rounded-none;
+}
+
+.pagination.bordered li::after {
+  @apply inline-block h-full w-px bg-[var(--par-color-border-pagination-item)] content-[''] last:hidden;
+}
+
+.pagination.bordered li:first-child .pagination-item {
+  @apply rounded-l-md;
+}
+
+.pagination.bordered li:last-child .pagination-item {
+  @apply rounded-r-md;
 }
 
 .pagination-page-number {

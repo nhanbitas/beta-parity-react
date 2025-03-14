@@ -20,7 +20,7 @@ export const DemoBasicPagination = (props: Props) => {
 
   return (
     <div className='not-prose'>
-      <Pagination pageSize={5} page={page} totalPage={10} onPageChange={handlePageChange} {...props} />
+      <Pagination page={page} totalPage={10} onPageChange={handlePageChange} {...props} />
     </div>
   );
 };
@@ -30,14 +30,7 @@ export const DemoCustomPagination = (props: Props) => {
   const page = params.get('page') || '1';
   return (
     <div className='not-prose'>
-      <Pagination
-        pageSize={5}
-        page={Number(page)}
-        totalPage={10}
-        component={Link}
-        to={(page) => `?page=${page}`}
-        {...props}
-      />
+      <Pagination page={Number(page)} totalPage={10} component={Link} to={(page) => `?page=${page}`} {...props} />
     </div>
   );
 };
