@@ -14,7 +14,9 @@
 
 
 ## Run repository:
-- Install packages: `npm run install:packages`
+- Install packages: 
+  - `npm run install:packages` if the registry already contains the ui folder
+  - Or run `npm run install` and `npm run build` in registry (create ui - local parity packages) directory before `npm run install` in root directory (nextjs)
 
 - Dev mode: 
   - `npm run dev:lib` to build and watch all component changes

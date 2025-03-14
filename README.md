@@ -68,7 +68,15 @@ Parity React uses CSS variables for flexible theming. Customize themes using `:r
 Clone the repository and install dependencies:
 
 ```sh
+# ui folder is not existing
 git clone https://github.com/nhanbitas/beta-parity-react.git
+cd registry 
+npm install 
+npm run build
+cd ..
+npm install
+
+# or ui folder is existing
 npm install:packages
 ```
 
