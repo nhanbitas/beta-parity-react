@@ -1,11 +1,14 @@
 import * as React from 'react';
-import './index.css';
-import './variables.css';
 import classNames from 'classnames';
 import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from 'lucide-react';
+
+import './index.css';
+import './variables.css';
+
 import { Menu, MenuProps } from '../Menu';
 import { useOutsideClick } from '../hooks/useOutsideClick';
 import useCombinedRefs from '../hooks/useCombinedRefs';
+import useDidMountEffect from '../hooks/useDidMountEffect';
 import { deepMerge } from '../utils';
 
 export type controlType = {
@@ -147,7 +150,7 @@ export const Pagination = React.forwardRef<HTMLUListElement, PaginationProps>(
   ) => {
     const paginationRef = React.useRef<HTMLUListElement>(null);
     const combinedRef = useCombinedRefs(paginationRef, ref);
-    const firstItemRef = React.useRef<HTMLElement>(null);
+    const pageRefs = React.useRef<(HTMLElement | null)[]>([]);
     const [currentPage, setCurrentPage] = React.useState<number>(page);
 
     // Overwrite new control configs
@@ -155,11 +158,6 @@ export const Pagination = React.forwardRef<HTMLUListElement, PaginationProps>(
       defaultControlConfig as controlConfigType,
       controlConfig as controlConfigType
     );
-
-    // Focus first item when blur from menu
-    const handleReFocus = () => {
-      firstItemRef.current?.focus();
-    };
 
     const handlePageChange = (page: number) => {
       setCurrentPage(page);
@@ -240,12 +238,37 @@ export const Pagination = React.forwardRef<HTMLUListElement, PaginationProps>(
       component: Component,
       bordered,
       componentProps,
-      generateHref
+      generateHref,
+      pageRefs
     };
 
+    // If page props is changed, reset current page
     React.useEffect(() => {
       setCurrentPage(page);
     }, [page]);
+
+    // Focus on current page after current page is changed
+    useDidMountEffect(() => {
+      pageRefs.current[currentPage]?.focus();
+    }, [currentPage]);
+
+    // Support keyboard navigation
+    // ArrowLeft - set current page to prev page
+    // ArrowRight - set current page to next page
+    React.useEffect(() => {
+      const handleLeftRightKey = (e: KeyboardEvent) => {
+        if (e.key === 'ArrowLeft') {
+          handleControlClick('prev');
+        }
+        if (e.key === 'ArrowRight') {
+          handleControlClick('next');
+        }
+      };
+
+      paginationRef.current?.addEventListener('keydown', handleLeftRightKey);
+
+      return () => paginationRef.current?.removeEventListener('keydown', handleLeftRightKey);
+    }, [paginationRef.current, handleControlClick]);
 
     return (
       <ul
@@ -269,16 +292,12 @@ export const Pagination = React.forwardRef<HTMLUListElement, PaginationProps>(
           <RenderItem items={items} flag='firstItems' {...renderProps} />
         ) : (
           <>
-            <RenderItem ref={firstItemRef} items={paginationParts.firstItems} flag='firstItems' {...renderProps} />
+            <RenderItem items={paginationParts.firstItems} flag='firstItems' {...renderProps} />
             <RenderItem
               items={paginationParts.preMenuItems}
               flag='preMenuItems'
               isMenu={paginationParts.preMenuItems.length > 1}
               {...renderProps}
-              handlePageChange={(page: number) => {
-                handlePageChange(page);
-                handleReFocus();
-              }}
             />
 
             <RenderItem items={paginationParts.preActiveItems} flag='preActiveItems' {...renderProps} />
@@ -290,10 +309,6 @@ export const Pagination = React.forwardRef<HTMLUListElement, PaginationProps>(
               flag='postMenuItems'
               isMenu={paginationParts.postMenuItems.length > 1}
               {...renderProps}
-              handlePageChange={(page: number) => {
-                handlePageChange(page);
-                handleReFocus();
-              }}
             />
             <RenderItem items={paginationParts.lastItems} flag='lastItems' {...renderProps} />
           </>
@@ -385,13 +400,25 @@ type renderProps = {
   bordered: boolean;
   componentProps?: any;
   generateHref?: (page: number) => string;
+  pageRefs: React.MutableRefObject<(HTMLElement | null)[]>;
   flag?: string;
   isMenu?: boolean;
 };
 
 export const RenderItem = React.forwardRef<HTMLElement, renderProps>(
   (
-    { items, currentPage, handlePageChange, component, bordered, componentProps, generateHref, flag, isMenu = false },
+    {
+      items,
+      currentPage,
+      handlePageChange,
+      component,
+      bordered,
+      componentProps,
+      generateHref,
+      pageRefs,
+      flag,
+      isMenu = false
+    },
     ref
   ) => {
     if (!items || items.length === 0) return null;
@@ -405,6 +432,7 @@ export const RenderItem = React.forwardRef<HTMLElement, renderProps>(
           currentPage={currentPage}
           generateHref={generateHref}
           handlePageChange={handlePageChange}
+          pageRefs={pageRefs}
           bordered={bordered}
           flag={flag}
         />
@@ -416,7 +444,7 @@ export const RenderItem = React.forwardRef<HTMLElement, renderProps>(
       return (
         <React.Fragment key={`page-${flag}-${item}`}>
           <PaginationItem
-            ref={ref as any}
+            ref={(el) => (pageRefs.current[page] = el)}
             component={component}
             page={page}
             active={page === currentPage}
@@ -447,6 +475,7 @@ export const PaginationMenu = React.forwardRef<HTMLButtonElement, PaginationMenu
       currentPage,
       generateHref,
       handlePageChange,
+      pageRefs,
       bordered,
       ...props
     },
@@ -463,15 +492,16 @@ export const PaginationMenu = React.forwardRef<HTMLButtonElement, PaginationMenu
     };
 
     React.useEffect(() => {
-      const handleGlobalKeyDown = (e: KeyboardEvent) => {
+      const handleEscape = (e: KeyboardEvent) => {
         if (e.key === 'Escape') {
           setOpen(false);
+          buttonRef.current?.focus();
         }
       };
 
-      window.addEventListener('keydown', handleGlobalKeyDown);
-      return () => window.removeEventListener('keydown', handleGlobalKeyDown);
-    }, []);
+      refOutsideClick.current?.addEventListener('keydown', handleEscape);
+      return () => refOutsideClick.current?.removeEventListener('keydown', handleEscape);
+    }, [refOutsideClick.current]);
 
     return (
       <>
@@ -496,6 +526,7 @@ export const PaginationMenu = React.forwardRef<HTMLButtonElement, PaginationMenu
           <ul>
             {items.map((page) => (
               <PaginationItem
+                ref={(el) => (pageRefs.current[page] = el)}
                 className='menu-item'
                 key={page}
                 page={page}
