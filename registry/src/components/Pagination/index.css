@@ -101,5 +101,9 @@
 }
 
 .pagination-item.menu-item {
-  @apply !min-w-fit;
+  @apply !min-w-8;
+}
+
+.pagination-item.menu-item:hover {
+  @apply bg-[var(--par-color-bg-surface-item-hovered)];
 }

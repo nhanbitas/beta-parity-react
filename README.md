@@ -70,11 +70,7 @@ Clone the repository and install dependencies:
 ```sh
 # ui folder is not existing
 git clone https://github.com/nhanbitas/beta-parity-react.git
-cd registry 
-npm install 
-npm run build
-cd ..
-npm install
+npm run install:packages
 ```
 
 Run the development server:
