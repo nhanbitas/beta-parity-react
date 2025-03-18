@@ -5,13 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "next dev --port 3005",
-    "build": "npm run build:lib && next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "install:packages": "npm install && npm run install:lib",
-    "install:lib": "npm run install:package --prefix registry",
-    "dev:lib": "npm run dev:all --prefix registry",
-    "build:lib": "npm run build --prefix registry"
+    "install:packages": "cd registry && npm install && npm run build && cd .. && npm install",
+    "install:lib": "cd registry && npm install",
+    "dev:lib": "cd registry && npm run dev:all",
+    "build:lib": "cd registry && npm run build"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.0.1",

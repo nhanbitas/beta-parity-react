@@ -75,9 +75,6 @@ npm install
 npm run build
 cd ..
 npm install
-
-# or ui folder is existing
-npm install:packages
 ```
 
 Run the development server:
@@ -92,6 +89,12 @@ Build the project:
 ```sh
 npm run build:lib
 npm run build
+```
+
+Start the project:
+
+```sh
+npm run start
 ```
 
 Run tests:

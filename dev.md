@@ -15,7 +15,6 @@
 
 ## Run repository:
 - Install packages: 
-  - `npm run install:packages` if the registry already contains the `ui` folder
   - Or run `npm run install` and `npm run build` in registry (create `ui` - local parity packages) directory before `npm run install` in root directory (nextjs)
 
 - Dev mode: 
@@ -26,7 +25,9 @@
   - `npm run dev` to run nextjs site
 
 - Production mode:
-  - `npm run build` to build lib and nextjs site (root directory)
+  - `npm run build:lib` to build libray
+  - `npm run build` to build nextjs site (root directory)
+  - `npm run start` to start the project
 
 - Publish:
   - `cd registry` for moving to registry folder
