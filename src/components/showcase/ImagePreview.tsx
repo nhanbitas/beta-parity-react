@@ -3,7 +3,7 @@ import React from 'react';
 
 interface Props extends ImageProps {}
 
-const ImageSection = (props: Props) => {
+const ImagePreview = (props: Props) => {
   return (
     <div className='image-section relative my-4 flex min-h-24 w-full items-center justify-center overflow-hidden rounded-lg border border-gray-200 bg-gray-25 p-0 2xl:min-h-48 2xl:rounded-lg 2xl:p-8  '>
       <div className='h-fit w-fit'>
@@ -13,4 +13,4 @@ const ImageSection = (props: Props) => {
   );
 };
 
-export default ImageSection;
+export default ImagePreview;

@@ -1,18 +1,39 @@
-import * as Demo from "./demo-components"
+import * as Demo from "@public/demo/accordion"
+import CodePreview from "@components/showcase/CodePreview"
+
+
+<CodePreview paths={['accordion', 'BasicAccordion']}>
+    <Demo.BasicAccordion/>  
+</CodePreview>
+
 
 ## Single Accordion
-<Demo.DemoSingle/>
 
+<CodePreview paths={['accordion', 'SingleAccordion']}>
+    <Demo.SingleAccordion/>  
+</CodePreview>
 
 ## Multiple Accordion
-<Demo.DemoMulti/>
+
+<CodePreview paths={['accordion', 'MultiAccordion']}>
+    <Demo.MultiAccordion/>  
+</CodePreview>
 
 
 ## Accordion with left icon
-<Demo.DemoIconLeft/>
+
+<CodePreview paths={['accordion', 'LeftIconAccordion']}>
+    <Demo.LeftIconAccordion/>  
+</CodePreview>
 
 ## Nested Accordion
-<Demo.NestedAccordion/>
+
+<CodePreview paths={['accordion', 'NestedAccordion']}>
+    <Demo.NestedAccordion/>  
+</CodePreview>
 
 ## Controlled Accordion
-<Demo.DemoControlled/>
+
+<CodePreview paths={['accordion', 'ControlledAccordion']}>
+    <Demo.ControlledAccordion/>  
+</CodePreview>
