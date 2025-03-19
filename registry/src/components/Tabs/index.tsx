@@ -1,8 +1,10 @@
 import React from 'react';
 import classNames from 'classnames';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+
 import './index.css';
 import './variables.css';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+
 import { Button } from '../Button';
 import useDebounce from '../hooks/useDebounce';
 
@@ -11,13 +13,13 @@ import useDebounce from '../hooks/useDebounce';
 // =========================
 // Declare and export Tabs type and Tabs component
 
-const sizeMap = {
+const sizeMap: Record<'sm' | 'md', string> = {
   sm: 'small',
   md: 'medium'
   // lg: 'large' // **REMOVED
 };
 
-const colorMap = {
+const colorMap: Record<'neutral' | 'accent', string> = {
   neutral: 'neutral',
   accent: 'accent'
 };

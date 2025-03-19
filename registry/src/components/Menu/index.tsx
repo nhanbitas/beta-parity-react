@@ -1,12 +1,14 @@
 import React from 'react';
 import classNames from 'classnames';
+import { Check, Search, ChevronUp, ChevronDown } from 'lucide-react';
+import { autoUpdate, flip, offset, Placement, shift, useFloating } from '@floating-ui/react';
+
 import './index.css';
 import './variables.css';
-import { Check, Search, ChevronUp, ChevronDown } from 'lucide-react';
+
 import { Input } from '../BaseInput';
 import useKeyboard from '../hooks/useKeyboard';
 import useDidMountEffect from '../hooks/useDidMountEffect';
-import { autoUpdate, flip, offset, Placement, shift, useFloating } from '@floating-ui/react';
 import { Portal } from '../Portal';
 import useCombinedRefs from '../hooks/useCombinedRefs';
 import { useArrowKeyNavigation } from '../hooks/useArrowKeyNavigation ';
@@ -21,28 +23,28 @@ import { Radio } from '../Radio';
 // =========================
 // Declare and export menu type and menu component
 
-const sizeMap = {
+const sizeMap: Record<'sm' | 'md', string> = {
   sm: 'small',
   md: 'medium'
   // lg: 'large' // **REMOVED
 } as const;
 
-const colorMap = {
+const colorMap: Record<'neutral' | 'accent', string> = {
   neutral: 'neutral',
   accent: 'accent'
 } as const;
 
-const prominenceMap = {
+const prominenceMap: Record<'subtle' | 'pronounced', string> = {
   subtle: 'subtle',
   pronounced: 'pronounced'
 } as const;
 
-const themeMap = {
+const themeMap: Record<'default' | 'alternative', string> = {
   default: 'default',
   alternative: 'alternative'
 } as const;
 
-const sizeHeightMap = {
+const sizeHeightMap: Record<'sm' | 'md', number> = {
   sm: 40,
   md: 48
   // lg: 48 // **REMOVED
@@ -193,6 +195,11 @@ export interface MenuProps extends React.HTMLAttributes<HTMLDivElement> {
   onClose?: () => void;
 }
 
+/**
+ * **Parity Menu**.
+ *
+ * @see {@link http://localhost:3005/menu Parity Menu}
+ */
 export const Menu = React.forwardRef<HTMLDivElement, MenuProps>(
   (
     {
@@ -446,27 +453,90 @@ Menu.displayName = 'Menu';
 // =========================
 // Declare and export menu item type and menu item component
 
+/**
+ * Props for the MenuItem component.
+ *
+ * Extends properties from the `div` or `label` element.
+ */
 export interface MenuItemProps extends Omit<React.HTMLAttributes<HTMLDivElement | HTMLLabelElement>, 'onChange'> {
-  className?: string;
-  children?: React.ReactNode;
+  /**
+   * Whether the menu item is in a loading state.
+   */
   isLoading?: boolean;
+
+  /**
+   * Whether the menu item is disabled.
+   */
   disabled?: boolean;
+
+  /**
+   * The value of the menu item.
+   */
   value?: string;
+
+  /**
+   * The label of the menu item.
+   */
   label?: string;
+
+  /**
+   * The position of the checkmark, either left or right.
+   */
   checkmarkSide?: 'left' | 'right';
+
+  /**
+   * The color of the menu item.
+   */
   color?: keyof typeof colorMap;
+
+  /**
+   * The prominence level of the menu item.
+   */
   prominence?: keyof typeof prominenceMap;
+
+  /**
+   * Whether the menu item is checked.
+   */
   checked?: boolean;
+
+  /**
+   * An optional icon for the menu item.
+   */
   icon?: React.ReactNode;
+
+  /**
+   * The name attribute of the menu item (for form usage).
+   */
   name?: string;
+
+  /**
+   * Whether multiple selections are allowed.
+   */
   multiselect?: boolean;
+
+  /**
+   * Whether the menu item can be deselected.
+   */
   deselectable?: boolean;
+
+  /**
+   * Whether the menu item uses an input element.
+   */
   useInput?: boolean;
+
+  /**
+   * Change event handler for the menu item.
+   */
   onChange?:
     | (({ value, checked }: { value: string | number; checked: boolean }) => void)
     | ((e: React.ChangeEvent<HTMLInputElement>) => void);
 }
 
+/**
+ * **Parity MenuItem**.
+ *
+ * @see {@link http://localhost:3005/menu Parity MenuItem}
+ */
 export const MenuItem = React.forwardRef<HTMLDivElement | HTMLLabelElement, MenuItemProps>(
   (
     {
@@ -576,6 +646,11 @@ MenuItem.displayName = 'MenuItem';
 
 export interface MenuTriggerProps extends React.HTMLAttributes<HTMLButtonElement> {}
 
+/**
+ * **Parity MenuTrigger**.
+ *
+ * @see {@link http://localhost:3005/menu Parity MenuTrigger}
+ */
 export const MenuTrigger = React.forwardRef<HTMLButtonElement, MenuTriggerProps>(
   ({ className, children, ...props }, ref) => {
     return (
@@ -593,11 +668,13 @@ MenuTrigger.displayName = 'MenuTrigger';
 // =========================
 // Declare and export menu header type and menu header component
 
-export interface MenuHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
-  className?: string;
-  children?: React.ReactNode;
-}
+export interface MenuHeaderProps extends React.HTMLAttributes<HTMLDivElement> {}
 
+/**
+ * **Parity MenuHeader**.
+ *
+ * @see {@link http://localhost:3005/menu Parity MenuHeader}
+ */
 export const MenuHeader = React.forwardRef<HTMLDivElement, MenuHeaderProps>(
   ({ className, children, ...props }, ref) => {
     return (
@@ -615,11 +692,13 @@ MenuHeader.displayName = 'MenuHeader';
 // =========================
 // Declare and export menu footer type and menu footer component
 
-export interface MenuFooterProps extends React.HTMLAttributes<HTMLDivElement> {
-  className?: string;
-  children?: React.ReactNode;
-}
+export interface MenuFooterProps extends React.HTMLAttributes<HTMLDivElement> {}
 
+/**
+ * **Parity MenuFooter**.
+ *
+ * @see {@link http://localhost:3005/menu Parity MenuFooter}
+ */
 export const MenuFooter = React.forwardRef<HTMLDivElement, MenuFooterProps>(
   ({ className, children, ...props }, ref) => {
     return (
@@ -671,7 +750,6 @@ MenuIndicator.displayName = 'MenuIndicator';
 // Declare and export menu devider type and menu devider component
 
 export interface MenuDividerProps extends React.HTMLAttributes<HTMLDivElement> {
-  className?: string;
   isLoading?: boolean;
   disabled?: boolean;
 }

@@ -1,9 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
+import { X } from 'lucide-react';
+
 import './index.css';
 import './variables.css';
+
 import { BaseProps } from '../Base';
-import { X } from 'lucide-react';
 import useKeyboard from '../hooks/useKeyboard';
 
 // =========================
@@ -11,18 +13,18 @@ import useKeyboard from '../hooks/useKeyboard';
 // =========================
 // Declare and export Tag type and Tag component
 
-const colorMap = {
+const colorMap: Record<'neutral' | 'accent', string> = {
   neutral: 'neutral',
   accent: 'accent'
 } as const;
 
-const sizeMap = {
+const sizeMap: Record<'sm' | 'md' | 'lg', string> = {
   sm: 'small',
   md: 'medium',
   lg: 'large'
 };
 
-const kindMap = {
+const kindMap: Record<'glass' | 'outlined', string> = {
   glass: 'glass',
   outlined: 'outlined'
 };

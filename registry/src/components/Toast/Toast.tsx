@@ -2,6 +2,7 @@ import React, { useCallback, useEffect } from 'react';
 import classNames from 'classnames';
 import { X } from 'lucide-react';
 import './index.css';
+
 import useHoverFocus, { EventHandlers } from '../hooks/useHoverFocus';
 import { Spinner } from '../Spinner';
 import useDidMountEffect from '../hooks/useDidMountEffect';
@@ -12,28 +13,28 @@ import useDidMountEffect from '../hooks/useDidMountEffect';
 // Toast
 // =========================
 
-const positions = ['top-right', 'top-center', 'bottom-right', 'bottom-center'] as const;
+const positions: readonly string[] = ['top-right', 'top-center', 'bottom-right', 'bottom-center'] as const;
 
-const openAnimations = {
+const openAnimations: Record<string, string> = {
   'top-right': 'animate-slide-in-left',
   'top-center': 'animate-slide-in-top',
   'bottom-right': 'animate-slide-in-left',
   'bottom-center': 'animate-slide-in-bottom'
 };
 
-const closeAnimations = {
+const closeAnimations: Record<string, string> = {
   'top-right': 'animate-fade-out',
   'top-center': 'animate-fade-out',
   'bottom-right': 'animate-fade-out',
   'bottom-center': 'animate-fade-out'
 };
 
-const emphasisClasses = {
+const emphasisClasses: Record<'normal' | 'high', string> = {
   normal: 'emphasis-normal',
   high: 'emphasis-high'
 };
 
-const heightClasses = {
+const heightClasses: Record<'flexible' | 'compact', string> = {
   flexible: 'height-flexible',
   compact: 'height-compact'
 };
@@ -192,6 +193,11 @@ export interface ToastProps extends Omit<React.HTMLAttributes<HTMLDivElement>, '
   onDismissed?: () => void;
 }
 
+/**
+ * **Parity Toast**.
+ *
+ * @see {@link http://localhost:3005/toast Parity Toast}
+ */
 export const Toast: React.FC<ToastProps> = ({
   id,
   removeToast,

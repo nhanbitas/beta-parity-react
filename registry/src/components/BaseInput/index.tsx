@@ -1,8 +1,10 @@
 import * as React from 'react';
 import classNames from 'classnames';
+import { ChevronsUpDown, X } from 'lucide-react';
+
 import './index.css';
 import './variables.css';
-import { ChevronsUpDown, X } from 'lucide-react';
+
 import { ContainedLabel } from '../FloatingLabel';
 import useCombinedRefs from '../hooks/useCombinedRefs';
 import { BaseProps } from '../Base';
@@ -13,7 +15,7 @@ import { useOutsideClick } from '../hooks/useOutsideClick';
 // =========================
 // Declare and export select type and Input component
 
-export const sizeMap = {
+export const sizeMap: Record<'sm' | 'md', string> = {
   sm: 'small',
   md: 'medium'
 } as const;
@@ -200,7 +202,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       ? (currentValue || isFocused) && isHasRightInputAction
       : isHasRightInputAction;
     const isActiveClearButton = isClearable && currentValue && !readOnly && !disabled;
-    const isActiveFloatingLabel = readOnly ? true : isFocused || !!currentValue;
+    const isActiveFloatingLabel = readOnly || isFocused || !!currentValue;
 
     const RightInputActions = isActiveRightInputAction && (
       <>
@@ -406,7 +408,7 @@ export const UnitSelector = ({
   const [selectedUnit, setSelectedUnit] = React.useState(initialValue);
   const [width, setWidth] = React.useState(0);
 
-  const handleUnitChange = (e: any) => {
+  const handleUnitChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     if (disabled) return;
     setSelectedUnit(e.target.value);
     onUnitChange?.(e);

@@ -1,9 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
+import { Check, ChevronDown, ChevronUp } from 'lucide-react';
+
 import './index.css';
 import './variables.css';
+
 import { BaseProps } from '../Base';
-import { Check, ChevronDown, ChevronUp, X } from 'lucide-react';
 import useDidMountEffect from '../hooks/useDidMountEffect';
 import useKeyboard from '../hooks/useKeyboard';
 
@@ -12,18 +14,18 @@ import useKeyboard from '../hooks/useKeyboard';
 // =========================
 // Declare and export Chip type and Chip component
 
-const colorMap = {
+const colorMap: Record<'neutral' | 'accent', string> = {
   neutral: 'neutral',
   accent: 'accent'
 } as const;
 
-const sizeMap = {
+const sizeMap: Record<'sm' | 'md' | 'lg', string> = {
   sm: 'small',
   md: 'medium',
   lg: 'large'
 } as const;
 
-const kindMap = {
+const kindMap: Record<'glass' | 'outlined', string> = {
   glass: 'glass',
   outlined: 'outlined'
 } as const;
@@ -165,9 +167,10 @@ export const Chip = React.forwardRef<
   } = props;
 
   // Inite states
-  const kindChip = kindMap[kind as keyof typeof kindMap];
-  const sizeChip = sizeMap[size as keyof typeof sizeMap];
-  const colorChip = colorMap[color as keyof typeof colorMap];
+  const kindChip = kindMap[kind];
+  const sizeChip = sizeMap[size];
+  const colorChip = colorMap[color];
+
   const defaultActive = type === 'toggle' ? !!checked : !!isActive;
   const [active, setActive] = React.useState(defaultActive || defaultChecked);
 

@@ -5,6 +5,26 @@ import { ToastContainer } from './ToastContainer';
 
 export interface ToastOptions extends Omit<ToastProps, 'id' | 'removeToast'> {}
 
+/**
+ * **Parity Toast**.
+ *
+ * Creates a toast notification and provides methods to control it.
+ *
+ * This function generates a toast event with a unique `id` and dispatches custom events
+ * for adding, removing, or updating the toast notification.
+ *
+ * @memberof Toast
+ *
+ * @example
+ * const myToast = toast({ kind: 'success', position: 'bottom-left', message: 'Task completed!' });
+ * myToast.start(); // Show the toast
+ * myToast.update({ message: 'Updated message' }); // Update toast content
+ * myToast.stop(); // Remove the toast
+ *
+ *
+ * @see {@link http://localhost:3005/toast Parity Toast}
+ */
+
 const toast = ({ position, kind, ...options }: ToastOptions) => {
   const detail = {
     id: (Date.now() + Math.random()).toString(),

@@ -1,7 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
+
 import './index.css';
 import './variables.css';
+
 import { InlineLink, InlineLinkProps } from '../InlineLink';
 import { Menu, MenuProps } from '../Menu';
 import { useOutsideClick } from '../hooks/useOutsideClick';
@@ -205,12 +207,13 @@ export const BreadcrumbMenu = React.forwardRef<HTMLButtonElement, BreadcrumbMenu
       const handleGlobalKeyDown = (e: KeyboardEvent) => {
         if (e.key === 'Escape') {
           setOpen(false);
+          conbineButtonRef.current?.focus();
         }
       };
 
       window.addEventListener('keydown', handleGlobalKeyDown);
       return () => window.removeEventListener('keydown', handleGlobalKeyDown);
-    }, []);
+    }, [conbineButtonRef.current]);
 
     return (
       <>

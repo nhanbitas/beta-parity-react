@@ -1,9 +1,11 @@
 import * as React from 'react';
-import './index.css';
-import { NumericFormat, NumericFormatProps, numericFormatter, SourceInfo } from 'react-number-format';
-import { InputProps, Input, UnitSelector } from '../BaseInput';
-import { ChevronDown, ChevronUp, MinusIcon, PlusIcon } from 'lucide-react';
 import classNames from 'classnames';
+import { NumericFormat, NumericFormatProps, numericFormatter, SourceInfo } from 'react-number-format';
+import { ChevronDown, ChevronUp, MinusIcon, PlusIcon } from 'lucide-react';
+
+import './index.css';
+
+import { InputProps, Input, UnitSelector } from '../BaseInput';
 
 // =========================
 // NumberInput

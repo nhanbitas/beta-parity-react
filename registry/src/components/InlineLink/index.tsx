@@ -3,18 +3,18 @@ import classNames from 'classnames';
 import './index.css';
 import './variables.css';
 
-const colorMap = {
+const colorMap: Record<'neutral' | 'standard', string> = {
   neutral: 'neutral',
   standard: 'standard'
 } as const;
 
-const sizeMap = {
+const sizeMap: Record<'sm' | 'md' | 'lg', string> = {
   sm: 'small',
   md: 'medium',
   lg: 'large'
 } as const;
 
-const underlineClassMap = {
+const underlineClassMap: Record<'always' | 'hover' | 'none', string> = {
   always: 'underline-always',
   hover: 'underline-hover',
   none: 'underline-none'
@@ -95,7 +95,7 @@ export const InlineLink = React.forwardRef<HTMLAnchorElement, InlineLinkProps>(
       underline = 'hover',
       iconOnly = false,
       disabled,
-      href = '#',
+      href,
       asChild = false,
       ...props
     },
@@ -113,7 +113,7 @@ export const InlineLink = React.forwardRef<HTMLAnchorElement, InlineLinkProps>(
       }
     );
 
-    const acessibilityProps = {
+    const accessibilityProps = {
       'aria-disabled': disabled,
       tabIndex: disabled ? -1 : 0
     };
@@ -126,7 +126,7 @@ export const InlineLink = React.forwardRef<HTMLAnchorElement, InlineLinkProps>(
           return React.cloneElement(child, {
             ...child.props,
             className: classNames(child.props.className, inlineLinkClasses),
-            ...acessibilityProps,
+            ...accessibilityProps,
             ...props
           });
         }
@@ -135,7 +135,7 @@ export const InlineLink = React.forwardRef<HTMLAnchorElement, InlineLinkProps>(
     }
 
     return (
-      <a className={inlineLinkClasses} ref={ref} href={availableHref} {...acessibilityProps} {...props}>
+      <a className={inlineLinkClasses} ref={ref} href={availableHref} {...accessibilityProps} {...props}>
         {children}
       </a>
     );

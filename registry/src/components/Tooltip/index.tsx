@@ -16,9 +16,11 @@ import {
   FloatingArrow,
   safePolygon
 } from '@floating-ui/react';
-import './index.css';
-import { Portal } from '../Portal';
 import classNames from 'classnames';
+
+import './index.css';
+
+import { Portal } from '../Portal';
 import { useTouch } from './useTouch';
 
 // =========================

@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import ReactDOM from 'react-dom';
-import { Toast, ToastProps } from './Toast';
+
 import './variables.css';
 import './index.css';
+
+import { Toast, ToastProps } from './Toast';
 
 // =========================
 // ToastContainer
@@ -55,6 +57,8 @@ interface ToastInstance extends ToastProps {}
 
 /**
  * **Parity Toast Container**.
+ *
+ * A container that listens for toast events and displays toast notifications dynamically.
  *
  *  @see {@link http://localhost:3005/toast Parity Toast Container}
  */

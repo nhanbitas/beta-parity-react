@@ -1,7 +1,9 @@
-import './variables.css';
-import './index.css';
 import React from 'react';
 import classNames from 'classnames';
+
+import './variables.css';
+import './index.css';
+
 import { BaseProps } from '../Base';
 import { InputProps } from '../BaseInput';
 import useCombinedRefs from '../hooks/useCombinedRefs';

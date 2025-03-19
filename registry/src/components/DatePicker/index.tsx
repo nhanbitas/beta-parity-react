@@ -22,13 +22,13 @@ import { Vietnamese } from 'flatpickr/dist/l10n/vn.js';
 import { MandarinTraditional } from 'flatpickr/dist/l10n/zh-tw.js';
 import { default as defaultLocale } from 'flatpickr/dist/l10n/default.js';
 
-export const DatePickerLocales = {
+export const DatePickerLocales: Record<string, any> = {
   default: defaultLocale,
   en: defaultLocale,
   vn: Vietnamese,
   'zh-cn': Mandarin,
   'zh-tw': MandarinTraditional
-};
+} as const;
 
 // =========================
 // DatePicker

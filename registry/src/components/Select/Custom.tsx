@@ -1,9 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
+import { ChevronDown, X } from 'lucide-react';
+
 import './index.css';
 import './variables.css';
+
 import { InputWrapper, ValueInputWrapper } from '../BaseInput';
-import { ChevronDown, X } from 'lucide-react';
 import { Menu, MenuDivider, MenuDividerProps, MenuGroup, MenuGroupProps, MenuItem, MenuProps } from '../Menu';
 import { ContainedLabel } from '../FloatingLabel';
 import { useResizeObserver } from '../hooks/useObserver';
@@ -18,7 +20,7 @@ import { Tag, TagProps } from '../Tag';
 // =========================
 // Declare and export custom select type and custom select component
 
-const sizeMap = {
+const sizeMap: Record<'sm' | 'md', string> = {
   sm: 'small',
   md: 'medium'
   // lg: 'large' //**REMOVED

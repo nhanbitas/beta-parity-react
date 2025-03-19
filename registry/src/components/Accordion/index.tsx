@@ -1,8 +1,10 @@
 import React from 'react';
 import classNames from 'classnames';
+import { ChevronDown, Minus, Plus } from 'lucide-react';
+
 import './index.css';
 import './variables.css';
-import { ChevronDown, Minus, Plus } from 'lucide-react';
+
 import { BaseProps } from '../Base';
 import useDidMountEffect from '../hooks/useDidMountEffect';
 
@@ -212,9 +214,9 @@ export interface AccordionItemProps {
   /**
    * Clone props
    */
-  currentValue?: any;
-  handleChange?: any;
-  type?: any;
+  currentValue?: string | string[];
+  handleChange?: (value: string) => void;
+  type?: 'single' | 'multiple';
 }
 
 /**
@@ -279,11 +281,11 @@ export interface AccordionItemTriggerProps {
   /**
    * Clone props
    */
-  isExpanded?: any;
-  disabled?: any;
-  handleChange?: any;
-  icon?: any;
-  iconSide?: any;
+  isExpanded?: boolean;
+  disabled?: boolean;
+  handleChange?: () => void;
+  icon?: 'chevron' | 'cross';
+  iconSide?: 'left' | 'right';
 }
 
 /**
@@ -316,7 +318,7 @@ export const AccordionItemTrigger = React.forwardRef<
         })}
         aria-expanded={isExpanded}
         disabled={disabled}
-        onClick={() => handleChange()}
+        onClick={() => handleChange?.()}
         ref={ref}
         {...props}
       >
@@ -341,7 +343,7 @@ export interface AccordionItemContentProps {
   /**
    * Clone props
    */
-  isExpanded?: any;
+  isExpanded?: boolean;
 }
 
 /**

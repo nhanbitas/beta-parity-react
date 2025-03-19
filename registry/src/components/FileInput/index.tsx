@@ -1,5 +1,7 @@
 import * as React from 'react';
+
 import './index.css';
+
 import { Input } from '../BaseInput';
 
 export interface FileInputProps extends React.ComponentPropsWithoutRef<typeof Input> {}

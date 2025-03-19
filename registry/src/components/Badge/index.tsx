@@ -1,7 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
+
 import './index.css';
 import './variables.css';
+
 import { Dot } from '../Dot';
 
 // =========================
@@ -9,7 +11,7 @@ import { Dot } from '../Dot';
 // =========================
 // Declare and export Badge type and Badge component
 
-const sizeMap = {
+const sizeMap: Record<'xs' | 'sm' | 'md', string> = {
   xs: 'extra-small',
   sm: 'small',
   md: 'medium'
@@ -42,7 +44,7 @@ export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
    * @default 'gray'
    * @memberof BadgeProps
    */
-  color?: 'gray' | 'orange' | 'violet' | 'green' | 'red' | 'yellow' | 'blue' | 'lime' | 'cyan' | '';
+  color?: 'gray' | 'orange' | 'violet' | 'green' | 'red' | 'yellow' | 'blue' | 'lime' | 'cyan';
 
   /**
    * Size of the badge.
@@ -87,15 +89,7 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
         ref={ref}
         {...props}
       >
-        {dot ? (
-          <>
-            <Dot size={size} /> {label || children}
-          </>
-        ) : (
-          <>
-            {icon} {label || children}
-          </>
-        )}
+        {dot ? <Dot size={size} /> : icon} {label || children}
       </span>
     );
   }

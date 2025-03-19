@@ -1,8 +1,10 @@
 import React from 'react';
-import './index.css';
-import './variables.css';
 import classNames from 'classnames';
 import { Check, Minus } from 'lucide-react';
+
+import './index.css';
+import './variables.css';
+
 import useCombinedRefs from '../hooks/useCombinedRefs';
 
 // =========================

@@ -1,8 +1,10 @@
 import React from 'react';
+import classNames from 'classnames';
+
 import './index.css';
 import './variables.css';
+
 import { InputProps } from '../BaseInput';
-import classNames from 'classnames';
 import { BaseProps } from '../Base';
 import useDidMountEffect from '../hooks/useDidMountEffect';
 
@@ -11,7 +13,7 @@ import useDidMountEffect from '../hooks/useDidMountEffect';
 // =========================
 // Declare and export Radio type and Radio component
 
-const colorMap = {
+const colorMap: Record<'neutral' | 'accent', string> = {
   neutral: 'neutral',
   accent: 'accent'
 } as const;

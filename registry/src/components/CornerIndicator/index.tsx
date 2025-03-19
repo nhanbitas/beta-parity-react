@@ -1,7 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
+
 import './index.css';
 import './variables.css';
+
 import { Badge, BadgeProps } from '../Badge';
 import { Dot, DotProps } from '../Dot';
 
@@ -10,25 +12,25 @@ import { Dot, DotProps } from '../Dot';
 // =========================
 // Declare and export Corner Indicator type and Corner Indicator component
 
-const sizetoBadgeSize = {
+const sizetoBadgeSize: Record<'xs' | 'sm' | 'md' | 'lg', string> = {
   xs: 'xs',
   sm: 'sm',
   md: 'md',
   lg: 'lg'
-};
+} as const;
 
-const sizetoDotSize = {
+const sizetoDotSize: Record<'xs' | 'sm' | 'md' | 'lg', string> = {
   xs: 'sm',
   sm: 'md',
   md: 'lg',
   lg: 'xl'
-};
+} as const;
 
-const translateXOriginMap = {
+const translateXOriginMap: Record<'symmetric' | 'inward' | 'outward', { translatePercent: number; xOffset: number }> = {
   symmetric: { translatePercent: 50, xOffset: 0 },
   inward: { translatePercent: 0, xOffset: 6 },
   outward: { translatePercent: 100, xOffset: 6 }
-};
+} as const;
 
 /**
  * Props for the Corner Indicator component.
@@ -121,7 +123,7 @@ export interface CornerIndicatorProps extends React.HTMLAttributes<HTMLDivElemen
    * @default 'gray'
    * @memberof CornerIndicatorProps
    */
-  color?: 'gray' | 'orange' | 'violet' | 'green' | 'red' | 'yellow' | 'blue' | 'lime' | 'cyan' | '';
+  color?: 'gray' | 'orange' | 'violet' | 'green' | 'red' | 'yellow' | 'blue' | 'lime' | 'cyan';
 
   /**
    * Size of the corner indicator.
@@ -208,7 +210,7 @@ export const CornerIndicator = React.forwardRef<HTMLDivElement, CornerIndicatorP
         {...props}
       >
         {!label ? (
-          <Dot pulse={pulse} size={sizetoDotSize[size] as any} color={color as any} {...indicatorProps} />
+          <Dot pulse={pulse} size={sizetoDotSize[size] as any} color={color} {...indicatorProps} />
         ) : (
           <Badge
             label={label}

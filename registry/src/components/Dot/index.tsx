@@ -1,7 +1,16 @@
 import React from 'react';
+import classNames from 'classnames';
+
 import './index.css';
 import './variables.css';
-import classNames from 'classnames';
+
+const sizeMap: Record<'xs' | 'sm' | 'md' | 'lg' | 'xl', string> = {
+  xs: 'extra-small',
+  sm: 'small',
+  md: 'medium',
+  lg: 'large',
+  xl: 'extra-large'
+} as const;
 
 // =========================
 // Dot
@@ -38,14 +47,6 @@ export interface DotProps extends React.HTMLAttributes<HTMLSpanElement> {
    */
   color?: 'gray' | 'orange' | 'violet' | 'green' | 'red' | 'yellow' | 'blue' | 'lime' | 'cyan';
 }
-
-const sizeMap = {
-  xs: 'extra-small',
-  sm: 'small',
-  md: 'medium',
-  lg: 'large',
-  xl: 'extra-large'
-};
 
 /**
  * **Parity Dot**.

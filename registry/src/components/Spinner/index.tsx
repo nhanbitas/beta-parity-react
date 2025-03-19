@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+
 import './variables.css';
 import './index.css';
 
@@ -8,7 +9,7 @@ import './index.css';
 // =========================
 // Declare and export Spinner type and Spinner component
 
-export const sizeMap = {
+export const sizeMap: Record<'sm' | 'md' | 'lg' | 'xl', string> = {
   sm: 'small',
   md: 'medium',
   lg: 'large',

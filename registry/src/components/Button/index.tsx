@@ -1,7 +1,9 @@
 import React from 'react';
+import classNames from 'classnames';
+
 import './index.css';
 import './variables.css';
-import classNames from 'classnames';
+
 import { Spinner } from '../Spinner';
 
 // =========================
@@ -9,19 +11,19 @@ import { Spinner } from '../Spinner';
 // =========================
 // Declare and export select type and Button component
 
-const sizeMap = {
+const sizeMap: Record<'sm' | 'md' | 'lg', string> = {
   sm: 'small',
   md: 'medium',
   lg: 'large'
 } as const;
 
-const colorMap = {
+const colorMap: Record<'accent' | 'neutral' | 'adverse', string> = {
   accent: 'accent',
   neutral: 'neutral',
   adverse: 'adverse'
 } as const;
 
-const kindMap = {
+const kindMap: Record<'solid' | 'outlined' | 'ghost' | 'glass', string> = {
   solid: 'solid',
   outlined: 'outlined',
   ghost: 'ghost',

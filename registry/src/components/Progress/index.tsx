@@ -1,27 +1,28 @@
 import * as React from 'react';
+import classNames from 'classnames';
+
 import './variables.css';
 import './index.css';
-import classNames from 'classnames';
 
 // =========================
 // Progress
 // =========================
 // Declare and export Progress type and Progress component
 
-const sizeMap = {
+const sizeMap: Record<'sm' | 'md', string> = {
   sm: 'small',
   md: 'medium'
-};
+} as const;
 
-const sizeHeightMap = {
+const sizeHeightMap: Record<'sm' | 'md', number> = {
   sm: 64, //4rem
   md: 120 //7.5rem
-};
+} as const;
 
-const sizeStrokeWidthMap = {
+const sizeStrokeWidthMap: Record<'sm' | 'md', number> = {
   sm: 6,
   md: 12
-};
+} as const;
 
 /**
  * Props for the Progress component.

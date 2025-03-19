@@ -11,7 +11,7 @@ import { ChevronDown } from 'lucide-react';
 // =========================
 // Declare and export native select type and native select component
 
-const sizeMap = {
+const sizeMap: Record<'sm' | 'md', string> = {
   sm: 'small',
   md: 'medium'
   // lg: 'large' //**REMOVED

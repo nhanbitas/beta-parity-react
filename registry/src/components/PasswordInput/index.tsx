@@ -1,7 +1,9 @@
 import * as React from 'react';
-import './index.css';
-import { Input } from '../BaseInput';
 import { Eye } from 'lucide-react';
+
+import './index.css';
+
+import { Input } from '../BaseInput';
 import { Button } from '../Button';
 import useDidMountEffect from '../hooks/useDidMountEffect';
 
