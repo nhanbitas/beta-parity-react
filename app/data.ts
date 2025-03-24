@@ -20,6 +20,11 @@ export const components = [
     status: 3
   },
   {
+    name: 'Content Navigation',
+    url: '/content-navigation',
+    status: 3
+  },
+  {
     name: 'Dot',
     url: '/dot',
     status: 3
@@ -112,7 +117,7 @@ export const components = [
   {
     name: 'Date picker',
     url: '/date-picker',
-    status: 2
+    status: 3
   },
   {
     name: 'Breadcrumb',
@@ -158,6 +163,6 @@ export const components = [
   {
     name: 'Pagination',
     url: '/pagination',
-    status: 2
+    status: 3
   }
 ];
