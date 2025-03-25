@@ -130,6 +130,11 @@ export const components = [
     status: 3
   },
   {
+    name: 'Tree Navigation',
+    url: '/tree-navigation',
+    status: 2
+  },
+  {
     name: 'Progress',
     url: '/progress',
     status: 3

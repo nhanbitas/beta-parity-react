@@ -1,0 +1,88 @@
+.tree-navigation {
+  @apply text-body-compact-02 sticky top-0 bg-[var(--par-color-bg-tree-navigation-item)];
+}
+
+.tree-navigation-list,
+.tree-navigation-sublist {
+  @apply m-0 list-none;
+}
+
+.tree-navigation-sublist .tree-navigation-item {
+  @apply ml-7;
+}
+
+.tree-navigation-item {
+  @apply relative cursor-pointer text-[var(--par-color-text-tree-navigation-content-item-enabled)] transition-colors duration-300 ease-out;
+
+  &:is(.tree-navigation-subitem)::before {
+    @apply absolute -left-2 top-0 h-full w-px bg-[var(--par-color-border-tree-navigation)] content-[''];
+  }
+}
+
+.tree-navigation-item-content {
+  @apply relative w-full rounded-md;
+
+  &:hover {
+    @apply text-[var(--par-color-text-tree-navigation-content-item-hovered)];
+  }
+
+  &:active {
+    @apply text-[var(--par-color-text-tree-navigation-content-item-pressed)];
+  }
+}
+
+.tree-navigation-item-text {
+  @apply flex h-10 w-full items-center gap-2 rounded-md pl-10 pr-4 transition-colors duration-150 ease-out;
+
+  & span {
+    @apply truncate;
+  }
+
+  &:focus-visible {
+    @apply -outline-offset-2;
+  }
+}
+
+.tree-navigation-item-active .active {
+  @apply !bg-[var(--par-color-bg-tree-navigation-item-neutral-selected)] !text-[var(--par-color-text-tree-navigation-content-item-neutral-selected)];
+}
+
+.tree-navigation.accent .tree-navigation-item-active .active {
+  @apply !bg-[var(--par-color-bg-tree-navigation-item-accent-selected)] !text-[var(--par-color-text-tree-navigation-content-item-accent-selected)];
+
+  & .tree-navigation-icon-button:hover {
+    @apply bg-[var(--par-color-bg-tree-navigation-button-accent-hovered)];
+  }
+
+  & .tree-navigation-icon-button:active {
+    @apply bg-transparent text-[var(--par-color-text-tree-navigation-content-item-accent-selected)];
+  }
+}
+
+.tree-navigation-icon-button {
+  @apply absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 overflow-hidden rounded-md bg-[var(--par-color-bg-tree-navigation-item-icon-button)] text-[var(--par-color-text-tree-navigation-content-item-icon-button)] transition duration-150 ease-out;
+
+  &:hover {
+    @apply bg-[var(--par-color-bg-tree-navigation-button-neutral-hovered)];
+  }
+
+  &:active {
+    @apply bg-transparent text-[var(--par-color-text-tree-navigation-content-item-pressed)];
+  }
+
+  &:focus-visible {
+    @apply -outline-offset-0;
+  }
+
+  &:has(.icon-minus) {
+    @apply pointer-events-none;
+  }
+
+  &:has(.icon-expanded) {
+    @apply rotate-90;
+  }
+}
+
+.tree-navigation-icon {
+  @apply h-4 w-4;
+}

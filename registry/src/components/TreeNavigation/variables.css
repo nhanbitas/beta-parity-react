@@ -1,0 +1,40 @@
+:root,
+[data-scheme='light'] {
+  /* Text Tokens */
+  --par-color-text-tree-navigation-content-item-enabled: var(--par-gray-500);
+  --par-color-text-tree-navigation-content-item-hovered: var(--par-gray-600);
+  --par-color-text-tree-navigation-content-item-pressed: var(--par-gray-950);
+  --par-color-text-tree-navigation-content-item-neutral-selected: var(--par-neutral-950);
+  --par-color-text-tree-navigation-content-item-accent-selected: var(--par-accent-550);
+  --par-color-text-tree-navigation-content-item-disabled: rgb(from var(--par-gray-500) r g b / 0.5);
+
+  /* Border Tokens */
+  --par-color-border-tree-navigation: var(--par-gray-200);
+
+  /* Background Tokens */
+  --par-color-bg-tree-navigation-item: var(--par-transparent);
+  --par-color-bg-tree-navigation-item-neutral-selected: var(--par-neutral-50);
+  --par-color-bg-tree-navigation-item-accent-selected: var(--par-accent-50);
+  --par-color-bg-tree-navigation-button-neutral-hovered: rgb(from var(--par-neutral-200) r g b / 0.5);
+  --par-color-bg-tree-navigation-button-accent-hovered: rgb(from var(--par-accent-200) r g b / 0.5);
+}
+
+[data-scheme='dark'] {
+  /* Text Tokens */
+  --par-color-text-tree-navigation-content-item-enabled: var(--par-gray-200);
+  --par-color-text-tree-navigation-content-item-hovered: var(--par-gray-100);
+  --par-color-text-tree-navigation-content-item-pressed: var(--par-white);
+  --par-color-text-tree-navigation-content-item-neutral-selected: var(--par-white);
+  --par-color-text-tree-navigation-content-item-accent-selected: var(--par-accent-200);
+  --par-color-text-tree-navigation-content-item-disabled: rgb(from var(--par-gray-200) r g b / 0.5);
+
+  /* Border Tokens */
+  --par-color-border-tree-navigation: var(--par-gray-600);
+
+  /* Background Tokens */
+  --par-color-bg-tree-navigation-item: var(--par-transparent);
+  --par-color-bg-tree-navigation-item-neutral-selected: rgb(from var(--par-neutral-800) r g b / 0.5);
+  --par-color-bg-tree-navigation-item-accent-selected: rgb(from var(--par-accent-800) r g b / 0.5);
+  --par-color-bg-tree-navigation-button-neutral-hovered: rgb(from var(--par-neutral-700) r g b / 0.5);
+  --par-color-bg-tree-navigation-button-accent-hovered: rgb(from var(--par-accent-700) r g b / 0.5);
+}

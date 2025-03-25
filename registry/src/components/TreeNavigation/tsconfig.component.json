@@ -1,0 +1,15 @@
+{
+  "extends": "./../../../tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "../",
+    "outDir": "./../../../ui",
+    "declaration": true,
+    "noEmit": false, 
+    "emitDeclarationOnly": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "isolatedModules": true
+  },
+  "include": ["./**/*.ts", "./**/*.tsx"]
+}
