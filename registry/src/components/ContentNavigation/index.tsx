@@ -6,17 +6,76 @@ import classNames from 'classnames';
 import './index.css';
 import './variables.css';
 
+// =========================
+// ContentNavigation
+// =========================
+// Declare and export select type and ContentNavigation component
+
+/**
+ * Props for the ContentNavigation component.
+ *
+ * Extends properties from HTMLElement.
+ */
 export interface ContentNavigationProps extends React.HTMLAttributes<HTMLElement> {
-  target?: string; // CSS selector for the main container
-  spaceToTop?: number; // Space to maintain from the top when scrolling
-  skeleton?: React.ReactNode; // Custom skeleton loader
+  /**
+   * The target element or CSS selector for the main container that contains the headings.
+   * Can be either a CSS selector string or an HTMLElement reference.
+   *
+   * @default 'main' - The main element of the document
+   * @memberof ContentNavigationProps
+   */
+  target?: string | HTMLElement | null;
+
+  /**
+   * The space (in pixels) to maintain from the top of the viewport
+   * when scrolling to a heading.
+   *
+   * @default 0
+   * @memberof ContentNavigationProps
+   */
+  spaceToTop?: number;
+
+  /**
+   * Custom skeleton loader component to display while content is loading.
+   *
+   * @memberof ContentNavigationProps
+   */
+  skeleton?: React.ReactNode;
+
+  /**
+   * The color theme for the navigation.
+   * Can be either 'neutral' or 'accent'.
+   *
+   * @default 'neutral'
+   * @memberof ContentNavigationProps
+   */
+  color?: 'neutral' | 'accent';
 }
 
+/**
+ * **Content Navigation Component**
+ *
+ * A navigation component that automatically generates a table of contents
+ * from H2 and H3 headings within a specified container. It provides smooth
+ * scrolling navigation and highlights the current section in view.
+ *
+ * @example
+ * ```tsx
+ * <ContentNavigation
+ *   target="#main-content"
+ *   spaceToTop={60}
+ *   color="accent"
+ * />
+ * ```
+ *
+ * @see {@link http://localhost:3005/content-navigation Content Navigation}
+ */
 export const ContentNavigation: React.FC<ContentNavigationProps> = ({
   target = 'main',
   spaceToTop = 0,
   className,
-  skeleton = <div className='skeleton-loader'>Loading...</div>, // Default skeleton loader
+  color = 'neutral',
+  skeleton, // Default skeleton loader
   ...props
 }) => {
   const [anchors, setAnchors] = useState<HTMLElement[]>([]);
@@ -28,7 +87,7 @@ export const ContentNavigation: React.FC<ContentNavigationProps> = ({
 
   // Initialize the component
   useEffect(() => {
-    const mainElement = document.querySelector(target) as HTMLElement | null;
+    const mainElement = typeof target === 'string' ? (document.querySelector(target) as HTMLElement | null) : target;
     if (!mainElement) {
       setLoading(false); // Stop loading if the target is not found
       return;
@@ -37,7 +96,7 @@ export const ContentNavigation: React.FC<ContentNavigationProps> = ({
     mainRef.current = mainElement;
     const anchorElements = Array.from(mainElement.querySelectorAll('h2, h3')) as HTMLElement[];
     setAnchors(anchorElements);
-    console.log(mainElement.clientHeight, mainElement.scrollHeight);
+
     // Check if the main element is scrollable
     setScrollable(mainElement.clientHeight < mainElement.scrollHeight);
 
@@ -52,7 +111,7 @@ export const ContentNavigation: React.FC<ContentNavigationProps> = ({
       },
       {
         root: mainElement.clientHeight < mainElement.scrollHeight ? mainElement : null,
-        rootMargin: `${-90 + (spaceToTop / window.innerHeight) * 100}% 0px 0px 0px`,
+        rootMargin: `0px 0px ${-90 + (spaceToTop / window.innerHeight) * 100}% 0px`,
         threshold: 0
       }
     );
@@ -90,31 +149,25 @@ export const ContentNavigation: React.FC<ContentNavigationProps> = ({
     }
   };
 
-  if (loading) {
-    return <>{skeleton}</>; // Render skeleton while loading
-  }
+  if (loading) return <>{skeleton}</>;
 
   return (
-    <nav className={classNames('content-navigation', className)} aria-label='Content Navigation' {...props}>
+    <nav className={classNames('content-navigation', className, color)} aria-label='Content Navigation' {...props}>
       <ul className='content-navigation-list'>
-        {anchors.map((anchor, index) => {
+        {anchors.map((anchor) => {
           const specifiedAnchor = anchor.getAttribute('data-specified-anchor')!;
           const isActive = activeAnchor === specifiedAnchor;
-
           return (
-            <li
-              key={specifiedAnchor}
-              className={classNames('content-navigation-item', {
-                'content-navigation-item-active': isActive,
-                'content-navigation-item-heading': anchor.tagName === 'H2'
-              })}
-            >
+            <li key={specifiedAnchor}>
               <button
-                className='content-navigation-link'
+                className={classNames('content-navigation-item', {
+                  'content-navigation-item-active': isActive,
+                  'content-navigation-item-heading': anchor.tagName === 'H2'
+                })}
                 onClick={() => handleNavItemClick(anchor)}
                 aria-label={specifiedAnchor}
               >
-                {anchor.textContent}
+                <span className='content-navigation-item-text'>{anchor.textContent}</span>
               </button>
             </li>
           );

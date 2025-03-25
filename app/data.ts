@@ -22,7 +22,7 @@ export const components = [
   {
     name: 'Content Navigation',
     url: '/content-navigation',
-    status: 3
+    status: 2
   },
   {
     name: 'Dot',
