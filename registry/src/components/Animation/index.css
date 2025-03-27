@@ -1,0 +1,198 @@
+/* Fade Animation */
+.fade-animation-entering {
+  opacity: 0;
+}
+.fade-animation-entered {
+  opacity: 1;
+  transition: opacity 300ms ease-in-out;
+}
+.fade-animation-exiting {
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+}
+
+/* Slide Animation */
+.slide-animation-entering {
+  transform: translateX(-100%);
+}
+.slide-animation-entered {
+  transform: translateX(0);
+  transition: transform 300ms ease-in-out;
+}
+.slide-animation-exiting {
+  transform: translateX(100%);
+  transition: transform 300ms ease-in-out;
+}
+
+/* Zoom Animation */
+.zoom-animation-entering {
+  transform: scale(0);
+}
+.zoom-animation-entered {
+  transform: scale(1);
+  transition: transform 300ms ease-in-out;
+}
+.zoom-animation-exiting {
+  transform: scale(0);
+  transition: transform 300ms ease-in-out;
+}
+
+/* Rotate Animation */
+.rotate-animation-entering {
+  transform: rotate(-180deg);
+}
+.rotate-animation-entered {
+  transform: rotate(0deg);
+  transition: transform 300ms ease-in-out;
+}
+.rotate-animation-exiting {
+  transform: rotate(180deg);
+  transition: transform 300ms ease-in-out;
+}
+
+/* Flip Animation */
+.flip-animation-entering {
+  transform: rotateY(-180deg);
+}
+.flip-animation-entered {
+  transform: rotateY(0deg);
+  transition: transform 300ms ease-in-out;
+}
+.flip-animation-exiting {
+  transform: rotateY(180deg);
+  transition: transform 300ms ease-in-out;
+}
+
+/* Bounce Animation */
+.bounce-animation-entering {
+  transform: translateY(-50%);
+}
+.bounce-animation-entered {
+  transform: translateY(0);
+  animation: bounce 1s infinite;
+}
+.bounce-animation-exiting {
+  transform: translateY(50%);
+  transition: transform 300ms ease-in-out;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10%);
+  }
+}
+
+/* Pulse Animation */
+.pulse-animation-entering {
+  opacity: 0.5;
+}
+.pulse-animation-entered {
+  opacity: 1;
+  animation: pulse 1.5s infinite;
+}
+.pulse-animation-exiting {
+  opacity: 0.5;
+  transition: opacity 300ms ease-in-out;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Shake Animation */
+.shake-animation-entering {
+  transform: translateX(0);
+}
+.shake-animation-entered {
+  animation: shake 0.5s ease-in-out;
+}
+.shake-animation-exiting {
+  transform: translateX(0);
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25%,
+  75% {
+    transform: translateX(-10px);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+}
+
+/* Tada Animation */
+.tada-animation-entering {
+  transform: scale(0.9) rotate(0deg);
+}
+.tada-animation-entered {
+  animation: tada 1s ease-in-out;
+}
+.tada-animation-exiting {
+  transform: scale(0.9) rotate(0deg);
+}
+
+@keyframes tada {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+  10%,
+  20% {
+    transform: scale(0.9) rotate(-3deg);
+  }
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: scale(1.1) rotate(3deg);
+  }
+  40%,
+  60%,
+  80% {
+    transform: scale(1.1) rotate(-3deg);
+  }
+}
+
+/* Jello Animation */
+.jello-animation-entering {
+  transform: scale(0.9);
+}
+.jello-animation-entered {
+  animation: jello 1s ease-in-out;
+}
+.jello-animation-exiting {
+  transform: scale(0.9);
+}
+
+@keyframes jello {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  30% {
+    transform: skewX(-25deg) skewY(-25deg);
+  }
+  50% {
+    transform: skewX(25deg) skewY(25deg);
+  }
+  70% {
+    transform: skewX(-15deg) skewY(-15deg);
+  }
+  90% {
+    transform: skewX(5deg) skewY(5deg);
+  }
+}

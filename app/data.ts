@@ -5,6 +5,11 @@ export const components = [
     status: 3
   },
   {
+    name: 'Animation',
+    url: '/animation',
+    status: 2
+  },
+  {
     name: 'Button',
     url: '/button',
     status: 3
