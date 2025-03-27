@@ -86,3 +86,24 @@
 .tree-navigation-icon {
   @apply h-4 w-4;
 }
+
+/* Base animation states */
+.tree-navigation-sublist.animation-entering {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.tree-navigation-sublist.animation-entered {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tree-navigation-sublist.animation-exiting {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.tree-navigation-sublist.animation-exited {
+  opacity: 0;
+  display: none;
+}

@@ -7,6 +7,8 @@ import './index.css';
 import './variables.css';
 import { ChevronRight, Minus } from 'lucide-react';
 
+import { Animation } from '../Animation';
+
 /**
  * Props for the TreeNavigation component.
  */
@@ -24,37 +26,80 @@ export interface TreeNavigationProps extends React.HTMLAttributes<HTMLElement> {
 export interface TreeNavigationItem {
   id: string;
   title: string;
+  href?: string;
   children?: TreeNavigationItem[];
+  defaultExpanded?: boolean;
+  defaultActive?: true;
 }
 
 /**
  * **Tree Navigation Component**
  *
- * A navigation component that generates a table of contents
- * from a provided list of items. It provides smooth scrolling
- * navigation and highlights the current section in view.
+ * A component that renders a hierarchical navigation tree
+ * from a provided list of items. It supports expandable/collapsible
+ * sections and smooth scrolling to the selected section.
  *
  * @example
  * ```tsx
  * <TreeNavigation
  *   items={[
- *     { id: 'introduction', title: 'Introduction' },
+ *     { id: 'overview', title: 'Overview' },
  *     {
- *       id: 'getting-started',
- *       title: 'Getting Started',
+ *       id: 'details',
+ *       title: 'Details',
  *       children: [
- *         { id: 'installation', title: 'Installation' },
- *         { id: 'usage', title: 'Usage' }
+ *         { id: 'specifications', title: 'Specifications' },
+ *         { id: 'features', title: 'Features' }
  *       ]
  *     }
  *   ]}
- *   color="accent"
+ *   color="primary"
  * />
  * ```
+ *
+ * @see {@link http://localhost:3005/tree-navigation Tree Navigation Documentation}
  */
 export const TreeNavigation: React.FC<TreeNavigationProps> = ({ className, color = 'neutral', items, ...props }) => {
-  const [activeAnchor, setActiveAnchor] = useState<string | null>(null);
-  const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set());
+  // Create initial active anchor
+  const getInitialActiveAnchor = (items: TreeNavigationItem[]): string | null => {
+    let activeId: string | null = null;
+
+    const findActiveItem = (items: TreeNavigationItem[]) => {
+      for (const item of items) {
+        if (item.defaultActive) {
+          activeId = item.id;
+          return;
+        }
+        if (item.children) {
+          findActiveItem(item.children);
+        }
+      }
+    };
+
+    findActiveItem(items);
+    return activeId;
+  };
+  // Create initial expanded items set
+  const getInitialExpandedItems = (items: TreeNavigationItem[]): Set<string> => {
+    const expandedIds = new Set<string>();
+
+    const processItems = (items: TreeNavigationItem[]) => {
+      items.forEach((item) => {
+        if (item.defaultExpanded && item.children) {
+          expandedIds.add(item.id);
+        }
+        if (item.children) {
+          processItems(item.children);
+        }
+      });
+    };
+
+    processItems(items);
+    return expandedIds;
+  };
+
+  const [activeAnchor, setActiveAnchor] = useState<string | null>(() => getInitialActiveAnchor(items));
+  const [expandedItems, setExpandedItems] = useState<Set<string>>(() => getInitialExpandedItems(items));
 
   // Handle navigation item click
   const handleNavItemClick = (id: string) => {
@@ -104,13 +149,32 @@ export const TreeNavigation: React.FC<TreeNavigationProps> = ({ className, color
             role='presentation'
             aria-hidden={!isActive}
           >
-            <button
-              className={classNames('tree-navigation-item-text')}
-              aria-label={item.title}
-              onClick={() => handleNavItemClick(item.id)}
-            >
-              <span> {item.title}</span>
-            </button>
+            {item.href ? (
+              <a
+                href={item.href}
+                className={classNames('tree-navigation-item-text')}
+                aria-label={item.title}
+                onClick={(e) => {
+                  // If it's a same-page anchor link, prevent default navigation
+                  if (item.href?.startsWith('#')) {
+                    e.preventDefault();
+                    handleNavItemClick(item.id);
+                  }
+                  // For external links, just set active state before navigation
+                  setActiveAnchor(item.id);
+                }}
+              >
+                <span>{item.title}</span>
+              </a>
+            ) : (
+              <button
+                className={classNames('tree-navigation-item-text')}
+                aria-label={item.title}
+                onClick={() => handleNavItemClick(item.id)}
+              >
+                <span>{item.title}</span>
+              </button>
+            )}
 
             <button
               className='tree-navigation-icon-button'
@@ -134,8 +198,10 @@ export const TreeNavigation: React.FC<TreeNavigationProps> = ({ className, color
             </button>
           </div>
 
-          {hasChildren && isExpanded && (
-            <ul className='tree-navigation-sublist'>{renderItems(item.children || [], true)}</ul>
+          {hasChildren && (
+            <Animation in={isExpanded} easing='ease-in-out' timeout={150} unmountOnExit>
+              <ul className='tree-navigation-sublist'>{renderItems(item.children || [], true)}</ul>
+            </Animation>
           )}
         </li>
       );

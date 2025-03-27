@@ -1,26 +1,30 @@
 'use client';
 
-import { TreeNavigation } from 'beta-parity-react/ui/TreeNavigation';
+import { TreeNavigation, TreeNavigationItem } from 'beta-parity-react/ui/TreeNavigation';
 import React from 'react';
 
 type Props = {};
 
-const mockItems = [
+const mockItems: TreeNavigationItem[] = [
   {
     id: 'introduction',
     title: 'Introduction',
+    defaultExpanded: true,
     children: [
-      { id: 'about-opera', title: 'About Opera' },
+      { id: 'about-opera', title: 'About Opera', defaultActive: true, href: 'http://localhost:3005/tree-navigation' },
+      { id: 'key-features', title: 'Key features', href: '#' },
       { id: 'release-notes', title: 'Release notes' }
     ]
   },
   {
     id: 'getting-started',
     title: 'Getting started',
+    defaultExpanded: true,
     children: [
       {
         id: 'installation-guide',
         title: 'Installation guide',
+        defaultExpanded: true,
         children: [
           {
             id: 'prerequisites',
