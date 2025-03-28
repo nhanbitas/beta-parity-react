@@ -199,7 +199,7 @@ export const TreeNavigation: React.FC<TreeNavigationProps> = ({ className, color
           </div>
 
           {hasChildren && (
-            <Animation in={isExpanded} easing='ease-in-out' timeout={150} unmountOnExit>
+            <Animation in={isExpanded} easing='ease-in-out' timeout={150} duration={150} unmountOnExit>
               <ul className='tree-navigation-sublist'>{renderItems(item.children || [], true)}</ul>
             </Animation>
           )}
