@@ -152,13 +152,13 @@
   @apply h-full w-full p-4;
 }
 
-.tabs.default .tab-content {
+/* .tabs.default .tab-content {
   @apply bg-[var(--par-color-bg-surface)];
 }
 
 .tabs.alternative .tab-content {
   @apply bg-[var(--par-color-bg-surface-alternative)];
-}
+} */
 
 .tabs-nav-scroll-actions {
   @apply absolute right-0 top-1/2 z-10 flex h-full -translate-y-1/2 items-center justify-center gap-2;
