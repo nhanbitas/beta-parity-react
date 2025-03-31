@@ -3,7 +3,7 @@
   --par-color-bg: var(--par-white);
   --par-color-bg-alternative: var(--par-gray-25);
 
-  --par-color-bg-surface: var(--par-gray-50);
+  --par-color-bg-surface: var(--par-gray-25);
   --par-color-bg-surface-inverse: var(--par-gray-950);
   --par-color-bg-surface-alternative: var(--par-white);
   --par-color-bg-surface-indicator-neutral: var(--par-neutral-500);
