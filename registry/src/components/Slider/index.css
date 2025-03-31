@@ -1,3 +1,45 @@
-@import '../theme/alias/text-icon-colors.css';
-@import '../theme/alias/background.css';
-@import '../theme/alias/border.css';
+input[type='range'] {
+  @apply pointer-events-none absolute h-0.5 w-full appearance-none bg-transparent;
+  width: calc(100% + 16px);
+}
+
+input[type='range']::-webkit-slider-thumb {
+  @apply pointer-events-auto h-4 w-4 cursor-grab appearance-none rounded-full bg-gray-950;
+}
+
+input[type='range']::-webkit-slider-thumb:active {
+  @apply cursor-grabbing bg-gray-550;
+}
+
+input[type='range']::-moz-range-thumb {
+  @apply pointer-events-auto h-4 w-4 cursor-pointer rounded-full bg-transparent;
+}
+
+.slider {
+  @apply relative z-0 flex w-64 flex-col items-center justify-center;
+}
+
+.slider-track {
+  @apply relative z-0 h-2 w-full rounded-md bg-gray-300;
+}
+
+.slider-highlight {
+  @apply absolute z-10 h-2 rounded-md;
+}
+
+.slider-input {
+  @apply pointer-events-auto absolute z-10 w-full appearance-none;
+}
+
+.slider-marks,
+.slider-marks-item {
+  @apply absolute left-0 top-1/2 z-0 w-full -translate-y-1/2;
+}
+
+.slider-dot {
+  @apply pointer-events-none absolute top-1/2 h-1.5  w-1 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white;
+}
+
+.slider-label {
+  @apply absolute top-2.5 -translate-x-1/2 text-xs text-gray-500;
+}

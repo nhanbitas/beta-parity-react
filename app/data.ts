@@ -27,7 +27,7 @@ export const components = [
   {
     name: 'Content Navigation',
     url: '/content-navigation',
-    status: 2
+    status: 3
   },
   {
     name: 'Dot',
@@ -137,7 +137,7 @@ export const components = [
   {
     name: 'Tree Navigation',
     url: '/tree-navigation',
-    status: 2
+    status: 3
   },
   {
     name: 'Progress',
