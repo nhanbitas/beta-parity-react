@@ -1,6 +1,9 @@
 import React from 'react';
+
 import './index.css';
+import './variables.css';
 import classNames from 'classnames';
+import { Tooltip } from '../Tooltip';
 
 interface Mark {
   value: number;
@@ -16,6 +19,7 @@ interface SliderProps {
   marks?: Mark[];
   color?: string;
   orientation?: 'horizontal' | 'vertical';
+  indicator?: 'normal' | 'tooltip';
   indicatorSide?: 'normal' | 'reverse';
   onValueChange?: (value: number | [number, number]) => void;
 }
@@ -27,8 +31,9 @@ export function Slider({
   step = 1,
   defaultValue = mode === 'range' ? [20, 80] : 50,
   marks = [],
-  color = 'black',
+  color,
   orientation = 'horizontal',
+  indicator = 'normal',
   indicatorSide = 'normal',
   onValueChange
 }: SliderProps) {
@@ -45,7 +50,7 @@ export function Slider({
     if (!isRange) {
       setValue(newMin);
       onValueChange?.(newMin);
-    } else if (newMin < maxValue - step) {
+    } else if (newMin < maxValue) {
       setValue([newMin, maxValue]);
       onValueChange?.([newMin, maxValue]);
     }
@@ -53,131 +58,87 @@ export function Slider({
 
   const handleMaxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newMax = Number(e.target.value);
-    if (isRange && newMax > minValue + step) {
+    if (isRange && newMax > minValue) {
       setValue([minValue, newMax]);
       onValueChange?.([minValue, newMax]);
     }
   };
 
+  const childProps = {
+    isVertical,
+    minValue,
+    maxValue,
+    min,
+    max,
+    step,
+    handleMinChange,
+    handleMaxChange,
+    isRange,
+    indicatorSide,
+    color,
+    marks,
+    indicator
+  };
+
   return (
     <div className={classNames('slider', { 'slider-vertical': isVertical })}>
       {/* Track */}
-      <SliderTrack
-        isVertical={isVertical}
-        isRange={isRange}
-        minValue={minValue}
-        min={min}
-        max={max}
-        maxValue={maxValue}
-        color={color}
-      />
+      <SliderTrack {...childProps} />
 
       {/* Input Range */}
-      <RangeInputs
-        isVertical={isVertical}
-        minValue={minValue}
-        maxValue={maxValue}
-        min={min}
-        max={max}
-        step={step}
-        handleMinChange={handleMinChange}
-        handleMaxChange={handleMaxChange}
-        isRange={isRange}
-        indicatorSide={indicatorSide}
-      />
+      <RangeInputs {...childProps} />
 
       {/* Marks */}
-      <Marks marks={marks} min={min} max={max} isVertical={isVertical} minValue={minValue} maxValue={maxValue} />
+      <Marks {...childProps} />
     </div>
   );
 }
 
-export const Marks = ({
-  marks,
-  min,
-  max,
-  minValue,
-  maxValue,
-  isVertical
-}: {
-  marks: Mark[];
-  min: number;
-  max: number;
-  minValue: number;
-  maxValue: number;
-  isVertical: Boolean;
-}) => {
+export const Marks = ({ marks, min, max, minValue, maxValue, isVertical }: Record<string, any>) => {
   const checkInRange = (value: number) => {
     const isNotRange = minValue === maxValue;
     return isNotRange ? value <= maxValue : value >= minValue && value <= maxValue;
   };
 
   return (
-    <div className={classNames('slider-marks')} style={{ top: '50%', transform: 'translateY(-50%)' }}>
-      {marks.map((mark, index) => (
-        <div key={mark.value} className='slider-marks-item'>
+    <div className={classNames('slider-marks')}>
+      {marks.map((mark: any, index: number) => (
+        <div
+          key={mark.value}
+          className='slider-marks-item'
+          style={{
+            [isVertical ? 'bottom' : 'left']: `${((mark.value - min) / (max - min)) * 100}%`
+          }}
+        >
           {/* Dot */}
-
-          {index === 0 || index === marks.length - 1 ? null : (
+          {mark.value === min || mark.value === max ? null : (
             <div
               className={classNames('slider-dot', {
                 'in-range': checkInRange(mark.value),
                 'out-range': !checkInRange(mark.value)
               })}
-              style={{
-                [isVertical ? 'bottom' : 'left']: `${((mark.value - min) / (max - min)) * 100}%`
-              }}
             />
           )}
 
           {/* Label */}
-          {mark.label && (
-            <span
-              className='slider-label'
-              style={{
-                [isVertical ? 'bottom' : 'left']: `${((mark.value - min) / (max - min)) * 100}%`
-              }}
-            >
-              {mark.label}
-            </span>
-          )}
+          {mark.label && <span className='slider-label'>{mark.label}</span>}
         </div>
       ))}
     </div>
   );
 };
 
-export const SliderTrack = ({
-  isVertical,
-  isRange,
-  minValue,
-  min,
-  max,
-  maxValue,
-  color
-}: {
-  isVertical: boolean;
-  isRange: boolean;
-  minValue: number;
-  min: number;
-  max: number;
-  maxValue: number;
-  color: string;
-}) => {
+export const SliderTrack = ({ isVertical, isRange, minValue, min, max, maxValue, color }: Record<string, any>) => {
   return (
-    <div
-      className='slider-track'
-      style={{ background: 'lightgray', height: isVertical ? '100%' : '8px', width: isVertical ? '8px' : '100%' }}
-    >
-      {/* Highlighted range */}
+    <div className='slider-track'>
       <div
-        className='slider-highlight'
+        className='slider-progress'
         style={{
           [isVertical ? 'bottom' : 'left']: isRange ? `${((minValue - min) / (max - min)) * 100}%` : '0%',
           [isVertical ? 'height' : 'width']: isRange
             ? `${((maxValue - minValue) / (max - min)) * 100}%`
             : `${((minValue - min) / (max - min)) * 100}%`,
-          background: color
+          ...(color && { background: color })
         }}
       />
     </div>
@@ -194,64 +155,104 @@ export const RangeInputs = ({
   handleMinChange,
   handleMaxChange,
   isRange,
-  indicatorSide
-}: {
-  isVertical: boolean;
-  minValue: number;
-  maxValue: number;
-  min: number;
-  max: number;
-  step: number;
-  handleMinChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  handleMaxChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  isRange: boolean;
-  indicatorSide?: 'normal' | 'reverse';
-}) => {
+  indicatorSide,
+  indicator
+}: Record<string, any>) => {
+  const isTooltip = indicator === 'tooltip';
+  const normalPosition = isVertical ? 'left' : 'top';
+  const reversePosion = isVertical ? 'right' : 'bottom';
+  const position = indicatorSide === 'normal' ? normalPosition : reversePosion;
+
+  const [inputFocus, setInputFocus] = React.useState({
+    min: false,
+    max: false
+  });
+
+  const handleFocus = (type: 'min' | 'max') => {
+    setInputFocus((prev) => ({
+      ...prev,
+      [type]: true
+    }));
+  };
+
+  const handleBlur = (type: 'min' | 'max') => {
+    setInputFocus((prev) => ({
+      ...prev,
+      [type]: false
+    }));
+  };
+
+  const generateInputProps = (type: 'min' | 'max') => ({
+    type: 'range',
+    min: min,
+    max: max,
+    step: step,
+    value: type === 'min' ? minValue : maxValue,
+    onChange: type === 'min' ? handleMinChange : handleMaxChange,
+    onFocus: () => handleFocus(type),
+    onBlur: () => handleBlur(type),
+    onMouseEnter: () => handleFocus(type),
+    onMouseLeave: () => handleBlur(type),
+    className: 'par-input-range'
+  });
+
   return (
     <React.Fragment>
       {/* Input Range - Min (or single) */}
-      <input
-        type='range'
-        min={min}
-        max={max}
-        step={step}
-        value={minValue}
-        onChange={handleMinChange}
-        className='slider-input'
-      />
+      <input {...generateInputProps('min')} />
 
-      {/* Input Range - Max (chỉ hiển thị nếu mode === "range") */}
-      {isRange && (
-        <input
-          type='range'
-          min={min}
-          max={max}
-          step={step}
-          value={maxValue}
-          onChange={handleMaxChange}
-          className='slider-input'
-        />
-      )}
+      {/* Input Range - Max */}
+      {isRange && <input {...generateInputProps('max')} />}
 
-      {/* Lable */}
-      <div
-        className={classNames('indicator-wrapper', indicatorSide)}
-        style={{
-          [isVertical ? 'bottom' : 'left']: `${((minValue - min) / (max - min)) * 100}%`
-        }}
-      >
-        <span className='slider-thumb-indicator-text'>{minValue}</span>
-      </div>
+      {/* Indicator */}
+      {isTooltip ? (
+        <>
+          <Tooltip content={minValue} controlledOpen={inputFocus.min} position={position}>
+            <div
+              className={classNames('indicator-wrapper', indicatorSide)}
+              style={{
+                [isVertical ? 'bottom' : 'left']: `${((minValue - min) / (max - min)) * 100}%`
+              }}
+            >
+              <span className='slider-thumb-indicator-text'></span>
+            </div>
+          </Tooltip>
 
-      {isRange && (
-        <div
-          className={classNames('indicator-wrapper', indicatorSide)}
-          style={{
-            [isVertical ? 'bottom' : 'left']: `${((maxValue - min) / (max - min)) * 100}%`
-          }}
-        >
-          <span className='slider-thumb-indicator-text'>{maxValue}</span>
-        </div>
+          {isRange && (
+            <Tooltip content={maxValue} controlledOpen={inputFocus.max} position={position}>
+              <div
+                className={classNames('indicator-wrapper', indicatorSide)}
+                style={{
+                  [isVertical ? 'bottom' : 'left']: `${((maxValue - min) / (max - min)) * 100}%`
+                }}
+              >
+                <span className='slider-thumb-indicator-text'></span>
+              </div>
+            </Tooltip>
+          )}
+        </>
+      ) : (
+        <>
+          <div
+            className={classNames('indicator-wrapper', indicatorSide)}
+            style={{
+              [isVertical ? 'bottom' : 'left']: `${((minValue - min) / (max - min)) * 100}%`
+            }}
+          >
+            <span className='slider-thumb-indicator-text'>{minValue}</span>
+          </div>
+
+          {isRange && (
+            <div
+              className={classNames('indicator-wrapper', indicatorSide)}
+              style={{
+                [isVertical ? 'bottom' : 'left']: `${((maxValue - min) / (max - min)) * 100}%`
+              }}
+            >
+              <span className='slider-thumb-indicator-text'>{maxValue}</span>
+            </div>
+          )}
+        </>
       )}
     </React.Fragment>
   );

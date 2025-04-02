@@ -15,7 +15,7 @@
   --par-color-bg-slider-thumb-hovered: var(--par-white);
   --par-color-bg-slider-thumb-disabled: var(--par-gray-50);
   --par-color-bg-slider-state-layer-enabled: var(--par-transparent);
-  --par-color-bg-slider-state-layer-hovered: rgba(var(--par-gray-200) / 0.25);
+  --par-color-bg-slider-state-layer-hovered: rgb(from var(--par-gray-200) r g b / 0.25);
   --par-color-bg-slider-state-layer-disabled: var(--par-transparent);
   --par-color-border-slider-discrete-neutral-enabled: var(--par-gray-950);
   --par-color-border-slider-discrete-neutral-active: var(--par-white);
@@ -36,7 +36,7 @@
   --par-color-bg-slider-thumb-hovered: var(--par-white);
   --par-color-bg-slider-thumb-disabled: var(--par-gray-700);
   --par-color-bg-slider-state-layer-enabled: var(--par-transparent);
-  --par-color-bg-slider-state-layer-hovered: rgba(var(--par-gray-700) / 0.25);
+  --par-color-bg-slider-state-layer-hovered: rgb(from var(--par-gray-700) r g b / 0.25);
   --par-color-bg-slider-state-layer-disabled: var(--par-transparent);
   --par-color-border-slider-discrete-neutral-enabled: var(--par-white);
   --par-color-border-slider-discrete-neutral-active: var(--par-gray-950);

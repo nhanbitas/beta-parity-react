@@ -1,105 +1,146 @@
-input[type='range'] {
-  @apply pointer-events-none absolute h-0.5 w-full appearance-none bg-transparent;
-  width: calc(100% + 16px);
+input[type='range'].par-input-range {
+  /* add 20px to align dot in center thumb */
+  @apply pointer-events-none absolute z-10 h-0.5 w-[calc(100%+20px)] appearance-none bg-transparent;
 }
 
-input[type='range']::-webkit-slider-thumb {
+input[type='range'].par-input-range:focus {
+  /* change forcus to thumb */
+  @apply outline-none;
+}
+
+/* from figma and not use @apply for ::-webkit- */
+input[type='range'].par-input-range::-webkit-slider-thumb {
   pointer-events: auto;
-  height: 1rem;
-  width: 1rem;
+  height: 1.25rem;
+  width: 1.25rem;
   cursor: grab;
   appearance: none;
-  border-radius: 9999px;
-  border: 2px solid #d1d5db;
-  background-color: #f3f4f6;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   transition: background-color 0.2s ease-in-out;
+  border-radius: 9999px;
+  border: 2px solid var(--par-color-border-slider-thumb-enabled, #ababab);
+  background: var(--par-color-bg-slider-thumb-enabled, #fff);
+  box-shadow: 3px 1px 6px 0px var(--par-color-effect-shadow, rgba(0, 0, 0, 0.1));
 }
 
-input[type='range']::-webkit-slider-thumb:active {
-  @apply cursor-grabbing bg-gray-100;
+input[type='range'].par-input-range::-webkit-slider-thumb:hover {
+  box-shadow: 0px 0px 0px 8px var(--par-color-bg-slider-state-layer-hovered, rgba(203, 203, 203, 0.25));
 }
 
-input[type='range']::-moz-range-thumb {
-  @apply pointer-events-auto h-4 w-4 cursor-pointer rounded-full bg-transparent;
+input[type='range'].par-input-range:focus::-webkit-slider-thumb {
+  outline: 2px solid;
+}
+
+input[type='range'].par-input-range::-webkit-slider-thumb:active {
+  cursor: grabbing;
+}
+
+/* FIREFOX */
+/* from figma and not use @apply for ::-webkit- */
+input[type='range'].par-input-range::-moz-range-thumb {
+  pointer-events: auto;
+  height: 1.25rem;
+  width: 1.25rem;
+  cursor: grab;
+  appearance: none;
+  transition: background-color 0.2s ease-in-out;
+  border-radius: 9999px;
+  border: 2px solid var(--par-color-border-slider-thumb-enabled, #ababab);
+  background: var(--par-color-bg-slider-thumb-enabled, #fff);
+  box-shadow: 3px 1px 6px 0px var(--par-color-effect-shadow, rgba(0, 0, 0, 0.1));
+}
+
+input[type='range'].par-input-range::-moz-range-thumb:hover {
+  box-shadow: 0px 0px 0px 8px var(--par-color-bg-slider-state-layer-hovered, rgba(203, 203, 203, 0.25));
+}
+
+input[type='range'].par-input-range:focus::-moz-range-thumb {
+  outline: 2px solid;
+}
+
+input[type='range'].par-input-range::-moz-range-thumb:active {
+  cursor: grabbing;
 }
 
 .slider {
-  @apply relative z-0 flex w-full max-w-80 flex-col items-center justify-center;
+  @apply relative z-0 flex h-fit w-full max-w-80 flex-col items-center justify-center;
 }
 
 .slider-track {
-  @apply relative z-0 h-2 w-full rounded-md bg-gray-300;
+  @apply relative z-[1] h-2 w-full rounded-md bg-[var(--par-color-border-slider-track-enabled)];
 }
 
-.slider-highlight {
-  @apply absolute z-10 h-2 rounded-md;
-}
-
-.slider-input {
-  @apply pointer-events-auto absolute z-10 w-full appearance-none;
+.slider-progress {
+  @apply absolute h-2 rounded-md bg-[var(--par-color-border-slider-progress-neutral-enabled)];
 }
 
 .slider-marks {
-  @apply absolute left-0  z-0 w-full;
+  @apply absolute top-0 z-[2] h-full w-full;
+}
+
+.slider-marks-item {
+  @apply pointer-events-none absolute left-auto top-0 h-full w-1 rounded-full;
 }
 
 .slider-dot {
-  @apply pointer-events-none absolute bottom-1/2 h-1.5  w-1 -translate-x-1/2 translate-y-1/2 rounded-full;
+  @apply pointer-events-none absolute top-1/2 h-1.5 w-1 -translate-y-1/2 rounded-full;
 }
 
 .slider-dot.in-range {
-  @apply bg-white;
+  @apply bg-[var(--par-color-border-slider-discrete-neutral-active)];
 }
 
 .slider-dot.out-range {
-  @apply bg-black;
+  @apply bg-[var(--par-color-border-slider-discrete-neutral-enabled)];
 }
 
 .slider-label {
-  @apply absolute top-2.5 -translate-x-1/2 select-none text-xs text-gray-500;
+  @apply absolute left-1/2 top-3 -translate-x-1/2 select-none text-xs;
 }
 
 .indicator-wrapper {
-  @apply absolute bottom-1/2 left-1/2 z-0 h-12 w-12 -translate-x-1/2 translate-y-1/2;
+  @apply absolute bottom-1/2 left-1/2 z-[3] h-12 w-12 -translate-x-1/2 translate-y-1/2;
 }
 
 .indicator-wrapper:not(.reverse) .slider-thumb-indicator-text {
-  @apply text-label-02 absolute left-1/2 top-full -translate-x-1/2 select-none;
+  @apply text-label-02 absolute left-1/2 top-full -translate-x-1/2 select-none font-medium text-[var(--par-color-text-primary)];
 }
 
 .indicator-wrapper.reverse .slider-thumb-indicator-text {
-  @apply text-label-02 absolute bottom-full left-1/2 -translate-x-1/2 select-none;
+  @apply text-label-02 absolute bottom-full left-1/2 -translate-x-1/2 select-none font-medium;
 }
 
 /* Styles for the vertical slider component */
 .slider-vertical {
   @apply h-80 max-h-80 w-2;
 
-  & .slider-marks {
-    @apply absolute left-1/2 top-0 z-0 h-full -translate-x-1/2;
+  & .slider-track {
+    @apply h-full w-2;
   }
 
-  & .slider-highlight {
-    @apply absolute z-10 w-2 rounded-md;
+  & .slider-progress {
+    @apply absolute w-2 rounded-md;
   }
 
-  & .slider-marks {
-    @apply absolute z-0 h-full w-full;
-  }
-
-  & .slider-input {
+  & input[type='range'].par-input-range {
     @apply h-[calc(100%+16px)] w-0.5;
-    writing-mode: vertical-lr;
-    transform: rotate(180deg);
+    writing-mode: vertical-rl !important;
+    direction: rtl !important;
   }
 
-  & .slider-label {
-    @apply absolute left-5 top-auto h-fit w-fit translate-y-1/2 text-xs text-gray-500;
+  & .slider-marks {
+    @apply absolute h-full w-full;
+  }
+
+  & .slider-marks-item {
+    @apply left-0 top-auto h-1 w-full;
   }
 
   & .slider-dot {
-    @apply pointer-events-none absolute h-1 w-1.5 -translate-x-1/2 translate-y-1/2 rounded-full;
+    @apply left-1/2 h-1 w-1.5 -translate-x-1/2;
+  }
+
+  & .slider-label {
+    @apply left-6 top-1/2 -translate-y-1/2;
   }
 
   & .indicator-wrapper:not(.reverse) .slider-thumb-indicator-text {
