@@ -97,6 +97,14 @@ export interface TooltipProps {
    * @memberof Tooltip
    */
   isSafePolygon?: boolean;
+
+  /**
+   * The tooltip visibility will be controlled by the parent component.
+   *
+   * @default false
+   * @memberof Tooltip
+   */
+  controlledOpen?: boolean;
 }
 
 /**
@@ -113,6 +121,7 @@ export const Tooltip = ({
   delay = 0,
   touchDelay,
   isSafePolygon = false,
+  controlledOpen,
   ...props
 }: TooltipProps & React.HTMLAttributes<HTMLDivElement>) => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -181,12 +190,14 @@ export const Tooltip = ({
     return child;
   });
 
+  const isVisible = controlledOpen !== undefined ? controlledOpen : isOpen;
+
   return (
     <>
       {cloneChildren}
 
       <Portal>
-        {isOpen && (
+        {isVisible && (
           <div
             {...props}
             className={classNames('tooltip-content', className, placement)}
