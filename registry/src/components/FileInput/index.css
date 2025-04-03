@@ -1,1 +1,64 @@
 /* Text input css */
+.file-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.file-input-wrapper-error .file-input-label {
+  border-color: red;
+  background-color: #fff5f5;
+}
+
+.file-input {
+  display: none; /* Hide the actual input */
+}
+
+.file-input-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px dashed #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+  transition:
+    border-color 0.2s,
+    background-color 0.2s;
+}
+
+.file-input-label:hover {
+  border-color: #007bff;
+}
+
+.file-input-label-text {
+  flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.file-input-icon {
+  margin-left: 8px;
+  font-size: 16px;
+  color: #666;
+}
+
+.file-input-error-message {
+  margin-top: 4px;
+  color: red;
+  font-size: 12px;
+}
+
+.file-input-file-name {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #333;
+  font-weight: normal;
+  word-break: break-word;
+}
