@@ -83,3 +83,47 @@ export const TooltipSlider = (props: Props) => {
     </div>
   );
 };
+
+export const AccentSlider = (props: Props) => {
+  const handleChange = (event: any) => {
+    console.log(event);
+  };
+
+  return (
+    <div className='not-prose mb-4 flex gap-20'>
+      <Slider
+        step={25}
+        min={0}
+        max={100}
+        onValueChange={handleChange}
+        orientation='vertical'
+        marks={marks}
+        color='accent'
+      />
+      <Slider mode='range' step={1} onValueChange={handleChange} orientation='vertical' color='accent' />
+    </div>
+  );
+};
+
+export const DisabledSlider = (props: Props) => {
+  const handleChange = (event: any) => {
+    console.log(event);
+  };
+
+  return (
+    <div className='not-prose mb-4 flex gap-20'>
+      <Slider
+        step={25}
+        min={0}
+        max={100}
+        onValueChange={handleChange}
+        orientation='vertical'
+        defaultValue={25}
+        marks={marks}
+        color='accent'
+        disabled={true}
+      />
+      <Slider mode='range' step={1} onValueChange={handleChange} orientation='vertical' disabled={true} />
+    </div>
+  );
+};

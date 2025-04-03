@@ -1,100 +1,234 @@
 import React from 'react';
+import classNames from 'classnames';
 
 import './index.css';
 import './variables.css';
-import classNames from 'classnames';
+
 import { Tooltip } from '../Tooltip';
 
+// =========================
+// Slider
+// =========================
+// Declare and export Slider type and Slider component
+
+/**
+ * Represents a mark on the slider.
+ */
 interface Mark {
+  /**
+   * The value of the mark.
+   */
   value: number;
+
+  /**
+   * The label for the mark (optional).
+   */
   label?: string;
 }
 
-interface SliderProps {
+/**
+ * Props for the Slider component.
+ *
+ * Extends properties from the `div` element.
+ */
+interface SliderProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue'> {
+  /**
+   * The mode of the slider, either 'single' or 'range'.
+   *
+   * @default 'single'
+   */
   mode?: 'single' | 'range';
+
+  /**
+   * The minimum value of the slider.
+   *
+   * @default 0
+   */
   min?: number;
+
+  /**
+   * The maximum value of the slider.
+   *
+   * @default 100
+   */
   max?: number;
+
+  /**
+   * The step value for the slider.
+   *
+   * @default 1
+   */
   step?: number;
+
+  /**
+   * The default value of the slider.
+   *
+   * @default 0 (single mode) or [0, 50] (range mode)
+   */
   defaultValue?: number | [number, number];
+
+  /**
+   * The marks to display on the slider.
+   */
   marks?: Mark[];
-  color?: string;
+
+  /**
+   * The color of the slider.
+   *
+   * @default 'neutral'
+   */
+  color?: 'neutral' | 'accent';
+
+  /**
+   * The orientation of the slider.
+   *
+   * @default 'horizontal'
+   */
   orientation?: 'horizontal' | 'vertical';
+
+  /**
+   * The type of indicator to display.
+   *
+   * @default 'normal'
+   */
   indicator?: 'normal' | 'tooltip';
+
+  /**
+   * The side of the indicator.
+   *
+   * @default 'normal'
+   */
   indicatorSide?: 'normal' | 'reverse';
+
+  /**
+   * The disabled state of the slider.
+   *
+   * @default false
+   */
+  disabled?: boolean;
+
+  /**
+   * Callback function triggered when the slider value changes.
+   *
+   * @param value The new value of the slider.
+   */
   onValueChange?: (value: number | [number, number]) => void;
 }
 
-export function Slider({
-  mode = 'single',
-  min = 0,
-  max = 100,
-  step = 1,
-  defaultValue = mode === 'range' ? [20, 80] : 50,
-  marks = [],
-  color,
-  orientation = 'horizontal',
-  indicator = 'normal',
-  indicatorSide = 'normal',
-  onValueChange
-}: SliderProps) {
-  const isRange = mode === 'range';
-  const isVertical = orientation === 'vertical';
+/**
+ * **Parity Slider**.
+ *
+ * A customizable slider component supporting single and range modes.
+ *
+ * @see {@link http://localhost:3005/slider Parity Slider}
+ */
+export const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
+  (
+    {
+      className,
+      mode = 'single',
+      min = 0,
+      max = 100,
+      step = 1,
+      defaultValue = mode === 'range' ? [0, 50] : 0,
+      marks = [],
+      color = 'neutral',
+      orientation = 'horizontal',
+      indicator = 'normal',
+      indicatorSide = 'normal',
+      disabled = false,
+      onValueChange,
+      ...rest
+    },
+    ref
+  ) => {
+    const isRange = mode === 'range';
+    const isVertical = orientation === 'vertical';
 
-  const [value, setValue] = React.useState(isRange ? (defaultValue as [number, number]) : (defaultValue as number));
+    // State to manage the current value of the slider
+    const [value, setValue] = React.useState(isRange ? (defaultValue as [number, number]) : (defaultValue as number));
 
-  const minValue = isRange ? (value as [number, number])[0] : (value as number);
-  const maxValue = isRange ? (value as [number, number])[1] : (value as number);
+    // Extract minimum and maximum values for range mode
+    const minValue = isRange ? (value as [number, number])[0] : (value as number);
+    const maxValue = isRange ? (value as [number, number])[1] : (value as number);
 
-  const handleMinChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newMin = Number(e.target.value);
-    if (!isRange) {
-      setValue(newMin);
-      onValueChange?.(newMin);
-    } else if (newMin < maxValue) {
-      setValue([newMin, maxValue]);
-      onValueChange?.([newMin, maxValue]);
-    }
-  };
+    /**
+     * Handles changes to the minimum value in range mode or the single value in single mode.
+     */
+    const handleMinChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      if (disabled) return; // Prevent changes if disabled
+      const newMin = Number(e.target.value);
+      if (!isRange) {
+        setValue(newMin);
+        onValueChange?.(newMin);
+      } else if (newMin < maxValue) {
+        setValue([newMin, maxValue]);
+        onValueChange?.([newMin, maxValue]);
+      }
+    };
 
-  const handleMaxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newMax = Number(e.target.value);
-    if (isRange && newMax > minValue) {
-      setValue([minValue, newMax]);
-      onValueChange?.([minValue, newMax]);
-    }
-  };
+    /**
+     * Handles changes to the maximum value in range mode.
+     */
+    const handleMaxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      if (disabled) return; // Prevent changes if disabled
+      const newMax = Number(e.target.value);
+      if (isRange && newMax > minValue) {
+        setValue([minValue, newMax]);
+        onValueChange?.([minValue, newMax]);
+      }
+    };
 
-  const childProps = {
-    isVertical,
-    minValue,
-    maxValue,
-    min,
-    max,
-    step,
-    handleMinChange,
-    handleMaxChange,
-    isRange,
-    indicatorSide,
-    color,
-    marks,
-    indicator
-  };
+    // Props to pass to child components
+    const childProps = {
+      isVertical,
+      minValue,
+      maxValue,
+      min,
+      max,
+      step,
+      handleMinChange,
+      handleMaxChange,
+      isRange,
+      indicatorSide,
+      color,
+      marks,
+      indicator,
+      disabled
+    };
 
-  return (
-    <div className={classNames('slider', { 'slider-vertical': isVertical })}>
-      {/* Track */}
-      <SliderTrack {...childProps} />
+    return (
+      <div
+        ref={ref}
+        className={classNames(className, 'slider', {
+          'slider-vertical': isVertical,
+          'slider-range': isRange,
+          'slider-disabled': disabled
+        })}
+        {...rest}
+      >
+        {/* Track */}
+        <SliderTrack {...childProps} />
 
-      {/* Input Range */}
-      <RangeInputs {...childProps} />
+        {/* Input Range */}
+        <RangeInputs {...childProps} />
 
-      {/* Marks */}
-      <Marks {...childProps} />
-    </div>
-  );
-}
+        {/* Marks */}
+        <Marks {...childProps} />
+      </div>
+    );
+  }
+);
 
+Slider.displayName = 'Slider';
+
+/**
+ * Renders the marks on the slider.
+ */
 export const Marks = ({ marks, min, max, minValue, maxValue, isVertical }: Record<string, any>) => {
+  /**
+   * Checks if a mark is within the selected range.
+   */
   const checkInRange = (value: number) => {
     const isNotRange = minValue === maxValue;
     return isNotRange ? value <= maxValue : value >= minValue && value <= maxValue;
@@ -128,23 +262,28 @@ export const Marks = ({ marks, min, max, minValue, maxValue, isVertical }: Recor
   );
 };
 
+/**
+ * Renders the slider track and progress bar.
+ */
 export const SliderTrack = ({ isVertical, isRange, minValue, min, max, maxValue, color }: Record<string, any>) => {
   return (
     <div className='slider-track'>
       <div
-        className='slider-progress'
+        className={classNames('slider-progress', color)}
         style={{
           [isVertical ? 'bottom' : 'left']: isRange ? `${((minValue - min) / (max - min)) * 100}%` : '0%',
           [isVertical ? 'height' : 'width']: isRange
             ? `${((maxValue - minValue) / (max - min)) * 100}%`
-            : `${((minValue - min) / (max - min)) * 100}%`,
-          ...(color && { background: color })
+            : `${((minValue - min) / (max - min)) * 100}%`
         }}
       />
     </div>
   );
 };
 
+/**
+ * Renders the input range elements and indicators.
+ */
 export const RangeInputs = ({
   isVertical,
   minValue,
@@ -156,13 +295,15 @@ export const RangeInputs = ({
   handleMaxChange,
   isRange,
   indicatorSide,
-  indicator
+  indicator,
+  disabled
 }: Record<string, any>) => {
   const isTooltip = indicator === 'tooltip';
   const normalPosition = isVertical ? 'left' : 'top';
   const reversePosion = isVertical ? 'right' : 'bottom';
   const position = indicatorSide === 'normal' ? normalPosition : reversePosion;
 
+  // State to manage focus for tooltips
   const [inputFocus, setInputFocus] = React.useState({
     min: false,
     max: false
@@ -193,7 +334,9 @@ export const RangeInputs = ({
     onBlur: () => handleBlur(type),
     onMouseEnter: () => handleFocus(type),
     onMouseLeave: () => handleBlur(type),
-    className: 'par-input-range'
+    className: 'par-input-slider',
+    disabled: disabled,
+    tabIndex: disabled ? -1 : 0
   });
 
   return (
