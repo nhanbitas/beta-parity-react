@@ -1,0 +1,12 @@
+@import url(../BaseInput/variables.css);
+
+:root,
+[data-theme='light'] {
+  --par-color-bg-fileitem-enabled: var(--par-gray-50);
+  --par-color-bg-fileitem-failed: var(--par-red-50);
+}
+
+[data-scheme='dark'] {
+  --par-color-bg-fileitem-enabled: var(--par-gray-800);
+  --par-color-bg-fileitem-failed: var(--par-gray-900);
+}

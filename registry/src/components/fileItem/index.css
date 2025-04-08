@@ -1,1 +1,76 @@
-/* Text input css */
+.file-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  background-color: var(--par-color-bg-fileitem-enabled);
+  color: var(--par-color-text-field-enabled);
+  border-radius: 4px;
+  gap: 8px;
+  overflow: hidden;
+  transition:
+    background-color 0.2s,
+    border-color 0.2s,
+    color 0.2s;
+}
+
+.file-item-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  gap: 8px;
+}
+
+.file-item-name {
+  flex: 1;
+}
+
+.file-item-size {
+  color: var(--par-color-text-field-alternative-placeholder, #6b6b6b);
+  text-overflow: ellipsis;
+  /* IBM Plex Sans/$body-02/Regular */
+  font-family: 'IBM Plex Sans';
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5rem; /* 150% */
+}
+
+.file-item.remove,
+.file-item.retry {
+  background: none;
+  border: none;
+  color: var(--par-color-text-field-enabled);
+  cursor: pointer;
+}
+
+.file-item-progress-track {
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+}
+
+.file-item-progress-thumb {
+  height: 4px;
+  background-color: var(--par-color-text-field-enabled);
+  transition: width 0.2s;
+}
+
+.file-item.loading {
+  background-color: var(--par-color-bg-fileitem-enabled);
+  pointer-events: none;
+}
+
+.file-item.error {
+  background-color: var(--par-color-bg-fileitem-failed);
+}
+
+.file-item-actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}

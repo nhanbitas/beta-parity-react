@@ -156,6 +156,11 @@ export const components = [
     status: 2
   },
   {
+    name: 'File Item',
+    url: '/file-item',
+    status: 2
+  },
+  {
     name: 'Email Input',
     url: '/email-input',
     status: 3
