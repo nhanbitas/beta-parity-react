@@ -1,24 +1,3 @@
-.loading {
-  @apply pointer-events-none;
-}
-
-.loading:not(.ghost):not(span) {
-  @apply border-gray-200 bg-gray-100 text-gray-500;
-}
-
-.loading.success:not(.ghost):not(span) {
-  @apply bg-green-50 text-green-600;
-}
-
-.loading.error:not(.ghost):not(span) {
-  @apply bg-red-50 text-red-600;
-}
-
-span.loading.success,
-span.loading.error {
-  @apply bg-transparent;
-}
-
 .spinner {
   @apply flex items-center justify-center;
 }
