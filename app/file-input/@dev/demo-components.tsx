@@ -5,4 +5,22 @@ import React from 'react';
 
 type Props = any;
 
-export const DemoFileInput = (props: Props) => <FileInput />;
+export const DemoFileInput = (props: Props) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = event.target.files;
+    if (files && files.length > 0) {
+      console.log('Selected file:', files[0]);
+    }
+  };
+  return <FileInput onChange={handleChange} />;
+};
+
+export const DemoErrorFileInput = (props: Props) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = event.target.files;
+    if (files && files.length > 0) {
+      console.log('Selected file:', files[0]);
+    }
+  };
+  return <FileInput isError errorMessage='File is not support' onChange={handleChange} />;
+};
