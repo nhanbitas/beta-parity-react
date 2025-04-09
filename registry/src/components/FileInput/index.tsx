@@ -72,12 +72,13 @@ export const FileInput = React.forwardRef<HTMLInputElement, FileInputProps>(
     };
 
     return (
-      <div className={classNames('input-wrapper')} {...wrapperAccessibilityProps}>
+      <div className={classNames('input-wrapper')}>
         <div
-          className={classNames('file-input-wrapper', {
+          className={classNames('file-input-wrapper', className, {
             'error-state': isError,
             'drag-active': isDragActive
           })}
+          {...wrapperAccessibilityProps}
         >
           <input ref={combinedRef} className='par-input' type={type} style={{ display: 'none' }} {...props} />
 

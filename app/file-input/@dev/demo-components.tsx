@@ -12,7 +12,7 @@ export const DemoFileInput = (props: Props) => {
       console.log('Selected file:', files[0]);
     }
   };
-  return <FileInput onChange={handleChange} />;
+  return <FileInput className='!w-96' onChange={handleChange} />;
 };
 
 export const DemoErrorFileInput = (props: Props) => {
@@ -22,5 +22,5 @@ export const DemoErrorFileInput = (props: Props) => {
       console.log('Selected file:', files[0]);
     }
   };
-  return <FileInput isError errorMessage='File is not support' onChange={handleChange} />;
+  return <FileInput className='!w-96' isError errorMessage='File is not support' onChange={handleChange} />;
 };
