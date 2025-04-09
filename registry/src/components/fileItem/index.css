@@ -1,76 +1,64 @@
 .file-item {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  padding: 8px;
-  background-color: var(--par-color-bg-fileitem-enabled);
-  color: var(--par-color-text-field-enabled);
-  border-radius: 4px;
-  gap: 8px;
-  overflow: hidden;
-  transition:
-    background-color 0.2s,
-    border-color 0.2s,
-    color 0.2s;
+  @apply relative flex  flex-col justify-center gap-1 overflow-hidden rounded-md bg-[var(--par-color-bg-fileitem-enabled)]  text-[var(--par-color-text-field-enabled)] transition-colors duration-200 ease-in-out;
 }
 
 .file-item-wrapper {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 100%;
-  gap: 8px;
+  @apply flex h-10 w-full items-center gap-3 px-3 py-3;
 }
 
 .file-item-name {
-  flex: 1;
+  @apply text-body-02 flex-1 truncate text-[var(--par-color-text-field-filled)];
 }
 
 .file-item-size {
-  color: var(--par-color-text-field-alternative-placeholder, #6b6b6b);
-  text-overflow: ellipsis;
-  /* IBM Plex Sans/$body-02/Regular */
-  font-family: 'IBM Plex Sans';
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.5rem; /* 150% */
+  @apply text-body-02 flex-none text-right text-[var(--par-color-text-field-alternative-placeholder)];
 }
 
-.file-item.remove,
-.file-item.retry {
-  background: none;
-  border: none;
-  color: var(--par-color-text-field-enabled);
-  cursor: pointer;
+.file-item-remove-btn {
+  @apply flex cursor-pointer items-center justify-center rounded-md bg-[var(--par-color-bg-fileitem-enabled)] p-0.5 text-[var(--par-color-icon-field-button-enabled)] outline-offset-0 transition-colors duration-200 ease-in-out;
+}
+
+.file-item-remove-btn:hover {
+  @apply bg-[var(--par-color-bg-field-button-hovered)];
+}
+
+.file-item-remove-btn:active {
+  @apply bg-[var(--par-color-bg-field-button-pressed)];
+}
+
+.file-item-remove-btn:disabled {
+  @apply pointer-events-none bg-[var(--par-color-bg-field-button-disabled)] text-[var(--par-color-icon-field-button-disabled)];
+}
+
+.file-item-actions .remove,
+.file-item-actions .retry {
+  @apply text-body-01 cursor-pointer rounded-md border-none bg-transparent text-[var(--par-color-icon-field-button-enabled)] transition-colors duration-200 ease-in-out;
 }
 
 .file-item-progress-track {
-  position: absolute;
-  height: 4px;
-  width: 100%;
-  bottom: 0;
-  left: 0;
+  @apply h-1 w-full bg-[var(--par-color-progress-track)];
 }
 
 .file-item-progress-thumb {
-  height: 4px;
-  background-color: var(--par-color-text-field-enabled);
-  transition: width 0.2s;
+  @apply h-1 rounded-e-md bg-[var(--par-color-progress-thumb-active-neutral)] transition duration-200 ease-in-out;
 }
 
 .file-item.loading {
-  background-color: var(--par-color-bg-fileitem-enabled);
-  pointer-events: none;
+  @apply pointer-events-none bg-[var(--par-color-bg-fileitem-enabled)];
 }
 
 .file-item.error {
-  background-color: var(--par-color-bg-fileitem-failed);
+  @apply pointer-events-none bg-[var(--par-color-bg-fileitem-failed)];
+}
+
+.error-icon {
+  @apply flex h-4 w-4 items-center justify-center rounded-full bg-[var(--par-color-text-helper-adverse)] text-[var(--par-color-text-primary-inverse)];
 }
 
 .file-item-actions {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 8px;
+  @apply flex items-center gap-3 px-3 pb-3;
+}
+
+.file-item-actions button {
+  @apply flex items-center justify-center gap-1;
 }

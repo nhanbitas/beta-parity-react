@@ -5,10 +5,11 @@ import './variables.css';
 
 import classNames from 'classnames';
 import { Spinner } from '../Spinner';
+import { Minus, RefreshCw, Trash2 } from 'lucide-react';
 
 export interface FileItemProps extends React.HTMLAttributes<HTMLDivElement> {
-  disabled?: Boolean;
-  status?: 'error' | 'success' | 'completed';
+  disabled?: boolean;
+  status?: 'error' | 'completed';
   loading?: number;
   fileName?: string;
   fileSize?: string;
@@ -19,11 +20,12 @@ export interface FileItemProps extends React.HTMLAttributes<HTMLDivElement> {
 export const FileItem = React.forwardRef<HTMLDivElement, FileItemProps>(
   (
     {
+      className,
       status = 'completed',
       loading = 0,
       disabled = false,
-      fileName = 'File name with extension.png',
-      fileSize = '100KB',
+      fileName = 'Choose file',
+      fileSize = '0KB',
       onRetry,
       onRemove,
       ...props
@@ -32,18 +34,16 @@ export const FileItem = React.forwardRef<HTMLDivElement, FileItemProps>(
   ) => {
     const isLoading = loading > 0;
     const isError = status === 'error';
-    const isSuccess = status === 'success';
     const isCompleted = status === 'completed';
 
     return (
       <div
         ref={ref}
-        className={classNames('file-item', {
+        className={classNames('file-item', className, {
           disabled: disabled,
           loading: isLoading,
           error: isError,
-          completed: isCompleted,
-          success: isSuccess
+          completed: isCompleted
         })}
         {...props}
       >
@@ -55,9 +55,13 @@ export const FileItem = React.forwardRef<HTMLDivElement, FileItemProps>(
           {/* Rigt Icon Status */}
           {isLoading ? (
             <Spinner size='sm' variant='sunburst' />
-          ) : isError ? null : (
-            <button className='file-item-remove' onClick={onRemove} aria-label='Remove file'>
-              🗑️
+          ) : isError ? (
+            <span className='error-icon'>
+              <Minus />
+            </span>
+          ) : (
+            <button className='file-item-remove-btn' onClick={onRemove} aria-label='Remove file' disabled={disabled}>
+              <Trash2 />
             </button>
           )}
         </div>
@@ -65,11 +69,11 @@ export const FileItem = React.forwardRef<HTMLDivElement, FileItemProps>(
         {/* Error action */}
         {isError && (
           <div className='file-item-actions'>
-            <button className='file-item-retry' onClick={onRetry} aria-label='Retry upload'>
-              Retry
+            <button className='retry' onClick={onRetry} aria-label='Retry upload' disabled={disabled}>
+              <RefreshCw /> Retry
             </button>
-            <button className='file-item-remove' onClick={onRemove} aria-label='Remove file'>
-              Remove
+            <button className='remove' onClick={onRemove} aria-label='Remove file' disabled={disabled}>
+              <Trash2 /> Remove
             </button>
           </div>
         )}

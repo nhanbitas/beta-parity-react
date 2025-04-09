@@ -1,4 +1,5 @@
 @import url(../BaseInput/variables.css);
+@import url(../Progress/variables.css);
 
 :root,
 [data-theme='light'] {

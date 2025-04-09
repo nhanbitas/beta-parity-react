@@ -5,13 +5,13 @@ import React from 'react';
 
 type Props = any;
 
-export const DemoFileItem = (props: Props) => <FileItem />;
+export const DemoFileItem = (props: Props) => <FileItem className='w-96' />;
 
-export const DemoErrorFileItem = (props: Props) => <FileItem />;
+export const DemoErrorFileItem = (props: Props) => <FileItem className='w-96' />;
 
 export const DemoBasicFileItem = () => {
   return (
-    <div className='flex flex-col gap-2'>
+    <div className='flex w-96 flex-col gap-2'>
       {/* Enabled FileItem */}
       <FileItem
         status='completed'
