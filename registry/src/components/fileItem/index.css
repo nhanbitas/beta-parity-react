@@ -7,7 +7,16 @@
 }
 
 .file-item-name {
-  @apply text-body-02 flex-1 truncate text-[var(--par-color-text-field-filled)];
+  @apply text-body-02 flex flex-1 truncate text-[var(--par-color-text-field-filled)];
+}
+
+.file-item-name-prefix {
+  @apply max-w-fit truncate;
+}
+
+.file-item-name-suffix,
+.file-item-name-type {
+  @apply w-fit flex-none;
 }
 
 .file-item-size {
@@ -48,7 +57,7 @@
 }
 
 .file-item.error {
-  @apply pointer-events-none bg-[var(--par-color-bg-fileitem-failed)];
+  @apply bg-[var(--par-color-bg-fileitem-failed)];
 }
 
 .error-icon {

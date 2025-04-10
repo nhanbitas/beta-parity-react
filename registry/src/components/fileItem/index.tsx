@@ -1,22 +1,77 @@
 import * as React from 'react';
+import classNames from 'classnames';
+import { Check, Minus, RefreshCw, Trash2 } from 'lucide-react';
 
 import './index.css';
 import './variables.css';
 
-import classNames from 'classnames';
 import { Spinner } from '../Spinner';
-import { Check, Minus, RefreshCw, Trash2 } from 'lucide-react';
 
+// =========================
+// FileItem
+// =========================
+// Declare and export select type and FileItem component
+
+/**
+ * Props for the FileItem component.
+ *
+ */
 export interface FileItemProps extends React.HTMLAttributes<HTMLDivElement> {
+  /**
+   * Whether the file item is disabled.
+   *
+   * @default false
+   */
   disabled?: boolean;
+
+  /**
+   * The status of the file item.
+   *
+   * - `error`: Indicates an error occurred.
+   * - `success`: Indicates the file was successfully processed.
+   * - `completed`: Indicates the file upload or processing is completed.
+   *
+   * @default "completed"
+   */
   status?: 'error' | 'success' | 'completed';
+
+  /**
+   * The loading progress percentage (0-100).
+   *
+   * @default 0
+   */
   loading?: number;
+
+  /**
+   * The name of the file.
+   *
+   * @default "Choose file"
+   */
   fileName?: string;
-  fileSize?: string;
+
+  /**
+   * The size of the file in bytes.
+   *
+   * @default 0
+   */
+  fileSize?: number;
+
+  /**
+   * Callback function triggered when the retry action is performed.
+   */
   onRetry?: () => void;
+
+  /**
+   * Callback function triggered when the remove action is performed.
+   */
   onRemove?: () => void;
 }
 
+/**
+ * **File Item**.
+ *
+ * @see {@link http://localhost:3005/file-item Parity FileItem}
+ */
 export const FileItem = React.forwardRef<HTMLDivElement, FileItemProps>(
   (
     {
@@ -25,7 +80,7 @@ export const FileItem = React.forwardRef<HTMLDivElement, FileItemProps>(
       loading = 0,
       disabled = false,
       fileName = 'Choose file',
-      fileSize = '0KB',
+      fileSize = 0,
       onRetry,
       onRemove,
       ...props
@@ -51,8 +106,9 @@ export const FileItem = React.forwardRef<HTMLDivElement, FileItemProps>(
       >
         <div className='file-item-wrapper'>
           {/* Left Information */}
-          <span className='file-item-name'>{fileName}</span>
-          <span className='file-item-size'>{fileSize}</span>
+          <FileName name={fileName} />
+          {/* File Size */}
+          <span className='file-item-size'>{formatFileSize(fileSize)}</span>
 
           {/* Rigt Icon Status */}
           {isLoading ? (
@@ -101,3 +157,57 @@ export const FileItem = React.forwardRef<HTMLDivElement, FileItemProps>(
 );
 
 FileItem.displayName = 'FileItem';
+
+// =========================
+// FileName
+// =========================
+// Declare and export FileName component
+
+/**
+ * **File Name**.
+ *
+ * This component displays the name of the file with a specified format, retaining a certain number of characters from the end.
+ * It also shows the file type based on the file extension.
+ */
+const FileName = ({ name, retainLength }: { name: string; retainLength?: number }) => {
+  const RETAINED_LENGTH = retainLength || 5; // Number of characters to retain from the end of the file name
+  const arrName = name.split('.');
+
+  if (arrName.length < 2) {
+    return <span className='file-item-name'>{name}</span>;
+  }
+
+  const type = arrName[arrName.length - 1];
+  const fullName = arrName.slice(0, arrName.length - 1).join('.');
+
+  const fnPrefix = fullName.slice(0, fullName.length - RETAINED_LENGTH);
+  const fnSuffix = fullName.slice(fullName.length - RETAINED_LENGTH);
+
+  return (
+    <span className='file-item-name'>
+      <span className='file-item-name-prefix'>{fnPrefix}</span>
+      <span className='file-item-name-suffix'>{fnSuffix}</span>
+      <span className='file-item-name-type'>.{type}</span>
+    </span>
+  );
+};
+
+/**
+ * Format file size from bytes to appropriate unit (KB, MB, GB, ...)
+ * Automatically increases unit when size >= 1024
+ *
+ * @param sizeInBytes - Raw file size in bytes
+ * @returns Formatted string, e.g., "892.34 KB", "1.23 MB"
+ */
+function formatFileSize(sizeInBytes: number): string {
+  const units = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+  let size = sizeInBytes;
+  let unitIndex = 0;
+
+  while (size >= 1024 && unitIndex < units.length - 1) {
+    size /= 1024;
+    unitIndex++;
+  }
+
+  return `${size.toFixed(2)} ${units[unitIndex]}`;
+}

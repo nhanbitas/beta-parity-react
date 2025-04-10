@@ -16,7 +16,7 @@ export const DemoBasicFileItem = () => {
       <FileItem
         status='completed'
         fileName='example1.png'
-        fileSize='200KB'
+        fileSize={200}
         onRemove={() => console.log('Removing example1.png')}
       />
 
@@ -25,26 +25,26 @@ export const DemoBasicFileItem = () => {
         disabled
         status='completed'
         fileName='example2.png'
-        fileSize='300KB'
+        fileSize={300}
         onRemove={() => console.log('Removing example2.png')}
       />
 
       {/* Loading FileItem */}
-      <FileItem loading={35} fileName='example3.png' fileSize='400KB' />
+      <FileItem loading={35} fileName='example3.png' fileSize={400} />
 
       {/* Completed FileItem */}
       <FileItem
         status='success'
         fileName='example4.png'
-        fileSize='500KB'
+        fileSize={500}
         onRemove={() => console.log('Removing example4.png')}
       />
       {/* Completed FileItem */}
       <FileItem
         status='error'
-        fileName='example4.png'
-        fileSize='500KB'
-        onRemove={() => console.log('Removing example4.png')}
+        fileName='example5.png'
+        fileSize={500}
+        onRemove={() => console.log('Removing example5.png')}
       />
     </div>
   );

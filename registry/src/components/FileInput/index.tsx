@@ -1,16 +1,44 @@
 import * as React from 'react';
+import classNames from 'classnames';
+import { Upload } from 'lucide-react';
 
 import './index.css';
 
 import { InputProps } from '../BaseInput';
 import useCombinedRefs from '../hooks/useCombinedRefs';
-import classNames from 'classnames';
-import { Upload } from 'lucide-react';
 
+// =========================
+// FileInput
+// =========================
+// Declare and export select type and FileInput component
+
+/**
+ * Props for the FileInput component.
+ *
+ */
 export interface FileInputProps extends InputProps {
-  supportedFormats?: string[]; // Array of supported file formats (e.g., ['image/png', 'image/jpeg'])
-  label?: string; // Label text for the file input
+  /**
+   * Array of supported file formats.
+   *
+   * Example: `['image/png', 'image/jpeg']`
+   *
+   * If left empty, all file formats are accepted.
+   */
+  supportedFormats?: string[];
+
+  /**
+   * Label text for the file input.
+   *
+   * @default "Choose file"
+   */
+  label?: string;
 }
+
+/**
+ * **File Input**.
+ *
+ * @see {@link http://localhost:3005/file-input Parity FileInput}
+ */
 export const FileInput = React.forwardRef<HTMLInputElement, FileInputProps>(
   (
     { type = 'file', supportedFormats = [], label = 'Choose file', isError, className, errorMessage, ...props },
@@ -80,7 +108,14 @@ export const FileInput = React.forwardRef<HTMLInputElement, FileInputProps>(
           })}
           {...wrapperAccessibilityProps}
         >
-          <input ref={combinedRef} className='par-input' type={type} style={{ display: 'none' }} {...props} />
+          <input
+            ref={combinedRef}
+            className='par-input'
+            type={type}
+            accept={supportedFormats.join(',')}
+            style={{ display: 'none' }}
+            {...props}
+          />
 
           <span className='file-input-text'>{label}</span>
 
