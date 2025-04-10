@@ -52,7 +52,11 @@
 }
 
 .error-icon {
-  @apply flex h-4 w-4 items-center justify-center rounded-full bg-[var(--par-color-text-helper-adverse)] text-[var(--par-color-text-primary-inverse)];
+  @apply flex h-4 w-4 items-center justify-center rounded-full bg-[var(--par-color-text-helper-adverse)] p-0.5 text-[var(--par-color-text-primary-inverse)];
+}
+
+.success-icon {
+  @apply flex h-4 w-4 items-center justify-center rounded-full bg-[var(--par-color-text-helper-affirmative)] p-0.5 text-[var(--par-color-text-primary-inverse)];
 }
 
 .file-item-actions {

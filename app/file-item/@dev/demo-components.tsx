@@ -34,6 +34,13 @@ export const DemoBasicFileItem = () => {
 
       {/* Completed FileItem */}
       <FileItem
+        status='success'
+        fileName='example4.png'
+        fileSize='500KB'
+        onRemove={() => console.log('Removing example4.png')}
+      />
+      {/* Completed FileItem */}
+      <FileItem
         status='error'
         fileName='example4.png'
         fileSize='500KB'

@@ -5,11 +5,11 @@ import './variables.css';
 
 import classNames from 'classnames';
 import { Spinner } from '../Spinner';
-import { Minus, RefreshCw, Trash2 } from 'lucide-react';
+import { Check, Minus, RefreshCw, Trash2 } from 'lucide-react';
 
 export interface FileItemProps extends React.HTMLAttributes<HTMLDivElement> {
   disabled?: boolean;
-  status?: 'error' | 'completed';
+  status?: 'error' | 'success' | 'completed';
   loading?: number;
   fileName?: string;
   fileSize?: string;
@@ -35,6 +35,7 @@ export const FileItem = React.forwardRef<HTMLDivElement, FileItemProps>(
     const isLoading = loading > 0;
     const isError = status === 'error';
     const isCompleted = status === 'completed';
+    const isSuccess = status === 'success';
 
     return (
       <div
@@ -43,7 +44,8 @@ export const FileItem = React.forwardRef<HTMLDivElement, FileItemProps>(
           disabled: disabled,
           loading: isLoading,
           error: isError,
-          completed: isCompleted
+          completed: isCompleted,
+          success: isSuccess
         })}
         {...props}
       >
@@ -58,6 +60,10 @@ export const FileItem = React.forwardRef<HTMLDivElement, FileItemProps>(
           ) : isError ? (
             <span className='error-icon'>
               <Minus />
+            </span>
+          ) : isSuccess ? (
+            <span className='success-icon'>
+              <Check />
             </span>
           ) : (
             <button className='file-item-remove-btn' onClick={onRemove} aria-label='Remove file' disabled={disabled}>
