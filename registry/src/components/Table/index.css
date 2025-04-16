@@ -1,0 +1,194 @@
+@import './variables.css';
+
+.table-container {
+  @apply relative w-full overflow-hidden rounded-md border border-[var(--par-color-border-table)];
+}
+
+.table-header-section {
+  @apply border-b border-[var(--par-color-border-table)] p-4;
+}
+
+.table-title {
+  @apply text-heading-03 mb-1;
+}
+
+.table-description {
+  @apply text-body-compact-01 text-[var(--par-color-text-secondary)];
+}
+
+.table-actions-section {
+  @apply flex min-h-[var(--par-size-table-actions-height)] items-center justify-between
+  gap-2 border-b border-[var(--par-color-border-table)] bg-[var(--par-color-bg-table)] p-3;
+}
+
+.table-batch-actions {
+  @apply absolute inset-x-0 top-0 z-10 
+  flex transform items-center gap-3 bg-[var(--par-color-bg-table-batch-action-selected-item)] p-3
+  text-[var(--par-color-text-table-content-item)] transition-transform duration-200 ease-in-out;
+}
+
+.table-batch-actions.hidden {
+  @apply -translate-y-full;
+}
+
+.table-batch-actions-count {
+  @apply font-medium;
+}
+
+.table-wrapper {
+  @apply relative w-full overflow-auto;
+  max-height: var(--par-table-max-height, 600px);
+}
+
+.table {
+  @apply w-full table-fixed border-collapse bg-[var(--par-color-bg-table)];
+  min-width: 100%;
+}
+
+.table-head {
+  @apply sticky top-0 z-[1] bg-[var(--par-color-bg-table)];
+}
+
+.table-head-row {
+  @apply h-[var(--par-size-table-header-height)] border-b border-[var(--par-color-border-table)];
+}
+
+.table-head-cell {
+  @apply text-body-compact-01 relative 
+  whitespace-nowrap px-[var(--par-size-table-cell-padding-x)] py-[var(--par-size-table-cell-padding-y)]
+  text-left font-medium text-[var(--par-color-text-table-header-cell-item-enabled)];
+  user-select: none;
+}
+
+.table-head-cell.sortable {
+  @apply cursor-pointer;
+}
+
+.table-head-cell.sortable:hover {
+  @apply bg-[var(--par-color-bg-table-header-cell-item-hovered)] text-[var(--par-color-text-table-header-cell-item-hovered)];
+}
+
+.table-head-cell.frozen {
+  @apply sticky left-0 z-[2] bg-[var(--par-color-bg-table)];
+}
+
+.table-head-cell-content {
+  @apply flex items-center gap-2;
+}
+
+.table-sort-icon {
+  @apply text-[var(--par-color-text-table-header-cell-item-enabled)] transition-transform;
+}
+
+.table-sort-icon.asc {
+  @apply text-[var(--par-color-text-table-header-cell-item-active)];
+}
+
+.table-sort-icon.desc {
+  @apply rotate-180 text-[var(--par-color-text-table-header-cell-item-active)];
+}
+
+.table-resize-handle {
+  @apply absolute right-0 top-0 h-full;
+  width: 8px;
+  cursor: col-resize;
+  z-index: 10;
+  /* Pull handle slightly to the left to make it easier to grab */
+  transform: translateX(4px);
+}
+
+.table-resize-handle::after {
+  @apply absolute top-0 h-full;
+  content: '';
+  width: 2px;
+  /* Center the visible handle */
+  left: 3px;
+  background-color: var(--par-color-border-table);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.table-resize-handle:hover::after {
+  opacity: 1;
+}
+
+.table-body {
+  @apply bg-[var(--par-color-bg-table)];
+}
+
+.table-body-row {
+  @apply h-[var(--par-size-table-row-height)] border-b border-[var(--par-color-border-table)]
+  transition-colors duration-100;
+}
+
+.table-body-row:hover {
+  @apply bg-[var(--par-color-bg-table-body-row-item-hovered)];
+}
+
+.table-body-row.selectable {
+  @apply cursor-pointer;
+}
+
+.table-body-row.selected {
+  @apply bg-[var(--par-color-bg-table-batch-action-selected-item)];
+}
+
+.table-body-cell {
+  @apply text-body-01 px-[var(--par-size-table-cell-padding-x)]
+  py-[var(--par-size-table-cell-padding-y)] text-left align-middle text-[var(--par-color-text-table-content-item)];
+}
+
+.table-body-cell.frozen {
+  @apply sticky left-0 z-[1] bg-[var(--par-color-bg-table)];
+}
+
+.table-body-row:hover .table-body-cell.frozen {
+  @apply bg-[var(--par-color-bg-table-body-row-item-hovered)];
+}
+
+.table-body-row.selected .table-body-cell.frozen {
+  @apply bg-[var(--par-color-bg-table-batch-action-selected-item)];
+}
+
+.table-checkbox {
+  @apply flex w-10 items-center justify-center;
+}
+
+.table-footer {
+  @apply flex items-center justify-between border-t border-[var(--par-color-border-table)]
+  bg-[var(--par-color-bg-table)] p-3 text-[var(--par-color-text-table-content-item)];
+}
+
+.table-row-count {
+  @apply text-body-compact-01;
+}
+
+.table-pagination {
+  @apply flex items-center gap-2;
+}
+
+.table-pagination-info {
+  @apply text-body-compact-01;
+}
+
+.table-row-per-page {
+  @apply text-body-compact-01 flex items-center gap-2;
+}
+
+/* TableSearchInput component */
+.table-search {
+  @apply relative min-w-[240px];
+}
+
+.table-search-input {
+  @apply w-full pl-9;
+}
+
+.table-search-icon {
+  @apply absolute left-3 top-1/2 -translate-y-1/2 text-[var(--par-color-text-secondary)];
+}
+
+/* Utility for empty state */
+.table-empty-state {
+  @apply p-8 text-center text-[var(--par-color-text-secondary)];
+}

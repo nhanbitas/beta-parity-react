@@ -11,7 +11,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3005';
 const CodePreview = async ({ paths, children }: Props) => {
   if (!paths) return null;
 
-  const res = await fetch(`${BASE_URL}/demo/${paths[0]}/${paths[1]}.tsx`);
+  const res = await fetch(`${BASE_URL}/demo/${paths[0]}/${paths[1]}.tsx`, { cache: 'no-store' });
 
   if (!res.ok) return null;
 

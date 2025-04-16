@@ -130,6 +130,11 @@ export const components = [
     status: 3
   },
   {
+    name: 'Table',
+    url: '/table',
+    status: 2
+  },
+  {
     name: 'Tooltip',
     url: '/tooltip',
     status: 3
@@ -173,7 +178,7 @@ export const components = [
   {
     name: 'Slider',
     url: '/slider',
-    status: 2
+    status: 3
   },
   {
     name: 'Pagination',
