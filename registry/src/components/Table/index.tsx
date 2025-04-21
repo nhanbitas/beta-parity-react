@@ -1,12 +1,13 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React from 'react';
 import './index.css';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, ChevronLeft, ChevronRight, ChevronUp } from 'lucide-react';
+import { Button } from '../Button';
 
 // Types for the table component
 export type TableColumn<T = any> = {
   key: string;
   title: React.ReactNode;
-  width?: number | string;
+  width?: number;
   frozen?: boolean;
   sortable?: boolean;
   resizable?: boolean;
@@ -67,7 +68,7 @@ export type TableProps<T = any> = {
   /**
    * Function called when rows are selected
    */
-  onSelect?: (selectedRows: T[], selectedIndexes: number[]) => void;
+  onSelect?: (selectedRows: T[]) => void;
 
   /**
    * Function called when a column is sorted
@@ -181,36 +182,12 @@ export const TablePagination = ({
       <span className='table-pagination-info'>
         {start}-{end} of {total}
       </span>
-      <button
-        disabled={currentPage === 1}
-        onClick={handlePrev}
-        className='button button-icon button-ghost'
-        aria-label='Previous page'
-      >
-        <svg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'>
-          <path
-            fillRule='evenodd'
-            clipRule='evenodd'
-            d='M9.3 3.3C9.5 3.5 9.5 3.8 9.3 4L5.4 8L9.3 12C9.5 12.2 9.5 12.5 9.3 12.7C9.1 12.9 8.8 12.9 8.6 12.7L4.3 8.4C4.1 8.2 4.1 7.9 4.3 7.7L8.6 3.4C8.8 3.2 9.1 3.2 9.3 3.3Z'
-            fill='currentColor'
-          />
-        </svg>
-      </button>
-      <button
-        disabled={currentPage === totalPages}
-        onClick={handleNext}
-        className='button button-icon button-ghost'
-        aria-label='Next page'
-      >
-        <svg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'>
-          <path
-            fillRule='evenodd'
-            clipRule='evenodd'
-            d='M6.7 12.7C6.5 12.5 6.5 12.2 6.7 12L10.6 8L6.7 4C6.5 3.8 6.5 3.5 6.7 3.3C6.9 3.1 7.2 3.1 7.4 3.3L11.7 7.6C11.9 7.8 11.9 8.1 11.7 8.3L7.4 12.6C7.2 12.8 6.9 12.8 6.7 12.7Z'
-            fill='currentColor'
-          />
-        </svg>
-      </button>
+      <Button iconOnly kind='ghost' disabled={currentPage === 1} onClick={handlePrev} aria-label='Previous page'>
+        <ChevronLeft />
+      </Button>
+      <Button disabled={currentPage === totalPages} onClick={handleNext} iconOnly kind='ghost' aria-label='Next page'>
+        <ChevronRight />
+      </Button>
       {onPageSizeChange && (
         <div className='table-row-per-page'>
           <span>Rows per page:</span>
@@ -254,34 +231,40 @@ export function Table<T extends Record<string, any> = any>({
   onRowClick,
   className = ''
 }: TableProps<T>) {
-  const [selectedRows, setSelectedRows] = useState<number[]>([]);
-  const [columnWidths, setColumnWidths] = useState<Record<string, number>>({});
-  const tableRef = useRef<HTMLTableElement>(null);
-  const startXRef = useRef<number>(0);
-  const startWidthRef = useRef<number>(0);
+  const [selectedRows, setSelectedRows] = React.useState<number[]>([]);
+  const [columnWidths, setColumnWidths] = React.useState<Record<string, number>>({});
+  const wrapperTableRef = React.useRef<HTMLDivElement>(null);
+  const tableRef = React.useRef<HTMLTableElement>(null);
+  const startXRef = React.useRef<number>(0);
+  const startWidthRef = React.useRef<number>(0);
 
   // Handle column resize
   const handleResizeStart = (e: React.MouseEvent, key: string) => {
     e.preventDefault();
     e.stopPropagation(); // Prevent triggering sort when resize handle is clicked
 
-    const column = tableRef.current?.querySelector(`th[data-key="${key}"]`);
-    let resizingColumn = key;
-    if (column) {
+    // Find the target column to resize
+    const target = tableRef.current?.querySelector(`th[data-key="${key}"]`) as HTMLElement;
+    const targetColumn = columns.find((column) => column.key === key);
+    // Calculate the content width of the column (padding included)
+    const contentWidth = (target.querySelector('.table-head-cell-content')?.getBoundingClientRect().width || 50) + 32;
+
+    if (target && targetColumn) {
       startXRef.current = e.clientX;
-      startWidthRef.current = column.getBoundingClientRect().width;
+      startWidthRef.current = target.getBoundingClientRect().width; // Add padding to the width
+      target.style.cursor = 'col-resize';
 
       const handleMouseMove = (e: MouseEvent) => {
-        if (resizingColumn) {
-          const width = Math.max(50, startWidthRef.current + (e.clientX - startXRef.current));
-          setColumnWidths((prev) => ({
-            ...prev,
-            [key]: width
-          }));
-        }
+        const minWidth = targetColumn.width || contentWidth; // Set a minimum width for the column
+        const gap = e.clientX - startXRef.current;
+        const width = Math.max(minWidth, startWidthRef.current + gap);
+
+        const newColumnWidths = { ...columnWidths, [key]: Math.floor(width) };
+        setColumnWidths(newColumnWidths);
       };
 
-      const handleMouseUp = () => {
+      const handleMouseUp = (e: MouseEvent) => {
+        target.style.cursor = 'pointer';
         document.removeEventListener('mousemove', handleMouseMove);
         document.removeEventListener('mouseup', handleMouseUp);
       };
@@ -303,12 +286,6 @@ export function Table<T extends Record<string, any> = any>({
         newSelectedRows = newSelectedRows.filter((i) => i !== index);
       }
 
-      // Call onSelect callback with selected data and indices
-      if (onSelect) {
-        const selectedData = newSelectedRows.map((i) => data[i]);
-        onSelect(selectedData, newSelectedRows);
-      }
-
       return newSelectedRows;
     });
   };
@@ -318,19 +295,14 @@ export function Table<T extends Record<string, any> = any>({
     if (checked) {
       const allIndices = data.map((_, index) => index);
       setSelectedRows(allIndices);
-      if (onSelect) {
-        onSelect([...data], allIndices);
-      }
     } else {
       setSelectedRows([]);
-      if (onSelect) {
-        onSelect([], []);
-      }
     }
   };
 
   // Handle row click for selection or custom handler
   const handleRowClick = (record: T, index: number) => {
+    console.log('click');
     if (selectable && selectOnRowClick) {
       handleSelectRow(index, !selectedRows.includes(index));
     }
@@ -357,6 +329,13 @@ export function Table<T extends Record<string, any> = any>({
     return {};
   };
 
+  React.useEffect(() => {
+    if (onSelect) {
+      const selectedData = selectedRows.map((index) => data[index]);
+      onSelect(selectedData);
+    }
+  }, [selectedRows]);
+
   return (
     <div className={`table-container ${className}`}>
       {/* Header section with title and description */}
@@ -367,25 +346,24 @@ export function Table<T extends Record<string, any> = any>({
         </div>
       )}
 
-      {/* Actions section */}
-      {actions && <div className='table-actions-section'>{actions}</div>}
-
-      {/* Batch actions section - shows when rows are selected */}
-      {selectable && batchActions && (
-        <div className={`table-batch-actions ${selectedRows.length ? '' : 'hidden'}`}>
+      {/* Actión/Batch actions section */}
+      {selectable && batchActions && selectedRows.length ? (
+        <div className='table-batch-actions'>
           <span className='table-batch-actions-count'>{selectedRows.length} selected</span>
           {batchActions}
         </div>
+      ) : (
+        actions && <div className='table-actions-section'>{actions}</div>
       )}
 
       {/* Table wrapper with overflow */}
-      <div className='table-wrapper' style={tableWrapperStyle()}>
-        <table className='table' ref={tableRef}>
+      <div ref={wrapperTableRef} className='table-wrapper' style={tableWrapperStyle()}>
+        <table className='par-table' ref={tableRef}>
           <thead className='table-head'>
             <tr className='table-head-row'>
               {/* Checkbox column for selectable tables */}
               {selectable && (
-                <th className='table-head-cell table-checkbox'>
+                <th className='table-head-cell table-checkbox' data-key='checkbox'>
                   <input
                     type='checkbox'
                     checked={data.length > 0 && selectedRows.length === data.length}
@@ -404,16 +382,21 @@ export function Table<T extends Record<string, any> = any>({
                     minWidth: columnWidths[column.key] !== undefined ? `${columnWidths[column.key]}px` : column.width
                   }}
                   data-key={column.key}
-                  onClick={() => column.sortable && handleSortClick(column.key)}
+                  onMouseDown={() => column.sortable && handleSortClick(column.key)}
                 >
-                  <div className='table-head-cell-content'>
+                  <p className='table-head-cell-content'>
                     {column.title}
-                    {column.sortable && sortKey === column.key && (
-                      <span className={`table-sort-icon ${sortDirection}`}>
-                        <ChevronDown />
+                    {column.sortable && (
+                      <span
+                        className='table-sort-icon'
+                        style={{ visibility: sortKey === column.key ? 'visible' : 'hidden' }}
+                      >
+                        <ChevronUp className={sortDirection == 'asc' ? 'active' : ''} />
+                        <ChevronDown className={sortDirection == 'desc' ? 'active' : ''} />
                       </span>
                     )}
-                  </div>
+                  </p>
+
                   {column.resizable && (
                     <div className='table-resize-handle' onMouseDown={(e) => handleResizeStart(e, column.key)} />
                   )}
@@ -463,8 +446,8 @@ export function Table<T extends Record<string, any> = any>({
                     key={`${rowIndex}-${column.key}`}
                     className={`table-body-cell ${column.frozen ? 'frozen' : ''}`}
                     style={{
-                      width: columnWidths[column.key] !== undefined ? `${columnWidths[column.key]}px` : column.width,
-                      minWidth: columnWidths[column.key] !== undefined ? `${columnWidths[column.key]}px` : column.width
+                      width: columnWidths[column.key] !== undefined ? `${columnWidths[column.key]}` : column.width,
+                      minWidth: columnWidths[column.key] !== undefined ? `${columnWidths[column.key]}` : column.width
                     }}
                   >
                     {column.render ? column.render(record[column.key], record, rowIndex) : record[column.key]}

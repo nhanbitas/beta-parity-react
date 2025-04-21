@@ -1,7 +1,7 @@
 @import './variables.css';
 
 .table-container {
-  @apply relative w-full overflow-hidden rounded-md border border-[var(--par-color-border-table)];
+  @apply relative z-0 w-full overflow-hidden rounded-md border border-[var(--par-color-border-table)];
 }
 
 .table-header-section {
@@ -22,13 +22,7 @@
 }
 
 .table-batch-actions {
-  @apply absolute inset-x-0 top-0 z-10 
-  flex transform items-center gap-3 bg-[var(--par-color-bg-table-batch-action-selected-item)] p-3
-  text-[var(--par-color-text-table-content-item)] transition-transform duration-200 ease-in-out;
-}
-
-.table-batch-actions.hidden {
-  @apply -translate-y-full;
+  @apply flex transform items-center justify-between gap-3 border-b border-[var(--par-color-border-table)] bg-[var(--par-color-bg-table-batch-action-selected-item)] p-3 text-[var(--par-color-text-table-content-item)];
 }
 
 .table-batch-actions-count {
@@ -40,23 +34,27 @@
   max-height: var(--par-table-max-height, 600px);
 }
 
-.table {
-  @apply w-full table-fixed border-collapse bg-[var(--par-color-bg-table)];
+.par-table {
+  @apply w-full table-auto border-collapse bg-[var(--par-color-bg-table)];
   min-width: 100%;
 }
 
-.table-head {
-  @apply sticky top-0 z-[1] bg-[var(--par-color-bg-table)];
+.par-table th,
+.par-table td {
+  @apply h-10 overflow-hidden text-ellipsis border-b border-r border-[var(--par-color-border-table)];
 }
 
-.table-head-row {
-  @apply h-[var(--par-size-table-header-height)] border-b border-[var(--par-color-border-table)];
+.par-table th:last-child,
+.par-table td:last-child {
+  @apply border-r-0;
+}
+
+.table-head {
+  @apply sticky top-0 z-10 h-9 bg-[var(--par-color-bg-table)] shadow-sm;
 }
 
 .table-head-cell {
-  @apply text-body-compact-01 relative 
-  whitespace-nowrap px-[var(--par-size-table-cell-padding-x)] py-[var(--par-size-table-cell-padding-y)]
-  text-left font-medium text-[var(--par-color-text-table-header-cell-item-enabled)];
+  @apply text-body-compact-01 relative min-w-fit whitespace-nowrap px-4 py-3 text-left font-medium text-[var(--par-color-text-table-header-cell-item-enabled)];
   user-select: none;
 }
 
@@ -69,23 +67,27 @@
 }
 
 .table-head-cell.frozen {
-  @apply sticky left-0 z-[2] bg-[var(--par-color-bg-table)];
+  @apply sticky left-0 z-[1];
 }
 
 .table-head-cell-content {
-  @apply flex items-center gap-2;
+  @apply flex w-fit items-center gap-1 truncate;
 }
 
 .table-sort-icon {
-  @apply text-[var(--par-color-text-table-header-cell-item-enabled)] transition-transform;
+  @apply flex shrink-0 flex-col items-center justify-center text-[var(--par-color-text-table-header-cell-item-enabled)];
 }
 
-.table-sort-icon.asc {
+.table-sort-icon .lucide {
+  @apply h-3 w-3 text-[var(--par-color-text-table-header-cell-item-enabled)];
+}
+
+.table-sort-icon .lucide-chevron-down {
+  @apply -mt-1;
+}
+
+.table-sort-icon .active {
   @apply text-[var(--par-color-text-table-header-cell-item-active)];
-}
-
-.table-sort-icon.desc {
-  @apply rotate-180 text-[var(--par-color-text-table-header-cell-item-active)];
 }
 
 .table-resize-handle {
@@ -93,7 +95,6 @@
   width: 8px;
   cursor: col-resize;
   z-index: 10;
-  /* Pull handle slightly to the left to make it easier to grab */
   transform: translateX(4px);
 }
 
@@ -101,7 +102,6 @@
   @apply absolute top-0 h-full;
   content: '';
   width: 2px;
-  /* Center the visible handle */
   left: 3px;
   background-color: var(--par-color-border-table);
   opacity: 0;
@@ -117,8 +117,7 @@
 }
 
 .table-body-row {
-  @apply h-[var(--par-size-table-row-height)] border-b border-[var(--par-color-border-table)]
-  transition-colors duration-100;
+  @apply h-9;
 }
 
 .table-body-row:hover {
@@ -134,12 +133,11 @@
 }
 
 .table-body-cell {
-  @apply text-body-01 px-[var(--par-size-table-cell-padding-x)]
-  py-[var(--par-size-table-cell-padding-y)] text-left align-middle text-[var(--par-color-text-table-content-item)];
+  @apply text-body-01 bg-[var(--par-color-bg-table)] px-4 py-3 text-left  align-middle text-[var(--par-color-text-table-content-item)];
 }
 
 .table-body-cell.frozen {
-  @apply sticky left-0 z-[1] bg-[var(--par-color-bg-table)];
+  @apply sticky left-0 z-[1];
 }
 
 .table-body-row:hover .table-body-cell.frozen {
@@ -151,7 +149,7 @@
 }
 
 .table-checkbox {
-  @apply flex w-10 items-center justify-center;
+  @apply sticky left-0 z-[2] w-12 bg-[var(--par-color-bg-table)];
 }
 
 .table-footer {

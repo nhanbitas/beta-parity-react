@@ -1,7 +1,9 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Table, TableColumn, TableSearchInput, TablePagination } from '../../../registry/src/components/Table';
+import { Table, TableColumn, TablePagination } from 'beta-parity-react/ui/Table';
+import { SearchInput } from 'beta-parity-react/ui/SearchInput';
+import { Button } from 'beta-parity-react/ui/Button';
 
 // Sample data for the table - using deterministic generation to avoid hydration mismatch
 const generateData = (count: number) => {
@@ -25,13 +27,11 @@ export const BasicTable = () => {
   const columns: TableColumn[] = [
     {
       key: 'id',
-      title: 'ID',
-      sortable: true
+      title: 'ID'
     },
     {
       key: 'name',
-      title: 'Name',
-      sortable: true
+      title: 'Name'
     },
     {
       key: 'category',
@@ -49,7 +49,7 @@ export const BasicTable = () => {
   ];
 
   return (
-    <div className='demo-section'>
+    <div className='demo-section not-prose'>
       <h2>Basic Table</h2>
       <Table data={data} columns={columns} title='Products' description='A simple table showing product data' />
     </div>
@@ -57,7 +57,7 @@ export const BasicTable = () => {
 };
 
 export const AdvancedTable = () => {
-  const allData = generateData(50);
+  const allData = generateData(1000);
   const [data, setData] = useState(allData);
   const [selectedRows, setSelectedRows] = useState<any[]>([]);
   const [searchValue, setSearchValue] = useState('');
@@ -71,38 +71,34 @@ export const AdvancedTable = () => {
     {
       key: 'id',
       title: 'ID',
-      width: 80,
-      frozen: true,
-      sortable: true,
-      resizable: true
+      width: 68,
+      resizable: true,
+      sortable: true
+      // frozen: true,
     },
     {
       key: 'name',
-      title: 'Product Name',
-      width: 200,
+      title: 'PRODUCT NAME',
       sortable: true,
-      resizable: true,
-      frozen: true
+      resizable: true
+      // frozen: true
     },
     {
       key: 'category',
-      title: 'Category',
-      width: 150,
+      title: 'CATEGORY',
       sortable: true,
       resizable: true
     },
     {
       key: 'price',
-      title: 'Price ($)',
-      width: 120,
+      title: 'PRICE ($)',
       sortable: true,
       resizable: true,
       render: (value) => <span style={{ fontWeight: 'bold' }}>${value}</span>
     },
     {
       key: 'stock',
-      title: 'In Stock',
-      width: 120,
+      title: 'IN STOCK',
       sortable: true,
       resizable: true,
       render: (value) => (
@@ -111,8 +107,7 @@ export const AdvancedTable = () => {
     },
     {
       key: 'rating',
-      title: 'Rating',
-      width: 120,
+      title: 'RATING',
       sortable: true,
       resizable: true,
       render: (value) => {
@@ -122,25 +117,24 @@ export const AdvancedTable = () => {
     },
     {
       key: 'lastUpdated',
-      title: 'Last Updated',
-      width: 150,
+      title: 'LAST UPDATED',
       sortable: true,
       resizable: true
     }
   ];
 
   // Handle search
-  const handleSearch = (value: string) => {
-    setSearchValue(value);
+  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(event.target.value);
     setCurrentPage(1);
 
-    if (!value.trim()) {
+    if (!event.target.value.trim()) {
       setData(allData);
       return;
     }
 
     const filtered = allData.filter((item) =>
-      Object.values(item).some((val) => String(val).toLowerCase().includes(value.toLowerCase()))
+      Object.values(item).some((val) => String(val).toLowerCase().includes(event.target.value.toLowerCase()))
     );
 
     setData(filtered);
@@ -150,7 +144,6 @@ export const AdvancedTable = () => {
   const handleSort = (key: string, direction: 'asc' | 'desc') => {
     setSortKey(key);
     setSortDirection(direction);
-    console.log('sorting by', key, direction);
     const sortedData = [...data].sort((a, b) => {
       // Using type-safe approach to compare values
       const valueA = a[key as keyof typeof a];
@@ -185,14 +178,16 @@ export const AdvancedTable = () => {
   // Batch action handlers
   const handleDeleteSelected = () => {
     alert(`Deleting ${selectedRows.length} items`);
+    console.log('Deleting items:', selectedRows);
   };
 
   const handleExportSelected = () => {
     alert(`Exporting ${selectedRows.length} items`);
+    console.log('Exporting items:', selectedRows);
   };
 
   return (
-    <div className='demo-section'>
+    <div className='demo-section not-prose'>
       <h2>Advanced Table</h2>
       <Table
         data={paginatedData}
@@ -207,19 +202,19 @@ export const AdvancedTable = () => {
         sortKey={sortKey}
         sortDirection={sortDirection}
         actions={
-          <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
-            <TableSearchInput value={searchValue} onChange={handleSearch} placeholder='Search products...' />
-            <button className='par-button'>Add Product</button>
+          <div className='flex w-full items-center justify-between'>
+            <div className='w-1/4'>
+              <SearchInput value={searchValue} onChange={handleSearch} placeholder='Search products...' />
+            </div>
+            <Button className='par-button'>Add Product</Button>
           </div>
         }
         batchActions={
-          <div style={{ display: 'flex', gap: '8px' }}>
-            <button className='par-button par-button-danger' onClick={handleDeleteSelected}>
-              Delete Selected
-            </button>
-            <button className='par-button' onClick={handleExportSelected}>
-              Export Selected
-            </button>
+          <div className='flex w-fit items-center justify-between gap-2'>
+            <Button onClick={handleDeleteSelected} color='adverse'>
+              Delete
+            </Button>
+            <Button onClick={handleExportSelected}>Export</Button>
           </div>
         }
         footer={
@@ -228,7 +223,7 @@ export const AdvancedTable = () => {
             pageSize={pageSize}
             total={data.length}
             onChange={setCurrentPage}
-            pageSizeOptions={[5, 10, 20, 50]}
+            pageSizeOptions={[5, 10, 20, 50, 100]}
             onPageSizeChange={setPageSize}
           />
         }
@@ -249,6 +244,7 @@ export function TableDemos() {
       <BasicTable />
       <div style={{ height: '32px' }} />
       <AdvancedTable />
+      <div style={{ height: '32px' }} />
     </div>
   );
 }
