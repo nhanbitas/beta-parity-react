@@ -73,15 +73,15 @@ export const AdvancedTable = () => {
       title: 'ID',
       width: 68,
       resizable: true,
-      sortable: true
-      // frozen: true,
+      sortable: true,
+      frozen: true
     },
     {
       key: 'name',
       title: 'PRODUCT NAME',
       sortable: true,
-      resizable: true
-      // frozen: true
+      resizable: true,
+      frozen: true
     },
     {
       key: 'category',
@@ -94,6 +94,7 @@ export const AdvancedTable = () => {
       title: 'PRICE ($)',
       sortable: true,
       resizable: true,
+      frozen: true,
       render: (value) => <span style={{ fontWeight: 'bold' }}>${value}</span>
     },
     {

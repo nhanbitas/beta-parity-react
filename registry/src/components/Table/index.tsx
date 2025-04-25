@@ -233,6 +233,7 @@ export function Table<T extends Record<string, any> = any>({
 }: TableProps<T>) {
   const [selectedRows, setSelectedRows] = React.useState<number[]>([]);
   const [columnWidths, setColumnWidths] = React.useState<Record<string, number>>({});
+  const [frozenPositions, setfrozenPositions] = React.useState<Record<string, number | undefined>>({});
   const wrapperTableRef = React.useRef<HTMLDivElement>(null);
   const tableRef = React.useRef<HTMLTableElement>(null);
   const startXRef = React.useRef<number>(0);
@@ -240,6 +241,7 @@ export function Table<T extends Record<string, any> = any>({
 
   // Handle column resize
   const handleResizeStart = (e: React.MouseEvent, key: string) => {
+    // Unset frozen positions before resizing
     e.preventDefault();
     e.stopPropagation(); // Prevent triggering sort when resize handle is clicked
 
@@ -261,10 +263,13 @@ export function Table<T extends Record<string, any> = any>({
 
         const newColumnWidths = { ...columnWidths, [key]: Math.floor(width) };
         setColumnWidths(newColumnWidths);
+        getFrozenColumnWidths('freeze');
       };
 
       const handleMouseUp = (e: MouseEvent) => {
+        getFrozenColumnWidths('freeze');
         target.style.cursor = 'pointer';
+
         document.removeEventListener('mousemove', handleMouseMove);
         document.removeEventListener('mouseup', handleMouseUp);
       };
@@ -302,7 +307,6 @@ export function Table<T extends Record<string, any> = any>({
 
   // Handle row click for selection or custom handler
   const handleRowClick = (record: T, index: number) => {
-    console.log('click');
     if (selectable && selectOnRowClick) {
       handleSelectRow(index, !selectedRows.includes(index));
     }
@@ -328,6 +332,63 @@ export function Table<T extends Record<string, any> = any>({
     }
     return {};
   };
+
+  // Function to get frozen column widths
+  function getFrozenColumnWidths(action: 'freeze' | 'defrost' = 'freeze') {
+    if (action === 'defrost') {
+      setfrozenPositions((pre) => {
+        const newFrozenPositions = { ...pre };
+        Object.keys(newFrozenPositions).forEach((key) => {
+          newFrozenPositions[key] = undefined; // Unset frozen positions
+        });
+        return newFrozenPositions;
+      });
+      return;
+    }
+
+    let frozenColumnWidths: number[] = [];
+    const frozenColumns = columns.filter((column) => column.frozen);
+
+    if (selectable) frozenColumns.unshift({ key: 'checkbox', title: '' });
+
+    if (frozenColumns.length < 0) return;
+
+    for (const column of frozenColumns) {
+      const target = tableRef.current?.querySelector(`th[data-key="${column.key}"]`) as HTMLElement;
+      const targetWidth = target.getBoundingClientRect().width || column.width || 50;
+      frozenColumnWidths.push(Math.round(targetWidth));
+    }
+
+    setfrozenPositions((prev) => {
+      const newFrozenPositions = { ...prev };
+
+      for (let index = 0; index < frozenColumns.length; index++) {
+        const column = frozenColumns[index];
+        if (index === 0) {
+          newFrozenPositions[column.key] = 0; // First frozen column starts at 0
+          continue;
+        }
+        const cumulativeWidth = frozenColumnWidths.slice(0, index).reduce((acc, w) => Math.floor(acc + w), 0);
+        newFrozenPositions[column.key] = cumulativeWidth;
+      }
+      return newFrozenPositions;
+    });
+  }
+
+  React.useEffect(() => {
+    getFrozenColumnWidths();
+
+    const watchFrozenWidth = (e: Event) => getFrozenColumnWidths();
+
+    window.addEventListener('resize', watchFrozenWidth);
+    const tableElement = tableRef.current;
+    tableElement?.addEventListener('scroll', watchFrozenWidth);
+
+    return () => {
+      window.removeEventListener('resize', watchFrozenWidth);
+      tableElement?.removeEventListener('scroll', watchFrozenWidth);
+    };
+  }, []);
 
   React.useEffect(() => {
     if (onSelect) {
@@ -363,12 +424,20 @@ export function Table<T extends Record<string, any> = any>({
             <tr className='table-head-row'>
               {/* Checkbox column for selectable tables */}
               {selectable && (
-                <th className='table-head-cell table-checkbox' data-key='checkbox'>
-                  <input
-                    type='checkbox'
-                    checked={data.length > 0 && selectedRows.length === data.length}
-                    onChange={(e) => handleSelectAll(e.target.checked)}
-                  />
+                <th
+                  className='table-head-cell table-checkbox frozen'
+                  data-key='checkbox'
+                  style={{
+                    left: frozenPositions['checkbox'] !== undefined ? `${frozenPositions['checkbox']}px` : undefined
+                  }}
+                >
+                  <div className='table-head-cell-wrapper'>
+                    <input
+                      type='checkbox'
+                      checked={data.length > 0 && selectedRows.length === data.length}
+                      onChange={(e) => handleSelectAll(e.target.checked)}
+                    />
+                  </div>
                 </th>
               )}
 
@@ -379,27 +448,34 @@ export function Table<T extends Record<string, any> = any>({
                   className={`table-head-cell ${column.frozen ? 'frozen' : ''} ${column.sortable ? 'sortable' : ''}`}
                   style={{
                     width: columnWidths[column.key] !== undefined ? `${columnWidths[column.key]}px` : column.width,
-                    minWidth: columnWidths[column.key] !== undefined ? `${columnWidths[column.key]}px` : column.width
+                    minWidth: columnWidths[column.key] !== undefined ? `${columnWidths[column.key]}px` : column.width,
+                    left: frozenPositions[column.key] !== undefined ? `${frozenPositions[column.key]}px` : undefined
                   }}
                   data-key={column.key}
                   onMouseDown={() => column.sortable && handleSortClick(column.key)}
                 >
-                  <p className='table-head-cell-content'>
-                    {column.title}
-                    {column.sortable && (
-                      <span
-                        className='table-sort-icon'
-                        style={{ visibility: sortKey === column.key ? 'visible' : 'hidden' }}
-                      >
-                        <ChevronUp className={sortDirection == 'asc' ? 'active' : ''} />
-                        <ChevronDown className={sortDirection == 'desc' ? 'active' : ''} />
-                      </span>
-                    )}
-                  </p>
+                  <div className='table-head-cell-wrapper'>
+                    <div className='table-head-cell-content'>
+                      {column.title}
+                      {column.sortable && (
+                        <span
+                          className='table-sort-icon'
+                          style={{ visibility: sortKey === column.key ? 'visible' : 'hidden' }}
+                        >
+                          <ChevronUp className={sortDirection == 'asc' ? 'active' : ''} />
+                          <ChevronDown className={sortDirection == 'desc' ? 'active' : ''} />
+                        </span>
+                      )}
+                    </div>
 
-                  {column.resizable && (
-                    <div className='table-resize-handle' onMouseDown={(e) => handleResizeStart(e, column.key)} />
-                  )}
+                    {column.resizable && (
+                      <button
+                        type='button'
+                        className='table-resize-handle'
+                        onMouseDown={(e) => handleResizeStart(e, column.key)}
+                      />
+                    )}
+                  </div>
                 </th>
               ))}
             </tr>
@@ -409,7 +485,7 @@ export function Table<T extends Record<string, any> = any>({
             {/* Empty state */}
             {data.length === 0 && (
               <tr>
-                <td colSpan={selectable ? columns.length + 1 : columns.length} className='table-empty-state'>
+                <td colSpan={selectable ? columns.length + 1 : columns.length} className='table-empty-state '>
                   {emptyState || 'No data to display'}
                 </td>
               </tr>
@@ -427,16 +503,21 @@ export function Table<T extends Record<string, any> = any>({
                 {/* Checkbox cell for selectable tables */}
                 {selectable && (
                   <td
-                    className='table-body-cell table-checkbox'
+                    className='table-body-cell table-checkbox frozen'
                     onClick={(e) => {
                       e.stopPropagation();
                     }}
+                    style={{
+                      left: frozenPositions['checkbox'] !== undefined ? `${frozenPositions['checkbox']}px` : undefined
+                    }}
                   >
-                    <input
-                      type='checkbox'
-                      checked={selectedRows.includes(rowIndex)}
-                      onChange={(e) => handleSelectRow(rowIndex, e.target.checked)}
-                    />
+                    <div className='table-body-cell-wrapper'>
+                      <input
+                        type='checkbox'
+                        checked={selectedRows.includes(rowIndex)}
+                        onChange={(e) => handleSelectRow(rowIndex, e.target.checked)}
+                      />
+                    </div>
                   </td>
                 )}
 
@@ -447,10 +528,15 @@ export function Table<T extends Record<string, any> = any>({
                     className={`table-body-cell ${column.frozen ? 'frozen' : ''}`}
                     style={{
                       width: columnWidths[column.key] !== undefined ? `${columnWidths[column.key]}` : column.width,
-                      minWidth: columnWidths[column.key] !== undefined ? `${columnWidths[column.key]}` : column.width
+                      minWidth: columnWidths[column.key] !== undefined ? `${columnWidths[column.key]}` : column.width,
+                      left: frozenPositions[column.key] !== undefined ? `${frozenPositions[column.key]}px` : undefined
                     }}
                   >
-                    {column.render ? column.render(record[column.key], record, rowIndex) : record[column.key]}
+                    <div className='table-body-cell-wrapper'>
+                      <div className='table-body-cell-content'>
+                        {column.render ? column.render(record[column.key], record, rowIndex) : record[column.key]}
+                      </div>
+                    </div>
                   </td>
                 ))}
               </tr>
