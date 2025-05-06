@@ -59,7 +59,7 @@ export const BasicTable = () => {
 export const AdvancedTable = () => {
   const allData = generateData(1000);
   const [data, setData] = useState(allData);
-  const [selectedRows, setSelectedRows] = useState<any[]>([]);
+  const [selectedRows, setSelectedRows] = useState<any[]>([1, 2, 3]); // Pre-select some rows for demo
   const [searchValue, setSearchValue] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
@@ -197,6 +197,7 @@ export const AdvancedTable = () => {
         description='Complete inventory with advanced table features'
         selectable
         selectOnRowClick={false}
+        defaultSelectedRows={selectedRows}
         maxHeight={400}
         onSelect={handleSelect}
         onSort={handleSort}
