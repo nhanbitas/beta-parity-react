@@ -2,6 +2,7 @@ import React from 'react';
 import './index.css';
 import { ChevronDown, ChevronLeft, ChevronRight, ChevronUp } from 'lucide-react';
 import { Button } from '../Button';
+import { Checkbox } from '../Checkbox';
 
 // Types for the table component
 export type TableColumn<T = any> = {
@@ -56,6 +57,11 @@ export type TableProps<T = any> = {
   selectOnRowClick?: boolean;
 
   /**
+   * Default selected rows
+   */
+  defaultSelectedRows?: number[];
+
+  /**
    * Maximum height of the table
    */
   maxHeight?: number | string;
@@ -104,43 +110,6 @@ export type TableProps<T = any> = {
    * CSS class name
    */
   className?: string;
-};
-
-/**
- * Search input component for filtering table data
- */
-export const TableSearchInput = ({
-  value,
-  onChange,
-  placeholder = 'Search...',
-  className = ''
-}: {
-  value: string;
-  onChange: (value: string) => void;
-  placeholder?: string;
-  className?: string;
-}) => {
-  return (
-    <div className={`table-search ${className}`}>
-      <span className='table-search-icon'>
-        <svg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'>
-          <path
-            fillRule='evenodd'
-            clipRule='evenodd'
-            d='M10.5 7C10.5 8.93 8.93 10.5 7 10.5C5.07 10.5 3.5 8.93 3.5 7C3.5 5.07 5.07 3.5 7 3.5C8.93 3.5 10.5 5.07 10.5 7ZM11.5 7C11.5 9.485 9.485 11.5 7 11.5C4.515 11.5 2.5 9.485 2.5 7C2.5 4.515 4.515 2.5 7 2.5C9.485 2.5 11.5 4.515 11.5 7ZM10.3536 10.3536C10.5488 10.1583 10.8653 10.1583 11.0606 10.3536L13.3536 12.6464C13.5488 12.8417 13.5488 13.1583 13.3536 13.3535C13.1583 13.5488 12.8417 13.5488 12.6465 13.3535L10.3536 11.0607C10.1583 10.8654 10.1583 10.5488 10.3536 10.3536Z'
-            fill='currentColor'
-          />
-        </svg>
-      </span>
-      <input
-        type='text'
-        className='table-search-input'
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        placeholder={placeholder}
-      />
-    </div>
-  );
 };
 
 /**
@@ -220,6 +189,7 @@ export function Table<T extends Record<string, any> = any>({
   batchActions,
   selectable = false,
   selectOnRowClick = false,
+  defaultSelectedRows = [],
   maxHeight,
   emptyState,
   onSelect,
@@ -231,7 +201,7 @@ export function Table<T extends Record<string, any> = any>({
   onRowClick,
   className = ''
 }: TableProps<T>) {
-  const [selectedRows, setSelectedRows] = React.useState<number[]>([]);
+  const [selectedRows, setSelectedRows] = React.useState<number[]>(defaultSelectedRows);
   const [columnWidths, setColumnWidths] = React.useState<Record<string, number>>({});
   const [frozenPositions, setfrozenPositions] = React.useState<Record<string, number | undefined>>({});
   const wrapperTableRef = React.useRef<HTMLDivElement>(null);
@@ -432,9 +402,9 @@ export function Table<T extends Record<string, any> = any>({
                   }}
                 >
                   <div className='table-head-cell-wrapper'>
-                    <input
-                      type='checkbox'
+                    <Checkbox
                       checked={data.length > 0 && selectedRows.length === data.length}
+                      indeterminate={data.length > 0 && selectedRows.length > 0 && selectedRows.length < data.length}
                       onChange={(e) => handleSelectAll(e.target.checked)}
                     />
                   </div>
@@ -512,8 +482,7 @@ export function Table<T extends Record<string, any> = any>({
                     }}
                   >
                     <div className='table-body-cell-wrapper'>
-                      <input
-                        type='checkbox'
+                      <Checkbox
                         checked={selectedRows.includes(rowIndex)}
                         onChange={(e) => handleSelectRow(rowIndex, e.target.checked)}
                       />

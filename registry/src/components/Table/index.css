@@ -13,7 +13,7 @@
 }
 
 .table-description {
-  @apply text-body-compact-01 text-[var(--par-color-text-secondary)];
+  @apply text-body-compact-01;
 }
 
 .table-actions-section {
@@ -131,7 +131,7 @@
 }
 
 .table-body-cell-wrapper {
-  @apply text-body-01 overflow-hidden border-b border-r border-[var(--par-color-border-table)] bg-[var(--par-color-bg-table)] px-4 py-3 text-left align-middle text-[var(--par-color-text-table-content-item)];
+  @apply text-body-01 h-full w-full overflow-hidden border-b border-r border-[var(--par-color-border-table)] bg-[var(--par-color-bg-table)] px-4 py-3 text-left align-middle text-[var(--par-color-text-table-content-item)];
 }
 
 .table-body-cell-wrapper.frozen-cell {
@@ -175,20 +175,15 @@
   @apply text-body-compact-01 flex items-center gap-2;
 }
 
-/* TableSearchInput component */
-.table-search {
-  @apply relative min-w-[240px];
-}
-
 .table-search-input {
   @apply w-full pl-9;
 }
 
 .table-search-icon {
-  @apply absolute left-3 top-1/2 -translate-y-1/2 text-[var(--par-color-text-secondary)];
+  @apply absolute left-3 top-1/2 -translate-y-1/2;
 }
 
 /* Utility for empty state */
 .table-empty-state {
-  @apply p-8 text-center text-[var(--par-color-text-secondary)];
+  @apply p-8 text-center;
 }
