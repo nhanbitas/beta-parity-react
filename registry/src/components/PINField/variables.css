@@ -1,0 +1,86 @@
+@import '../theme/alias/text-icon-colors.css';
+@import '../theme/alias/border.css';
+@import '../theme/alias/background.css';
+
+:root,
+[data-theme='light'] {
+  /* Default state */
+  --pinfield-border-color: var(--par-color-border-field-enabled);
+  --pinfield-bg-color: var(--par-color-bg-field-enabled);
+  --pinfield-text-color: var(--par-color-text-field-filled);
+  --pinfield-placeholder-color: var(--par-color-text-field-placeholder);
+  --pinfield-caret-color: var(--par-color-text-field-filled);
+  --pinfield-separator-color: var(--par-color-text-button);
+
+  /* Hover state */
+  --pinfield-border-color-hover: var(--par-color-border-field-hovered);
+  --pinfield-bg-color-hover: var(--par-color-bg-field-hovered);
+
+  /* Focused state */
+  --pinfield-border-color-focus: var(--par-color-border-field-focused);
+  --pinfield-focus-ring-color: rgb(from var(--par-color-border-field-focused) r g b / 0.3);
+
+  /* Filled state */
+  --pinfield-border-color-filled: var(--par-color-border-field-enabled);
+  --pinfield-bg-color-filled: var(--par-color-bg-field-enabled);
+
+  /* Filled + hover state */
+  --pinfield-border-color-filled-hover: var(--par-color-border-field-hovered);
+  --pinfield-bg-color-filled-hover: var(--par-color-bg-field-hovered);
+
+  /* Disabled state */
+  --pinfield-border-color-disabled: var(--par-color-border-field-disabled);
+  --pinfield-bg-color-disabled: var(--par-color-bg-field-disabled);
+  --pinfield-text-color-disabled: var(--par-color-text-field-disabled);
+  --pinfield-placeholder-color-disabled: var(--par-color-text-field-disabled);
+
+  /* Read-only state */
+  --pinfield-border-color-readonly: var(--par-color-border-field-readonly);
+  --pinfield-bg-color-readonly: var(--par-color-bg-field-readonly);
+  --pinfield-text-color-readonly: var(--par-color-text-field-readonly);
+
+  /* Invalid state */
+  --pinfield-border-color-invalid: var(--par-color-border-field-invalid);
+  --pinfield-bg-color-invalid: var(--par-color-bg-field-invalid);
+}
+
+[data-scheme='dark'] {
+  /* Default state */
+  --pinfield-border-color: var(--par-color-border-field-enabled);
+  --pinfield-bg-color: var(--par-color-bg-field-enabled);
+  --pinfield-text-color: var(--par-color-text-field-filled);
+  --pinfield-placeholder-color: var(--par-color-text-field-placeholder);
+  --pinfield-caret-color: var(--par-color-text-field-filled);
+  --pinfield-separator-color: var(--par-color-text-button);
+
+  /* Hover state */
+  --pinfield-border-color-hover: var(--par-color-border-field-hovered);
+  --pinfield-bg-color-hover: var(--par-color-bg-field-hovered);
+
+  /* Focused state */
+  --pinfield-border-color-focus: var(--par-color-border-field-focused);
+  --pinfield-focus-ring-color: rgb(from var(--par-color-border-field-focused) r g b / 0.3);
+
+  /* Filled state */
+  --pinfield-border-color-filled: var(--par-color-border-field-enabled);
+  --pinfield-bg-color-filled: var(--par-color-bg-field-enabled);
+
+  /* Filled + hover state */
+  --pinfield-border-color-filled-hover: var(--par-color-border-field-hovered);
+  --pinfield-bg-color-filled-hover: var(--par-color-bg-field-hovered);
+
+  /* Disabled state */
+  --pinfield-border-color-disabled: var(--par-color-border-field-disabled);
+  --pinfield-bg-color-disabled: var(--par-color-bg-field-disabled);
+  --pinfield-text-color-disabled: var(--par-color-text-field-disabled);
+  --pinfield-placeholder-color-disabled: var(--par-color-text-field-disabled);
+
+  /* Read-only state */
+  --pinfield-border-color-readonly: var(--par-color-border-field-readonly);
+  --pinfield-bg-color-readonly: var(--par-color-bg-field-readonly);
+  --pinfield-text-color-readonly: var(--par-color-text-field-readonly);
+
+  /* Invalid state */
+  --pinfield-border-color-invalid: var(--par-color-border-field-invalid);
+  --pinfield-bg-color-invalid: var(--par-color-bg-field-invalid);
+}

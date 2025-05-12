@@ -1,0 +1,32 @@
+:root,
+[data-theme='light'] {
+  /* TEXT */
+  --par-color-text-avatar: var(--par-white);
+  --par-color-text-avatar-disabled: rgb(from var(--par-white) r g b / 0.5);
+  --par-color-text-avatar-trigger: var(--par-gray-700);
+
+  /* BG */
+  --par-color-bg-avatar: var(--par-gray-400);
+  --par-color-bg-avatar-disabled: var(--par-gray-200);
+  --par-color-bg-avatar-trigger: var(--par-gray-100);
+
+  /* BORDER */
+  --par-color-border-avatar: var(--par-white);
+  --par-color-border-avatar-alternative: var(--par-gray-25);
+}
+
+[data-scheme='dark'] {
+  /* TEXT */
+  --par-color-text-avatar: var(--par-white);
+  --par-color-text-avatar-disabled: rgb(from var(--par-white) r g b / 0.5);
+  --par-color-text-avatar-trigger: var(--par-white);
+
+  /* BG */
+  --par-color-bg-avatar: var(--par-gray-700);
+  --par-color-bg-avatar-disabled: var(--par-gray-700);
+  --par-color-bg-avatar-trigger: var(--par-gray-500);
+
+  /* BORDER */
+  --par-color-border-avatar: var(--par-gray-950);
+  --par-color-border-avatar-alternative: var(--par-gray-900);
+}
