@@ -159,9 +159,6 @@ export const PINField = React.forwardRef<HTMLDivElement, PINFieldProps>(
       return result;
     }, [groups]);
 
-    // Function to get all values as a single string
-    const getPINValue = React.useCallback(() => values.join(''), [values]);
-
     // Function to focus a specific input by index
     const focusInput = React.useCallback(
       (index: number) => {
@@ -173,139 +170,132 @@ export const PINField = React.forwardRef<HTMLDivElement, PINFieldProps>(
     );
 
     // Function to handle input change
-    const handleChange = React.useCallback(
-      (index: number, e: React.ChangeEvent<HTMLInputElement>) => {
-        if (readOnly || disabled) return;
+    const handleChange = (index: number, e: React.ChangeEvent<HTMLInputElement>) => {
+      if (readOnly || disabled) return;
 
-        const value = e.target.value;
-        // Only allow alphanumeric characters
-        const lastChar = value.replace(/[^a-zA-Z0-9]/g, '').slice(-1);
+      const value = e.target.value;
+      // Only allow alphanumeric characters
+      const lastChar = value.replace(/[^a-zA-Z0-9]/g, '').slice(-1);
 
-        if (lastChar) {
-          // Update the values array
-          const newValues = [...values];
-          newValues[index] = lastChar;
-          setValues(newValues);
+      if (lastChar) {
+        // Update the values array
+        const newValues = [...values];
+        newValues[index] = lastChar;
+        setValues(newValues);
 
-          // Call onChange with the new PIN value
-          const newPINValue = newValues.join('');
-          onChange?.(newPINValue);
+        // Call onChange with the new PIN value
+        const newPINValue = newValues.join('');
+        onChange?.(newPINValue);
 
-          // Auto-focus next input if available
+        // Auto-focus next input if available
+        if (index < totalInputs - 1) {
+          focusInput(index + 1);
+        }
+
+        // Check if all inputs are filled
+        if (!newValues.includes('') && onComplete) {
+          onComplete(newPINValue);
+        }
+      }
+    }; // Function to handle keyboard events
+    const handleKeyDown = (index: number, e: React.KeyboardEvent<HTMLInputElement>) => {
+      if (readOnly || disabled) return;
+
+      switch (e.key) {
+        case 'Backspace':
+          if (values[index]) {
+            // If current input has value, clear it
+            const newValues = [...values];
+            newValues[index] = '';
+            setValues(newValues);
+            onChange?.(newValues.join(''));
+          } else if (index > 0) {
+            // If current input is empty, go to previous input
+            focusInput(index - 1);
+          }
+          break;
+
+        case 'ArrowLeft':
+          // Move focus to previous input
+          if (index > 0) {
+            e.preventDefault(); // Prevent cursor movement within input
+            focusInput(index - 1);
+          }
+          break;
+
+        case 'ArrowRight':
+          // Move focus to next input
           if (index < totalInputs - 1) {
+            e.preventDefault(); // Prevent cursor movement within input
             focusInput(index + 1);
           }
+          break;
 
-          // Check if all inputs are filled
-          if (!newValues.includes('') && onComplete) {
-            onComplete(newPINValue);
-          }
-        }
-      },
-      [values, totalInputs, onChange, onComplete, focusInput, readOnly, disabled]
-    );
-
-    // Function to handle backspace key
-    const handleKeyDown = React.useCallback(
-      (index: number, e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (readOnly || disabled) return;
-
-        switch (e.key) {
-          case 'Backspace':
-            if (values[index]) {
-              // If current input has value, clear it
-              const newValues = [...values];
-              newValues[index] = '';
-              setValues(newValues);
-              onChange?.(newValues.join(''));
-            } else if (index > 0) {
-              // If current input is empty, go to previous input
-              focusInput(index - 1);
-            }
-            break;
-
-          case 'ArrowLeft':
-            // Move focus to previous input
-            if (index > 0) {
-              e.preventDefault(); // Prevent cursor movement within input
-              focusInput(index - 1);
-            }
-            break;
-
-          case 'ArrowRight':
-            // Move focus to next input
-            if (index < totalInputs - 1) {
-              e.preventDefault(); // Prevent cursor movement within input
+        default:
+          // For number/letter keys, check if it's a valid alphanumeric character
+          const char = e.key;
+          if (/^[a-zA-Z0-9]$/.test(char)) {
+            // If this is the same as the existing value, still move to next input
+            // This handles the case when user types the same value that already exists
+            if (values[index] === char && index < totalInputs - 1) {
+              e.preventDefault(); // Prevent default to avoid double input
               focusInput(index + 1);
             }
-            break;
-
-          default:
-            break;
-        }
-      },
-      [values, onChange, focusInput, totalInputs, readOnly, disabled]
-    );
+          }
+          break;
+      }
+    };
 
     // Handle paste event
-    const handlePaste = React.useCallback(
-      (index: number, e: React.ClipboardEvent<HTMLInputElement>) => {
-        if (readOnly || disabled) return;
+    const handlePaste = (index: number, e: React.ClipboardEvent<HTMLInputElement>) => {
+      if (readOnly || disabled) return;
 
-        e.preventDefault();
-        const pastedText = e.clipboardData.getData('text');
-        // Filter to only include alphanumeric characters
-        const alphanumeric = pastedText.replace(/[^a-zA-Z0-9]/g, '');
+      e.preventDefault();
+      const pastedText = e.clipboardData.getData('text');
+      // Filter to only include alphanumeric characters
+      const alphanumeric = pastedText.replace(/[^a-zA-Z0-9]/g, '');
 
-        if (alphanumeric) {
-          const chars = alphanumeric.split('');
-          const newValues = [...values];
+      if (alphanumeric) {
+        const chars = alphanumeric.split('');
+        const newValues = [...values];
 
-          // Fill inputs starting from the current position
-          let filledCount = 0;
-          for (let i = index; i < totalInputs && filledCount < chars.length; i++) {
-            newValues[i] = chars[filledCount++];
-          }
-
-          setValues(newValues);
-          onChange?.(newValues.join(''));
-
-          // Focus on the next empty input or last input
-          const nextEmptyIndex = newValues.findIndex((val, idx) => idx >= index && !val);
-          if (nextEmptyIndex !== -1) {
-            focusInput(nextEmptyIndex);
-          } else {
-            focusInput(Math.min(index + chars.length, totalInputs - 1));
-          }
-
-          // Check if all inputs are filled
-          if (!newValues.includes('') && onComplete) {
-            onComplete(newValues.join(''));
-          }
+        // Fill inputs starting from the current position
+        let filledCount = 0;
+        for (let i = index; i < totalInputs && filledCount < chars.length; i++) {
+          newValues[i] = chars[filledCount++];
         }
-      },
-      [values, onChange, onComplete, focusInput, totalInputs, readOnly, disabled]
-    );
+
+        setValues(newValues);
+        onChange?.(newValues.join(''));
+
+        // Focus on the next empty input or last input
+        const nextEmptyIndex = newValues.findIndex((val, idx) => idx >= index && !val);
+        if (nextEmptyIndex !== -1) {
+          focusInput(nextEmptyIndex);
+        } else {
+          focusInput(Math.min(index + chars.length, totalInputs - 1));
+        }
+
+        // Check if all inputs are filled
+        if (!newValues.includes('') && onComplete) {
+          onComplete(newValues.join(''));
+        }
+      }
+    };
 
     // Handle focus event - select the content when focusing
-    const handleFocus = React.useCallback(
-      (e: React.FocusEvent<HTMLInputElement>) => {
-        if (!readOnly && !disabled) {
-          e.target.select();
-        }
-      },
-      [readOnly, disabled]
-    );
+    const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+      if (!readOnly && !disabled) {
+        e.target.select();
+      }
+    };
 
     // Handle clicking on an input
-    const handleInputClick = React.useCallback(
-      (index: number) => {
-        if (!readOnly && !disabled) {
-          focusInput(index);
-        }
-      },
-      [focusInput, readOnly, disabled]
-    );
+    const handleInputClick = (index: number) => {
+      if (!readOnly && !disabled) {
+        focusInput(index);
+      }
+    };
 
     // Effect to handle reset prop changes
     React.useEffect(() => {

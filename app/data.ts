@@ -116,7 +116,7 @@ export const components = [
     status: 3
   },
   {
-    name: 'PINField',
+    name: 'PIN Field',
     url: '/pinfield',
     status: 2
   },
