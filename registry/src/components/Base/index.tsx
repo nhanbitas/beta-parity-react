@@ -13,7 +13,7 @@ type BaseComponentProps<C extends ElementType> = PolymorphicComponentProps<C>;
 export const Base = forwardRef(
   <C extends ElementType = 'div'>(
     { component: Component = 'div' as C, children, style, ...props }: BaseComponentProps<C>,
-    ref: PolymorphicRef<C>
+    ref: React.Ref<C>
   ): ReactElement => {
     const ComponentElement = Component as ElementType;
     return (

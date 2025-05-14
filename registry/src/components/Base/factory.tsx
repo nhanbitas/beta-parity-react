@@ -12,7 +12,10 @@ export function createPolymorphicComponent<
   Props extends {},
   StaticComponents = Record<string, never>
 >(
-  ui: React.ForwardRefRenderFunction<PolymorphicRef<ComponentDefaultType>, Props & { component?: ComponentDefaultType }>
+  ui: React.ForwardRefRenderFunction<
+    PolymorphicRef<ComponentDefaultType>,
+    React.PropsWithoutRef<Props & { component?: ComponentDefaultType }>
+  >
 ) {
   type ComponentProps<C extends React.ElementType = ComponentDefaultType> = PolymorphicComponentProps<C, Props>;
 
