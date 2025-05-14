@@ -5,7 +5,7 @@
 }
 
 .table-header-section {
-  @apply border-b border-[var(--par-color-border-table)] p-4;
+  @apply border-b border-[var(--par-color-border-table)] bg-[var(--par-color-bg-table)] p-4;
 }
 
 .table-title {
@@ -49,16 +49,16 @@
   @apply border-r-0;
 }
 
-.par-table tr:last-child > * {
+.par-table tr:last-child td > * {
   @apply border-b-0;
 }
 
 .table-head {
-  @apply sticky top-0 z-10 h-9 shadow-sm;
+  @apply sticky top-0 z-10 h-9;
 }
 
 .table-head-cell-wrapper {
-  @apply text-body-compact-01 relative h-fit  w-full whitespace-nowrap border-b border-r border-[var(--par-color-border-table)] bg-[var(--par-color-bg-table)] px-4 py-3 text-left font-medium text-[var(--par-color-text-table-header-cell-item-enabled)];
+  @apply text-body-compact-01 relative h-fit w-full whitespace-nowrap border-b border-r border-[var(--par-color-border-table)] bg-[var(--par-color-bg-table)] px-4 py-3 text-left font-medium text-[var(--par-color-text-table-header-cell-item-enabled)] shadow-sm shadow-[var(--par-color-effect-shadow)];
 }
 
 .table-head-cell {
@@ -75,6 +75,12 @@
 
 .table-head-cell.frozen {
   @apply sticky z-[1];
+}
+
+.frozen.last-column-frozen .table-head-cell-wrapper,
+.frozen.last-column-frozen .table-body-cell-wrapper {
+  @apply border-r-2;
+  /* box-shadow: 4px 0px 6px -2px rgba(0, 0, 0, 0.1); */
 }
 
 .table-head-cell-content {
@@ -107,7 +113,8 @@
 }
 
 .table-resize-handle:active::after {
-  @apply absolute right-0 top-0 h-full w-1 bg-blue-600 opacity-100 content-[''];
+  height: var(--par-table-height);
+  @apply absolute right-0 top-0 w-1 bg-blue-600 opacity-100 content-[''];
 }
 
 .table-body {
@@ -134,12 +141,12 @@
   @apply text-body-01 h-fit w-full overflow-hidden border-b border-r border-[var(--par-color-border-table)] bg-[var(--par-color-bg-table)] px-4 py-3 text-left align-middle text-[var(--par-color-text-table-content-item)];
 }
 
-.table-body-cell-wrapper.frozen-cell {
-  @apply border-b-2;
-}
-
 .table-body-cell.frozen {
   @apply sticky z-[1];
+}
+
+.table-body-cell.frozen.last-column-frozen {
+  @apply border-r-2;
 }
 
 .table-body-cell-content {
@@ -162,8 +169,7 @@
 }
 
 .table-footer {
-  @apply flex items-center justify-between border-t border-[var(--par-color-border-table)]
-  bg-[var(--par-color-bg-table)] p-3 text-[var(--par-color-text-table-content-item)];
+  @apply flex items-center justify-between border-t border-[var(--par-color-border-table)] bg-[var(--par-color-bg-table)] p-3 text-[var(--par-color-text-table-content-item)];
 }
 
 .table-row-count {

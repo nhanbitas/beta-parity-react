@@ -4,26 +4,46 @@ import { ChevronDown, ChevronLeft, ChevronRight, ChevronUp } from 'lucide-react'
 import { Button } from '../Button';
 import { Checkbox } from '../Checkbox';
 import { UnitSelector } from '../BaseInput';
+import classNames from 'classnames';
+import useCombinedRefs from '../hooks/useCombinedRefs';
 
-// Types for the table component
+// =========================
+// Table component
+// =========================
+// Declare and export select type and Table component
+
+/**
+ * Table column definition
+ *
+ * Each column has a key, title, and optional properties like width, sortable, resizable, and render function
+ */
 export type TableColumn<T = any> = {
   key: string;
   title: React.ReactNode;
   width?: number;
-  frozen?: boolean;
   sortable?: boolean;
   resizable?: boolean;
   render?: (value: any, record: T, index: number) => React.ReactNode;
 };
 
+/**
+ * Table component props
+ *
+ * Extends HTML attributes for table elements
+ */
 export interface TableProps<T = any> extends Omit<React.HTMLAttributes<HTMLTableElement>, 'onSelect' | 'title'> {
   /**
    * Data to be displayed in the table
+   *
+   * @default []
+   * @example [{ id: 1, name: 'John Doe' }, { id: 2, name: 'Jane Doe' }]
    */
   data: T[];
 
   /**
    * Column definitions
+   *
+   * Each column has a key, title, and optional properties like width, sortable, resizable, and render function
    */
   columns: TableColumn<T>[];
 
@@ -39,78 +59,112 @@ export interface TableProps<T = any> extends Omit<React.HTMLAttributes<HTMLTable
 
   /**
    * Additional actions to display in the header
+   *
+   * If `selectable` is true, this will be displayed in the header section
    */
   actions?: React.ReactNode;
 
   /**
    * Actions to perform on selected rows
+   *
+   * This will be displayed in the header section if `selectable` is true and there are selected rows
    */
   batchActions?: React.ReactNode;
 
   /**
    * Whether rows are selectable
+   *
+   * If `selectable` is true, this will be displayed in the header section and a checkbox will be added to each row
    */
   selectable?: boolean;
 
   /**
    * Whether rows are selectable by clicking anywhere on the row
+   *
+   * If `selectOnRowClick` is true, clicking anywhere on the row will select it
    */
   selectOnRowClick?: boolean;
 
   /**
    * Default selected rows
+   *
+   * This is an array of row indices that should be selected by default
    */
   defaultSelectedRows?: number[];
 
   /**
    * Maximum height of the table
+   *
+   * This can be a number (in pixels) or a string (e.g., '50vh', '100%')
    */
   maxHeight?: number | string;
 
   /**
    * Custom empty state component
+   *
+   * This will be displayed when there are no rows in the table
    */
   emptyState?: React.ReactNode;
 
   /**
    * Function called when rows are selected
+   *
+   * This function receives an array of selected rows
    */
   onSelect?: (selectedRows: T[]) => void;
 
   /**
    * Function called when a column is sorted
+   *
+   * This function receives the key of the column and the sort direction ('asc' or 'desc')
    */
   onSort?: (key: string, direction: 'asc' | 'desc') => void;
 
   /**
    * Current sort key
+   *
+   * This is the key of the column that is currently sorted
    */
   sortKey?: string;
 
   /**
    * Current sort direction
+   *
+   * This is the direction of the current sort ('asc' or 'desc')
+   * @default 'asc'
    */
   sortDirection?: 'asc' | 'desc';
 
   /**
    * Footer component
+   *
+   * This can be used to display additional information or actions
    */
   footer?: React.ReactNode;
 
   /**
    * Show row count in footer
+   *
+   * This will be displayed in the footer section if `showRowCount` is true
    */
   showRowCount?: boolean;
 
   /**
    * Called when a row is clicked
+   *
+   * This function receives the record and index of the clicked row
+   * @param record The record of the clicked row
    */
   onRowClick?: (record: T, index: number) => void;
 
   /**
-   * CSS class name
+   * Number of columns to freeze from the left (including checkbox column if selectable)
+   *
+   * Set to -1 to disable freezing
+   *
+   * @default -1
    */
-  className?: string;
+  freezeColumns?: number;
 }
 
 /**
@@ -174,7 +228,9 @@ export const TablePagination = ({
 };
 
 /**
- * Main Table component
+ * **Table**.
+ *
+ * @see {@link http://localhost:3005/table-item Parity Table}
  */
 export const Table = React.forwardRef<HTMLTableElement, TableProps<any>>(
   (
@@ -197,7 +253,8 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps<any>>(
       footer,
       showRowCount = true,
       onRowClick,
-      className = ''
+      className = '',
+      freezeColumns = -1
     },
     ref
   ) => {
@@ -206,6 +263,7 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps<any>>(
     const [frozenPositions, setfrozenPositions] = React.useState<Record<string, number | undefined>>({});
     const wrapperTableRef = React.useRef<HTMLDivElement>(null);
     const tableRef = React.useRef<HTMLTableElement>(null);
+    const combinedRef = useCombinedRefs<HTMLTableElement>(ref, tableRef);
     const startXRef = React.useRef<number>(0);
     const startWidthRef = React.useRef<number>(0);
 
@@ -316,24 +374,29 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps<any>>(
         return;
       }
 
+      // If freezeColumns is -1 or 0, no columns should be frozen
+      if (freezeColumns <= 0) return;
+
       let frozenColumnWidths: number[] = [];
-      const frozenColumns = columns.filter((column) => column.frozen);
+      // Get all column keys that should be frozen
+      const allColumns = selectable ? [{ key: 'checkbox', title: '' }, ...columns] : [...columns];
 
-      if (selectable) frozenColumns.unshift({ key: 'checkbox', title: '' });
+      // Limit freezeColumns to the number of available columns
+      const actualFreezeCount = Math.min(freezeColumns, allColumns.length);
 
-      if (frozenColumns.length < 0) return;
-
-      for (const column of frozenColumns) {
+      // Get widths for all frozen columns
+      for (let i = 0; i < actualFreezeCount; i++) {
+        const column = allColumns[i];
         const target = tableRef.current?.querySelector(`th[data-key="${column.key}"]`) as HTMLElement;
-        const targetWidth = target.getBoundingClientRect().width || column.width || 50;
+        const targetWidth = target?.getBoundingClientRect().width || column.width || 50;
         frozenColumnWidths.push(Math.round(targetWidth));
       }
 
       setfrozenPositions((prev) => {
         const newFrozenPositions = { ...prev };
 
-        for (let index = 0; index < frozenColumns.length; index++) {
-          const column = frozenColumns[index];
+        for (let index = 0; index < actualFreezeCount; index++) {
+          const column = allColumns[index];
           if (index === 0) {
             newFrozenPositions[column.key] = 0; // First frozen column starts at 0
             continue;
@@ -348,7 +411,7 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps<any>>(
     React.useEffect(() => {
       getFrozenColumnWidths();
 
-      const watchFrozenWidth = (e: Event) => getFrozenColumnWidths();
+      const watchFrozenWidth = () => getFrozenColumnWidths();
 
       window.addEventListener('resize', watchFrozenWidth);
       const tableElement = tableRef.current;
@@ -358,7 +421,7 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps<any>>(
         window.removeEventListener('resize', watchFrozenWidth);
         tableElement?.removeEventListener('scroll', watchFrozenWidth);
       };
-    }, []);
+    }, [freezeColumns]); // Add freezeColumns to dependencies
 
     React.useEffect(() => {
       if (onSelect) {
@@ -389,7 +452,7 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps<any>>(
 
         {/* Table wrapper with overflow */}
         <div ref={wrapperTableRef} className='table-wrapper' style={tableWrapperStyle()}>
-          <table className='par-table' ref={tableRef}>
+          <table className='par-table' ref={combinedRef}>
             <thead className='table-head'>
               <tr className='table-head-row'>
                 {/* Checkbox column for selectable tables */}
@@ -412,42 +475,58 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps<any>>(
                 )}
 
                 {/* Column headers */}
-                {columns.map((column, index) => (
-                  <th
-                    key={column.key}
-                    className={`table-head-cell ${column.frozen ? 'frozen' : ''} ${column.sortable ? 'sortable' : ''}`}
-                    style={{
-                      width: columnWidths[column.key] !== undefined ? `${columnWidths[column.key]}px` : column.width,
-                      minWidth: columnWidths[column.key] !== undefined ? `${columnWidths[column.key]}px` : column.width,
-                      left: frozenPositions[column.key] !== undefined ? `${frozenPositions[column.key]}px` : undefined
-                    }}
-                    data-key={column.key}
-                    onMouseDown={() => column.sortable && handleSortClick(column.key)}
-                  >
-                    <div className='table-head-cell-wrapper'>
-                      <div className='table-head-cell-content'>
-                        {column.title}
-                        {column.sortable && (
-                          <span
-                            className='table-sort-icon'
-                            style={{ visibility: sortKey === column.key ? 'visible' : 'hidden' }}
-                          >
-                            <ChevronUp className={sortDirection == 'asc' ? 'active' : ''} />
-                            <ChevronDown className={sortDirection == 'desc' ? 'active' : ''} />
-                          </span>
+                {columns.map((column, index) => {
+                  // Calculate if this column should be frozen based on index
+                  const shouldFreeze = selectable
+                    ? index < freezeColumns - 1 // Subtract 1 to account for checkbox
+                    : index < freezeColumns;
+
+                  return (
+                    <th
+                      key={column.key}
+                      className={classNames('table-head-cell', {
+                        frozen: shouldFreeze,
+                        sortable: column.sortable,
+                        'last-column-frozen': selectable ? index === freezeColumns - 2 : index === freezeColumns - 1
+                      })}
+                      style={{
+                        width: columnWidths[column.key] !== undefined ? `${columnWidths[column.key]}px` : column.width,
+                        minWidth:
+                          columnWidths[column.key] !== undefined ? `${columnWidths[column.key]}px` : column.width,
+                        left:
+                          frozenPositions[column.key] !== undefined ? `${frozenPositions[column.key]}px` : undefined,
+                        ...({
+                          '--par-table-height': `${tableRef.current?.getBoundingClientRect().height}px`
+                        } as React.CSSProperties)
+                      }}
+                      data-key={column.key}
+                      onMouseDown={() => column.sortable && handleSortClick(column.key)}
+                    >
+                      <div className='table-head-cell-wrapper'>
+                        <div className='table-head-cell-content'>
+                          {column.title}
+                          {column.sortable && (
+                            <span
+                              className='table-sort-icon'
+                              style={{ visibility: sortKey === column.key ? 'visible' : 'hidden' }}
+                            >
+                              <ChevronUp className={sortDirection == 'asc' ? 'active' : ''} />
+                              <ChevronDown className={sortDirection == 'desc' ? 'active' : ''} />
+                            </span>
+                          )}
+                        </div>
+
+                        {column.resizable && (
+                          <button
+                            type='button'
+                            className='table-resize-handle'
+                            onMouseDown={(e) => handleResizeStart(e, column.key)}
+                          />
                         )}
                       </div>
-
-                      {column.resizable && (
-                        <button
-                          type='button'
-                          className='table-resize-handle'
-                          onMouseDown={(e) => handleResizeStart(e, column.key)}
-                        />
-                      )}
-                    </div>
-                  </th>
-                ))}
+                    </th>
+                  );
+                })}
               </tr>
             </thead>
 
@@ -491,23 +570,35 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps<any>>(
                   )}
 
                   {/* Data cells */}
-                  {columns.map((column) => (
-                    <td
-                      key={`${rowIndex}-${column.key}`}
-                      className={`table-body-cell ${column.frozen ? 'frozen' : ''}`}
-                      style={{
-                        width: columnWidths[column.key] !== undefined ? `${columnWidths[column.key]}` : column.width,
-                        minWidth: columnWidths[column.key] !== undefined ? `${columnWidths[column.key]}` : column.width,
-                        left: frozenPositions[column.key] !== undefined ? `${frozenPositions[column.key]}px` : undefined
-                      }}
-                    >
-                      <div className='table-body-cell-wrapper'>
-                        <div className='table-body-cell-content'>
-                          {column.render ? column.render(record[column.key], record, rowIndex) : record[column.key]}
+                  {columns.map((column, index) => {
+                    // Calculate if this column should be frozen based on index, same as in the header
+                    const shouldFreeze = selectable
+                      ? index < freezeColumns - 1 // Subtract 1 to account for checkbox
+                      : index < freezeColumns;
+
+                    return (
+                      <td
+                        key={`${rowIndex}-${column.key}`}
+                        className={classNames('table-body-cell', {
+                          frozen: shouldFreeze,
+                          'last-column-frozen': selectable ? index === freezeColumns - 2 : index === freezeColumns - 1 // Last frozen column, accounting for checkbox
+                        })}
+                        style={{
+                          width: columnWidths[column.key] !== undefined ? `${columnWidths[column.key]}` : column.width,
+                          minWidth:
+                            columnWidths[column.key] !== undefined ? `${columnWidths[column.key]}` : column.width,
+                          left:
+                            frozenPositions[column.key] !== undefined ? `${frozenPositions[column.key]}px` : undefined
+                        }}
+                      >
+                        <div className='table-body-cell-wrapper'>
+                          <div className='table-body-cell-content'>
+                            {column.render ? column.render(record[column.key], record, rowIndex) : record[column.key]}
+                          </div>
                         </div>
-                      </div>
-                    </td>
-                  ))}
+                      </td>
+                    );
+                  })}
                 </tr>
               ))}
             </tbody>

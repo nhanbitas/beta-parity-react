@@ -51,7 +51,13 @@ export const BasicTable = () => {
   return (
     <div className='demo-section not-prose'>
       <h2>Basic Table</h2>
-      <Table data={data} columns={columns} title='Products' description='A simple table showing product data' />
+      <Table
+        data={data}
+        columns={columns}
+        showRowCount={false}
+        title='Products'
+        description='A simple table showing product data'
+      />
     </div>
   );
 };
@@ -73,15 +79,13 @@ export const AdvancedTable = () => {
       title: 'ID',
       width: 68,
       resizable: true,
-      sortable: true,
-      frozen: true
+      sortable: true
     },
     {
       key: 'name',
       title: 'PRODUCT NAME',
       sortable: true,
-      resizable: true,
-      frozen: true
+      resizable: true
     },
     {
       key: 'category',
@@ -94,7 +98,6 @@ export const AdvancedTable = () => {
       title: 'PRICE ($)',
       sortable: true,
       resizable: true,
-      frozen: true,
       render: (value) => <span style={{ fontWeight: 'bold' }}>${value}</span>
     },
     {
@@ -198,6 +201,7 @@ export const AdvancedTable = () => {
         selectable
         selectOnRowClick={true}
         defaultSelectedRows={selectedRows}
+        freezeColumns={3}
         maxHeight={400}
         onSelect={handleSelect}
         onSort={handleSort}
