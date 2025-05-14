@@ -79,17 +79,20 @@ export const DemoErrorFileInput = (props: Props) => {
 
       {files.length > 0 && (
         <div className='mt-4'>
-          {files.map((f, index) => (
-            <FileItem
-              key={index}
-              fileName={f.name}
-              fileSize={f.size}
-              status={checkType(f) ? 'completed' : 'error'}
-              onRetry={() => handleRetry(f)}
-              onRemove={() => handleRemove(f)}
-              className='mb-2'
-            />
-          ))}
+          {files.map(
+            (f, index) =>
+              checkType(f) && (
+                <FileItem
+                  key={index}
+                  fileName={f.name}
+                  fileSize={f.size}
+                  status={checkType(f) ? 'completed' : 'error'}
+                  onRetry={() => handleRetry(f)}
+                  onRemove={() => handleRemove(f)}
+                  className='mb-2'
+                />
+              )
+          )}
         </div>
       )}
     </div>

@@ -9,5 +9,5 @@
 
 [data-scheme='dark'] {
   --par-color-bg-fileitem-enabled: var(--par-gray-800);
-  --par-color-bg-fileitem-failed: var(--par-gray-900);
+  --par-color-bg-fileitem-failed: var(--par-red-900);
 }
