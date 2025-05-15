@@ -3,10 +3,20 @@ import classNames from 'classnames';
 
 import './index.css';
 
+const sizeMap = {
+  sm: 'small',
+  md: 'medium'
+} as const;
+
+// =========================
+// PINField component
+// =========================
+// Declare and export select type and PINField component
+
 /**
  * Props for the PINField component.
  *
- * Extends properties from the `Base` component.
+ * Extends properties from the `HTMLDivElement` element.
  */
 export interface PINFieldProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   /**
@@ -27,6 +37,14 @@ export interface PINFieldProps extends Omit<React.HTMLAttributes<HTMLDivElement>
    * @memberof PINFieldProps
    */
   groups?: number[];
+
+  /**
+   * The class name for the PIN field.
+   *
+   * @default ""
+   * @memberof PINFieldProps
+   */
+  value?: string;
 
   /**
    * The separator character to use between groups.
@@ -75,7 +93,15 @@ export interface PINFieldProps extends Omit<React.HTMLAttributes<HTMLDivElement>
    * @default "medium"
    * @memberof PINFieldProps
    */
-  size?: 'small' | 'medium';
+  size?: keyof typeof sizeMap;
+
+  /**
+   * Define the theme of the PIN field.
+   *
+   * @default "default"
+   * @memberof PINFieldProps
+   */
+  theme?: 'default' | 'alternative';
 
   /**
    * The callback function that is called when the PIN value changes.
@@ -105,16 +131,13 @@ export interface PINFieldProps extends Omit<React.HTMLAttributes<HTMLDivElement>
 /**
  * **Parity PINField**
  *
- * A component for entering PIN codes with configurable groups and masking.
- * Automatically focuses next input after typing and supports navigation with arrow keys.
- * Only accepts alphanumeric characters.
- *
  * @see {@link http://localhost:3005/pinfield Parity PINField}
  */
 export const PINField = React.forwardRef<HTMLDivElement, PINFieldProps>(
   (
     {
       className,
+      value = '',
       groups = [4],
       separator = '-',
       masked = false,
@@ -122,7 +145,8 @@ export const PINField = React.forwardRef<HTMLDivElement, PINFieldProps>(
       readOnly = false,
       disabled = false,
       invalid = false,
-      size = 'medium',
+      size = 'md',
+      theme = 'default',
       placeholder = '•',
       onChange,
       onComplete,
@@ -137,7 +161,12 @@ export const PINField = React.forwardRef<HTMLDivElement, PINFieldProps>(
     const inputRefs = React.useRef<(HTMLInputElement | null)[]>([]);
 
     // State to store the values of each input
-    const [values, setValues] = React.useState<string[]>(Array(totalInputs).fill(''));
+    const initialValues = value
+      ? Array(totalInputs)
+          .fill('')
+          .map((_, i) => value[i] || '')
+      : Array(totalInputs).fill('');
+    const [values, setValues] = React.useState<string[]>(initialValues);
 
     // Prepare inputs structure with separators
     const inputs = React.useMemo(() => {
@@ -191,11 +220,6 @@ export const PINField = React.forwardRef<HTMLDivElement, PINFieldProps>(
         if (index < totalInputs - 1) {
           focusInput(index + 1);
         }
-
-        // Check if all inputs are filled
-        if (!newValues.includes('') && onComplete) {
-          onComplete(newPINValue);
-        }
       }
     }; // Function to handle keyboard events
     const handleKeyDown = (index: number, e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -246,14 +270,9 @@ export const PINField = React.forwardRef<HTMLDivElement, PINFieldProps>(
       }
     };
 
-    // Handle paste event
-    const handlePaste = (index: number, e: React.ClipboardEvent<HTMLInputElement>) => {
-      if (readOnly || disabled) return;
-
-      e.preventDefault();
-      const pastedText = e.clipboardData.getData('text');
+    const handleSetText = (index: number, text: string) => {
       // Filter to only include alphanumeric characters
-      const alphanumeric = pastedText.replace(/[^a-zA-Z0-9]/g, '');
+      const alphanumeric = text.replace(/[^a-zA-Z0-9]/g, '');
 
       if (alphanumeric) {
         const chars = alphanumeric.split('');
@@ -275,12 +294,15 @@ export const PINField = React.forwardRef<HTMLDivElement, PINFieldProps>(
         } else {
           focusInput(Math.min(index + chars.length, totalInputs - 1));
         }
-
-        // Check if all inputs are filled
-        if (!newValues.includes('') && onComplete) {
-          onComplete(newValues.join(''));
-        }
       }
+    };
+
+    // Handle paste event
+    const handlePaste = (index: number, e: React.ClipboardEvent<HTMLInputElement>) => {
+      if (readOnly || disabled) return;
+      e.preventDefault();
+      const pastedText = e.clipboardData.getData('text');
+      handleSetText(index, pastedText);
     };
 
     // Handle focus event - select the content when focusing
@@ -308,6 +330,14 @@ export const PINField = React.forwardRef<HTMLDivElement, PINFieldProps>(
       }
     }, [reset, totalInputs, focusInput]);
 
+    // Effect to handle value prop changes
+    React.useEffect(() => {
+      // Check if all inputs are filled
+      if (!values.includes('') && onComplete) {
+        onComplete(values.join(''));
+      }
+    }, [values]);
+
     // Initialize refs array when totalInputs changes
     React.useEffect(() => {
       inputRefs.current = inputRefs.current.slice(0, totalInputs);
@@ -316,17 +346,25 @@ export const PINField = React.forwardRef<HTMLDivElement, PINFieldProps>(
       }
     }, [totalInputs]);
 
+    // Effect to handle external value prop changes
+    React.useEffect(() => {
+      if (value != values.join('') && value.length > 0) {
+        handleSetText(0, value);
+      }
+    }, [value]);
+
     return (
       <div
         ref={ref}
         className={classNames(
           'pinfield',
-          `pinfield-${size}`,
+          `pinfield-${sizeMap[size]}`,
           {
             'pinfield-disabled': disabled,
             'pinfield-read-only': readOnly,
             'pinfield-invalid': invalid,
-            'pinfield-masked': masked
+            'pinfield-masked': masked,
+            'pinfield-alternative': theme === 'alternative'
           },
           className
         )}
@@ -369,7 +407,11 @@ export const PINField = React.forwardRef<HTMLDivElement, PINFieldProps>(
                 autoComplete='off'
                 inputMode='numeric'
               />
-              {isEmpty && <span className='pinfield-placeholder'>{placeholder}</span>}
+              {masked ? (
+                <span className='pinfield-placeholder'>{placeholder}</span>
+              ) : (
+                isEmpty && <span className='pinfield-placeholder'>{placeholder}</span>
+              )}
             </div>
           );
         })}

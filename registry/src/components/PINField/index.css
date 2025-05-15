@@ -1,108 +1,83 @@
 @import './variables.css';
 
 .pinfield {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  @apply flex items-center gap-2;
 }
 
 .pinfield-small .pinfield-item {
-  width: 32px;
-  height: 32px;
+  @apply h-10 w-8;
 }
 
 .pinfield-medium .pinfield-item {
-  width: 40px;
-  height: 40px;
+  @apply h-12 w-10;
 }
 
 .pinfield-separator {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--pinfield-separator-color);
-  font-size: 16px;
+  @apply flex items-center justify-center text-base text-[var(--pinfield-separator-color)];
 }
 
 .pinfield-item {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid var(--pinfield-border-color);
-  border-radius: 4px;
-  background-color: var(--pinfield-bg-color);
-  transition: color 0.2s ease;
+  @apply relative flex items-center justify-center rounded-md border border-[var(--pinfield-border-color)] bg-[var(--pinfield-bg-color)] transition-colors duration-200 ease-in-out;
 }
 
 .pinfield:not(.pinfield-disabled):not(.pinfield-read-only):not(.pinfield-invalid) .pinfield-item:hover {
-  border-color: var(--pinfield-border-color-hover);
-  background-color: var(--pinfield-bg-color-hover);
-  cursor: pointer;
+  @apply cursor-pointer border-[var(--pinfield-border-color-hover)] bg-[var(--pinfield-bg-color-hover)];
 }
 
 .pinfield-disabled .pinfield-item {
-  border-color: var(--pinfield-border-color-disabled);
-  background-color: var(--pinfield-bg-color-disabled);
-  cursor: not-allowed;
+  @apply cursor-not-allowed border-[var(--pinfield-border-color-disabled)] bg-[var(--pinfield-bg-color-disabled)];
 }
 
 .pinfield-read-only .pinfield-item {
-  border-color: var(--pinfield-border-color-readonly);
-  background-color: var(--pinfield-bg-color-readonly);
-  cursor: default;
+  @apply cursor-default border-[var(--pinfield-border-color-readonly)] bg-[var(--pinfield-bg-color-readonly)];
 }
 
 .pinfield-invalid .pinfield-item {
   outline: 2px solid var(--pinfield-border-color-invalid);
   outline-offset: -1px;
-  background-color: var(--pinfield-bg-color-invalid);
+  @apply !bg-[var(--pinfield-bg-color-invalid)];
 }
 
 .pinfield-input {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  background: transparent;
-  border: none;
-  text-align: center;
-  font-size: 16px;
-  color: var(--pinfield-text-color);
-  outline: none;
-  padding: 0;
-  caret-color: var(--pinfield-caret-color);
+  @apply absolute inset-0 h-full w-full border-none bg-transparent p-0 text-center text-[var(--pinfield-text-color)] caret-[var(--pinfield-caret-color)] outline-none;
+}
+
+.pinfield-input:not([type='password']) {
+  @apply text-code-02 font-medium;
+}
+
+.pinfield-input[type='password'] {
+  @apply text-[var(--pinfield-placeholder-color)];
 }
 
 .pinfield-disabled .pinfield-input {
-  color: var(--pinfield-text-color-disabled);
-  cursor: not-allowed;
+  @apply cursor-not-allowed text-[var(--pinfield-text-color-disabled)];
 }
 
 .pinfield-read-only .pinfield-input {
-  color: var(--pinfield-text-color-readonly);
-  cursor: default;
+  @apply cursor-default text-[var(--pinfield-text-color-readonly)];
 }
 
 .pinfield-masked .pinfield-input {
   font-family: text-security-disc;
+  -webkit-text-security: disc;
 }
 
 .pinfield-placeholder {
-  position: absolute;
-  color: var(--pinfield-placeholder-color);
-  pointer-events: none;
-  font-size: 16px;
+  @apply pointer-events-none absolute text-base text-[var(--pinfield-placeholder-color)];
+}
+
+.pinfield-input:focus:not([readonly]) + .pinfield-placeholder {
+  @apply !hidden;
 }
 
 .pinfield-disabled .pinfield-placeholder {
-  color: var(--pinfield-placeholder-color-disabled);
+  @apply text-[var(--pinfield-placeholder-color-disabled)];
 }
 
 /* States for the filled inputs */
 .pinfield-item-filled {
-  border-color: var(--pinfield-border-color-filled);
-  background-color: var(--pinfield-bg-color-filled);
+  @apply border-[var(--pinfield-border-color-filled)] bg-[var(--pinfield-bg-color-filled)];
 }
 
 /* States based on the image references */
@@ -112,6 +87,56 @@
 }
 
 .pinfield:not(.pinfield-disabled):not(.pinfield-read-only) .pinfield-item-filled:hover {
-  border-color: var(--pinfield-border-color-filled-hover);
-  background-color: var(--pinfield-bg-color-filled-hover);
+  @apply border-[var(--pinfield-border-color-filled-hover)] bg-[var(--pinfield-bg-color-filled-hover)];
 }
+
+/* Alternative Theme */
+.pinfield-alternative .pinfield-item {
+  @apply bg-[var(--pinfield-alternative-bg-color)];
+}
+
+.pinfield-alternative:not(.pinfield-disabled):not(.pinfield-read-only):not(.pinfield-invalid) .pinfield-item:hover {
+  @apply bg-[var(--pinfield-alternative-bg-color-hover)];
+}
+
+.pinfield-alternative .pinfield-placeholder {
+  @apply text-[var(--pinfield-alternative-placeholder-color)];
+}
+
+.pinfield-alternative.pinfield-disabled .pinfield-item {
+  @apply bg-[var(--pinfield-alternative-bg-color-disabled)];
+}
+
+.pinfield-alternative.pinfield-read-only .pinfield-item {
+  @apply bg-[var(--pinfield-alternative-bg-color-readonly)];
+}
+
+.pinfield-alternative.pinfield-disabled .pinfield-input {
+  @apply text-[var(--pinfield-text-color-disabled)];
+}
+
+.pinfield-alternative.pinfield-read-only .pinfield-input {
+  @apply text-[var(--pinfield-text-color-readonly)];
+}
+
+.pinfield-alternative.pinfield-disabled .pinfield-placeholder {
+  @apply text-[var(--pinfield-placeholder-color-disabled)];
+}
+
+/* Alternative Theme - Filled State */
+.pinfield-alternative .pinfield-item-filled {
+  @apply bg-[var(--pinfield-alternative-bg-color)];
+}
+
+.pinfield-alternative:not(.pinfield-disabled):not(.pinfield-read-only):not(.pinfield-invalid)
+  .pinfield-item-filled:hover {
+  @apply bg-[var(--pinfield-alternative-bg-color-hover)];
+}
+
+/* Alternative Theme - Focus State */
+.pinfield-alternative:not(.pinfield-disabled):not(.pinfield-read-only) .pinfield-item:focus-within {
+  outline: 2px solid var(--pinfield-border-color-focus);
+  outline-offset: -1px;
+}
+
+/* States for the filled inputs */

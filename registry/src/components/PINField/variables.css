@@ -12,6 +12,13 @@
   --pinfield-caret-color: var(--par-color-text-field-filled);
   --pinfield-separator-color: var(--par-color-text-button);
 
+  /* Alternative theme */
+  --pinfield-alternative-bg-color: var(--par-color-bg-field-alternative-enabled);
+  --pinfield-alternative-bg-color-hover: var(--par-color-bg-field-alternative-hovered);
+  --pinfield-alternative-bg-color-disabled: var(--par-color-bg-field-alternative-disabled);
+  --pinfield-alternative-bg-color-readonly: var(--par-color-bg-field-readonly);
+  --pinfield-alternative-placeholder-color: var(--par-color-text-field-alternative-placeholder);
+
   /* Hover state */
   --pinfield-border-color-hover: var(--par-color-border-field-hovered);
   --pinfield-bg-color-hover: var(--par-color-bg-field-hovered);
@@ -52,6 +59,13 @@
   --pinfield-placeholder-color: var(--par-color-text-field-placeholder);
   --pinfield-caret-color: var(--par-color-text-field-filled);
   --pinfield-separator-color: var(--par-color-text-button);
+
+  /* Alternative theme */
+  --pinfield-alternative-bg-color: var(--par-color-bg-field-alternative-enabled);
+  --pinfield-alternative-bg-color-hover: var(--par-color-bg-field-alternative-hovered);
+  --pinfield-alternative-bg-color-disabled: var(--par-color-bg-field-alternative-disabled);
+  --pinfield-alternative-bg-color-readonly: var(--par-color-bg-field-readonly);
+  --pinfield-alternative-placeholder-color: var(--par-color-text-field-alternative-placeholder);
 
   /* Hover state */
   --pinfield-border-color-hover: var(--par-color-border-field-hovered);
