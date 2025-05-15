@@ -18,11 +18,63 @@ import useCombinedRefs from '../hooks/useCombinedRefs';
  * Each column has a key, title, and optional properties like width, sortable, resizable, and render function
  */
 export type TableColumn<T = any> = {
+  /**
+   * Unique identifier for the column
+   *
+   * This key is used to access the corresponding data in each row
+   *
+   * @example 'name'
+   * @memberof TableColumn
+   */
   key: string;
+
+  /**
+   * Column header content
+   *
+   * Can be text or a React component
+   *
+   * @memberof TableColumn
+   */
   title: React.ReactNode;
+
+  /**
+   * Width of the column in pixels
+   *
+   * If not specified, the column will auto-size
+   *
+   * @memberof TableColumn
+   */
   width?: number;
+
+  /**
+   * Whether the column is sortable
+   *
+   * If true, clicking the column header will trigger the onSort callback
+   *
+   * @default false
+   * @memberof TableColumn
+   */
   sortable?: boolean;
+
+  /**
+   * Whether the column is resizable
+   *
+   * If true, the column can be resized by dragging its right edge
+   *
+   * @default false
+   * @memberof TableColumn
+   */
   resizable?: boolean;
+
+  /**
+   * Custom render function for cell content
+   *
+   * @param value The value of the cell (record[column.key])
+   * @param record The entire data record for the row
+   * @param index The row index
+   * @returns React node to render in the cell
+   * @memberof TableColumn
+   */
   render?: (value: any, record: T, index: number) => React.ReactNode;
 };
 
@@ -37,6 +89,7 @@ export interface TableProps<T = any> extends Omit<React.HTMLAttributes<HTMLTable
    *
    * @default []
    * @example [{ id: 1, name: 'John Doe' }, { id: 2, name: 'Jane Doe' }]
+   * @memberof TableProps
    */
   data: T[];
 
@@ -44,16 +97,26 @@ export interface TableProps<T = any> extends Omit<React.HTMLAttributes<HTMLTable
    * Column definitions
    *
    * Each column has a key, title, and optional properties like width, sortable, resizable, and render function
+   *
+   * @memberof TableProps
    */
   columns: TableColumn<T>[];
 
   /**
    * Table title
+   *
+   * This can be a string or a React component
+   *
+   * @memberof TableProps
    */
   title?: React.ReactNode;
 
   /**
    * Table description
+   *
+   * This can be a string or a React component
+   *
+   * @memberof TableProps
    */
   description?: React.ReactNode;
 
@@ -61,6 +124,8 @@ export interface TableProps<T = any> extends Omit<React.HTMLAttributes<HTMLTable
    * Additional actions to display in the header
    *
    * If `selectable` is true, this will be displayed in the header section
+   *
+   * @memberof TableProps
    */
   actions?: React.ReactNode;
 
@@ -68,6 +133,8 @@ export interface TableProps<T = any> extends Omit<React.HTMLAttributes<HTMLTable
    * Actions to perform on selected rows
    *
    * This will be displayed in the header section if `selectable` is true and there are selected rows
+   *
+   * @memberof TableProps
    */
   batchActions?: React.ReactNode;
 
@@ -75,6 +142,8 @@ export interface TableProps<T = any> extends Omit<React.HTMLAttributes<HTMLTable
    * Whether rows are selectable
    *
    * If `selectable` is true, this will be displayed in the header section and a checkbox will be added to each row
+   *
+   * @memberof TableProps
    */
   selectable?: boolean;
 
@@ -82,6 +151,8 @@ export interface TableProps<T = any> extends Omit<React.HTMLAttributes<HTMLTable
    * Whether rows are selectable by clicking anywhere on the row
    *
    * If `selectOnRowClick` is true, clicking anywhere on the row will select it
+   *
+   * @memberof TableProps
    */
   selectOnRowClick?: boolean;
 
@@ -89,6 +160,8 @@ export interface TableProps<T = any> extends Omit<React.HTMLAttributes<HTMLTable
    * Default selected rows
    *
    * This is an array of row indices that should be selected by default
+   *
+   * @memberof TableProps
    */
   defaultSelectedRows?: number[];
 
@@ -96,6 +169,8 @@ export interface TableProps<T = any> extends Omit<React.HTMLAttributes<HTMLTable
    * Maximum height of the table
    *
    * This can be a number (in pixels) or a string (e.g., '50vh', '100%')
+   *
+   * @memberof TableProps
    */
   maxHeight?: number | string;
 
@@ -103,6 +178,8 @@ export interface TableProps<T = any> extends Omit<React.HTMLAttributes<HTMLTable
    * Custom empty state component
    *
    * This will be displayed when there are no rows in the table
+   *
+   * @memberof TableProps
    */
   emptyState?: React.ReactNode;
 
@@ -110,6 +187,8 @@ export interface TableProps<T = any> extends Omit<React.HTMLAttributes<HTMLTable
    * Function called when rows are selected
    *
    * This function receives an array of selected rows
+   *
+   * @memberof TableProps
    */
   onSelect?: (selectedRows: T[]) => void;
 
@@ -117,6 +196,8 @@ export interface TableProps<T = any> extends Omit<React.HTMLAttributes<HTMLTable
    * Function called when a column is sorted
    *
    * This function receives the key of the column and the sort direction ('asc' or 'desc')
+   *
+   * @memberof TableProps
    */
   onSort?: (key: string, direction: 'asc' | 'desc') => void;
 
@@ -124,6 +205,8 @@ export interface TableProps<T = any> extends Omit<React.HTMLAttributes<HTMLTable
    * Current sort key
    *
    * This is the key of the column that is currently sorted
+   *
+   * @memberof TableProps
    */
   sortKey?: string;
 
@@ -132,6 +215,8 @@ export interface TableProps<T = any> extends Omit<React.HTMLAttributes<HTMLTable
    *
    * This is the direction of the current sort ('asc' or 'desc')
    * @default 'asc'
+   *
+   * @memberof TableProps
    */
   sortDirection?: 'asc' | 'desc';
 
@@ -139,6 +224,8 @@ export interface TableProps<T = any> extends Omit<React.HTMLAttributes<HTMLTable
    * Footer component
    *
    * This can be used to display additional information or actions
+   *
+   * @memberof TableProps
    */
   footer?: React.ReactNode;
 
@@ -146,6 +233,8 @@ export interface TableProps<T = any> extends Omit<React.HTMLAttributes<HTMLTable
    * Show row count in footer
    *
    * This will be displayed in the footer section if `showRowCount` is true
+   *
+   * @memberof TableProps
    */
   showRowCount?: boolean;
 
@@ -153,7 +242,9 @@ export interface TableProps<T = any> extends Omit<React.HTMLAttributes<HTMLTable
    * Called when a row is clicked
    *
    * This function receives the record and index of the clicked row
+   *
    * @param record The record of the clicked row
+   * @memberof TableProps
    */
   onRowClick?: (record: T, index: number) => void;
 
@@ -163,12 +254,71 @@ export interface TableProps<T = any> extends Omit<React.HTMLAttributes<HTMLTable
    * Set to -1 to disable freezing
    *
    * @default -1
+   * @memberof TableProps
    */
   freezeColumns?: number;
 }
 
 /**
+ * Props for the TablePagination component
+ */
+interface TablePaginationProps {
+  /**
+   * Current page number
+   *
+   * @default 1
+   * @memberof TablePaginationProps
+   */
+  currentPage: number;
+
+  /**
+   * Number of items to display per page
+   *
+   * @default 10
+   * @memberof TablePaginationProps
+   */
+  pageSize: number;
+
+  /**
+   * Total number of items
+   *
+   * This is used to calculate the total number of pages
+   *
+   * @memberof TablePaginationProps
+   */
+  total: number;
+
+  /**
+   * Function called when the page is changed
+   *
+   * @param page The new page number
+   * @memberof TablePaginationProps
+   */
+  onChange: (page: number) => void;
+
+  /**
+   * Available options for page size selection
+   *
+   * @default [10, 20, 50, 100]
+   * @memberof TablePaginationProps
+   */
+  pageSizeOptions?: number[];
+
+  /**
+   * Function called when the page size is changed
+   *
+   * If not provided, the page size selector will not be displayed
+   *
+   * @param pageSize The new page size
+   * @memberof TablePaginationProps
+   */
+  onPageSizeChange?: (pageSize: number) => void;
+}
+
+/**
  * Pagination component for the table footer
+ *
+ * This component handles pagination and page size selection
  */
 export const TablePagination = ({
   currentPage = 1,
@@ -177,14 +327,7 @@ export const TablePagination = ({
   onChange,
   pageSizeOptions = [10, 20, 50, 100],
   onPageSizeChange
-}: {
-  currentPage: number;
-  pageSize: number;
-  total: number;
-  onChange: (page: number) => void;
-  pageSizeOptions?: number[];
-  onPageSizeChange?: (pageSize: number) => void;
-}) => {
+}: TablePaginationProps) => {
   const totalPages = Math.ceil(total / pageSize);
   const start = (currentPage - 1) * pageSize + 1;
   const end = Math.min(currentPage * pageSize, total);
@@ -618,5 +761,3 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps<any>>(
 );
 
 Table.displayName = 'Table';
-
-export default Table;

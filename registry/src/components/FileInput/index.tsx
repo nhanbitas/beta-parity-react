@@ -23,6 +23,9 @@ export interface FileInputProps extends InputProps {
    * Example: `['image/png', 'image/jpeg']`
    *
    * If left empty, all file formats are accepted.
+   *
+   * @default []
+   * @memberof FileInputProps
    */
   supportedFormats?: string[];
 
@@ -30,6 +33,7 @@ export interface FileInputProps extends InputProps {
    * Label text for the file input.
    *
    * @default "Choose file"
+   * @memberof FileInputProps
    */
   label?: string;
 }

@@ -21,6 +21,7 @@ export interface FileItemProps extends React.HTMLAttributes<HTMLDivElement> {
    * Whether the file item is disabled.
    *
    * @default false
+   * @memberof FileItemProps
    */
   disabled?: boolean;
 
@@ -32,6 +33,7 @@ export interface FileItemProps extends React.HTMLAttributes<HTMLDivElement> {
    * - `completed`: Indicates the file upload or processing is completed.
    *
    * @default "completed"
+   * @memberof FileItemProps
    */
   status?: 'error' | 'success' | 'completed';
 
@@ -39,6 +41,7 @@ export interface FileItemProps extends React.HTMLAttributes<HTMLDivElement> {
    * The loading progress percentage (0-100).
    *
    * @default 0
+   * @memberof FileItemProps
    */
   loading?: number;
 
@@ -53,16 +56,21 @@ export interface FileItemProps extends React.HTMLAttributes<HTMLDivElement> {
    * The size of the file in bytes.
    *
    * @default 0
+   * @memberof FileItemProps
    */
   fileSize?: number;
 
   /**
    * Callback function triggered when the retry action is performed.
+   *
+   * @memberof FileItemProps
    */
   onRetry?: () => void;
 
   /**
    * Callback function triggered when the remove action is performed.
+   *
+   * @memberof FileItemProps
    */
   onRemove?: () => void;
 }
