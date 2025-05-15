@@ -443,5 +443,3 @@ export const AvatarTrigger = React.forwardRef<HTMLDivElement, AvatarTriggerProps
 );
 
 AvatarTrigger.displayName = 'AvatarTrigger';
-
-export default Avatar;

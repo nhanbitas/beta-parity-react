@@ -1,3 +1,5 @@
+@import url(./variables.css);
+
 .input-wrapper .file-input-wrapper.error-state {
   @apply border-2 border-dashed border-[var(--par-color-border-field-invalid)] bg-[var(--par-color-bg-field-invalid)];
 }
@@ -10,12 +12,27 @@
   @apply flex w-full cursor-pointer items-center justify-between rounded border border-dashed border-[var(--par-color-border-field-enabled)] bg-[--par-color-bg-field-enabled] p-3 -outline-offset-2 transition-colors duration-200;
 }
 
+/* Alternative theme for file input */
+.file-input-wrapper.alternative {
+  @apply border-[var(--par-color-border-field-enabled)] bg-[var(--par-color-bg-field-alternative-enabled)];
+}
+
 .file-input-text {
   @apply flex-grow  overflow-hidden text-ellipsis whitespace-nowrap text-sm text-[var(--par-color-text-field-placeholder)];
 }
 
+/* Alternative theme for text */
+.file-input-wrapper.alternative .file-input-text {
+  @apply text-[var(--par-color-text-field-alternative-placeholder)];
+}
+
 .file-input-icon {
   @apply ml-2 text-base text-[var(--par-color-icon-field-button-enabled)];
+}
+
+/* Alternative theme for disabled state */
+.input-wrapper:has(input[disabled]) .file-input-wrapper.alternative {
+  @apply bg-[var(--par-color-bg-field-alternative-disabled)];
 }
 
 .error-message {

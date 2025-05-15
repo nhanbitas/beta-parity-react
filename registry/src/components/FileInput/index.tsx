@@ -45,7 +45,16 @@ export interface FileInputProps extends InputProps {
  */
 export const FileInput = React.forwardRef<HTMLInputElement, FileInputProps>(
   (
-    { type = 'file', supportedFormats = [], label = 'Choose file', isError, className, errorMessage, ...props },
+    {
+      type = 'file',
+      supportedFormats = [],
+      label = 'Choose file',
+      isError,
+      className,
+      errorMessage,
+      theme = 'default',
+      ...props
+    },
     ref
   ) => {
     const inputRef = React.useRef<HTMLInputElement | null>(null);
@@ -106,7 +115,7 @@ export const FileInput = React.forwardRef<HTMLInputElement, FileInputProps>(
     return (
       <div className={classNames('input-wrapper')}>
         <div
-          className={classNames('file-input-wrapper', className, {
+          className={classNames('file-input-wrapper', className, theme, {
             'error-state': isError,
             'drag-active': isDragActive
           })}

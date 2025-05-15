@@ -22,7 +22,7 @@ export const DemoFileInput = (props: Props) => {
 
   return (
     <div className='!max-w-96'>
-      <FileInput onChange={handleChange} />
+      <FileInput onChange={handleChange} {...props} />
 
       {files.length > 0 && (
         <div className='mt-4'>
@@ -75,6 +75,7 @@ export const DemoErrorFileInput = (props: Props) => {
         onChange={handleChange}
         errorMessage='Invalid file type. Only PNG, JPEG, and GIF are allowed.'
         isError={files.some((file) => !checkType(file))}
+        {...props}
       />
 
       {files.length > 0 && (
