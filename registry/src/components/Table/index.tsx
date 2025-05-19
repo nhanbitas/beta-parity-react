@@ -157,15 +157,6 @@ export interface TableProps<T = any> extends Omit<React.HTMLAttributes<HTMLTable
   selectOnRowClick?: boolean;
 
   /**
-   * Default selected rows
-   *
-   * This is an array of row indices that should be selected by default
-   *
-   * @memberof TableProps
-   */
-  defaultSelectedRows?: number[];
-
-  /**
    * Maximum height of the table
    *
    * This can be a number (in pixels) or a string (e.g., '50vh', '100%')
@@ -182,6 +173,15 @@ export interface TableProps<T = any> extends Omit<React.HTMLAttributes<HTMLTable
    * @memberof TableProps
    */
   emptyState?: React.ReactNode;
+
+  /**
+   * Set of selected rows
+   *
+   * This is used to control the selected state of rows when `selectable` is true
+   *
+   * @memberof TableProps
+   */
+  selectedRows?: T[];
 
   /**
    * Function called when rows are selected
@@ -246,7 +246,7 @@ export interface TableProps<T = any> extends Omit<React.HTMLAttributes<HTMLTable
    * @param record The record of the clicked row
    * @memberof TableProps
    */
-  onRowClick?: (record: T, index: number) => void;
+  onRowClick?: (record: T, index: number | string) => void;
 
   /**
    * Number of columns to freeze from the left (including checkbox column if selectable)
@@ -386,9 +386,9 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps<any>>(
       batchActions,
       selectable = false,
       selectOnRowClick = false,
-      defaultSelectedRows = [],
       maxHeight,
       emptyState,
+      selectedRows = [],
       onSelect,
       onSort,
       sortKey,
@@ -401,7 +401,8 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps<any>>(
     },
     ref
   ) => {
-    const [selectedRows, setSelectedRows] = React.useState<number[]>(defaultSelectedRows);
+    const defaultSelectedRows = new Set(selectedRows.map((item) => item.id));
+    const [currentSelected, setCurrentSelected] = React.useState<Set<number | string>>(defaultSelectedRows);
     const [columnWidths, setColumnWidths] = React.useState<Record<string, number>>({});
     const [frozenPositions, setfrozenPositions] = React.useState<Record<string, number | undefined>>({});
     const wrapperTableRef = React.useRef<HTMLDivElement>(null);
@@ -451,38 +452,49 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps<any>>(
     };
 
     // Handle row selection
-    const handleSelectRow = (index: number, checked: boolean) => {
-      setSelectedRows((prev) => {
-        let newSelectedRows = [...prev];
-        if (checked) {
-          if (!newSelectedRows.includes(index)) {
-            newSelectedRows.push(index);
-          }
-        } else {
-          newSelectedRows = newSelectedRows.filter((i) => i !== index);
-        }
+    const handleSelectRow = (id: number | string, checked: boolean) => {
+      let newSelectedRows: Set<number | string> = new Set(currentSelected);
 
-        return newSelectedRows;
-      });
+      if (checked) {
+        newSelectedRows.add(id);
+      } else {
+        newSelectedRows.delete(id);
+      }
+
+      setCurrentSelected(newSelectedRows);
+
+      if (onSelect) {
+        const selectedData = data.filter((item) => newSelectedRows.has(item.id));
+        onSelect(selectedData);
+      }
     };
 
-    // Handle select all rows
+    // Handle select all rows using IDs
     const handleSelectAll = (checked: boolean) => {
+      let newSelectedRows: Set<number | string> = new Set(currentSelected);
       if (checked) {
-        const allIndices = data.map((_, index) => index);
-        setSelectedRows(allIndices);
+        data.forEach((item) => {
+          newSelectedRows.add(item.id); // Use ID instead of index
+        });
       } else {
-        setSelectedRows([]);
+        data.forEach((item) => {
+          newSelectedRows.delete(item.id); // Use ID instead of index
+        });
+      }
+      setCurrentSelected(newSelectedRows);
+      if (onSelect) {
+        const selectedData = data.filter((item) => newSelectedRows.has(item.id));
+        onSelect(selectedData);
       }
     };
 
     // Handle row click for selection or custom handler
-    const handleRowClick = (record: TableProps['data'][number], index: number) => {
+    const handleRowClick = (record: TableProps['data'][number], id: number | string) => {
       if (selectable && selectOnRowClick) {
-        handleSelectRow(index, !selectedRows.includes(index));
+        handleSelectRow(record.id, !currentSelected.has(record.id)); // Dùng ID thay vì index
       }
       if (onRowClick) {
-        onRowClick(record, index);
+        onRowClick(record, id);
       }
     };
 
@@ -567,10 +579,21 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps<any>>(
     }, [freezeColumns]); // Add freezeColumns to dependencies
 
     React.useEffect(() => {
-      if (onSelect) {
-        const selectedData = selectedRows.map((index) => data[index]);
-        onSelect(selectedData);
-      }
+      const areSetsEqual = (setA: Set<any>, setB: Set<any>) => {
+        if (setA.size !== setB.size) return false;
+        for (const item of setA) {
+          if (!setB.has(item)) return false;
+        }
+        return true;
+      };
+
+      setCurrentSelected((prev) => {
+        const newSelectedRows = new Set(selectedRows.map((item) => item.id));
+        if (areSetsEqual(prev, newSelectedRows)) {
+          return prev;
+        }
+        return newSelectedRows;
+      });
     }, [selectedRows]);
 
     return (
@@ -584,9 +607,9 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps<any>>(
         )}
 
         {/* Actión/Batch actions section */}
-        {selectable && batchActions && selectedRows.length ? (
+        {selectable && batchActions && currentSelected.size ? (
           <div className='table-batch-actions'>
-            <span className='table-batch-actions-count'>{selectedRows.length} selected</span>
+            <span className='table-batch-actions-count'>{currentSelected.size} selected</span>
             {batchActions}
           </div>
         ) : (
@@ -609,8 +632,12 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps<any>>(
                   >
                     <div className='table-head-cell-wrapper'>
                       <Checkbox
-                        checked={data.length > 0 && selectedRows.length === data.length}
-                        indeterminate={data.length > 0 && selectedRows.length > 0 && selectedRows.length < data.length}
+                        checked={data.every((item) => currentSelected.has(item.id))}
+                        indeterminate={
+                          data.length > 0 &&
+                          currentSelected.size > 0 &&
+                          data.some((item) => currentSelected.has(item.id))
+                        }
                         onChange={(e) => handleSelectAll(e.target.checked)}
                       />
                     </div>
@@ -688,9 +715,9 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps<any>>(
                 <tr
                   key={rowIndex}
                   className={`table-body-row ${selectable ? 'selectable' : ''} ${
-                    selectedRows.includes(rowIndex) ? 'selected' : ''
+                    currentSelected.has(record.id) ? 'selected' : ''
                   }`}
-                  onClick={() => handleRowClick(record, rowIndex)}
+                  onClick={() => handleRowClick(record, record.id)}
                 >
                   {/* Checkbox cell for selectable tables */}
                   {selectable && (
@@ -705,8 +732,8 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps<any>>(
                     >
                       <div className='table-body-cell-wrapper'>
                         <Checkbox
-                          checked={selectedRows.includes(rowIndex)}
-                          onChange={(e) => handleSelectRow(rowIndex, e.target.checked)}
+                          checked={currentSelected.has(record.id)}
+                          onChange={(e) => handleSelectRow(record.id, e.target.checked)}
                         />
                       </div>
                     </td>

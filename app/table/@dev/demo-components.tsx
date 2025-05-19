@@ -63,9 +63,9 @@ export const BasicTable = () => {
 };
 
 export const AdvancedTable = () => {
-  const allData = generateData(1000);
+  const allData = React.useMemo(() => generateData(1000), []);
   const [data, setData] = useState(allData);
-  const [selectedRows, setSelectedRows] = useState<any[]>([1, 2, 3]); // Pre-select some rows for demo
+  const [selectedRows, setSelectedRows] = useState<any[]>([{ id: 1 }, { id: 3 }]); // Pre-select some rows for demo
   const [searchValue, setSearchValue] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
@@ -127,6 +127,8 @@ export const AdvancedTable = () => {
     }
   ];
 
+  const handleClearSeclection = () => setSelectedRows([]);
+
   // Handle search
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value);
@@ -174,6 +176,7 @@ export const AdvancedTable = () => {
   // Handle row selection
   const handleSelect = (selectedRows: any[]) => {
     setSelectedRows(selectedRows);
+    console.log('Selected rows:', selectedRows);
   };
 
   // Calculate paginated data
@@ -182,11 +185,13 @@ export const AdvancedTable = () => {
   // Batch action handlers
   const handleDeleteSelected = () => {
     alert(`Deleting ${selectedRows.length} items`);
+    handleClearSeclection();
     console.log('Deleting items:', selectedRows);
   };
 
   const handleExportSelected = () => {
     alert(`Exporting ${selectedRows.length} items`);
+    handleClearSeclection();
     console.log('Exporting items:', selectedRows);
   };
 
@@ -200,9 +205,9 @@ export const AdvancedTable = () => {
         description='Complete inventory with advanced table features'
         selectable
         selectOnRowClick={true}
-        defaultSelectedRows={selectedRows}
         freezeColumns={3}
         maxHeight={400}
+        selectedRows={selectedRows}
         onSelect={handleSelect}
         onSort={handleSort}
         sortKey={sortKey}
@@ -228,7 +233,10 @@ export const AdvancedTable = () => {
             currentPage={currentPage}
             pageSize={pageSize}
             total={data.length}
-            onChange={setCurrentPage}
+            onChange={(page) => {
+              setCurrentPage(page);
+              handleClearSeclection();
+            }}
             pageSizeOptions={[5, 10, 20, 50, 100]}
             onPageSizeChange={setPageSize}
           />
