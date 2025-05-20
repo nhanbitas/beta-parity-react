@@ -56,7 +56,7 @@ export interface PaginationProps extends React.HTMLAttributes<HTMLUListElement> 
    *
    * @default undefined
    */
-  page: 1;
+  page: number;
 
   /**
    * Whether the pagination component should have a border.

@@ -392,9 +392,8 @@ export const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
               borderStyle={borderStyle}
               className='avatar-group-item avatar-group-overflow'
               onClick={onOverflowClick}
-            >
-              <span className='avatar-overflow-text'>+{overflowCount}</span>
-            </Avatar>
+              initials={`+${overflowCount}`}
+            />
           ))}
       </div>
     );

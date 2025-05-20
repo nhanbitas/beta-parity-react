@@ -1,4 +1,5 @@
 @import '../theme/alias/background.css';
+@import '../theme/alias/text-icon-colors.css';
 
 :root,
 [data-scheme='light'] {

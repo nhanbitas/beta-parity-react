@@ -1,10 +1,12 @@
 import React from 'react';
+import classNames from 'classnames';
+import { ChevronDown, ChevronLeft, ChevronRight, ChevronUp, Database } from 'lucide-react';
+
 import './index.css';
-import { ChevronDown, ChevronLeft, ChevronRight, ChevronUp } from 'lucide-react';
+
 import { Button } from '../Button';
 import { Checkbox } from '../Checkbox';
-import { UnitSelector } from '../BaseInput';
-import classNames from 'classnames';
+import { Select } from '../Select';
 import useCombinedRefs from '../hooks/useCombinedRefs';
 
 // =========================
@@ -294,7 +296,7 @@ interface TablePaginationProps {
    * @param page The new page number
    * @memberof TablePaginationProps
    */
-  onChange: (page: number) => void;
+  onChange?: (page: number) => void;
 
   /**
    * Available options for page size selection
@@ -334,36 +336,53 @@ export const TablePagination = ({
 
   const handlePrev = () => {
     if (currentPage > 1) {
-      onChange(currentPage - 1);
+      onChange?.(currentPage - 1);
     }
   };
 
   const handleNext = () => {
     if (currentPage < totalPages) {
-      onChange(currentPage + 1);
+      onChange?.(currentPage + 1);
     }
   };
 
   return (
     <div className='table-pagination'>
-      <span className='table-pagination-info'>
-        {start}-{end} of {total}
-      </span>
-      <Button iconOnly kind='ghost' disabled={currentPage === 1} onClick={handlePrev} aria-label='Previous page'>
-        <ChevronLeft />
-      </Button>
-      <Button disabled={currentPage === totalPages} onClick={handleNext} iconOnly kind='ghost' aria-label='Next page'>
-        <ChevronRight />
-      </Button>
+      {onChange && (
+        <>
+          <Button iconOnly kind='ghost' disabled={currentPage === 1} onClick={handlePrev} aria-label='Previous page'>
+            <ChevronLeft />
+          </Button>
+          <Button
+            disabled={currentPage === totalPages}
+            onClick={handleNext}
+            iconOnly
+            kind='ghost'
+            aria-label='Next page'
+          >
+            <ChevronRight />
+          </Button>
+        </>
+      )}
+
       {onPageSizeChange && (
         <div className='table-row-per-page'>
           <span>Rows per page:</span>
-          <UnitSelector
-            unit={pageSizeOptions.map((size) => size.toString())}
-            unitValue={pageSize.toString()}
-            onUnitChange={(e) => onPageSizeChange(Number(e.target.value))}
-            theme='default'
+
+          <Select
+            native
+            theme='alternative'
+            options={pageSizeOptions.map((option) => ({ value: option.toString(), label: option.toString() }))}
+            selectSize='sm'
+            onChange={(e: any) => {
+              onPageSizeChange?.(Number(e.target.value));
+              onChange?.(1); // Reset to first page when page size changes
+            }}
           />
+
+          <span className='table-pagination-info'>
+            {start}-{end} of {total}
+          </span>
         </div>
       )}
     </div>
@@ -510,7 +529,7 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps<any>>(
     const tableWrapperStyle = () => {
       if (maxHeight) {
         return {
-          '--table-max-height': typeof maxHeight === 'number' ? `${maxHeight}px` : maxHeight
+          '--par-table-max-height': typeof maxHeight === 'number' ? `${maxHeight}px` : maxHeight
         } as React.CSSProperties;
       }
       return {};
@@ -631,15 +650,17 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps<any>>(
                     }}
                   >
                     <div className='table-head-cell-wrapper'>
-                      <Checkbox
-                        checked={data.every((item) => currentSelected.has(item.id))}
-                        indeterminate={
-                          data.length > 0 &&
-                          currentSelected.size > 0 &&
-                          data.some((item) => currentSelected.has(item.id))
-                        }
-                        onChange={(e) => handleSelectAll(e.target.checked)}
-                      />
+                      <div className='table-head-cell-content'>
+                        <Checkbox
+                          checked={data.every((item) => currentSelected.has(item.id))}
+                          indeterminate={
+                            data.length > 0 &&
+                            currentSelected.size > 0 &&
+                            data.some((item) => currentSelected.has(item.id))
+                          }
+                          onChange={(e) => handleSelectAll(e.target.checked)}
+                        />
+                      </div>
                     </div>
                   </th>
                 )}
@@ -673,18 +694,17 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps<any>>(
                       onMouseDown={() => column.sortable && handleSortClick(column.key)}
                     >
                       <div className='table-head-cell-wrapper'>
-                        <div className='table-head-cell-content'>
-                          {column.title}
-                          {column.sortable && (
-                            <span
-                              className='table-sort-icon'
-                              style={{ visibility: sortKey === column.key ? 'visible' : 'hidden' }}
-                            >
-                              <ChevronUp className={sortDirection == 'asc' ? 'active' : ''} />
-                              <ChevronDown className={sortDirection == 'desc' ? 'active' : ''} />
-                            </span>
-                          )}
-                        </div>
+                        <div className='table-head-cell-content'>{column.title}</div>
+
+                        {column.sortable && (
+                          <span
+                            className='table-sort-icon'
+                            style={{ visibility: sortKey === column.key ? 'visible' : 'hidden' }}
+                          >
+                            <ChevronUp className={sortDirection == 'asc' ? 'active' : ''} />
+                            <ChevronDown className={sortDirection == 'desc' ? 'active' : ''} />
+                          </span>
+                        )}
 
                         {column.resizable && (
                           <button
@@ -701,15 +721,6 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps<any>>(
             </thead>
 
             <tbody className='table-body'>
-              {/* Empty state */}
-              {data.length === 0 && (
-                <tr>
-                  <td colSpan={selectable ? columns.length + 1 : columns.length} className='table-empty-state '>
-                    {emptyState || 'No data to display'}
-                  </td>
-                </tr>
-              )}
-
               {/* Table rows */}
               {data.map((record, rowIndex) => (
                 <tr
@@ -731,10 +742,12 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps<any>>(
                       }}
                     >
                       <div className='table-body-cell-wrapper'>
-                        <Checkbox
-                          checked={currentSelected.has(record.id)}
-                          onChange={(e) => handleSelectRow(record.id, e.target.checked)}
-                        />
+                        <div className='table-body-cell-content'>
+                          <Checkbox
+                            checked={currentSelected.has(record.id)}
+                            onChange={(e) => handleSelectRow(record.id, e.target.checked)}
+                          />
+                        </div>
                       </div>
                     </td>
                   )}
@@ -773,13 +786,26 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps<any>>(
               ))}
             </tbody>
           </table>
+
+          {/* Empty state */}
+          {data.length === 0 && (
+            <div className='table-empty-state-wrapper'>
+              {emptyState ? (
+                emptyState
+              ) : (
+                <div className='table-empty-state'>
+                  <Database className='table-empty-state-icon' />
+                  <div className='table-empty-state-text'>No data</div>
+                </div>
+              )}
+            </div>
+          )}
         </div>
 
         {/* Footer section with row count and pagination */}
         {(footer || showRowCount) && (
           <div className='table-footer'>
-            {showRowCount && <div className='table-row-count'>{data.length} items</div>}
-            {footer}
+            {footer ? footer : <div className='table-row-count'>{data.length} items</div>}
           </div>
         )}
       </div>
