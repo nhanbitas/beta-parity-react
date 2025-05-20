@@ -50,7 +50,7 @@ export const AdvancedTable = () => {
   const [selectedRows, setSelectedRows] = useState<any[]>([]); // Pre-select some rows for demo
   const [searchValue, setSearchValue] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize, setPageSize] = useState(10);
+  const [pageSize, setPageSize] = useState(5);
   const [sortKey, setSortKey] = useState<string>('id');
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
 
@@ -109,7 +109,7 @@ export const AdvancedTable = () => {
     }
   ];
 
-  const handleClearSeclection = () => setSelectedRows([]);
+  const clearSelection = () => setSelectedRows([]);
 
   // Handle search
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -168,7 +168,7 @@ export const AdvancedTable = () => {
   const handleBatchAction = (text: string) => {
     const result = confirm(`Are you sure you want to ${text} the selected items?`);
     if (result) {
-      handleClearSeclection();
+      clearSelection();
       alert(`Selected items ${text} successfully!`);
     } else {
       alert(`Cancelled ${text} action.`);
@@ -224,7 +224,7 @@ export const AdvancedTable = () => {
               Delete <Trash2 className='ml-1' />
             </Button>
             <div className='h-6 w-px bg-[var(--par-color-text-button-ghost-neutral-enabled)]'></div>
-            <Button onClick={() => handleBatchAction('cancel')} kind='ghost'>
+            <Button onClick={() => clearSelection()} kind='ghost'>
               Cancel
             </Button>
           </div>
@@ -390,12 +390,13 @@ export const AdvancedTable2 = () => {
   return (
     <div className='demo-section not-prose'>
       <Table
+        color='accent'
         data={paginatedData}
         columns={columns}
         title='Project Management'
         description='Track and manage all projects'
         selectable
-        selectOnRowClick={true}
+        selectOnRowClick={false}
         freezeColumns={2}
         maxHeight={800}
         selectedRows={selectedRows}
@@ -414,29 +415,29 @@ export const AdvancedTable2 = () => {
               />
             </div>
             <div className='flex gap-2'>
-              <Button kind='glass' iconOnly>
+              <Button kind='glass' iconOnly color='accent'>
                 <Download />
               </Button>
-              <Button kind='glass' iconOnly>
+              <Button kind='glass' iconOnly color='accent'>
                 <PenLine />
               </Button>
-              <Button>New Project</Button>
+              <Button color='accent'>New Project</Button>
             </div>
           </div>
         }
         batchActions={
           <div className='flex w-fit items-center justify-between gap-2'>
-            <Button onClick={() => handleBatchAction('edit')} kind='ghost'>
+            <Button onClick={() => handleBatchAction('edit')} kind='ghost' color='accent'>
               Edit <Edit3 className='ml-1' />
             </Button>
-            <Button onClick={() => handleBatchAction('export')} kind='ghost'>
+            <Button onClick={() => handleBatchAction('export')} kind='ghost' color='accent'>
               Export <Download className='ml-1' />
             </Button>
-            <Button onClick={() => handleBatchAction('delete')} kind='ghost'>
+            <Button onClick={() => handleBatchAction('delete')} kind='ghost' color='accent'>
               Delete <Trash2 className='ml-1' />
             </Button>
             <div className='h-6 w-px bg-[var(--par-color-text-button-ghost-neutral-enabled)]'></div>
-            <Button onClick={() => handleClearSelection()} kind='ghost'>
+            <Button onClick={() => handleClearSelection()} kind='ghost' color='accent'>
               Cancel
             </Button>
           </div>
@@ -451,6 +452,7 @@ export const AdvancedTable2 = () => {
               onPageSizeChange={setPageSize}
             />
             <Pagination
+              color='accent'
               page={currentPage}
               totalPage={Math.ceil(data.length / pageSize)}
               onPageChange={setCurrentPage}

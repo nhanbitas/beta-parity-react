@@ -67,7 +67,7 @@
 
 .table-head-cell-wrapper {
   box-shadow: 0px 2px 4px -3px var(--par-color-effect-shadow);
-  @apply relative h-full min-h-fit w-full whitespace-nowrap border-b border-r border-[var(--par-color-border-table)] bg-[var(--par-color-bg-table)] px-4 py-3 text-left;
+  @apply relative flex h-full min-h-fit w-full items-center whitespace-nowrap border-b border-r border-[var(--par-color-border-table)] bg-[var(--par-color-bg-table)] px-4 py-3 text-left;
 }
 
 .table-head-cell {
@@ -150,7 +150,7 @@
 }
 
 .table-body-cell-wrapper {
-  @apply text-body-compact-02 h-full min-h-fit w-full overflow-hidden border-b border-r border-[var(--par-color-border-table)] bg-[var(--par-color-bg-table)] px-4 py-3 text-left align-middle text-[var(--par-color-text-table-content-item)];
+  @apply text-body-compact-02 flex h-full min-h-fit w-full items-center overflow-hidden border-b border-r border-[var(--par-color-border-table)] bg-[var(--par-color-bg-table)] px-4 py-3 text-left align-middle text-[var(--par-color-text-table-content-item)];
 }
 
 .table-body-cell.frozen {

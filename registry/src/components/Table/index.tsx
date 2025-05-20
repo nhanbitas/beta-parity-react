@@ -259,6 +259,14 @@ export interface TableProps<T = any> extends Omit<React.HTMLAttributes<HTMLTable
    * @memberof TableProps
    */
   freezeColumns?: number;
+
+  /**
+   * Color scheme for the table
+   *
+   * @default 'neutral'
+   * @memberof TableProps
+   */
+  color?: 'neutral' | 'accent';
 }
 
 /**
@@ -372,6 +380,8 @@ export const TablePagination = ({
           <Select
             native
             theme='alternative'
+            defaultValue={pageSize.toString()}
+            value={pageSize.toString()}
             options={pageSizeOptions.map((option) => ({ value: option.toString(), label: option.toString() }))}
             selectSize='sm'
             onChange={(e: any) => {
@@ -416,7 +426,8 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps<any>>(
       showRowCount = true,
       onRowClick,
       className = '',
-      freezeColumns = -1
+      freezeColumns = -1,
+      color = 'neutral'
     },
     ref
   ) => {
@@ -616,7 +627,7 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps<any>>(
     }, [selectedRows]);
 
     return (
-      <div className={`table-container ${className}`}>
+      <div className={classNames('table-container', className, { [`par-table-${color}`]: color })}>
         {/* Header section with title and description */}
         {(title || description) && (
           <div className='table-header-section'>
@@ -652,7 +663,8 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps<any>>(
                     <div className='table-head-cell-wrapper'>
                       <div className='table-head-cell-content'>
                         <Checkbox
-                          checked={data.every((item) => currentSelected.has(item.id))}
+                          color={color}
+                          checked={data.length > 0 && data.every((item) => currentSelected.has(item.id))}
                           indeterminate={
                             data.length > 0 &&
                             currentSelected.size > 0 &&
@@ -744,6 +756,7 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps<any>>(
                       <div className='table-body-cell-wrapper'>
                         <div className='table-body-cell-content'>
                           <Checkbox
+                            color={color}
                             checked={currentSelected.has(record.id)}
                             onChange={(e) => handleSelectRow(record.id, e.target.checked)}
                           />
