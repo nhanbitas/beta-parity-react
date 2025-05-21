@@ -1,10 +1,11 @@
+/* eslint-disable @next/next/no-img-element */
 import React from 'react';
 import classNames from 'classnames';
-import Image from 'next/image';
-import { CornerIndicator } from '../CornerIndicator';
 
 import './index.css';
 import './variables.css';
+
+import { CornerIndicator } from '../CornerIndicator';
 
 // =========================
 // Avatar
@@ -152,6 +153,7 @@ export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(
       status,
       borderStyle = 'default',
       style,
+      children,
       ...props
     },
     ref
@@ -162,30 +164,29 @@ export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(
       setImgError(true);
     };
 
-    const avatarContent =
-      src && !imgError ? (
-        <Image
-          src={src}
-          alt={alt || ''}
-          onError={handleImgError}
-          className='avatar-img'
-          width={100}
-          height={100}
-          style={{ objectFit: 'cover', width: '100%', height: '100%' }}
-        />
-      ) : initials ? (
-        <span className='avatar-initials'>{initials}</span>
-      ) : (
-        <span className='avatar-placeholder' aria-hidden='true'>
-          <svg viewBox='0 0 128 128' fill='currentColor' xmlns='http://www.w3.org/2000/svg'>
-            <path
-              fillRule='evenodd'
-              clipRule='evenodd'
-              d='M103 102.139C93.094 111.92 79.3994 118 64.1641 118C48.9287 118 35.2339 111.92 25.3281 102.139C26.9542 95.1136 31.7734 89.0087 38.6641 85.2919C45.0748 81.8501 52.995 80 64 80C75.005 80 82.9253 81.8501 89.336 85.2919C96.2267 89.0087 101.046 95.1136 103 102.139ZM64 99C77.2548 99 88 88.2548 88 75C88 61.7452 77.2548 51 64 51C50.7452 51 40 61.7452 40 75C40 88.2548 50.7452 99 64 99Z'
-            />
-          </svg>
-        </span>
-      );
+    const avatarContent = children ? (
+      <div className='avatar-img'>{children}</div>
+    ) : src && !imgError ? (
+      <img
+        src={src}
+        alt={alt || ''}
+        onError={handleImgError}
+        className='avatar-img'
+        style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+      />
+    ) : initials ? (
+      <span className='avatar-initials'>{initials}</span>
+    ) : (
+      <span className='avatar-placeholder' aria-hidden='true'>
+        <svg viewBox='0 0 128 128' fill='currentColor' xmlns='http://www.w3.org/2000/svg'>
+          <path
+            fillRule='evenodd'
+            clipRule='evenodd'
+            d='M103 102.139C93.094 111.92 79.3994 118 64.1641 118C48.9287 118 35.2339 111.92 25.3281 102.139C26.9542 95.1136 31.7734 89.0087 38.6641 85.2919C45.0748 81.8501 52.995 80 64 80C75.005 80 82.9253 81.8501 89.336 85.2919C96.2267 89.0087 101.046 95.1136 103 102.139ZM64 99C77.2548 99 88 88.2548 88 75C88 61.7452 77.2548 51 64 51C50.7452 51 40 61.7452 40 75C40 88.2548 50.7452 99 64 99Z'
+          />
+        </svg>
+      </span>
+    );
 
     // Use border status type if specified
     if (status?.type === 'border') {
