@@ -1,7 +1,7 @@
 import { Badge } from 'beta-parity-react/ui/Badge';
 import Image from '@components/showcase/ImagePreview';
 import Component from '@components/showcase/CodePreview';
-import * as Demo from "../@dev/demo-components"
+import * as Demo from '../@dev/demo-components';
 
 {/* Image => Image Example */}
 {/* Component => Component Example */}
@@ -10,34 +10,71 @@ import * as Demo from "../@dev/demo-components"
 A component that organizes content into vertically stacked collapsible and expandable sections.
 :::
 
-
 ## Design checklist <span id="design-checklist"></span>
+
 {/* Design checklist specification */}
 
-| Status | Item                                 | Description                                                                                                                                                                                                                       |
-| ------ | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ✔️     | Anatomy                              | Includes descriptions of all parts of the component and its major variants.                                                                                                                                                       |
-| ✔️     | States                               | Includes all applicable interaction, display and value states.                                                                                                                                                                    |
-| ✔️     | Options                              | Includes all relevant options (functional type, stylistic kind, semantic color, size, orientation, optional iconography, decorations, etc.)                                                                                       |
-| ✔️     | Color schemes                        | Includes both light and dark color schemes.                                                                                                                                                                                       |
-|        | Behaviors                            | Includes descriptions of behaviors related to other components and responsive behaviors related to media breakpoints, size (minimums and maximums), orientation, alignment, position and layout (wrapping, truncation, overflow). |
+| Status | Item          | Description                                                                                                                                                                                                                       |
+| ------ | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ✔️     | Anatomy       | Includes descriptions of all parts of the component and its major variants.                                                                                                                                                       |
+| ✔️     | States        | Includes all applicable interaction, display and value states.                                                                                                                                                                    |
+| ✔️     | Options       | Includes all relevant options (functional type, stylistic kind, semantic color, size, orientation, optional iconography, decorations, etc.)                                                                                       |
+| ✔️     | Color schemes | Includes both light and dark color schemes.                                                                                                                                                                                       |
+|        | Behaviors     | Includes descriptions of behaviors related to other components and responsive behaviors related to media breakpoints, size (minimums and maximums), orientation, alignment, position and layout (wrapping, truncation, overflow). |
 
 ## Anatomy <span id="anatomy"></span>
+
 {/* Anatomy specification */}
 
 ## States <span id="states"></span>
+
 {/* States specification */}
 
 ## Options <span id="options"></span>
+
 {/* Options specification */}
 
 ## Behaviors <span id="behaviors"></span>
+
 {/* Behaviors specification */}
 
 ## Changelog <span id="changelog"></span>
+
 {/* Changelog specification */}
 
-| Date       | Type                                                        | Description                                                                                 | Author      | Associated issue(s)  |
-|:-----------|:------------------------------------------------------------|---------------------------------------------------------------------------------------------|:------------|:---------------------|
-| YYYY-MM-DD | <Badge size='sm' kind='glass' color='cyan' label="new"/>    | Initial design                                                                              | Oanh Nguyen | PAR-52               |
+| Date       | Type                                                     | Description    | Author      | Associated issue(s) |
+| :--------- | :------------------------------------------------------- | -------------- | :---------- | :------------------ |
+| YYYY-MM-DD | <Badge size='sm' kind='glass' color='cyan' label="new"/> | Initial design | Oanh Nguyen | PAR-52              |
 
+## 🎨 Design Tokens for Tooltip
+
+| **Token**                              | **Color for**                | **State/Meaning**         | **CSS Selector(s)** |
+|---------------------------------------- | ---------------------------- | ------------------------- | ------------------- |
+| `--par-color-bg-tooltip`                | Tooltip background           | Default/Enabled           | `.tooltip` |
+| `--par-color-bg-tooltip-error`          | Tooltip background           | Error                     | `.tooltip.error` |
+| `--par-color-border-tooltip`            | Tooltip border               | Any                       | `.tooltip` |
+| `--par-color-text-tooltip`              | Tooltip text                 | Default/Enabled           | `.tooltip` |
+| `--par-color-text-tooltip-error`        | Tooltip text                 | Error                     | `.tooltip.error` |
+| `--par-color-arrow-tooltip`             | Tooltip arrow                | Any                       | `.tooltip-arrow` |
+
+> _Note: Tooltip uses the same design tokens as the Popover or Overlay component. See Popover/Overlay documentation for available tokens._
+
+---
+
+## 🧩 Tooltip API Reference
+
+### `<Tooltip />`
+
+| **Prop**            | **Type**             | **Default** | **Description**                              |
+| ------------------- | -------------------- | ----------- | -------------------------------------------- |
+| **content**         | string \| ReactNode  |             | Tooltip content                              |
+| **placement**       | string               | _'top'_     | Tooltip placement                            |
+| **visible**         | boolean              |             | Controlled visibility                        |
+| **defaultVisible**  | boolean              | _false_     | Default visibility (uncontrolled)            |
+| **onVisibleChange** | function (visible)   |             | Callback when visibility changes             |
+| **trigger**         | string               | _'hover'_   | Trigger type (hover, click, focus)           |
+| **...divProps**     | HTMLDivElement props |             | All native div props (className, style, ...) |
+
+> **_Note:_** _Tooltip_ **inherits** all native props from **HTMLDivElement**.
+
+---

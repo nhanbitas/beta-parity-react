@@ -97,6 +97,52 @@ Custom separator characters can be specified for groups.
 - Optional callback when all fields are filled
 - Supports copy/paste of the entire code
 
+## 🎨 Design Tokens for PinField
+
+| **Token**                              | **Color for**                | **State/Meaning**         | **CSS Selector(s)** |
+|---------------------------------------- | ---------------------------- | ------------------------- | ------------------- |
+| `--par-color-bg-field-enabled`          | Pin field background         | Enabled                   | `.pinfield-input:enabled` |
+| `--par-color-bg-field-hovered`          | Pin field background         | Hovered                   | `.pinfield-input:hover` |
+| `--par-color-bg-field-disabled`         | Pin field background         | Disabled                  | `.pinfield-input:disabled` |
+| `--par-color-bg-field-readonly`         | Pin field background         | Readonly                  | `.pinfield-input[readonly]` |
+| `--par-color-bg-field-invalid`          | Pin field background         | Invalid/Error             | `.pinfield-input.invalid` |
+| `--par-color-border-field-enabled`      | Pin field border             | Enabled                   | `.pinfield-input:enabled` |
+| `--par-color-border-field-hovered`      | Pin field border             | Hovered                   | `.pinfield-input:hover` |
+| `--par-color-border-field-disabled`     | Pin field border             | Disabled                  | `.pinfield-input:disabled` |
+| `--par-color-border-field-invalid`      | Pin field border             | Invalid/Error             | `.pinfield-input.invalid` |
+| `--par-color-border-field-focused`      | Pin field border             | Focused                   | `.pinfield-input:focus` |
+| `--par-color-text-field-placeholder`    | Placeholder text             | Any                       | `.pinfield-input::placeholder` |
+| `--par-color-text-field-filled`         | Pin field text               | Filled                    | `.pinfield-input` |
+| `--par-color-text-field-label`          | Label text                   | Any                       | `.pinfield-label` |
+| `--par-color-text-field-disabled`       | Pin field text               | Disabled                  | `.pinfield-input:disabled` |
+| `--par-color-text-field-readonly`       | Pin field text               | Readonly                  | `.pinfield-input[readonly]` |
+| `--par-color-text-field-invalid`        | Pin field text               | Invalid/Error             | `.pinfield-input.invalid` |
+| `--par-color-icon-field-button-enabled` | Icon color (button enabled)  | Enabled                   | `.pinfield-input .icon-button:enabled` |
+| `--par-color-icon-field-button-hovered` | Icon color (button hovered)  | Hovered                   | `.pinfield-input .icon-button:hover` |
+| `--par-color-icon-field-button-pressed` | Icon color (button pressed)  | Pressed                   | `.pinfield-input .icon-button:active` |
+| `--par-color-icon-field-button-disabled`| Icon color (button disabled) | Disabled                  | `.pinfield-input .icon-button:disabled` |
+
+> _Note: PinField uses the same design tokens as the Input component. See Input documentation for available tokens._
+
+---
+
+## 🧩 PinField API Reference
+
+### `<PinField />`
+
+| **Prop**          | **Type**                  | **Default** | **Description**                   |
+| ----------------- | ------------------------- | ----------- | --------------------------------- |
+| **length**        | number                    |             | Number of pin fields              |
+| **onChange**      | function (value)          |             | Callback when value changes       |
+| **value**         | string                    |             | Controlled value                  |
+| **autoFocus**     | boolean                   | _false_     | Autofocus the first field         |
+| **disabled**      | boolean                   | _false_     | Disable all fields                |
+| **...InputProps** | [See Input](../BaseInput) |             | Inherits all props from **Input** |
+
+> **_Note:_** _PinField_ **inherits** all props from **Input** and the native **input** element. See [Input documentation](../BaseInput) for full details on available props and tokens.
+
+---
+
 ## Changelog <span id="changelog"></span>
 
 | Date       | Type                                                     | Description    | Author         | Associated issue(s) |

@@ -113,3 +113,42 @@ An interactive element used for triggering actions, making selections, or filter
 - Off
 
 ## Behaviors
+
+## 🎨 Design Tokens for Chip
+
+| **Token**                                                         | **Color for**   | **State/Meaning**                                               | **CSS Selector(s)** |
+| ----------------------------------------------------------------- | --------------- | --------------------------------------------------------------- | ------------------- |
+| **--par-color-text-chip-\<kind\>-\<state\>-\<color\>-\<status\>** | Chip text color | kind: outlined/glass, state: selected/unselected,               | `.chip`             |
+|                                                                   |                 | color: neutral/accent, status: enabled/hovered/pressed/disabled |                     |
+| **--par-color-bg-chip-\<kind\>-\<state\>-\<color\>-\<status\>**   | Chip background | kind, state, color, status as above                             | `.chip`             |
+| **--par-color-border-chip-\<state\>-\<color\>-\<status\>**        | Chip border     | state: selected/unselected, color, status as above              | `.chip`             |
+
+> _Note: Replace `<kind>`, `<state>`, `<color>`, `<status>` with the corresponding values: kind = outlined/glass, state = selected/unselected, color = neutral/accent, status = enabled/hovered/pressed/disabled._
+
+---
+
+## 🧩 Chip API Reference
+
+### `<Chip />`
+
+| **Prop**           | **Type**                                  | **Default**  | **Description**                               |
+| ------------------ | ----------------------------------------- | ------------ | --------------------------------------------- |
+| **label**          | string                                    |              | Chip label                                    |
+| **icon**           | ReactNode                                 |              | Icon displayed in the chip                    |
+| **type**           | 'toggle' \| 'dropdown'                    | _'toggle'_   | Chip type: toggle or dropdown                 |
+| **size**           | 'sm' \| 'md' \| 'lg'                      | _'md'_       | Chip size                                     |
+| **kind**           | 'outlined' \| 'glass'                     | _'outlined'_ | Visual style                                  |
+| **color**          | 'neutral' \| 'accent'                     | _'neutral'_  | Chip color                                    |
+| **value**          | string \| number                          |              | Chip value                                    |
+| **checked**        | boolean                                   |              | Checked state (toggle)                        |
+| **defaultChecked** | boolean                                   |              | Default checked state (toggle)                |
+| **isActive**       | boolean                                   |              | Active state (dropdown)                       |
+| **disabled**       | boolean                                   | _false_      | Disable the chip                              |
+| **onChange**       | function (args: value, checked?, active?) |              | Callback when state changes                   |
+| **onRemove**       | function (value)                          |              | Callback when remove is clicked (button chip) |
+| **...BaseProps**   | [See Base](../Base)                       |              | Inherits all layout props from **Base**       |
+| **...spanProps**   | HTMLSpanElement props                     |              | All native span props (className, style, ...) |
+
+> **_Note:_** _Chip_ **inherits** all props from **Base** and **HTMLSpanElement**.
+
+---

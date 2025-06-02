@@ -1,7 +1,7 @@
 import { Badge } from 'beta-parity-react/ui/Badge';
 import Image from '@components/showcase/ImagePreview';
 import Component from '@components/showcase/CodePreview';
-import * as Demo from "../@dev/demo-components"
+import * as Demo from '../@dev/demo-components';
 
 {/* Image => Image Example */}
 {/* Component => Component Example */}
@@ -10,34 +10,78 @@ import * as Demo from "../@dev/demo-components"
 A component that organizes content into vertically stacked collapsible and expandable sections.
 :::
 
-
 ## Design checklist <span id="design-checklist"></span>
+
 {/* Design checklist specification */}
 
-| Status | Item                                 | Description                                                                                                                                                                                                                       |
-| ------ | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ✔️     | Anatomy                              | Includes descriptions of all parts of the component and its major variants.                                                                                                                                                       |
-| ✔️     | States                               | Includes all applicable interaction, display and value states.                                                                                                                                                                    |
-| ✔️     | Options                              | Includes all relevant options (functional type, stylistic kind, semantic color, size, orientation, optional iconography, decorations, etc.)                                                                                       |
-| ✔️     | Color schemes                        | Includes both light and dark color schemes.                                                                                                                                                                                       |
-|        | Behaviors                            | Includes descriptions of behaviors related to other components and responsive behaviors related to media breakpoints, size (minimums and maximums), orientation, alignment, position and layout (wrapping, truncation, overflow). |
+| Status | Item          | Description                                                                                                                                                                                                                       |
+| ------ | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ✔️     | Anatomy       | Includes descriptions of all parts of the component and its major variants.                                                                                                                                                       |
+| ✔️     | States        | Includes all applicable interaction, display and value states.                                                                                                                                                                    |
+| ✔️     | Options       | Includes all relevant options (functional type, stylistic kind, semantic color, size, orientation, optional iconography, decorations, etc.)                                                                                       |
+| ✔️     | Color schemes | Includes both light and dark color schemes.                                                                                                                                                                                       |
+|        | Behaviors     | Includes descriptions of behaviors related to other components and responsive behaviors related to media breakpoints, size (minimums and maximums), orientation, alignment, position and layout (wrapping, truncation, overflow). |
 
 ## Anatomy <span id="anatomy"></span>
+
 {/* Anatomy specification */}
 
 ## States <span id="states"></span>
+
 {/* States specification */}
 
 ## Options <span id="options"></span>
+
 {/* Options specification */}
 
 ## Behaviors <span id="behaviors"></span>
+
 {/* Behaviors specification */}
 
 ## Changelog <span id="changelog"></span>
+
 {/* Changelog specification */}
 
-| Date       | Type                                                        | Description                                                                                 | Author      | Associated issue(s)  |
-|:-----------|:------------------------------------------------------------|---------------------------------------------------------------------------------------------|:------------|:---------------------|
-| YYYY-MM-DD | <Badge size='sm' kind='glass' color='cyan' label="new"/>    | Initial design                                                                              | Oanh Nguyen | PAR-52               |
+| Date       | Type                                                     | Description    | Author      | Associated issue(s) |
+| :--------- | :------------------------------------------------------- | -------------- | :---------- | :------------------ |
+| YYYY-MM-DD | <Badge size='sm' kind='glass' color='cyan' label="new"/> | Initial design | Oanh Nguyen | PAR-52              |
 
+## 🎨 Design Tokens for Toast
+
+| **Token**                              | **Color for**                | **State/Meaning**         | **CSS Selector(s)** |
+|---------------------------------------- | ---------------------------- | ------------------------- | ------------------- |
+| `--par-color-bg-toast`                  | Toast background              | Default/Enabled           | `.toast` |
+| `--par-color-bg-toast-info`             | Toast background              | Info                      | `.toast.info` |
+| `--par-color-bg-toast-success`          | Toast background              | Success                   | `.toast.success` |
+| `--par-color-bg-toast-error`            | Toast background              | Error                     | `.toast.error` |
+| `--par-color-border-toast`              | Toast border                  | Any                       | `.toast` |
+| `--par-color-text-toast`                | Toast text                    | Default/Enabled           | `.toast` |
+| `--par-color-text-toast-info`           | Toast text                    | Info                      | `.toast.info` |
+| `--par-color-text-toast-success`        | Toast text                    | Success                   | `.toast.success` |
+| `--par-color-text-toast-error`          | Toast text                    | Error                     | `.toast.error` |
+| `--par-color-icon-toast`                | Toast icon                    | Any                       | `.toast .icon` |
+| `--par-color-bg-toast-close-hovered`    | Close button background        | Hovered                   | `.toast .close-btn:hover` |
+| `--par-color-bg-toast-close-pressed`    | Close button background        | Pressed                   | `.toast .close-btn:active` |
+| `--par-color-bg-toast-close-disabled`   | Close button background        | Disabled                  | `.toast .close-btn:disabled` |
+| `--par-color-text-toast-close`          | Close button text/icon         | Any                       | `.toast .close-btn` |
+| `--par-color-text-toast-close-disabled` | Close button text/icon         | Disabled                  | `.toast .close-btn:disabled` |
+
+> _Note: Toast uses the same design tokens as the Alert or Notification component. See Alert/Notification documentation for available tokens._
+
+---
+
+## 🧩 Toast API Reference
+
+### `<Toast />`
+
+| **Prop**        | **Type**                       | **Default** | **Description**                              |
+| --------------- | ------------------------------ | ----------- | -------------------------------------------- |
+| **message**     | string \| ReactNode            |             | Toast message                                |
+| **type**        | 'info' \| 'success' \| 'error' | _'info'_    | Toast type                                   |
+| **duration**    | number                         | _3000_      | Duration in ms                               |
+| **onClose**     | function ()                    |             | Callback when toast is closed                |
+| **...divProps** | HTMLDivElement props           |             | All native div props (className, style, ...) |
+
+> **_Note:_** _Toast_ **inherits** all native props from **HTMLDivElement**.
+
+---

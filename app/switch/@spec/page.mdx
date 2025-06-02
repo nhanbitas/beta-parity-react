@@ -2,12 +2,11 @@ import { Badge } from 'beta-parity-react/ui/Badge';
 import Image from '@components/showcase/ImagePreview';
 import Component from '@components/showcase/CodePreview';
 import imageSrc from '@public/images/switch';
-import * as Demo from "../@dev/demo-components"
+import * as Demo from '../@dev/demo-components';
 
 :::callout[note]
 An element that toggles between two binary options.
 :::
-
 
 <Image src={imageSrc.switchDefault.src} alt='switchDefault' />
 
@@ -114,3 +113,41 @@ An element that toggles between two binary options.
 ## Behaviors
 
 > [!missing] Section is incomplete
+
+## 🎨 Design Tokens for Switch
+
+| **Token**                              | **Color for**                | **State/Meaning**         | **CSS Selector(s)** |
+|---------------------------------------- | ---------------------------- | ------------------------- | ------------------- |
+| `--par-color-bg-switch-track-enabled`   | Switch track background      | Enabled                   | `.switch-track:enabled` |
+| `--par-color-bg-switch-track-hovered`   | Switch track background      | Hovered                   | `.switch-track:hover` |
+| `--par-color-bg-switch-track-disabled`  | Switch track background      | Disabled                  | `.switch-track:disabled` |
+| `--par-color-bg-switch-track-checked`   | Switch track background      | Checked                   | `.switch-track.checked` |
+| `--par-color-bg-switch-track-invalid`   | Switch track background      | Invalid/Error             | `.switch-track.invalid` |
+| `--par-color-border-switch-track`       | Switch track border          | Any                       | `.switch-track` |
+| `--par-color-thumb-switch-enabled`      | Switch thumb                 | Enabled                   | `.switch-thumb:enabled` |
+| `--par-color-thumb-switch-hovered`      | Switch thumb                 | Hovered                   | `.switch-thumb:hover` |
+| `--par-color-thumb-switch-disabled`     | Switch thumb                 | Disabled                  | `.switch-thumb:disabled` |
+| `--par-color-thumb-switch-checked`      | Switch thumb                 | Checked                   | `.switch-thumb.checked` |
+| `--par-color-thumb-switch-invalid`      | Switch thumb                 | Invalid/Error             | `.switch-thumb.invalid` |
+| `--par-color-icon-switch`               | Switch thumb icon            | Any                       | `.switch-thumb .icon` |
+
+> _Note: Switch uses the same design tokens as the Input or Toggle component. See Input/Toggle documentation for available tokens._
+
+---
+
+## 🧩 Switch API Reference
+
+### `<Switch />`
+
+| **Prop**          | **Type**                  | **Default** | **Description**                   |
+| ----------------- | ------------------------- | ----------- | --------------------------------- |
+| **checked**       | boolean                   |             | Checked state                     |
+| **onChange**      | function (event)          |             | Callback when value changes       |
+| **disabled**      | boolean                   | _false_     | Disable the switch                |
+| **color**         | string                    |             | Switch color                      |
+| **size**          | 'sm' \| 'md' \| 'lg'      | _'md'_      | Switch size                       |
+| **...InputProps** | [See Input](../BaseInput) |             | Inherits all props from **Input** |
+
+> **_Note:_** _Switch_ **inherits** all props from **Input** and the native **input** element. See [Input documentation](../BaseInput) for full details on available props and tokens.
+
+---

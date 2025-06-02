@@ -1,4 +1,4 @@
-import NavigatorComponent from './DocNavigator';
+import NavigatorComponent from '@components/doc/DocNavigator';
 
 export default function DocLayout({
   children,

@@ -41,3 +41,47 @@ A component that organizes content into vertically stacked collapsible and expan
 |:-----------|:------------------------------------------------------------|---------------------------------------------------------------------------------------------|:------------|:---------------------|
 | YYYY-MM-DD | <Badge size='sm' kind='glass' color='cyan' label="new"/>    | Initial design                                                                              | Oanh Nguyen | PAR-52               |
 
+## 🎨 Design Tokens for DateInput
+
+> _Note: DateInput uses the same design tokens as the Input component. See Input documentation for available tokens._
+
+| **Token**                              | **Color for**                | **State/Meaning**         | **CSS Selector(s)** |
+|---------------------------------------- | ---------------------------- | ------------------------- | ------------------- |
+| `--par-color-bg-field-enabled`          | Input background             | Enabled                   | `.date-input:enabled` |
+| `--par-color-bg-field-hovered`          | Input background             | Hovered                   | `.date-input:hover` |
+| `--par-color-bg-field-disabled`         | Input background             | Disabled                  | `.date-input:disabled` |
+| `--par-color-bg-field-readonly`         | Input background             | Readonly                  | `.date-input[readonly]` |
+| `--par-color-bg-field-invalid`          | Input background             | Invalid/Error             | `.date-input.invalid` |
+| `--par-color-border-field-enabled`      | Input border                 | Enabled                   | `.date-input:enabled` |
+| `--par-color-border-field-hovered`      | Input border                 | Hovered                   | `.date-input:hover` |
+| `--par-color-border-field-disabled`     | Input border                 | Disabled                  | `.date-input:disabled` |
+| `--par-color-border-field-invalid`      | Input border                 | Invalid/Error             | `.date-input.invalid` |
+| `--par-color-border-field-focused`      | Input border                 | Focused                   | `.date-input:focus` |
+| `--par-color-text-field-placeholder`    | Placeholder text             | Any                       | `.date-input::placeholder` |
+| `--par-color-text-field-filled`         | Input text                   | Filled                    | `.date-input` |
+| `--par-color-text-field-label`          | Label text                   | Any                       | `.date-input-label` |
+| `--par-color-text-field-disabled`       | Input text                   | Disabled                  | `.date-input:disabled` |
+| `--par-color-text-field-readonly`       | Input text                   | Readonly                  | `.date-input[readonly]` |
+| `--par-color-text-field-invalid`        | Input text                   | Invalid/Error             | `.date-input.invalid` |
+| `--par-color-icon-field-button-enabled` | Icon color (button enabled)  | Enabled                   | `.date-input .icon-button:enabled` |
+| `--par-color-icon-field-button-hovered` | Icon color (button hovered)  | Hovered                   | `.date-input .icon-button:hover` |
+| `--par-color-icon-field-button-pressed` | Icon color (button pressed)  | Pressed                   | `.date-input .icon-button:active` |
+| `--par-color-icon-field-button-disabled`| Icon color (button disabled) | Disabled                  | `.date-input .icon-button:disabled` |
+
+**_Tip:_** _Override these tokens in your theme or style to customize the appearance of DateInput._
+
+---
+
+## 🧩 DateInput API Reference
+
+### `<DateInput />`
+
+| **Prop**         | **Type**                        | **Default**     | **Description**                                 |
+|------------------|---------------------------------|-----------------|-------------------------------------------------|
+| **type**         | string                          | _'date'_        | Input type (always 'date' for DateInput)        |
+| **...InputProps**| [See Input](../BaseInput)       |                 | Inherits all props from **Input**               |
+
+> **_Note:_** _DateInput_ **inherits** all props from **Input** and the native **input** element. See [Input documentation](../BaseInput) for full details on available props and tokens.
+
+---
+

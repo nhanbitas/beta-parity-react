@@ -1,7 +1,7 @@
 import { Badge } from 'beta-parity-react/ui/Badge';
 import Image from '@components/showcase/ImagePreview';
 import Component from '@components/showcase/CodePreview';
-import * as Demo from "../@dev/demo-components"
+import * as Demo from '../@dev/demo-components';
 
 {/* Image => Image Example */}
 {/* Component => Component Example */}
@@ -10,34 +10,110 @@ import * as Demo from "../@dev/demo-components"
 A component that organizes content into vertically stacked collapsible and expandable sections.
 :::
 
-
 ## Design checklist <span id="design-checklist"></span>
+
 {/* Design checklist specification */}
 
-| Status | Item                                 | Description                                                                                                                                                                                                                       |
-| ------ | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ✔️     | Anatomy                              | Includes descriptions of all parts of the component and its major variants.                                                                                                                                                       |
-| ✔️     | States                               | Includes all applicable interaction, display and value states.                                                                                                                                                                    |
-| ✔️     | Options                              | Includes all relevant options (functional type, stylistic kind, semantic color, size, orientation, optional iconography, decorations, etc.)                                                                                       |
-| ✔️     | Color schemes                        | Includes both light and dark color schemes.                                                                                                                                                                                       |
-|        | Behaviors                            | Includes descriptions of behaviors related to other components and responsive behaviors related to media breakpoints, size (minimums and maximums), orientation, alignment, position and layout (wrapping, truncation, overflow). |
+| Status | Item          | Description                                                                                                                                                                                                                       |
+| ------ | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ✔️     | Anatomy       | Includes descriptions of all parts of the component and its major variants.                                                                                                                                                       |
+| ✔️     | States        | Includes all applicable interaction, display and value states.                                                                                                                                                                    |
+| ✔️     | Options       | Includes all relevant options (functional type, stylistic kind, semantic color, size, orientation, optional iconography, decorations, etc.)                                                                                       |
+| ✔️     | Color schemes | Includes both light and dark color schemes.                                                                                                                                                                                       |
+|        | Behaviors     | Includes descriptions of behaviors related to other components and responsive behaviors related to media breakpoints, size (minimums and maximums), orientation, alignment, position and layout (wrapping, truncation, overflow). |
 
 ## Anatomy <span id="anatomy"></span>
+
 {/* Anatomy specification */}
 
 ## States <span id="states"></span>
+
 {/* States specification */}
 
 ## Options <span id="options"></span>
+
 {/* Options specification */}
 
 ## Behaviors <span id="behaviors"></span>
+
 {/* Behaviors specification */}
 
 ## Changelog <span id="changelog"></span>
+
 {/* Changelog specification */}
 
-| Date       | Type                                                        | Description                                                                                 | Author      | Associated issue(s)  |
-|:-----------|:------------------------------------------------------------|---------------------------------------------------------------------------------------------|:------------|:---------------------|
-| YYYY-MM-DD | <Badge size='sm' kind='glass' color='cyan' label="new"/>    | Initial design                                                                              | Oanh Nguyen | PAR-52               |
+| Date       | Type                                                     | Description    | Author      | Associated issue(s) |
+| :--------- | :------------------------------------------------------- | -------------- | :---------- | :------------------ |
+| YYYY-MM-DD | <Badge size='sm' kind='glass' color='cyan' label="new"/> | Initial design | Oanh Nguyen | PAR-52              |
 
+## 🎨 Design Tokens for Checkbox
+
+| **Token**                                            | **Color for**                  | **State/Meaning**             | **CSS Selector(s)**                    |
+| ---------------------------------------------------- | ------------------------------ | ----------------------------- | -------------------------------------- |
+| **--par-color-icon-checkbox-enabled**                | Checkbox icon color            | Icon when enabled             | `.par-checkbox:not(:disabled)`         |
+| **--par-color-icon-checkbox-disabled**               | Checkbox icon color            | Icon when disabled            | `.par-checkbox:disabled`               |
+| **--par-color-icon-checkbox-indeterminate**          | Indeterminate icon color       | Icon when indeterminate       | `.par-checkbox.indeterminate`          |
+| **--par-color-icon-checkbox-indeterminate-disabled** | Indeterminate icon (disabled)  | Icon indeterminate/disabled   | `.par-checkbox.indeterminate:disabled` |
+| **--par-color-icon-checkbox-neutral-selected**       | Icon color (neutral, checked)  | Icon when checked (neutral)   | `.par-checkbox.neutral:checked`        |
+| **--par-color-bg-checkbox-neutral-selected**         | Background (neutral, checked)  | Background checked (neutral)  | `.par-checkbox.neutral:checked`        |
+| **--par-color-icon-checkbox-accent-selected**        | Icon color (accent, checked)   | Icon when checked (accent)    | `.par-checkbox.accent:checked`         |
+| **--par-color-bg-checkbox-accent-selected**          | Background (accent, checked)   | Background checked (accent)   | `.par-checkbox.accent:checked`         |
+| **--par-color-icon-checkbox-neutral-disabled**       | Icon color (neutral, disabled) | Icon when disabled (neutral)  | `.par-checkbox.neutral:disabled`       |
+| **--par-color-bg-checkbox-neutral-disabled**         | Background (neutral, disabled) | Background disabled (neutral) | `.par-checkbox.neutral:disabled`       |
+| **--par-color-icon-checkbox-accent-disabled**        | Icon color (accent, disabled)  | Icon when disabled (accent)   | `.par-checkbox.accent:disabled`        |
+| **--par-color-bg-checkbox-accent-disabled**          | Background (accent, disabled)  | Background disabled (accent)  | `.par-checkbox.accent:disabled`        |
+
+---
+
+## 🧩 Checkbox API Reference
+
+### `<Checkbox />`
+
+| **Prop**                 | **Type**                 | **Default** | **Description**                   |
+| ------------------------ | ------------------------ | ----------- | --------------------------------- |
+| **color**                | 'neutral' \| 'accent'    | _'neutral'_ | Checkbox color                    |
+| **label**                | string \| ReactNode      |             | Main label                        |
+| **sublabel**             | string \| ReactNode      |             | Sublabel                          |
+| **indeterminate**        | boolean                  | _false_     | Indeterminate state               |
+| **checkboxWrapperProps** | object                   |             | Props for outer wrapper           |
+| **...InputProps**        | [See below](#inputprops) |             | Inherits all props from **Input** |
+
+---
+
+### `<CheckboxGroup />`
+
+| **Prop**         | **Type**                         | **Default** | **Description**                         |
+| ---------------- | -------------------------------- | ----------- | --------------------------------------- |
+| **tree**         | DataItems (array)                |             | Tree data for group                     |
+| **children**     | ReactNode                        |             | Children nodes                          |
+| **onChange**     | function (value, tree, getGroup) |             | Callback when value changes             |
+| **onParse**      | function (value)                 |             | Callback when parsing data              |
+| **label**        | string \| ReactNode              |             | Group label                             |
+| **sublabel**     | string \| ReactNode              |             | Group sublabel                          |
+| **value**        | string                           |             | Group value                             |
+| **checked**      | boolean                          |             | Checked state for group                 |
+| **color**        | 'neutral' \| 'accent'            | _'neutral'_ | Group color                             |
+| **...BaseProps** | [See Base](../Base)              |             | Inherits all layout props from **Base** |
+
+---
+
+### <span id="inputprops"></span>**InputProps** _(inherited from input element)_
+
+| **Prop**                      | **Type**                   | **Description**                                                            |
+| ----------------------------- | -------------------------- | -------------------------------------------------------------------------- |
+| **wrapperProps**              | object                     | Props for input wrapper                                                    |
+| **clearBtnProps**             | object                     | Props for clear button                                                     |
+| **isClearable**               | boolean                    | Show clear button                                                          |
+| **floatingLabel**             | ReactNode                  | Floating label                                                             |
+| **onClear**                   | () => void                 | Callback when clear is clicked                                             |
+| **ActionBtn**                 | ReactNode                  | Action button on the right                                                 |
+| **isError**                   | boolean                    | Error state                                                                |
+| **errorMessage**              | string                     | Error message                                                              |
+| **leftIcon**                  | ReactNode                  | Left icon                                                                  |
+| **theme**                     | 'default' \| 'alternative' | Theme                                                                      |
+| **inputSize**                 | 'sm' \| 'md'               | Input size                                                                 |
+| ...and all native input props |                            | [See MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input) |
+
+> **_Note:_** _Checkbox_ **inherits** all props from **Input** and **input element**.
+
+---

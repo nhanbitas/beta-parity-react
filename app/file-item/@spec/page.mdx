@@ -1,7 +1,7 @@
 import { Badge } from 'beta-parity-react/ui/Badge';
 import Image from '@components/showcase/ImagePreview';
 import Component from '@components/showcase/CodePreview';
-import * as Demo from "../@dev/demo-components"
+import * as Demo from '../@dev/demo-components';
 
 {/* Image => Image Example */}
 {/* Component => Component Example */}
@@ -10,34 +10,68 @@ import * as Demo from "../@dev/demo-components"
 A component that organizes content into vertically stacked collapsible and expandable sections.
 :::
 
-
 ## Design checklist <span id="design-checklist"></span>
+
 {/* Design checklist specification */}
 
-| Status | Item                                 | Description                                                                                                                                                                                                                       |
-| ------ | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ✔️     | Anatomy                              | Includes descriptions of all parts of the component and its major variants.                                                                                                                                                       |
-| ✔️     | States                               | Includes all applicable interaction, display and value states.                                                                                                                                                                    |
-| ✔️     | Options                              | Includes all relevant options (functional type, stylistic kind, semantic color, size, orientation, optional iconography, decorations, etc.)                                                                                       |
-| ✔️     | Color schemes                        | Includes both light and dark color schemes.                                                                                                                                                                                       |
-|        | Behaviors                            | Includes descriptions of behaviors related to other components and responsive behaviors related to media breakpoints, size (minimums and maximums), orientation, alignment, position and layout (wrapping, truncation, overflow). |
+| Status | Item          | Description                                                                                                                                                                                                                       |
+| ------ | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ✔️     | Anatomy       | Includes descriptions of all parts of the component and its major variants.                                                                                                                                                       |
+| ✔️     | States        | Includes all applicable interaction, display and value states.                                                                                                                                                                    |
+| ✔️     | Options       | Includes all relevant options (functional type, stylistic kind, semantic color, size, orientation, optional iconography, decorations, etc.)                                                                                       |
+| ✔️     | Color schemes | Includes both light and dark color schemes.                                                                                                                                                                                       |
+|        | Behaviors     | Includes descriptions of behaviors related to other components and responsive behaviors related to media breakpoints, size (minimums and maximums), orientation, alignment, position and layout (wrapping, truncation, overflow). |
 
 ## Anatomy <span id="anatomy"></span>
+
 {/* Anatomy specification */}
 
 ## States <span id="states"></span>
+
 {/* States specification */}
 
 ## Options <span id="options"></span>
+
 {/* Options specification */}
 
 ## Behaviors <span id="behaviors"></span>
+
 {/* Behaviors specification */}
 
 ## Changelog <span id="changelog"></span>
+
 {/* Changelog specification */}
 
-| Date       | Type                                                        | Description                                                                                 | Author      | Associated issue(s)  |
-|:-----------|:------------------------------------------------------------|---------------------------------------------------------------------------------------------|:------------|:---------------------|
-| YYYY-MM-DD | <Badge size='sm' kind='glass' color='cyan' label="new"/>    | Initial design                                                                              | Oanh Nguyen | PAR-52               |
+| Date       | Type                                                     | Description    | Author      | Associated issue(s) |
+| :--------- | :------------------------------------------------------- | -------------- | :---------- | :------------------ |
+| YYYY-MM-DD | <Badge size='sm' kind='glass' color='cyan' label="new"/> | Initial design | Oanh Nguyen | PAR-52              |
 
+## 🎨 Design Tokens for FileItem
+
+| **Token**                         | **Color for**       | **State/Meaning**   | **CSS Selector(s)**                |
+| --------------------------------- | ------------------- | ------------------- | ---------------------------------- |
+| `--par-color-bg-fileitem-enabled` | FileItem background | Enabled/Default     | `.file-item`, `.file-item.loading` |
+| `--par-color-bg-fileitem-failed`  | FileItem background | Failed/Error        | `.file-item.error`                 |
+
+---
+
+_FileItem also inherits design tokens from the Input and Progress components. For a full list of available tokens, refer to the Input and Progress documentation._
+
+---
+
+## 🧩 FileItem API Reference
+
+### `<FileItem />`
+
+| **Prop**        | **Type**             | **Default** | **Description**                                 |
+| --------------- | -------------------- | ----------- | ----------------------------------------------- |
+| **file**        | File \| object       |             | File object or file data to display             |
+| **onRemove**    | function (file)      |             | Callback when remove is clicked                 |
+| **onDownload**  | function (file)      |             | Callback when download is clicked               |
+| **progress**    | number               |             | Upload/download progress (0-100)                |
+| **status**      | string               |             | File status (e.g. 'uploading', 'done', 'error') |
+| **...divProps** | HTMLDivElement props |             | All native div props (className, style, ...)    |
+
+> **_Note:_** _FileItem_ **inherits** all native props from **HTMLDivElement**.
+
+---

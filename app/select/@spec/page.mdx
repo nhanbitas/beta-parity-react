@@ -2,7 +2,7 @@ import { Badge } from 'beta-parity-react/ui/Badge';
 import Image from '@components/showcase/ImagePreview';
 import Component from '@components/showcase/CodePreview';
 import imageSrc from '@public/images/select';
-import * as Demo from "../@dev/demo-components"
+import * as Demo from '../@dev/demo-components';
 
 :::callout[note]
 A selection field that allows users to choose a single option or multiple options from a dropdown menu.
@@ -67,7 +67,6 @@ A selection field that allows users to choose a single option or multiple option
 <Image src={imageSrc.enabled.src} alt='enabled' />
 
 <Image src={imageSrc.enabled2.src} alt='enabled2' />
-
 
 ##### Hovered
 
@@ -138,7 +137,6 @@ This sub-component has the same states as [[Menu]].
 ### Clear button
 
 This sub-component has the same states as [[Button]].
-
 
 <Image src={imageSrc.clearButton.src} alt='clearButton' />
 
@@ -218,3 +216,50 @@ The dropdown menu sub-component inherits all available options of the [[Menu#Opt
 <Image src={imageSrc.tagOverflow.src} alt='tagOverflow' />
 
 > [!missing] Section is incomplete
+
+## 🎨 Design Tokens for Select
+
+| **Token**                              | **Color for**                | **State/Meaning**         | **CSS Selector(s)** |
+|---------------------------------------- | ---------------------------- | ------------------------- | ------------------- |
+| `--par-color-bg-field-enabled`          | Select field background      | Enabled                   | `.select:enabled` |
+| `--par-color-bg-field-hovered`          | Select field background      | Hovered                   | `.select:hover` |
+| `--par-color-bg-field-disabled`         | Select field background      | Disabled                  | `.select:disabled` |
+| `--par-color-bg-field-readonly`         | Select field background      | Readonly                  | `.select[readonly]` |
+| `--par-color-bg-field-invalid`          | Select field background      | Invalid/Error             | `.select.invalid` |
+| `--par-color-border-field-enabled`      | Select field border          | Enabled                   | `.select:enabled` |
+| `--par-color-border-field-hovered`      | Select field border          | Hovered                   | `.select:hover` |
+| `--par-color-border-field-disabled`     | Select field border          | Disabled                  | `.select:disabled` |
+| `--par-color-border-field-invalid`      | Select field border          | Invalid/Error             | `.select.invalid` |
+| `--par-color-border-field-focused`      | Select field border          | Focused                   | `.select:focus` |
+| `--par-color-text-field-placeholder`    | Placeholder text             | Any                       | `.select::placeholder` |
+| `--par-color-text-field-filled`         | Select field text            | Filled                    | `.select` |
+| `--par-color-text-field-label`          | Label text                   | Any                       | `.select-label` |
+| `--par-color-text-field-disabled`       | Select field text            | Disabled                  | `.select:disabled` |
+| `--par-color-text-field-readonly`       | Select field text            | Readonly                  | `.select[readonly]` |
+| `--par-color-text-field-invalid`        | Select field text            | Invalid/Error             | `.select.invalid` |
+| `--par-color-icon-field-button-enabled` | Icon color (button enabled)  | Enabled                   | `.select .icon-button:enabled` |
+| `--par-color-icon-field-button-hovered` | Icon color (button hovered)  | Hovered                   | `.select .icon-button:hover` |
+| `--par-color-icon-field-button-pressed` | Icon color (button pressed)  | Pressed                   | `.select .icon-button:active` |
+| `--par-color-icon-field-button-disabled`| Icon color (button disabled) | Disabled                  | `.select .icon-button:disabled` |
+
+> _Note: Select uses the same design tokens as the Input or Dropdown component. See Input/Dropdown documentation for available tokens._
+
+---
+
+## 🧩 Select API Reference
+
+### `<Select />`
+
+| **Prop**          | **Type**                  | **Default** | **Description**                   |
+| ----------------- | ------------------------- | ----------- | --------------------------------- |
+| **options**       | array                     |             | List of options                   |
+| **value**         | string \| number \| array |             | Selected value(s)                 |
+| **onChange**      | function (value)          |             | Callback when value changes       |
+| **multiple**      | boolean                   | _false_     | Allow multiple selection          |
+| **disabled**      | boolean                   | _false_     | Disable the select                |
+| **placeholder**   | string                    |             | Placeholder text                  |
+| **...InputProps** | [See Input](../BaseInput) |             | Inherits all props from **Input** |
+
+> **_Note:_** _Select_ **inherits** all props from **Input** and the native **input/select** element. See [Input documentation](../BaseInput) for full details on available props and tokens.
+
+---

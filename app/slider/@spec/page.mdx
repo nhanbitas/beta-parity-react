@@ -1,7 +1,7 @@
 import { Badge } from 'beta-parity-react/ui/Badge';
 import Image from '@components/showcase/ImagePreview';
 import Component from '@components/showcase/CodePreview';
-import * as Demo from "../@dev/demo-components"
+import * as Demo from '../@dev/demo-components';
 
 {/* Image => Image Example */}
 {/* Component => Component Example */}
@@ -10,34 +10,80 @@ import * as Demo from "../@dev/demo-components"
 A component that organizes content into vertically stacked collapsible and expandable sections.
 :::
 
-
 ## Design checklist <span id="design-checklist"></span>
+
 {/* Design checklist specification */}
 
-| Status | Item                                 | Description                                                                                                                                                                                                                       |
-| ------ | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ✔️     | Anatomy                              | Includes descriptions of all parts of the component and its major variants.                                                                                                                                                       |
-| ✔️     | States                               | Includes all applicable interaction, display and value states.                                                                                                                                                                    |
-| ✔️     | Options                              | Includes all relevant options (functional type, stylistic kind, semantic color, size, orientation, optional iconography, decorations, etc.)                                                                                       |
-| ✔️     | Color schemes                        | Includes both light and dark color schemes.                                                                                                                                                                                       |
-|        | Behaviors                            | Includes descriptions of behaviors related to other components and responsive behaviors related to media breakpoints, size (minimums and maximums), orientation, alignment, position and layout (wrapping, truncation, overflow). |
+| Status | Item          | Description                                                                                                                                                                                                                       |
+| ------ | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ✔️     | Anatomy       | Includes descriptions of all parts of the component and its major variants.                                                                                                                                                       |
+| ✔️     | States        | Includes all applicable interaction, display and value states.                                                                                                                                                                    |
+| ✔️     | Options       | Includes all relevant options (functional type, stylistic kind, semantic color, size, orientation, optional iconography, decorations, etc.)                                                                                       |
+| ✔️     | Color schemes | Includes both light and dark color schemes.                                                                                                                                                                                       |
+|        | Behaviors     | Includes descriptions of behaviors related to other components and responsive behaviors related to media breakpoints, size (minimums and maximums), orientation, alignment, position and layout (wrapping, truncation, overflow). |
 
 ## Anatomy <span id="anatomy"></span>
+
 {/* Anatomy specification */}
 
 ## States <span id="states"></span>
+
 {/* States specification */}
 
 ## Options <span id="options"></span>
+
 {/* Options specification */}
 
 ## Behaviors <span id="behaviors"></span>
+
 {/* Behaviors specification */}
 
 ## Changelog <span id="changelog"></span>
+
 {/* Changelog specification */}
 
-| Date       | Type                                                        | Description                                                                                 | Author      | Associated issue(s)  |
-|:-----------|:------------------------------------------------------------|---------------------------------------------------------------------------------------------|:------------|:---------------------|
-| YYYY-MM-DD | <Badge size='sm' kind='glass' color='cyan' label="new"/>    | Initial design                                                                              | Oanh Nguyen | PAR-52               |
+| Date       | Type                                                     | Description    | Author      | Associated issue(s) |
+| :--------- | :------------------------------------------------------- | -------------- | :---------- | :------------------ |
+| YYYY-MM-DD | <Badge size='sm' kind='glass' color='cyan' label="new"/> | Initial design | Oanh Nguyen | PAR-52              |
 
+## 🎨 Design Tokens for Slider
+
+| **Token**                              | **Color for**                | **State/Meaning**         | **CSS Selector(s)** |
+|---------------------------------------- | ---------------------------- | ------------------------- | ------------------- |
+| `--par-color-bg-slider-track`           | Slider track background      | Default/Enabled           | `.slider-track` |
+| `--par-color-bg-slider-bar`             | Slider bar fill              | Default/Enabled           | `.slider-bar` |
+| `--par-color-bg-slider-bar-disabled`    | Slider bar fill              | Disabled                  | `.slider-bar:disabled` |
+| `--par-color-bg-slider-bar-active`      | Slider bar fill              | Active/Dragging           | `.slider-bar.active` |
+| `--par-color-bg-slider-bar-error`       | Slider bar fill              | Error/Invalid             | `.slider-bar.error` |
+| `--par-color-thumb-slider`              | Slider thumb                 | Default/Enabled           | `.slider-thumb` |
+| `--par-color-thumb-slider-hovered`      | Slider thumb                 | Hovered                   | `.slider-thumb:hover` |
+| `--par-color-thumb-slider-disabled`     | Slider thumb                 | Disabled                  | `.slider-thumb:disabled` |
+| `--par-color-thumb-slider-active`       | Slider thumb                 | Active/Dragging           | `.slider-thumb.active` |
+| `--par-color-thumb-slider-error`        | Slider thumb                 | Error/Invalid             | `.slider-thumb.error` |
+| `--par-color-mark-slider`               | Slider mark                  | Default/Enabled           | `.slider-mark` |
+| `--par-color-mark-slider-active`        | Slider mark                  | Active/Selected           | `.slider-mark.active` |
+| `--par-color-label-slider`              | Slider label text            | Any                       | `.slider-label` |
+
+> _Note: Slider uses the same design tokens as the Progress or Input component. See Progress/Input documentation for available tokens._
+
+---
+
+## 🧩 Slider API Reference
+
+### `<Slider />`
+
+| **Prop**        | **Type**             | **Default** | **Description**                              |
+| --------------- | -------------------- | ----------- | -------------------------------------------- |
+| **value**       | number \| number[]   |             | Current value                                |
+| **min**         | number               | _0_         | Minimum value                                |
+| **max**         | number               | _100_       | Maximum value                                |
+| **step**        | number               | _1_         | Step increment                               |
+| **onChange**    | function (value)     |             | Callback when value changes                  |
+| **disabled**    | boolean              | _false_     | Disable the slider                           |
+| **vertical**    | boolean              | _false_     | Vertical orientation                         |
+| **marks**       | object               |             | Mark points on the slider                    |
+| **...divProps** | HTMLDivElement props |             | All native div props (className, style, ...) |
+
+> **_Note:_** _Slider_ **inherits** all native props from **HTMLDivElement**.
+
+---

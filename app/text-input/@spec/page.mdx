@@ -2,7 +2,7 @@ import { Badge } from 'beta-parity-react/ui/Badge';
 import Image from '@components/showcase/ImagePreview';
 import Component from '@components/showcase/CodePreview';
 import imageSrc from '@public/images/text-input';
-import * as Demo from "../@dev/demo-components"
+import * as Demo from '../@dev/demo-components';
 
 :::callout[note]
 A basic input field for entering text.
@@ -37,13 +37,13 @@ A basic input field for entering text.
 - Input value: The value entered by the user.
 - Clear button: An optional button that clears the input value.
 
-<Image src={imageSrc.anatomy.src} alt='anatomy'/>
+<Image src={imageSrc.anatomy.src} alt='anatomy' />
 
 ### Floating label
 
 - Label: A text label that transitions from an in-field placeholder to a label above the field when focused or filled.
 
-<Image src={imageSrc.anatomy2.src} alt='anatomy2'/>
+<Image src={imageSrc.anatomy2.src} alt='anatomy2' />
 
 ## States
 
@@ -55,36 +55,36 @@ A basic input field for entering text.
 
 - Interaction with the input field is available.
 
-<Image src={imageSrc.enabled.src} alt='enabled'/>
-<Image src={imageSrc.enabled2.src} alt='enabled2'/>
+<Image src={imageSrc.enabled.src} alt='enabled' />
+<Image src={imageSrc.enabled2.src} alt='enabled2' />
 
 ##### Hovered
 
 - The cursor is currently positioned over the input field, indicated by the text cursor and a slightly different border color.
 
-<Image src={imageSrc.hovered.src} alt='hovered'/>
-<Image src={imageSrc.hovered2.src} alt='hovered2'/>
+<Image src={imageSrc.hovered.src} alt='hovered' />
+<Image src={imageSrc.hovered2.src} alt='hovered2' />
 
 ##### Focused
 
 - The input field is focused via keyboard or mouse interaction, indicated by a thickened border.
 
-<Image src={imageSrc.focused.src} alt='focused'/>
-<Image src={imageSrc.focused2.src} alt='focused2'/>
+<Image src={imageSrc.focused.src} alt='focused' />
+<Image src={imageSrc.focused2.src} alt='focused2' />
 
 ##### Read-only
 
 - The input field is not editable, but its content can still be selected.
 
-<Image src={imageSrc.readonly.src} alt='readonly'/>
-<Image src={imageSrc.readonly2.src} alt='readonly2'/>
+<Image src={imageSrc.readonly.src} alt='readonly' />
+<Image src={imageSrc.readonly2.src} alt='readonly2' />
 
 ##### Disabled
 
 - Interaction with the input field is disallowed, indicated by a muted appearance.
 
-<Image src={imageSrc.disabled.src} alt='disabled'/>
-<Image src={imageSrc.disabled2.src} alt='disabled2'/>
+<Image src={imageSrc.disabled.src} alt='disabled' />
+<Image src={imageSrc.disabled2.src} alt='disabled2' />
 
 #### Value states
 
@@ -92,26 +92,25 @@ A basic input field for entering text.
 
 - The field does not contain any input value.
 
-
 ##### Filled
 
 - The field contains some input value.
 
-<Image src={imageSrc.enabled.src} alt='enabled'/>
+<Image src={imageSrc.enabled.src} alt='enabled' />
 
 ##### Invalid
 
 - The input value does not meet specified criteria, indicated by a red border color and an error message.
 
-<Image src={imageSrc.invalid.src} alt='invalid'/>
-<Image src={imageSrc.invalid2.src} alt='invalid2'/>
+<Image src={imageSrc.invalid.src} alt='invalid' />
+<Image src={imageSrc.invalid2.src} alt='invalid2' />
 
 ### Clear button
 
 This sub-component has the same states as [[Button]].
 
-<Image src={imageSrc.clearButton.src} alt='clearButton'/>
-<Image src={imageSrc.clearButton2.src} alt='clearButton2'/>
+<Image src={imageSrc.clearButton.src} alt='clearButton' />
+<Image src={imageSrc.clearButton2.src} alt='clearButton2' />
 
 ## Options
 
@@ -159,3 +158,48 @@ This sub-component has the same states as [[Button]].
 ## Behaviors
 
 > [!missing] Section is incomplete
+
+## 🎨 Design Tokens for TextInput
+
+| **Token**                              | **Color for**                | **State/Meaning**         | **CSS Selector(s)** |
+|---------------------------------------- | ---------------------------- | ------------------------- | ------------------- |
+| `--par-color-bg-field-enabled`          | Text input background        | Enabled                   | `.text-input:enabled` |
+| `--par-color-bg-field-hovered`          | Text input background        | Hovered                   | `.text-input:hover` |
+| `--par-color-bg-field-disabled`         | Text input background        | Disabled                  | `.text-input:disabled` |
+| `--par-color-bg-field-readonly`         | Text input background        | Readonly                  | `.text-input[readonly]` |
+| `--par-color-bg-field-invalid`          | Text input background        | Invalid/Error             | `.text-input.invalid` |
+| `--par-color-border-field-enabled`      | Text input border            | Enabled                   | `.text-input:enabled` |
+| `--par-color-border-field-hovered`      | Text input border            | Hovered                   | `.text-input:hover` |
+| `--par-color-border-field-disabled`     | Text input border            | Disabled                  | `.text-input:disabled` |
+| `--par-color-border-field-invalid`      | Text input border            | Invalid/Error             | `.text-input.invalid` |
+| `--par-color-border-field-focused`      | Text input border            | Focused                   | `.text-input:focus` |
+| `--par-color-text-field-placeholder`    | Placeholder text             | Any                       | `.text-input::placeholder` |
+| `--par-color-text-field-filled`         | Text input text              | Filled                    | `.text-input` |
+| `--par-color-text-field-label`          | Label text                   | Any                       | `.text-input-label` |
+| `--par-color-text-field-disabled`       | Text input text              | Disabled                  | `.text-input:disabled` |
+| `--par-color-text-field-readonly`       | Text input text              | Readonly                  | `.text-input[readonly]` |
+| `--par-color-text-field-invalid`        | Text input text              | Invalid/Error             | `.text-input.invalid` |
+| `--par-color-icon-field-button-enabled` | Icon color (button enabled)  | Enabled                   | `.text-input .icon-button:enabled` |
+| `--par-color-icon-field-button-hovered` | Icon color (button hovered)  | Hovered                   | `.text-input .icon-button:hover` |
+| `--par-color-icon-field-button-pressed` | Icon color (button pressed)  | Pressed                   | `.text-input .icon-button:active` |
+| `--par-color-icon-field-button-disabled`| Icon color (button disabled) | Disabled                  | `.text-input .icon-button:disabled` |
+
+> _Note: TextInput uses the same design tokens as the Input component. See Input documentation for available tokens._
+
+---
+
+## 🧩 TextInput API Reference
+
+### `<TextInput />`
+
+| **Prop**          | **Type**                  | **Default** | **Description**                          |
+| ----------------- | ------------------------- | ----------- | ---------------------------------------- |
+| **type**          | string                    | _'text'_    | Input type (always 'text' for TextInput) |
+| **onChange**      | function (event)          |             | Callback when value changes              |
+| **value**         | string                    |             | Controlled value                         |
+| **placeholder**   | string                    |             | Placeholder text                         |
+| **...InputProps** | [See Input](../BaseInput) |             | Inherits all props from **Input**        |
+
+> **_Note:_** _TextInput_ **inherits** all props from **Input** and the native **input** element. See [Input documentation](../BaseInput) for full details on available props and tokens.
+
+---

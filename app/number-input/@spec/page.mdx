@@ -1,7 +1,7 @@
 import { Badge } from 'beta-parity-react/ui/Badge';
 import Image from '@components/showcase/ImagePreview';
 import Component from '@components/showcase/CodePreview';
-import * as Demo from "../@dev/demo-components"
+import * as Demo from '../@dev/demo-components';
 
 {/* Image => Image Example */}
 {/* Component => Component Example */}
@@ -10,34 +10,84 @@ import * as Demo from "../@dev/demo-components"
 A component that organizes content into vertically stacked collapsible and expandable sections.
 :::
 
-
 ## Design checklist <span id="design-checklist"></span>
+
 {/* Design checklist specification */}
 
-| Status | Item                                 | Description                                                                                                                                                                                                                       |
-| ------ | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ✔️     | Anatomy                              | Includes descriptions of all parts of the component and its major variants.                                                                                                                                                       |
-| ✔️     | States                               | Includes all applicable interaction, display and value states.                                                                                                                                                                    |
-| ✔️     | Options                              | Includes all relevant options (functional type, stylistic kind, semantic color, size, orientation, optional iconography, decorations, etc.)                                                                                       |
-| ✔️     | Color schemes                        | Includes both light and dark color schemes.                                                                                                                                                                                       |
-|        | Behaviors                            | Includes descriptions of behaviors related to other components and responsive behaviors related to media breakpoints, size (minimums and maximums), orientation, alignment, position and layout (wrapping, truncation, overflow). |
+| Status | Item          | Description                                                                                                                                                                                                                       |
+| ------ | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ✔️     | Anatomy       | Includes descriptions of all parts of the component and its major variants.                                                                                                                                                       |
+| ✔️     | States        | Includes all applicable interaction, display and value states.                                                                                                                                                                    |
+| ✔️     | Options       | Includes all relevant options (functional type, stylistic kind, semantic color, size, orientation, optional iconography, decorations, etc.)                                                                                       |
+| ✔️     | Color schemes | Includes both light and dark color schemes.                                                                                                                                                                                       |
+|        | Behaviors     | Includes descriptions of behaviors related to other components and responsive behaviors related to media breakpoints, size (minimums and maximums), orientation, alignment, position and layout (wrapping, truncation, overflow). |
 
 ## Anatomy <span id="anatomy"></span>
+
 {/* Anatomy specification */}
 
 ## States <span id="states"></span>
+
 {/* States specification */}
 
 ## Options <span id="options"></span>
+
 {/* Options specification */}
 
 ## Behaviors <span id="behaviors"></span>
+
 {/* Behaviors specification */}
 
 ## Changelog <span id="changelog"></span>
+
 {/* Changelog specification */}
 
-| Date       | Type                                                        | Description                                                                                 | Author      | Associated issue(s)  |
-|:-----------|:------------------------------------------------------------|---------------------------------------------------------------------------------------------|:------------|:---------------------|
-| YYYY-MM-DD | <Badge size='sm' kind='glass' color='cyan' label="new"/>    | Initial design                                                                              | Oanh Nguyen | PAR-52               |
+| Date       | Type                                                     | Description    | Author      | Associated issue(s) |
+| :--------- | :------------------------------------------------------- | -------------- | :---------- | :------------------ |
+| YYYY-MM-DD | <Badge size='sm' kind='glass' color='cyan' label="new"/> | Initial design | Oanh Nguyen | PAR-52              |
 
+## 🎨 Design Tokens for NumberInput
+
+| **Token**                              | **Color for**                | **State/Meaning**         | **CSS Selector(s)** |
+|---------------------------------------- | ---------------------------- | ------------------------- | ------------------- |
+| `--par-color-bg-field-enabled`          | Input background             | Enabled                   | `.number-input:enabled` |
+| `--par-color-bg-field-hovered`          | Input background             | Hovered                   | `.number-input:hover` |
+| `--par-color-bg-field-disabled`         | Input background             | Disabled                  | `.number-input:disabled` |
+| `--par-color-bg-field-readonly`         | Input background             | Readonly                  | `.number-input[readonly]` |
+| `--par-color-bg-field-invalid`          | Input background             | Invalid/Error             | `.number-input.invalid` |
+| `--par-color-border-field-enabled`      | Input border                 | Enabled                   | `.number-input:enabled` |
+| `--par-color-border-field-hovered`      | Input border                 | Hovered                   | `.number-input:hover` |
+| `--par-color-border-field-disabled`     | Input border                 | Disabled                  | `.number-input:disabled` |
+| `--par-color-border-field-invalid`      | Input border                 | Invalid/Error             | `.number-input.invalid` |
+| `--par-color-border-field-focused`      | Input border                 | Focused                   | `.number-input:focus` |
+| `--par-color-text-field-placeholder`    | Placeholder text             | Any                       | `.number-input::placeholder` |
+| `--par-color-text-field-filled`         | Input text                   | Filled                    | `.number-input` |
+| `--par-color-text-field-label`          | Label text                   | Any                       | `.number-input-label` |
+| `--par-color-text-field-disabled`       | Input text                   | Disabled                  | `.number-input:disabled` |
+| `--par-color-text-field-readonly`       | Input text                   | Readonly                  | `.number-input[readonly]` |
+| `--par-color-text-field-invalid`        | Input text                   | Invalid/Error             | `.number-input.invalid` |
+| `--par-color-icon-field-button-enabled` | Icon color (button enabled)  | Enabled                   | `.number-input .icon-button:enabled` |
+| `--par-color-icon-field-button-hovered` | Icon color (button hovered)  | Hovered                   | `.number-input .icon-button:hover` |
+| `--par-color-icon-field-button-pressed` | Icon color (button pressed)  | Pressed                   | `.number-input .icon-button:active` |
+| `--par-color-icon-field-button-disabled`| Icon color (button disabled) | Disabled                  | `.number-input .icon-button:disabled` |
+
+> _Note: NumberInput uses the same design tokens as the Input component. See Input documentation for available tokens._
+
+---
+
+## 🧩 NumberInput API Reference
+
+### `<NumberInput />`
+
+| **Prop**          | **Type**                  | **Default** | **Description**                              |
+| ----------------- | ------------------------- | ----------- | -------------------------------------------- |
+| **type**          | string                    | _'number'_  | Input type (always 'number' for NumberInput) |
+| **min**           | number                    |             | Minimum value                                |
+| **max**           | number                    |             | Maximum value                                |
+| **step**          | number                    | _1_         | Step increment                               |
+| **onChange**      | function (event)          |             | Callback when value changes                  |
+| **...InputProps** | [See Input](../BaseInput) |             | Inherits all props from **Input**            |
+
+> **_Note:_** _NumberInput_ **inherits** all props from **Input** and the native **input** element. See [Input documentation](../BaseInput) for full details on available props and tokens.
+
+---

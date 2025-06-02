@@ -1,7 +1,7 @@
 import { Badge } from 'beta-parity-react/ui/Badge';
 import Image from '@components/showcase/ImagePreview';
 import Component from '@components/showcase/CodePreview';
-import * as Demo from "../@dev/demo-components"
+import * as Demo from '../@dev/demo-components';
 
 {/* Image => Image Example */}
 {/* Component => Component Example */}
@@ -10,34 +10,73 @@ import * as Demo from "../@dev/demo-components"
 A component that organizes content into vertically stacked collapsible and expandable sections.
 :::
 
-
 ## Design checklist <span id="design-checklist"></span>
+
 {/* Design checklist specification */}
 
-| Status | Item                                 | Description                                                                                                                                                                                                                       |
-| ------ | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ✔️     | Anatomy                              | Includes descriptions of all parts of the component and its major variants.                                                                                                                                                       |
-| ✔️     | States                               | Includes all applicable interaction, display and value states.                                                                                                                                                                    |
-| ✔️     | Options                              | Includes all relevant options (functional type, stylistic kind, semantic color, size, orientation, optional iconography, decorations, etc.)                                                                                       |
-| ✔️     | Color schemes                        | Includes both light and dark color schemes.                                                                                                                                                                                       |
-|        | Behaviors                            | Includes descriptions of behaviors related to other components and responsive behaviors related to media breakpoints, size (minimums and maximums), orientation, alignment, position and layout (wrapping, truncation, overflow). |
+| Status | Item          | Description                                                                                                                                                                                                                       |
+| ------ | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ✔️     | Anatomy       | Includes descriptions of all parts of the component and its major variants.                                                                                                                                                       |
+| ✔️     | States        | Includes all applicable interaction, display and value states.                                                                                                                                                                    |
+| ✔️     | Options       | Includes all relevant options (functional type, stylistic kind, semantic color, size, orientation, optional iconography, decorations, etc.)                                                                                       |
+| ✔️     | Color schemes | Includes both light and dark color schemes.                                                                                                                                                                                       |
+|        | Behaviors     | Includes descriptions of behaviors related to other components and responsive behaviors related to media breakpoints, size (minimums and maximums), orientation, alignment, position and layout (wrapping, truncation, overflow). |
 
 ## Anatomy <span id="anatomy"></span>
+
 {/* Anatomy specification */}
 
 ## States <span id="states"></span>
+
 {/* States specification */}
 
 ## Options <span id="options"></span>
+
 {/* Options specification */}
 
 ## Behaviors <span id="behaviors"></span>
+
 {/* Behaviors specification */}
 
 ## Changelog <span id="changelog"></span>
+
 {/* Changelog specification */}
 
-| Date       | Type                                                        | Description                                                                                 | Author      | Associated issue(s)  |
-|:-----------|:------------------------------------------------------------|---------------------------------------------------------------------------------------------|:------------|:---------------------|
-| YYYY-MM-DD | <Badge size='sm' kind='glass' color='cyan' label="new"/>    | Initial design                                                                              | Oanh Nguyen | PAR-52               |
+| Date       | Type                                                     | Description    | Author      | Associated issue(s) |
+| :--------- | :------------------------------------------------------- | -------------- | :---------- | :------------------ |
+| YYYY-MM-DD | <Badge size='sm' kind='glass' color='cyan' label="new"/> | Initial design | Oanh Nguyen | PAR-52              |
 
+## 🎨 Design Tokens for TreeNavigation
+
+| **Token**                              | **Color for**                | **State/Meaning**         | **CSS Selector(s)** |
+|---------------------------------------- | ---------------------------- | ------------------------- | ------------------- |
+| `--par-color-bg-tree`                   | Tree background              | Default/Enabled           | `.tree-navigation` |
+| `--par-color-bg-tree-item-hovered`      | Tree item background         | Hovered                   | `.tree-item:hover` |
+| `--par-color-bg-tree-item-selected`     | Tree item background         | Selected                  | `.tree-item.selected` |
+| `--par-color-bg-tree-item-disabled`     | Tree item background         | Disabled                  | `.tree-item:disabled` |
+| `--par-color-border-tree`               | Tree border                  | Any                       | `.tree-navigation, .tree-item` |
+| `--par-color-text-tree-item`            | Tree item text               | Default/Enabled           | `.tree-item` |
+| `--par-color-text-tree-item-selected`   | Tree item text               | Selected                  | `.tree-item.selected` |
+| `--par-color-text-tree-item-disabled`   | Tree item text               | Disabled                  | `.tree-item:disabled` |
+| `--par-color-icon-tree-item`            | Tree item icon               | Any                       | `.tree-item .icon` |
+
+> _Note: TreeNavigation uses the same design tokens as the List or Navigation component. See List/Navigation documentation for available tokens._
+
+---
+
+## 🧩 TreeNavigation API Reference
+
+### `<TreeNavigation />`
+
+| **Prop**        | **Type**             | **Default** | **Description**                              |
+| --------------- | -------------------- | ----------- | -------------------------------------------- |
+| **data**        | array                |             | Tree data structure                          |
+| **onSelect**    | function (key)       |             | Callback when node is selected               |
+| **selectedKey** | string \| number     |             | Currently selected key                       |
+| **expandAll**   | boolean              | _false_     | Expand all nodes by default                  |
+| **renderNode**  | function (node)      |             | Custom node renderer                         |
+| **...divProps** | HTMLDivElement props |             | All native div props (className, style, ...) |
+
+> **_Note:_** _TreeNavigation_ **inherits** all native props from **HTMLDivElement**.
+
+---

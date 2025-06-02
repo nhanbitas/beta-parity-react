@@ -1,7 +1,7 @@
 import { Badge } from 'beta-parity-react/ui/Badge';
 import Image from '@components/showcase/ImagePreview';
 import Component from '@components/showcase/CodePreview';
-import * as Demo from "../@dev/demo-components"
+import * as Demo from '../@dev/demo-components';
 
 {/* Image => Image Example */}
 {/* Component => Component Example */}
@@ -10,34 +10,83 @@ import * as Demo from "../@dev/demo-components"
 A component that organizes content into vertically stacked collapsible and expandable sections.
 :::
 
-
 ## Design checklist <span id="design-checklist"></span>
+
 {/* Design checklist specification */}
 
-| Status | Item                                 | Description                                                                                                                                                                                                                       |
-| ------ | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ✔️     | Anatomy                              | Includes descriptions of all parts of the component and its major variants.                                                                                                                                                       |
-| ✔️     | States                               | Includes all applicable interaction, display and value states.                                                                                                                                                                    |
-| ✔️     | Options                              | Includes all relevant options (functional type, stylistic kind, semantic color, size, orientation, optional iconography, decorations, etc.)                                                                                       |
-| ✔️     | Color schemes                        | Includes both light and dark color schemes.                                                                                                                                                                                       |
-|        | Behaviors                            | Includes descriptions of behaviors related to other components and responsive behaviors related to media breakpoints, size (minimums and maximums), orientation, alignment, position and layout (wrapping, truncation, overflow). |
+| Status | Item          | Description                                                                                                                                                                                                                       |
+| ------ | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ✔️     | Anatomy       | Includes descriptions of all parts of the component and its major variants.                                                                                                                                                       |
+| ✔️     | States        | Includes all applicable interaction, display and value states.                                                                                                                                                                    |
+| ✔️     | Options       | Includes all relevant options (functional type, stylistic kind, semantic color, size, orientation, optional iconography, decorations, etc.)                                                                                       |
+| ✔️     | Color schemes | Includes both light and dark color schemes.                                                                                                                                                                                       |
+|        | Behaviors     | Includes descriptions of behaviors related to other components and responsive behaviors related to media breakpoints, size (minimums and maximums), orientation, alignment, position and layout (wrapping, truncation, overflow). |
 
 ## Anatomy <span id="anatomy"></span>
+
 {/* Anatomy specification */}
 
 ## States <span id="states"></span>
+
 {/* States specification */}
 
 ## Options <span id="options"></span>
+
 {/* Options specification */}
 
 ## Behaviors <span id="behaviors"></span>
+
 {/* Behaviors specification */}
 
 ## Changelog <span id="changelog"></span>
+
 {/* Changelog specification */}
 
-| Date       | Type                                                        | Description                                                                                 | Author      | Associated issue(s)  |
-|:-----------|:------------------------------------------------------------|---------------------------------------------------------------------------------------------|:------------|:---------------------|
-| YYYY-MM-DD | <Badge size='sm' kind='glass' color='cyan' label="new"/>    | Initial design                                                                              | Oanh Nguyen | PAR-52               |
+| Date       | Type                                                     | Description    | Author      | Associated issue(s) |
+| :--------- | :------------------------------------------------------- | -------------- | :---------- | :------------------ |
+| YYYY-MM-DD | <Badge size='sm' kind='glass' color='cyan' label="new"/> | Initial design | Oanh Nguyen | PAR-52              |
 
+## 🎨 Design Tokens for Textarea
+
+| **Token**                              | **Color for**                | **State/Meaning**         | **CSS Selector(s)** |
+|---------------------------------------- | ---------------------------- | ------------------------- | ------------------- |
+| `--par-color-bg-field-enabled`          | Textarea background          | Enabled                   | `.textarea:enabled` |
+| `--par-color-bg-field-hovered`          | Textarea background          | Hovered                   | `.textarea:hover` |
+| `--par-color-bg-field-disabled`         | Textarea background          | Disabled                  | `.textarea:disabled` |
+| `--par-color-bg-field-readonly`         | Textarea background          | Readonly                  | `.textarea[readonly]` |
+| `--par-color-bg-field-invalid`          | Textarea background          | Invalid/Error             | `.textarea.invalid` |
+| `--par-color-border-field-enabled`      | Textarea border              | Enabled                   | `.textarea:enabled` |
+| `--par-color-border-field-hovered`      | Textarea border              | Hovered                   | `.textarea:hover` |
+| `--par-color-border-field-disabled`     | Textarea border              | Disabled                  | `.textarea:disabled` |
+| `--par-color-border-field-invalid`      | Textarea border              | Invalid/Error             | `.textarea.invalid` |
+| `--par-color-border-field-focused`      | Textarea border              | Focused                   | `.textarea:focus` |
+| `--par-color-text-field-placeholder`    | Placeholder text             | Any                       | `.textarea::placeholder` |
+| `--par-color-text-field-filled`         | Textarea text                | Filled                    | `.textarea` |
+| `--par-color-text-field-label`          | Label text                   | Any                       | `.textarea-label` |
+| `--par-color-text-field-disabled`       | Textarea text                | Disabled                  | `.textarea:disabled` |
+| `--par-color-text-field-readonly`       | Textarea text                | Readonly                  | `.textarea[readonly]` |
+| `--par-color-text-field-invalid`        | Textarea text                | Invalid/Error             | `.textarea.invalid` |
+| `--par-color-icon-field-button-enabled` | Icon color (button enabled)  | Enabled                   | `.textarea .icon-button:enabled` |
+| `--par-color-icon-field-button-hovered` | Icon color (button hovered)  | Hovered                   | `.textarea .icon-button:hover` |
+| `--par-color-icon-field-button-pressed` | Icon color (button pressed)  | Pressed                   | `.textarea .icon-button:active` |
+| `--par-color-icon-field-button-disabled`| Icon color (button disabled) | Disabled                  | `.textarea .icon-button:disabled` |
+
+> _Note: Textarea uses the same design tokens as the Input component. See Input documentation for available tokens._
+
+---
+
+## 🧩 Textarea API Reference
+
+### `<Textarea />`
+
+| **Prop**          | **Type**                  | **Default** | **Description**                   |
+| ----------------- | ------------------------- | ----------- | --------------------------------- |
+| **onChange**      | function (event)          |             | Callback when value changes       |
+| **value**         | string                    |             | Controlled value                  |
+| **placeholder**   | string                    |             | Placeholder text                  |
+| **rows**          | number                    |             | Number of visible text lines      |
+| **...InputProps** | [See Input](../BaseInput) |             | Inherits all props from **Input** |
+
+> **_Note:_** _Textarea_ **inherits** all props from **Input** and the native **textarea** element. See [Input documentation](../BaseInput) for full details on available props and tokens.
+
+---

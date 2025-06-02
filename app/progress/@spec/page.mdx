@@ -1,7 +1,7 @@
 import { Badge } from 'beta-parity-react/ui/Badge';
 import Image from '@components/showcase/ImagePreview';
 import Component from '@components/showcase/CodePreview';
-import * as Demo from "../@dev/demo-components"
+import * as Demo from '../@dev/demo-components';
 
 {/* Image => Image Example */}
 {/* Component => Component Example */}
@@ -10,34 +10,72 @@ import * as Demo from "../@dev/demo-components"
 A component that organizes content into vertically stacked collapsible and expandable sections.
 :::
 
-
 ## Design checklist <span id="design-checklist"></span>
+
 {/* Design checklist specification */}
 
-| Status | Item                                 | Description                                                                                                                                                                                                                       |
-| ------ | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ✔️     | Anatomy                              | Includes descriptions of all parts of the component and its major variants.                                                                                                                                                       |
-| ✔️     | States                               | Includes all applicable interaction, display and value states.                                                                                                                                                                    |
-| ✔️     | Options                              | Includes all relevant options (functional type, stylistic kind, semantic color, size, orientation, optional iconography, decorations, etc.)                                                                                       |
-| ✔️     | Color schemes                        | Includes both light and dark color schemes.                                                                                                                                                                                       |
-|        | Behaviors                            | Includes descriptions of behaviors related to other components and responsive behaviors related to media breakpoints, size (minimums and maximums), orientation, alignment, position and layout (wrapping, truncation, overflow). |
+| Status | Item          | Description                                                                                                                                                                                                                       |
+| ------ | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ✔️     | Anatomy       | Includes descriptions of all parts of the component and its major variants.                                                                                                                                                       |
+| ✔️     | States        | Includes all applicable interaction, display and value states.                                                                                                                                                                    |
+| ✔️     | Options       | Includes all relevant options (functional type, stylistic kind, semantic color, size, orientation, optional iconography, decorations, etc.)                                                                                       |
+| ✔️     | Color schemes | Includes both light and dark color schemes.                                                                                                                                                                                       |
+|        | Behaviors     | Includes descriptions of behaviors related to other components and responsive behaviors related to media breakpoints, size (minimums and maximums), orientation, alignment, position and layout (wrapping, truncation, overflow). |
 
 ## Anatomy <span id="anatomy"></span>
+
 {/* Anatomy specification */}
 
 ## States <span id="states"></span>
+
 {/* States specification */}
 
 ## Options <span id="options"></span>
+
 {/* Options specification */}
 
 ## Behaviors <span id="behaviors"></span>
+
 {/* Behaviors specification */}
 
 ## Changelog <span id="changelog"></span>
+
 {/* Changelog specification */}
 
-| Date       | Type                                                        | Description                                                                                 | Author      | Associated issue(s)  |
-|:-----------|:------------------------------------------------------------|---------------------------------------------------------------------------------------------|:------------|:---------------------|
-| YYYY-MM-DD | <Badge size='sm' kind='glass' color='cyan' label="new"/>    | Initial design                                                                              | Oanh Nguyen | PAR-52               |
+| Date       | Type                                                     | Description    | Author      | Associated issue(s) |
+| :--------- | :------------------------------------------------------- | -------------- | :---------- | :------------------ |
+| YYYY-MM-DD | <Badge size='sm' kind='glass' color='cyan' label="new"/> | Initial design | Oanh Nguyen | PAR-52              |
 
+## 🎨 Design Tokens for Progress
+
+| **Token**                              | **Color for**                | **State/Meaning**         | **CSS Selector(s)** |
+|---------------------------------------- | ---------------------------- | ------------------------- | ------------------- |
+| `--par-color-bg-progress-track`         | Progress track background     | Default/Enabled           | `.progress-track` |
+| `--par-color-bg-progress-bar`           | Progress bar fill             | Default/Enabled           | `.progress-bar` |
+| `--par-color-bg-progress-bar-indeterminate` | Progress bar fill           | Indeterminate             | `.progress-bar.indeterminate` |
+| `--par-color-bg-progress-bar-success`   | Progress bar fill             | Success/Complete          | `.progress-bar.success` |
+| `--par-color-bg-progress-bar-error`     | Progress bar fill             | Error/Failed              | `.progress-bar.error` |
+| `--par-color-text-progress-label`       | Progress label text           | Any                       | `.progress-label` |
+
+> _Note: Progress uses the same design tokens as the Slider or Bar component. See Slider/Bar documentation for available tokens._
+
+---
+
+## 🧩 Progress API Reference
+
+### `<Progress />`
+
+| **Prop**        | **Type**             | **Default** | **Description**                              |
+| --------------- | -------------------- | ----------- | -------------------------------------------- |
+| **value**       | number               |             | Current progress value                       |
+| **max**         | number               | _100_       | Maximum value                                |
+| **min**         | number               | _0_         | Minimum value                                |
+| **label**       | string \| ReactNode  |             | Optional label                               |
+| **showLabel**   | boolean              | _false_     | Show label                                   |
+| **size**        | 'sm' \| 'md' \| 'lg' | _'md'_      | Progress bar size                            |
+| **color**       | string               |             | Progress bar color                           |
+| **...divProps** | HTMLDivElement props |             | All native div props (className, style, ...) |
+
+> **_Note:_** _Progress_ **inherits** all native props from **HTMLDivElement**.
+
+---
