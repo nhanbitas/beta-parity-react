@@ -24,19 +24,38 @@ A component that organizes content into vertically stacked collapsible and expan
 
 ## Anatomy <span id="anatomy"></span>
 
-{/* Anatomy specification */}
+- **Radio**: The main input element (`input.par-radio`)
+- **Radio icon**: Visual indicator (`.radio-icon`)
+- **Label**: Main label (`.input-label`)
+- **Sublabel**: Optional sublabel (`.input-sublabel`)
+- **Wrapper**: Container (`.radio-wrapper`)
+- **Group**: For grouped radios (`.radio-group`)
 
 ## States <span id="states"></span>
 
-{/* States specification */}
+- **Default**: Unchecked, enabled
+- **Checked**: Selected state
+- **Hovered**: Mouse over
+- **Focused**: Keyboard or mouse focus
+- **Disabled**: Not interactive
+- **Error**: Invalid/error state
 
 ## Options <span id="options"></span>
 
-{/* Options specification */}
+- **color**: 'neutral' | 'accent'
+- **label**: string | ReactNode
+- **sublabel**: string | ReactNode
+- **disabled**: boolean
+- **radioWrapperProps**: any
+- **All InputProps**: Inherits all props from Input
 
 ## Behaviors <span id="behaviors"></span>
 
-{/* Behaviors specification */}
+- **Keyboard**: Fully accessible via Tab, Space/Enter to toggle
+- **Group**: Only one radio in a group can be selected
+- **Focus ring**: Visible on keyboard focus
+- **Animation**: SVG icon animates on check/uncheck
+- **ARIA**: Uses appropriate ARIA attributes for accessibility
 
 ## Changelog <span id="changelog"></span>
 
@@ -44,25 +63,25 @@ A component that organizes content into vertically stacked collapsible and expan
 
 | Date       | Type                                                     | Description    | Author      | Associated issue(s) |
 | :--------- | :------------------------------------------------------- | -------------- | :---------- | :------------------ |
-| YYYY-MM-DD | <Badge size='sm' kind='glass' color='cyan' label="new"/> | Initial design | Oanh Nguyen | PAR-52              |
+| 2025-06-03 | <Badge size='sm' kind='glass' color='cyan' label="new"/> | Initial design | Oanh Nguyen | PAR-52              |
 
 ## 🎨 Design Tokens for Radio
 
-| **Token**                              | **Color for**                | **State/Meaning**         | **CSS Selector(s)** |
-|---------------------------------------- | ---------------------------- | ------------------------- | ------------------- |
-| `--par-color-bg-radio-enabled`          | Radio background             | Enabled                   | `.radio:enabled` |
-| `--par-color-bg-radio-hovered`          | Radio background             | Hovered                   | `.radio:hover` |
-| `--par-color-bg-radio-disabled`         | Radio background             | Disabled                  | `.radio:disabled` |
-| `--par-color-bg-radio-checked`          | Radio background             | Checked                   | `.radio:checked` |
-| `--par-color-bg-radio-invalid`          | Radio background             | Invalid/Error             | `.radio.invalid` |
-| `--par-color-border-radio-enabled`      | Radio border                 | Enabled                   | `.radio:enabled` |
-| `--par-color-border-radio-hovered`      | Radio border                 | Hovered                   | `.radio:hover` |
-| `--par-color-border-radio-disabled`     | Radio border                 | Disabled                  | `.radio:disabled` |
-| `--par-color-border-radio-checked`      | Radio border                 | Checked                   | `.radio:checked` |
-| `--par-color-border-radio-invalid`      | Radio border                 | Invalid/Error             | `.radio.invalid` |
-| `--par-color-icon-radio-dot`            | Radio dot (checked)          | Checked                   | `.radio:checked::after` |
-| `--par-color-label-radio`               | Radio label text             | Any                       | `.radio-label` |
-| `--par-color-label-radio-disabled`      | Radio label text             | Disabled                  | `.radio-label:disabled` |
+| **Token**                           | **Color for**       | **State/Meaning** | **CSS Selector(s)**                                 |
+| ----------------------------------- | ------------------- | ----------------- | --------------------------------------------------- |
+| `--par-color-bg-radio-enabled`      | Radio background    | Enabled           | `.par-radio:enabled`                                |
+| `--par-color-bg-radio-hovered`      | Radio background    | Hovered           | `.par-radio:hover`                                  |
+| `--par-color-bg-radio-disabled`     | Radio background    | Disabled          | `.par-radio:disabled`                               |
+| `--par-color-bg-radio-checked`      | Radio background    | Checked           | `.par-radio:checked`                                |
+| `--par-color-bg-radio-invalid`      | Radio background    | Invalid/Error     | `.par-radio.error-state`                            |
+| `--par-color-border-radio-enabled`  | Radio border        | Enabled           | `.par-radio:enabled`                                |
+| `--par-color-border-radio-hovered`  | Radio border        | Hovered           | `.par-radio:hover`                                  |
+| `--par-color-border-radio-disabled` | Radio border        | Disabled          | `.par-radio:disabled`                               |
+| `--par-color-border-radio-checked`  | Radio border        | Checked           | `.par-radio:checked`                                |
+| `--par-color-border-radio-invalid`  | Radio border        | Invalid/Error     | `.par-radio.error-state`                            |
+| `--par-color-icon-radio-dot`        | Radio dot (checked) | Checked           | `.radio-icon.radio-checked`                         |
+| `--par-color-label-radio`           | Radio label text    | Any               | `.input-label`                                      |
+| `--par-color-label-radio-disabled`  | Radio label text    | Disabled          | `.radio-wrapper[aria-disabled='true'] .input-label` |
 
 > _Note: Radio uses the same design tokens as the Input component. See Input documentation for available tokens._
 
@@ -72,15 +91,17 @@ A component that organizes content into vertically stacked collapsible and expan
 
 ### `<Radio />`
 
-| **Prop**          | **Type**                  | **Default** | **Description**                   |
-| ----------------- | ------------------------- | ----------- | --------------------------------- |
-| **checked**       | boolean                   |             | Checked state                     |
-| **onChange**      | function (event)          |             | Callback when value changes       |
-| **value**         | string \| number          |             | Value of the radio                |
-| **label**         | string \| ReactNode       |             | Label for the radio               |
-| **disabled**      | boolean                   | _false_     | Disable the radio                 |
-| **color**         | string                    |             | Radio color                       |
-| **...InputProps** | [See Input](../BaseInput) |             | Inherits all props from **Input** |
+| **Prop**              | **Type**                  | **Default** | **Description**                   |
+| --------------------- | ------------------------- | ----------- | --------------------------------- |
+| **checked**           | boolean                   |             | Checked state                     |
+| **onChange**          | function (event)          |             | Callback when value changes       |
+| **value**             | string \| number          |             | Value of the radio                |
+| **label**             | string \| ReactNode       |             | Label for the radio               |
+| **sublabel**          | string \| ReactNode       |             | Sublabel for the radio            |
+| **disabled**          | boolean                   | _false_     | Disable the radio                 |
+| **color**             | string                    |             | Radio color                       |
+| **radioWrapperProps** | any                       |             | Props for the radio wrapper       |
+| **...InputProps**     | [See Input](../BaseInput) |             | Inherits all props from **Input** |
 
 > **_Note:_** _Radio_ **inherits** all props from **Input** and the native **input** element. See [Input documentation](../BaseInput) for full details on available props and tokens.
 

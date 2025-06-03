@@ -50,15 +50,20 @@ A component that organizes content into vertically stacked collapsible and expan
 
 | **Token**                              | **Color for**                | **State/Meaning**         | **CSS Selector(s)** |
 |---------------------------------------- | ---------------------------- | ------------------------- | ------------------- |
-| `--par-color-bg-tree`                   | Tree background              | Default/Enabled           | `.tree-navigation` |
-| `--par-color-bg-tree-item-hovered`      | Tree item background         | Hovered                   | `.tree-item:hover` |
-| `--par-color-bg-tree-item-selected`     | Tree item background         | Selected                  | `.tree-item.selected` |
-| `--par-color-bg-tree-item-disabled`     | Tree item background         | Disabled                  | `.tree-item:disabled` |
-| `--par-color-border-tree`               | Tree border                  | Any                       | `.tree-navigation, .tree-item` |
-| `--par-color-text-tree-item`            | Tree item text               | Default/Enabled           | `.tree-item` |
-| `--par-color-text-tree-item-selected`   | Tree item text               | Selected                  | `.tree-item.selected` |
-| `--par-color-text-tree-item-disabled`   | Tree item text               | Disabled                  | `.tree-item:disabled` |
-| `--par-color-icon-tree-item`            | Tree item icon               | Any                       | `.tree-item .icon` |
+| `--par-color-bg-tree-navigation-item`                   | Tree item background              | Default/Enabled           | `.tree-navigation` |
+| `--par-color-bg-tree-navigation-item-neutral-selected`      | Tree item background         | Selected (neutral)                   | `.tree-navigation-item-active .active` |
+| `--par-color-bg-tree-navigation-item-accent-selected`     | Tree item background         | Selected (accent)                  | `.tree-navigation.accent .tree-navigation-item-active .active` |
+| `--par-color-bg-tree-navigation-button-neutral-hovered`     | Tree item button background         | Hovered (neutral)                  | `.tree-navigation-icon-button:hover` |
+| `--par-color-bg-tree-navigation-button-accent-hovered`     | Tree item button background         | Hovered (accent)                  | `.tree-navigation.accent .tree-navigation-icon-button:hover` |
+| `--par-color-border-tree-navigation`               | Tree border                  | Any                       | `.tree-navigation, .tree-navigation-item` |
+| `--par-color-text-tree-navigation-content-item-enabled`            | Tree item text               | Default/Enabled           | `.tree-navigation-item` |
+| `--par-color-text-tree-navigation-content-item-neutral-selected`   | Tree item text               | Selected (neutral)                  | `.tree-navigation-item-active .active` |
+| `--par-color-text-tree-navigation-content-item-accent-selected`   | Tree item text               | Selected (accent)                  | `.tree-navigation.accent .tree-navigation-item-active .active` |
+| `--par-color-text-tree-navigation-content-item-disabled`   | Tree item text               | Disabled                  | `.tree-navigation-item[aria-disabled="true"]` |
+| `--par-color-text-tree-navigation-content-item-hovered`   | Tree item text               | Hovered                  | `.tree-navigation-item-content:hover` |
+| `--par-color-text-tree-navigation-content-item-pressed`   | Tree item text               | Pressed                  | `.tree-navigation-item-content:active` |
+| `--par-color-bg-tree-navigation-item-icon-button` | Tree item icon button background | Any | `.tree-navigation-icon-button` |
+| `--par-color-text-tree-navigation-content-item-icon-button` | Tree item icon button text | Any | `.tree-navigation-icon-button` |
 
 > _Note: TreeNavigation uses the same design tokens as the List or Navigation component. See List/Navigation documentation for available tokens._
 
@@ -70,13 +75,16 @@ A component that organizes content into vertically stacked collapsible and expan
 
 | **Prop**        | **Type**             | **Default** | **Description**                              |
 | --------------- | -------------------- | ----------- | -------------------------------------------- |
-| **data**        | array                |             | Tree data structure                          |
-| **onSelect**    | function (key)       |             | Callback when node is selected               |
-| **selectedKey** | string \| number     |             | Currently selected key                       |
-| **expandAll**   | boolean              | _false_     | Expand all nodes by default                  |
-| **renderNode**  | function (node)      |             | Custom node renderer                         |
+| **items**        | array                |             | Tree data structure (array of navigation items) |
 | **...divProps** | HTMLDivElement props |             | All native div props (className, style, ...) |
 
 > **_Note:_** _TreeNavigation_ **inherits** all native props from **HTMLDivElement**.
 
 ---
+
+## Keyboard behaviors
+
+- All navigation items are focusable via Tab.
+- Arrow keys (Up/Down) move focus between items (see accessibility hook in implementation).
+- Enter/Space activates the focused item.
+- ARIA attributes (`aria-label`, `aria-selected`, `aria-expanded`) are set for accessibility.

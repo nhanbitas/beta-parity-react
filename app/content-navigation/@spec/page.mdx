@@ -23,16 +23,45 @@ A component that organizes content into vertically stacked collapsible and expan
 |        | Behaviors                            | Includes descriptions of behaviors related to other components and responsive behaviors related to media breakpoints, size (minimums and maximums), orientation, alignment, position and layout (wrapping, truncation, overflow). |
 
 ## Anatomy <span id="anatomy"></span>
-{/* Anatomy specification */}
+
+- **Container**: The outermost nav element with class `content-navigation`.
+- **List**: The ul element with class `content-navigation-list`.
+- **Item**: Each navigation button with class `content-navigation-item`.
+- **Active item**: The currently highlighted item with class `content-navigation-item-active` (or combined with `.accent` for accent theme).
+- **Heading item**: Items representing H2 headings with class `content-navigation-item-heading`.
+- **Item text**: The span inside each item with class `content-navigation-item-text`.
 
 ## States <span id="states"></span>
-{/* States specification */}
+
+- **Default**: Item is not active, hovered, or pressed.
+- **Hovered**: Item is hovered (`:hover`), changes text color.
+- **Pressed**: Item is pressed (`:active`), changes text color.
+- **Selected (neutral)**: Item is active in neutral theme (`content-navigation-item-active`).
+- **Selected (accent)**: Item is active in accent theme (`content-navigation.accent .content-navigation-item-active`).
+- **Focus**: Item is focused via keyboard (`:focus-visible`), shows focus ring.
 
 ## Options <span id="options"></span>
-{/* Options specification */}
+
+- **color**: 'neutral' | 'accent' — Color theme for navigation.
+- **spaceToTop**: number — Space (px) from top when scrolling to heading.
+- **skeleton**: ReactNode — Custom skeleton loader while loading.
+- **target**: string | HTMLElement | null — Target element or selector for headings container.
 
 ## Behaviors <span id="behaviors"></span>
-{/* Behaviors specification */}
+
+- Automatically generates navigation from H2/H3 headings in the target container.
+- Smooth scrolls to section on item click, respecting `spaceToTop` offset.
+- Highlights the item corresponding to the section in view (IntersectionObserver).
+- Sticky/fixed navigation (via CSS `sticky`).
+- Responsive layout (works in grid/flex containers).
+- Supports custom skeleton while loading.
+
+## Keyboard behaviors
+
+- All navigation items are focusable via Tab.
+- Focus ring appears on keyboard focus (`:focus-visible`).
+- `aria-label` is set for accessibility on the nav container and items.
+- Supports keyboard navigation (Tab/Shift+Tab to move between items, Enter/Space to activate).
 
 ## Changelog <span id="changelog"></span>
 {/* Changelog specification */}
@@ -45,14 +74,14 @@ A component that organizes content into vertically stacked collapsible and expan
 
 | **Token**                                             | **Color for**                | **State/Meaning**                                 | **CSS Selector(s)** |
 |-------------------------------------------------------|------------------------------|---------------------------------------------------|---------------------|
-| **--par-color-text-content-navigation-enabled**        | Navigation text color        | Default text                                      | `.content-navigation` |
+| **--par-color-text-content-navigation-enabled**        | Navigation text color        | Default text                                      | `.content-navigation-item` |
 | **--par-color-text-content-navigation-hovered**        | Navigation text color        | On hover                                          | `.content-navigation-item:hover` |
 | **--par-color-text-content-navigation-pressed**        | Navigation text color        | On pressed                                        | `.content-navigation-item:active` |
-| **--par-color-text-content-navigation-neutral-selected**| Navigation text color        | Selected (neutral)                                | `.content-navigation-item.selected.neutral` |
-| **--par-color-text-content-navigation-accent-selected** | Navigation text color        | Selected (accent)                                 | `.content-navigation-item.selected.accent` |
-| **--par-color-border-content-navigation-enabled**      | Navigation border            | Default border                                    | `.content-navigation` |
-| **--par-color-border-content-navigation-active-neutral**| Navigation border            | Active border (neutral)                            | `.content-navigation-item.selected.neutral` |
-| **--par-color-border-content-navigation-active-accent** | Navigation border            | Active border (accent)                             | `.content-navigation-item.selected.accent` |
+| **--par-color-text-content-navigation-neutral-selected**| Navigation text color        | Selected (neutral)                                | `.content-navigation-item-active` |
+| **--par-color-text-content-navigation-accent-selected** | Navigation text color        | Selected (accent)                                 | `.content-navigation.accent .content-navigation-item-active` |
+| **--par-color-border-content-navigation-enabled**      | Navigation border            | Default border                                    | `.content-navigation-item::before` |
+| **--par-color-border-content-navigation-active-neutral**| Navigation border            | Active border (neutral)                            | `.content-navigation-item-active::before` |
+| **--par-color-border-content-navigation-active-accent** | Navigation border            | Active border (accent)                             | `.content-navigation.accent .content-navigation-item-active::before` |
 | **--par-color-bg-content-navigation**                 | Navigation background        | Background                                        | `.content-navigation` |
 
 ---

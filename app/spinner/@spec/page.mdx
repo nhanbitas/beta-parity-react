@@ -24,19 +24,29 @@ A component that organizes content into vertically stacked collapsible and expan
 
 ## Anatomy <span id="anatomy"></span>
 
-{/* Anatomy specification */}
+- **Spinner container**: The outer `span` element with class `spinner`.
+- **SVG loader**: The SVG element rendered inside the spinner, varies by `variant` prop.
+- **Variants**: Circular, Dotted, Sunburst (SVG structure changes).
 
 ## States <span id="states"></span>
 
-{/* States specification */}
+- **Default**: Spinner animates to indicate loading.
+- **Color**: Controlled by `color` prop (`neutral` or `accent`).
+- **Size**: Controlled by `size` prop (`sm`, `md`, `lg`, `xl`).
+- **Variant**: Controlled by `variant` prop (`circular`, `dotted`, `sunburst`).
 
 ## Options <span id="options"></span>
 
-{/* Options specification */}
+- **variant**: 'circular' | 'dotted' | 'sunburst' (default: 'circular')
+- **color**: 'neutral' | 'accent' (default: 'neutral')
+- **size**: 'sm' | 'md' | 'lg' | 'xl' (default: 'md')
+- **...spanProps**: All native span element props
 
 ## Behaviors <span id="behaviors"></span>
 
-{/* Behaviors specification */}
+- Spinner animates continuously to indicate loading.
+- No user interaction; purely visual feedback.
+- Responsive to color scheme (light/dark) via CSS variables.
 
 ## Changelog <span id="changelog"></span>
 
@@ -48,16 +58,13 @@ A component that organizes content into vertically stacked collapsible and expan
 
 ## 🎨 Design Tokens for Spinner
 
-| **Token**                              | **Color for**                | **State/Meaning**         | **CSS Selector(s)** |
-|---------------------------------------- | ---------------------------- | ------------------------- | ------------------- |
-| `--par-color-spinner-track`             | Spinner track                | Default/Enabled           | `.spinner-track` |
-| `--par-color-spinner-bar`               | Spinner bar (arc)            | Default/Enabled           | `.spinner-bar` |
-| `--par-color-spinner-bar-indeterminate` | Spinner bar (arc)            | Indeterminate             | `.spinner-bar.indeterminate` |
-| `--par-color-spinner-bar-success`       | Spinner bar (arc)            | Success/Complete          | `.spinner-bar.success` |
-| `--par-color-spinner-bar-error`         | Spinner bar (arc)            | Error/Failed              | `.spinner-bar.error` |
-| `--par-color-spinner-icon`              | Spinner icon                 | Any                       | `.spinner-icon` |
+| **Token**                                         | **Color for**         | **State/Meaning** | **CSS Selector(s)**         |
+|-------------------------------------------------- | --------------------- | ----------------- | --------------------------- |
+| `--par-color-stroke-spinner-interactive-neutral`  | Spinner arc           | Neutral           | `.spinner.neutral`          |
+| `--par-color-stroke-spinner-interactive-accent`   | Spinner arc           | Accent            | `.spinner.accent`           |
+| `--par-color-stroke-spinner-inactive`             | Spinner background    | Inactive          | `.spinner`                  |
 
-> _Note: Spinner uses the same design tokens as the Progress or Icon component. See Progress/Icon documentation for available tokens._
+> _Note: Spinner uses its own tokens defined in `variables.css` and does not use Progress/Icon tokens._
 
 ---
 
@@ -65,13 +72,11 @@ A component that organizes content into vertically stacked collapsible and expan
 
 ### `<Spinner />`
 
-| **Prop**        | **Type**             | **Default** | **Description**                              |
-| --------------- | -------------------- | ----------- | -------------------------------------------- |
-| **size**        | 'sm' \| 'md' \| 'lg' | _'md'_      | Spinner size                                 |
-| **color**       | string               |             | Spinner color                                |
-| **thickness**   | number               |             | Stroke thickness                             |
-| **...svgProps** | SVGProps             |             | All native SVG props (className, style, ...) |
+| **Prop**   | **Type**                                         | **Default**   | **Description**                                                                 |
+|------------|--------------------------------------------------|--------------|-------------------------------------------------------------------------------|
+| **variant**| 'circular' \| 'dotted' \| 'sunburst'            | 'circular'   | Spinner style variant                                                          |
+| **color**  | 'neutral' \| 'accent'                            | 'neutral'    | Spinner color                                                                  |
+| **size**   | 'sm' \| 'md' \| 'lg' \| 'xl'                    | 'md'         | Spinner size                                                                   |
+| **...spanProps** | `React.HTMLAttributes<HTMLSpanElement>`     |              | All native span props (className, style, ...)                                  |
 
-> **_Note:_** _Spinner_ **inherits** all native props from **SVGElement**.
-
----
+> **_Note:_** _Spinner_ **inherits** all native props from `HTMLSpanElement`.

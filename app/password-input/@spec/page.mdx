@@ -134,7 +134,14 @@ An input field for entering sensitive strings such as passwords with masked visi
 
 ### Password visibility button
 
-> [!missing] Missing documentation
+- **Default**: The button is visible and indicates the action to be performed (show or hide password).
+- **Hovered**: The button changes appearance to indicate that it is interactive.
+- **Pressed**: The button shows a pressed state.
+- **Disabled**: The button is not interactive and appears muted.
+
+<Image src={imageSrc.passwordVisibilityButton.src} alt='passwordVisibilityButton' />
+
+<Image src={imageSrc.passwordVisibilityButton2.src} alt='passwordVisibilityButton2' />
 
 ### Clear button
 
@@ -200,32 +207,36 @@ This sub-component has the same states as [[Button]].
 
 ## Behaviors
 
-> [!missing] Section is incomplete
+The PasswordInput component toggles between masked and plaintext states using the visibility button. The clear button (if enabled) clears the input value. All other behaviors (focus, hover, disabled, etc.) are inherited from the Input component.
+
+- Toggling visibility does not trigger a callback (no `onToggle` prop).
+- The visibility button is always present unless overridden at the Input level.
+- For accessibility and keyboard behaviors, see Input documentation.
 
 ## 🎨 Design Tokens for PasswordInput
 
 | **Token**                              | **Color for**                | **State/Meaning**         | **CSS Selector(s)** |
 |---------------------------------------- | ---------------------------- | ------------------------- | ------------------- |
-| `--par-color-bg-field-enabled`          | Input background             | Enabled                   | `.password-input:enabled` |
-| `--par-color-bg-field-hovered`          | Input background             | Hovered                   | `.password-input:hover` |
-| `--par-color-bg-field-disabled`         | Input background             | Disabled                  | `.password-input:disabled` |
-| `--par-color-bg-field-readonly`         | Input background             | Readonly                  | `.password-input[readonly]` |
-| `--par-color-bg-field-invalid`          | Input background             | Invalid/Error             | `.password-input.invalid` |
-| `--par-color-border-field-enabled`      | Input border                 | Enabled                   | `.password-input:enabled` |
-| `--par-color-border-field-hovered`      | Input border                 | Hovered                   | `.password-input:hover` |
-| `--par-color-border-field-disabled`     | Input border                 | Disabled                  | `.password-input:disabled` |
-| `--par-color-border-field-invalid`      | Input border                 | Invalid/Error             | `.password-input.invalid` |
-| `--par-color-border-field-focused`      | Input border                 | Focused                   | `.password-input:focus` |
-| `--par-color-text-field-placeholder`    | Placeholder text             | Any                       | `.password-input::placeholder` |
-| `--par-color-text-field-filled`         | Input text                   | Filled                    | `.password-input` |
-| `--par-color-text-field-label`          | Label text                   | Any                       | `.password-input-label` |
-| `--par-color-text-field-disabled`       | Input text                   | Disabled                  | `.password-input:disabled` |
-| `--par-color-text-field-readonly`       | Input text                   | Readonly                  | `.password-input[readonly]` |
-| `--par-color-text-field-invalid`        | Input text                   | Invalid/Error             | `.password-input.invalid` |
-| `--par-color-icon-field-button-enabled` | Icon color (button enabled)  | Enabled                   | `.password-input .icon-button:enabled` |
-| `--par-color-icon-field-button-hovered` | Icon color (button hovered)  | Hovered                   | `.password-input .icon-button:hover` |
-| `--par-color-icon-field-button-pressed` | Icon color (button pressed)  | Pressed                   | `.password-input .icon-button:active` |
-| `--par-color-icon-field-button-disabled`| Icon color (button disabled) | Disabled                  | `.password-input .icon-button:disabled` |
+| `--par-color-bg-field-enabled`          | Input background             | Enabled                   | `.par-input:enabled` |
+| `--par-color-bg-field-hovered`          | Input background             | Hovered                   | `.par-input:hover` |
+| `--par-color-bg-field-disabled`         | Input background             | Disabled                  | `.par-input:disabled` |
+| `--par-color-bg-field-readonly`         | Input background             | Readonly                  | `.par-input[readonly]` |
+| `--par-color-bg-field-invalid`          | Input background             | Invalid/Error             | `.par-input.error-state` |
+| `--par-color-border-field-enabled`      | Input border                 | Enabled                   | `.par-input:enabled` |
+| `--par-color-border-field-hovered`      | Input border                 | Hovered                   | `.par-input:hover` |
+| `--par-color-border-field-disabled`     | Input border                 | Disabled                  | `.par-input:disabled` |
+| `--par-color-border-field-invalid`      | Input border                 | Invalid/Error             | `.par-input.error-state` |
+| `--par-color-border-field-focused`      | Input border                 | Focused                   | `.par-input:focus` |
+| `--par-color-text-field-placeholder`    | Placeholder text             | Any                       | `.par-input::placeholder` |
+| `--par-color-text-field-filled`         | Input text                   | Filled                    | `.par-input` |
+| `--par-color-text-field-label`          | Label text                   | Any                       | `.contained-label` |
+| `--par-color-text-field-disabled`       | Input text                   | Disabled                  | `.par-input:disabled` |
+| `--par-color-text-field-readonly`       | Input text                   | Readonly                  | `.par-input[readonly]` |
+| `--par-color-text-field-invalid`        | Input text                   | Invalid/Error             | `.par-input.error-state` |
+| `--par-color-icon-field-button-enabled` | Icon color (button enabled)  | Enabled                   | `.square-icon:enabled` |
+| `--par-color-icon-field-button-hovered` | Icon color (button hovered)  | Hovered                   | `.square-icon:hover` |
+| `--par-color-icon-field-button-pressed` | Icon color (button pressed)  | Pressed                   | `.square-icon:active` |
+| `--par-color-icon-field-button-disabled`| Icon color (button disabled) | Disabled                  | `.square-icon:disabled` |
 
 > _Note: PasswordInput uses the same design tokens as the Input component. See Input documentation for available tokens._
 
@@ -235,11 +246,13 @@ This sub-component has the same states as [[Button]].
 
 ### `<PasswordInput />`
 
-| **Prop**          | **Type**                  | **Default**  | **Description**                                  |
-| ----------------- | ------------------------- | ------------ | ------------------------------------------------ |
-| **type**          | string                    | _'password'_ | Input type (always 'password' for PasswordInput) |
-| **onToggle**      | function ()               |              | Callback when visibility is toggled              |
-| **...InputProps** | [See Input](../BaseInput) |              | Inherits all props from **Input**                |
+PasswordInputProps are imported from the component file and extend all props from [Input](../BaseInput) and the native input element.
+
+| **Prop**              | **Type**                  | **Default**  | **Description**                                  |
+| --------------------- | ------------------------- | ------------ | ------------------------------------------------ |
+| **color**             | 'accent' \| 'neutral'     | _'neutral'_  | The color of the eye icon                        |
+| **defaultHidden**     | boolean                   | _true_       | Default state of showing password (masked)       |
+| **...InputProps**     | [See Input](../BaseInput) |              | Inherits all props from **Input**                |
 
 > **_Note:_** _PasswordInput_ **inherits** all props from **Input** and the native **input** element. See [Input documentation](../BaseInput) for full details on available props and tokens.
 

@@ -12,8 +12,6 @@ A component that organizes content into vertically stacked collapsible and expan
 
 ## Design checklist <span id="design-checklist"></span>
 
-{/* Design checklist specification */}
-
 | Status | Item          | Description                                                                                                                                                                                                                       |
 | ------ | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ✔️     | Anatomy       | Includes descriptions of all parts of the component and its major variants.                                                                                                                                                       |
@@ -24,19 +22,36 @@ A component that organizes content into vertically stacked collapsible and expan
 
 ## Anatomy <span id="anatomy"></span>
 
-{/* Anatomy specification */}
+- **Container**: The outermost `<ul>` element with class `pagination`.
+- **Pagination Item**: Each page or control button, rendered as a child with class `pagination-item`.
+- **Active Item**: The currently selected page, with class `active`.
+- **Control Buttons**: Navigation controls (first, prev, next, last) with additional classes (`pagination-start`, `pagination-prev`, etc.).
+- **Menu**: Overflow menu for page numbers, with class `pagination-menu`.
+- **Separator**: Visual separator, with class `pagination-separator`.
 
 ## States <span id="states"></span>
 
-{/* States specification */}
+- **Default**: All items enabled, current page highlighted.
+- **Hovered**: Item under mouse pointer, changes background/text color.
+- **Active/Selected**: Current page, visually distinct.
+- **Disabled**: Control buttons or items that cannot be interacted with (e.g., prev on first page).
+- **Focus**: Keyboard focus ring on item.
 
 ## Options <span id="options"></span>
 
-{/* Options specification */}
+- **bordered**: Show border around pagination.
+- **color**: 'neutral' | 'accent'.
+- **onlyControl**: Show only navigation controls.
+- **siblings**: Number of sibling page numbers to show.
+- **component**: Custom component for page links.
+- **controlConfig**: Custom config for control buttons.
 
 ## Behaviors <span id="behaviors"></span>
 
-{/* Behaviors specification */}
+- Supports keyboard navigation (ArrowLeft/ArrowRight to change page).
+- Responsive layout for different container widths.
+- Overflow handled with menu for large page counts.
+- All navigation and page changes are accessible via keyboard and screen readers.
 
 ## Changelog <span id="changelog"></span>
 
@@ -44,22 +59,26 @@ A component that organizes content into vertically stacked collapsible and expan
 
 | Date       | Type                                                     | Description    | Author      | Associated issue(s) |
 | :--------- | :------------------------------------------------------- | -------------- | :---------- | :------------------ |
-| YYYY-MM-DD | <Badge size='sm' kind='glass' color='cyan' label="new"/> | Initial design | Oanh Nguyen | PAR-52              |
+| 2025-06-03 | <Badge size='sm' kind='glass' color='cyan' label="new"/> | Initial design | Oanh Nguyen | PAR-52              |
 
 ## 🎨 Design Tokens for Pagination
 
-| **Token**                                         | **Color for**                | **State/Meaning**                                 | **CSS Selector(s)**                      |
-|---------------------------------------------------|------------------------------|---------------------------------------------------|------------------------------------------|
-| `--par-color-bg-pagination`                       | Pagination background        | Default/Enabled                                  | `.pagination`                            |
-| `--par-color-bg-pagination-item-hovered`          | Pagination item background   | Hovered                                           | `.pagination-item:hover`                 |
-| `--par-color-bg-pagination-item-active`           | Pagination item background   | Active/Selected                                   | `.pagination-item.active`                |
-| `--par-color-bg-pagination-item-disabled`         | Pagination item background   | Disabled                                          | `.pagination-item:disabled`              |
-| `--par-color-text-pagination-item`                | Pagination item text         | Default/Enabled                                  | `.pagination-item`                       |
-| `--par-color-text-pagination-item-active`         | Pagination item text         | Active/Selected                                   | `.pagination-item.active`                |
-| `--par-color-text-pagination-item-disabled`       | Pagination item text         | Disabled                                          | `.pagination-item:disabled`              |
-| `--par-color-border-pagination-item`              | Pagination item border       | Default/Enabled                                  | `.pagination-item`                       |
-| `--par-color-border-pagination-item-active`       | Pagination item border       | Active/Selected                                   | `.pagination-item.active`                |
-| `--par-color-border-pagination-item-disabled`     | Pagination item border       | Disabled                                          | `.pagination-item:disabled`              |
+| **Token**                                                | **Color for**              | **State/Meaning**  | **CSS Selector(s)**                                                                                                                                                          |
+| -------------------------------------------------------- | -------------------------- | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--par-color-bg-pagination-item-enabled`                 | Pagination item background | Default/Enabled    | `.pagination-item`                                                                                                                                                           |
+| `--par-color-bg-pagination-item-hovered`                 | Pagination item background | Hovered            | `.pagination-item:hover`                                                                                                                                                     |
+| `--par-color-bg-pagination-item-selected-neutral`        | Pagination item background | Selected (neutral) | `.pagination.neutral .pagination-item.active`                                                                                                                                |
+| `--par-color-bg-pagination-item-selected-accent`         | Pagination item background | Selected (accent)  | `.pagination.accent .pagination-item.active`                                                                                                                                 |
+| `--par-color-bg-pagination-item-disabled`                | Pagination item background | Disabled           | `.pagination-item:disabled`                                                                                                                                                  |
+| `--par-color-text-pagination-item-page-enabled`          | Pagination item text       | Default/Enabled    | `.pagination-item`                                                                                                                                                           |
+| `--par-color-text-pagination-item-page-hovered`          | Pagination item text       | Hovered            | `.pagination-item:hover`                                                                                                                                                     |
+| `--par-color-text-pagination-item-page-selected-neutral` | Pagination item text       | Selected (neutral) | `.pagination.neutral .pagination-item.active`                                                                                                                                |
+| `--par-color-text-pagination-item-page-selected-accent`  | Pagination item text       | Selected (accent)  | `.pagination.accent .pagination-item.active`                                                                                                                                 |
+| `--par-color-text-pagination-item-page-disabled`         | Pagination item text       | Disabled           | `.pagination-item:disabled`                                                                                                                                                  |
+| `--par-color-text-pagination-item-control-enabled`       | Control button text        | Default/Enabled    | `.pagination-item.pagination-start, .pagination-item.pagination-prev, .pagination-item.pagination-end, .pagination-item.pagination-next`                                     |
+| `--par-color-text-pagination-item-control-disabled`      | Control button text        | Disabled           | `.pagination-item.pagination-start:disabled, .pagination-item.pagination-prev:disabled, .pagination-item.pagination-end:disabled, .pagination-item.pagination-next:disabled` |
+| `--par-color-border-pagination-item`                     | Pagination item border     | Default/Enabled    | `.pagination, .pagination-item, .pagination-separator`                                                                                                                       |
+| `--par-color-border-pagination-item-disabled`            | Pagination item border     | Disabled           | `.pagination-item:disabled`                                                                                                                                                  |
 
 > _Note: Pagination uses the same design tokens as the Button or List component. See Button/List documentation for available tokens._
 
@@ -69,16 +88,21 @@ A component that organizes content into vertically stacked collapsible and expan
 
 ### `<Pagination />`
 
-| **Prop**            | **Type**             | **Default** | **Description**                              |
-| ------------------- | -------------------- | ----------- | -------------------------------------------- |
-| **page**            | number               |             | Current page                                 |
-| **pageSize**        | number               | _10_        | Items per page                               |
-| **total**           | number               |             | Total items                                  |
-| **onChange**        | function (page)      |             | Callback when page changes                   |
-| **showSizeChanger** | boolean              | _false_     | Show page size changer                       |
-| **sizeOptions**     | number[]             |             | Page size options                            |
-| **...divProps**     | HTMLDivElement props |             | All native div props (className, style, ...) |
+| **Prop**           | **Type**                               | **Default** | **Description**                             |
+| ------------------ | -------------------------------------- | ----------- | ------------------------------------------- |
+| **totalPage**      | number                                 | 0           | Total number of pages                       |
+| **page**           | number                                 | 1           | Current active page                         |
+| **bordered**       | boolean                                | false       | Show border around pagination               |
+| **onlyControl**    | boolean                                | false       | Show only navigation controls               |
+| **controlConfig**  | controlConfigType                      | -           | Custom config for control buttons           |
+| **color**          | 'neutral' \| 'accent'                  | 'neutral'   | Color theme                                 |
+| **siblings**       | 0 \| 1 \| 2 \| 3                       | 0           | Number of sibling page numbers to show      |
+| **onPageChange**   | function(page: number)                 |             | Callback when page changes                  |
+| **component**      | 'button' \| 'a' \| React.ComponentType | 'button'    | Component for page links                    |
+| **componentProps** | Record&lt;string, any&gt;              |             | Extra props for page item component         |
+| **to**             | function(page: number): string         |             | Generate URL for a given page               |
+| **...ulProps**     | HTMLUListElement props                 |             | All native ul props (className, style, ...) |
 
-> **_Note:_** _Pagination_ **inherits** all native props from **HTMLDivElement**.
+> **_Note:_** _Pagination_ **inherits** all native props from **HTMLUListElement**.
 
 ---

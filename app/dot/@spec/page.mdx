@@ -1,7 +1,7 @@
 import { Badge } from 'beta-parity-react/ui/Badge';
 import Image from '@components/showcase/ImagePreview';
 import Component from '@components/showcase/CodePreview';
-import * as Demo from "../@dev/demo-components"
+import * as Demo from '../@dev/demo-components';
 
 {/* Image => Image Example */}
 {/* Component => Component Example */}
@@ -10,50 +10,65 @@ import * as Demo from "../@dev/demo-components"
 A component that organizes content into vertically stacked collapsible and expandable sections.
 :::
 
-
 ## Design checklist <span id="design-checklist"></span>
+
 {/* Design checklist specification */}
 
-| Status | Item                                 | Description                                                                                                                                                                                                                       |
-| ------ | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ✔️     | Anatomy                              | Includes descriptions of all parts of the component and its major variants.                                                                                                                                                       |
-| ✔️     | States                               | Includes all applicable interaction, display and value states.                                                                                                                                                                    |
-| ✔️     | Options                              | Includes all relevant options (functional type, stylistic kind, semantic color, size, orientation, optional iconography, decorations, etc.)                                                                                       |
-| ✔️     | Color schemes                        | Includes both light and dark color schemes.                                                                                                                                                                                       |
-|        | Behaviors                            | Includes descriptions of behaviors related to other components and responsive behaviors related to media breakpoints, size (minimums and maximums), orientation, alignment, position and layout (wrapping, truncation, overflow). |
+| Status | Item          | Description                                                                                                                                                                                                                       |
+| ------ | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ✔️     | Anatomy       | Includes descriptions of all parts of the component and its major variants.                                                                                                                                                       |
+| ✔️     | States        | Includes all applicable interaction, display and value states.                                                                                                                                                                    |
+| ✔️     | Options       | Includes all relevant options (functional type, stylistic kind, semantic color, size, orientation, optional iconography, decorations, etc.)                                                                                       |
+| ✔️     | Color schemes | Includes both light and dark color schemes.                                                                                                                                                                                       |
+| ✔️     | Behaviors     | Includes descriptions of behaviors related to other components and responsive behaviors related to media breakpoints, size (minimums and maximums), orientation, alignment, position and layout (wrapping, truncation, overflow). |
 
 ## Anatomy <span id="anatomy"></span>
-{/* Anatomy specification */}
+
+- **Dot**: A single `<span>` element with the class `dot`.
+- **Size**: Controlled by classes `extra-small`, `small`, `medium`, `large`, `extra-large`.
+- **Color**: Controlled by classes `gray`, `orange`, `cyan`, `violet`, `green`, `red`, `yellow`, `blue`, `lime`.
+- **Pulse**: Optional pulsing animation via the `pulse` class.
 
 ## States <span id="states"></span>
-{/* States specification */}
+
+- **Default**: Static colored dot.
+- **Pulse**: When `pulse` prop is true, the dot animates with a pulsing effect.
+- **Color**: Dot color changes according to the `color` prop.
+- **Size**: Dot size changes according to the `size` prop.
 
 ## Options <span id="options"></span>
-{/* Options specification */}
+
+- **size**: `'xs' | 'sm' | 'md' | 'lg' | 'xl'` (default: `'md'`)
+- **color**: `'gray' | 'orange' | 'violet' | 'green' | 'red' | 'yellow' | 'blue' | 'lime' | 'cyan'` (default: `'gray'`)
+- **pulse**: `boolean` (default: `false`)
 
 ## Behaviors <span id="behaviors"></span>
-{/* Behaviors specification */}
+
+- **Pulse animation**: When `pulse` is enabled, the dot animates with a ping effect.
+- **Responsive**: Dot size and color adapt to props.
+- **Purely visual**: No keyboard or mouse interaction; used as a status or indicator.
 
 ## Changelog <span id="changelog"></span>
+
 {/* Changelog specification */}
 
-| Date       | Type                                                        | Description                                                                                 | Author      | Associated issue(s)  |
-|:-----------|:------------------------------------------------------------|---------------------------------------------------------------------------------------------|:------------|:---------------------|
-| YYYY-MM-DD | <Badge size='sm' kind='glass' color='cyan' label="new"/>    | Initial design                                                                              | Oanh Nguyen | PAR-52               |
+| Date       | Type                                                     | Description    | Author      | Associated issue(s) |
+| :--------- | :------------------------------------------------------- | -------------- | :---------- | :------------------ |
+| 2025-06-03 | <Badge size='sm' kind='glass' color='cyan' label="new"/> | Initial design | Oanh Nguyen | PAR-52              |
 
 ## 🎨 Design Tokens for Dot
 
-| **Token**                              | **Color for**         | **State/Meaning**         | **CSS Selector(s)** |
-|----------------------------------------|-----------------------|---------------------------|---------------------|
-| **--par-color-bg-dot-solid-gray**      | Dot background        | Gray color                | `.dot.gray`         |
-| **--par-color-bg-dot-solid-orange**    | Dot background        | Orange color              | `.dot.orange`       |
-| **--par-color-bg-dot-solid-cyan**      | Dot background        | Cyan color                | `.dot.cyan`         |
-| **--par-color-bg-dot-solid-violet**    | Dot background        | Violet color              | `.dot.violet`       |
-| **--par-color-bg-dot-solid-green**     | Dot background        | Green color               | `.dot.green`        |
-| **--par-color-bg-dot-solid-red**       | Dot background        | Red color                 | `.dot.red`          |
-| **--par-color-bg-dot-solid-yellow**    | Dot background        | Yellow color              | `.dot.yellow`       |
-| **--par-color-bg-dot-solid-blue**      | Dot background        | Blue color                | `.dot.blue`         |
-| **--par-color-bg-dot-solid-lime**      | Dot background        | Lime color                | `.dot.lime`         |
+| **Token**                           | **Color for**  | **State/Meaning** | **CSS Selector(s)** |
+| ----------------------------------- | -------------- | ----------------- | ------------------- |
+| **--par-color-bg-dot-solid-gray**   | Dot background | Gray color        | `.dot.gray`         |
+| **--par-color-bg-dot-solid-orange** | Dot background | Orange color      | `.dot.orange`       |
+| **--par-color-bg-dot-solid-cyan**   | Dot background | Cyan color        | `.dot.cyan`         |
+| **--par-color-bg-dot-solid-violet** | Dot background | Violet color      | `.dot.violet`       |
+| **--par-color-bg-dot-solid-green**  | Dot background | Green color       | `.dot.green`        |
+| **--par-color-bg-dot-solid-red**    | Dot background | Red color         | `.dot.red`          |
+| **--par-color-bg-dot-solid-yellow** | Dot background | Yellow color      | `.dot.yellow`       |
+| **--par-color-bg-dot-solid-blue**   | Dot background | Blue color        | `.dot.blue`         |
+| **--par-color-bg-dot-solid-lime**   | Dot background | Lime color        | `.dot.lime`         |
 
 ---
 
@@ -61,14 +76,11 @@ A component that organizes content into vertically stacked collapsible and expan
 
 ### `<Dot />`
 
-| **Prop**     | **Type**                                                                 | **Default**   | **Description**                                 |
-|--------------|--------------------------------------------------------------------------|---------------|-------------------------------------------------|
-| **size**     | 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'                                    | _'md'_        | Dot size                                        |
-| **pulse**    | boolean                                                                  | _false_       | Pulse animation                                 |
-| **color**    | 'gray' \| 'orange' \| 'violet' \| 'green' \| 'red' \| 'yellow' \| 'blue' \| 'lime' \| 'cyan' | _'gray'_       | Dot color                                       |
-| **...spanProps** | HTMLSpanElement props                                                |               | All native span props (className, style, ...)    |
+| **Prop**         | **Type**                                                                                     | **Default** | **Description**                               |
+| ---------------- | -------------------------------------------------------------------------------------------- | ----------- | --------------------------------------------- |
+| **size**         | 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'                                                         | _'md'_      | Dot size                                      |
+| **pulse**        | boolean                                                                                      | _false_     | Pulse animation                               |
+| **color**        | 'gray' \| 'orange' \| 'violet' \| 'green' \| 'red' \| 'yellow' \| 'blue' \| 'lime' \| 'cyan' | _'gray'_    | Dot color                                     |
+| **...spanProps** | HTMLSpanElement props                                                                        |             | All native span props (className, style, ...) |
 
 > **_Note:_** _Dot_ **inherits** all native props from **HTMLSpanElement**.
-
----
-

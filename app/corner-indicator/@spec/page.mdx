@@ -12,7 +12,6 @@ A component that organizes content into vertically stacked collapsible and expan
 
 
 ## Design checklist <span id="design-checklist"></span>
-{/* Design checklist specification */}
 
 | Status | Item                                 | Description                                                                                                                                                                                                                       |
 | ------ | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -20,19 +19,47 @@ A component that organizes content into vertically stacked collapsible and expan
 | ✔️     | States                               | Includes all applicable interaction, display and value states.                                                                                                                                                                    |
 | ✔️     | Options                              | Includes all relevant options (functional type, stylistic kind, semantic color, size, orientation, optional iconography, decorations, etc.)                                                                                       |
 | ✔️     | Color schemes                        | Includes both light and dark color schemes.                                                                                                                                                                                       |
-|        | Behaviors                            | Includes descriptions of behaviors related to other components and responsive behaviors related to media breakpoints, size (minimums and maximums), orientation, alignment, position and layout (wrapping, truncation, overflow). |
+| ✔️     | Behaviors                            | Includes descriptions of behaviors related to other components and responsive behaviors related to media breakpoints, size (minimums and maximums), orientation, alignment, position and layout (wrapping, truncation, overflow). |
 
 ## Anatomy <span id="anatomy"></span>
-{/* Anatomy specification */}
+
+- **Container**: The outermost `div` with class `corner-indicator-container` (plus position modifier classes: `top-right`, `top-left`, `bottom-right`, `bottom-left`).
+- **Badge**: The badge indicator (when `label` is provided), rendered as a child with class `badge`.
+- **Dot**: The dot indicator (when `label` is not provided), rendered as a child with class `dot`.
+- **Outline**: Optional ring outline, applied via `bordered` class and CSS token.
+- **Children**: The wrapped content (e.g., button, avatar, etc.).
 
 ## States <span id="states"></span>
-{/* States specification */}
+
+- **Default**: Indicator is visible in the specified position.
+- **Outlined**: Outline ring is shown when `outline` prop is true.
+- **Pulse**: Dot indicator animates when `pulse` prop is true.
+- **Disabled**: If `disable` is true, the indicator is not rendered (children only).
 
 ## Options <span id="options"></span>
-{/* Options specification */}
+
+- **label**: string — Text inside the badge indicator.
+- **icon**: ReactNode — Icon for badge indicator.
+- **outline**: boolean — Show outline ring.
+- **pulse**: boolean — Pulse animation (dot only).
+- **offset, xOffset, yOffset**: number — Control indicator position offset (px).
+- **disable**: boolean — Hide indicator, show only children.
+- **position**: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' — Indicator position.
+- **color**: 'gray' | 'orange' | 'violet' | 'green' | 'red' | 'yellow' | 'blue' | 'lime' | 'cyan' — Indicator color.
+- **size**: 'md' | 'sm' | 'xs' | 'lg' — Indicator size.
+- **variant**: 'solid' | 'outlined' | 'glass' — Visual style (badge only).
+- **growDirection**: 'symmetric' | 'inward' | 'outward' — Direction the indicator grows.
+- **indicatorProps**: object — Extra props for Badge/Dot (except size, color, variant, pulse).
+- **...divProps**: All native div props (className, style, ...).
 
 ## Behaviors <span id="behaviors"></span>
-{/* Behaviors specification */}
+
+- Renders a badge or dot indicator in the specified corner of the container.
+- Supports outline ring via CSS token and `outline` prop.
+- Supports pulse animation for dot indicator.
+- Supports custom offset and grow direction for flexible positioning.
+- If `disable` is true, only children are rendered (no indicator).
+- Responsive to light/dark color schemes via CSS tokens.
 
 ## Changelog <span id="changelog"></span>
 {/* Changelog specification */}
@@ -43,9 +70,11 @@ A component that organizes content into vertically stacked collapsible and expan
 
 ## 🎨 Design Tokens for CornerIndicator
 
-| **Token**                              | **Color for**         | **State/Meaning**         | **CSS Selector(s)** |
-|----------------------------------------|-----------------------|---------------------------|---------------------|
-| **--par-color-outline-corner-indicator** | Outline color         | Outline for indicator     | `.corner-indicator` |
+> All tokens are defined in `registry/src/components/CornerIndicator/variables.css`.
+
+| **Token**                              | **Color for**         | **State/Meaning**         | **CSS Selector(s)**                |
+|----------------------------------------|-----------------------|---------------------------|------------------------------------|
+| **--par-color-outline-corner-indicator** | Outline color         | Outline for indicator     | `.corner-indicator-container.bordered > .badge`, `.corner-indicator-container.bordered > .dot` |
 
 ---
 

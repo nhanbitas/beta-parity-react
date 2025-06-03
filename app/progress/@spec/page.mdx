@@ -48,16 +48,19 @@ A component that organizes content into vertically stacked collapsible and expan
 
 ## 🎨 Design Tokens for Progress
 
-| **Token**                              | **Color for**                | **State/Meaning**         | **CSS Selector(s)** |
-|---------------------------------------- | ---------------------------- | ------------------------- | ------------------- |
-| `--par-color-bg-progress-track`         | Progress track background     | Default/Enabled           | `.progress-track` |
-| `--par-color-bg-progress-bar`           | Progress bar fill             | Default/Enabled           | `.progress-bar` |
-| `--par-color-bg-progress-bar-indeterminate` | Progress bar fill           | Indeterminate             | `.progress-bar.indeterminate` |
-| `--par-color-bg-progress-bar-success`   | Progress bar fill             | Success/Complete          | `.progress-bar.success` |
-| `--par-color-bg-progress-bar-error`     | Progress bar fill             | Error/Failed              | `.progress-bar.error` |
-| `--par-color-text-progress-label`       | Progress label text           | Any                       | `.progress-label` |
+| **Token**                                   | **Color for**                | **State/Meaning** | **CSS Selector(s)**                          |
+| ------------------------------------------- | ---------------------------- | ----------------- | -------------------------------------------- |
+| `--par-color-progress-track`                | Progress track background    | Default/Enabled   | `.progress-track`                            |
+| `--par-color-progress-thumb-active-neutral` | Progress bar fill (neutral)  | Active            | `.progress.active.neutral .progress-thumb`   |
+| `--par-color-progress-thumb-active-accent`  | Progress bar fill (accent)   | Active            | `.progress.active.accent .progress-thumb`    |
+| `--par-color-progress-thumb-success`        | Progress bar fill            | Success/Complete  | `.progress.success .progress-thumb`          |
+| `--par-color-progress-thumb-error`          | Progress bar fill            | Error/Failed      | `.progress.error .progress-thumb`            |
+| `--par-color-text-primary`                  | Progress label text          | Any               | `.progress-title`                            |
+| `--par-color-text-helper-neutral`           | Progress numeral/helper text | Any               | `.progress-numeral`, `.progress-helper-text` |
+| `--par-color-text-helper-affirmative`       | Helper text                  | Success           | `.progress.success .progress-helper-text`    |
+| `--par-color-text-helper-adverse`           | Helper text                  | Error             | `.progress.error .progress-helper-text`      |
 
-> _Note: Progress uses the same design tokens as the Slider or Bar component. See Slider/Bar documentation for available tokens._
+> _Note: Progress tokens are defined in `registry/src/components/Progress/variables.css`._
 
 ---
 
@@ -65,17 +68,16 @@ A component that organizes content into vertically stacked collapsible and expan
 
 ### `<Progress />`
 
-| **Prop**        | **Type**             | **Default** | **Description**                              |
-| --------------- | -------------------- | ----------- | -------------------------------------------- |
-| **value**       | number               |             | Current progress value                       |
-| **max**         | number               | _100_       | Maximum value                                |
-| **min**         | number               | _0_         | Minimum value                                |
-| **label**       | string \| ReactNode  |             | Optional label                               |
-| **showLabel**   | boolean              | _false_     | Show label                                   |
-| **size**        | 'sm' \| 'md' \| 'lg' | _'md'_      | Progress bar size                            |
-| **color**       | string               |             | Progress bar color                           |
-| **...divProps** | HTMLDivElement props |             | All native div props (className, style, ...) |
+| **Prop**    | **Type**                         | **Default** | **Description**                              |
+| ----------- | -------------------------------- | ----------- | -------------------------------------------- |
+| kind        | 'bar' \| 'circle'                | 'bar'       | Type of progress indicator                   |
+| value       | number                           | 0           | Current progress value                       |
+| title       | string                           |             | Title displayed above the progress indicator |
+| helperText  | string                           |             | Helper text displayed below the indicator    |
+| color       | 'neutral' \| 'accent'            | 'neutral'   | Color theme                                  |
+| state       | 'active' \| 'success' \| 'error' | 'active'    | Progress state                               |
+| size        | 'sm' \| 'md'                     | 'sm'        | Size (for circle kind)                       |
+| numeral     | boolean                          | false       | Show progress value as numeral               |
+| ...divProps | HTMLDivElement props             |             | All native div props (className, style, ...) |
 
 > **_Note:_** _Progress_ **inherits** all native props from **HTMLDivElement**.
-
----

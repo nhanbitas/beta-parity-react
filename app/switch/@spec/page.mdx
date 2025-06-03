@@ -118,20 +118,22 @@ An element that toggles between two binary options.
 
 | **Token**                              | **Color for**                | **State/Meaning**         | **CSS Selector(s)** |
 |---------------------------------------- | ---------------------------- | ------------------------- | ------------------- |
-| `--par-color-bg-switch-track-enabled`   | Switch track background      | Enabled                   | `.switch-track:enabled` |
-| `--par-color-bg-switch-track-hovered`   | Switch track background      | Hovered                   | `.switch-track:hover` |
-| `--par-color-bg-switch-track-disabled`  | Switch track background      | Disabled                  | `.switch-track:disabled` |
-| `--par-color-bg-switch-track-checked`   | Switch track background      | Checked                   | `.switch-track.checked` |
-| `--par-color-bg-switch-track-invalid`   | Switch track background      | Invalid/Error             | `.switch-track.invalid` |
-| `--par-color-border-switch-track`       | Switch track border          | Any                       | `.switch-track` |
-| `--par-color-thumb-switch-enabled`      | Switch thumb                 | Enabled                   | `.switch-thumb:enabled` |
-| `--par-color-thumb-switch-hovered`      | Switch thumb                 | Hovered                   | `.switch-thumb:hover` |
-| `--par-color-thumb-switch-disabled`     | Switch thumb                 | Disabled                  | `.switch-thumb:disabled` |
-| `--par-color-thumb-switch-checked`      | Switch thumb                 | Checked                   | `.switch-thumb.checked` |
-| `--par-color-thumb-switch-invalid`      | Switch thumb                 | Invalid/Error             | `.switch-thumb.invalid` |
-| `--par-color-icon-switch`               | Switch thumb icon            | Any                       | `.switch-thumb .icon` |
+| `--par-color-bg-switch-target-handle`   | Switch thumb background      | Enabled                   | `.switch-target` |
+| `--par-color-bg-switch-target-handle-disabled` | Switch thumb background      | Disabled                  | `.switch-target` |
+| `--par-color-bg-switch-target-track-uncheck` | Switch track background      | Unchecked                 | `.switch` |
+| `--par-color-bg-switch-target-track-uncheck-disabled` | Switch track background      | Unchecked Disabled        | `.switch:disabled` |
+| `--par-color-bg-switch-target-track-check` | Switch track background      | Checked                   | `.switch[aria-checked='true']` |
+| `--par-color-bg-switch-target-track-check-disabled` | Switch track background      | Checked Disabled          | `.switch:disabled[aria-checked='true']` |
+| `--par-color-border-switch-unchecked`   | Switch border                | Unchecked                 | `.switch` |
+| `--par-color-border-switch-checked`     | Switch border                | Checked                   | `.switch[aria-checked='true']` |
+| `--par-color-border-switch-unchecked-disabled` | Switch border                | Unchecked Disabled        | `.switch:disabled` |
+| `--par-color-border-switch-checked-disabled` | Switch border                | Checked Disabled          | `.switch:disabled[aria-checked='true']` |
+| `--par-color-text-switch-target-unchecked-enabled` | Switch icon                 | Unchecked                 | `.switch-icon` |
+| `--par-color-text-switch-target-checked-enabled` | Switch icon                 | Checked                   | `.switch-icon` |
+| `--par-color-text-switch-target-unchecked-disabled` | Switch icon                 | Unchecked Disabled        | `.switch:disabled .switch-icon` |
+| `--par-color-text-switch-target-checked-disabled` | Switch icon                 | Checked Disabled          | `.switch:disabled[aria-checked='true'] .switch-icon` |
 
-> _Note: Switch uses the same design tokens as the Input or Toggle component. See Input/Toggle documentation for available tokens._
+> _Note: Switch uses design tokens defined in `registry/src/components/Switch/variables.css`. See Input/Toggle documentation for additional shared tokens._
 
 ---
 
@@ -141,13 +143,12 @@ An element that toggles between two binary options.
 
 | **Prop**          | **Type**                  | **Default** | **Description**                   |
 | ----------------- | ------------------------- | ----------- | --------------------------------- |
-| **checked**       | boolean                   |             | Checked state                     |
-| **onChange**      | function (event)          |             | Callback when value changes       |
+| **active**        | boolean                   |             | Controlled state                  |
+| **defaultActive** | boolean                   | _false_     | Uncontrolled initial state        |
+| **switchSize**    | 'sm' \| 'md' \| 'lg'      | _'md'_      | Switch size                       |
 | **disabled**      | boolean                   | _false_     | Disable the switch                |
-| **color**         | string                    |             | Switch color                      |
-| **size**          | 'sm' \| 'md' \| 'lg'      | _'md'_      | Switch size                       |
-| **...InputProps** | [See Input](../BaseInput) |             | Inherits all props from **Input** |
+| **icon**          | boolean                   | _false_     | Show icon on thumb                |
+| **onToggle**      | function (active: boolean)|             | Callback when value changes       |
+| **...buttonProps**| [See MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attributes) |             | Inherits all props from native **button** |
 
-> **_Note:_** _Switch_ **inherits** all props from **Input** and the native **input** element. See [Input documentation](../BaseInput) for full details on available props and tokens.
-
----
+> **_Note:_** _Switch_ **does not inherit** Input props. See [Button documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attributes) for full details on available props.

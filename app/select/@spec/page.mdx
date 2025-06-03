@@ -15,11 +15,11 @@ A selection field that allows users to choose a single option or multiple option
 | Status | Item                                 | Description                                                                                                                                                                                                                       |
 | ------ | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ✔️     | Anatomy                              | Includes descriptions of all parts of the component and its major variants.                                                                                                                                                       |
-|        | States                               | Includes all applicable interaction, display and value states.                                                                                                                                                                    |
+| ✔️     | States                               | Includes all applicable interaction, display and value states.                                                                                                                                                                    |
 | ✔️     | Options                              | Includes all relevant options (functional type, stylistic kind, semantic color, size, orientation, optional iconography, decorations, etc.)                                                                                       |
 | ✔️     | Color schemes                        | Includes both light and dark color schemes.                                                                                                                                                                                       |
-|        | Behaviors                            | Includes descriptions of behaviors related to other components and responsive behaviors related to media breakpoints, size (minimums and maximums), orientation, alignment, position and layout (wrapping, truncation, overflow). |
-|        | Accessibility: Keyboard interactions | Includes descriptions of all keyboard interactions, focus indication and navigation order.                                                                                                                                        |
+| ✔️     | Behaviors                            | Includes descriptions of behaviors related to other components and responsive behaviors related to media breakpoints, size (minimums and maximums), orientation, alignment, position and layout (wrapping, truncation, overflow). |
+| ✔️     | Accessibility: Keyboard interactions | Includes descriptions of all keyboard interactions, focus indication and navigation order.                                                                                                                                        |
 |        | Accessibility: Text contrast         | Text meets a contrast ratio of at least 4.5:1 for small text and 3:1 for large text (WCAG 2.0 1.4.3) and/or a lightness contrast value of at least Lc 75 for standard text and Lc 60 for large text (APCA).                       |
 |        | Accessibility: UI component contrast | Visual information required to identify states and boundaries of active UI components has a contrast ratio against adjacent colors of at least 3:1 (WCAG 2.1 1.4.11) and/or a lightness contrast value of at least Lc 60 (APCA).  |
 |        | Usage guidelines                     | Includes a list of recommended and discouraged usages.                                                                                                                                                                            |
@@ -221,26 +221,26 @@ The dropdown menu sub-component inherits all available options of the [[Menu#Opt
 
 | **Token**                              | **Color for**                | **State/Meaning**         | **CSS Selector(s)** |
 |---------------------------------------- | ---------------------------- | ------------------------- | ------------------- |
-| `--par-color-bg-field-enabled`          | Select field background      | Enabled                   | `.select:enabled` |
-| `--par-color-bg-field-hovered`          | Select field background      | Hovered                   | `.select:hover` |
-| `--par-color-bg-field-disabled`         | Select field background      | Disabled                  | `.select:disabled` |
-| `--par-color-bg-field-readonly`         | Select field background      | Readonly                  | `.select[readonly]` |
-| `--par-color-bg-field-invalid`          | Select field background      | Invalid/Error             | `.select.invalid` |
-| `--par-color-border-field-enabled`      | Select field border          | Enabled                   | `.select:enabled` |
-| `--par-color-border-field-hovered`      | Select field border          | Hovered                   | `.select:hover` |
-| `--par-color-border-field-disabled`     | Select field border          | Disabled                  | `.select:disabled` |
-| `--par-color-border-field-invalid`      | Select field border          | Invalid/Error             | `.select.invalid` |
-| `--par-color-border-field-focused`      | Select field border          | Focused                   | `.select:focus` |
-| `--par-color-text-field-placeholder`    | Placeholder text             | Any                       | `.select::placeholder` |
-| `--par-color-text-field-filled`         | Select field text            | Filled                    | `.select` |
+| `--par-color-bg-field-enabled`          | Select field background      | Enabled                   | `select.native-select:enabled` |
+| `--par-color-bg-field-hovered`          | Select field background      | Hovered                   | `select.native-select:hover` |
+| `--par-color-bg-field-disabled`         | Select field background      | Disabled                  | `select.native-select:disabled` |
+| `--par-color-bg-field-readonly`         | Select field background      | Readonly                  | `select.native-select[readonly]` |
+| `--par-color-bg-field-invalid`          | Select field background      | Invalid/Error             | `select.native-select.invalid` |
+| `--par-color-border-field-enabled`      | Select field border          | Enabled                   | `select.native-select:enabled` |
+| `--par-color-border-field-hovered`      | Select field border          | Hovered                   | `select.native-select:hover` |
+| `--par-color-border-field-disabled`     | Select field border          | Disabled                  | `select.native-select:disabled` |
+| `--par-color-border-field-invalid`      | Select field border          | Invalid/Error             | `select.native-select.invalid` |
+| `--par-color-border-field-focused`      | Select field border          | Focused                   | `select.native-select:focus` |
+| `--par-color-text-field-placeholder`    | Placeholder text             | Any                       | `select.native-select::placeholder`, `.select-input.non-value`, `.select-label` |
+| `--par-color-text-field-filled`         | Select field text            | Filled                    | `select.native-select`, `.select-input` |
 | `--par-color-text-field-label`          | Label text                   | Any                       | `.select-label` |
-| `--par-color-text-field-disabled`       | Select field text            | Disabled                  | `.select:disabled` |
-| `--par-color-text-field-readonly`       | Select field text            | Readonly                  | `.select[readonly]` |
-| `--par-color-text-field-invalid`        | Select field text            | Invalid/Error             | `.select.invalid` |
-| `--par-color-icon-field-button-enabled` | Icon color (button enabled)  | Enabled                   | `.select .icon-button:enabled` |
-| `--par-color-icon-field-button-hovered` | Icon color (button hovered)  | Hovered                   | `.select .icon-button:hover` |
-| `--par-color-icon-field-button-pressed` | Icon color (button pressed)  | Pressed                   | `.select .icon-button:active` |
-| `--par-color-icon-field-button-disabled`| Icon color (button disabled) | Disabled                  | `.select .icon-button:disabled` |
+| `--par-color-text-field-disabled`       | Select field text            | Disabled                  | `select.native-select:disabled` |
+| `--par-color-text-field-readonly`       | Select field text            | Readonly                  | `select.native-select[readonly]` |
+| `--par-color-text-field-invalid`        | Select field text            | Invalid/Error             | `select.native-select.invalid` |
+| `--par-color-icon-field-button-enabled` | Icon color (button enabled)  | Enabled                   | `.arrow-select-btn:enabled`, `.clear-button:enabled` |
+| `--par-color-icon-field-button-hovered` | Icon color (button hovered)  | Hovered                   | `.arrow-select-btn:hover`, `.clear-button:hover` |
+| `--par-color-icon-field-button-pressed` | Icon color (button pressed)  | Pressed                   | `.arrow-select-btn:active`, `.clear-button:active` |
+| `--par-color-icon-field-button-disabled`| Icon color (button disabled) | Disabled                  | `.arrow-select-btn:disabled`, `.clear-button:disabled` |
 
 > _Note: Select uses the same design tokens as the Input or Dropdown component. See Input/Dropdown documentation for available tokens._
 
@@ -255,11 +255,16 @@ The dropdown menu sub-component inherits all available options of the [[Menu#Opt
 | **options**       | array                     |             | List of options                   |
 | **value**         | string \| number \| array |             | Selected value(s)                 |
 | **onChange**      | function (value)          |             | Callback when value changes       |
-| **multiple**      | boolean                   | _false_     | Allow multiple selection          |
+| **multiselect**   | boolean                   | _false_     | Allow multiple selection (named `multiselect` in code, not `multiple`) |
 | **disabled**      | boolean                   | _false_     | Disable the select                |
 | **placeholder**   | string                    |             | Placeholder text                  |
+| **clearButton**   | boolean                   | _false_     | Show clear button                 |
+| **filterable**    | boolean                   | _false_     | Allow filtering options           |
+| **tagProps**      | object                    |             | Tag props for multi-select (see Tag spec) |
+| **theme**         | string                    | 'default'   | Visual theme ('default' or 'alternative') |
+| **selectSize**    | string                    | 'md'        | Size of select ('sm', 'md')       |
+| **floatingLabel** | string \| ReactNode       |             | Floating label                    |
+| **leftIcon**      | ReactNode                 |             | Icon on the left                  |
 | **...InputProps** | [See Input](../BaseInput) |             | Inherits all props from **Input** |
-
-> **_Note:_** _Select_ **inherits** all props from **Input** and the native **input/select** element. See [Input documentation](../BaseInput) for full details on available props and tokens.
-
----
+| **...MenuProps**  | [See Menu](../menu/@spec) |             | Inherits all props from **Menu**  |
+| **...TagProps**   | [See Tag](../tag/@spec)   |             | Inherits all props from **Tag**   |

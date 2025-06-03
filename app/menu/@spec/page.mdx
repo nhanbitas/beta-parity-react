@@ -19,7 +19,7 @@ A interactive popover interface that contains a list of options or other input c
 | ✔️     | Options                              | Includes all relevant options (functional type, stylistic kind, semantic color, size, orientation, optional iconography, decorations, etc.)                                                                                       |
 | ✔️     | Color schemes                        | Includes both light and dark color schemes.                                                                                                                                                                                       |
 | ✔️     | Behaviors                            | Includes descriptions of behaviors related to other components and responsive behaviors related to media breakpoints, size (minimums and maximums), orientation, alignment, position and layout (wrapping, truncation, overflow). |
-|        | Accessibility: Keyboard interactions | Includes descriptions of all keyboard interactions, focus indication and navigation order.                                                                                                                                        |
+| ✔️     | Accessibility: Keyboard interactions | Includes descriptions of all keyboard interactions, focus indication and navigation order.                                                                                                                                        |
 |        | Accessibility: Text contrast         | Text meets a contrast ratio of at least 4.5:1 for small text and 3:1 for large text (WCAG 2.0 1.4.3) and/or a lightness contrast value of at least Lc 75 for standard text and Lc 60 for large text (APCA).                       |
 |        | Accessibility: UI component contrast | Visual information required to identify states and boundaries of active UI components has a contrast ratio against adjacent colors of at least 3:1 (WCAG 2.1 1.4.11) and/or a lightness contrast value of at least Lc 60 (APCA).  |
 |        | Usage guidelines                     | Includes a list of recommended and discouraged usages.                                                                                                                                                                            |
@@ -246,14 +246,14 @@ Options applied to a menu affect all of its menu items.
 |---------------------------------------------------|------------------------------|---------------------------------------------------|------------------------------------------|
 | `--par-color-bg-menu`                             | Menu background              | Default/Enabled                                  | `.menu`                                  |
 | `--par-color-bg-menu-item-hovered`                | Menu item background         | Hovered                                           | `.menu-item:hover`                       |
-| `--par-color-bg-menu-item-selected-subtle`        | Menu item background         | Selected (subtle)                                 | `.menu-item.selected-subtle`             |
-| `--par-color-bg-menu-item-selected-pronounced`    | Menu item background         | Selected (pronounced)                             | `.menu-item.selected-pronounced`         |
-| `--par-color-bg-menu-item-disabled`               | Menu item background         | Disabled                                          | `.menu-item:disabled`                    |
+| `--par-color-bg-menu-item-selected-subtle`        | Menu item background         | Selected (subtle)                                 | `.menu-item.subtle[aria-checked='true']` |
+| `--par-color-bg-menu-item-selected-pronounced`    | Menu item background         | Selected (pronounced)                             | `.menu-item.pronounced[aria-checked='true']` |
+| `--par-color-bg-menu-item-disabled`               | Menu item background         | Disabled                                          | `.menu-item[aria-disabled='true']`        |
 | `--par-color-text-menu-item`                      | Menu item text               | Default/Enabled                                  | `.menu-item`                             |
-| `--par-color-text-menu-item-disabled`             | Menu item text               | Disabled                                          | `.menu-item:disabled`                    |
-| `--par-color-text-menu-item-selected`             | Menu item text               | Selected                                          | `.menu-item.selected`                    |
-| `--par-color-icon-menu-item`                      | Menu item icon               | Default/Enabled                                  | `.menu-item .icon`                       |
-| `--par-color-icon-menu-item-disabled`             | Menu item icon               | Disabled                                          | `.menu-item:disabled .icon`              |
+| `--par-color-text-menu-item-disabled`             | Menu item text               | Disabled                                          | `.menu-item[aria-disabled='true']`        |
+| `--par-color-text-menu-item-selected`             | Menu item text               | Selected                                          | `.menu-item[aria-checked='true']`        |
+| `--par-color-icon-menu-item`                      | Menu item icon               | Default/Enabled                                  | `.menu-item .menu-item-icon`             |
+| `--par-color-icon-menu-item-disabled`             | Menu item icon               | Disabled                                          | `.menu-item[aria-disabled='true'] .menu-item-icon` |
 | `--par-color-divider-menu`                        | Divider                      | Default                                           | `.menu-divider`                          |
 
 > _Note: Menu uses the same design tokens as the Button or List component. See Button/List documentation for available tokens._
@@ -264,26 +264,21 @@ Options applied to a menu affect all of its menu items.
 
 ### `<Menu />`
 
-| **Prop**         | **Type**             | **Default** | **Description**                              |
-| ---------------- | -------------------- | ----------- | -------------------------------------------- |
-| **items**        | array                |             | List of menu items                           |
-| **open**         | boolean              |             | Open state (controlled)                      |
-| **defaultOpen**  | boolean              | _false_     | Default open state (uncontrolled)            |
-| **onOpenChange** | function (open)      |             | Callback when open state changes             |
-| **placement**    | string               | _'bottom'_  | Menu placement (top, bottom, etc.)           |
-| **trigger**      | ReactNode            |             | Custom trigger element                       |
-| **...divProps**  | HTMLDivElement props |             | All native div props (className, style, ...) |
-
-### `<MenuItem />`
-
-| **Prop**       | **Type**            | **Default** | **Description**                             |
-| -------------- | ------------------- | ----------- | ------------------------------------------- |
-| **label**      | string \| ReactNode |             | Menu item label                             |
-| **icon**       | ReactNode           |             | Icon for menu item                          |
-| **disabled**   | boolean             | _false_     | Disable the menu item                       |
-| **onClick**    | function (event)    |             | Callback when item is clicked               |
-| **...liProps** | HTMLLIElement props |             | All native li props (className, style, ...) |
-
-> **_Note:_** _Menu_ and _MenuItem_ **inherit** all native props from **HTMLDivElement** and **HTMLLIElement** respectively.
-
----
+| **Prop**             | **Type**                                 | **Default**      | **Description**                                                                 |
+| -------------------- | ---------------------------------------- | ---------------- | ------------------------------------------------------------------------------- |
+| **position**         | string                                   | 'bottom-start'   | Menu placement (Floating UI placement string)                                   |
+| **size**             | 'sm' \| 'md'                             | 'sm'             | Size of the menu                                                                |
+| **menuColor**        | 'neutral' \| 'accent'                    | 'neutral'        | Color of the menu                                                               |
+| **prominence**       | 'subtle' \| 'pronounced'                 | 'subtle'         | Visual prominence of the menu                                                   |
+| **theme**            | 'default' \| 'alternative'               | 'default'        | Theme of the menu                                                               |
+| **anchor**           | HTMLElement \| string                     |                  | Anchor element or selector                                                      |
+| **menuItemsLimit**   | number                                   |                  | Max number of items before overflow/scroll                                      |
+| **scrollIndicator**  | boolean                                  | false            | Show scroll indicators when scrollable                                          |
+| **searchable**       | boolean                                  | false            | Show search input for filtering items                                           |
+| **defaultSearch**    | string                                   | ''               | Default value for search input                                                  |
+| **searchPlaceholder**| string                                   |                  | Placeholder for search input                                                    |
+| **noResultsText**    | string                                   | 'No results found' | Text when no search results                                                     |
+| **usePortal**        | boolean                                  | true             | Render menu in a portal                                                         |
+| **isOpen**           | boolean                                  | false            | Whether the menu is open                                                        |
+| **isLoading**        | boolean                                  |                  | Loading state                                                                   |
+| **disabled**         | boolean                                  | false      

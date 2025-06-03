@@ -24,40 +24,65 @@ A component that organizes content into vertically stacked collapsible and expan
 
 ## Anatomy <span id="anatomy"></span>
 
-{/* Anatomy specification */}
+- **Table container**: Outermost wrapper (`.table-container`).
+- **Header section**: Contains title and description (`.table-header-section`, `.table-title`, `.table-description`).
+- **Actions section**: Header actions or batch actions (`.table-actions-section`, `.table-batch-actions`).
+- **Table wrapper**: Scrollable area for the table (`.table-wrapper`).
+- **Table element**: Main table (`.par-table`).
+- **Table head**: Table header row (`.table-head`, `.table-head-row`, `.table-head-cell`).
+- **Table body**: Table rows and cells (`.table-body`, `.table-body-row`, `.table-body-cell`).
+- **Checkbox**: For selectable rows (`.table-checkbox`).
+- **Footer**: Footer section with row count or custom content (`.table-footer`).
+- **Empty state**: Displayed when no data (`.table-empty-state-wrapper`, `.table-empty-state`).
 
 ## States <span id="states"></span>
 
-{/* States specification */}
+- **Default**: Table displays data rows.
+- **Hovered row**: `.table-body-row:hover` highlights the row.
+- **Selected row**: `.table-body-row.selected` applies selected background.
+- **Selectable**: `.table-body-row.selectable` enables row selection.
+- **Empty**: `.table-empty-state` shown when no data.
+- **Disabled**: (Not directly supported, but can be styled via custom logic.)
 
 ## Options <span id="options"></span>
 
-{/* Options specification */}
+- **selectable**: Enable row selection with checkboxes.
+- **selectOnRowClick**: Select row by clicking anywhere on the row.
+- **freezeColumns**: Number of columns to freeze from the left.
+- **color**: Color scheme, e.g. 'neutral' (default) or 'accent'.
+- **actions**: Custom actions in the header.
+- **batchActions**: Actions for selected rows.
+- **footer**: Custom footer content.
+- **showRowCount**: Show row count in footer.
+- **maxHeight**: Set max height for scrollable table.
 
 ## Behaviors <span id="behaviors"></span>
 
-{/* Behaviors specification */}
-
-## Changelog <span id="changelog"></span>
-
-{/* Changelog specification */}
-
-| Date       | Type                                                     | Description    | Author      | Associated issue(s) |
-| :--------- | :------------------------------------------------------- | -------------- | :---------- | :------------------ |
-| YYYY-MM-DD | <Badge size='sm' kind='glass' color='cyan' label="new"/> | Initial design | Oanh Nguyen | PAR-52              |
+- **Column sorting**: Click sortable header to sort by column.
+- **Column resizing**: Drag handle to resize columns.
+- **Row selection**: Select rows via checkbox or row click.
+- **Batch actions**: Perform actions on selected rows.
+- **Frozen columns**: Keep columns fixed during horizontal scroll.
+- **Pagination**: Use TablePagination for paginated data (external component).
+- **Empty state**: Customizable empty state when no data.
+- **Keyboard navigation**: Standard table navigation (Tab, Arrow keys).
 
 ## 🎨 Design Tokens for Table
 
-| **Token**                              | **Color for**                | **State/Meaning**         | **CSS Selector(s)** |
-|---------------------------------------- | ---------------------------- | ------------------------- | ------------------- |
-| `--par-color-bg-table`                  | Table background             | Default/Enabled           | `.table` |
-| `--par-color-bg-table-row-hovered`      | Table row background         | Hovered                   | `.table-row:hover` |
-| `--par-color-bg-table-row-selected`     | Table row background         | Selected                  | `.table-row.selected` |
-| `--par-color-bg-table-row-disabled`     | Table row background         | Disabled                  | `.table-row:disabled` |
-| `--par-color-border-table`              | Table border                 | Any                       | `.table, .table-row, .table-cell` |
-| `--par-color-text-table-header`         | Table header text            | Any                       | `.table-header` |
-| `--par-color-text-table-cell`           | Table cell text              | Any                       | `.table-cell` |
-| `--par-color-text-table-row-disabled`   | Table row text               | Disabled                  | `.table-row:disabled .table-cell` |
+| **Token**                                         | **Color for**          | **State/Meaning** | **CSS Selector(s)**                                                                      |
+| ------------------------------------------------- | ---------------------- | ----------------- | ---------------------------------------------------------------------------------------- |
+| `--par-color-bg-table`                            | Table background       | Default/Enabled   | `.par-table`, `.table-wrapper`                                                           |
+| `--par-color-bg-table-header-cell-item-enabled`   | Header cell background | Enabled           | `.table-head-cell`                                                                       |
+| `--par-color-bg-table-header-cell-item-hovered`   | Header cell background | Hovered           | `.table-head-cell.sortable:hover`                                                        |
+| `--par-color-bg-table-header-cell-item-active`    | Header cell background | Active            | `.table-head-cell.sortable:active`                                                       |
+| `--par-color-bg-table-body-row-item-enabled`      | Row background         | Enabled           | `.table-body-row`                                                                        |
+| `--par-color-bg-table-body-row-item-hovered`      | Row background         | Hovered           | `.table-body-row:hover`                                                                  |
+| `--par-color-bg-table-batch-action-selected-item` | Row background         | Selected          | `.table-body-row.selected`, `.table-batch-actions`                                       |
+| `--par-color-border-table`                        | Table border           | Any               | `.par-table`, `.table-head-cell-wrapper`, `.table-body-cell-wrapper`, `.table-container` |
+| `--par-color-text-table-header-cell-item-enabled` | Header cell text       | Enabled           | `.table-head`                                                                            |
+| `--par-color-text-table-header-cell-item-hovered` | Header cell text       | Hovered           | `.table-head-cell.sortable:hover`                                                        |
+| `--par-color-text-table-header-cell-item-active`  | Header cell text       | Active            | `.table-sort-icon .active`                                                               |
+| `--par-color-text-table-content-item`             | Table cell text        | Any               | `.table-body-cell-wrapper`, `.table-footer`                                              |
 
 > _Note: Table uses the same design tokens as the List or DataGrid component. See List/DataGrid documentation for available tokens._
 
@@ -67,16 +92,31 @@ A component that organizes content into vertically stacked collapsible and expan
 
 ### `<Table />`
 
-| **Prop**          | **Type**               | **Default** | **Description**                                |
-| ----------------- | ---------------------- | ----------- | ---------------------------------------------- |
-| **columns**       | array                  |             | Table columns                                  |
-| **data**          | array                  |             | Table data rows                                |
-| **rowKey**        | string \| function     |             | Unique row key                                 |
-| **pagination**    | object                 |             | Pagination config                              |
-| **loading**       | boolean                | _false_     | Loading state                                  |
-| **onRowClick**    | function (row)         |             | Callback when row is clicked                   |
-| **...tableProps** | HTMLTableElement props |             | All native table props (className, style, ...) |
+| **Prop**             | **Type**                 | **Default** | **Description**                                |
+| -------------------- | ------------------------ | ----------- | ---------------------------------------------- |
+| **columns**          | TableColumn[]            |             | Table columns                                  |
+| **data**             | array                    |             | Table data rows (each row must have an `id`)   |
+| **title**            | React.ReactNode          |             | Table title                                    |
+| **description**      | React.ReactNode          |             | Table description                              |
+| **actions**          | React.ReactNode          |             | Actions in the header                          |
+| **batchActions**     | React.ReactNode          |             | Actions for selected rows                      |
+| **selectable**       | boolean                  | _false_     | Enable row selection                           |
+| **selectOnRowClick** | boolean                  | _false_     | Select row by clicking anywhere                |
+| **maxHeight**        | number \| string         |             | Max height for scrollable table                |
+| **emptyState**       | React.ReactNode          |             | Custom empty state                             |
+| **selectedRows**     | array                    |             | Controlled selected rows                       |
+| **onSelect**         | function(selectedRows)   |             | Callback when rows are selected                |
+| **onSort**           | function(key, direction) |             | Callback when column is sorted                 |
+| **sortKey**          | string                   |             | Current sort key                               |
+| **sortDirection**    | 'asc' \| 'desc'          | _'asc'_     | Current sort direction                         |
+| **footer**           | React.ReactNode          |             | Custom footer                                  |
+| **showRowCount**     | boolean                  | _true_      | Show row count in footer                       |
+| **onRowClick**       | function(record, id)     |             | Callback when row is clicked                   |
+| **freezeColumns**    | number                   | _-1_        | Number of columns to freeze from the left      |
+| **color**            | 'neutral' \| 'accent'    | _'neutral'_ | Color scheme                                   |
+| **className**        | string                   |             | Custom className for container                 |
+| **...tableProps**    | HTMLTableElement props   |             | All native table props (className, style, ...) |
 
-> **_Note:_** _Table_ **inherits** all native props from **HTMLTableElement**.
+> **_Note:_** Table expects each row to have a unique `id` field as the key. TableColumn type supports key, title, width, sortable, resizable, render, etc.
 
 ---
