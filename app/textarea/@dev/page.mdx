@@ -39,20 +39,19 @@ import CodePreview from '@components/showcase/CodePreview';
 
 ## Alternative
 
-<div className='flex flex-col gap-4 rounded-md bg-[var(--background-alternative)] p-4'>
-  <CodePreview paths={['textarea', 'BasicTextAreaAlternativeRows0Error']}>
-    <Demo.BasicTextAreaAlternativeRows0Error />
-  </CodePreview>
-  <CodePreview paths={['textarea', 'BasicTextAreaAlternativeMaxLength500Error']}>
-    <Demo.BasicTextAreaAlternativeMaxLength500Error />
-  </CodePreview>
-  <CodePreview paths={['textarea', 'BasicTextAreaAlternativeClearableDisabled']}>
-    <Demo.BasicTextAreaAlternativeClearableDisabled />
-  </CodePreview>
-  <CodePreview paths={['textarea', 'BasicTextAreaAlternativeMaxLength500ClearableReadOnly']}>
-    <Demo.BasicTextAreaAlternativeMaxLength500ClearableReadOnly />
-  </CodePreview>
-  <CodePreview paths={['textarea', 'BasicTextAreaAlternativeRows6MaxLength2000Clearable']}>
-    <Demo.BasicTextAreaAlternativeRows6MaxLength2000Clearable />
-  </CodePreview>
-</div>
+{' '}
+<CodePreview paths={['textarea', 'BasicTextAreaAlternativeRows0Error']} theme='alternative'>
+  <Demo.BasicTextAreaAlternativeRows0Error />
+</CodePreview>
+<CodePreview paths={['textarea', 'BasicTextAreaAlternativeMaxLength500Error']} theme='alternative'>
+  <Demo.BasicTextAreaAlternativeMaxLength500Error />
+</CodePreview>
+<CodePreview paths={['textarea', 'BasicTextAreaAlternativeClearableDisabled']} theme='alternative'>
+  <Demo.BasicTextAreaAlternativeClearableDisabled />
+</CodePreview>
+<CodePreview paths={['textarea', 'BasicTextAreaAlternativeMaxLength500ClearableReadOnly']} theme='alternative'>
+  <Demo.BasicTextAreaAlternativeMaxLength500ClearableReadOnly />
+</CodePreview>
+<CodePreview paths={['textarea', 'BasicTextAreaAlternativeRows6MaxLength2000Clearable']} theme='alternative'>
+  <Demo.BasicTextAreaAlternativeRows6MaxLength2000Clearable />
+</CodePreview>

@@ -13,12 +13,12 @@ import CodePreview from '@components/showcase/CodePreview';
 
 ## Alternative
 
-<div className='flex flex-col gap-4 rounded-md bg-[var(--background-alternative)] p-4'>
-  ## Basic
-  <CodePreview paths={['tabs', 'TabsAlternative']}>
-    <Demo.TabsAlternative />
-  </CodePreview>
-  <CodePreview paths={['tabs', 'AccentTabsAlternative']}>
-    <Demo.AccentTabsAlternative />
-  </CodePreview>
-</div>
+## Basic
+
+{' '}
+<CodePreview paths={['tabs', 'TabsAlternative']} theme='alternative'>
+  <Demo.TabsAlternative />
+</CodePreview>
+<CodePreview paths={['tabs', 'AccentTabsAlternative']} theme='alternative'>
+  <Demo.AccentTabsAlternative />
+</CodePreview>

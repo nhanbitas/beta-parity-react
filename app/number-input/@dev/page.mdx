@@ -43,334 +43,103 @@ import CodePreview from '@components/showcase/CodePreview';
 
 ## States
 
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput isError={true} errorMessage='Error message' placeholder='Placeholder' stepper='auto' />
+<CodePreview paths={['number-input', 'NumberInputErrorAuto']}>
+  <Demo.NumberInputErrorAuto />
 </CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput isError={true} errorMessage='Error message' placeholder='Placeholder' unit='$' />
+<CodePreview paths={['number-input', 'NumberInputErrorUnit']}>
+  <Demo.NumberInputErrorUnit />
 </CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput
-    isError={true}
-    errorMessage='Error message'
-    placeholder='Placeholder'
-    leftIcon={<CircleDollarSign />}
-    stepControl={10}
-    stepper='chevron'
-  />
+<CodePreview paths={['number-input', 'NumberInputErrorLeftIconChevron']}>
+  <Demo.NumberInputErrorLeftIconChevron />
 </CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput
-    isError={true}
-    errorMessage='Error message'
-    placeholder='Placeholder'
-    leftIcon={<CircleDollarSign />}
-  />
+<CodePreview paths={['number-input', 'NumberInputErrorLeftIcon']}>
+  <Demo.NumberInputErrorLeftIcon />
 </CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput disabled stepper='auto' />
+<CodePreview paths={['number-input', 'NumberInputErrorDisabledAuto']}>
+  <Demo.NumberInputErrorDisabledAuto />
 </CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput disabled leftIcon={<CircleDollarSign />} />
+<CodePreview paths={['number-input', 'NumberInputErrorDisabledLeftIcon']}>
+  <Demo.NumberInputErrorDisabledLeftIcon />
 </CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput
-    disabled
-    placeholder='Placeholder'
-    leftIcon={<CircleDollarSign />}
-    stepControl={10}
-    stepper='chevron'
-  />
+<CodePreview paths={['number-input', 'NumberInputErrorDisabledLeftIconChevron']}>
+  <Demo.NumberInputErrorDisabledLeftIconChevron />
 </CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput disabled placeholder='Placeholder' leftIcon={<CircleDollarSign />} />
+<CodePreview paths={['number-input', 'NumberInputErrorDisabledPlaceholderLeftIcon']}>
+  <Demo.NumberInputErrorDisabledPlaceholderLeftIcon />
 </CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput readOnly value={1000} placeholder='Placeholder' unit='$' />
+<CodePreview paths={['number-input', 'NumberInputReadOnlyUnit']}>
+  <Demo.NumberInputReadOnlyUnit />
 </CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput readOnly value={1000} placeholder='Placeholder' stepper='separate' />
+<CodePreview paths={['number-input', 'NumberInputReadOnlySeparate']}>
+  <Demo.NumberInputReadOnlySeparate />
 </CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput readOnly value={1000} placeholder='Placeholder' leftIcon={<CircleDollarSign />} stepper='chevron' />
+<CodePreview paths={['number-input', 'NumberInputReadOnlyLeftIconChevron']}>
+  <Demo.NumberInputReadOnlyLeftIconChevron />
+</CodePreview>
+<CodePreview paths={['number-input', 'NumberInputReadOnlyLeftIconChevron']}>
+  <Demo.NumberInputReadOnlyLeftIconChevron />
 </CodePreview>
 
 ## Floating label
 
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput isClearable floatingLabel='Enter Number' placeholder='Placeholder' stepper='chevron' />
+<CodePreview paths={['number-input', 'NumberInputFloatingLabel']}>
+  <Demo.NumberInputFloatingLabel />
 </CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput
-    isClearable
-    floatingLabel='Enter Number'
-    placeholder='Placeholder'
-    leftIcon={<CircleDollarSign />}
-  />
+<CodePreview paths={['number-input', 'NumberInputFloatingLabelLeftIcon']}>
+  <Demo.NumberInputFloatingLabelLeftIcon />
 </CodePreview>
-
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput floatingLabel='Enter Number' placeholder='Placeholder' unit='USD' />
+<CodePreview paths={['number-input', 'NumberInputFloatingLabelUnit']}>
+  <Demo.NumberInputFloatingLabelUnit />
 </CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput floatingLabel='Enter Number' placeholder='Placeholder' unit={['USD', 'VND', 'EUR', 'JPY']} />
+<CodePreview paths={['number-input', 'NumberInputFloatingLabelUnitArray']}>
+  <Demo.NumberInputFloatingLabelUnitArray />
 </CodePreview>
-
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput
-    isClearable
-    isError={true}
-    errorMessage='Error message'
-    floatingLabel='Enter Number'
-    placeholder='Placeholder'
-  />
+<CodePreview paths={['number-input', 'NumberInputFloatingLabelError']}>
+  <Demo.NumberInputFloatingLabelError />
 </CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput
-    isClearable
-    isError={true}
-    errorMessage='Error message'
-    floatingLabel='Enter Number'
-    placeholder='Placeholder'
-    leftIcon={<CircleDollarSign />}
-  />
-</CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput isClearable disabled floatingLabel='Enter Number' placeholder='Placeholder' value={1000} />
-</CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput
-    isClearable
-    disabled
-    floatingLabel='Enter Number'
-    placeholder='Placeholder'
-    leftIcon={<CircleDollarSign />}
-  />
-</CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput isClearable readOnly floatingLabel='Enter Number' placeholder='Placeholder' value={1000} />
-</CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput
-    isClearable
-    readOnly
-    floatingLabel='Enter Number'
-    placeholder='Placeholder'
-    leftIcon={<CircleDollarSign />}
-  />
+<CodePreview paths={['number-input', 'NumberInputFloatingLabelErrorLeftIcon']}>
+  <Demo.NumberInputFloatingLabelErrorLeftIcon />
 </CodePreview>
 
 {/* /////////////////////////////////////////////////////////////////////////////////////// */}
 
 ## Size Medium
 
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput placeholder='Placeholder' inputSize='md' stepper='chevron' />
+<CodePreview paths={['number-input', 'NumberInputMdChevron']}>
+  <Demo.NumberInputMdChevron />
 </CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput placeholder='Placeholder' leftIcon={<CircleDollarSign />} inputSize='md' stepper='auto' />
+<CodePreview paths={['number-input', 'NumberInputMdLeftIconAuto']}>
+  <Demo.NumberInputMdLeftIconAuto />
 </CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput isClearable placeholder='Placeholder' inputSize='md' />
+<CodePreview paths={['number-input', 'NumberInputMdClearable']}>
+  <Demo.NumberInputMdClearable />
 </CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput isClearable placeholder='Placeholder' leftIcon={<CircleDollarSign />} inputSize='md' />
+<CodePreview paths={['number-input', 'NumberInputMdClearableLeftIcon']}>
+  <Demo.NumberInputMdClearableLeftIcon />
 </CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder' inputSize='md' />
+<CodePreview paths={['number-input', 'NumberInputMdErrorClearable']}>
+  <Demo.NumberInputMdErrorClearable />
 </CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput
-    isError={true}
-    errorMessage='Error message'
-    isClearable
-    placeholder='Placeholder'
-    leftIcon={<CircleDollarSign />}
-    inputSize='md'
-  />
+<CodePreview paths={['number-input', 'NumberInputMdErrorClearableLeftIcon']}>
+  <Demo.NumberInputMdErrorClearableLeftIcon />
 </CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput disabled isClearable placeholder='Placeholder' inputSize='md' />
+<CodePreview paths={['number-input', 'NumberInputMdDisabledClearable']}>
+  <Demo.NumberInputMdDisabledClearable />
 </CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput
-    disabled
-    isClearable
-    value={1000}
-    placeholder='Placeholder'
-    leftIcon={<CircleDollarSign />}
-    inputSize='md'
-  />
+<CodePreview paths={['number-input', 'NumberInputMdDisabledClearableLeftIcon']}>
+  <Demo.NumberInputMdDisabledClearableLeftIcon />
 </CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput readOnly isClearable value={1000} placeholder='Placeholder' inputSize='md' />
+<CodePreview paths={['number-input', 'NumberInputMdReadOnlyClearable']}>
+  <Demo.NumberInputMdReadOnlyClearable />
 </CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput
-    readOnly
-    isClearable
-    value={1000}
-    placeholder='Placeholder'
-    leftIcon={<CircleDollarSign />}
-    inputSize='md'
-  />
+<CodePreview paths={['number-input', 'NumberInputMdReadOnlyClearableLeftIcon']}>
+  <Demo.NumberInputMdReadOnlyClearableLeftIcon />
 </CodePreview>
 
 {/* /////////////////////////////////////////////////////////////////////////////////////// */}
 
 ## Alternative
 
-<div className="bg-[var(--background-alternative)] p-4 rounded-md flex flex-col gap-4">
-
-## Basic
-
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput placeholder='Placeholder' theme='alternative' />
+<CodePreview paths={['number-input', 'NumberInputAlternativeFloatingLabel']} theme='alternative'>
+  <Demo.NumberInputAlternativeFloatingLabel />
 </CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput placeholder='Placeholder' leftIcon={<CircleDollarSign />} theme='alternative' />
-</CodePreview>
-
-## Clearable
-
-<CodePreview paths={['number-input', 'NumberInputClearable']}>
-  <Demo.NumberInputClearable theme='alternative' />
-</CodePreview>
-<CodePreview paths={['number-input', 'NumberInputClearableLeftIconChevron']}>
-  <Demo.NumberInputClearableLeftIconChevron theme='alternative' />
-</CodePreview>
-<CodePreview paths={['number-input', 'NumberInputClearableLeftIcon']}>
-  <Demo.NumberInputClearableLeftIcon theme='alternative' />
-</CodePreview>
-
-## States
-
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput
-    isError={true}
-    errorMessage='Error message'
-    isClearable
-    placeholder='Placeholder'
-    theme='alternative'
-  />
-</CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput
-    isError={true}
-    errorMessage='Error message'
-    isClearable
-    placeholder='Placeholder'
-    leftIcon={<CircleDollarSign />}
-    theme='alternative'
-  />
-</CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput disabled isClearable placeholder='Placeholder' theme='alternative' />
-</CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput
-    disabled
-    isClearable
-    value={1000}
-    placeholder='Placeholder'
-    leftIcon={<CircleDollarSign />}
-    theme='alternative'
-  />
-</CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput readOnly isClearable value={1000} placeholder='Placeholder' />
-</CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput
-    readOnly
-    isClearable
-    value={1000}
-    placeholder='Placeholder'
-    leftIcon={<CircleDollarSign />}
-    theme='alternative'
-  />
-</CodePreview>
-
-## Floating label
-
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput isClearable floatingLabel='Enter Number' placeholder='Placeholder' theme='alternative' />
-</CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput
-    isClearable
-    floatingLabel='Enter Number'
-    placeholder='Placeholder'
-    leftIcon={<CircleDollarSign />}
-    theme='alternative'
-  />
-</CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput floatingLabel='Enter Number' placeholder='Placeholder' unit='USD' theme='alternative' />
-</CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput
-    floatingLabel='Enter Number'
-    placeholder='Placeholder'
-    unit={['USD', 'VND', 'EUR', 'JPY']}
-    theme='alternative'
-  />
-</CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput
-    isClearable
-    isError={true}
-    errorMessage='Error message'
-    floatingLabel='Enter Number'
-    placeholder='Placeholder'
-    theme='alternative'
-  />
-</CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput
-    isClearable
-    isError={true}
-    errorMessage='Error message'
-    floatingLabel='Enter Number'
-    placeholder='Placeholder'
-    leftIcon={<CircleDollarSign />}
-    theme='alternative'
-  />
-</CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput
-    isClearable
-    disabled
-    floatingLabel='Enter Number'
-    placeholder='Placeholder'
-    value={1000}
-    theme='alternative'
-  />
-</CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput
-    isClearable
-    disabled
-    floatingLabel='Enter Number'
-    placeholder='Placeholder'
-    value={1000}
-    leftIcon={<CircleDollarSign />}
-    theme='alternative'
-  />
-</CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput isClearable readOnly floatingLabel='Enter Number' placeholder='Placeholder' value={1000} />
-</CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput
-    isClearable
-    readOnly
-    floatingLabel='Enter Number'
-    placeholder='Placeholder'
-    value={1000}
-    leftIcon={<CircleDollarSign />}
-    theme='alternative'
-  />
-</CodePreview>
-
-</div>

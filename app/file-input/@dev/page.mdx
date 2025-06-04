@@ -13,11 +13,9 @@ import CodePreview from '@components/showcase/CodePreview';
 
 ## Alternative
 
-<div className='flex flex-col gap-4 rounded-md bg-[var(--background-alternative)] p-4'>
-  <CodePreview paths={['file-input', 'FileInputAlternative']}>
-    <Demo.FileInputAlternative />
-  </CodePreview>
-  <CodePreview paths={['file-input', 'ErrorFileInputAlternative']}>
-    <Demo.ErrorFileInputAlternative />
-  </CodePreview>
-</div>
+<CodePreview paths={['file-input', 'FileInputAlternative']} theme='alternative'>
+  <Demo.FileInputAlternative />
+</CodePreview>
+<CodePreview paths={['file-input', 'ErrorFileInputAlternative']} theme='alternative'>
+  <Demo.ErrorFileInputAlternative />
+</CodePreview>
