@@ -8,7 +8,7 @@ import * as Demo from '../@dev/demo-components';
 An element that toggles between two binary options.
 :::
 
-<Image src={imageSrc.switchDefault.src} alt='switchDefault' />
+<Image src={imageSrc.switchDefault} alt='switchDefault' />
 
 ## Design checklist
 
@@ -33,7 +33,7 @@ An element that toggles between two binary options.
 - **Thumb**: The element that moves along the track to indicate the current state.
 - **Icon**: An optional visual element on the thumb that represents the value state of the switch.
 
-<Image src={imageSrc.anatomy.src} alt='anatomy' />
+<Image src={imageSrc.anatomy} alt='anatomy' />
 
 ## States
 
@@ -43,31 +43,31 @@ An element that toggles between two binary options.
 
 - Interaction with the switch is available.
 
-<Image src={imageSrc.enabled.src} alt='enabled' />
+<Image src={imageSrc.enabled} alt='enabled' />
 
 ##### Hovered
 
 - The cursor is currently positioned over the track or thumb, indicated by the pointer cursor and a dim halo surrounding the thumb.
 
-<Image src={imageSrc.hovered.src} alt='hovered' />
+<Image src={imageSrc.hovered} alt='hovered' />
 
 ##### Pressed
 
 - The cursor is currently clicking on the track or thumb, indicated by the enlargement of the thumb.
 
-<Image src={imageSrc.pressed.src} alt='pressed' />
+<Image src={imageSrc.pressed} alt='pressed' />
 
 ##### Focused
 
 - The switch is focused via keyboard interaction, indicated by a ring outline around the track.
 
-<Image src={imageSrc.focused.src} alt='focused' />
+<Image src={imageSrc.focused} alt='focused' />
 
 ##### Disabled
 
 - Interaction with the switch is disallowed, indicated by a muted appearance and the disallowed cursor.
 
-<Image src={imageSrc.disabled.src} alt='disabled' />
+<Image src={imageSrc.disabled} alt='disabled' />
 
 - Interaction with the switch is disallowed, indicated by a muted appearance and the disallowed cursor.
 
@@ -77,13 +77,13 @@ An element that toggles between two binary options.
 
 - The switch's unchecked state is indicated by the thumb being positioned on the left side of the track, the gray color track, and an optional dash icon.
 
-<Image src={imageSrc.unchecked.src} alt='unchecked' />
+<Image src={imageSrc.unchecked} alt='unchecked' />
 
 ##### Checked
 
 - The switch's checked state is indicated by the thumb being positioned on the right side of the track, the green or accent color track, and an optional checkmark icon.
 
-<Image src={imageSrc.checked.src} alt='checked' />
+<Image src={imageSrc.checked} alt='checked' />
 
 ## Options
 
@@ -92,23 +92,23 @@ An element that toggles between two binary options.
 - By default, in the checked state, the track and its optional icon are colored green.
 - The theme's accent color can be used instead to indicate the checked state.
 
-<Image src={imageSrc.defaultColor.src} alt='defaultColor' />
+<Image src={imageSrc.defaultColor} alt='defaultColor' />
 
 ##### Size
 
 - Switches are available in small, medium and large sizes.
 - Small is the default switch size.
 
-<Image src={imageSrc.sizeSmall.src} alt='sizeSmall' />
-<Image src={imageSrc.sizeMedium.src} alt='sizeMedium' />
-<Image src={imageSrc.sizeLarge.src} alt='sizeLarge' />
+<Image src={imageSrc.sizeSmall} alt='sizeSmall' />
+<Image src={imageSrc.sizeMedium} alt='sizeMedium' />
+<Image src={imageSrc.sizeLarge} alt='sizeLarge' />
 
 ##### Icon
 
 - Icons can be optionally displayed on the thumb to represent the value state of the switch.
 
-<Image src={imageSrc.iconOff.src} alt='iconOff' />
-<Image src={imageSrc.iconOn.src} alt='iconOn' />
+<Image src={imageSrc.iconOff} alt='iconOff' />
+<Image src={imageSrc.iconOn} alt='iconOn' />
 
 ## Behaviors
 
@@ -116,22 +116,22 @@ An element that toggles between two binary options.
 
 ## 🎨 Design Tokens for Switch
 
-| **Token**                              | **Color for**                | **State/Meaning**         | **CSS Selector(s)** |
-|---------------------------------------- | ---------------------------- | ------------------------- | ------------------- |
-| `--par-color-bg-switch-target-handle`   | Switch thumb background      | Enabled                   | `.switch-target` |
-| `--par-color-bg-switch-target-handle-disabled` | Switch thumb background      | Disabled                  | `.switch-target` |
-| `--par-color-bg-switch-target-track-uncheck` | Switch track background      | Unchecked                 | `.switch` |
-| `--par-color-bg-switch-target-track-uncheck-disabled` | Switch track background      | Unchecked Disabled        | `.switch:disabled` |
-| `--par-color-bg-switch-target-track-check` | Switch track background      | Checked                   | `.switch[aria-checked='true']` |
-| `--par-color-bg-switch-target-track-check-disabled` | Switch track background      | Checked Disabled          | `.switch:disabled[aria-checked='true']` |
-| `--par-color-border-switch-unchecked`   | Switch border                | Unchecked                 | `.switch` |
-| `--par-color-border-switch-checked`     | Switch border                | Checked                   | `.switch[aria-checked='true']` |
-| `--par-color-border-switch-unchecked-disabled` | Switch border                | Unchecked Disabled        | `.switch:disabled` |
-| `--par-color-border-switch-checked-disabled` | Switch border                | Checked Disabled          | `.switch:disabled[aria-checked='true']` |
-| `--par-color-text-switch-target-unchecked-enabled` | Switch icon                 | Unchecked                 | `.switch-icon` |
-| `--par-color-text-switch-target-checked-enabled` | Switch icon                 | Checked                   | `.switch-icon` |
-| `--par-color-text-switch-target-unchecked-disabled` | Switch icon                 | Unchecked Disabled        | `.switch:disabled .switch-icon` |
-| `--par-color-text-switch-target-checked-disabled` | Switch icon                 | Checked Disabled          | `.switch:disabled[aria-checked='true'] .switch-icon` |
+| **Token**                                             | **Color for**           | **State/Meaning**  | **CSS Selector(s)**                                  |
+| ----------------------------------------------------- | ----------------------- | ------------------ | ---------------------------------------------------- |
+| `--par-color-bg-switch-target-handle`                 | Switch thumb background | Enabled            | `.switch-target`                                     |
+| `--par-color-bg-switch-target-handle-disabled`        | Switch thumb background | Disabled           | `.switch-target`                                     |
+| `--par-color-bg-switch-target-track-uncheck`          | Switch track background | Unchecked          | `.switch`                                            |
+| `--par-color-bg-switch-target-track-uncheck-disabled` | Switch track background | Unchecked Disabled | `.switch:disabled`                                   |
+| `--par-color-bg-switch-target-track-check`            | Switch track background | Checked            | `.switch[aria-checked='true']`                       |
+| `--par-color-bg-switch-target-track-check-disabled`   | Switch track background | Checked Disabled   | `.switch:disabled[aria-checked='true']`              |
+| `--par-color-border-switch-unchecked`                 | Switch border           | Unchecked          | `.switch`                                            |
+| `--par-color-border-switch-checked`                   | Switch border           | Checked            | `.switch[aria-checked='true']`                       |
+| `--par-color-border-switch-unchecked-disabled`        | Switch border           | Unchecked Disabled | `.switch:disabled`                                   |
+| `--par-color-border-switch-checked-disabled`          | Switch border           | Checked Disabled   | `.switch:disabled[aria-checked='true']`              |
+| `--par-color-text-switch-target-unchecked-enabled`    | Switch icon             | Unchecked          | `.switch-icon`                                       |
+| `--par-color-text-switch-target-checked-enabled`      | Switch icon             | Checked            | `.switch-icon`                                       |
+| `--par-color-text-switch-target-unchecked-disabled`   | Switch icon             | Unchecked Disabled | `.switch:disabled .switch-icon`                      |
+| `--par-color-text-switch-target-checked-disabled`     | Switch icon             | Checked Disabled   | `.switch:disabled[aria-checked='true'] .switch-icon` |
 
 > _Note: Switch uses design tokens defined in `registry/src/components/Switch/variables.css`. See Input/Toggle documentation for additional shared tokens._
 
@@ -141,14 +141,14 @@ An element that toggles between two binary options.
 
 ### `<Switch />`
 
-| **Prop**          | **Type**                  | **Default** | **Description**                   |
-| ----------------- | ------------------------- | ----------- | --------------------------------- |
-| **active**        | boolean                   |             | Controlled state                  |
-| **defaultActive** | boolean                   | _false_     | Uncontrolled initial state        |
-| **switchSize**    | 'sm' \| 'md' \| 'lg'      | _'md'_      | Switch size                       |
-| **disabled**      | boolean                   | _false_     | Disable the switch                |
-| **icon**          | boolean                   | _false_     | Show icon on thumb                |
-| **onToggle**      | function (active: boolean)|             | Callback when value changes       |
-| **...buttonProps**| [See MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attributes) |             | Inherits all props from native **button** |
+| **Prop**           | **Type**                                                                               | **Default** | **Description**                           |
+| ------------------ | -------------------------------------------------------------------------------------- | ----------- | ----------------------------------------- |
+| **active**         | boolean                                                                                |             | Controlled state                          |
+| **defaultActive**  | boolean                                                                                | _false_     | Uncontrolled initial state                |
+| **switchSize**     | 'sm' \| 'md' \| 'lg'                                                                   | _'md'_      | Switch size                               |
+| **disabled**       | boolean                                                                                | _false_     | Disable the switch                        |
+| **icon**           | boolean                                                                                | _false_     | Show icon on thumb                        |
+| **onToggle**       | function (active: boolean)                                                             |             | Callback when value changes               |
+| **...buttonProps** | [See MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attributes) |             | Inherits all props from native **button** |
 
 > **_Note:_** _Switch_ **does not inherit** Input props. See [Button documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attributes) for full details on available props.

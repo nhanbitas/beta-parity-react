@@ -8,7 +8,7 @@ import * as Demo from '../@dev/demo-components';
 An element used for representing user-authored content.
 :::
 
-<Image src={imageSrc.tag.src} alt='tag' />
+<Image src={imageSrc.tag} alt='tag' />
 
 ## Design checklist
 
@@ -35,8 +35,8 @@ An element used for representing user-authored content.
 - **Avatar**: An optional visual representation of a user or entity associated with the tag.
 - **Remove button**: An optional button that removes the tag from the interface.
 
-<Image src={imageSrc.anatomy.src} alt='anatomy' />
-<Image src={imageSrc.anatomy2.src} alt='anatomy2' />
+<Image src={imageSrc.anatomy} alt='anatomy' />
+<Image src={imageSrc.anatomy2} alt='anatomy2' />
 
 ## States
 
@@ -48,17 +48,17 @@ An element used for representing user-authored content.
 
 - The container is focused via keyboard interaction, indicated by a ring outline.
 
-<Image src={imageSrc.focused.src} alt='focused' />
+<Image src={imageSrc.focused} alt='focused' />
 
 ### Remove button
 
 This sub-component has the same interaction states as [[Button]] except for the pending state.
 
-<Image src={imageSrc.enabledRemoveButton.src} alt='enabledRemoveButton' />
-<Image src={imageSrc.hoveredRemoveButton.src} alt='hoveredRemoveButton' />
-<Image src={imageSrc.pressedRemoveButton.src} alt='pressedRemoveButton' />
-<Image src={imageSrc.focusedRemoveButton.src} alt='focusedRemoveButton' />
-<Image src={imageSrc.disabledRemoveButton.src} alt='disabledRemoveButton' />
+<Image src={imageSrc.enabledRemoveButton} alt='enabledRemoveButton' />
+<Image src={imageSrc.hoveredRemoveButton} alt='hoveredRemoveButton' />
+<Image src={imageSrc.pressedRemoveButton} alt='pressedRemoveButton' />
+<Image src={imageSrc.focusedRemoveButton} alt='focusedRemoveButton' />
+<Image src={imageSrc.disabledRemoveButton} alt='disabledRemoveButton' />
 
 ## Options
 
@@ -67,49 +67,49 @@ This sub-component has the same interaction states as [[Button]] except for the 
 - **Outlined**: Medium visual emphasis with a border and a light color fill.
 - **Glass**: Medium-low emphasis with a translucent, frosted appearance.
 
-<Image src={imageSrc.kind.src} alt='kind' />
+<Image src={imageSrc.kind} alt='kind' />
 
 ##### Color
 
 - Tags are available in the default neutral color, the theme's accent color and any color derived from a valid color code.
 
-<Image src={imageSrc.netralColor.src} alt='netralColor' />
-<Image src={imageSrc.accentColor.src} alt='accentColor' />
+<Image src={imageSrc.netralColor} alt='netralColor' />
+<Image src={imageSrc.accentColor} alt='accentColor' />
 
 ##### Size
 
 - Tags are available in small, medium, and large sizes.
 - Medium is the default tag size.
 
-<Image src={imageSrc.small.src} alt='small' />
-<Image src={imageSrc.medium.src} alt='medium' />
-<Image src={imageSrc.large.src} alt='large' />
+<Image src={imageSrc.small} alt='small' />
+<Image src={imageSrc.medium} alt='medium' />
+<Image src={imageSrc.large} alt='large' />
 
 ##### Icon
 
 - An icons can be optionally added next to the tag label to provide additional visual context.
 
-<Image src={imageSrc.icon.src} alt='icon' />
+<Image src={imageSrc.icon} alt='icon' />
 
 ##### Avatar
 
 - An avatar can be optionally added next to the tag label to represent a user or entity associated with the tag.
 
-<Image src={imageSrc.avatar.src} alt='avatar' />
+<Image src={imageSrc.avatar} alt='avatar' />
 
 ##### Remove button
 
 - A remove button is included by default to the right of the tag.
 - Disabling the remove button also removes it from the tag.
 
-<Image src={imageSrc.removeButtonOn.src} alt='removeButtonOn' />
-<Image src={imageSrc.removeButtonOff.src} alt='removeButtonOff' />
+<Image src={imageSrc.removeButtonOn} alt='removeButtonOn' />
+<Image src={imageSrc.removeButtonOff} alt='removeButtonOff' />
 
 ##### Focusable container
 
 - The container can optionally be allowed to receive keyboard focus.
 
-<Image src={imageSrc.focusedContainer.src} alt='focusedContainer' />
+<Image src={imageSrc.focusedContainer} alt='focusedContainer' />
 
 ## Behaviors
 
@@ -126,16 +126,16 @@ This sub-component has the same interaction states as [[Button]] except for the 
 
 ## 🎨 Design Tokens for Tag
 
-| **Token**                              | **Color for**            | **State/Meaning** | **CSS Selector(s)**         |
-| -------------------------------------- | ------------------------ | ----------------- | --------------------------- |
-| `--par-color-bg-tag`                   | Tag background           | Default/Enabled   | `.tag`                      |
-| `--par-color-bg-tag-hovered`           | Tag background           | Hovered           | `.tag:hover`                |
-| `--par-color-bg-tag-selected`          | Tag background           | Selected          | `.tag.selected`             |
-| `--par-color-bg-tag-disabled`          | Tag background           | Disabled          | `.tag:disabled`             |
-| `--par-color-border-tag`               | Tag border               | Any               | `.tag`                      |
-| `--par-color-text-tag`                 | Tag text                 | Default/Enabled   | `.tag`                      |
-| `--par-color-text-tag-disabled`        | Tag text                 | Disabled          | `.tag:disabled`             |
-| `--par-color-icon-tag`                 | Tag icon                 | Any               | `.tag .tag-icon`                |
+| **Token**                              | **Color for**            | **State/Meaning** | **CSS Selector(s)**            |
+| -------------------------------------- | ------------------------ | ----------------- | ------------------------------ |
+| `--par-color-bg-tag`                   | Tag background           | Default/Enabled   | `.tag`                         |
+| `--par-color-bg-tag-hovered`           | Tag background           | Hovered           | `.tag:hover`                   |
+| `--par-color-bg-tag-selected`          | Tag background           | Selected          | `.tag.selected`                |
+| `--par-color-bg-tag-disabled`          | Tag background           | Disabled          | `.tag:disabled`                |
+| `--par-color-border-tag`               | Tag border               | Any               | `.tag`                         |
+| `--par-color-text-tag`                 | Tag text                 | Default/Enabled   | `.tag`                         |
+| `--par-color-text-tag-disabled`        | Tag text                 | Disabled          | `.tag:disabled`                |
+| `--par-color-icon-tag`                 | Tag icon                 | Any               | `.tag .tag-icon`               |
 | `--par-color-bg-tag-remove-hovered`    | Remove button background | Hovered           | `.tag .tag-close-btn:hover`    |
 | `--par-color-bg-tag-remove-pressed`    | Remove button background | Pressed           | `.tag .tag-close-btn:active`   |
 | `--par-color-bg-tag-remove-disabled`   | Remove button background | Disabled          | `.tag .tag-close-btn:disabled` |

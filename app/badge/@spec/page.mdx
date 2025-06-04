@@ -7,7 +7,7 @@ import imageSrc from '@public/images/badge';
 A component used to communicate status, count, or category with compact visual emphasis.
 :::
 
-<Image src={imageSrc.badge.src} alt='badge' />
+<Image src={imageSrc.badge} alt='badge' />
 
 ## Design checklist
 
@@ -33,8 +33,8 @@ A component used to communicate status, count, or category with compact visual e
 - **Icon**: An optional visual element that represents the badge’s status, count, or category.
 - **Dot**: An optional visual element that can indicate a live status or activity. It is the [[Dot]] component.
 
-<Image src={imageSrc.anatomy.src} alt='anatomy' />
-<Image src={imageSrc.anatomyDot.src} alt='anatomy-dot' />
+<Image src={imageSrc.anatomy} alt='anatomy' />
+<Image src={imageSrc.anatomyDot} alt='anatomy-dot' />
 
 ## States
 
@@ -48,34 +48,34 @@ This component does not have states.
 - **Outlined**: Medium visual emphasis with a border and a light color fill.
 - **Glass**: Medium-low emphasis with a translucent, frosted appearance.
 
-<Image src={imageSrc.kind.src} alt='kind' />
+<Image src={imageSrc.kind} alt='kind' />
 
 ##### Color
 
 - Standard semantic colors (e.g., inactive, affirmative, cautionary, adverse, informative) and expanded colors from the design system palette are available to represent various statuses or categories.
 
-<Image src={imageSrc.color.src} alt='color' />
-<Image src={imageSrc.color2.src} alt='color2' />
+<Image src={imageSrc.color} alt='color' />
+<Image src={imageSrc.color2} alt='color2' />
 
 ##### Size
 
 - Badge sizes vary in height, padding, and icon/dot size to ensure visual harmony across small, medium, and large badges.
 
-<Image src={imageSrc.sizeSmall.src} alt='sizeSmall' />
-<Image src={imageSrc.sizeMedium.src} alt='sizeMedium' />
-<Image src={imageSrc.sizeLarge.src} alt='sizeLarge' />
+<Image src={imageSrc.sizeSmall} alt='sizeSmall' />
+<Image src={imageSrc.sizeMedium} alt='sizeMedium' />
+<Image src={imageSrc.sizeLarge} alt='sizeLarge' />
 
 ##### Icon
 
 - An icon can be optionally added next to the badge label to provide additional visual context.
 
-<Image src={imageSrc.icon.src} alt='icon' />
+<Image src={imageSrc.icon} alt='icon' />
 
 ##### Dot
 
 - A Dot component can be added next to the badge label to indicate a live status or activity.
 
-<Image src={imageSrc.dot.src} alt='dot' />
+<Image src={imageSrc.dot} alt='dot' />
 
 ## Behaviors
 
@@ -83,27 +83,27 @@ This component does not have states.
 
 - A badge’s minimum width is set equal to its height, ensuring a circular shape when the content is minimal (e.g., single-digit numbers).
 
-<Image src={imageSrc.minWidth.src} alt='minWidth' />
+<Image src={imageSrc.minWidth} alt='minWidth' />
 
 ##### Text overflow
 
 - When the badge label exceeds the available horizontal space, it is truncated with an ellipsis to maintain visual integrity.
 
-<Image src={imageSrc.overflow.src} alt='overflow' />
+<Image src={imageSrc.overflow} alt='overflow' />
 
 ## 🎨 Design Tokens for Badge
 
-| **Token**                                           | **Color for**                | **State/Meaning**                                 | **CSS Selector(s)**             |
-| --------------------------------------------------- | ---------------------------- | ------------------------------------------------- | ------------------------------- |
-| **--par-color-text-badge-solid-\<color\>**      | Badge text (solid)           | Solid badge, all colors                           | `.badge.solid.\<color\>`    |
-| **--par-color-bg-badge-solid-\<color\>**        | Badge background (solid)     | Solid badge, all colors                           | `.badge.solid.\<color\>`    |
-| **--par-color-border-badge-solid-\<color\>**    | Badge border (solid)         | Solid badge, all colors                           | `.badge.solid.\<color\>`    |
-| **--par-color-text-badge-outlined-\<color\>**   | Badge text (outlined)        | Outlined badge, all colors                        | `.badge.outlined.\<color\>` |
-| **--par-color-bg-badge-outlined-\<color\>**     | Badge background (outlined)  | Outlined badge, all colors                        | `.badge.outlined.\<color\>` |
-| **--par-color-border-badge-outlined-\<color\>** | Badge border (outlined)      | Outlined badge, all colors                        | `.badge.outlined.\<color\>` |
-| **--par-color-text-badge-glass-\<color\>**      | Badge text (glass)           | Glass badge, all colors                           | `.badge.glass.\<color\>`    |
-| **--par-color-bg-badge-glass-\<color\>**        | Badge background (glass)     | Glass badge, all colors                           | `.badge.glass.\<color\>`    |
-| **--par-color-border-badge-glass-\<color\>**    | Badge border (glass)         | Glass badge, all colors                           | `.badge.glass.\<color\>`    |
+| **Token**                                       | **Color for**               | **State/Meaning**          | **CSS Selector(s)**         |
+| ----------------------------------------------- | --------------------------- | -------------------------- | --------------------------- |
+| **--par-color-text-badge-solid-\<color\>**      | Badge text (solid)          | Solid badge, all colors    | `.badge.solid.\<color\>`    |
+| **--par-color-bg-badge-solid-\<color\>**        | Badge background (solid)    | Solid badge, all colors    | `.badge.solid.\<color\>`    |
+| **--par-color-border-badge-solid-\<color\>**    | Badge border (solid)        | Solid badge, all colors    | `.badge.solid.\<color\>`    |
+| **--par-color-text-badge-outlined-\<color\>**   | Badge text (outlined)       | Outlined badge, all colors | `.badge.outlined.\<color\>` |
+| **--par-color-bg-badge-outlined-\<color\>**     | Badge background (outlined) | Outlined badge, all colors | `.badge.outlined.\<color\>` |
+| **--par-color-border-badge-outlined-\<color\>** | Badge border (outlined)     | Outlined badge, all colors | `.badge.outlined.\<color\>` |
+| **--par-color-text-badge-glass-\<color\>**      | Badge text (glass)          | Glass badge, all colors    | `.badge.glass.\<color\>`    |
+| **--par-color-bg-badge-glass-\<color\>**        | Badge background (glass)    | Glass badge, all colors    | `.badge.glass.\<color\>`    |
+| **--par-color-border-badge-glass-\<color\>**    | Badge border (glass)        | Glass badge, all colors    | `.badge.glass.\<color\>`    |
 
 > _Note: Replace `\<color\>` with supported color names: gray, red, green, yellow, blue, orange, cyan, violet, lime._
 

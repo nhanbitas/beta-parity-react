@@ -8,7 +8,7 @@ import * as Demo from '@public/demo/accordion';
 A component that organizes content into vertically stacked collapsible and expandable sections.
 :::
 
-<Image src={imageSrc.accordion.src} alt='accordion' />
+<Image src={imageSrc.accordion} alt='accordion' />
 
 ## Design checklist
 
@@ -34,7 +34,7 @@ A component that organizes content into vertically stacked collapsible and expan
 - **Container**: The outermost encompassing element.
 - **Divider**: A horizontal line that separates accordion items.
 
-<Image src={imageSrc.anatomy1.src} alt='anatomy1' />
+<Image src={imageSrc.anatomy1} alt='anatomy1' />
 
 ### Accordion item
 
@@ -46,7 +46,7 @@ A component that organizes content into vertically stacked collapsible and expan
 - **Content area**: The area that contains the content of the accordion item.
 - **Content body**: The content text of the accordion item.
 
-<Image src={imageSrc.anatomy2.src} alt='anatomy2' style={{ objectFit: 'contain', objectPosition: 'center' }} />
+<Image src={imageSrc.anatomy2} alt='anatomy2' style={{ objectFit: 'contain', objectPosition: 'center' }} />
 
 ## States
 
@@ -58,31 +58,31 @@ A component that organizes content into vertically stacked collapsible and expan
 
 - Interaction with the accordion item trigger is available, allowing users to expand or collapse the content.
 
-<Image src={imageSrc.enabled.src} alt='enabled' />
+<Image src={imageSrc.enabled} alt='enabled' />
 
 ##### Hovered
 
 - The cursor is currently positioned over the accordion item trigger, indicated by a different color shade and the pointer cursor.
 
-<Image src={imageSrc.hovered.src} alt='hovered' />
+<Image src={imageSrc.hovered} alt='hovered' />
 
 ##### Pressed
 
 - The accordion item trigger is being pressed, indicated by a different color shade.
 
-<Image src={imageSrc.pressed.src} alt='pressed' />
+<Image src={imageSrc.pressed} alt='pressed' />
 
 ##### Focused
 
 - The accordion item trigger is focused via keyboard interaction, indicated by a ring outline.
 
-<Image src={imageSrc.focused.src} alt='focused' />
+<Image src={imageSrc.focused} alt='focused' />
 
 ##### Disabled
 
 - Interaction with the accordion item trigger is disallowed, indicated by a muted appearance and the disallowed cursor.
 
-<Image src={imageSrc.disabled.src} alt='disabled' />
+<Image src={imageSrc.disabled} alt='disabled' />
 
 #### Display states
 
@@ -90,13 +90,13 @@ A component that organizes content into vertically stacked collapsible and expan
 
 - The content area of the accordion item is hidden, indicated by the down-chevron or plus icon.
 
-<Image src={imageSrc.collapsed.src} alt='collapsed' />
+<Image src={imageSrc.collapsed} alt='collapsed' />
 
 ##### Expanded
 
 - The content area of the accordion item is visible, indicated by the up-chevron or minus icon.
 
-<Image src={imageSrc.expanded.src} alt='expanded' />
+<Image src={imageSrc.expanded} alt='expanded' />
 
 <Component>
   <Demo.BasicAccordion />
@@ -109,21 +109,21 @@ A component that organizes content into vertically stacked collapsible and expan
 - **Contained**: The accordion's boundary is defined by its border.
 - **Flush**: The accordion is borderless and has no background, allowing it to fit fully in parent containers.
 
-<Image src={imageSrc.contained.src} alt='contained' />
-<Image src={imageSrc.flush.src} alt='flush' />
+<Image src={imageSrc.contained} alt='contained' />
+<Image src={imageSrc.flush} alt='flush' />
 
 ##### Sublabel
 
 - A sublabel can be displayed below the accordion item label to provide additional context.
 
-<Image src={imageSrc.sublabel.src} alt='sublabel' />
+<Image src={imageSrc.sublabel} alt='sublabel' />
 
 ##### Indicator side
 
 - **Left**: A plus icon and a minus icon are placed to the left of the accordion item title, representing collapsed and expanded states respectively.
 - **Right**: An up-chevron icon and a down-chevron icon are placed to the right of the accordion item title, representing collapsed and expanded states respectively.
 
-<Image src={imageSrc.icon.src} alt='icon' />
+<Image src={imageSrc.icon} alt='icon' />
 
 ## Behaviors
 
@@ -137,21 +137,21 @@ A component that organizes content into vertically stacked collapsible and expan
 
 ## 🎨 Design Tokens for Accordion
 
-| **Token**                                    | **Color for**                | **State/Meaning**                                 | **CSS Selector(s)** |
-| -------------------------------------------- | ---------------------------- | ------------------------------------------------- | ------------------- |
-| **--par-color-text-accordion-item-enabled**  | Accordion item text          | Enabled (default)                                 | `.accordion-item-trigger`, `.accordion-item-content` |
-| **--par-color-text-accordion-item-hovered**  | Accordion item text          | Hovered                                           | `.accordion-item:not(.active):not([aria-disabled='true']) > .accordion-item-trigger:hover` |
-| **--par-color-text-accordion-item-pressed**  | Accordion item text          | Pressed                                           | `.accordion-item:not(.active):not([aria-disabled='true']) > .accordion-item-trigger:active` |
-| **--par-color-text-accordion-item-expanded** | Accordion item text          | Expanded                                          | `.accordion-item.active > .accordion-item-trigger`, `.accordion-item-content` |
-| **--par-color-text-accordion-item-disabled** | Accordion item text          | Disabled                                          | `.accordion-item[aria-disabled='true']`, `.accordion-item[aria-disabled='true'] button:disabled` |
-| **--par-color-bg-accordion-menu**            | Accordion container bg       | Container background (contained kind)             | `.accordion:not(.flush)` |
-| **--par-color-bg-accordion-item-enabled**    | Accordion item bg            | Enabled (default)                                 | (not directly applied, fallback for enabled state) |
-| **--par-color-bg-accordion-item-hovered**    | Accordion item bg            | Hovered                                           | `.accordion-item:not(.active):not([aria-disabled='true']) > .accordion-item-trigger:hover` |
-| **--par-color-bg-accordion-item-pressed**    | Accordion item bg            | Pressed                                           | `.accordion-item:not(.active):not([aria-disabled='true']) > .accordion-item-trigger:active` |
-| **--par-color-bg-accordion-item-expanded**   | Accordion item bg            | Expanded                                          | `.accordion-item.active > .accordion-item-trigger` |
-| **--par-color-bg-accordion-item-disabled**   | Accordion item bg            | Disabled                                          | `.accordion-item[aria-disabled='true']`, `.accordion-item[aria-disabled='true'] button:disabled` |
-| **--par-color-bg**                           | Accordion bg (flush kind)    | General background (flush kind)                   | (not directly applied, fallback for flush kind) |
-| **--par-color-border-surface**               | Accordion border             | Border of accordion container and items           | `.accordion:not(.flush)`, `.accordion:not(.flush) > .accordion-item`, `.accordion-item` |
+| **Token**                                    | **Color for**             | **State/Meaning**                       | **CSS Selector(s)**                                                                              |
+| -------------------------------------------- | ------------------------- | --------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| **--par-color-text-accordion-item-enabled**  | Accordion item text       | Enabled (default)                       | `.accordion-item-trigger`, `.accordion-item-content`                                             |
+| **--par-color-text-accordion-item-hovered**  | Accordion item text       | Hovered                                 | `.accordion-item:not(.active):not([aria-disabled='true']) > .accordion-item-trigger:hover`       |
+| **--par-color-text-accordion-item-pressed**  | Accordion item text       | Pressed                                 | `.accordion-item:not(.active):not([aria-disabled='true']) > .accordion-item-trigger:active`      |
+| **--par-color-text-accordion-item-expanded** | Accordion item text       | Expanded                                | `.accordion-item.active > .accordion-item-trigger`, `.accordion-item-content`                    |
+| **--par-color-text-accordion-item-disabled** | Accordion item text       | Disabled                                | `.accordion-item[aria-disabled='true']`, `.accordion-item[aria-disabled='true'] button:disabled` |
+| **--par-color-bg-accordion-menu**            | Accordion container bg    | Container background (contained kind)   | `.accordion:not(.flush)`                                                                         |
+| **--par-color-bg-accordion-item-enabled**    | Accordion item bg         | Enabled (default)                       | (not directly applied, fallback for enabled state)                                               |
+| **--par-color-bg-accordion-item-hovered**    | Accordion item bg         | Hovered                                 | `.accordion-item:not(.active):not([aria-disabled='true']) > .accordion-item-trigger:hover`       |
+| **--par-color-bg-accordion-item-pressed**    | Accordion item bg         | Pressed                                 | `.accordion-item:not(.active):not([aria-disabled='true']) > .accordion-item-trigger:active`      |
+| **--par-color-bg-accordion-item-expanded**   | Accordion item bg         | Expanded                                | `.accordion-item.active > .accordion-item-trigger`                                               |
+| **--par-color-bg-accordion-item-disabled**   | Accordion item bg         | Disabled                                | `.accordion-item[aria-disabled='true']`, `.accordion-item[aria-disabled='true'] button:disabled` |
+| **--par-color-bg**                           | Accordion bg (flush kind) | General background (flush kind)         | (not directly applied, fallback for flush kind)                                                  |
+| **--par-color-border-surface**               | Accordion border          | Border of accordion container and items | `.accordion:not(.flush)`, `.accordion:not(.flush) > .accordion-item`, `.accordion-item`          |
 
 ---
 
@@ -159,63 +159,63 @@ A component that organizes content into vertically stacked collapsible and expan
 
 ### `<Accordion />`
 
-| **Prop**         | **Type**                                 | **Default**     | **Description**                                                        |
-| ---------------- | ---------------------------------------- | -------------- | ---------------------------------------------------------------------- |
-| **type**         | 'single' \| 'multiple'                   | _'single'_     | Accordion selection mode: only one or multiple items can be open       |
-| **kind**         | 'contained' \| 'flush'                   | _'contained'_  | Visual style: with border/background (**contained**) or borderless (**flush**) |
-| **icon**         | 'chevron' \| 'cross'                     | _'chevron'_    | Icon style for expand/collapse indicator                               |
-| **iconSide**     | 'left' \| 'right'                        | _'right'_      | Position of indicator icon in trigger                                  |
-| **defaultValue** | string \| string[]                        |                | _Uncontrolled_: default open item(s)                                   |
-| **value**        | string \| string[]                        |                | _Controlled_: open item(s) value                                       |
-| **onChange**     | (value) => void                          |                | Callback when open item(s) change                                      |
-| **items**        | Array&#123;title, content, ...&#125;      |                | List of items (see below), alternative to using children               |
-| **...BaseProps** | [See below](#baseprops)                  |                | All layout/spacing props from **Base** (margin, padding, etc.)         |
-| **...divProps**  | HTMLDivElement props                     |                | All native div props (**className**, **style**, etc.)                  |
+| **Prop**         | **Type**                             | **Default**   | **Description**                                                                |
+| ---------------- | ------------------------------------ | ------------- | ------------------------------------------------------------------------------ |
+| **type**         | 'single' \| 'multiple'               | _'single'_    | Accordion selection mode: only one or multiple items can be open               |
+| **kind**         | 'contained' \| 'flush'               | _'contained'_ | Visual style: with border/background (**contained**) or borderless (**flush**) |
+| **icon**         | 'chevron' \| 'cross'                 | _'chevron'_   | Icon style for expand/collapse indicator                                       |
+| **iconSide**     | 'left' \| 'right'                    | _'right'_     | Position of indicator icon in trigger                                          |
+| **defaultValue** | string \| string[]                   |               | _Uncontrolled_: default open item(s)                                           |
+| **value**        | string \| string[]                   |               | _Controlled_: open item(s) value                                               |
+| **onChange**     | (value) => void                      |               | Callback when open item(s) change                                              |
+| **items**        | Array&#123;title, content, ...&#125; |               | List of items (see below), alternative to using children                       |
+| **...BaseProps** | [See below](#baseprops)              |               | All layout/spacing props from **Base** (margin, padding, etc.)                 |
+| **...divProps**  | HTMLDivElement props                 |               | All native div props (**className**, **style**, etc.)                          |
 
 #### _items structure_
 
-| **Field**   | **Type**        | **Description**                        |
-| ----------- | --------------- | -------------------------------------- |
-| **title**   | React.ReactNode | Title for the item (trigger)           |
-| **content** | React.ReactNode | Content shown when expanded            |
-| **value**   | string          | Unique value for the item              |
-| **itemProps**| object         | Extra props for AccordionItem (optional) |
+| **Field**     | **Type**        | **Description**                          |
+| ------------- | --------------- | ---------------------------------------- |
+| **title**     | React.ReactNode | Title for the item (trigger)             |
+| **content**   | React.ReactNode | Content shown when expanded              |
+| **value**     | string          | Unique value for the item                |
+| **itemProps** | object          | Extra props for AccordionItem (optional) |
 
 ### `<AccordionItem />`
 
-| **Prop**    | **Type**             | **Default** | **Description**                               |
-| ----------- | -------------------- | ----------- | --------------------------------------------- |
-| **value**   | string               |             | Unique value for the item                     |
-| **disabled**| boolean              | _false_     | Disable this item                             |
-| **...divProps** | HTMLDivElement props |         | All native div props (**className**, **style**, etc.) |
+| **Prop**        | **Type**             | **Default** | **Description**                                       |
+| --------------- | -------------------- | ----------- | ----------------------------------------------------- |
+| **value**       | string               |             | Unique value for the item                             |
+| **disabled**    | boolean              | _false_     | Disable this item                                     |
+| **...divProps** | HTMLDivElement props |             | All native div props (**className**, **style**, etc.) |
 
 ### `<AccordionItemTrigger />`
 
-| **Prop**        | **Type**                | **Default** | **Description**                                     |
-| --------------- | ----------------------- | ----------- | --------------------------------------------------- |
-| **isExpanded**  | boolean                 |             | Whether the item is expanded (_injected automatically_) |
-| **disabled**    | boolean                 |             | Disable the trigger                                 |
-| **handleChange**| () => void              |             | Callback for click (_injected automatically_)        |
-| **icon**        | 'chevron' \| 'cross'    | _'chevron'_ | Icon style for expand/collapse indicator             |
-| **iconSide**    | 'left' \| 'right'       | _'right'_   | Position of indicator icon in trigger                |
-| **...buttonProps** | HTMLButtonElement props |         | All native button props (**className**, **style**, etc.) |
+| **Prop**           | **Type**                | **Default** | **Description**                                          |
+| ------------------ | ----------------------- | ----------- | -------------------------------------------------------- |
+| **isExpanded**     | boolean                 |             | Whether the item is expanded (_injected automatically_)  |
+| **disabled**       | boolean                 |             | Disable the trigger                                      |
+| **handleChange**   | () => void              |             | Callback for click (_injected automatically_)            |
+| **icon**           | 'chevron' \| 'cross'    | _'chevron'_ | Icon style for expand/collapse indicator                 |
+| **iconSide**       | 'left' \| 'right'       | _'right'_   | Position of indicator icon in trigger                    |
+| **...buttonProps** | HTMLButtonElement props |             | All native button props (**className**, **style**, etc.) |
 
 ### `<AccordionItemContent />`
 
-| **Prop**    | **Type**             | **Default** | **Description**                                     |
-| ----------- | -------------------- | ----------- | --------------------------------------------------- |
-| **isExpanded** | boolean            |             | Whether the item is expanded (_injected automatically_) |
-| **...divProps** | HTMLDivElement props |         | All native div props (**className**, **style**, etc.) |
+| **Prop**        | **Type**             | **Default** | **Description**                                         |
+| --------------- | -------------------- | ----------- | ------------------------------------------------------- |
+| **isExpanded**  | boolean              |             | Whether the item is expanded (_injected automatically_) |
+| **...divProps** | HTMLDivElement props |             | All native div props (**className**, **style**, etc.)   |
 
 ### <span id="baseprops"></span>**BaseProps** _(layout/spacing)_,
 
-| **Prop**                              | **Type**         | **Description**                                   |
-| ------------------------------------- | ---------------- | ---------------------------------------------     |
-| **m, mt, mr, mb, ml, mx, my**         | number \| string | Margin (all, top, right, bottom, left, x, y)      |
-| **p, pt, pr, pb, pl, px, py**         | number \| string | Padding (all, top, right, bottom, left, x, y)     |
-| **w, h, minW, minH, maxW, maxH**      | number \| string | Width/height/min/max                              |
-| **bg, cl, op**                        | string           | Background, color, opacity (CSS)                  |
-| **bd, bdColor, bdWidth, bdStyle, radius** | string       | Border, border color, width, style, radius        |
-| ...and more (see Base component)      |                  | [All layout props from **Base**](../Base)         |
+| **Prop**                                  | **Type**         | **Description**                               |
+| ----------------------------------------- | ---------------- | --------------------------------------------- |
+| **m, mt, mr, mb, ml, mx, my**             | number \| string | Margin (all, top, right, bottom, left, x, y)  |
+| **p, pt, pr, pb, pl, px, py**             | number \| string | Padding (all, top, right, bottom, left, x, y) |
+| **w, h, minW, minH, maxW, maxH**          | number \| string | Width/height/min/max                          |
+| **bg, cl, op**                            | string           | Background, color, opacity (CSS)              |
+| **bd, bdColor, bdWidth, bdStyle, radius** | string           | Border, border color, width, style, radius    |
+| ...and more (see Base component)          |                  | [All layout props from **Base**](../Base)     |
 
 > **Note:** Accordion extends all layout/spacing props from the _Base_ component. See [**BaseProps**](../Base) for full list.

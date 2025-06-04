@@ -8,7 +8,7 @@ import * as Demo from '../@dev/demo-components';
 A basic input field for entering text.
 :::
 
-<Image src={imageSrc.textInput.src} alt='textInput' />
+<Image src={imageSrc.textInput} alt='textInput' />
 
 ## Design checklist
 
@@ -37,13 +37,13 @@ A basic input field for entering text.
 - Input value: The value entered by the user.
 - Clear button: An optional button that clears the input value.
 
-<Image src={imageSrc.anatomy.src} alt='anatomy' />
+<Image src={imageSrc.anatomy} alt='anatomy' />
 
 ### Floating label
 
 - Label: A text label that transitions from an in-field placeholder to a label above the field when focused or filled.
 
-<Image src={imageSrc.anatomy2.src} alt='anatomy2' />
+<Image src={imageSrc.anatomy2} alt='anatomy2' />
 
 ## States
 
@@ -55,36 +55,36 @@ A basic input field for entering text.
 
 - Interaction with the input field is available.
 
-<Image src={imageSrc.enabled.src} alt='enabled' />
-<Image src={imageSrc.enabled2.src} alt='enabled2' />
+<Image src={imageSrc.enabled} alt='enabled' />
+<Image src={imageSrc.enabled2} alt='enabled2' />
 
 ##### Hovered
 
 - The cursor is currently positioned over the input field, indicated by the text cursor and a slightly different border color.
 
-<Image src={imageSrc.hovered.src} alt='hovered' />
-<Image src={imageSrc.hovered2.src} alt='hovered2' />
+<Image src={imageSrc.hovered} alt='hovered' />
+<Image src={imageSrc.hovered2} alt='hovered2' />
 
 ##### Focused
 
 - The input field is focused via keyboard or mouse interaction, indicated by a thickened border.
 
-<Image src={imageSrc.focused.src} alt='focused' />
-<Image src={imageSrc.focused2.src} alt='focused2' />
+<Image src={imageSrc.focused} alt='focused' />
+<Image src={imageSrc.focused2} alt='focused2' />
 
 ##### Read-only
 
 - The input field is not editable, but its content can still be selected.
 
-<Image src={imageSrc.readonly.src} alt='readonly' />
-<Image src={imageSrc.readonly2.src} alt='readonly2' />
+<Image src={imageSrc.readonly} alt='readonly' />
+<Image src={imageSrc.readonly2} alt='readonly2' />
 
 ##### Disabled
 
 - Interaction with the input field is disallowed, indicated by a muted appearance.
 
-<Image src={imageSrc.disabled.src} alt='disabled' />
-<Image src={imageSrc.disabled2.src} alt='disabled2' />
+<Image src={imageSrc.disabled} alt='disabled' />
+<Image src={imageSrc.disabled2} alt='disabled2' />
 
 #### Value states
 
@@ -96,21 +96,21 @@ A basic input field for entering text.
 
 - The field contains some input value.
 
-<Image src={imageSrc.enabled.src} alt='enabled' />
+<Image src={imageSrc.enabled} alt='enabled' />
 
 ##### Invalid
 
 - The input value does not meet specified criteria, indicated by a red border color and an error message.
 
-<Image src={imageSrc.invalid.src} alt='invalid' />
-<Image src={imageSrc.invalid2.src} alt='invalid2' />
+<Image src={imageSrc.invalid} alt='invalid' />
+<Image src={imageSrc.invalid2} alt='invalid2' />
 
 ### Clear button
 
 This sub-component has the same states as [[Button]].
 
-<Image src={imageSrc.clearButton.src} alt='clearButton' />
-<Image src={imageSrc.clearButton2.src} alt='clearButton2' />
+<Image src={imageSrc.clearButton} alt='clearButton' />
+<Image src={imageSrc.clearButton2} alt='clearButton2' />
 
 ## Options
 
@@ -118,16 +118,16 @@ This sub-component has the same states as [[Button]].
 
 - Text inputs are available in default or alternative [[Layering]].
 
-<Image src={imageSrc.defaultLayer.src} alt='defaultLayer' />
-<Image src={imageSrc.alternativeLayer.src} alt='alternativeLayer' />
+<Image src={imageSrc.defaultLayer} alt='defaultLayer' />
+<Image src={imageSrc.alternativeLayer} alt='alternativeLayer' />
 
 ##### Size
 
 - Small and medium text inputs differ in field height.
 - Medium is the default text input size.
 
-<Image src={imageSrc.small.src} alt='sizeSmall' />
-<Image src={imageSrc.medium.src} alt='sizeMedium' />
+<Image src={imageSrc.small} alt='sizeSmall' />
+<Image src={imageSrc.medium} alt='sizeMedium' />
 
 ##### Floating label
 
@@ -135,25 +135,25 @@ This sub-component has the same states as [[Button]].
 - The label is maximized within the middle of the field when the input value is empty and the input field has not received focus.
 - The label is minimized and floats towards the top when the input field receives focus.
 
-<Image src={imageSrc.floatingLabel.src} alt='floatingLabel' />
+<Image src={imageSrc.floatingLabel} alt='floatingLabel' />
 
 ##### Placeholder
 
 - A placeholder text can be displayed for the purpose of providing the user an input hint.
 
-<Image src={imageSrc.placeholder.src} alt='placeholder' />
+<Image src={imageSrc.placeholder} alt='placeholder' />
 
 ##### Clear button
 
 - A clear button can be added to the input field to allow quick clearing of the entered value when clicked.
 
-<Image src={imageSrc.clearButtonOn.src} alt='clearButtonOn' />
+<Image src={imageSrc.clearButtonOn} alt='clearButtonOn' />
 
 ##### Icon
 
 - An icon can be optionally added to the leftmost position within the input field.
 
-<Image src={imageSrc.icon.src} alt='icon' />
+<Image src={imageSrc.icon} alt='icon' />
 
 ## Behaviors
 
@@ -161,28 +161,28 @@ This sub-component has the same states as [[Button]].
 
 ## 🎨 Design Tokens for TextInput
 
-| **Token**                              | **Color for**                | **State/Meaning**         | **CSS Selector(s)** |
-|---------------------------------------- | ---------------------------- | ------------------------- | ------------------- |
-| `--par-color-bg-field-enabled`          | Text input background        | Enabled                   | `.par-input:enabled` |
-| `--par-color-bg-field-hovered`          | Text input background        | Hovered                   | `.par-input:hover` |
-| `--par-color-bg-field-disabled`         | Text input background        | Disabled                  | `.par-input:disabled` |
-| `--par-color-bg-field-readonly`         | Text input background        | Readonly                  | `.par-input[readonly]` |
-| `--par-color-bg-field-invalid`          | Text input background        | Invalid/Error             | `.par-input.error-state` |
-| `--par-color-border-field-enabled`      | Text input border            | Enabled                   | `.par-input:enabled` |
-| `--par-color-border-field-hovered`      | Text input border            | Hovered                   | `.par-input:hover` |
-| `--par-color-border-field-disabled`     | Text input border            | Disabled                  | `.par-input:disabled` |
-| `--par-color-border-field-invalid`      | Text input border            | Invalid/Error             | `.par-input.error-state` |
-| `--par-color-border-field-focused`      | Text input border            | Focused                   | `.par-input:focus` |
-| `--par-color-text-field-placeholder`    | Placeholder text             | Any                       | `.par-input::placeholder` |
-| `--par-color-text-field-filled`         | Text input text              | Filled                    | `.par-input` |
-| `--par-color-text-field-label`          | Label text                   | Any                       | `.floating-label` |
-| `--par-color-text-field-disabled`       | Text input text              | Disabled                  | `.par-input:disabled` |
-| `--par-color-text-field-readonly`       | Text input text              | Readonly                  | `.par-input[readonly]` |
-| `--par-color-text-field-invalid`        | Text input text              | Invalid/Error             | `.par-input.error-state` |
-| `--par-color-icon-field-button-enabled` | Icon color (button enabled)  | Enabled                   | `.right-element-container button:enabled, .left-element-container button:enabled` |
-| `--par-color-icon-field-button-hovered` | Icon color (button hovered)  | Hovered                   | `.right-element-container button:hover, .left-element-container button:hover` |
-| `--par-color-icon-field-button-pressed` | Icon color (button pressed)  | Pressed                   | `.right-element-container button:active, .left-element-container button:active` |
-| `--par-color-icon-field-button-disabled`| Icon color (button disabled) | Disabled                  | `.right-element-container button:disabled, .left-element-container button:disabled` |
+| **Token**                                | **Color for**                | **State/Meaning** | **CSS Selector(s)**                                                                 |
+| ---------------------------------------- | ---------------------------- | ----------------- | ----------------------------------------------------------------------------------- |
+| `--par-color-bg-field-enabled`           | Text input background        | Enabled           | `.par-input:enabled`                                                                |
+| `--par-color-bg-field-hovered`           | Text input background        | Hovered           | `.par-input:hover`                                                                  |
+| `--par-color-bg-field-disabled`          | Text input background        | Disabled          | `.par-input:disabled`                                                               |
+| `--par-color-bg-field-readonly`          | Text input background        | Readonly          | `.par-input[readonly]`                                                              |
+| `--par-color-bg-field-invalid`           | Text input background        | Invalid/Error     | `.par-input.error-state`                                                            |
+| `--par-color-border-field-enabled`       | Text input border            | Enabled           | `.par-input:enabled`                                                                |
+| `--par-color-border-field-hovered`       | Text input border            | Hovered           | `.par-input:hover`                                                                  |
+| `--par-color-border-field-disabled`      | Text input border            | Disabled          | `.par-input:disabled`                                                               |
+| `--par-color-border-field-invalid`       | Text input border            | Invalid/Error     | `.par-input.error-state`                                                            |
+| `--par-color-border-field-focused`       | Text input border            | Focused           | `.par-input:focus`                                                                  |
+| `--par-color-text-field-placeholder`     | Placeholder text             | Any               | `.par-input::placeholder`                                                           |
+| `--par-color-text-field-filled`          | Text input text              | Filled            | `.par-input`                                                                        |
+| `--par-color-text-field-label`           | Label text                   | Any               | `.floating-label`                                                                   |
+| `--par-color-text-field-disabled`        | Text input text              | Disabled          | `.par-input:disabled`                                                               |
+| `--par-color-text-field-readonly`        | Text input text              | Readonly          | `.par-input[readonly]`                                                              |
+| `--par-color-text-field-invalid`         | Text input text              | Invalid/Error     | `.par-input.error-state`                                                            |
+| `--par-color-icon-field-button-enabled`  | Icon color (button enabled)  | Enabled           | `.right-element-container button:enabled, .left-element-container button:enabled`   |
+| `--par-color-icon-field-button-hovered`  | Icon color (button hovered)  | Hovered           | `.right-element-container button:hover, .left-element-container button:hover`       |
+| `--par-color-icon-field-button-pressed`  | Icon color (button pressed)  | Pressed           | `.right-element-container button:active, .left-element-container button:active`     |
+| `--par-color-icon-field-button-disabled` | Icon color (button disabled) | Disabled          | `.right-element-container button:disabled, .left-element-container button:disabled` |
 
 > _Note: TextInput uses the same design tokens as the Input component. See Input documentation for available tokens. Tokens are referenced from `BaseInput/variables.css`._
 

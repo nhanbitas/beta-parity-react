@@ -8,7 +8,7 @@ import * as Demo from '../@dev/demo-components';
 A interactive popover interface that contains a list of options or other input controls, used in conjunction with select fields and action buttons.
 :::
 
-<Image src={imageSrc.menu.src} alt='menu' />
+<Image src={imageSrc.menu} alt='menu' />
 
 ## Design checklist
 
@@ -37,8 +37,8 @@ A interactive popover interface that contains a list of options or other input c
 - **Scroll buttons**: A set of buttons that allows the user to scroll up or down through a list of menu items.
 - **Filter input**: An optional search input field that allows the user to filter menu items.
 
-<Image src={imageSrc.anatomy.src} alt='anatomy' />
-<Image src={imageSrc.anatomy2.src} alt='anatomy2' />
+<Image src={imageSrc.anatomy} alt='anatomy' />
+<Image src={imageSrc.anatomy2} alt='anatomy2' />
 
 ### Menu item
 
@@ -50,7 +50,7 @@ A interactive popover interface that contains a list of options or other input c
 - **Checkbox**: An alternative visual indicator that shows the selection state of the menu item.
 - **Radio**: An alternative visual indicator that shows the selection state of the menu item.
 
-<Image src={imageSrc.anatomy3.src} alt='anatomy3' />
+<Image src={imageSrc.anatomy3} alt='anatomy3' />
 
 ## States
 
@@ -62,13 +62,13 @@ A interactive popover interface that contains a list of options or other input c
 
 - The menu is not visible within the user interface and does not take up space.
 
-<Image src={imageSrc.hidden.src} alt='hidden' />
+<Image src={imageSrc.hidden} alt='hidden' />
 
 ##### Visible
 
 - The menu is presented to the user to allow for interaction.
 
-<Image src={imageSrc.visible.src} alt='visible' />
+<Image src={imageSrc.visible} alt='visible' />
 
 ### Menu item
 
@@ -78,25 +78,25 @@ A interactive popover interface that contains a list of options or other input c
 
 - Interaction with the menu item is available.
 
-<Image src={imageSrc.enabled.src} alt='enabled' />
+<Image src={imageSrc.enabled} alt='enabled' />
 
 ##### Hovered
 
 - The cursor is currently positioned over the menu item, indicated by a different color shade and the pointer cursor.
 
-<Image src={imageSrc.hovered.src} alt='hovered' />
+<Image src={imageSrc.hovered} alt='hovered' />
 
 ##### Focused
 
 - The menu item is focused via keyboard interaction, indicated by a ring outline.
 
-<Image src={imageSrc.focused.src} alt='focused' />
+<Image src={imageSrc.focused} alt='focused' />
 
 ##### Disabled
 
 - Interaction with the menu item is disallowed, indicated by a muted appearance and the disallowed cursor.
 
-<Image src={imageSrc.disabled.src} alt='disabled' />
+<Image src={imageSrc.disabled} alt='disabled' />
 
 #### Value states
 
@@ -104,22 +104,22 @@ A interactive popover interface that contains a list of options or other input c
 
 - The menu item is not currently selected, indicated by the lack of selection checkmark or an unchecked checkbox or radio input.
 
-<Image src={imageSrc.unselected.src} alt='unselected' />
+<Image src={imageSrc.unselected} alt='unselected' />
 
 ##### Selected
 
 - The menu item is currently selected, indicated by a selection checkmark or a checked checkbox or radio input.
 
-<Image src={imageSrc.selectedSubtle.src} alt='selectedSubtle' />
-<Image src={imageSrc.selectedSubtleHovered.src} alt='selectedSubtleHovered' />
-<Image src={imageSrc.selectedPronounced.src} alt='selectedPronounced' />
-<Image src={imageSrc.selectedPronouncedHovered.src} alt='selectedPronouncedHovered' />
+<Image src={imageSrc.selectedSubtle} alt='selectedSubtle' />
+<Image src={imageSrc.selectedSubtleHovered} alt='selectedSubtleHovered' />
+<Image src={imageSrc.selectedPronounced} alt='selectedPronounced' />
+<Image src={imageSrc.selectedPronouncedHovered} alt='selectedPronouncedHovered' />
 
 ### Filter input
 
 This sub-component has the same states as [[Search input]].
 
-<Image src={imageSrc.filterInput.src} alt='filterInput' />
+<Image src={imageSrc.filterInput} alt='filterInput' />
 
 ## Options
 
@@ -129,9 +129,9 @@ Options applied to a menu affect all of its menu items.
 
 - Menus are available in default or alternative [[Layering]].
 
-<Image src={imageSrc.defaultLayer.src} alt='defaultLayer' />
+<Image src={imageSrc.defaultLayer} alt='defaultLayer' />
 
-<Image src={imageSrc.alternative.src} alt='alternative' />
+<Image src={imageSrc.alternative} alt='alternative' />
 
 ##### Grouping
 
@@ -139,84 +139,84 @@ Options applied to a menu affect all of its menu items.
 - Menu groups are separated by dividers.
 - A label can be optionally added to a menu group.
 
-<Image src={imageSrc.groupLabelOn.src} alt='groupLabelOn' />
+<Image src={imageSrc.groupLabelOn} alt='groupLabelOn' />
 
-<Image src={imageSrc.groupLabelOff.src} alt='groupLabelOff' />
+<Image src={imageSrc.groupLabelOff} alt='groupLabelOff' />
 
 ##### Scroll buttons
 
 - For menus where the number of menu items exceeds the available space, by default, scroll buttons are shown at the top and/or bottom of the menu to indicate that there are more items to view in the respective direction.
 - The user may scroll through the menu items by clicking the scroll buttons.
 
-<Image src={imageSrc.scrollButton.src} alt='scrollButton' />
+<Image src={imageSrc.scrollButton} alt='scrollButton' />
 
 ##### Checkmark side
 
 - Selection checkmarks can be positioned to the left or right of menu item labels.
 - Left-side checkmarks are incompatible with icons.
 
-<Image src={imageSrc.leftsideCheckmark.src} alt='leftsideCheckmark' />
-<Image src={imageSrc.rightsideCheckmark.src} alt='rightsideCheckmark' />
+<Image src={imageSrc.leftsideCheckmark} alt='leftsideCheckmark' />
+<Image src={imageSrc.rightsideCheckmark} alt='rightsideCheckmark' />
 
 ##### Checkbox input
 
 - Selection checkmarks can be replaced by checkbox inputs, suitable for use with multiple-choice select fields.
 
-<Image src={imageSrc.checkboxInput.src} alt='checkboxInput' />
+<Image src={imageSrc.checkboxInput} alt='checkboxInput' />
 
 ##### Radio input
 
 - Selection checkmarks can be replaced by radio inputs, suitable for use with single-choice select fields.
 
-<Image src={imageSrc.radioInput.src} alt='radioInput' />
+<Image src={imageSrc.radioInput} alt='radioInput' />
 
 ##### Sublabel
 
 - A sublabel can be optionally added below the menu item label to provide additional context.
 
-<Image src={imageSrc.sublabel.src} alt='sublabel' />
+<Image src={imageSrc.sublabel} alt='sublabel' />
 
 ##### Color
 
 - Menu items are neutral-colored or achromatic by default.
 - An accent color can be chosen via theme configuration and applied to menu items for enhanced visual emphasis.
 
-<Image src={imageSrc.neutral.src} alt='neutral' />
+<Image src={imageSrc.neutral} alt='neutral' />
 
-<Image src={imageSrc.accent.src} alt='accent' />
+<Image src={imageSrc.accent} alt='accent' />
 
 ##### Selection prominence
 
 - **Subtle**: The background color of selected menu items has a low level of contrast in comparison to unselected menu items.
 - **Pronounced**: The background color of selected menu items has a high level of contrast in comparison to unselected menu items.
 
-<Image src={imageSrc.subtle.src} alt='subtle' />
+<Image src={imageSrc.subtle} alt='subtle' />
 
-<Image src={imageSrc.pronounced.src} alt='pronounced' />
+<Image src={imageSrc.pronounced} alt='pronounced' />
 
 ##### Size
 
 - Small and medium menu items differ in container height.
 - Medium is the default menu item size.
 
-<Image src={imageSrc.small.src} alt='small' />
+<Image src={imageSrc.small} alt='small' />
 
-<Image src={imageSrc.medium.src} alt='medium' />
+<Image src={imageSrc.medium} alt='medium' />
 
 ##### Icon
 
 - An icon can be optionally added to the left of the menu item label.
 
-<Image src={imageSrc.icon.src} alt='icon' />
+<Image src={imageSrc.icon} alt='icon' />
 
 ##### Filter input
 
 - A filter input can be optionally added to the top of the menu to allow the user to filter for menu item labels that match the search query.
 - A message is displayed when no matching menu items are found.
 
-<Image src={imageSrc.filterInput.src} alt='filter input' />
+<Image src={imageSrc.filterInput} alt='filter input' />
 
-<Image src={imageSrc.filterInput2.src} alt='filter input' />
+<Image src={imageSrc.filterInput2} alt='filter input' />
 
 ## Behaviors
 
@@ -224,37 +224,37 @@ Options applied to a menu affect all of its menu items.
 
 - The start position of all menu item labels are always aligned.
 
-<Image src={imageSrc.labelAlignment.src} alt='labelAlignment' />
+<Image src={imageSrc.labelAlignment} alt='labelAlignment' />
 
 ##### Text overflow
 
 - When the menu item label is too long for the horizontal space available, it is truncated with an ellipsis.
 
-<Image src={imageSrc.textOverflow.src} alt='textOverflow' />
+<Image src={imageSrc.textOverflow} alt='textOverflow' />
 
 ##### Menu positioning
 
 - Menus are positioned below the select field or action button that triggers them.
 - If the menu would extend beyond the viewport, it is repositioned above the trigger element.
 
-<Image src={imageSrc.position.src} alt='position' />
-<Image src={imageSrc.position2.src} alt='position2' />
+<Image src={imageSrc.position} alt='position' />
+<Image src={imageSrc.position2} alt='position2' />
 
 ## 🎨 Design Tokens for Menu
 
-| **Token**                                         | **Color for**                | **State/Meaning**                                 | **CSS Selector(s)**                      |
-|---------------------------------------------------|------------------------------|---------------------------------------------------|------------------------------------------|
-| `--par-color-bg-menu`                             | Menu background              | Default/Enabled                                  | `.menu`                                  |
-| `--par-color-bg-menu-item-hovered`                | Menu item background         | Hovered                                           | `.menu-item:hover`                       |
-| `--par-color-bg-menu-item-selected-subtle`        | Menu item background         | Selected (subtle)                                 | `.menu-item.subtle[aria-checked='true']` |
-| `--par-color-bg-menu-item-selected-pronounced`    | Menu item background         | Selected (pronounced)                             | `.menu-item.pronounced[aria-checked='true']` |
-| `--par-color-bg-menu-item-disabled`               | Menu item background         | Disabled                                          | `.menu-item[aria-disabled='true']`        |
-| `--par-color-text-menu-item`                      | Menu item text               | Default/Enabled                                  | `.menu-item`                             |
-| `--par-color-text-menu-item-disabled`             | Menu item text               | Disabled                                          | `.menu-item[aria-disabled='true']`        |
-| `--par-color-text-menu-item-selected`             | Menu item text               | Selected                                          | `.menu-item[aria-checked='true']`        |
-| `--par-color-icon-menu-item`                      | Menu item icon               | Default/Enabled                                  | `.menu-item .menu-item-icon`             |
-| `--par-color-icon-menu-item-disabled`             | Menu item icon               | Disabled                                          | `.menu-item[aria-disabled='true'] .menu-item-icon` |
-| `--par-color-divider-menu`                        | Divider                      | Default                                           | `.menu-divider`                          |
+| **Token**                                      | **Color for**        | **State/Meaning**     | **CSS Selector(s)**                                |
+| ---------------------------------------------- | -------------------- | --------------------- | -------------------------------------------------- |
+| `--par-color-bg-menu`                          | Menu background      | Default/Enabled       | `.menu`                                            |
+| `--par-color-bg-menu-item-hovered`             | Menu item background | Hovered               | `.menu-item:hover`                                 |
+| `--par-color-bg-menu-item-selected-subtle`     | Menu item background | Selected (subtle)     | `.menu-item.subtle[aria-checked='true']`           |
+| `--par-color-bg-menu-item-selected-pronounced` | Menu item background | Selected (pronounced) | `.menu-item.pronounced[aria-checked='true']`       |
+| `--par-color-bg-menu-item-disabled`            | Menu item background | Disabled              | `.menu-item[aria-disabled='true']`                 |
+| `--par-color-text-menu-item`                   | Menu item text       | Default/Enabled       | `.menu-item`                                       |
+| `--par-color-text-menu-item-disabled`          | Menu item text       | Disabled              | `.menu-item[aria-disabled='true']`                 |
+| `--par-color-text-menu-item-selected`          | Menu item text       | Selected              | `.menu-item[aria-checked='true']`                  |
+| `--par-color-icon-menu-item`                   | Menu item icon       | Default/Enabled       | `.menu-item .menu-item-icon`                       |
+| `--par-color-icon-menu-item-disabled`          | Menu item icon       | Disabled              | `.menu-item[aria-disabled='true'] .menu-item-icon` |
+| `--par-color-divider-menu`                     | Divider              | Default               | `.menu-divider`                                    |
 
 > _Note: Menu uses the same design tokens as the Button or List component. See Button/List documentation for available tokens._
 
@@ -264,21 +264,21 @@ Options applied to a menu affect all of its menu items.
 
 ### `<Menu />`
 
-| **Prop**             | **Type**                                 | **Default**      | **Description**                                                                 |
-| -------------------- | ---------------------------------------- | ---------------- | ------------------------------------------------------------------------------- |
-| **position**         | string                                   | 'bottom-start'   | Menu placement (Floating UI placement string)                                   |
-| **size**             | 'sm' \| 'md'                             | 'sm'             | Size of the menu                                                                |
-| **menuColor**        | 'neutral' \| 'accent'                    | 'neutral'        | Color of the menu                                                               |
-| **prominence**       | 'subtle' \| 'pronounced'                 | 'subtle'         | Visual prominence of the menu                                                   |
-| **theme**            | 'default' \| 'alternative'               | 'default'        | Theme of the menu                                                               |
-| **anchor**           | HTMLElement \| string                     |                  | Anchor element or selector                                                      |
-| **menuItemsLimit**   | number                                   |                  | Max number of items before overflow/scroll                                      |
-| **scrollIndicator**  | boolean                                  | false            | Show scroll indicators when scrollable                                          |
-| **searchable**       | boolean                                  | false            | Show search input for filtering items                                           |
-| **defaultSearch**    | string                                   | ''               | Default value for search input                                                  |
-| **searchPlaceholder**| string                                   |                  | Placeholder for search input                                                    |
-| **noResultsText**    | string                                   | 'No results found' | Text when no search results                                                     |
-| **usePortal**        | boolean                                  | true             | Render menu in a portal                                                         |
-| **isOpen**           | boolean                                  | false            | Whether the menu is open                                                        |
-| **isLoading**        | boolean                                  |                  | Loading state                                                                   |
-| **disabled**         | boolean                                  | false      
+| **Prop**              | **Type**                   | **Default**        | **Description**                               |
+| --------------------- | -------------------------- | ------------------ | --------------------------------------------- |
+| **position**          | string                     | 'bottom-start'     | Menu placement (Floating UI placement string) |
+| **size**              | 'sm' \| 'md'               | 'sm'               | Size of the menu                              |
+| **menuColor**         | 'neutral' \| 'accent'      | 'neutral'          | Color of the menu                             |
+| **prominence**        | 'subtle' \| 'pronounced'   | 'subtle'           | Visual prominence of the menu                 |
+| **theme**             | 'default' \| 'alternative' | 'default'          | Theme of the menu                             |
+| **anchor**            | HTMLElement \| string      |                    | Anchor element or selector                    |
+| **menuItemsLimit**    | number                     |                    | Max number of items before overflow/scroll    |
+| **scrollIndicator**   | boolean                    | false              | Show scroll indicators when scrollable        |
+| **searchable**        | boolean                    | false              | Show search input for filtering items         |
+| **defaultSearch**     | string                     | ''                 | Default value for search input                |
+| **searchPlaceholder** | string                     |                    | Placeholder for search input                  |
+| **noResultsText**     | string                     | 'No results found' | Text when no search results                   |
+| **usePortal**         | boolean                    | true               | Render menu in a portal                       |
+| **isOpen**            | boolean                    | false              | Whether the menu is open                      |
+| **isLoading**         | boolean                    |                    | Loading state                                 |
+| **disabled**          | boolean                    | false              |
