@@ -1,100 +1,199 @@
-import { DemoDomainEmailInput, DemoBasicEmailInput } from './demo-components';
-
-
+import * as Demo from '@public/demo/email-input';
+import CodePreview from '@components/showcase/CodePreview';
 
 ## Basic
 
-<DemoBasicEmailInput />
-<DemoBasicEmailInput isClearable/>
+<CodePreview paths={['email-input', 'BasicEmailInput']}>
+  <Demo.BasicEmailInput />
+</CodePreview>
+<CodePreview paths={['email-input', 'BasicEmailInput']}>
+  <Demo.BasicEmailInput isClearable />
+</CodePreview>
 
 ## Domain
 
-<DemoDomainEmailInput isClearable/>
-<DemoDomainEmailInput domain="@gmail.com"/>
+<CodePreview paths={['email-input', 'DomainEmailInput']}>
+  <Demo.DomainEmailInput isClearable />
+</CodePreview>
+<CodePreview paths={['email-input', 'DomainEmailInput']}>
+  <Demo.DomainEmailInput domain='@gmail.com' />
+</CodePreview>
 
-<DemoDomainEmailInput disabled isClearable/>
-<DemoDomainEmailInput disabled domain="@gmail.com"/>
+<CodePreview paths={['email-input', 'DomainEmailInput']}>
+  <Demo.DomainEmailInput disabled isClearable />
+</CodePreview>
+<CodePreview paths={['email-input', 'DomainEmailInput']}>
+  <Demo.DomainEmailInput disabled domain='@gmail.com' />
+</CodePreview>
 
-## State 
+## State
 
-<DemoBasicEmailInput isError={true} errorMessage='Error message' isClearable/>
-<DemoDomainEmailInput isError={true} errorMessage='Error message' isClearable/>
-<DemoBasicEmailInput readOnly value="bitas@example.com" isClearable/>
-<DemoDomainEmailInput readOnly value="bitas" isClearable/>
-<DemoBasicEmailInput disabled isClearable/>
-<DemoDomainEmailInput disabled isClearable/>
+<CodePreview paths={['email-input', 'BasicEmailInput']}>
+  <Demo.BasicEmailInput isError={true} errorMessage='Error message' isClearable />
+</CodePreview>
+<CodePreview paths={['email-input', 'DomainEmailInput']}>
+  <Demo.DomainEmailInput isError={true} errorMessage='Error message' isClearable />
+</CodePreview>
+<CodePreview paths={['email-input', 'BasicEmailInput']}>
+  <Demo.BasicEmailInput readOnly value='bitas@example.com' isClearable />
+</CodePreview>
+<CodePreview paths={['email-input', 'DomainEmailInput']}>
+  <Demo.DomainEmailInput readOnly value='bitas' isClearable />
+</CodePreview>
+<CodePreview paths={['email-input', 'BasicEmailInput']}>
+  <Demo.BasicEmailInput disabled isClearable />
+</CodePreview>
+<CodePreview paths={['email-input', 'DomainEmailInput']}>
+  <Demo.DomainEmailInput disabled isClearable />
+</CodePreview>
 
 ## Floating label
 
-<DemoBasicEmailInput floatingLabel='Your Email' />
-<DemoDomainEmailInput floatingLabel='Your Email' />
-
-<DemoBasicEmailInput floatingLabel='Your Email' isClearable/>
-<DemoDomainEmailInput floatingLabel='Your Email' domain="@gmail.com"/>
-
-<DemoBasicEmailInput isError={true} errorMessage='Error message' isClearable floatingLabel='Your Email'/>
-<DemoDomainEmailInput isError={true} errorMessage='Error message' isClearable floatingLabel='Your Email'/>
-
-<DemoBasicEmailInput readOnly value="bitas@example.com" isClearable floatingLabel='Your Email'/>
-<DemoDomainEmailInput readOnly value="bitas" isClearable floatingLabel='Your Email'/>
-
-<DemoBasicEmailInput disabled isClearable floatingLabel='Your Email'/>
-<DemoDomainEmailInput disabled isClearable floatingLabel='Your Email'/>
+<CodePreview paths={['email-input', 'BasicEmailInput']}>
+  <Demo.BasicEmailInput floatingLabel='Your Email' />
+</CodePreview>
+<CodePreview paths={['email-input', 'DomainEmailInput']}>
+  <Demo.DomainEmailInput floatingLabel='Your Email' />
+</CodePreview>
+<CodePreview paths={['email-input', 'BasicEmailInput']}>
+  <Demo.BasicEmailInput floatingLabel='Your Email' isClearable />
+</CodePreview>
+<CodePreview paths={['email-input', 'DomainEmailInput']}>
+  <Demo.DomainEmailInput floatingLabel='Your Email' domain='@gmail.com' />
+</CodePreview>
+<CodePreview paths={['email-input', 'BasicEmailInput']}>
+  <Demo.BasicEmailInput isError={true} errorMessage='Error message' isClearable floatingLabel='Your Email' />
+</CodePreview>
+<CodePreview paths={['email-input', 'DomainEmailInput']}>
+  <Demo.DomainEmailInput isError={true} errorMessage='Error message' isClearable floatingLabel='Your Email' />
+</CodePreview>
+<CodePreview paths={['email-input', 'BasicEmailInput']}>
+  <Demo.BasicEmailInput readOnly value='bitas@example.com' isClearable floatingLabel='Your Email' />
+</CodePreview>
+<CodePreview paths={['email-input', 'DomainEmailInput']}>
+  <Demo.DomainEmailInput readOnly value='bitas' isClearable floatingLabel='Your Email' />
+</CodePreview>
+<CodePreview paths={['email-input', 'BasicEmailInput']}>
+  <Demo.BasicEmailInput disabled isClearable floatingLabel='Your Email' />
+</CodePreview>
+<CodePreview paths={['email-input', 'DomainEmailInput']}>
+  <Demo.DomainEmailInput disabled isClearable floatingLabel='Your Email' />
+</CodePreview>
 
 ## Size Medium
 
-<DemoBasicEmailInput inputSize="md"/>
-<DemoDomainEmailInput inputSize="md"/>
-<DemoDomainEmailInput inputSize="md" domain="@gmail.com"/>
-
+<CodePreview paths={['email-input', 'BasicEmailInput']}>
+  <Demo.BasicEmailInput inputSize='md' />
+</CodePreview>
+<CodePreview paths={['email-input', 'DomainEmailInput']}>
+  <Demo.DomainEmailInput inputSize='md' />
+</CodePreview>
+<CodePreview paths={['email-input', 'DomainEmailInput']}>
+  <Demo.DomainEmailInput inputSize='md' domain='@gmail.com' />
+</CodePreview>
 
 ## Alternative
 
 <div className="bg-[var(--background-alternative)] p-4 rounded-md flex flex-col gap-4">
 ## Basic
 
-<DemoBasicEmailInput theme="alternative"/>
-<DemoBasicEmailInput theme="alternative" isClearable/>
+<CodePreview paths={['email-input', 'BasicEmailInput']}>
+  <Demo.BasicEmailInput theme='alternative' />
+</CodePreview>
+<CodePreview paths={['email-input', 'BasicEmailInput']}>
+  <Demo.BasicEmailInput theme='alternative' isClearable />
+</CodePreview>
 
 ## Domain
 
-<DemoDomainEmailInput theme="alternative" isClearable/>
-<DemoDomainEmailInput theme="alternative" domain="@gmail.com"/>
+<CodePreview paths={['email-input', 'DomainEmailInput']}>
+  <Demo.DomainEmailInput theme='alternative' isClearable />
+</CodePreview>
+<CodePreview paths={['email-input', 'DomainEmailInput']}>
+  <Demo.DomainEmailInput theme='alternative' domain='@gmail.com' />
+</CodePreview>
+<CodePreview paths={['email-input', 'DomainEmailInput']}>
+  <Demo.DomainEmailInput theme='alternative' disabled isClearable />
+</CodePreview>
+<CodePreview paths={['email-input', 'DomainEmailInput']}>
+  <Demo.DomainEmailInput theme='alternative' disabled domain='@gmail.com' />
+</CodePreview>
 
-<DemoDomainEmailInput theme="alternative" disabled isClearable/>
-<DemoDomainEmailInput theme="alternative" disabled domain="@gmail.com"/>
+## State
 
-## State 
-
-<DemoBasicEmailInput theme="alternative" isError={true} errorMessage='Error message' isClearable/>
-<DemoDomainEmailInput theme="alternative" isError={true} errorMessage='Error message' isClearable/>
-
-<DemoBasicEmailInput theme="alternative" readOnly value="bitas@example.com" isClearable/>
-<DemoDomainEmailInput theme="alternative" readOnly value="bitas" isClearable/>
-
-<DemoBasicEmailInput theme="alternative" disabled isClearable/>
-<DemoDomainEmailInput theme="alternative" disabled isClearable/>
+<CodePreview paths={['email-input', 'BasicEmailInput']}>
+  <Demo.BasicEmailInput theme='alternative' isError={true} errorMessage='Error message' isClearable />
+</CodePreview>
+<CodePreview paths={['email-input', 'DomainEmailInput']}>
+  <Demo.DomainEmailInput theme='alternative' isError={true} errorMessage='Error message' isClearable />
+</CodePreview>
+<CodePreview paths={['email-input', 'BasicEmailInput']}>
+  <Demo.BasicEmailInput theme='alternative' readOnly value='bitas@example.com' isClearable />
+</CodePreview>
+<CodePreview paths={['email-input', 'DomainEmailInput']}>
+  <Demo.DomainEmailInput theme='alternative' readOnly value='bitas' isClearable />
+</CodePreview>
+<CodePreview paths={['email-input', 'BasicEmailInput']}>
+  <Demo.BasicEmailInput theme='alternative' disabled isClearable />
+</CodePreview>
+<CodePreview paths={['email-input', 'DomainEmailInput']}>
+  <Demo.DomainEmailInput theme='alternative' disabled isClearable />
+</CodePreview>
 
 ## Floating label
 
-<DemoBasicEmailInput theme="alternative" floatingLabel='Your Email' />
-<DemoDomainEmailInput theme="alternative" floatingLabel='Your Email' />
-
-<DemoBasicEmailInput theme="alternative" floatingLabel='Your Email' isClearable/>
-<DemoDomainEmailInput theme="alternative" floatingLabel='Your Email' domain="@gmail.com"/>
-
-<DemoBasicEmailInput theme="alternative" isError={true} errorMessage='Error message' isClearable floatingLabel='Your Email'/>
-<DemoDomainEmailInput theme="alternative" isError={true} errorMessage='Error message' isClearable floatingLabel='Your Email'/>
-
-<DemoBasicEmailInput theme="alternative" readOnly value="bitas@example.com" isClearable floatingLabel='Your Email'/>
-<DemoDomainEmailInput theme="alternative" readOnly value="bitas" isClearable floatingLabel='Your Email'/>
-
-<DemoBasicEmailInput theme="alternative" disabled isClearable floatingLabel='Your Email'/>
-<DemoDomainEmailInput theme="alternative" disabled isClearable floatingLabel='Your Email'/>
+<CodePreview paths={['email-input', 'BasicEmailInput']}>
+  <Demo.BasicEmailInput theme='alternative' floatingLabel='Your Email' />
+</CodePreview>
+<CodePreview paths={['email-input', 'DomainEmailInput']}>
+  <Demo.DomainEmailInput theme='alternative' floatingLabel='Your Email' />
+</CodePreview>
+<CodePreview paths={['email-input', 'BasicEmailInput']}>
+  <Demo.BasicEmailInput theme='alternative' floatingLabel='Your Email' isClearable />
+</CodePreview>
+<CodePreview paths={['email-input', 'DomainEmailInput']}>
+  <Demo.DomainEmailInput theme='alternative' floatingLabel='Your Email' domain='@gmail.com' />
+</CodePreview>
+<CodePreview paths={['email-input', 'BasicEmailInput']}>
+  <Demo.BasicEmailInput
+    theme='alternative'
+    isError={true}
+    errorMessage='Error message'
+    isClearable
+    floatingLabel='Your Email'
+  />
+</CodePreview>
+<CodePreview paths={['email-input', 'DomainEmailInput']}>
+  <Demo.DomainEmailInput
+    theme='alternative'
+    isError={true}
+    errorMessage='Error message'
+    isClearable
+    floatingLabel='Your Email'
+  />
+</CodePreview>
+<CodePreview paths={['email-input', 'BasicEmailInput']}>
+  <Demo.BasicEmailInput theme='alternative' readOnly value='bitas@example.com' isClearable floatingLabel='Your Email' />
+</CodePreview>
+<CodePreview paths={['email-input', 'DomainEmailInput']}>
+  <Demo.DomainEmailInput theme='alternative' readOnly value='bitas' isClearable floatingLabel='Your Email' />
+</CodePreview>
+<CodePreview paths={['email-input', 'BasicEmailInput']}>
+  <Demo.BasicEmailInput theme='alternative' disabled isClearable floatingLabel='Your Email' />
+</CodePreview>
+<CodePreview paths={['email-input', 'DomainEmailInput']}>
+  <Demo.DomainEmailInput theme='alternative' disabled isClearable floatingLabel='Your Email' />
+</CodePreview>
 
 ## Size Medium
 
-<DemoBasicEmailInput theme="alternative" inputSize="md"/>
-<DemoDomainEmailInput theme="alternative" inputSize="md"/>
-<DemoDomainEmailInput theme="alternative" inputSize="md" domain="@gmail.com"/>
+<CodePreview paths={["email-input", "BasicEmailInput"]}>
+  <Demo.BasicEmailInput theme="alternative" inputSize="md"/>
+</CodePreview>
+<CodePreview paths={["email-input", "DomainEmailInput"]}>
+  <Demo.DomainEmailInput theme="alternative" inputSize="md"/>
+</CodePreview>
+<CodePreview paths={["email-input", "DomainEmailInput"]}>
+  <Demo.DomainEmailInput theme="alternative" inputSize="md" domain="@gmail.com"/>
+</CodePreview>
 </div>

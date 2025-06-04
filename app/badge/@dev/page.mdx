@@ -1,35 +1,32 @@
-import {DemoOutlinedBadge, DemoGlassBadge, DemoSolidBadge, DemoDotBadge} from "./demo-components"
+import * as Demo from '@public/demo/badge';
+import CodePreview from '@components/showcase/CodePreview';
 
-## Outlined (default) 
-<DemoOutlinedBadge/>
+## Outlined (default)
 
-
-## Glass
-<DemoGlassBadge/>
-
-
-## Solid
-<DemoSolidBadge/>
-
-## Dot
-<DemoDotBadge/>
-
-{/* /////////////////////////////////////////////////////////////////////////////////////// */}
-
-{/* ## Dark mode
-
-<div className="bg-gray-950 text-white p-4 rounded-md flex flex-col gap-4" data-scheme="dark">
-## Outlined (default) 
-<DemoOutlinedBadge/>
-
+<CodePreview paths={['badge', 'OutlinedBadge']}>
+  <Demo.OutlinedBadge />
+</CodePreview>
 
 ## Glass
-<DemoGlassBadge/>
 
+<CodePreview paths={['badge', 'GlassBadge']}>
+  <Demo.GlassBadge />
+</CodePreview>
 
 ## Solid
-<DemoSolidBadge/>
+
+<CodePreview paths={['badge', 'SolidBadge']}>
+  <Demo.SolidBadge />
+</CodePreview>
 
 ## Dot
-<DemoDotBadge/>
-</div> */}
+
+<CodePreview paths={['badge', 'DotBadge']}>
+  <Demo.DotBadge />
+</CodePreview>
+
+## Dot (Dark)
+
+<CodePreview paths={['badge', 'DotBadgeDark']}>
+  <Demo.DotBadgeDark />
+</CodePreview>

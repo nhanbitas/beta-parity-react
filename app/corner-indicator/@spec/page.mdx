@@ -1,7 +1,7 @@
 import { Badge } from 'beta-parity-react/ui/Badge';
 import Image from '@components/showcase/ImagePreview';
 import Component from '@components/showcase/CodePreview';
-import * as Demo from "../@dev/demo-components"
+import * as Demo from '@public/demo/corner-indicator';
 
 {/* Image => Image Example */}
 {/* Component => Component Example */}
@@ -10,16 +10,15 @@ import * as Demo from "../@dev/demo-components"
 A component that organizes content into vertically stacked collapsible and expandable sections.
 :::
 
-
 ## Design checklist <span id="design-checklist"></span>
 
-| Status | Item                                 | Description                                                                                                                                                                                                                       |
-| ------ | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ✔️     | Anatomy                              | Includes descriptions of all parts of the component and its major variants.                                                                                                                                                       |
-| ✔️     | States                               | Includes all applicable interaction, display and value states.                                                                                                                                                                    |
-| ✔️     | Options                              | Includes all relevant options (functional type, stylistic kind, semantic color, size, orientation, optional iconography, decorations, etc.)                                                                                       |
-| ✔️     | Color schemes                        | Includes both light and dark color schemes.                                                                                                                                                                                       |
-| ✔️     | Behaviors                            | Includes descriptions of behaviors related to other components and responsive behaviors related to media breakpoints, size (minimums and maximums), orientation, alignment, position and layout (wrapping, truncation, overflow). |
+| Status | Item          | Description                                                                                                                                                                                                                       |
+| ------ | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ✔️     | Anatomy       | Includes descriptions of all parts of the component and its major variants.                                                                                                                                                       |
+| ✔️     | States        | Includes all applicable interaction, display and value states.                                                                                                                                                                    |
+| ✔️     | Options       | Includes all relevant options (functional type, stylistic kind, semantic color, size, orientation, optional iconography, decorations, etc.)                                                                                       |
+| ✔️     | Color schemes | Includes both light and dark color schemes.                                                                                                                                                                                       |
+| ✔️     | Behaviors     | Includes descriptions of behaviors related to other components and responsive behaviors related to media breakpoints, size (minimums and maximums), orientation, alignment, position and layout (wrapping, truncation, overflow). |
 
 ## Anatomy <span id="anatomy"></span>
 
@@ -62,19 +61,20 @@ A component that organizes content into vertically stacked collapsible and expan
 - Responsive to light/dark color schemes via CSS tokens.
 
 ## Changelog <span id="changelog"></span>
+
 {/* Changelog specification */}
 
-| Date       | Type                                                        | Description                                                                                 | Author      | Associated issue(s)  |
-|:-----------|:------------------------------------------------------------|---------------------------------------------------------------------------------------------|:------------|:---------------------|
-| YYYY-MM-DD | <Badge size='sm' kind='glass' color='cyan' label="new"/>    | Initial design                                                                              | Oanh Nguyen | PAR-52               |
+| Date       | Type                                                     | Description    | Author      | Associated issue(s) |
+| :--------- | :------------------------------------------------------- | -------------- | :---------- | :------------------ |
+| YYYY-MM-DD | <Badge size='sm' kind='glass' color='cyan' label="new"/> | Initial design | Oanh Nguyen | PAR-52              |
 
 ## 🎨 Design Tokens for CornerIndicator
 
 > All tokens are defined in `registry/src/components/CornerIndicator/variables.css`.
 
-| **Token**                              | **Color for**         | **State/Meaning**         | **CSS Selector(s)**                |
-|----------------------------------------|-----------------------|---------------------------|------------------------------------|
-| **--par-color-outline-corner-indicator** | Outline color         | Outline for indicator     | `.corner-indicator-container.bordered > .badge`, `.corner-indicator-container.bordered > .dot` |
+| **Token**                                | **Color for** | **State/Meaning**     | **CSS Selector(s)**                                                                            |
+| ---------------------------------------- | ------------- | --------------------- | ---------------------------------------------------------------------------------------------- |
+| **--par-color-outline-corner-indicator** | Outline color | Outline for indicator | `.corner-indicator-container.bordered > .badge`, `.corner-indicator-container.bordered > .dot` |
 
 ---
 
@@ -82,25 +82,24 @@ A component that organizes content into vertically stacked collapsible and expan
 
 ### `<CornerIndicator />`
 
-| **Prop**         | **Type**                                                                 | **Default**     | **Description**                                                        |
-|------------------|--------------------------------------------------------------------------|-----------------|------------------------------------------------------------------------|
-| **label**        | string                                                                   |                 | Label text inside the indicator                                        |
-| **icon**         | ReactNode                                                                |                 | Icon for badge indicator                                               |
-| **outline**      | boolean                                                                  | _false_         | Show outline                                                          |
-| **pulse**        | boolean                                                                  | _false_         | Pulse animation (dot only)                                             |
-| **offset**       | number                                                                   | _0_             | Offset from corner (px)                                                |
-| **xOffset**      | number                                                                   | _0_             | X offset from corner (px)                                              |
-| **yOffset**      | number                                                                   | _0_             | Y offset from corner (px)                                              |
-| **disable**      | boolean                                                                  | _false_         | Disable the indicator                                                  |
-| **position**     | 'top-left' \| 'top-right' \| 'bottom-left' \| 'bottom-right'           | _'top-right'_   | Position relative to container                                         |
-| **color**        | 'gray' \| 'orange' \| 'violet' \| 'green' \| 'red' \| 'yellow' \| 'blue' \| 'lime' \| 'cyan' | _'gray'_         | Indicator color                                                        |
-| **size**         | 'md' \| 'sm' \| 'xs' \| 'lg'                                            | _'md'_          | Indicator size                                                         |
-| **variant**      | 'solid' \| 'outlined' \| 'glass'                                         | _'solid'_       | Visual style                                                           |
-| **growDirection**| 'symmetric' \| 'inward' \| 'outward'                                    | _'symmetric'_   | Direction the indicator grows                                          |
-| **indicatorProps**| object                                                                  |                 | Extra props for Badge/Dot (except size, color, variant, pulse)          |
-| **...divProps**  | HTMLDivElement props                                                    |                 | All native div props (className, style, ...)                            |
+| **Prop**           | **Type**                                                                                     | **Default**   | **Description**                                                |
+| ------------------ | -------------------------------------------------------------------------------------------- | ------------- | -------------------------------------------------------------- |
+| **label**          | string                                                                                       |               | Label text inside the indicator                                |
+| **icon**           | ReactNode                                                                                    |               | Icon for badge indicator                                       |
+| **outline**        | boolean                                                                                      | _false_       | Show outline                                                   |
+| **pulse**          | boolean                                                                                      | _false_       | Pulse animation (dot only)                                     |
+| **offset**         | number                                                                                       | _0_           | Offset from corner (px)                                        |
+| **xOffset**        | number                                                                                       | _0_           | X offset from corner (px)                                      |
+| **yOffset**        | number                                                                                       | _0_           | Y offset from corner (px)                                      |
+| **disable**        | boolean                                                                                      | _false_       | Disable the indicator                                          |
+| **position**       | 'top-left' \| 'top-right' \| 'bottom-left' \| 'bottom-right'                                 | _'top-right'_ | Position relative to container                                 |
+| **color**          | 'gray' \| 'orange' \| 'violet' \| 'green' \| 'red' \| 'yellow' \| 'blue' \| 'lime' \| 'cyan' | _'gray'_      | Indicator color                                                |
+| **size**           | 'md' \| 'sm' \| 'xs' \| 'lg'                                                                 | _'md'_        | Indicator size                                                 |
+| **variant**        | 'solid' \| 'outlined' \| 'glass'                                                             | _'solid'_     | Visual style                                                   |
+| **growDirection**  | 'symmetric' \| 'inward' \| 'outward'                                                         | _'symmetric'_ | Direction the indicator grows                                  |
+| **indicatorProps** | object                                                                                       |               | Extra props for Badge/Dot (except size, color, variant, pulse) |
+| **...divProps**    | HTMLDivElement props                                                                         |               | All native div props (className, style, ...)                   |
 
 > **_Note:_** _CornerIndicator_ **inherits** all native props from **HTMLDivElement**.
 
 ---
-

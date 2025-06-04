@@ -1,17 +1,23 @@
-import * as Demo from '../@dev/demo-components';
+import * as Demo from '@public/demo/file-input';
+import CodePreview from '@components/showcase/CodePreview';
 
 ## Default
 
-<Demo.DemoFileInput />
+<CodePreview paths={['file-input', 'FileInput']}>
+  <Demo.FileInput />
+</CodePreview>
 
-<Demo.DemoErrorFileInput />
+<CodePreview paths={['file-input', 'ErrorFileInput']}>
+  <Demo.ErrorFileInput />
+</CodePreview>
 
 ## Alternative
 
-<div className="bg-[var(--background-alternative)] p-4 rounded-md flex flex-col gap-4">
-
-<Demo.DemoFileInput theme='alternative' />
-
-<Demo.DemoErrorFileInput theme='alternative' />
-
+<div className='flex flex-col gap-4 rounded-md bg-[var(--background-alternative)] p-4'>
+  <CodePreview paths={['file-input', 'FileInput']}>
+    <Demo.FileInput theme='alternative' />
+  </CodePreview>
+  <CodePreview paths={['file-input', 'ErrorFileInput']}>
+    <Demo.ErrorFileInput theme='alternative' />
+  </CodePreview>
 </div>

@@ -1,55 +1,55 @@
-import {DemoBreadcrumbBasic, DemoBreadcrumbList} from "./demo-components"
-
+import * as Demo from '@public/demo/breadcrumb';
+import CodePreview from '@components/showcase/CodePreview';
 
 ## Basic
-<DemoBreadcrumbBasic separator="chevron" />
-<DemoBreadcrumbBasic separator="dash" />
-<DemoBreadcrumbBasic separator="slash" />
 
-<DemoBreadcrumbBasic separator="chevron" color='neutral' underline='none'/>
-<DemoBreadcrumbBasic separator="dash" color='neutral' underline='none'/>
-<DemoBreadcrumbBasic separator="slash" color='neutral' underline='none'/>
+<CodePreview paths={['breadcrumb', 'BreadcrumbBasic']}>
+  <Demo.BreadcrumbBasic separator='chevron' />
+</CodePreview>
+<CodePreview paths={['breadcrumb', 'BreadcrumbBasic']}>
+  <Demo.BreadcrumbBasic separator='dash' />
+</CodePreview>
+<CodePreview paths={['breadcrumb', 'BreadcrumbBasic']}>
+  <Demo.BreadcrumbBasic separator='slash' />
+</CodePreview>
 
-<DemoBreadcrumbBasic separator="chevron" color='neutral' underline='always'/>
-<DemoBreadcrumbBasic separator="dash" color='neutral' underline='always'/>
-<DemoBreadcrumbBasic separator="slash" color='neutral' underline='always'/>
+<CodePreview paths={['breadcrumb', 'BreadcrumbBasic']}>
+  <Demo.BreadcrumbBasic separator='chevron' color='neutral' underline='none' />
+</CodePreview>
+<CodePreview paths={['breadcrumb', 'BreadcrumbBasic']}>
+  <Demo.BreadcrumbBasic separator='dash' color='neutral' underline='none' />
+</CodePreview>
+<CodePreview paths={['breadcrumb', 'BreadcrumbBasic']}>
+  <Demo.BreadcrumbBasic separator='slash' color='neutral' underline='none' />
+</CodePreview>
 
-# List 
-<DemoBreadcrumbList limit={3}/>
-<DemoBreadcrumbList />
+<CodePreview paths={['breadcrumb', 'BreadcrumbBasic']}>
+  <Demo.BreadcrumbBasic separator='chevron' color='neutral' underline='always' />
+</CodePreview>
+<CodePreview paths={['breadcrumb', 'BreadcrumbBasic']}>
+  <Demo.BreadcrumbBasic separator='dash' color='neutral' underline='always' />
+</CodePreview>
+<CodePreview paths={['breadcrumb', 'BreadcrumbBasic']}>
+  <Demo.BreadcrumbBasic separator='slash' color='neutral' underline='always' />
+</CodePreview>
 
-<DemoBreadcrumbList limit={3} color='neutral' underline='none'/>
-<DemoBreadcrumbList  color='neutral' underline='none'/>
+# List
 
-<DemoBreadcrumbList limit={3} color='neutral' underline='always'/>
-<DemoBreadcrumbList color='neutral' underline='always'/>
-
-
-
-{/* ## Dark mode
-
-<div className="bg-gray-950 text-white p-4 rounded-md flex flex-col gap-4" data-scheme="dark">
-## Basic
-<DemoBreadcrumbBasic separator="chevron" />
-<DemoBreadcrumbBasic separator="dash" />
-<DemoBreadcrumbBasic separator="slash" />
-
-<DemoBreadcrumbBasic separator="chevron" color='neutral' underline='none'/>
-<DemoBreadcrumbBasic separator="dash" color='neutral' underline='none'/>
-<DemoBreadcrumbBasic separator="slash" color='neutral' underline='none'/>
-
-<DemoBreadcrumbBasic separator="chevron" color='neutral' underline='always'/>
-<DemoBreadcrumbBasic separator="dash" color='neutral' underline='always'/>
-<DemoBreadcrumbBasic separator="slash" color='neutral' underline='always'/>
-
-# List 
-<DemoBreadcrumbList limit={3} menuProps={{'data-scheme': 'dark', menuItemsLimit: 3}}/>
-<DemoBreadcrumbList />
-
-<DemoBreadcrumbList limit={3} color='neutral' underline='none' menuProps={{'data-scheme': 'dark', menuItemsLimit: 3}}/>
-<DemoBreadcrumbList  color='neutral' underline='none'/>
-
-<DemoBreadcrumbList limit={3} color='neutral' underline='always' menuProps={{'data-scheme': 'dark', menuItemsLimit: 3}}/>
-<DemoBreadcrumbList color='neutral' underline='always'/>
-
-</div> */}
+<CodePreview paths={['breadcrumb', 'BreadcrumbList']}>
+  <Demo.BreadcrumbList limit={3} />
+</CodePreview>
+<CodePreview paths={['breadcrumb', 'BreadcrumbList']}>
+  <Demo.BreadcrumbList />
+</CodePreview>
+<CodePreview paths={['breadcrumb', 'BreadcrumbList']}>
+  <Demo.BreadcrumbList limit={3} color='neutral' underline='none' />
+</CodePreview>
+<CodePreview paths={['breadcrumb', 'BreadcrumbList']}>
+  <Demo.BreadcrumbList color='neutral' underline='none' />
+</CodePreview>
+<CodePreview paths={['breadcrumb', 'BreadcrumbList']}>
+  <Demo.BreadcrumbList limit={3} color='neutral' underline='always' />
+</CodePreview>
+<CodePreview paths={['breadcrumb', 'BreadcrumbList']}>
+  <Demo.BreadcrumbList color='neutral' underline='always' />
+</CodePreview>

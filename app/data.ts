@@ -4,11 +4,11 @@ export const components = [
     url: '/accordion',
     status: 3
   },
-  {
-    name: 'Animation',
-    url: '/animation',
-    status: 2
-  },
+  // {
+  //   name: 'Animation',
+  //   url: '/animation',
+  //   status: 2
+  // },
   {
     name: 'Avatar',
     url: '/avatar',
@@ -73,18 +73,18 @@ export const components = [
   {
     name: 'File Input',
     url: '/file-input',
-    status: 2
+    status: 3
   },
   {
     name: 'File Item',
     url: '/file-item',
-    status: 2
+    status: 3
   },
-  {
-    name: 'Form',
-    url: '/form',
-    status: 2
-  },
+  // {
+  //   name: 'Form',
+  //   url: '/form',
+  //   status: 2
+  // },
   {
     name: 'Inline Link',
     url: '/inline-link',
@@ -95,11 +95,11 @@ export const components = [
     url: '/menu',
     status: 3
   },
-  {
-    name: 'Modal',
-    url: '/modal',
-    status: 2
-  },
+  // {
+  //   name: 'Modal',
+  //   url: '/modal',
+  //   status: 2
+  // },
   {
     name: 'Number Input',
     url: '/number-input',
@@ -158,7 +158,7 @@ export const components = [
   {
     name: 'Table',
     url: '/table',
-    status: 2
+    status: 3
   },
   {
     name: 'Tabs',

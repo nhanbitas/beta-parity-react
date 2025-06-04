@@ -1,19 +1,14 @@
-import * as Demo from './demo-components'
+import * as Demo from '@public/demo/checkbox';
+import CodePreview from '@components/showcase/CodePreview';
 
-<Demo.DemoBasicCheckbox/>
+<CodePreview paths={['checkbox', 'BasicCheckbox']}>
+  <Demo.BasicCheckbox />
+</CodePreview>
 
-<Demo.DemoGroupCheckbox/>
+<CodePreview paths={['checkbox', 'GroupCheckbox']}>
+  <Demo.GroupCheckbox />
+</CodePreview>
 
-<Demo.DemoNestedCheckbox/>
-
-
-
-{/* ## Dark mode
-
-<div className="bg-gray-950 text-white p-4 rounded-md flex flex-col gap-4" data-scheme="dark">
-<Demo.DemoBasicCheckbox/>
-
-<Demo.DemoGroupCheckbox/>
-
-<Demo.DemoNestedCheckbox/>
-</div> */}
+<CodePreview paths={['checkbox', 'NestedCheckbox']}>
+  <Demo.NestedCheckbox />
+</CodePreview>

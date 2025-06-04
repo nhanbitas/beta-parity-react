@@ -1,24 +1,20 @@
-import * as Demo from "./demo-components"
-
+import * as Demo from '@public/demo/inline-link';
+import CodePreview from '@components/showcase/CodePreview';
 
 ## Inline Link
-<Demo.DemoKindInlineLink/>
+
+<CodePreview paths={['inline-link', 'KindInlineLink']}>
+  <Demo.KindInlineLink />
+</CodePreview>
 
 ## Inline Link Size
-<Demo.DemoSizeInlineLink/>
+
+<CodePreview paths={['inline-link', 'SizeInlineLink']}>
+  <Demo.SizeInlineLink />
+</CodePreview>
 
 ## Inline Link Icon
-<Demo.DemoIconInlineLink/>
 
-
-{/* <div className="bg-gray-950 text-white p-4 rounded-md flex flex-col gap-4" data-scheme="dark">
-## Inline Link
-<Demo.DemoKindInlineLink/>
-
-## Inline Link Size
-<Demo.DemoSizeInlineLink/>
-
-
-## Inline Link Icon
-<Demo.DemoIconInlineLink/>
-</div> */}
+<CodePreview paths={['inline-link', 'IconInlineLink']}>
+  <Demo.IconInlineLink />
+</CodePreview>

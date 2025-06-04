@@ -1,7 +1,14 @@
-import * as Demo from '../@dev/demo-components';
+import * as Demo from '@public/demo/file-item';
+import CodePreview from '@components/showcase/CodePreview';
 
-<Demo.DemoBasicFileItem />
+<CodePreview paths={['file-item', 'BasicFileItem']}>
+  <Demo.BasicFileItem />
+</CodePreview>
 
-<Demo.DemoFileItem />
+<CodePreview paths={['file-item', 'FileItemComponent']}>
+  <Demo.FileItemComponent />
+</CodePreview>
 
-<Demo.DemoErrorFileItem />
+<CodePreview paths={['file-item', 'ErrorFileItem']}>
+  <Demo.ErrorFileItem />
+</CodePreview>

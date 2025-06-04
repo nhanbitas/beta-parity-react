@@ -1,158 +1,338 @@
-import { DemoBasicSearchInput, DemoAuxiliarySearchInput } from './demo-components';
+import * as Demo from '@public/demo/search-input';
+import CodePreview from '@components/showcase/CodePreview';
 
 ## Basic
 
-<DemoBasicSearchInput />
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput />
+</CodePreview>
 
-<DemoBasicSearchInput isClearable searchButton/>
-<DemoBasicSearchInput isClearable searchButton />
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput isClearable searchButton />
+</CodePreview>
 
-<DemoBasicSearchInput isPending/>
-<DemoBasicSearchInput isPending searchButton />
-
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput isPending />
+</CodePreview>
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput isPending searchButton />
+</CodePreview>
 
 ## Auxiliary
 
-<DemoAuxiliarySearchInput />
+<CodePreview paths={['search-input', 'AuxiliarySearchInput']}>
+  <Demo.AuxiliarySearchInput />
+</CodePreview>
 
-<DemoAuxiliarySearchInput isClearable searchButton/>
-<DemoAuxiliarySearchInput isClearable searchButton />
+<CodePreview paths={['search-input', 'AuxiliarySearchInput']}>
+  <Demo.AuxiliarySearchInput isClearable searchButton />
+</CodePreview>
+<CodePreview paths={['search-input', 'AuxiliarySearchInput']}>
+  <Demo.AuxiliarySearchInput isClearable searchButton />
+</CodePreview>
 
-<DemoAuxiliarySearchInput isPending/>
-<DemoAuxiliarySearchInput isPending searchButton />
-
+<CodePreview paths={['search-input', 'AuxiliarySearchInput']}>
+  <Demo.AuxiliarySearchInput isPending />
+</CodePreview>
+<CodePreview paths={['search-input', 'AuxiliarySearchInput']}>
+  <Demo.AuxiliarySearchInput isPending searchButton />
+</CodePreview>
 
 ## ShortCut Indicator
 
-<DemoBasicSearchInput shortCut='Shift + K'/>
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput shortCut='Shift + K' />
+</CodePreview>
 
-<DemoBasicSearchInput isClearable shortCut='Shift + K'/>
-<DemoBasicSearchInput isClearable shortCut='Shift + K' />
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput isClearable shortCut='Shift + K' />
+</CodePreview>
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput isClearable shortCut='Shift + K' />
+</CodePreview>
 
-<DemoBasicSearchInput isPending shortCut='Shift + K'/>
-<DemoBasicSearchInput isPending shortCut='Shift + K' />
-
-
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput isPending shortCut='Shift + K' />
+</CodePreview>
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput isPending shortCut='Shift + K' />
+</CodePreview>
 
 ## States
 
-<DemoBasicSearchInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder' />
-<DemoBasicSearchInput isError={true} errorMessage='Error message' shortCut='Shift + K' placeholder='Placeholder' />
-<DemoBasicSearchInput disabled shortCut='Shift + K' value='This is disabled search input' placeholder='Placeholder' />
-<DemoBasicSearchInput disabled searchButton value='This is disabled search input' placeholder='Placeholder' />
-<DemoBasicSearchInput readOnly searchButton value='This is read only search input' placeholder='Placeholder' />
-<DemoBasicSearchInput readOnly isPending shortCut='Shift + K' value='This is read only search input' placeholder='Placeholder' />
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder' />
+</CodePreview>
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput isError={true} errorMessage='Error message' shortCut='Shift + K' placeholder='Placeholder' />
+</CodePreview>
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput
+    disabled
+    shortCut='Shift + K'
+    value='This is disabled search input'
+    placeholder='Placeholder'
+  />
+</CodePreview>
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput disabled searchButton value='This is disabled search input' placeholder='Placeholder' />
+</CodePreview>
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput readOnly searchButton value='This is read only search input' placeholder='Placeholder' />
+</CodePreview>
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput
+    readOnly
+    isPending
+    shortCut='Shift + K'
+    value='This is read only search input'
+    placeholder='Placeholder'
+  />
+</CodePreview>
 
 ## Floating label
 
-<DemoBasicSearchInput isClearable floatingLabel='Floating Label' placeholder='Placeholder' />
-<DemoBasicSearchInput isClearable floatingLabel='Floating Label' placeholder='Placeholder'  />
-<DemoBasicSearchInput
-  isClearable
-  isError={true}
-  errorMessage='Error message'
-  floatingLabel='Floating Label'
-  placeholder='Placeholder'
-/>
-<DemoBasicSearchInput
-  isClearable
-  isError={true}
-  errorMessage='Error message'
-  floatingLabel='Floating Label'
-  placeholder='Placeholder'
-/>
-<DemoBasicSearchInput isClearable disabled floatingLabel='Floating Label' placeholder='Placeholder' shortCut='Shift + K' value='This is disabled search input' />
-<DemoBasicSearchInput isClearable disabled floatingLabel='Floating Label' placeholder='Placeholder' />
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput isClearable floatingLabel='Floating Label' placeholder='Placeholder' />
+</CodePreview>
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput isClearable floatingLabel='Floating Label' placeholder='Placeholder' />
+</CodePreview>
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput
+    isClearable
+    isError={true}
+    errorMessage='Error message'
+    floatingLabel='Floating Label'
+    placeholder='Placeholder'
+  />
+</CodePreview>
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput
+    isClearable
+    isError={true}
+    errorMessage='Error message'
+    floatingLabel='Floating Label'
+    placeholder='Placeholder'
+  />
+</CodePreview>
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput
+    isClearable
+    disabled
+    floatingLabel='Floating Label'
+    placeholder='Placeholder'
+    shortCut='Shift + K'
+    value='This is disabled search input'
+  />
+</CodePreview>
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput isClearable disabled floatingLabel='Floating Label' placeholder='Placeholder' />
+</CodePreview>
 
 ## Size Medium
 
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput inputSize='md' />
+</CodePreview>
+<CodePreview paths={['search-input', 'AuxiliarySearchInput']}>
+  <Demo.AuxiliarySearchInput inputSize='md' />
+</CodePreview>
 
-<DemoBasicSearchInput inputSize="md"/>
-<DemoAuxiliarySearchInput inputSize="md"/>
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput isClearable searchButton inputSize='md' />
+</CodePreview>
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput isClearable isPending searchButton inputSize='md' />
+</CodePreview>
 
-<DemoBasicSearchInput isClearable searchButton inputSize="md"/>
-<DemoBasicSearchInput isClearable isPending searchButton inputSize="md"/>
-
-<DemoBasicSearchInput shortCut='Shift + K' inputSize="md"/>
-<DemoBasicSearchInput isPending shortCut='Shift + K' inputSize="md"/>
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput shortCut='Shift + K' inputSize='md' />
+</CodePreview>
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput isPending shortCut='Shift + K' inputSize='md' />
+</CodePreview>
 
 {/* /////////////////////////////////////////////////////////////////////////////////////// */}
 
+## Basic (Alternative)
 
-<div className="bg-[var(--background-alternative)] p-4 rounded-md flex flex-col gap-4">
-## Basic
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput theme='alternative' />
+</CodePreview>
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput isClearable searchButton theme='alternative' />
+</CodePreview>
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput isClearable searchButton theme='alternative' />
+</CodePreview>
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput isPending theme='alternative' />
+</CodePreview>
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput isPending searchButton theme='alternative' />
+</CodePreview>
 
-<DemoBasicSearchInput  theme="alternative"/>
+## Auxiliary (Alternative)
 
-<DemoBasicSearchInput isClearable searchButton theme="alternative"/>
-<DemoBasicSearchInput isClearable searchButton  theme="alternative"/>
+<CodePreview paths={['search-input', 'AuxiliarySearchInput']}>
+  <Demo.AuxiliarySearchInput theme='alternative' />
+</CodePreview>
+<CodePreview paths={['search-input', 'AuxiliarySearchInput']}>
+  <Demo.AuxiliarySearchInput isClearable searchButton theme='alternative' />
+</CodePreview>
+<CodePreview paths={['search-input', 'AuxiliarySearchInput']}>
+  <Demo.AuxiliarySearchInput isClearable searchButton theme='alternative' />
+</CodePreview>
+<CodePreview paths={['search-input', 'AuxiliarySearchInput']}>
+  <Demo.AuxiliarySearchInput isPending theme='alternative' />
+</CodePreview>
+<CodePreview paths={['search-input', 'AuxiliarySearchInput']}>
+  <Demo.AuxiliarySearchInput isPending searchButton theme='alternative' />
+</CodePreview>
 
-<DemoBasicSearchInput isPending theme="alternative"/>
-<DemoBasicSearchInput isPending searchButton  theme="alternative"/>
+## ShortCut Indicator (Alternative)
 
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput shortCut='Shift + K' theme='alternative' />
+</CodePreview>
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput isClearable shortCut='Shift + K' theme='alternative' />
+</CodePreview>
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput isClearable shortCut='Shift + K' theme='alternative' />
+</CodePreview>
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput isPending shortCut='Shift + K' theme='alternative' />
+</CodePreview>
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput isPending shortCut='Shift + K' theme='alternative' />
+</CodePreview>
 
-## Auxiliary
+## States (Alternative)
 
-<DemoAuxiliarySearchInput  theme="alternative"/>
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput
+    isError={true}
+    errorMessage='Error message'
+    isClearable
+    placeholder='Placeholder'
+    theme='alternative'
+  />
+</CodePreview>
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput
+    isError={true}
+    errorMessage='Error message'
+    shortCut='Shift + K'
+    placeholder='Placeholder'
+    theme='alternative'
+  />
+</CodePreview>
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput
+    disabled
+    shortCut='Shift + K'
+    value='This is disabled search input'
+    placeholder='Placeholder'
+    theme='alternative'
+  />
+</CodePreview>
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput
+    disabled
+    searchButton
+    value='This is disabled search input'
+    placeholder='Placeholder'
+    theme='alternative'
+  />
+</CodePreview>
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput
+    readOnly
+    searchButton
+    value='This is read only search input'
+    placeholder='Placeholder'
+    theme='alternative'
+  />
+</CodePreview>
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput
+    readOnly
+    isPending
+    shortCut='Shift + K'
+    value='This is read only search input'
+    placeholder='Placeholder'
+    theme='alternative'
+  />
+</CodePreview>
 
-<DemoAuxiliarySearchInput isClearable searchButton theme="alternative"/>
-<DemoAuxiliarySearchInput isClearable searchButton  theme="alternative"/>
+## Floating label (Alternative)
 
-<DemoAuxiliarySearchInput isPending theme="alternative"/>
-<DemoAuxiliarySearchInput isPending searchButton  theme="alternative"/>
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput isClearable floatingLabel='Floating Label' placeholder='Placeholder' theme='alternative' />
+</CodePreview>
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput isClearable floatingLabel='Floating Label' placeholder='Placeholder' theme='alternative' />
+</CodePreview>
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput
+    isClearable
+    isError={true}
+    errorMessage='Error message'
+    floatingLabel='Floating Label'
+    placeholder='Placeholder'
+    theme='alternative'
+  />
+</CodePreview>
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput
+    isClearable
+    isError={true}
+    errorMessage='Error message'
+    floatingLabel='Floating Label'
+    placeholder='Placeholder'
+    theme='alternative'
+  />
+</CodePreview>
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput
+    isClearable
+    disabled
+    floatingLabel='Floating Label'
+    placeholder='Placeholder'
+    shortCut='Shift + K'
+    value='This is disabled search input'
+    theme='alternative'
+  />
+</CodePreview>
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput
+    isClearable
+    disabled
+    floatingLabel='Floating Label'
+    placeholder='Placeholder'
+    theme='alternative'
+  />
+</CodePreview>
 
+## Size Medium (Alternative)
 
-## ShortCut Indicator
-
-<DemoBasicSearchInput shortCut='Shift + K' theme="alternative"/>
-
-<DemoBasicSearchInput isClearable shortCut='Shift + K' theme="alternative"/>
-<DemoBasicSearchInput isClearable shortCut='Shift + K'  theme="alternative"/>
-
-<DemoBasicSearchInput isPending shortCut='Shift + K' theme="alternative"/>
-<DemoBasicSearchInput isPending shortCut='Shift + K'  theme="alternative"/>
-
-
-
-## States
-
-<DemoBasicSearchInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder'  theme="alternative"/>
-<DemoBasicSearchInput isError={true} errorMessage='Error message' shortCut='Shift + K' placeholder='Placeholder'  theme="alternative"/>
-<DemoBasicSearchInput disabled shortCut='Shift + K' value='This is disabled search input' placeholder='Placeholder'  theme="alternative"/>
-<DemoBasicSearchInput disabled searchButton value='This is disabled search input' placeholder='Placeholder'  theme="alternative"/>
-<DemoBasicSearchInput readOnly searchButton value='This is read only search input' placeholder='Placeholder'  theme="alternative"/>
-<DemoBasicSearchInput readOnly isPending shortCut='Shift + K' value='This is read only search input' placeholder='Placeholder'  theme="alternative"/>
-
-## Floating label
-
-<DemoBasicSearchInput isClearable floatingLabel='Floating Label' placeholder='Placeholder'  theme="alternative"/>
-<DemoBasicSearchInput isClearable floatingLabel='Floating Label' placeholder='Placeholder'   theme="alternative"/>
-<DemoBasicSearchInput
-  isClearable
-  isError={true}
-  errorMessage='Error message'
-  floatingLabel='Floating Label'
-  placeholder='Placeholder'
- theme="alternative"/>
-<DemoBasicSearchInput
-  isClearable
-  isError={true}
-  errorMessage='Error message'
-  floatingLabel='Floating Label'
-  placeholder='Placeholder'
- theme="alternative"/>
-<DemoBasicSearchInput isClearable disabled floatingLabel='Floating Label' placeholder='Placeholder' shortCut='Shift + K' value='This is disabled search input'  theme="alternative"/>
-<DemoBasicSearchInput isClearable disabled floatingLabel='Floating Label' placeholder='Placeholder'  theme="alternative"/>
-
-## Size Medium
-
-
-<DemoBasicSearchInput inputSize="md" theme="alternative"/>
-<DemoAuxiliarySearchInput inputSize="md" theme="alternative"/>
-
-<DemoBasicSearchInput isClearable searchButton inputSize="md" theme="alternative"/>
-<DemoBasicSearchInput isClearable isPending searchButton inputSize="md" theme="alternative"/>
-
-<DemoBasicSearchInput shortCut='Shift + K' inputSize="md" theme="alternative"/>
-<DemoBasicSearchInput isPending shortCut='Shift + K' inputSize="md" theme="alternative"/>
-</div>
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput inputSize='md' theme='alternative' />
+</CodePreview>
+<CodePreview paths={['search-input', 'AuxiliarySearchInput']}>
+  <Demo.AuxiliarySearchInput inputSize='md' theme='alternative' />
+</CodePreview>
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput isClearable searchButton inputSize='md' theme='alternative' />
+</CodePreview>
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput isClearable isPending searchButton inputSize='md' theme='alternative' />
+</CodePreview>
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput shortCut='Shift + K' inputSize='md' theme='alternative' />
+</CodePreview>
+<CodePreview paths={['search-input', 'BasicSearchInput']}>
+  <Demo.BasicSearchInput isPending shortCut='Shift + K' inputSize='md' theme='alternative' />
+</CodePreview>

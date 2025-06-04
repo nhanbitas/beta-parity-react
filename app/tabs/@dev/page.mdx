@@ -1,23 +1,24 @@
-import {DemoTabs, DemoAccentTabs, DemoTabsWithChildren} from "./demo-components"
+import * as Demo from '@public/demo/tabs';
+import CodePreview from '@components/showcase/CodePreview';
 
-## Basic
-<DemoTabsWithChildren/>
-<DemoTabs/>
-<DemoAccentTabs/>
+<CodePreview paths={['tabs', 'TabsWithChildren']}>
+  <Demo.TabsWithChildren />
+</CodePreview>
+<CodePreview paths={['tabs', 'Tabs']}>
+  <Demo.Tabs />
+</CodePreview>
+<CodePreview paths={['tabs', 'AccentTabs']}>
+  <Demo.AccentTabs />
+</CodePreview>
 
 ## Alternative
 
-<div className="bg-[var(--background-alternative)] p-4 rounded-md flex flex-col gap-4">
-## Basic
-<DemoTabs theme="alternative"/>
-<DemoAccentTabs theme="alternative"/>
+<div className='flex flex-col gap-4 rounded-md bg-[var(--background-alternative)] p-4'>
+  ## Basic
+  <CodePreview paths={['tabs', 'Tabs']}>
+    <Demo.Tabs theme='alternative' />
+  </CodePreview>
+  <CodePreview paths={['tabs', 'AccentTabs']}>
+    <Demo.AccentTabs theme='alternative' />
+  </CodePreview>
 </div>
-
-
-{/* ## Dark mode
-
-<div className="bg-gray-950 text-white p-4 rounded-md flex flex-col gap-4" data-scheme="dark">
-## Basic
-<DemoTabs/>
-<DemoAccentTabs/>
-</div> */}

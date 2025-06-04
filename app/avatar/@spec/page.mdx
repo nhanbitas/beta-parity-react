@@ -1,7 +1,7 @@
 import { Badge } from 'beta-parity-react/ui/Badge';
 import Image from '@components/showcase/ImagePreview';
 import Component from '@components/showcase/CodePreview';
-import * as Demo from '../@dev/demo-components';
+import * as Demo from '@public/demo/avatar';
 
 {/* Image => Image Example */}
 {/* Component => Component Example */}
@@ -41,10 +41,10 @@ The standard Avatar contains:
 - **Border**: Optional decorative or functional border around the avatar
 
 <Component>
-  <Demo.DemoImageAvatar />
-  <Demo.DemoInitialsAvatar />
-  <Demo.DemoStatusDotsAvatar />
-  <Demo.DemoStatusBorderAvatar />
+  <Demo.ImageAvatar />
+  <Demo.InitialsAvatar />
+  <Demo.StatusDotsAvatar />
+  <Demo.StatusBorderAvatar />
 </Component>
 
 ### AvatarGroup
@@ -58,7 +58,7 @@ The AvatarGroup combines multiple avatars:
   - **Background**: Uses the avatar styling but contains the count
 
 <Component>
-  <Demo.DemoAvatarGroup />
+  <Demo.AvatarGroup />
 </Component>
 
 ### AvatarTrigger
@@ -69,7 +69,7 @@ The AvatarTrigger extends the standard Avatar with:
 - **Active indicator**: Shows when the avatar is in an active/selected state
 
 <Component>
-  <Demo.DemoAvatarTrigger />
+  <Demo.AvatarTrigger />
 </Component>
 
 ## States <span id="states"></span>
@@ -92,7 +92,7 @@ Avatars can exist in various states that communicate status and interaction feed
 - **Disabled**: When interaction is not available
 
 <Component>
-  <Demo.DemoDisabledAvatar />
+  <Demo.DisabledAvatar />
 </Component>
 
 ### Status states
@@ -106,7 +106,7 @@ Avatars can exist in various states that communicate status and interaction feed
   - **Pulse**: Animated pulsing border for attention
 
 <Component>
-  <Demo.DemoStatusPulseAvatar />
+  <Demo.StatusPulseAvatar />
 </Component>
 
 ## Options <span id="options"></span>
@@ -125,7 +125,7 @@ Six predefined sizes allow for flexibility in different UI contexts:
 - extra-large (xl)
 
 <Component>
-  <Demo.DemoSizesAvatar />
+  <Demo.SizesAvatar />
 </Component>
 
 ### Content types
@@ -149,7 +149,7 @@ When using status indicators, the following colors are available:
 - cyan
 
 <Component>
-  <Demo.DemoStatusDotsAvatar />
+  <Demo.StatusDotsAvatar />
 </Component>
 
 ### Border styles
@@ -159,7 +159,7 @@ When using status indicators, the following colors are available:
 - **None**: No border
 
 <Component>
-  <Demo.DemoBorderStylesAvatar />
+  <Demo.BorderStylesAvatar />
 </Component>
 
 ### Group display
@@ -173,22 +173,22 @@ For AvatarGroup:
 
 ## 🎨 Design Tokens for Avatar
 
-| **Token**                                              | **Color for**                | **State/Meaning**                                 | **CSS Selector(s)** |
-| ------------------------------------------------------ | ---------------------------- | ------------------------------------------------- | ------------------- |
-| **--par-color-bg-avatar**                              | Avatar background            | Default background                                | `.avatar` |
-| **--par-color-border-avatar**                          | Avatar border                | Default border                                    | `.avatar`, `.avatar.border` |
-| **--par-color-bg-avatar-group**                        | AvatarGroup background       | Group container background                        | `.avatar-group` |
-| **--par-color-border-avatar-group**                    | AvatarGroup border           | Group container border                            | `.avatar-group` |
-| **--par-color-bg-avatar-status-dot-\<color\>**           | Status dot background        | Status indicator dot (by status)                  | `.avatar-status-dot.color-\<color\>` |
-| **--par-color-border-avatar-status-dot-\<color\>**        | Status dot border            | Status indicator dot border (by status)           | `.avatar-status-dot.color-\<color\>` |
-| **--par-color-bg-avatar-status-border-\<color\>**        | Status border background     | Status border around avatar (by status)           | `.avatar-status-border.color-\<color\>` |
-| **--par-color-text-avatar-initials**                   | Initials text                | Initials fallback                                 | `.avatar-initials` |
-| **--par-color-bg-avatar-placeholder**                  | Placeholder icon background  | Placeholder icon background                       | `.avatar-placeholder` |
-| **--par-color-icon-avatar-placeholder**                | Placeholder icon             | Placeholder icon color                            | `.avatar-placeholder` |
-| **--par-color-bg-avatar-active**                       | AvatarTrigger background     | Active/focus/selected state                       | `.avatar-trigger:active`, `.avatar-trigger.selected` |
-| **--par-color-border-avatar-active**                   | AvatarTrigger border         | Active/focus/selected state                       | `.avatar-trigger:active`, `.avatar-trigger.selected` |
-| **--par-color-bg-avatar-disabled**                     | Avatar background            | Disabled state                                    | `.avatar[aria-disabled='true']`, `.avatar.disabled` |
-| **--par-color-border-avatar-disabled**                 | Avatar border                | Disabled state                                    | `.avatar[aria-disabled='true']`, `.avatar.disabled` |
+| **Token**                                          | **Color for**               | **State/Meaning**                       | **CSS Selector(s)**                                  |
+| -------------------------------------------------- | --------------------------- | --------------------------------------- | ---------------------------------------------------- |
+| **--par-color-bg-avatar**                          | Avatar background           | Default background                      | `.avatar`                                            |
+| **--par-color-border-avatar**                      | Avatar border               | Default border                          | `.avatar`, `.avatar.border`                          |
+| **--par-color-bg-avatar-group**                    | AvatarGroup background      | Group container background              | `.avatar-group`                                      |
+| **--par-color-border-avatar-group**                | AvatarGroup border          | Group container border                  | `.avatar-group`                                      |
+| **--par-color-bg-avatar-status-dot-\<color\>**     | Status dot background       | Status indicator dot (by status)        | `.avatar-status-dot.color-\<color\>`                 |
+| **--par-color-border-avatar-status-dot-\<color\>** | Status dot border           | Status indicator dot border (by status) | `.avatar-status-dot.color-\<color\>`                 |
+| **--par-color-bg-avatar-status-border-\<color\>**  | Status border background    | Status border around avatar (by status) | `.avatar-status-border.color-\<color\>`              |
+| **--par-color-text-avatar-initials**               | Initials text               | Initials fallback                       | `.avatar-initials`                                   |
+| **--par-color-bg-avatar-placeholder**              | Placeholder icon background | Placeholder icon background             | `.avatar-placeholder`                                |
+| **--par-color-icon-avatar-placeholder**            | Placeholder icon            | Placeholder icon color                  | `.avatar-placeholder`                                |
+| **--par-color-bg-avatar-active**                   | AvatarTrigger background    | Active/focus/selected state             | `.avatar-trigger:active`, `.avatar-trigger.selected` |
+| **--par-color-border-avatar-active**               | AvatarTrigger border        | Active/focus/selected state             | `.avatar-trigger:active`, `.avatar-trigger.selected` |
+| **--par-color-bg-avatar-disabled**                 | Avatar background           | Disabled state                          | `.avatar[aria-disabled='true']`, `.avatar.disabled`  |
+| **--par-color-border-avatar-disabled**             | Avatar border               | Disabled state                          | `.avatar[aria-disabled='true']`, `.avatar.disabled`  |
 
 ---
 

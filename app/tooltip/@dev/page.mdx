@@ -1,25 +1,20 @@
-import * as TooltipDemo from "./demo-components"
-
+import * as Demo from '@public/demo/tooltip';
+import CodePreview from '@components/showcase/CodePreview';
 
 ## Hover and Focus
-<TooltipDemo.DemoOutlinedTooltip />
+
+<CodePreview paths={['tooltip', 'OutlinedTooltip']}>
+  <Demo.OutlinedTooltip />
+</CodePreview>
 
 ## SafePolygon
-<TooltipDemo.DemoOutlinedTooltip isSafePolygon/>
 
-
-## Toggle and Delay
-<TooltipDemo.DemoOutlinedTooltip delay={1000} isToggle touchDelay={1000}/>
-
-{/* 
-<div className="bg-gray-950 text-white p-4 rounded-md flex flex-col gap-4" data-scheme="dark">
-## Hover and Focus
-<TooltipDemo.DemoOutlinedTooltip data-scheme="dark"/>
-
-## SafePolygon
-<TooltipDemo.DemoOutlinedTooltip data-scheme="dark" isSafePolygon/>
-
+<CodePreview paths={['tooltip', 'OutlinedTooltip']}>
+  <Demo.OutlinedTooltip isSafePolygon />
+</CodePreview>
 
 ## Toggle and Delay
-<TooltipDemo.DemoOutlinedTooltip data-scheme="dark" delay={1000} isToggle/>
-</div> */}
+
+<CodePreview paths={['tooltip', 'OutlinedTooltip']}>
+  <Demo.OutlinedTooltip delay={1000} isToggle touchDelay={1000} />
+</CodePreview>

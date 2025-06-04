@@ -1,23 +1,26 @@
-import * as Demo from './demo-components'
+import * as Demo from '@public/demo/radio';
+import CodePreview from '@components/showcase/CodePreview';
 
 ## Basic radio
-<Demo.DemoBasicRadio/>
+
+<CodePreview paths={['radio', 'BasicRadio']}>
+  <Demo.BasicRadio />
+</CodePreview>
 
 ## Group radio
-<Demo.DemoGroupRadio/>
+
+<CodePreview paths={['radio', 'GroupRadio']}>
+  <Demo.GroupRadio />
+</CodePreview>
 
 ## Controlled Group radio
-<Demo.DemoControlledRadio/>
+
+<CodePreview paths={['radio', 'ControlledRadio']}>
+  <Demo.ControlledRadio />
+</CodePreview>
 
 ## Generate Group radio with array
-<Demo.DemoRadioItems/>
 
-{/* ## Dark mode
-
-<div className="bg-gray-950 text-white p-4 rounded-md flex flex-col gap-4" data-scheme="dark">
-## Basic radio
-<Demo.DemoBasicRadio/>
-
-## Group radio
-<Demo.DemoGroupRadio  type="dark"/>
-</div> */}
+<CodePreview paths={['radio', 'RadioItems']}>
+  <Demo.RadioItems />
+</CodePreview>

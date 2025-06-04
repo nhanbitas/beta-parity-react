@@ -1,58 +1,73 @@
-import * as Demo from "./demo-components"
-import Link from 'next/link'
-
+import * as Demo from '@public/demo/pagination';
+import Link from 'next/link';
+import CodePreview from '@components/showcase/CodePreview';
 
 ## Basic
 
 ### Neutral
-<Demo.DemoBasicPagination totalPage={3} />
-<Demo.DemoBasicPagination totalPage={5} bordered />
+
+<CodePreview paths={['pagination', 'BasicPagination']}>
+  <Demo.BasicPagination totalPage={3} />
+</CodePreview>
+<CodePreview paths={['pagination', 'BasicPagination']}>
+  <Demo.BasicPagination totalPage={5} bordered />
+</CodePreview>
 
 ### Accent
-<Demo.DemoBasicPagination totalPage={5} color="accent" />
-<Demo.DemoBasicPagination totalPage={5} bordered color="accent"/>
+
+<CodePreview paths={['pagination', 'BasicPagination']}>
+  <Demo.BasicPagination totalPage={5} color='accent' />
+</CodePreview>
+<CodePreview paths={['pagination', 'BasicPagination']}>
+  <Demo.BasicPagination totalPage={5} bordered color='accent' />
+</CodePreview>
 
 ### Controls
-<Demo.DemoBasicPagination totalPage={5} controlConfig={{
-          next: {
-            icon: 'next'
-          },
-          prev: {
-            icon: 'prev'
-          },
-          first: {
-            isActive: false
-          },
-          last: {
-            isActive: false
-          }
-        }}/>
 
-<Demo.DemoOnlyControlPagination totalPage={10} controlConfig={{
-          first: {
-            isActive: false
-          },
-          last: {
-            isActive: false
-          }
-        }}/>
-
+<CodePreview paths={['pagination', 'BasicPagination']}>
+  <Demo.BasicPagination
+    totalPage={5}
+    controlConfig={{
+      next: { icon: 'next' },
+      prev: { icon: 'prev' },
+      first: { isActive: false },
+      last: { isActive: false }
+    }}
+  />
+</CodePreview>
+<CodePreview paths={['pagination', 'OnlyControlPagination']}>
+  <Demo.OnlyControlPagination
+    totalPage={10}
+    controlConfig={{
+      first: { isActive: false },
+      last: { isActive: false }
+    }}
+  />
+</CodePreview>
 
 ### Pagination component
-<Demo.DemoCustomPagination totalPage={5} />
-<Demo.DemoCustomPagination component='a' totalPage={5}/>
+
+<CodePreview paths={['pagination', 'CustomPagination']}>
+  <Demo.CustomPagination totalPage={5} />
+</CodePreview>
+<CodePreview paths={['pagination', 'CustomPagination']}>
+  <Demo.CustomPagination component='a' totalPage={5} />
+</CodePreview>
 
 ### Pagination siblings
-<Demo.DemoBasicPagination totalPage={3} />
 
-<Demo.DemoBasicPagination totalPage={7} siblings={0}/>
-
-<Demo.DemoBasicPagination totalPage={10} siblings={1}/>
-
-<Demo.DemoBasicPagination totalPage={20} siblings={2} bordered/>
-
-<Demo.DemoBasicPagination totalPage={20} siblings={3} bordered color="accent"/>
-
-
-
-
+<CodePreview paths={['pagination', 'BasicPagination']}>
+  <Demo.BasicPagination totalPage={3} />
+</CodePreview>
+<CodePreview paths={['pagination', 'BasicPagination']}>
+  <Demo.BasicPagination totalPage={7} siblings={0} />
+</CodePreview>
+<CodePreview paths={['pagination', 'BasicPagination']}>
+  <Demo.BasicPagination totalPage={10} siblings={1} />
+</CodePreview>
+<CodePreview paths={['pagination', 'BasicPagination']}>
+  <Demo.BasicPagination totalPage={20} siblings={2} bordered />
+</CodePreview>
+<CodePreview paths={['pagination', 'BasicPagination']}>
+  <Demo.BasicPagination totalPage={20} siblings={3} bordered color='accent' />
+</CodePreview>

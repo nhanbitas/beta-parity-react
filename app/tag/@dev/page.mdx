@@ -1,15 +1,8 @@
-import * as Demo from './demo-components'
+import * as Demo from '@public/demo/tag';
+import CodePreview from '@components/showcase/CodePreview';
 
 ## Tag
 
-<Demo.DemoButtonTag/>
-
-{/* /////////////////////////////////////////////////////////////////////////////////////// */}
-{/* 
-## Dark mode
-
-<div className="bg-gray-950 text-white p-4 rounded-md flex flex-col gap-4" data-scheme="dark">
-## Tag
-
-<Demo.DemoButtonTag/>
-</div> */}
+<CodePreview paths={['tag', 'ButtonTag']}>
+  <Demo.ButtonTag />
+</CodePreview>

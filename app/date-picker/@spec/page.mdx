@@ -1,7 +1,7 @@
 import { Badge } from 'beta-parity-react/ui/Badge';
 import Image from '@components/showcase/ImagePreview';
 import Component from '@components/showcase/CodePreview';
-import * as Demo from "../@dev/demo-components"
+import * as Demo from '@public/demo/date-picker';
 
 {/* Image => Image Example */}
 {/* Component => Component Example */}
@@ -10,17 +10,17 @@ import * as Demo from "../@dev/demo-components"
 A component that organizes content into vertically stacked collapsible and expandable sections.
 :::
 
-
 ## Design checklist <span id="design-checklist"></span>
+
 {/* Design checklist specification */}
 
-| Status | Item                                 | Description                                                                                                                                                                                                                       |
-| ------ | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ✔️     | Anatomy                              | Includes descriptions of all parts of the component and its major variants.                                                                                                                                                       |
-| ✔️     | States                               | Includes all applicable interaction, display and value states.                                                                                                                                                                    |
-| ✔️     | Options                              | Includes all relevant options (functional type, stylistic kind, semantic color, size, orientation, optional iconography, decorations, etc.)                                                                                       |
-| ✔️     | Color schemes                        | Includes both light and dark color schemes.                                                                                                                                                                                       |
-|        | Behaviors                            | Includes descriptions of behaviors related to other components and responsive behaviors related to media breakpoints, size (minimums and maximums), orientation, alignment, position and layout (wrapping, truncation, overflow). |
+| Status | Item          | Description                                                                                                                                                                                                                       |
+| ------ | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ✔️     | Anatomy       | Includes descriptions of all parts of the component and its major variants.                                                                                                                                                       |
+| ✔️     | States        | Includes all applicable interaction, display and value states.                                                                                                                                                                    |
+| ✔️     | Options       | Includes all relevant options (functional type, stylistic kind, semantic color, size, orientation, optional iconography, decorations, etc.)                                                                                       |
+| ✔️     | Color schemes | Includes both light and dark color schemes.                                                                                                                                                                                       |
+|        | Behaviors     | Includes descriptions of behaviors related to other components and responsive behaviors related to media breakpoints, size (minimums and maximums), orientation, alignment, position and layout (wrapping, truncation, overflow). |
 
 ## Anatomy <span id="anatomy"></span>
 
@@ -38,12 +38,14 @@ A component that organizes content into vertically stacked collapsible and expan
 ## States <span id="states"></span>
 
 ### Input states
+
 - **Enabled**: Input is interactive and can be focused/typed.
 - **Focused**: Input is focused, calendar can open.
 - **Disabled**: Input is not interactive, grayed out.
 - **Error**: Input shows error state and message.
 
 ### Calendar day states
+
 - **Default**: Day is selectable.
 - **Hovered**: Day is hovered, background and text color change.
 - **Selected**: Day is selected, highlighted.
@@ -77,51 +79,52 @@ A component that organizes content into vertically stacked collapsible and expan
 - **Responsive**: Calendar popup adapts to input width and screen size.
 
 ## Changelog <span id="changelog"></span>
+
 {/* Changelog specification */}
 
-| Date       | Type                                                        | Description                                                                                 | Author      | Associated issue(s)  |
-|:-----------|:------------------------------------------------------------|---------------------------------------------------------------------------------------------|:------------|:---------------------|
-| YYYY-MM-DD | <Badge size='sm' kind='glass' color='cyan' label="new"/>    | Initial design                                                                              | Oanh Nguyen | PAR-52               |
+| Date       | Type                                                     | Description    | Author      | Associated issue(s) |
+| :--------- | :------------------------------------------------------- | -------------- | :---------- | :------------------ |
+| YYYY-MM-DD | <Badge size='sm' kind='glass' color='cyan' label="new"/> | Initial design | Oanh Nguyen | PAR-52              |
 
 ## 🎨 Design Tokens for DatePicker
 
-| **Token**                                                        | **Color for**                | **State/Meaning**                                 | **CSS Selector(s)** |
-|------------------------------------------------------------------|------------------------------|---------------------------------------------------|---------------------|
-| **--par-color-text-datepicker-days-today-neutral-enabled**        | Day text (today, neutral)    | Today, enabled (neutral)                          | `.flatpickr-day.today.flatpickr-calendar-neutral` |
-| **--par-color-text-datepicker-days-today-neutral-hovered**        | Day text (today, neutral)    | Today, hovered (neutral)                          | `.flatpickr-day.today.flatpickr-calendar-neutral:hover` |
-| **--par-color-text-datepicker-days-today-neutral-active**         | Day text (today, neutral)    | Today, active (neutral)                           | `.flatpickr-day.today.flatpickr-calendar-neutral:active` |
-| **--par-color-text-datepicker-days-today-accent-enabled**         | Day text (today, accent)     | Today, enabled (accent)                           | `.flatpickr-day.today.flatpickr-calendar-accent` |
-| **--par-color-text-datepicker-days-today-accent-hovered**         | Day text (today, accent)     | Today, hovered (accent)                           | `.flatpickr-day.today.flatpickr-calendar-accent:hover` |
-| **--par-color-text-datepicker-days-today-accent-active**          | Day text (today, accent)     | Today, active (accent)                            | `.flatpickr-day.today.flatpickr-calendar-accent:active` |
-| **--par-color-text-datepicker-days-normal-enabled**               | Day text (normal)            | Normal, enabled                                   | `.flatpickr-day` |
-| **--par-color-text-datepicker-days-normal-neutral-hovered**       | Day text (normal, neutral)   | Normal, hovered (neutral)                         | `.flatpickr-day.flatpickr-calendar-neutral:hover` |
-| **--par-color-text-datepicker-days-normal-accent-hovered**        | Day text (normal, accent)    | Normal, hovered (accent)                          | `.flatpickr-day.flatpickr-calendar-accent:hover` |
-| **--par-color-text-datepicker-days-normal-neutral-active**        | Day text (normal, neutral)   | Normal, active (neutral)                          | `.flatpickr-day.flatpickr-calendar-neutral:active` |
-| **--par-color-text-datepicker-days-normal-accent-active**         | Day text (normal, accent)    | Normal, active (accent)                           | `.flatpickr-day.flatpickr-calendar-accent:active` |
-| **--par-color-text-datepicker-days-normal-disabled**              | Day text (normal)            | Disabled                                          | `.flatpickr-day.flatpickr-disabled, .flatpickr-day:disabled` |
-| **--par-color-text-datepicker-days-normal-drag-neutral**          | Day text (drag, neutral)     | Drag selection (neutral)                          | `.flatpickr-day.drag.flatpickr-calendar-neutral` |
-| **--par-color-text-datepicker-days-normal-drag-accent**           | Day text (drag, accent)      | Drag selection (accent)                           | `.flatpickr-day.drag.flatpickr-calendar-accent` |
-| **--par-color-text-datepicker-days-today-drag-neutral**           | Day text (today, drag, neutral) | Today, drag (neutral)                         | `.flatpickr-day.today.drag.flatpickr-calendar-neutral` |
-| **--par-color-text-datepicker-days-today-drag-accent**            | Day text (today, drag, accent)  | Today, drag (accent)                          | `.flatpickr-day.today.drag.flatpickr-calendar-accent` |
-| **--par-color-text-datepicker-time**                             | Time text                    | Time picker text                                  | `.flatpickr-time` |
-| **--par-color-text-datepicker-caret-enabled**                    | Caret icon                   | Caret enabled                                     | `.numInputWrapper .arrowUp:after, .numInputWrapper .arrowDown:after` |
-| **--par-color-text-datepicker-caret-hovered**                    | Caret icon                   | Caret hovered                                     | `.numInputWrapper .arrowUp:hover:after, .numInputWrapper .arrowDown:hover:after` |
-| **--par-color-text-datepicker-caret-disabled**                   | Caret icon                   | Caret disabled                                    | `.numInputWrapper[disabled] .arrowUp:after, .numInputWrapper[disabled] .arrowDown:after` |
-| **--par-color-bg-datepicker-days-neutral-enabled**               | Day background (neutral)      | Enabled                                           | `.flatpickr-day.flatpickr-calendar-neutral` |
-| **--par-color-bg-datepicker-days-neutral-hovered**               | Day background (neutral)      | Hovered                                           | `.flatpickr-day.flatpickr-calendar-neutral:hover` |
-| **--par-color-bg-datepicker-days-neutral-active**                | Day background (neutral)      | Active                                            | `.flatpickr-day.flatpickr-calendar-neutral:active` |
-| **--par-color-bg-datepicker-days-neutral-disabled**              | Day background (neutral)      | Disabled                                          | `.flatpickr-day.flatpickr-calendar-neutral:disabled` |
-| **--par-color-bg-datepicker-days-accent-enabled**                | Day background (accent)       | Enabled                                           | `.flatpickr-day.flatpickr-calendar-accent` |
-| **--par-color-bg-datepicker-days-accent-hovered**                | Day background (accent)       | Hovered                                           | `.flatpickr-day.flatpickr-calendar-accent:hover` |
-| **--par-color-bg-datepicker-days-accent-active**                 | Day background (accent)       | Active                                            | `.flatpickr-day.flatpickr-calendar-accent:active` |
-| **--par-color-bg-datepicker-days-accent-disabled**               | Day background (accent)       | Disabled                                          | `.flatpickr-day.flatpickr-calendar-accent:disabled` |
-| **--par-color-bg-datepicker-days-drag-neutral**                  | Day background (drag, neutral)| Drag selection (neutral)                          | `.flatpickr-day.drag.flatpickr-calendar-neutral` |
-| **--par-color-bg-datepicker-days-drag-accent**                   | Day background (drag, accent) | Drag selection (accent)                           | `.flatpickr-day.drag.flatpickr-calendar-accent` |
-| **--par-color-bg-datepicker-month-select-dropdown-enabled**      | Month select dropdown         | Enabled                                           | `.flatpickr-current-month .flatpickr-monthDropdown-months` |
-| **--par-color-bg-datepicker-month-select-dropdown-hovered**      | Month select dropdown         | Hovered                                           | `.flatpickr-current-month .flatpickr-monthDropdown-months:hover` |
-| **--par-color-bg-datepicker**                                   | DatePicker background         | Main background                                   | `.date-picker` |
-| **--par-color-border-datepicker**                               | DatePicker border             | Main border                                       | `.date-picker` |
-| **--par-color-border-datepicker-month-select-list**              | Month select list border      | Border for month select list                      | `.flatpickr-current-month .flatpickr-monthDropdown-month` |
+| **Token**                                                   | **Color for**                   | **State/Meaning**            | **CSS Selector(s)**                                                                      |
+| ----------------------------------------------------------- | ------------------------------- | ---------------------------- | ---------------------------------------------------------------------------------------- |
+| **--par-color-text-datepicker-days-today-neutral-enabled**  | Day text (today, neutral)       | Today, enabled (neutral)     | `.flatpickr-day.today.flatpickr-calendar-neutral`                                        |
+| **--par-color-text-datepicker-days-today-neutral-hovered**  | Day text (today, neutral)       | Today, hovered (neutral)     | `.flatpickr-day.today.flatpickr-calendar-neutral:hover`                                  |
+| **--par-color-text-datepicker-days-today-neutral-active**   | Day text (today, neutral)       | Today, active (neutral)      | `.flatpickr-day.today.flatpickr-calendar-neutral:active`                                 |
+| **--par-color-text-datepicker-days-today-accent-enabled**   | Day text (today, accent)        | Today, enabled (accent)      | `.flatpickr-day.today.flatpickr-calendar-accent`                                         |
+| **--par-color-text-datepicker-days-today-accent-hovered**   | Day text (today, accent)        | Today, hovered (accent)      | `.flatpickr-day.today.flatpickr-calendar-accent:hover`                                   |
+| **--par-color-text-datepicker-days-today-accent-active**    | Day text (today, accent)        | Today, active (accent)       | `.flatpickr-day.today.flatpickr-calendar-accent:active`                                  |
+| **--par-color-text-datepicker-days-normal-enabled**         | Day text (normal)               | Normal, enabled              | `.flatpickr-day`                                                                         |
+| **--par-color-text-datepicker-days-normal-neutral-hovered** | Day text (normal, neutral)      | Normal, hovered (neutral)    | `.flatpickr-day.flatpickr-calendar-neutral:hover`                                        |
+| **--par-color-text-datepicker-days-normal-accent-hovered**  | Day text (normal, accent)       | Normal, hovered (accent)     | `.flatpickr-day.flatpickr-calendar-accent:hover`                                         |
+| **--par-color-text-datepicker-days-normal-neutral-active**  | Day text (normal, neutral)      | Normal, active (neutral)     | `.flatpickr-day.flatpickr-calendar-neutral:active`                                       |
+| **--par-color-text-datepicker-days-normal-accent-active**   | Day text (normal, accent)       | Normal, active (accent)      | `.flatpickr-day.flatpickr-calendar-accent:active`                                        |
+| **--par-color-text-datepicker-days-normal-disabled**        | Day text (normal)               | Disabled                     | `.flatpickr-day.flatpickr-disabled, .flatpickr-day:disabled`                             |
+| **--par-color-text-datepicker-days-normal-drag-neutral**    | Day text (drag, neutral)        | Drag selection (neutral)     | `.flatpickr-day.drag.flatpickr-calendar-neutral`                                         |
+| **--par-color-text-datepicker-days-normal-drag-accent**     | Day text (drag, accent)         | Drag selection (accent)      | `.flatpickr-day.drag.flatpickr-calendar-accent`                                          |
+| **--par-color-text-datepicker-days-today-drag-neutral**     | Day text (today, drag, neutral) | Today, drag (neutral)        | `.flatpickr-day.today.drag.flatpickr-calendar-neutral`                                   |
+| **--par-color-text-datepicker-days-today-drag-accent**      | Day text (today, drag, accent)  | Today, drag (accent)         | `.flatpickr-day.today.drag.flatpickr-calendar-accent`                                    |
+| **--par-color-text-datepicker-time**                        | Time text                       | Time picker text             | `.flatpickr-time`                                                                        |
+| **--par-color-text-datepicker-caret-enabled**               | Caret icon                      | Caret enabled                | `.numInputWrapper .arrowUp:after, .numInputWrapper .arrowDown:after`                     |
+| **--par-color-text-datepicker-caret-hovered**               | Caret icon                      | Caret hovered                | `.numInputWrapper .arrowUp:hover:after, .numInputWrapper .arrowDown:hover:after`         |
+| **--par-color-text-datepicker-caret-disabled**              | Caret icon                      | Caret disabled               | `.numInputWrapper[disabled] .arrowUp:after, .numInputWrapper[disabled] .arrowDown:after` |
+| **--par-color-bg-datepicker-days-neutral-enabled**          | Day background (neutral)        | Enabled                      | `.flatpickr-day.flatpickr-calendar-neutral`                                              |
+| **--par-color-bg-datepicker-days-neutral-hovered**          | Day background (neutral)        | Hovered                      | `.flatpickr-day.flatpickr-calendar-neutral:hover`                                        |
+| **--par-color-bg-datepicker-days-neutral-active**           | Day background (neutral)        | Active                       | `.flatpickr-day.flatpickr-calendar-neutral:active`                                       |
+| **--par-color-bg-datepicker-days-neutral-disabled**         | Day background (neutral)        | Disabled                     | `.flatpickr-day.flatpickr-calendar-neutral:disabled`                                     |
+| **--par-color-bg-datepicker-days-accent-enabled**           | Day background (accent)         | Enabled                      | `.flatpickr-day.flatpickr-calendar-accent`                                               |
+| **--par-color-bg-datepicker-days-accent-hovered**           | Day background (accent)         | Hovered                      | `.flatpickr-day.flatpickr-calendar-accent:hover`                                         |
+| **--par-color-bg-datepicker-days-accent-active**            | Day background (accent)         | Active                       | `.flatpickr-day.flatpickr-calendar-accent:active`                                        |
+| **--par-color-bg-datepicker-days-accent-disabled**          | Day background (accent)         | Disabled                     | `.flatpickr-day.flatpickr-calendar-accent:disabled`                                      |
+| **--par-color-bg-datepicker-days-drag-neutral**             | Day background (drag, neutral)  | Drag selection (neutral)     | `.flatpickr-day.drag.flatpickr-calendar-neutral`                                         |
+| **--par-color-bg-datepicker-days-drag-accent**              | Day background (drag, accent)   | Drag selection (accent)      | `.flatpickr-day.drag.flatpickr-calendar-accent`                                          |
+| **--par-color-bg-datepicker-month-select-dropdown-enabled** | Month select dropdown           | Enabled                      | `.flatpickr-current-month .flatpickr-monthDropdown-months`                               |
+| **--par-color-bg-datepicker-month-select-dropdown-hovered** | Month select dropdown           | Hovered                      | `.flatpickr-current-month .flatpickr-monthDropdown-months:hover`                         |
+| **--par-color-bg-datepicker**                               | DatePicker background           | Main background              | `.date-picker`                                                                           |
+| **--par-color-border-datepicker**                           | DatePicker border               | Main border                  | `.date-picker`                                                                           |
+| **--par-color-border-datepicker-month-select-list**         | Month select list border        | Border for month select list | `.flatpickr-current-month .flatpickr-monthDropdown-month`                                |
 
 ---
 
@@ -129,27 +132,26 @@ A component that organizes content into vertically stacked collapsible and expan
 
 ### `<DatePicker />`
 
-| **Prop**         | **Type**                                 | **Default**     | **Description**                                 |
-|------------------|------------------------------------------|-----------------|-------------------------------------------------|
-| **floatingLabel**| ReactNode                                |                 | Floating label inside the input                 |
-| **wrapperProps** | object                                   |                 | Props for input container                       |
-| **color**        | 'neutral' \| 'accent'                    | _'neutral'_     | Theme color                                     |
-| **icon**         | ReactNode                                |                 | Icon inside the input                           |
-| **sideIcon**     | 'left' \| 'right'                        | _'right'_       | Position of secondary icon                      |
-| **locale**       | string                                   | _'default'_     | Locale for the DatePicker                       |
-| **calenderHeader**| ReactNode                               |                 | Custom component at top of calendar             |
-| **options**      | object                                   |                 | Flatpickr options (see Flatpickr docs)          |
-| **onFocus**      | function (event)                         |                 | Callback on input focus                         |
-| **onBlur**       | function (event)                         |                 | Callback on input blur                          |
-| **onInputChange**| function (event, flatPickrInstance)      |                 | Callback on input change (allowInput = true)    |
-| **isError**      | boolean                                  | _false_         | Error state                                     |
-| **errorMessage** | string                                   |                 | Error message                                   |
-| **theme**        | string                                   | _'default'_     | Theme                                           |
-| **inputSize**    | 'sm' \| 'md'                             | _'md'_          | Input size                                      |
-| **...InputProps**| [See Input](../BaseInput)                |                 | Inherits all props from **Input**               |
-| **...FlatpickrProps**| [See Flatpickr](https://flatpickr.js.org/options/) | | Inherits all Flatpickr options                 |
+| **Prop**              | **Type**                                           | **Default** | **Description**                              |
+| --------------------- | -------------------------------------------------- | ----------- | -------------------------------------------- |
+| **floatingLabel**     | ReactNode                                          |             | Floating label inside the input              |
+| **wrapperProps**      | object                                             |             | Props for input container                    |
+| **color**             | 'neutral' \| 'accent'                              | _'neutral'_ | Theme color                                  |
+| **icon**              | ReactNode                                          |             | Icon inside the input                        |
+| **sideIcon**          | 'left' \| 'right'                                  | _'right'_   | Position of secondary icon                   |
+| **locale**            | string                                             | _'default'_ | Locale for the DatePicker                    |
+| **calenderHeader**    | ReactNode                                          |             | Custom component at top of calendar          |
+| **options**           | object                                             |             | Flatpickr options (see Flatpickr docs)       |
+| **onFocus**           | function (event)                                   |             | Callback on input focus                      |
+| **onBlur**            | function (event)                                   |             | Callback on input blur                       |
+| **onInputChange**     | function (event, flatPickrInstance)                |             | Callback on input change (allowInput = true) |
+| **isError**           | boolean                                            | _false_     | Error state                                  |
+| **errorMessage**      | string                                             |             | Error message                                |
+| **theme**             | string                                             | _'default'_ | Theme                                        |
+| **inputSize**         | 'sm' \| 'md'                                       | _'md'_      | Input size                                   |
+| **...InputProps**     | [See Input](../BaseInput)                          |             | Inherits all props from **Input**            |
+| **...FlatpickrProps** | [See Flatpickr](https://flatpickr.js.org/options/) |             | Inherits all Flatpickr options               |
 
 > **_Note:_** _DatePicker_ **inherits** all props from **Input** and **Flatpickr**. See [Input documentation](../BaseInput) and [Flatpickr options](https://flatpickr.js.org/options/) for full details.
 
 ---
-

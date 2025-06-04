@@ -1,23 +1,14 @@
-import * as Demo from "./demo-components"
+import * as Demo from '@public/demo/dot';
+import CodePreview from '@components/showcase/CodePreview';
 
 ## Sizes
 
-<Demo.DotDemo />
+<CodePreview paths={['dot', 'SizesDot']}>
+  <Demo.SizesDot />
+</CodePreview>
 
 ## Pulse
 
-<Demo.ColorDotDemo pulse/>
-
-{/* /////////////////////////////////////////////////////////////////////////////////////// */}
-
-{/* ## Dark mode
-
-<div className="bg-gray-950 text-white p-4 rounded-md flex flex-col gap-4" data-scheme="dark">
-## Sizes
-
-<Demo.DotDemo />
-
-## Pulse
-
-<Demo.ColorDotDemo pulse/>
-</div> */}
+<CodePreview paths={['dot', 'ColorDot']}>
+  <Demo.ColorDot pulse />
+</CodePreview>

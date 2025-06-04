@@ -1,64 +1,159 @@
-import { DemoBasicInput } from './demo-components';
+import * as Demo from '@public/demo/text-input';
 import { Box } from 'lucide-react';
-
+import CodePreview from '@components/showcase/CodePreview';
 
 ## Basic
 
-<DemoBasicInput placeholder='Placeholder' />
-<DemoBasicInput placeholder='Placeholder' leftIcon={<Box />} />
+<CodePreview paths={['text-input', 'BasicInput']}>
+  <Demo.BasicInput placeholder='Placeholder' />
+</CodePreview>
+<CodePreview paths={['text-input', 'BasicInput']}>
+  <Demo.BasicInput placeholder='Placeholder' leftIcon={<Box />} />
+</CodePreview>
 
 ## Clearable
 
-<DemoBasicInput isClearable placeholder='Placeholder' />
-<DemoBasicInput isClearable placeholder='Placeholder' leftIcon={<Box />} />
+<CodePreview paths={['text-input', 'BasicInput']}>
+  <Demo.BasicInput isClearable placeholder='Placeholder' />
+</CodePreview>
+<CodePreview paths={['text-input', 'BasicInput']}>
+  <Demo.BasicInput isClearable placeholder='Placeholder' leftIcon={<Box />} />
+</CodePreview>
 
 ## States
 
-<DemoBasicInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder' />
-<DemoBasicInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder'  leftIcon={<Box />} />
-<DemoBasicInput disabled isClearable placeholder='Placeholder' />
-<DemoBasicInput disabled isClearable value='This is disabled text input' placeholder='Placeholder'  leftIcon={<Box />} />
-<DemoBasicInput readOnly isClearable value='This is read only text input' placeholder='Placeholder' />
-<DemoBasicInput readOnly isClearable value='This is read only text input' placeholder='Placeholder'  leftIcon={<Box />} />
+<CodePreview paths={['text-input', 'BasicInput']}>
+  <Demo.BasicInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder' />
+</CodePreview>
+<CodePreview paths={['text-input', 'BasicInput']}>
+  <Demo.BasicInput
+    isError={true}
+    errorMessage='Error message'
+    isClearable
+    placeholder='Placeholder'
+    leftIcon={<Box />}
+  />
+</CodePreview>
+<CodePreview paths={['text-input', 'BasicInput']}>
+  <Demo.BasicInput disabled isClearable placeholder='Placeholder' />
+</CodePreview>
+<CodePreview paths={['text-input', 'BasicInput']}>
+  <Demo.BasicInput
+    disabled
+    isClearable
+    value='This is disabled text input'
+    placeholder='Placeholder'
+    leftIcon={<Box />}
+  />
+</CodePreview>
+<CodePreview paths={['text-input', 'BasicInput']}>
+  <Demo.BasicInput readOnly isClearable value='This is read only text input' placeholder='Placeholder' />
+</CodePreview>
+<CodePreview paths={['text-input', 'BasicInput']}>
+  <Demo.BasicInput
+    readOnly
+    isClearable
+    value='This is read only text input'
+    placeholder='Placeholder'
+    leftIcon={<Box />}
+  />
+</CodePreview>
 
 ## Floating label
 
-<DemoBasicInput isClearable floatingLabel='Floating Label' placeholder='Placeholder' />
-<DemoBasicInput isClearable floatingLabel='Floating Label' placeholder='Placeholder'  leftIcon={<Box />} />
-<DemoBasicInput
-  isClearable
-  isError={true}
-  errorMessage='Error message'
-  floatingLabel='Floating Label'
-  placeholder='Placeholder'
-/>
-<DemoBasicInput
-  isClearable
-  isError={true}
-  errorMessage='Error message'
-  floatingLabel='Floating Label'
-  placeholder='Placeholder'
-  leftIcon={<Box />}
-/>
-<DemoBasicInput isClearable disabled floatingLabel='Floating Label' placeholder='Placeholder' value='Text' />
-<DemoBasicInput isClearable disabled floatingLabel='Floating Label' placeholder='Placeholder' leftIcon={<Box />}/>
-<DemoBasicInput isClearable readOnly floatingLabel='Floating Label' placeholder='Placeholder' value='Text' />
-<DemoBasicInput isClearable readOnly floatingLabel='Floating Label' placeholder='Placeholder' leftIcon={<Box />}/>
+<CodePreview paths={['text-input', 'BasicInput']}>
+  <Demo.BasicInput isClearable floatingLabel='Floating Label' placeholder='Placeholder' />
+</CodePreview>
+<CodePreview paths={['text-input', 'BasicInput']}>
+  <Demo.BasicInput isClearable floatingLabel='Floating Label' placeholder='Placeholder' leftIcon={<Box />} />
+</CodePreview>
+<CodePreview paths={['text-input', 'BasicInput']}>
+  <Demo.BasicInput
+    isClearable
+    isError={true}
+    errorMessage='Error message'
+    floatingLabel='Floating Label'
+    placeholder='Placeholder'
+  />
+</CodePreview>
+<CodePreview paths={['text-input', 'BasicInput']}>
+  <Demo.BasicInput
+    isClearable
+    isError={true}
+    errorMessage='Error message'
+    floatingLabel='Floating Label'
+    placeholder='Placeholder'
+    leftIcon={<Box />}
+  />
+</CodePreview>
+<CodePreview paths={['text-input', 'BasicInput']}>
+  <Demo.BasicInput isClearable disabled floatingLabel='Floating Label' placeholder='Placeholder' value='Text' />
+</CodePreview>
+<CodePreview paths={['text-input', 'BasicInput']}>
+  <Demo.BasicInput isClearable disabled floatingLabel='Floating Label' placeholder='Placeholder' leftIcon={<Box />} />
+</CodePreview>
+<CodePreview paths={['text-input', 'BasicInput']}>
+  <Demo.BasicInput isClearable readOnly floatingLabel='Floating Label' placeholder='Placeholder' value='Text' />
+</CodePreview>
+<CodePreview paths={['text-input', 'BasicInput']}>
+  <Demo.BasicInput isClearable readOnly floatingLabel='Floating Label' placeholder='Placeholder' leftIcon={<Box />} />
+</CodePreview>
 
 {/* /////////////////////////////////////////////////////////////////////////////////////// */}
+
 ## Size Medium
 
-<DemoBasicInput placeholder='Placeholder' inputSize="md"/>
-<DemoBasicInput placeholder='Placeholder' leftIcon={<Box />} inputSize="md"/>
-<DemoBasicInput isClearable placeholder='Placeholder' inputSize="md"/>
-<DemoBasicInput isClearable placeholder='Placeholder' leftIcon={<Box />} inputSize="md"/>
-<DemoBasicInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder' inputSize="md"/>
-<DemoBasicInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder'  leftIcon={<Box />} inputSize="md"/>
-<DemoBasicInput disabled isClearable placeholder='Placeholder' inputSize="md"/>
-<DemoBasicInput disabled isClearable value='This is disabled text input' placeholder='Placeholder'  leftIcon={<Box />} inputSize="md"/>
-<DemoBasicInput readOnly isClearable value='This is read only text input' placeholder='Placeholder' inputSize="md"/>
-<DemoBasicInput readOnly isClearable value='This is read only text input' placeholder='Placeholder'  leftIcon={<Box />} inputSize="md"/>
-
+<CodePreview paths={['text-input', 'BasicInput']}>
+  <Demo.BasicInput placeholder='Placeholder' inputSize='md' />
+</CodePreview>
+<CodePreview paths={['text-input', 'BasicInput']}>
+  <Demo.BasicInput placeholder='Placeholder' leftIcon={<Box />} inputSize='md' />
+</CodePreview>
+<CodePreview paths={['text-input', 'BasicInput']}>
+  <Demo.BasicInput isClearable placeholder='Placeholder' inputSize='md' />
+</CodePreview>
+<CodePreview paths={['text-input', 'BasicInput']}>
+  <Demo.BasicInput isClearable placeholder='Placeholder' leftIcon={<Box />} inputSize='md' />
+</CodePreview>
+<CodePreview paths={['text-input', 'BasicInput']}>
+  <Demo.BasicInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder' inputSize='md' />
+</CodePreview>
+<CodePreview paths={['text-input', 'BasicInput']}>
+  <Demo.BasicInput
+    isError={true}
+    errorMessage='Error message'
+    isClearable
+    placeholder='Placeholder'
+    leftIcon={<Box />}
+    inputSize='md'
+  />
+</CodePreview>
+<CodePreview paths={['text-input', 'BasicInput']}>
+  <Demo.BasicInput disabled isClearable placeholder='Placeholder' inputSize='md' />
+</CodePreview>
+<CodePreview paths={['text-input', 'BasicInput']}>
+  <Demo.BasicInput
+    disabled
+    isClearable
+    value='This is disabled text input'
+    placeholder='Placeholder'
+    leftIcon={<Box />}
+    inputSize='md'
+  />
+</CodePreview>
+<CodePreview paths={['text-input', 'BasicInput']}>
+  <Demo.BasicInput readOnly isClearable value='This is read only text input' placeholder='Placeholder' inputSize='md' />
+</CodePreview>
+<CodePreview paths={['text-input', 'BasicInput']}>
+  <Demo.BasicInput
+    readOnly
+    isClearable
+    value='This is read only text input'
+    placeholder='Placeholder'
+    leftIcon={<Box />}
+    inputSize='md'
+  />
+</CodePreview>
 
 {/* /////////////////////////////////////////////////////////////////////////////////////// */}
 
@@ -68,101 +163,139 @@ import { Box } from 'lucide-react';
 
 ## Basic
 
-<DemoBasicInput placeholder='Placeholder' theme="alternative"/>
-<DemoBasicInput placeholder='Placeholder' leftIcon={<Box />} theme="alternative"/>
+<CodePreview paths={['text-input', 'BasicInput']}>
+  <Demo.BasicInput placeholder='Placeholder' theme='alternative' />
+</CodePreview>
+<CodePreview paths={['text-input', 'BasicInput']}>
+  <Demo.BasicInput placeholder='Placeholder' leftIcon={<Box />} theme='alternative' />
+</CodePreview>
 
 ## Clearable
 
-<DemoBasicInput isClearable placeholder='Placeholder' theme="alternative"/>
-<DemoBasicInput isClearable placeholder='Placeholder' leftIcon={<Box />} theme="alternative"/>
+<CodePreview paths={['text-input', 'BasicInput']}>
+  <Demo.BasicInput isClearable placeholder='Placeholder' theme='alternative' />
+</CodePreview>
+<CodePreview paths={['text-input', 'BasicInput']}>
+  <Demo.BasicInput isClearable placeholder='Placeholder' leftIcon={<Box />} theme='alternative' />
+</CodePreview>
 
 ## States
 
-
-<DemoBasicInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder' theme="alternative"/>
-<DemoBasicInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder'  leftIcon={<Box />} theme="alternative"/>
-<DemoBasicInput disabled isClearable placeholder='Placeholder' theme="alternative"/>
-<DemoBasicInput disabled isClearable value='This is disabled text input' placeholder='Placeholder'  leftIcon={<Box />} theme="alternative"/>
-<DemoBasicInput readOnly isClearable value='This is read only text input' placeholder='Placeholder' />
-<DemoBasicInput readOnly isClearable value='This is read only text input' placeholder='Placeholder'  leftIcon={<Box />} theme="alternative" />
+<CodePreview paths={['text-input', 'BasicInput']}>
+  <Demo.BasicInput
+    isError={true}
+    errorMessage='Error message'
+    isClearable
+    placeholder='Placeholder'
+    theme='alternative'
+  />
+</CodePreview>
+<CodePreview paths={['text-input', 'BasicInput']}>
+  <Demo.BasicInput
+    isError={true}
+    errorMessage='Error message'
+    isClearable
+    placeholder='Placeholder'
+    leftIcon={<Box />}
+    theme='alternative'
+  />
+</CodePreview>
+<CodePreview paths={['text-input', 'BasicInput']}>
+  <Demo.BasicInput disabled isClearable placeholder='Placeholder' theme='alternative' />
+</CodePreview>
+<CodePreview paths={['text-input', 'BasicInput']}>
+  <Demo.BasicInput
+    disabled
+    isClearable
+    value='This is disabled text input'
+    placeholder='Placeholder'
+    leftIcon={<Box />}
+    theme='alternative'
+  />
+</CodePreview>
+<CodePreview paths={['text-input', 'BasicInput']}>
+  <Demo.BasicInput readOnly isClearable value='This is read only text input' placeholder='Placeholder' />
+</CodePreview>
+<CodePreview paths={['text-input', 'BasicInput']}>
+  <Demo.BasicInput
+    readOnly
+    isClearable
+    value='This is read only text input'
+    placeholder='Placeholder'
+    leftIcon={<Box />}
+    theme='alternative'
+  />
+</CodePreview>
 
 ## Floating label
 
-<DemoBasicInput isClearable floatingLabel='Floating Label' placeholder='Placeholder' theme="alternative"/>
-<DemoBasicInput isClearable floatingLabel='Floating Label' placeholder='Placeholder'  leftIcon={<Box />} theme="alternative"/>
-<DemoBasicInput
-  isClearable
-  isError={true}
-  errorMessage='Error message'
-  floatingLabel='Floating Label'
-  placeholder='Placeholder' theme="alternative"
-/>
-<DemoBasicInput
-  isClearable
-  isError={true}
-  errorMessage='Error message'
-  floatingLabel='Floating Label'
-  placeholder='Placeholder' 
-  leftIcon={<Box />} theme="alternative"
-/>
-<DemoBasicInput isClearable disabled floatingLabel='Floating Label' placeholder='Placeholder' value='Text' theme="alternative"/>
-<DemoBasicInput isClearable disabled floatingLabel='Floating Label' placeholder='Placeholder' value='Text' leftIcon={<Box />} theme="alternative"/>
-<DemoBasicInput isClearable readOnly floatingLabel='Floating Label' placeholder='Placeholder' value='Text' />
-<DemoBasicInput isClearable readOnly floatingLabel='Floating Label' placeholder='Placeholder' value='Text' leftIcon={<Box />} theme="alternative"/>
+<CodePreview paths={['text-input', 'BasicInput']}>
+  <Demo.BasicInput isClearable floatingLabel='Floating Label' placeholder='Placeholder' theme='alternative' />
+</CodePreview>
+<CodePreview paths={['text-input', 'BasicInput']}>
+  <Demo.BasicInput
+    isClearable
+    floatingLabel='Floating Label'
+    placeholder='Placeholder'
+    leftIcon={<Box />}
+    theme='alternative'
+  />
+</CodePreview>
+<CodePreview paths={['text-input', 'BasicInput']}>
+  <Demo.BasicInput
+    isClearable
+    isError={true}
+    errorMessage='Error message'
+    floatingLabel='Floating Label'
+    placeholder='Placeholder'
+    theme='alternative'
+  />
+</CodePreview>
+<CodePreview paths={['text-input', 'BasicInput']}>
+  <Demo.BasicInput
+    isClearable
+    isError={true}
+    errorMessage='Error message'
+    floatingLabel='Floating Label'
+    placeholder='Placeholder'
+    leftIcon={<Box />}
+    theme='alternative'
+  />
+</CodePreview>
+<CodePreview paths={['text-input', 'BasicInput']}>
+  <Demo.BasicInput
+    isClearable
+    disabled
+    floatingLabel='Floating Label'
+    placeholder='Placeholder'
+    value='Text'
+    theme='alternative'
+  />
+</CodePreview>
+<CodePreview paths={['text-input', 'BasicInput']}>
+  <Demo.BasicInput
+    isClearable
+    disabled
+    floatingLabel='Floating Label'
+    placeholder='Placeholder'
+    value='Text'
+    leftIcon={<Box />}
+    theme='alternative'
+  />
+</CodePreview>
+<CodePreview paths={['text-input', 'BasicInput']}>
+  <Demo.BasicInput isClearable readOnly floatingLabel='Floating Label' placeholder='Placeholder' value='Text' />
+</CodePreview>
+<CodePreview paths={['text-input', 'BasicInput']}>
+  <Demo.BasicInput
+    isClearable
+    readOnly
+    floatingLabel='Floating Label'
+    placeholder='Placeholder'
+    value='Text'
+    leftIcon={<Box />}
+    theme='alternative'
+  />
+</CodePreview>
 
 </div>
-
-
-
-
-{/* /////////////////////////////////////////////////////////////////////////////////////// */}
-
-{/* ## Dark mode
-
-<div className="bg-gray-950 text-white p-4 rounded-md flex flex-col gap-4" data-scheme="dark">
-
-## Basic
-
-<DemoBasicInput placeholder='Placeholder' />
-<DemoBasicInput placeholder='Placeholder' leftIcon={<Box />} />
-
-## Clearable
-
-<DemoBasicInput isClearable placeholder='Placeholder' />
-<DemoBasicInput isClearable placeholder='Placeholder' leftIcon={<Box />} />
-
-## States
-
-
-<DemoBasicInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder' />
-<DemoBasicInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder'  leftIcon={<Box />} />
-<DemoBasicInput disabled isClearable placeholder='Placeholder' />
-<DemoBasicInput disabled isClearable value='This is disabled text input' placeholder='Placeholder'  leftIcon={<Box />} />
-<DemoBasicInput readOnly isClearable value='This is read only text input' placeholder='Placeholder' />
-<DemoBasicInput readOnly isClearable value='This is read only text input' placeholder='Placeholder'  leftIcon={<Box />} />
-
-## Floating label
-
-<DemoBasicInput isClearable floatingLabel='Floating Label' placeholder='Placeholder' />
-<DemoBasicInput isClearable floatingLabel='Floating Label' placeholder='Placeholder'  leftIcon={<Box />} />
-<DemoBasicInput
-  isClearable
-  isError={true}
-  errorMessage='Error message'
-  floatingLabel='Floating Label'
-  placeholder='Placeholder'
-/>
-<DemoBasicInput
-  isClearable
-  isError={true}
-  errorMessage='Error message'
-  floatingLabel='Floating Label'
-  placeholder='Placeholder'
-  leftIcon={<Box />}
-/>
-<DemoBasicInput isClearable disabled floatingLabel='Floating Label' placeholder='Placeholder' value='Text' />
-<DemoBasicInput isClearable disabled floatingLabel='Floating Label' placeholder='Placeholder' value='Text' leftIcon={<Box />}/>
-<DemoBasicInput isClearable readOnly floatingLabel='Floating Label' placeholder='Placeholder' value='Text' />
-<DemoBasicInput isClearable readOnly floatingLabel='Floating Label' placeholder='Placeholder' value='Text' leftIcon={<Box />}/>
-
-</div> */}

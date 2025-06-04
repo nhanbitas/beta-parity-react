@@ -1,7 +1,7 @@
 import { Badge } from 'beta-parity-react/ui/Badge';
 import Image from '@components/showcase/ImagePreview';
 import Component from '@components/showcase/CodePreview';
-import * as Demo from '../@dev/demo-components';
+import * as Demo from '@public/demo/slider';
 
 {/* Image => Image Example */}
 {/* Component => Component Example */}
@@ -78,17 +78,17 @@ A component that organizes content into vertically stacked collapsible and expan
 
 ## 🎨 Design Tokens for Slider
 
-| **Token**                                   | **Color for**                | **State/Meaning**         | **CSS Selector(s)**                |
-|---------------------------------------------|------------------------------|---------------------------|------------------------------------|
-| `--par-color-border-slider-track-enabled`   | Slider track                 | Default/Enabled           | `.slider-track`                    |
-| `--par-color-border-slider-progress-neutral-enabled` | Slider progress (neutral)   | Default/Enabled           | `.slider-progress`                 |
-| `--par-color-border-slider-progress-accent-enabled`  | Slider progress (accent)    | Default/Enabled           | `.slider-progress.accent`          |
-| `--par-color-border-slider-thumb-enabled`   | Slider thumb border          | Default/Enabled           | input[type=range].par-input-slider::-webkit-slider-thumb, ::-moz-range-thumb |
-| `--par-color-bg-slider-thumb-enabled`       | Slider thumb background      | Default/Enabled           | input[type=range].par-input-slider::-webkit-slider-thumb, ::-moz-range-thumb |
-| `--par-color-bg-slider-state-layer-hovered` | Thumb hover state layer      | Hovered                   | input[type=range].par-input-slider:hover::-webkit-slider-thumb, ::-moz-range-thumb:hover |
-| `--par-color-border-slider-discrete-neutral-active` | Mark dot (in range)         | Active                    | `.slider-dot.in-range`             |
-| `--par-color-border-slider-discrete-neutral-enabled` | Mark dot (out range)        | Default                   | `.slider-dot.out-range`            |
-| `--par-color-text-primary`                  | Indicator text               | Any                       | `.slider-thumb-indicator-text`     |
+| **Token**                                            | **Color for**             | **State/Meaning** | **CSS Selector(s)**                                                                      |
+| ---------------------------------------------------- | ------------------------- | ----------------- | ---------------------------------------------------------------------------------------- |
+| `--par-color-border-slider-track-enabled`            | Slider track              | Default/Enabled   | `.slider-track`                                                                          |
+| `--par-color-border-slider-progress-neutral-enabled` | Slider progress (neutral) | Default/Enabled   | `.slider-progress`                                                                       |
+| `--par-color-border-slider-progress-accent-enabled`  | Slider progress (accent)  | Default/Enabled   | `.slider-progress.accent`                                                                |
+| `--par-color-border-slider-thumb-enabled`            | Slider thumb border       | Default/Enabled   | input[type=range].par-input-slider::-webkit-slider-thumb, ::-moz-range-thumb             |
+| `--par-color-bg-slider-thumb-enabled`                | Slider thumb background   | Default/Enabled   | input[type=range].par-input-slider::-webkit-slider-thumb, ::-moz-range-thumb             |
+| `--par-color-bg-slider-state-layer-hovered`          | Thumb hover state layer   | Hovered           | input[type=range].par-input-slider:hover::-webkit-slider-thumb, ::-moz-range-thumb:hover |
+| `--par-color-border-slider-discrete-neutral-active`  | Mark dot (in range)       | Active            | `.slider-dot.in-range`                                                                   |
+| `--par-color-border-slider-discrete-neutral-enabled` | Mark dot (out range)      | Default           | `.slider-dot.out-range`                                                                  |
+| `--par-color-text-primary`                           | Indicator text            | Any               | `.slider-thumb-indicator-text`                                                           |
 
 > _Note: Slider uses the same design tokens as the Progress or Input component. See Progress/Input documentation for available tokens._
 
@@ -98,21 +98,21 @@ A component that organizes content into vertically stacked collapsible and expan
 
 ### `<Slider />`
 
-| **Prop**         | **Type**                        | **Default** | **Description**                              |
-|------------------|---------------------------------|-------------|----------------------------------------------|
-| **mode**         | 'single' \| 'range'             | 'single'    | Slider mode (single value or range)          |
-| **min**          | number                          | 0           | Minimum value                                |
-| **max**          | number                          | 100         | Maximum value                                |
-| **step**         | number                          | 1           | Step increment                               |
-| **defaultValue** | number \| [number, number]      | 0 or [0,50] | Initial value                                |
-| **marks**        | Array of mark objects              | []      | Mark points on the slider                    |
-| **color**        | 'neutral' \| 'accent'           | 'neutral'   | Slider color                                 |
-| **orientation**  | 'horizontal' \| 'vertical'      | 'horizontal'| Slider orientation                           |
-| **indicator**    | 'normal' \| 'tooltip'           | 'normal'    | Indicator type                               |
-| **indicatorSide**| 'normal' \| 'reverse'           | 'normal'    | Indicator position                           |
-| **disabled**     | boolean                         | false       | Disable the slider                           |
-| **onValueChange**| function (value)                |             | Callback when value changes                  |
-| **...divProps**  | HTMLDivElement props            |             | All native div props (className, style, ...) |
+| **Prop**          | **Type**                   | **Default**  | **Description**                              |
+| ----------------- | -------------------------- | ------------ | -------------------------------------------- |
+| **mode**          | 'single' \| 'range'        | 'single'     | Slider mode (single value or range)          |
+| **min**           | number                     | 0            | Minimum value                                |
+| **max**           | number                     | 100          | Maximum value                                |
+| **step**          | number                     | 1            | Step increment                               |
+| **defaultValue**  | number \| [number, number] | 0 or [0,50]  | Initial value                                |
+| **marks**         | Array of mark objects      | []           | Mark points on the slider                    |
+| **color**         | 'neutral' \| 'accent'      | 'neutral'    | Slider color                                 |
+| **orientation**   | 'horizontal' \| 'vertical' | 'horizontal' | Slider orientation                           |
+| **indicator**     | 'normal' \| 'tooltip'      | 'normal'     | Indicator type                               |
+| **indicatorSide** | 'normal' \| 'reverse'      | 'normal'     | Indicator position                           |
+| **disabled**      | boolean                    | false        | Disable the slider                           |
+| **onValueChange** | function (value)           |              | Callback when value changes                  |
+| **...divProps**   | HTMLDivElement props       |              | All native div props (className, style, ...) |
 
 > **_Note:_** _Slider_ **inherits** all native props from **HTMLDivElement**.
 

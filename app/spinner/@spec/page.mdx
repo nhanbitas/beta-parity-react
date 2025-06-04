@@ -1,7 +1,7 @@
 import { Badge } from 'beta-parity-react/ui/Badge';
 import Image from '@components/showcase/ImagePreview';
 import Component from '@components/showcase/CodePreview';
-import * as Demo from '../@dev/demo-components';
+import * as Demo from '@public/demo/spinner';
 
 {/* Image => Image Example */}
 {/* Component => Component Example */}
@@ -58,11 +58,11 @@ A component that organizes content into vertically stacked collapsible and expan
 
 ## 🎨 Design Tokens for Spinner
 
-| **Token**                                         | **Color for**         | **State/Meaning** | **CSS Selector(s)**         |
-|-------------------------------------------------- | --------------------- | ----------------- | --------------------------- |
-| `--par-color-stroke-spinner-interactive-neutral`  | Spinner arc           | Neutral           | `.spinner.neutral`          |
-| `--par-color-stroke-spinner-interactive-accent`   | Spinner arc           | Accent            | `.spinner.accent`           |
-| `--par-color-stroke-spinner-inactive`             | Spinner background    | Inactive          | `.spinner`                  |
+| **Token**                                        | **Color for**      | **State/Meaning** | **CSS Selector(s)** |
+| ------------------------------------------------ | ------------------ | ----------------- | ------------------- |
+| `--par-color-stroke-spinner-interactive-neutral` | Spinner arc        | Neutral           | `.spinner.neutral`  |
+| `--par-color-stroke-spinner-interactive-accent`  | Spinner arc        | Accent            | `.spinner.accent`   |
+| `--par-color-stroke-spinner-inactive`            | Spinner background | Inactive          | `.spinner`          |
 
 > _Note: Spinner uses its own tokens defined in `variables.css` and does not use Progress/Icon tokens._
 
@@ -72,11 +72,11 @@ A component that organizes content into vertically stacked collapsible and expan
 
 ### `<Spinner />`
 
-| **Prop**   | **Type**                                         | **Default**   | **Description**                                                                 |
-|------------|--------------------------------------------------|--------------|-------------------------------------------------------------------------------|
-| **variant**| 'circular' \| 'dotted' \| 'sunburst'            | 'circular'   | Spinner style variant                                                          |
-| **color**  | 'neutral' \| 'accent'                            | 'neutral'    | Spinner color                                                                  |
-| **size**   | 'sm' \| 'md' \| 'lg' \| 'xl'                    | 'md'         | Spinner size                                                                   |
-| **...spanProps** | `React.HTMLAttributes<HTMLSpanElement>`     |              | All native span props (className, style, ...)                                  |
+| **Prop**         | **Type**                                | **Default** | **Description**                               |
+| ---------------- | --------------------------------------- | ----------- | --------------------------------------------- |
+| **variant**      | 'circular' \| 'dotted' \| 'sunburst'    | 'circular'  | Spinner style variant                         |
+| **color**        | 'neutral' \| 'accent'                   | 'neutral'   | Spinner color                                 |
+| **size**         | 'sm' \| 'md' \| 'lg' \| 'xl'            | 'md'        | Spinner size                                  |
+| **...spanProps** | `React.HTMLAttributes<HTMLSpanElement>` |             | All native span props (className, style, ...) |
 
 > **_Note:_** _Spinner_ **inherits** all native props from `HTMLSpanElement`.

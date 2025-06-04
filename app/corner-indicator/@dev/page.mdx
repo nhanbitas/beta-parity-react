@@ -1,29 +1,20 @@
-import * as Demo from "./demo-components"
+import * as Demo from '@public/demo/corner-indicator';
+import CodePreview from '@components/showcase/CodePreview';
 
 ## Basic corner indicator
 
-<Demo.DemoCornerIndicator/>
+<CodePreview paths={['corner-indicator', 'CornerIndicator']}>
+  <Demo.CornerIndicator />
+</CodePreview>
 
 ## Corner indicator positions
 
-<Demo.DemoCornerIndicatorPosition/>
+<CodePreview paths={['corner-indicator', 'CornerIndicatorPosition']}>
+  <Demo.CornerIndicatorPosition />
+</CodePreview>
 
 ## Inset
 
-<Demo.DemoCornerIndicatorInset/>
-
-{/* ## Dark mode
-
-<div className="bg-gray-950 text-white p-4 rounded-md flex flex-col gap-4" data-scheme="dark">
-## Basic corner indicator
-
-<Demo.DemoCornerIndicator/>
-
-## Corner indicator positions
-
-<Demo.DemoCornerIndicatorPosition/>
-
-## Inset
-
-<Demo.DemoCornerIndicatorInset/>
-</div> */}
+<CodePreview paths={['corner-indicator', 'CornerIndicatorInset']}>
+  <Demo.CornerIndicatorInset />
+</CodePreview>

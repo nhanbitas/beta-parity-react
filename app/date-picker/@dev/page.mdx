@@ -1,94 +1,194 @@
-import * as Demo from './demo-components'
+import * as Demo from '@public/demo/date-picker';
+import CodePreview from '@components/showcase/CodePreview';
 
 ## Basic
 
 ### Neutral
-<Demo.DemoDatePicker locale="vn" placeholder="Chọn ngày"/>
+
+<CodePreview paths={['date-picker', 'DatePicker']}>
+  <Demo.DatePicker locale='vn' placeholder='Chọn ngày' />
+</CodePreview>
 
 ### Accent
-<Demo.DemoDatePicker color="accent"/>
+
+<CodePreview paths={['date-picker', 'DatePicker']}>
+  <Demo.DatePicker color='accent' />
+</CodePreview>
 
 ### Readonly
-<Demo.DemoDatePicker readOnly />
+
+<CodePreview paths={['date-picker', 'DatePicker']}>
+  <Demo.DatePicker readOnly />
+</CodePreview>
 
 ### Disabled
-<Demo.DemoDatePicker disabled />
+
+<CodePreview paths={['date-picker', 'DatePicker']}>
+  <Demo.DatePicker disabled />
+</CodePreview>
 
 ## Options
-<Demo.DemoDatePickerWithOptions placeholder="Chọn ngày" locale="vn"   options={{defaultDate: ["22/02/2025", "28/02/2025"],mode: 'range'}} />
 
-<Demo.DemoDatePickerWithOptions options={{ defaultDate: ["25/02/2025"], showMonths: 2}} />
+<CodePreview paths={['date-picker', 'DatePickerWithOptions']}>
+  <Demo.DatePickerWithOptions
+    placeholder='Chọn ngày'
+    locale='vn'
+    options={{ defaultDate: ['22/02/2025', '28/02/2025'], mode: 'range' }}
+  />
+</CodePreview>
 
-<Demo.DemoDatePicker locale="vn" options={{ defaultDate: ["25/02/2025"],enableTime: true, enableSeconds: true, dateFormat: 'G:i K, \\ngà\\y d t\\há\\ng m \\nă\\m Y'}} />   
+<CodePreview paths={['date-picker', 'DatePickerWithOptions']}>
+  <Demo.DatePickerWithOptions options={{ defaultDate: ['25/02/2025'], showMonths: 2 }} />
+</CodePreview>
 
-<Demo.DemoDatePickerWithOptions isError errorMessage="This is a required field" options={{ allowInput: true}} />
+<CodePreview paths={['date-picker', 'DatePicker']}>
+  <Demo.DatePicker
+    locale='vn'
+    options={{
+      defaultDate: ['25/02/2025'],
+      enableTime: true,
+      enableSeconds: true,
+      dateFormat: 'G:i K, \\ngà\\y d t\\há\\ng m \\nă\\m Y'
+    }}
+  />
+</CodePreview>
+
+<CodePreview paths={['date-picker', 'DatePickerWithOptions']}>
+  <Demo.DatePickerWithOptions isError errorMessage='This is a required field' options={{ allowInput: true }} />
+</CodePreview>
 
 ## Floating label
-<Demo.DemoLabelDatePicker /> 
 
-<Demo.DemoLabelDatePicker sideIcon="left" isError errorMessage="This is a required field" /> 
+<CodePreview paths={['date-picker', 'LabelDatePicker']}>
+  <Demo.LabelDatePicker />
+</CodePreview>
 
+<CodePreview paths={['date-picker', 'LabelDatePicker']}>
+  <Demo.LabelDatePicker sideIcon='left' isError errorMessage='This is a required field' />
+</CodePreview>
 
 ## Sizes
-<Demo.DemoDatePicker color="accent" sideIcon="left"/>
 
-<Demo.DemoDatePicker color="accent" sideIcon="left" inputSize="sm" />
+<CodePreview paths={['date-picker', 'DatePicker']}>
+  <Demo.DatePicker color='accent' sideIcon='left' />
+</CodePreview>
+
+<CodePreview paths={['date-picker', 'DatePicker']}>
+  <Demo.DatePicker color='accent' sideIcon='left' inputSize='sm' />
+</CodePreview>
 
 ## Controlled
 
 ### With enable time
 
-<Demo.DemoControlledDatePicker />
-
+<CodePreview paths={['date-picker', 'ControlledDatePicker']}>
+  <Demo.ControlledDatePicker />
+</CodePreview>
 
 ### With select
 
-<Demo.DemoSelectDatePicker />
+<CodePreview paths={['date-picker', 'SelectDatePicker']}>
+  <Demo.SelectDatePicker />
+</CodePreview>
 
 ## Alternative
 
 <div className="bg-[var(--background-alternative)] p-4 rounded-md flex flex-col gap-4">
+
 ### Neutral
-<Demo.DemoDatePicker locale="vn" placeholder="Chọn ngày"theme="alternative"/>
+
+<CodePreview paths={['date-picker', 'DatePicker']}>
+  <Demo.DatePicker locale='vn' placeholder='Chọn ngày' theme='alternative' />
+</CodePreview>
 
 ### Accent
-<Demo.DemoDatePicker color="accent" theme="alternative"/>
+
+<CodePreview paths={['date-picker', 'DatePicker']}>
+  <Demo.DatePicker color='accent' theme='alternative' />
+</CodePreview>
 
 ### Readonly
-<Demo.DemoDatePicker readOnly theme="alternative"/>
+
+<CodePreview paths={['date-picker', 'DatePicker']}>
+  <Demo.DatePicker readOnly theme='alternative' />
+</CodePreview>
 
 ### Disabled
-<Demo.DemoDatePicker disabled theme="alternative"/>
+
+<CodePreview paths={['date-picker', 'DatePicker']}>
+  <Demo.DatePicker disabled theme='alternative' />
+</CodePreview>
 
 ## Options
-<Demo.DemoDatePickerWithOptions placeholder="Chọn ngày" locale="vn"   options={{defaultDate: ["22/02/2025", "28/02/2025"],mode: 'range'}} theme="alternative"/>
 
-<Demo.DemoDatePickerWithOptions options={{ defaultDate: ["25/02/2025"], showMonths: 2}} theme="alternative"/>
+<CodePreview paths={['date-picker', 'DatePickerWithOptions']}>
+  <Demo.DatePickerWithOptions
+    placeholder='Chọn ngày'
+    locale='vn'
+    options={{ defaultDate: ['22/02/2025', '28/02/2025'], mode: 'range' }}
+    theme='alternative'
+  />
+</CodePreview>
 
-<Demo.DemoDatePicker locale="vn" options={{ defaultDate: ["25/02/2025"],enableTime: true, enableSeconds: true, dateFormat: 'G:i K, \\ngà\\y d t\\há\\ng m \\nă\\m Y'}} theme="alternative"/>   
+<CodePreview paths={['date-picker', 'DatePickerWithOptions']}>
+  <Demo.DatePickerWithOptions options={{ defaultDate: ['25/02/2025'], showMonths: 2 }} theme='alternative' />
+</CodePreview>
 
-<Demo.DemoDatePickerWithOptions isError errorMessage="This is a required field" options={{ allowInput: true}} theme="alternative"/>
+<CodePreview paths={['date-picker', 'DatePicker']}>
+  <Demo.DatePicker
+    locale='vn'
+    options={{
+      defaultDate: ['25/02/2025'],
+      enableTime: true,
+      enableSeconds: true,
+      dateFormat: 'G:i K, \\ngà\\y d t\\há\\ng m \\nă\\m Y'
+    }}
+    theme='alternative'
+  />
+</CodePreview>
+
+<CodePreview paths={['date-picker', 'DatePickerWithOptions']}>
+  <Demo.DatePickerWithOptions
+    isError
+    errorMessage='This is a required field'
+    options={{ allowInput: true }}
+    theme='alternative'
+  />
+</CodePreview>
 
 ## Floating label
-<Demo.DemoLabelDatePicker theme="alternative"/> 
 
-<Demo.DemoLabelDatePicker sideIcon="left" isError errorMessage="This is a required field" theme="alternative"/> 
+<CodePreview paths={['date-picker', 'LabelDatePicker']}>
+  <Demo.LabelDatePicker theme='alternative' />
+</CodePreview>
 
+<CodePreview paths={['date-picker', 'LabelDatePicker']}>
+  <Demo.LabelDatePicker sideIcon='left' isError errorMessage='This is a required field' theme='alternative' />
+</CodePreview>
 
 ## Sizes
-<Demo.DemoDatePicker color="accent" sideIcon="left" theme="alternative"/>
 
-<Demo.DemoDatePicker color="accent" sideIcon="left" inputSize="sm" theme="alternative"/>
+<CodePreview paths={['date-picker', 'DatePicker']}>
+  <Demo.DatePicker color='accent' sideIcon='left' theme='alternative' />
+</CodePreview>
+
+<CodePreview paths={['date-picker', 'DatePicker']}>
+  <Demo.DatePicker color='accent' sideIcon='left' inputSize='sm' theme='alternative' />
+</CodePreview>
 
 ## Controlled
 
 ### With enable time
 
-<Demo.DemoControlledDatePicker theme="alternative" />
+<CodePreview paths={['date-picker', 'ControlledDatePicker']}>
+  <Demo.ControlledDatePicker theme='alternative' />
+</CodePreview>
 
 ### With select
 
-<Demo.DemoSelectDatePicker theme="alternative"/>
+<CodePreview paths={['date-picker', 'SelectDatePicker']}>
+  <Demo.SelectDatePicker theme='alternative' />
+</CodePreview>
 
 </div>
 

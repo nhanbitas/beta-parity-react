@@ -1,35 +1,29 @@
-import * as Demo from './demo-components'
-
+import * as Demo from '@public/demo/chip';
+import CodePreview from '@components/showcase/CodePreview';
 
 ## Type Toggle
-<Demo.DemoToggle/>
+
+<CodePreview paths={['chip', 'Toggle']}>
+  <Demo.Toggle />
+</CodePreview>
 
 ## Type Dropdown
-<Demo.DemoMenu/>
 
-## Multi Fitler (toggle)
-<Demo.DemoMultiFilter/>
+<CodePreview paths={['chip', 'Menu']}>
+  <Demo.Menu />
+</CodePreview>
 
-## Dropdown menu (Dropdown)
-<Demo.DemoSelectMenu/>
-<Demo.DemoSelectMenu kind="glass"/>
+## Multi Filter (toggle)
 
-{/* /////////////////////////////////////////////////////////////////////////////////////// */}
-
-{/* ## Dark mode
-
-<div className="bg-gray-950 text-white p-4 rounded-md flex flex-col gap-4" data-scheme="dark">
-## Type Toggle
-<Demo.DemoToggle/>
-
-## Type Dropdown
-<Demo.DemoMenu/>
-
-## Multi Fitler (toggle)
-<Demo.DemoMultiFilter/>
+<CodePreview paths={['chip', 'MultiFilter']}>
+  <Demo.MultiFilter />
+</CodePreview>
 
 ## Dropdown menu (Dropdown)
-<Demo.DemoSelectMenu/>
-<Demo.DemoSelectMenu kind="glass"/>
-</div> */}
 
+<CodePreview paths={['chip', 'SelectMenu']}>
+  <Demo.SelectMenu />
+</CodePreview>
+<CodePreview paths={['chip', 'SelectMenu']}>
+  <Demo.SelectMenu kind='glass' />
+</CodePreview>

@@ -1,29 +1,54 @@
-import * as Demo from "./demo-components";
-import {ToastContainer} from 'beta-parity-react/ui/Toast';
+import * as Demo from '@public/demo/toast';
+import CodePreview from '@components/showcase/CodePreview';
+import { ToastContainer } from 'beta-parity-react/ui/Toast';
 
 {/* add container in your page you want to use toast */}
 {/* <ToastContainer limit={3} stacked={false} sortImportance={true}/> */}
 {/* <ToastContainer limit={1} stacked={true} sortImportance={false}/> */}
-<ToastContainer limit={1} stacked={true} sortImportance={true} />
+
+<CodePreview paths={['toast', 'ToastContainer']}>
+  <ToastContainer limit={1} stacked={true} sortImportance={true} />
+</CodePreview>
 {/* <ToastContainer limit={1} stacked={true} sortImportance={true} data-scheme="dark"/> */}
 
 ## Types
-<Demo.DemoGenericToast/>
-<Demo.DemoInformationToast/>
-<Demo.DemoAffirmativeToast/>
-<Demo.DemoCautionaryToast/>
-<Demo.DemoAdverseToast/>
+
+<CodePreview paths={['toast', 'GenericToast']}>
+  <Demo.GenericToast />
+</CodePreview>
+<CodePreview paths={['toast', 'InformationToast']}>
+  <Demo.InformationToast />
+</CodePreview>
+<CodePreview paths={['toast', 'AffirmativeToast']}>
+  <Demo.AffirmativeToast />
+</CodePreview>
+<CodePreview paths={['toast', 'CautionaryToast']}>
+  <Demo.CautionaryToast />
+</CodePreview>
+<CodePreview paths={['toast', 'AdverseToast']}>
+  <Demo.AdverseToast />
+</CodePreview>
 
 ## Duration
-<Demo.DemoAutoCloseToast/>
+
+<CodePreview paths={['toast', 'AutoCloseToast']}>
+  <Demo.AutoCloseToast />
+</CodePreview>
 
 ## Position
-<Demo.DemoPositionToast/>
+
+<CodePreview paths={['toast', 'PositionToast']}>
+  <Demo.PositionToast />
+</CodePreview>
 
 ## Important
-<Demo.DemoImportantToast/>
+
+<CodePreview paths={['toast', 'ImportantToast']}>
+  <Demo.ImportantToast />
+</CodePreview>
 
 ## Pending
-<Demo.DemoPendingToast/>
 
-
+<CodePreview paths={['toast', 'PendingToast']}>
+  <Demo.PendingToast />
+</CodePreview>

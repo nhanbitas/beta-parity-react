@@ -1,7 +1,7 @@
 import { Badge } from 'beta-parity-react/ui/Badge';
 import Image from '@components/showcase/ImagePreview';
 import Component from '@components/showcase/CodePreview';
-import * as Demo from '../@dev/demo-components';
+import * as Demo from '@public/demo/tree-navigation';
 
 {/* Image => Image Example */}
 {/* Component => Component Example */}
@@ -48,22 +48,22 @@ A component that organizes content into vertically stacked collapsible and expan
 
 ## 🎨 Design Tokens for TreeNavigation
 
-| **Token**                              | **Color for**                | **State/Meaning**         | **CSS Selector(s)** |
-|---------------------------------------- | ---------------------------- | ------------------------- | ------------------- |
-| `--par-color-bg-tree-navigation-item`                   | Tree item background              | Default/Enabled           | `.tree-navigation` |
-| `--par-color-bg-tree-navigation-item-neutral-selected`      | Tree item background         | Selected (neutral)                   | `.tree-navigation-item-active .active` |
-| `--par-color-bg-tree-navigation-item-accent-selected`     | Tree item background         | Selected (accent)                  | `.tree-navigation.accent .tree-navigation-item-active .active` |
-| `--par-color-bg-tree-navigation-button-neutral-hovered`     | Tree item button background         | Hovered (neutral)                  | `.tree-navigation-icon-button:hover` |
-| `--par-color-bg-tree-navigation-button-accent-hovered`     | Tree item button background         | Hovered (accent)                  | `.tree-navigation.accent .tree-navigation-icon-button:hover` |
-| `--par-color-border-tree-navigation`               | Tree border                  | Any                       | `.tree-navigation, .tree-navigation-item` |
-| `--par-color-text-tree-navigation-content-item-enabled`            | Tree item text               | Default/Enabled           | `.tree-navigation-item` |
-| `--par-color-text-tree-navigation-content-item-neutral-selected`   | Tree item text               | Selected (neutral)                  | `.tree-navigation-item-active .active` |
-| `--par-color-text-tree-navigation-content-item-accent-selected`   | Tree item text               | Selected (accent)                  | `.tree-navigation.accent .tree-navigation-item-active .active` |
-| `--par-color-text-tree-navigation-content-item-disabled`   | Tree item text               | Disabled                  | `.tree-navigation-item[aria-disabled="true"]` |
-| `--par-color-text-tree-navigation-content-item-hovered`   | Tree item text               | Hovered                  | `.tree-navigation-item-content:hover` |
-| `--par-color-text-tree-navigation-content-item-pressed`   | Tree item text               | Pressed                  | `.tree-navigation-item-content:active` |
-| `--par-color-bg-tree-navigation-item-icon-button` | Tree item icon button background | Any | `.tree-navigation-icon-button` |
-| `--par-color-text-tree-navigation-content-item-icon-button` | Tree item icon button text | Any | `.tree-navigation-icon-button` |
+| **Token**                                                        | **Color for**                    | **State/Meaning**  | **CSS Selector(s)**                                            |
+| ---------------------------------------------------------------- | -------------------------------- | ------------------ | -------------------------------------------------------------- |
+| `--par-color-bg-tree-navigation-item`                            | Tree item background             | Default/Enabled    | `.tree-navigation`                                             |
+| `--par-color-bg-tree-navigation-item-neutral-selected`           | Tree item background             | Selected (neutral) | `.tree-navigation-item-active .active`                         |
+| `--par-color-bg-tree-navigation-item-accent-selected`            | Tree item background             | Selected (accent)  | `.tree-navigation.accent .tree-navigation-item-active .active` |
+| `--par-color-bg-tree-navigation-button-neutral-hovered`          | Tree item button background      | Hovered (neutral)  | `.tree-navigation-icon-button:hover`                           |
+| `--par-color-bg-tree-navigation-button-accent-hovered`           | Tree item button background      | Hovered (accent)   | `.tree-navigation.accent .tree-navigation-icon-button:hover`   |
+| `--par-color-border-tree-navigation`                             | Tree border                      | Any                | `.tree-navigation, .tree-navigation-item`                      |
+| `--par-color-text-tree-navigation-content-item-enabled`          | Tree item text                   | Default/Enabled    | `.tree-navigation-item`                                        |
+| `--par-color-text-tree-navigation-content-item-neutral-selected` | Tree item text                   | Selected (neutral) | `.tree-navigation-item-active .active`                         |
+| `--par-color-text-tree-navigation-content-item-accent-selected`  | Tree item text                   | Selected (accent)  | `.tree-navigation.accent .tree-navigation-item-active .active` |
+| `--par-color-text-tree-navigation-content-item-disabled`         | Tree item text                   | Disabled           | `.tree-navigation-item[aria-disabled="true"]`                  |
+| `--par-color-text-tree-navigation-content-item-hovered`          | Tree item text                   | Hovered            | `.tree-navigation-item-content:hover`                          |
+| `--par-color-text-tree-navigation-content-item-pressed`          | Tree item text                   | Pressed            | `.tree-navigation-item-content:active`                         |
+| `--par-color-bg-tree-navigation-item-icon-button`                | Tree item icon button background | Any                | `.tree-navigation-icon-button`                                 |
+| `--par-color-text-tree-navigation-content-item-icon-button`      | Tree item icon button text       | Any                | `.tree-navigation-icon-button`                                 |
 
 > _Note: TreeNavigation uses the same design tokens as the List or Navigation component. See List/Navigation documentation for available tokens._
 
@@ -73,10 +73,10 @@ A component that organizes content into vertically stacked collapsible and expan
 
 ### `<TreeNavigation />`
 
-| **Prop**        | **Type**             | **Default** | **Description**                              |
-| --------------- | -------------------- | ----------- | -------------------------------------------- |
-| **items**        | array                |             | Tree data structure (array of navigation items) |
-| **...divProps** | HTMLDivElement props |             | All native div props (className, style, ...) |
+| **Prop**        | **Type**             | **Default** | **Description**                                 |
+| --------------- | -------------------- | ----------- | ----------------------------------------------- |
+| **items**       | array                |             | Tree data structure (array of navigation items) |
+| **...divProps** | HTMLDivElement props |             | All native div props (className, style, ...)    |
 
 > **_Note:_** _TreeNavigation_ **inherits** all native props from **HTMLDivElement**.
 

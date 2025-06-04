@@ -1,33 +1,26 @@
-import * as Demo from "./demo-components"
-
+import * as Demo from '@public/demo/button';
+import CodePreview from '@components/showcase/CodePreview';
 
 ## Colors
-<Demo.DemoColorButton/>
+
+<CodePreview paths={['button', 'ColorButton']}>
+  <Demo.ColorButton />
+</CodePreview>
 
 ## Kinds
-<Demo.DemoKindButton/>
+
+<CodePreview paths={['button', 'KindButton']}>
+  <Demo.KindButton />
+</CodePreview>
 
 ## Sizes
-<Demo.DemoSizesButton/>
+
+<CodePreview paths={['button', 'SizesButton']}>
+  <Demo.SizesButton />
+</CodePreview>
 
 ## Others
-<Demo.DemoStatesButton/>
 
-{/* /////////////////////////////////////////////////////////////////////////////////////// */}
-
-{/* ## Dark mode
-
-<div className="bg-gray-950 text-white p-4 rounded-md flex flex-col gap-4" data-scheme="dark">
-## Colors
-<Demo.DemoColorButton/>
-
-## Kinds
-<Demo.DemoKindButton/>
-
-## Sizes
-<Demo.DemoSizesButton/>
-
-## Others
-<Demo.DemoStatesButton/>
-</div> */}
-
+<CodePreview paths={['button', 'StatesButton']}>
+  <Demo.StatesButton />
+</CodePreview>

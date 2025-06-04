@@ -1,13 +1,20 @@
-import * as Demo from './demo-components';
+import * as Demo from '@public/demo/table';
+import CodePreview from '@components/showcase/CodePreview';
 
 ## Basic Table
 
-<Demo.BasicTable />
+<CodePreview paths={['table', 'BasicTable']}>
+  <Demo.BasicTable />
+</CodePreview>
 
 ## Advanced Table
 
-<Demo.AdvancedTable />
+<CodePreview paths={['table', 'AdvancedTable']}>
+  <Demo.AdvancedTable />
+</CodePreview>
 
-<Demo.AdvancedTable2 />
+<CodePreview paths={['table', 'AdvancedTable2']}>
+  <Demo.AdvancedTable2 />
+</CodePreview>
 
 <div className='h-96' />

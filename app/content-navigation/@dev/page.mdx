@@ -1,9 +1,14 @@
-import * as Demo from './demo-components';
+import * as Demo from '@public/demo/content-navigation';
+import CodePreview from '@components/showcase/CodePreview';
 
 ## Neutral
 
-<Demo.DemoContentNavigation />
+<CodePreview paths={['content-navigation', 'ContentNavigationComponent']}>
+  <Demo.ContentNavigationComponent />
+</CodePreview>
 
 ## Accent
 
-<Demo.DemoAccentContentNavigation />
+<CodePreview paths={['content-navigation', 'AccentContentNavigation']}>
+  <Demo.AccentContentNavigation />
+</CodePreview>

@@ -1,32 +1,23 @@
-import * as Demo from "./demo-components"
-
+import * as Demo from '@public/demo/select';
+import CodePreview from '@components/showcase/CodePreview';
 
 ## Native select
-<Demo.DemoNativeSelect/>
-<Demo.DemoNativeSelectLabel/>
 
-
-## Custom select
-<Demo.DemoCustomSelect/>
-
-## Custom multiple select
-<Demo.DemoCustomMutipleSelect/>
-
-
-{/* ## Dark mode
-
-
-<div className="bg-gray-950 text-white p-4 rounded-md flex flex-col gap-4" data-scheme="dark">
-## Native select
-<Demo.DemoNativeSelect />
-<Demo.DemoNativeSelectLabel />
-
+<CodePreview paths={['select', 'NativeSelect']}>
+  <Demo.NativeSelect />
+</CodePreview>
+<CodePreview paths={['select', 'NativeSelectLabel']}>
+  <Demo.NativeSelectLabel />
+</CodePreview>
 
 ## Custom select
-<Demo.DemoCustomSelect usePortal={false}/>
+
+<CodePreview paths={['select', 'CustomSelect']}>
+  <Demo.CustomSelect />
+</CodePreview>
 
 ## Custom multiple select
-<Demo.DemoCustomMutipleSelect usePortal={false} />
-</div>  */}
 
-
+<CodePreview paths={['select', 'CustomMutipleSelect']}>
+  <Demo.CustomMutipleSelect />
+</CodePreview>

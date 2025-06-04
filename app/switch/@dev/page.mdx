@@ -1,24 +1,14 @@
-import * as Demo from "./demo-components"
+import * as Demo from '@public/demo/switch';
+import CodePreview from '@components/showcase/CodePreview';
 
-## Basic
-<Demo.DemoBasicSwitch/>
+<CodePreview paths={['switch', 'BasicSwitch']}>
+  <Demo.BasicSwitch />
+</CodePreview>
 
-## With Icon
-<Demo.DemoIconSwitch/>
+<CodePreview paths={['switch', 'IconSwitch']}>
+  <Demo.IconSwitch />
+</CodePreview>
 
-## Disabled
-<Demo.DemoIconSwitch disabled/>
-
-
-{/* ## Dark mode
-
-<div className="bg-gray-950 text-white p-4 rounded-md flex flex-col gap-4" data-scheme="dark">
-## Basic
-<Demo.DemoBasicSwitch/>
-
-## With Icon
-<Demo.DemoIconSwitch/>
-
-## Disabled
-<Demo.DemoIconSwitch disabled/>
-</div> */}
+<CodePreview paths={['switch', 'IconSwitch']}>
+  <Demo.IconSwitch disabled />
+</CodePreview>

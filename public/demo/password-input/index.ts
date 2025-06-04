@@ -1,0 +1,1 @@
+export { BasicPasswordInput } from './BasicPasswordInput';
