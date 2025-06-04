@@ -58,6 +58,19 @@ export interface TextareaProps
    *  @memberof Textarea
    */
   clearBtnText?: string;
+
+  /**
+   * Indicates whether the textarea is in an error state.
+   * If true, the component will apply error styles and display an error message if provided.
+   *
+   * Example:
+   * ```tsx
+   * <Textarea isError={true} errorMessage="This field is required." />
+   * ```
+   *
+   * @memberof Textarea
+   */
+  placeholder?: string;
 }
 
 /**
@@ -81,6 +94,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
       defaultValue,
       maxLength,
       isError,
+      placeholder,
       onChange,
       ...props
     },
@@ -124,6 +138,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           onChange={handleChange}
           disabled={disabled}
           readOnly={readOnly}
+          placeholder={placeholder}
           {...props}
         />
 

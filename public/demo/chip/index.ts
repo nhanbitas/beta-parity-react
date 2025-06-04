@@ -3,3 +3,4 @@ export { Toggle } from './Toggle';
 export { Menu } from './Menu';
 export { MultiFilter } from './MultiFilter';
 export { SelectMenu } from './SelectMenu';
+export { SelectMenuGlass } from './SelectMenuGlass';

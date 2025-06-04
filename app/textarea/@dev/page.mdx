@@ -3,58 +3,56 @@ import CodePreview from '@components/showcase/CodePreview';
 
 ## Basic
 
-<CodePreview paths={['textarea', 'BasicTextArea']}>
-  <Demo.BasicTextArea placeholder='Enter your message' rows={0} />
+<CodePreview paths={['textarea', 'BasicTextAreaRows0']}>
+  <Demo.BasicTextAreaRows0 />
 </CodePreview>
-<CodePreview paths={['textarea', 'BasicTextArea']}>
-  <Demo.BasicTextArea placeholder='Enter your message' maxLength={500} />
+<CodePreview paths={['textarea', 'BasicTextAreaMaxLength500']}>
+  <Demo.BasicTextAreaMaxLength500 />
 </CodePreview>
-<CodePreview paths={['textarea', 'BasicTextArea']}>
-  <Demo.BasicTextArea placeholder='Enter your message' isClearable />
+<CodePreview paths={['textarea', 'BasicTextAreaClearable']}>
+  <Demo.BasicTextAreaClearable />
 </CodePreview>
-<CodePreview paths={['textarea', 'BasicTextArea']}>
-  <Demo.BasicTextArea placeholder='Enter your message' maxLength={500} isClearable />
+<CodePreview paths={['textarea', 'BasicTextAreaMaxLength500Clearable']}>
+  <Demo.BasicTextAreaMaxLength500Clearable />
 </CodePreview>
-<CodePreview paths={['textarea', 'BasicTextArea']}>
-  <Demo.BasicTextArea placeholder='Enter your message' rows={6} maxLength={2000} isClearable />
+<CodePreview paths={['textarea', 'BasicTextAreaRows6MaxLength2000Clearable']}>
+  <Demo.BasicTextAreaRows6MaxLength2000Clearable />
 </CodePreview>
 
 ## States
 
-<CodePreview paths={['textarea', 'BasicTextArea']}>
-  <Demo.BasicTextArea placeholder='Enter your message' rows={0} defaultValue='This is error value' isError={true} errorMessage='Error message' />
+<CodePreview paths={['textarea', 'BasicTextAreaRows0Error']}>
+  <Demo.BasicTextAreaRows0Error />
 </CodePreview>
-<CodePreview paths={['textarea', 'BasicTextArea']}>
-  <Demo.BasicTextArea placeholder='Enter your message' maxLength={500} defaultValue='This is error value' isError={true} errorMessage='Error message'/>
-
+<CodePreview paths={['textarea', 'BasicTextAreaMaxLength500Error']}>
+  <Demo.BasicTextAreaMaxLength500Error />
 </CodePreview>
-<CodePreview paths={['textarea', 'BasicTextArea']}>
-  <Demo.BasicTextArea placeholder='Enter your message' isClearable defaultValue='This is disabled text area' disabled/>
+<CodePreview paths={['textarea', 'BasicTextAreaClearableDisabled']}>
+  <Demo.BasicTextAreaClearableDisabled />
 </CodePreview>
-<CodePreview paths={['textarea', 'BasicTextArea']}>
-  <Demo.BasicTextArea placeholder='Enter your message' maxLength={500} isClearable defaultValue='This is read only text area' readOnly/>
+<CodePreview paths={['textarea', 'BasicTextAreaMaxLength500ClearableReadOnly']}>
+  <Demo.BasicTextAreaMaxLength500ClearableReadOnly />
 </CodePreview>
-<CodePreview paths={['textarea', 'BasicTextArea']}>
-  <Demo.BasicTextArea placeholder='Enter your message' rows={6} maxLength={2000} isClearable/>
+<CodePreview paths={['textarea', 'BasicTextAreaRows6MaxLength2000Clearable2']}>
+  <Demo.BasicTextAreaRows6MaxLength2000Clearable2 />
 </CodePreview>
 
 ## Alternative
 
-<div className="bg-[var(--background-alternative)] p-4 rounded-md flex flex-col gap-4">
-  <CodePreview paths={['textarea', 'BasicTextArea']}>
-    <Demo.BasicTextArea theme="alternative" placeholder='Enter your message' rows={0} defaultValue='This is error value' isError={true} errorMessage='Error message' />
+<div className='flex flex-col gap-4 rounded-md bg-[var(--background-alternative)] p-4'>
+  <CodePreview paths={['textarea', 'BasicTextAreaAlternativeRows0Error']}>
+    <Demo.BasicTextAreaAlternativeRows0Error />
   </CodePreview>
-  <CodePreview paths={['textarea', 'BasicTextArea']}>
-    <Demo.BasicTextArea theme="alternative" placeholder='Enter your message' maxLength={500} defaultValue='This is error value' isError={true} errorMessage='Error message'/>
-
+  <CodePreview paths={['textarea', 'BasicTextAreaAlternativeMaxLength500Error']}>
+    <Demo.BasicTextAreaAlternativeMaxLength500Error />
   </CodePreview>
-  <CodePreview paths={['textarea', 'BasicTextArea']}>
-    <Demo.BasicTextArea theme="alternative" placeholder='Enter your message' isClearable defaultValue='This is disabled text area' disabled/>
+  <CodePreview paths={['textarea', 'BasicTextAreaAlternativeClearableDisabled']}>
+    <Demo.BasicTextAreaAlternativeClearableDisabled />
   </CodePreview>
-  <CodePreview paths={['textarea', 'BasicTextArea']}>
-    <Demo.BasicTextArea theme="alternative" placeholder='Enter your message' maxLength={500} isClearable defaultValue='This is read only text area' readOnly/>
+  <CodePreview paths={['textarea', 'BasicTextAreaAlternativeMaxLength500ClearableReadOnly']}>
+    <Demo.BasicTextAreaAlternativeMaxLength500ClearableReadOnly />
   </CodePreview>
-  <CodePreview paths={['textarea', 'BasicTextArea']}>
-    <Demo.BasicTextArea theme="alternative" placeholder='Enter your message' rows={6} maxLength={2000} isClearable/>
+  <CodePreview paths={['textarea', 'BasicTextAreaAlternativeRows6MaxLength2000Clearable']}>
+    <Demo.BasicTextAreaAlternativeRows6MaxLength2000Clearable />
   </CodePreview>
 </div>

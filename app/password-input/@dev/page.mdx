@@ -5,360 +5,154 @@ import CodePreview from '@components/showcase/CodePreview';
 ## Basic
 
 <CodePreview paths={['password-input', 'BasicPasswordInput']}>
-  <Demo.BasicPasswordInput placeholder='Placeholder' />
+  <Demo.BasicPasswordInput />
 </CodePreview>
-<CodePreview paths={['password-input', 'BasicPasswordInput']}>
-  <Demo.BasicPasswordInput placeholder='Placeholder' leftIcon={<KeyRound />} />
+<CodePreview paths={['password-input', 'BasicPasswordInputWithLeftIcon']}>
+  <Demo.BasicPasswordInputWithLeftIcon />
 </CodePreview>
 
 ## Clearable
 
-<CodePreview paths={['password-input', 'BasicPasswordInput']}>
-  <Demo.BasicPasswordInput isClearable placeholder='Placeholder' />
+<CodePreview paths={['password-input', 'ClearablePasswordInput']}>
+  <Demo.ClearablePasswordInput />
 </CodePreview>
-<CodePreview paths={['password-input', 'BasicPasswordInput']}>
-  <Demo.BasicPasswordInput isClearable placeholder='Placeholder' leftIcon={<KeyRound />} color='accent' />
+<CodePreview paths={['password-input', 'ClearablePasswordInputWithLeftIconAccent']}>
+  <Demo.ClearablePasswordInputWithLeftIconAccent />
 </CodePreview>
 
 ## States
 
-<CodePreview paths={['password-input', 'BasicPasswordInput']}>
-  <Demo.BasicPasswordInput isError={true} errorMessage='Error message' isClearable placeholder='Placeholder' />
+<CodePreview paths={['password-input', 'ErrorPasswordInput']}>
+  <Demo.ErrorPasswordInput />
 </CodePreview>
-<CodePreview paths={['password-input', 'BasicPasswordInput']}>
-  <Demo.BasicPasswordInput
-    isError={true}
-    errorMessage='Error message'
-    isClearable
-    placeholder='Placeholder'
-    leftIcon={<KeyRound />}
-    color='accent'
-  />
+<CodePreview paths={['password-input', 'ErrorPasswordInputWithLeftIconAccent']}>
+  <Demo.ErrorPasswordInputWithLeftIconAccent />
 </CodePreview>
-<CodePreview paths={['password-input', 'BasicPasswordInput']}>
-  <Demo.BasicPasswordInput disabled isClearable placeholder='Placeholder' color='accent' />
+<CodePreview paths={['password-input', 'DisabledClearablePasswordInputAccent']}>
+  <Demo.DisabledClearablePasswordInputAccent />
 </CodePreview>
-<CodePreview paths={['password-input', 'BasicPasswordInput']}>
-  <Demo.BasicPasswordInput
-    disabled
-    isClearable
-    value='This is disabled password'
-    placeholder='Placeholder'
-    leftIcon={<KeyRound />}
-    defaultHidden={false}
-  />
-</CodePreview>
-<CodePreview paths={['password-input', 'BasicPasswordInput']}>
-  <Demo.BasicPasswordInput
-    readOnly
-    isClearable
-    value='This is read only password'
-    placeholder='Placeholder'
-    defaultHidden={false}
-  />
-</CodePreview>
-<CodePreview paths={['password-input', 'BasicPasswordInput']}>
-  <Demo.BasicPasswordInput
-    readOnly
-    isClearable
-    value='This is read only password'
-    placeholder='Placeholder'
-    leftIcon={<KeyRound />}
-  />
+<CodePreview paths={['password-input', 'DisabledClearablePasswordInputWithLeftIconDefaultShown']}>
+  <Demo.DisabledClearablePasswordInputWithLeftIconDefaultShown />
 </CodePreview>
 
 ## Floating label
 
-<CodePreview paths={['password-input', 'BasicPasswordInput']}>
-  <Demo.BasicPasswordInput isClearable floatingLabel='Floating Label' placeholder='Placeholder' />
+<CodePreview paths={['password-input', 'BasicPasswordInputFloatingLabel']}>
+  <Demo.BasicPasswordInputFloatingLabel />
 </CodePreview>
-<CodePreview paths={['password-input', 'BasicPasswordInput']}>
-  <Demo.BasicPasswordInput
-    isClearable
-    floatingLabel='Floating Label'
-    placeholder='Placeholder'
-    leftIcon={<KeyRound />}
-  />
+<CodePreview paths={['password-input', 'BasicPasswordInputWithLeftIconFloatingLabel']}>
+  <Demo.BasicPasswordInputWithLeftIconFloatingLabel />
 </CodePreview>
-<CodePreview paths={['password-input', 'BasicPasswordInput']}>
-  <Demo.BasicPasswordInput
-    isClearable
-    isError={true}
-    errorMessage='Error message'
-    floatingLabel='Floating Label'
-    placeholder='Placeholder'
-  />
+<CodePreview paths={['password-input', 'ErrorPasswordInputFloatingLabel']}>
+  <Demo.ErrorPasswordInputFloatingLabel />
 </CodePreview>
-<CodePreview paths={['password-input', 'BasicPasswordInput']}>
-  <Demo.BasicPasswordInput
-    isClearable
-    isError={true}
-    errorMessage='Error message'
-    floatingLabel='Floating Label'
-    placeholder='Placeholder'
-    leftIcon={<KeyRound />}
-  />
+<CodePreview paths={['password-input', 'ErrorPasswordInputWithLeftIconAccentFloatingLabel']}>
+  <Demo.ErrorPasswordInputWithLeftIconAccentFloatingLabel />
 </CodePreview>
-<CodePreview paths={['password-input', 'BasicPasswordInput']}>
-  <Demo.BasicPasswordInput
-    isClearable
-    disabled
-    floatingLabel='Floating Label'
-    placeholder='Placeholder'
-    value='Password'
-  />
+<CodePreview paths={['password-input', 'DisabledClearablePasswordInputAccentFloatingLabel']}>
+  <Demo.DisabledClearablePasswordInputAccentFloatingLabel />
 </CodePreview>
-<CodePreview paths={['password-input', 'BasicPasswordInput']}>
-  <Demo.BasicPasswordInput
-    isClearable
-    disabled
-    floatingLabel='Floating Label'
-    placeholder='Placeholder'
-    leftIcon={<KeyRound />}
-  />
-</CodePreview>
-<CodePreview paths={['password-input', 'BasicPasswordInput']}>
-  <Demo.BasicPasswordInput
-    isClearable
-    readOnly
-    floatingLabel='Floating Label'
-    placeholder='Placeholder'
-    value='Password'
-  />
-</CodePreview>
-<CodePreview paths={['password-input', 'BasicPasswordInput']}>
-  <Demo.BasicPasswordInput
-    isClearable
-    readOnly
-    floatingLabel='Floating Label'
-    placeholder='Placeholder'
-    leftIcon={<KeyRound />}
-  />
+<CodePreview paths={['password-input', 'DisabledClearablePasswordInputWithLeftIconDefaultShownFloatingLabel']}>
+  <Demo.DisabledClearablePasswordInputWithLeftIconDefaultShownFloatingLabel />
 </CodePreview>
 
 ## Size Medium
 
-<CodePreview paths={['password-input', 'BasicPasswordInput']}>
-  <Demo.BasicPasswordInput placeholder='Placeholder' inputSize='md' />
+<CodePreview paths={['password-input', 'BasicPasswordInputMedium']}>
+  <Demo.BasicPasswordInputMedium />
 </CodePreview>
-<CodePreview paths={['password-input', 'BasicPasswordInput']}>
-  <Demo.BasicPasswordInput placeholder='Placeholder' leftIcon={<KeyRound />} inputSize='md' />
+<CodePreview paths={['password-input', 'BasicPasswordInputWithLeftIconMedium']}>
+  <Demo.BasicPasswordInputWithLeftIconMedium />
 </CodePreview>
-<CodePreview paths={['password-input', 'BasicPasswordInput']}>
-  <Demo.BasicPasswordInput isClearable placeholder='Placeholder' inputSize='md' />
+<CodePreview paths={['password-input', 'ClearablePasswordInputMedium']}>
+  <Demo.ClearablePasswordInputMedium />
 </CodePreview>
-<CodePreview paths={['password-input', 'BasicPasswordInput']}>
-  <Demo.BasicPasswordInput isClearable placeholder='Placeholder' leftIcon={<KeyRound />} inputSize='md' />
+<CodePreview paths={['password-input', 'ClearablePasswordInputWithLeftIconAccentMedium']}>
+  <Demo.ClearablePasswordInputWithLeftIconAccentMedium />
 </CodePreview>
-<CodePreview paths={['password-input', 'BasicPasswordInput']}>
-  <Demo.BasicPasswordInput
-    isError={true}
-    errorMessage='Error message'
-    isClearable
-    placeholder='Placeholder'
-    inputSize='md'
-  />
+<CodePreview paths={['password-input', 'ErrorPasswordInputMedium']}>
+  <Demo.ErrorPasswordInputMedium />
 </CodePreview>
-<CodePreview paths={['password-input', 'BasicPasswordInput']}>
-  <Demo.BasicPasswordInput
-    isError={true}
-    errorMessage='Error message'
-    isClearable
-    placeholder='Placeholder'
-    leftIcon={<KeyRound />}
-    inputSize='md'
-  />
+<CodePreview paths={['password-input', 'ErrorPasswordInputWithLeftIconAccentMedium']}>
+  <Demo.ErrorPasswordInputWithLeftIconAccentMedium />
 </CodePreview>
-<CodePreview paths={['password-input', 'BasicPasswordInput']}>
-  <Demo.BasicPasswordInput disabled isClearable placeholder='Placeholder' inputSize='md' />
+<CodePreview paths={['password-input', 'DisabledClearablePasswordInputAccentMedium']}>
+  <Demo.DisabledClearablePasswordInputAccentMedium />
 </CodePreview>
-<CodePreview paths={['password-input', 'BasicPasswordInput']}>
-  <Demo.BasicPasswordInput
-    disabled
-    isClearable
-    value='This is disabled password'
-    placeholder='Placeholder'
-    leftIcon={<KeyRound />}
-    inputSize='md'
-  />
-</CodePreview>
-<CodePreview paths={['password-input', 'BasicPasswordInput']}>
-  <Demo.BasicPasswordInput
-    readOnly
-    isClearable
-    value='This is read only password'
-    placeholder='Placeholder'
-    inputSize='md'
-  />
-</CodePreview>
-<CodePreview paths={['password-input', 'BasicPasswordInput']}>
-  <Demo.BasicPasswordInput
-    readOnly
-    isClearable
-    value='This is read only password'
-    placeholder='Placeholder'
-    leftIcon={<KeyRound />}
-    inputSize='md'
-  />
+<CodePreview paths={['password-input', 'DisabledClearablePasswordInputWithLeftIconDefaultShownMedium']}>
+  <Demo.DisabledClearablePasswordInputWithLeftIconDefaultShownMedium />
 </CodePreview>
 
 ## Alternative
 
 <div className="bg-[var(--background-alternative)] p-4 rounded-md flex flex-col gap-4">
 
-<CodePreview paths={['password-input', 'BasicPasswordInput']}>
-  <Demo.BasicPasswordInput placeholder='Placeholder' theme='alternative' />
+<CodePreview paths={['password-input', 'BasicPasswordInputAlternative']}>
+  <Demo.BasicPasswordInputAlternative />
 </CodePreview>
-<CodePreview paths={['password-input', 'BasicPasswordInput']}>
-  <Demo.BasicPasswordInput placeholder='Placeholder' leftIcon={<KeyRound />} theme='alternative' />
+<CodePreview paths={['password-input', 'BasicPasswordInputWithLeftIconAlternative']}>
+  <Demo.BasicPasswordInputWithLeftIconAlternative />
 </CodePreview>
 
 ## Clearable
 
-<CodePreview paths={['password-input', 'BasicPasswordInput']}>
-  <Demo.BasicPasswordInput isClearable placeholder='Placeholder' theme='alternative' />
+<CodePreview paths={['password-input', 'ClearablePasswordInputAlternative']}>
+  <Demo.ClearablePasswordInputAlternative />
 </CodePreview>
-<CodePreview paths={['password-input', 'BasicPasswordInput']}>
-  <Demo.BasicPasswordInput
-    isClearable
-    placeholder='Placeholder'
-    leftIcon={<KeyRound />}
-    color='accent'
-    theme='alternative'
-  />
+<CodePreview paths={['password-input', 'ClearablePasswordInputWithLeftIconAccentAlternative']}>
+  <Demo.ClearablePasswordInputWithLeftIconAccentAlternative />
 </CodePreview>
 
 ## States
 
-<CodePreview paths={['password-input', 'BasicPasswordInput']}>
-  <Demo.BasicPasswordInput
-    isError={true}
-    errorMessage='Error message'
-    isClearable
-    placeholder='Placeholder'
-    theme='alternative'
-  />
+<CodePreview paths={['password-input', 'ErrorPasswordInputAlternative']}>
+  <Demo.ErrorPasswordInputAlternative />
 </CodePreview>
-<CodePreview paths={['password-input', 'BasicPasswordInput']}>
-  <Demo.BasicPasswordInput
-    isError={true}
-    errorMessage='Error message'
-    isClearable
-    placeholder='Placeholder'
-    leftIcon={<KeyRound />}
-    color='accent'
-    theme='alternative'
-  />
+<CodePreview paths={['password-input', 'ErrorPasswordInputWithLeftIconAccentAlternative']}>
+  <Demo.ErrorPasswordInputWithLeftIconAccentAlternative />
 </CodePreview>
-<CodePreview paths={['password-input', 'BasicPasswordInput']}>
-  <Demo.BasicPasswordInput disabled isClearable placeholder='Placeholder' color='accent' theme='alternative' />
+<CodePreview paths={['password-input', 'DisabledClearablePasswordInputAccentAlternative']}>
+  <Demo.DisabledClearablePasswordInputAccentAlternative />
 </CodePreview>
-<CodePreview paths={['password-input', 'BasicPasswordInput']}>
-  <Demo.BasicPasswordInput
-    disabled
-    isClearable
-    value='This is disabled password'
-    placeholder='Placeholder'
+<CodePreview paths={['password-input', 'DisabledClearablePasswordInputWithLeftIconDefaultShownAlternative']}>
+  <Demo.DisabledClearablePasswordInputWithLeftIconDefaultShownAlternative />
+</CodePreview>
+<CodePreview paths={['password-input', 'DisabledClearablePasswordInputWithLeftIconDefaultShownAlternative']}>
+  <Demo.DisabledClearablePasswordInputWithLeftIconDefaultShown
     leftIcon={<KeyRound />}
     defaultHidden={false}
     theme='alternative'
   />
 </CodePreview>
-<CodePreview paths={['password-input', 'BasicPasswordInput']}>
-  <Demo.BasicPasswordInput
-    readOnly
-    isClearable
-    value='This is read only password'
-    placeholder='Placeholder'
-    defaultHidden={false}
-    theme='alternative'
-  />
-</CodePreview>
-<CodePreview paths={['password-input', 'BasicPasswordInput']}>
-  <Demo.BasicPasswordInput
-    readOnly
-    isClearable
-    value='This is read only password'
-    placeholder='Placeholder'
+<CodePreview paths={['password-input', 'DisabledClearablePasswordInputWithLeftIconDefaultShownAlternative']}>
+  <Demo.DisabledClearablePasswordInputWithLeftIconDefaultShown
     leftIcon={<KeyRound />}
+    defaultHidden={false}
     theme='alternative'
   />
 </CodePreview>
 
 ## Floating label
 
-<CodePreview paths={['password-input', 'BasicPasswordInput']}>
-  <Demo.BasicPasswordInput isClearable floatingLabel='Floating Label' placeholder='Placeholder' theme='alternative' />
+<CodePreview paths={['password-input', 'BasicPasswordInputAlternativeFloatingLabel']}>
+  <Demo.BasicPasswordInputAlternativeFloatingLabel />
 </CodePreview>
-<CodePreview paths={['password-input', 'BasicPasswordInput']}>
-  <Demo.BasicPasswordInput
-    isClearable
-    floatingLabel='Floating Label'
-    placeholder='Placeholder'
-    leftIcon={<KeyRound />}
-    theme='alternative'
-  />
+<CodePreview paths={['password-input', 'BasicPasswordInputWithLeftIconAlternativeFloatingLabel']}>
+  <Demo.BasicPasswordInputWithLeftIconAlternativeFloatingLabel />
 </CodePreview>
-<CodePreview paths={['password-input', 'BasicPasswordInput']}>
-  <Demo.BasicPasswordInput
-    isClearable
-    isError={true}
-    errorMessage='Error message'
-    floatingLabel='Floating Label'
-    placeholder='Placeholder'
-    theme='alternative'
-  />
+<CodePreview paths={['password-input', 'ErrorPasswordInputAlternativeFloatingLabel']}>
+  <Demo.ErrorPasswordInputAlternativeFloatingLabel />
 </CodePreview>
-<CodePreview paths={['password-input', 'BasicPasswordInput']}>
-  <Demo.BasicPasswordInput
-    isClearable
-    isError={true}
-    errorMessage='Error message'
-    floatingLabel='Floating Label'
-    placeholder='Placeholder'
-    leftIcon={<KeyRound />}
-    theme='alternative'
-  />
+<CodePreview paths={['password-input', 'ErrorPasswordInputWithLeftIconAccentAlternativeFloatingLabel']}>
+  <Demo.ErrorPasswordInputWithLeftIconAccentAlternativeFloatingLabel />
 </CodePreview>
-<CodePreview paths={['password-input', 'BasicPasswordInput']}>
-  <Demo.BasicPasswordInput
-    isClearable
-    disabled
-    floatingLabel='Floating Label'
-    placeholder='Placeholder'
-    value='Password'
-    theme='alternative'
-  />
+<CodePreview paths={['password-input', 'DisabledClearablePasswordInputAccentAlternativeFloatingLabel']}>
+  <Demo.DisabledClearablePasswordInputAccentAlternativeFloatingLabel />
 </CodePreview>
-<CodePreview paths={['password-input', 'BasicPasswordInput']}>
-  <Demo.BasicPasswordInput
-    isClearable
-    disabled
-    floatingLabel='Floating Label'
-    placeholder='Placeholder'
-    leftIcon={<KeyRound />}
-    theme='alternative'
-  />
-</CodePreview>
-<CodePreview paths={['password-input', 'BasicPasswordInput']}>
-  <Demo.BasicPasswordInput
-    isClearable
-    readOnly
-    floatingLabel='Floating Label'
-    placeholder='Placeholder'
-    value='Password'
-    theme='alternative'
-  />
-</CodePreview>
-<CodePreview paths={['password-input', 'BasicPasswordInput']}>
-  <Demo.BasicPasswordInput
-    isClearable
-    readOnly
-    floatingLabel='Floating Label'
-    placeholder='Placeholder'
-    leftIcon={<KeyRound />}
-    theme='alternative'
-  />
+<CodePreview
+  paths={['password-input', 'DisabledClearablePasswordInputWithLeftIconDefaultShownAlternativeFloatingLabel']}
+>
+  <Demo.DisabledClearablePasswordInputWithLeftIconDefaultShownAlternativeFloatingLabel />
 </CodePreview>
 
 </div>

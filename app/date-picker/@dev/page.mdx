@@ -5,56 +5,44 @@ import CodePreview from '@components/showcase/CodePreview';
 
 ### Neutral
 
-<CodePreview paths={['date-picker', 'DatePicker']}>
-  <Demo.DatePicker locale='vn' placeholder='Chọn ngày' />
+<CodePreview paths={['date-picker', 'DatePickerLocaleVnPlaceholderChonNgay']}>
+  <Demo.DatePickerLocaleVnPlaceholderChonNgay />
 </CodePreview>
 
 ### Accent
 
-<CodePreview paths={['date-picker', 'DatePicker']}>
-  <Demo.DatePicker color='accent' />
+<CodePreview paths={['date-picker', 'DatePickerColorAccent']}>
+  <Demo.DatePickerColorAccent />
 </CodePreview>
 
 ### Readonly
 
-<CodePreview paths={['date-picker', 'DatePicker']}>
-  <Demo.DatePicker readOnly />
+<CodePreview paths={['date-picker', 'DatePickerReadOnly']}>
+  <Demo.DatePickerReadOnly />
 </CodePreview>
 
 ### Disabled
 
-<CodePreview paths={['date-picker', 'DatePicker']}>
-  <Demo.DatePicker disabled />
+<CodePreview paths={['date-picker', 'DatePickerDisabled']}>
+  <Demo.DatePickerDisabled />
 </CodePreview>
 
 ## Options
 
-<CodePreview paths={['date-picker', 'DatePickerWithOptions']}>
-  <Demo.DatePickerWithOptions
-    placeholder='Chọn ngày'
-    locale='vn'
-    options={{ defaultDate: ['22/02/2025', '28/02/2025'], mode: 'range' }}
-  />
+<CodePreview paths={['date-picker', 'DatePickerWithOptionsPlaceholderLocaleOptionsRange']}>
+  <Demo.DatePickerWithOptionsPlaceholderLocaleOptionsRange />
 </CodePreview>
 
-<CodePreview paths={['date-picker', 'DatePickerWithOptions']}>
-  <Demo.DatePickerWithOptions options={{ defaultDate: ['25/02/2025'], showMonths: 2 }} />
+<CodePreview paths={['date-picker', 'DatePickerWithOptionsOptionsShowMonths2']}>
+  <Demo.DatePickerWithOptionsOptionsShowMonths2 />
 </CodePreview>
 
-<CodePreview paths={['date-picker', 'DatePicker']}>
-  <Demo.DatePicker
-    locale='vn'
-    options={{
-      defaultDate: ['25/02/2025'],
-      enableTime: true,
-      enableSeconds: true,
-      dateFormat: 'G:i K, \\ngà\\y d t\\há\\ng m \\nă\\m Y'
-    }}
-  />
+<CodePreview paths={['date-picker', 'DatePickerLocaleVnOptionsEnableTime']}>
+  <Demo.DatePickerLocaleVnOptionsEnableTime />
 </CodePreview>
 
-<CodePreview paths={['date-picker', 'DatePickerWithOptions']}>
-  <Demo.DatePickerWithOptions isError errorMessage='This is a required field' options={{ allowInput: true }} />
+<CodePreview paths={['date-picker', 'DatePickerWithOptionsIsErrorErrorMessageOptionsAllowInput']}>
+  <Demo.DatePickerWithOptionsIsErrorErrorMessageOptionsAllowInput />
 </CodePreview>
 
 ## Floating label
@@ -63,18 +51,18 @@ import CodePreview from '@components/showcase/CodePreview';
   <Demo.LabelDatePicker />
 </CodePreview>
 
-<CodePreview paths={['date-picker', 'LabelDatePicker']}>
-  <Demo.LabelDatePicker sideIcon='left' isError errorMessage='This is a required field' />
+<CodePreview paths={['date-picker', 'LabelDatePickerSideIconLeftIsErrorErrorMessage']}>
+  <Demo.LabelDatePickerSideIconLeftIsErrorErrorMessage />
 </CodePreview>
 
 ## Sizes
 
-<CodePreview paths={['date-picker', 'DatePicker']}>
-  <Demo.DatePicker color='accent' sideIcon='left' />
+<CodePreview paths={['date-picker', 'DatePickerColorAccentSideIconLeft']}>
+  <Demo.DatePickerColorAccentSideIconLeft />
 </CodePreview>
 
-<CodePreview paths={['date-picker', 'DatePicker']}>
-  <Demo.DatePicker color='accent' sideIcon='left' inputSize='sm' />
+<CodePreview paths={['date-picker', 'DatePickerColorAccentSideIconLeftInputSizeSm']}>
+  <Demo.DatePickerColorAccentSideIconLeftInputSizeSm />
 </CodePreview>
 
 ## Controlled
@@ -97,97 +85,60 @@ import CodePreview from '@components/showcase/CodePreview';
 
 ### Neutral
 
-<CodePreview paths={['date-picker', 'DatePicker']}>
-  <Demo.DatePicker locale='vn' placeholder='Chọn ngày' theme='alternative' />
+<CodePreview paths={['date-picker', 'DatePickerLocaleVnPlaceholderChonNgayAlternative']}>
+  <Demo.DatePickerLocaleVnPlaceholderChonNgayAlternative />
 </CodePreview>
 
 ### Accent
 
-<CodePreview paths={['date-picker', 'DatePicker']}>
-  <Demo.DatePicker color='accent' theme='alternative' />
+<CodePreview paths={['date-picker', 'DatePickerColorAccentThemeAlternative']}>
+  <Demo.DatePickerColorAccentThemeAlternative />
 </CodePreview>
 
 ### Readonly
 
-<CodePreview paths={['date-picker', 'DatePicker']}>
-  <Demo.DatePicker readOnly theme='alternative' />
+<CodePreview paths={['date-picker', 'DatePickerReadOnlyThemeAlternative']}>
+  <Demo.DatePickerReadOnlyThemeAlternative />
 </CodePreview>
 
 ### Disabled
 
-<CodePreview paths={['date-picker', 'DatePicker']}>
-  <Demo.DatePicker disabled theme='alternative' />
+<CodePreview paths={['date-picker', 'DatePickerDisabledThemeAlternative']}>
+  <Demo.DatePickerDisabledThemeAlternative />
 </CodePreview>
 
 ## Options
 
-<CodePreview paths={['date-picker', 'DatePickerWithOptions']}>
-  <Demo.DatePickerWithOptions
-    placeholder='Chọn ngày'
-    locale='vn'
-    options={{ defaultDate: ['22/02/2025', '28/02/2025'], mode: 'range' }}
-    theme='alternative'
-  />
+<CodePreview paths={['date-picker', 'DatePickerWithOptionsPlaceholderLocaleOptionsRangeAlternative']}>
+  <Demo.DatePickerWithOptionsPlaceholderLocaleOptionsRangeAlternative />
 </CodePreview>
 
-<CodePreview paths={['date-picker', 'DatePickerWithOptions']}>
-  <Demo.DatePickerWithOptions options={{ defaultDate: ['25/02/2025'], showMonths: 2 }} theme='alternative' />
+<CodePreview paths={['date-picker', 'DatePickerWithOptionsOptionsShowMonths2Alternative']}>
+  <Demo.DatePickerWithOptionsOptionsShowMonths2Alternative />
 </CodePreview>
 
-<CodePreview paths={['date-picker', 'DatePicker']}>
-  <Demo.DatePicker
-    locale='vn'
-    options={{
-      defaultDate: ['25/02/2025'],
-      enableTime: true,
-      enableSeconds: true,
-      dateFormat: 'G:i K, \\ngà\\y d t\\há\\ng m \\nă\\m Y'
-    }}
-    theme='alternative'
-  />
+<CodePreview paths={['date-picker', 'DatePickerLocaleVnOptionsEnableTimeAlternative']}>
+  <Demo.DatePickerLocaleVnOptionsEnableTimeAlternative />
 </CodePreview>
 
-<CodePreview paths={['date-picker', 'DatePickerWithOptions']}>
-  <Demo.DatePickerWithOptions
-    isError
-    errorMessage='This is a required field'
-    options={{ allowInput: true }}
-    theme='alternative'
-  />
+<CodePreview paths={['date-picker', 'DatePickerWithOptionsIsErrorErrorMessageOptionsAllowInputAlternative']}>
+  <Demo.DatePickerWithOptionsIsErrorErrorMessageOptionsAllowInputAlternative />
 </CodePreview>
 
 ## Floating label
 
-<CodePreview paths={['date-picker', 'LabelDatePicker']}>
-  <Demo.LabelDatePicker theme='alternative' />
-</CodePreview>
-
-<CodePreview paths={['date-picker', 'LabelDatePicker']}>
-  <Demo.LabelDatePicker sideIcon='left' isError errorMessage='This is a required field' theme='alternative' />
+<CodePreview paths={['date-picker', 'LabelDatePickerSideIconLeftIsErrorErrorMessageAlternative']}>
+  <Demo.LabelDatePickerSideIconLeftIsErrorErrorMessageAlternative />
 </CodePreview>
 
 ## Sizes
 
-<CodePreview paths={['date-picker', 'DatePicker']}>
-  <Demo.DatePicker color='accent' sideIcon='left' theme='alternative' />
+<CodePreview paths={['date-picker', 'DatePickerColorAccentSideIconLeftThemeAlternative']}>
+  <Demo.DatePickerColorAccentSideIconLeftThemeAlternative />
 </CodePreview>
 
-<CodePreview paths={['date-picker', 'DatePicker']}>
-  <Demo.DatePicker color='accent' sideIcon='left' inputSize='sm' theme='alternative' />
-</CodePreview>
-
-## Controlled
-
-### With enable time
-
-<CodePreview paths={['date-picker', 'ControlledDatePicker']}>
-  <Demo.ControlledDatePicker theme='alternative' />
-</CodePreview>
-
-### With select
-
-<CodePreview paths={['date-picker', 'SelectDatePicker']}>
-  <Demo.SelectDatePicker theme='alternative' />
+<CodePreview paths={['date-picker', 'DatePickerColorAccentSideIconLeftInputSizeSmThemeAlternative']}>
+  <Demo.DatePickerColorAccentSideIconLeftInputSizeSmThemeAlternative />
 </CodePreview>
 
 </div>

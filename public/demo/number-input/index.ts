@@ -1,1 +1,11 @@
 export { NumberInput } from './NumberInputDemo';
+export { NumberInputMinMaxAuto } from './NumberInputMinMaxAuto';
+export { NumberInputMinMaxSeparate } from './NumberInputMinMaxSeparate';
+export { NumberInputLeftIconChevron } from './NumberInputLeftIconChevron';
+export { NumberInputUnitArray } from './NumberInputUnitArray';
+export { NumberInputClearable } from './NumberInputClearable';
+export { NumberInputClearableMinMaxAuto } from './NumberInputClearableMinMaxAuto';
+export { NumberInputClearableMinMaxSeparate } from './NumberInputClearableMinMaxSeparate';
+export { NumberInputClearableLeftIconChevron } from './NumberInputClearableLeftIconChevron';
+export { NumberInputClearableLeftIcon } from './NumberInputClearableLeftIcon';
+export { NumberInputClearableUnitArray } from './NumberInputClearableUnitArray';

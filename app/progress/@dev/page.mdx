@@ -3,65 +3,93 @@ import CodePreview from '@components/showcase/CodePreview';
 
 ## Bar progress
 
-<CodePreview paths={['progress', 'BasicProgress']}>
-  <Demo.BasicProgress value={20} />
-  <Demo.BasicProgress value={25} title='Title' helperText='Helper text' />
+<CodePreview paths={['progress', 'BasicProgress20']}>
+  <Demo.BasicProgress20 />
+</CodePreview>
+<CodePreview paths={['progress', 'BasicProgress25TitleHelper']}>
+  <Demo.BasicProgress25TitleHelper />
 </CodePreview>
 
 ## Circle progress
 
-<CodePreview paths={['progress', 'BasicProgress']}>
-  <Demo.BasicProgress value={27} kind='circle' />
-  <Demo.BasicProgress value={82} title='Title' helperText='Helper text' kind='circle' />
+<CodePreview paths={['progress', 'BasicProgress27Circle']}>
+  <Demo.BasicProgress27Circle />
+</CodePreview>
+<CodePreview paths={['progress', 'BasicProgress82TitleHelperCircle']}>
+  <Demo.BasicProgress82TitleHelperCircle />
 </CodePreview>
 
 ## Color
 
-<CodePreview paths={["progress", "BasicProgress"]}>
-  <Demo.BasicProgress value={25} title="Title" helperText="Helper text"/>
-  <Demo.BasicProgress value={82} title="Title" helperText="Helper text" kind="circle"/>
-
-  <Demo.BasicProgress value={25} title="Title" helperText="Helper text" color="accent"/>
-  <Demo.BasicProgress value={82} title="Title" helperText="Helper text" kind="circle" color="accent"/>
+<CodePreview paths={['progress', 'BasicProgress25TitleHelper']}>
+  <Demo.BasicProgress25TitleHelper />
+</CodePreview>
+<CodePreview paths={['progress', 'BasicProgress82TitleHelperCircle']}>
+  <Demo.BasicProgress82TitleHelperCircle />
+</CodePreview>
+<CodePreview paths={['progress', 'BasicProgress25TitleHelperAccent']}>
+  <Demo.BasicProgress25TitleHelperAccent />
+</CodePreview>
+<CodePreview paths={['progress', 'BasicProgress82TitleHelperCircleAccent']}>
+  <Demo.BasicProgress82TitleHelperCircleAccent />
 </CodePreview>
 
 ## State
 
-<CodePreview paths={["progress", "BasicProgress"]}>
-  <Demo.BasicProgress value={25} helperText="Helper text"/>
-  <Demo.BasicProgress value={82} helperText="Helper text" kind="circle"/>
-
-{' '}
-<Demo.BasicProgress value={25} title='Title' helperText='Helper text' state='success' />
-<Demo.BasicProgress value={82} title='Title' helperText='Helper text' kind='circle' state='success' />
-
-  <Demo.BasicProgress value={25} title="Title" helperText="Helper text" state="error"/>
-  <Demo.BasicProgress value={82} title="Title" helperText="Helper text" kind="circle" state="error"/>
+<CodePreview paths={['progress', 'BasicProgress25Helper']}>
+  <Demo.BasicProgress25Helper />
+</CodePreview>
+<CodePreview paths={['progress', 'BasicProgress82HelperCircle']}>
+  <Demo.BasicProgress82HelperCircle />
+</CodePreview>
+<CodePreview paths={['progress', 'BasicProgress25TitleHelperSuccess']}>
+  <Demo.BasicProgress25TitleHelperSuccess />
+</CodePreview>
+<CodePreview paths={['progress', 'BasicProgress82TitleHelperCircleSuccess']}>
+  <Demo.BasicProgress82TitleHelperCircleSuccess />
+</CodePreview>
+<CodePreview paths={['progress', 'BasicProgress25TitleHelperError']}>
+  <Demo.BasicProgress25TitleHelperError />
+</CodePreview>
+<CodePreview paths={['progress', 'BasicProgress82TitleHelperCircleError']}>
+  <Demo.BasicProgress82TitleHelperCircleError />
 </CodePreview>
 
 ## Numeral
 
-<CodePreview paths={['progress', 'BasicProgress']}>
-  <Demo.BasicProgress value={25} title='Title' helperText='Helper text' numeral />
-  <Demo.BasicProgress value={25} title='Title' helperText='Helper text' numeral color='accent' />
-  <Demo.BasicProgress value={25} title='Title' helperText='Helper text' state='success' numeral />
-  <Demo.BasicProgress value={25} title='Title' helperText='Helper text' state='error' numeral />
+<CodePreview paths={['progress', 'BasicProgress25TitleHelperNumeral']}>
+  <Demo.BasicProgress25TitleHelperNumeral />
+</CodePreview>
+<CodePreview paths={['progress', 'BasicProgress25TitleHelperNumeralAccent']}>
+  <Demo.BasicProgress25TitleHelperNumeralAccent />
+</CodePreview>
+<CodePreview paths={['progress', 'BasicProgress25TitleHelperNumeralSuccess']}>
+  <Demo.BasicProgress25TitleHelperNumeralSuccess />
+</CodePreview>
+<CodePreview paths={['progress', 'BasicProgress25TitleHelperNumeralError']}>
+  <Demo.BasicProgress25TitleHelperNumeralError />
 </CodePreview>
 
 ## Size
 
-<CodePreview paths={['progress', 'BasicProgress']}>
-  <Demo.BasicProgress value={82} helperText='Helper text' kind='circle' size='sm' color='accent' />
-  <Demo.BasicProgress value={82} helperText='Helper text' kind='circle' size='md' color='accent' />
+<CodePreview paths={['progress', 'BasicProgress82HelperCircleSmAccent']}>
+  <Demo.BasicProgress82HelperCircleSmAccent />
+</CodePreview>
+<CodePreview paths={['progress', 'BasicProgress82HelperCircleMdAccent']}>
+  <Demo.BasicProgress82HelperCircleMdAccent />
 </CodePreview>
 
 ## Demo
 
 <CodePreview paths={['progress', 'SuccessProgress']}>
   <Demo.SuccessProgress />
+</CodePreview>
+<CodePreview paths={['progress', 'SuccessProgress']}>
   <Demo.SuccessProgress kind='circle' />
 </CodePreview>
 <CodePreview paths={['progress', 'ErrorProgress']}>
   <Demo.ErrorProgress />
+</CodePreview>
+<CodePreview paths={['progress', 'ErrorProgress']}>
   <Demo.ErrorProgress kind='circle' />
 </CodePreview>

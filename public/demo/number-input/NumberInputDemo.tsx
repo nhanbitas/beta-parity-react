@@ -7,7 +7,7 @@ export const NumberInput = (props: any) => {
   const [value, setValue] = React.useState((props.value as number) ?? 0);
   const [unit, setUnit] = React.useState('USD');
   const handleChange = (values: any) => {
-    setValue(values.floatValue);
+    setValue(typeof values?.floatValue === 'number' ? values.floatValue : 0);
     console.log(values);
   };
 

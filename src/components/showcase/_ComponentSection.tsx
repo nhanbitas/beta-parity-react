@@ -9,18 +9,23 @@ import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 interface Props {
   children?: any;
+  theme?: 'default' | 'alternative';
   rawText?: string;
   paths?: [string, string];
 }
 
-const ComponentSection = ({ children, rawText, paths }: Props) => {
+const ComponentSection = ({ children, rawText, paths, theme }: Props) => {
   const handleCopy = () => {
     navigator.clipboard.writeText(rawText || 'undefined');
     alert('Copied to clipboard!');
   };
 
+  const isAlternative = theme === 'alternative';
+
   return (
-    <section className='component-section not-prose pt-1/2 min-h-48 w-full rounded-lg border border-gray-200/50 bg-[var(--background-alternative)] p-8 shadow-sm'>
+    <section
+      className={`component-section not-prose pt-1/2 min-h-48 w-full rounded-lg border border-gray-200/50 ${isAlternative ? 'bg-[var(--background-alternative)]' : 'bg-transparent'} p-8 shadow-sm`}
+    >
       <div className='w-full'>
         <div className='w-full *:mt-12'>{children}</div>
 

@@ -7,44 +7,38 @@ import CodePreview from '@components/showcase/CodePreview';
 <CodePreview paths={['number-input', 'NumberInputDemo']}>
   <Demo.NumberInput placeholder='Placeholder' />
 </CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput placeholder='Placeholder' min={0} max={1000} stepControl={10} stepper='auto' />
+<CodePreview paths={['number-input', 'NumberInputMinMaxAuto']}>
+  <Demo.NumberInputMinMaxAuto />
 </CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput placeholder='Placeholder' min={0} max={1000} stepControl={10} stepper='separate' />
+<CodePreview paths={['number-input', 'NumberInputMinMaxSeparate']}>
+  <Demo.NumberInputMinMaxSeparate />
 </CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput placeholder='Placeholder' leftIcon={<CircleDollarSign />} stepControl={10} stepper='chevron' />
+<CodePreview paths={['number-input', 'NumberInputLeftIconChevron']}>
+  <Demo.NumberInputLeftIconChevron />
 </CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput placeholder='Placeholder' unit={['USD', 'VND', 'EUR', 'JPY']} />
+<CodePreview paths={['number-input', 'NumberInputUnitArray']}>
+  <Demo.NumberInputUnitArray />
 </CodePreview>
 
 ## Clearable
 
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput isClearable placeholder='Placeholder' />
+<CodePreview paths={['number-input', 'NumberInputClearable']}>
+  <Demo.NumberInputClearable />
 </CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput isClearable placeholder='Placeholder' min={0} max={1000} stepControl={10} stepper='auto' />
+<CodePreview paths={['number-input', 'NumberInputClearableMinMaxAuto']}>
+  <Demo.NumberInputClearableMinMaxAuto />
 </CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput isClearable placeholder='Placeholder' min={0} max={1000} stepControl={10} stepper='separate' />
+<CodePreview paths={['number-input', 'NumberInputClearableMinMaxSeparate']}>
+  <Demo.NumberInputClearableMinMaxSeparate />
 </CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput
-    isClearable
-    placeholder='Placeholder'
-    leftIcon={<CircleDollarSign />}
-    stepControl={10}
-    stepper='chevron'
-  />
+<CodePreview paths={['number-input', 'NumberInputClearableLeftIconChevron']}>
+  <Demo.NumberInputClearableLeftIconChevron />
 </CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput isClearable placeholder='Placeholder' leftIcon={<CircleDollarSign />} />
+<CodePreview paths={['number-input', 'NumberInputClearableLeftIcon']}>
+  <Demo.NumberInputClearableLeftIcon />
 </CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput isClearable placeholder='Placeholder' unit={['USD', 'VND', 'EUR', 'JPY']} />
+<CodePreview paths={['number-input', 'NumberInputClearableUnitArray']}>
+  <Demo.NumberInputClearableUnitArray />
 </CodePreview>
 
 ## States
@@ -239,21 +233,14 @@ import CodePreview from '@components/showcase/CodePreview';
 
 ## Clearable
 
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput isClearable placeholder='Placeholder' theme='alternative' />
+<CodePreview paths={['number-input', 'NumberInputClearable']}>
+  <Demo.NumberInputClearable theme='alternative' />
 </CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput isClearable placeholder='Placeholder' leftIcon={<CircleDollarSign />} theme='alternative' />
+<CodePreview paths={['number-input', 'NumberInputClearableLeftIconChevron']}>
+  <Demo.NumberInputClearableLeftIconChevron theme='alternative' />
 </CodePreview>
-<CodePreview paths={['number-input', 'NumberInputDemo']}>
-  <Demo.NumberInput
-    isClearable
-    placeholder='Placeholder'
-    leftIcon={<CircleDollarSign />}
-    stepControl={10}
-    stepper='chevron'
-    theme='alternative'
-  />
+<CodePreview paths={['number-input', 'NumberInputClearableLeftIcon']}>
+  <Demo.NumberInputClearableLeftIcon theme='alternative' />
 </CodePreview>
 
 ## States

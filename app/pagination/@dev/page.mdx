@@ -6,43 +6,29 @@ import CodePreview from '@components/showcase/CodePreview';
 
 ### Neutral
 
-<CodePreview paths={['pagination', 'BasicPagination']}>
-  <Demo.BasicPagination totalPage={3} />
+<CodePreview paths={['pagination', 'BasicPaginationTotal3']}>
+  <Demo.BasicPaginationTotal3 />
 </CodePreview>
-<CodePreview paths={['pagination', 'BasicPagination']}>
-  <Demo.BasicPagination totalPage={5} bordered />
+<CodePreview paths={['pagination', 'BasicPaginationBordered']}>
+  <Demo.BasicPaginationBordered />
 </CodePreview>
 
 ### Accent
 
-<CodePreview paths={['pagination', 'BasicPagination']}>
-  <Demo.BasicPagination totalPage={5} color='accent' />
+<CodePreview paths={['pagination', 'BasicPaginationAccent']}>
+  <Demo.BasicPaginationAccent />
 </CodePreview>
-<CodePreview paths={['pagination', 'BasicPagination']}>
-  <Demo.BasicPagination totalPage={5} bordered color='accent' />
+<CodePreview paths={['pagination', 'BasicPaginationBorderedAccent']}>
+  <Demo.BasicPaginationBorderedAccent />
 </CodePreview>
 
 ### Controls
 
-<CodePreview paths={['pagination', 'BasicPagination']}>
-  <Demo.BasicPagination
-    totalPage={5}
-    controlConfig={{
-      next: { icon: 'next' },
-      prev: { icon: 'prev' },
-      first: { isActive: false },
-      last: { isActive: false }
-    }}
-  />
+<CodePreview paths={['pagination', 'BasicPaginationControlConfig']}>
+  <Demo.BasicPaginationControlConfig />
 </CodePreview>
-<CodePreview paths={['pagination', 'OnlyControlPagination']}>
-  <Demo.OnlyControlPagination
-    totalPage={10}
-    controlConfig={{
-      first: { isActive: false },
-      last: { isActive: false }
-    }}
-  />
+<CodePreview paths={['pagination', 'OnlyControlPaginationConfig']}>
+  <Demo.OnlyControlPaginationConfig />
 </CodePreview>
 
 ### Pagination component
@@ -56,18 +42,18 @@ import CodePreview from '@components/showcase/CodePreview';
 
 ### Pagination siblings
 
-<CodePreview paths={['pagination', 'BasicPagination']}>
-  <Demo.BasicPagination totalPage={3} />
+<CodePreview paths={['pagination', 'BasicPaginationTotal3']}>
+  <Demo.BasicPaginationTotal3 />
 </CodePreview>
-<CodePreview paths={['pagination', 'BasicPagination']}>
-  <Demo.BasicPagination totalPage={7} siblings={0} />
+<CodePreview paths={['pagination', 'BasicPaginationSiblings0']}>
+  <Demo.BasicPaginationSiblings0 />
 </CodePreview>
-<CodePreview paths={['pagination', 'BasicPagination']}>
-  <Demo.BasicPagination totalPage={10} siblings={1} />
+<CodePreview paths={['pagination', 'BasicPaginationSiblings1']}>
+  <Demo.BasicPaginationSiblings1 />
 </CodePreview>
-<CodePreview paths={['pagination', 'BasicPagination']}>
-  <Demo.BasicPagination totalPage={20} siblings={2} bordered />
+<CodePreview paths={['pagination', 'BasicPaginationSiblings2Bordered']}>
+  <Demo.BasicPaginationSiblings2Bordered />
 </CodePreview>
-<CodePreview paths={['pagination', 'BasicPagination']}>
-  <Demo.BasicPagination totalPage={20} siblings={3} bordered color='accent' />
+<CodePreview paths={['pagination', 'BasicPaginationSiblings3BorderedAccent']}>
+  <Demo.BasicPaginationSiblings3BorderedAccent />
 </CodePreview>
