@@ -62,7 +62,7 @@ export interface SpinnerProps extends React.HTMLAttributes<HTMLSpanElement> {
 /**
  * **Parity Spinner**.
  *
- *  @see {@link http://localhost:3005/spinner Parity Spinner}
+ *  @see {@link https://beta-parity-react.vercel.app/spinner Parity Spinner}
  */
 const Spinner = React.forwardRef<HTMLSpanElement, SpinnerProps>(
   ({ className, variant = 'circular', color = 'neutral', size = 'md', ...props }, ref) => {

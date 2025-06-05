@@ -115,7 +115,7 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
 /**
  * **Parity Input**
  *
- *  @see {@link http://localhost:3005/input Parity Input}
+ *  @see {@link https://beta-parity-react.vercel.app/input Parity Input}
  */
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
   (

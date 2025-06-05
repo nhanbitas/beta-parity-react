@@ -196,7 +196,7 @@ export interface ToastProps extends Omit<React.HTMLAttributes<HTMLDivElement>, '
 /**
  * **Parity Toast**.
  *
- * @see {@link http://localhost:3005/toast Parity Toast}
+ * @see {@link https://beta-parity-react.vercel.app/toast Parity Toast}
  */
 export const Toast: React.FC<ToastProps> = ({
   id,

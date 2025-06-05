@@ -51,7 +51,7 @@ export interface DotProps extends React.HTMLAttributes<HTMLSpanElement> {
 /**
  * **Parity Dot**.
  *
- *  @see {@link http://localhost:3005/dot Parity Dot}
+ *  @see {@link https://beta-parity-react.vercel.app/dot Parity Dot}
  */
 export const Dot = React.forwardRef<HTMLSpanElement, DotProps>(
   ({ className, size = 'md', pulse = false, color, ...props }, ref) => {

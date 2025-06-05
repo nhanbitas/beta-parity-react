@@ -76,7 +76,7 @@ export interface TextareaProps
 /**
  * **Parity Textarea**
 
- *  @see {@link http://localhost:3005/textarea Parity Textarea}
+ *  @see {@link https://beta-parity-react.vercel.app/textarea Parity Textarea}
  */
 export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
   (

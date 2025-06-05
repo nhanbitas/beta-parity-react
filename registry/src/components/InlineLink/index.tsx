@@ -83,7 +83,7 @@ export interface InlineLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorEl
 /**
  * **Parity Inline Link**.
  *
- *  @see {@link http://localhost:3005/inline-link Parity Inline Link}
+ *  @see {@link https://beta-parity-react.vercel.app/inline-link Parity Inline Link}
  */
 export const InlineLink = React.forwardRef<HTMLAnchorElement, InlineLinkProps>(
   (

@@ -140,7 +140,7 @@ export interface ChipProps extends BaseProps {
 /**
  * **Parity Chip** - A chip is a small block of content, such as a label or avatar, that is used to display related information or actions.
  *
- *  @see {@link http://localhost:3005/chip Parity Chip}
+ *  @see {@link https://beta-parity-react.vercel.app/chip Parity Chip}
  */
 export const Chip = React.forwardRef<
   HTMLElement,

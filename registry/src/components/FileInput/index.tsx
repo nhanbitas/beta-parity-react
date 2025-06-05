@@ -41,7 +41,7 @@ export interface FileInputProps extends InputProps {
 /**
  * **File Input**.
  *
- * @see {@link http://localhost:3005/file-input Parity FileInput}
+ * @see {@link https://beta-parity-react.vercel.app/file-input Parity FileInput}
  */
 export const FileInput = React.forwardRef<HTMLInputElement, FileInputProps>(
   (

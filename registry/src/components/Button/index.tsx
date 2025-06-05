@@ -88,7 +88,7 @@ export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
 /**
  * **Parity Button**.
  *
- *  @see {@link http://localhost:3005/button Parity Button}
+ *  @see {@link https://beta-parity-react.vercel.app/button Parity Button}
  */
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (

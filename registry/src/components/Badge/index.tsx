@@ -76,7 +76,7 @@ export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
 /**
  * **Parity Badge**
 
- *  @see {@link http://localhost:3005/badge Parity Badge}
+ *  @see {@link https://beta-parity-react.vercel.app/badge Parity Badge}
  */
 export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
   (

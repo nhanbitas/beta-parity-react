@@ -99,7 +99,7 @@ export interface TagProps extends BaseProps {
 /**
  * **Parity Tag**.
  *
- *  @see {@link http://localhost:3005/tag Parity Tag}
+ *  @see {@link https://beta-parity-react.vercel.app/tag Parity Tag}
  */
 export const Tag = React.forwardRef<HTMLElement, TagProps & Omit<React.AllHTMLAttributes<HTMLElement>, keyof TagProps>>(
   (props, ref: any) => {

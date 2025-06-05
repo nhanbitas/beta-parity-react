@@ -98,7 +98,7 @@ export interface SearchInputProps extends React.ComponentPropsWithoutRef<typeof 
 /**
  * **Parity SearchInput**.
  *
- *  @see {@link http://localhost:3005/search-input Parity SearchInput}
+ *  @see {@link https://beta-parity-react.vercel.app/search-input Parity SearchInput}
  */
 export const SearchInput = React.forwardRef<React.ElementRef<typeof Input>, SearchInputProps>(
   (

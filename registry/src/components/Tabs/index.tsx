@@ -172,7 +172,7 @@ export interface TabsProps extends React.HTMLAttributes<HTMLDivElement> {
 /**
  * **Parity Tabs**.
  *
- *  @see {@link http://localhost:3005/tabs Parity Tabs}
+ *  @see {@link https://beta-parity-react.vercel.app/tabs Parity Tabs}
  */
 export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
   (
@@ -453,7 +453,7 @@ export interface TabButtonProps extends React.ButtonHTMLAttributes<HTMLButtonEle
 /**
  * **Parity TabButton**.
  *
- *  @see {@link http://localhost:3005/tabs Parity TabButton}
+ *  @see {@link https://beta-parity-react.vercel.app/tabs Parity TabButton}
  */
 export const TabButton = React.forwardRef<HTMLButtonElement, TabButtonProps>(
   ({ className, children, amimatedDirection, ...props }, ref) => {
@@ -486,7 +486,7 @@ export interface TabContentProps extends React.HTMLAttributes<HTMLDivElement> {
 /**
  * **Parity TabContent**.
  *
- *  @see {@link http://localhost:3005/tabs Parity TabContent}
+ *  @see {@link https://beta-parity-react.vercel.app/tabs Parity TabContent}
  */
 export const TabContent = React.forwardRef<HTMLDivElement, TabContentProps>(
   ({ className, children, ...props }, ref) => {

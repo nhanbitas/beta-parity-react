@@ -63,7 +63,7 @@ export interface BreadcrumbProps extends React.HTMLAttributes<HTMLUListElement> 
 /**
  * **Parity Breadcrumb**.
  *
- *  @see {@link http://localhost:3005/breadcrumb Parity Breadcrumb}
+ *  @see {@link https://beta-parity-react.vercel.app/breadcrumb Parity Breadcrumb}
  */
 
 export const Breadcrumb = React.forwardRef<
@@ -151,7 +151,7 @@ export interface BreadcrumbItemProps extends InlineLinkProps {
 /**
  * **Parity BreadcrumbItem**.
  *
- *  @see {@link http://localhost:3005/breadcrumb Parity BreadcrumbItem}
+ *  @see {@link https://beta-parity-react.vercel.app/breadcrumb Parity BreadcrumbItem}
  */
 export const BreadcrumbItem = React.forwardRef<HTMLAnchorElement, BreadcrumbItemProps>(
   ({ children, isMenuItem = false, ...props }, ref) => {
@@ -192,7 +192,7 @@ export interface BreadcrumbMenuProps extends React.HTMLAttributes<HTMLButtonElem
 /**
  * **Parity BreadcrumbMenu**.
  *
- *  @see {@link http://localhost:3005/breadcrumb Parity BreadcrumbMenu}
+ *  @see {@link https://beta-parity-react.vercel.app/breadcrumb Parity BreadcrumbMenu}
  */
 export const BreadcrumbMenu = React.forwardRef<HTMLButtonElement, BreadcrumbMenuProps>(
   ({ className, items, menuProps, ...props }, ref) => {

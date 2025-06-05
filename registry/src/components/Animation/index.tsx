@@ -136,7 +136,7 @@ export interface AnimationProps {
  *   <div>Your animated content here</div>
  * </Animation>
  *
- * @see {@link http://localhost:3005/animation Animation Documentation}
+ * @see {@link https://beta-parity-react.vercel.app/animation Animation Documentation}
  */
 export const Animation: React.FC<AnimationProps> = ({
   children,

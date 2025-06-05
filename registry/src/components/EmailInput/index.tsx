@@ -61,7 +61,7 @@ export interface EmailInputProps extends React.ComponentPropsWithoutRef<typeof I
 /**
  * **Parity EmailInput**.
  *
- *  @see {@link http://localhost:3005/email-input Parity EmailInput}
+ *  @see {@link https://beta-parity-react.vercel.app/email-input Parity EmailInput}
  */
 export const EmailInput = React.forwardRef<React.ElementRef<typeof Input>, EmailInputProps>(
   ({ type = 'email', domain, domainValue, ActionBtn, onDomainChange, ...props }, ref) => {

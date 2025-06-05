@@ -88,7 +88,7 @@ export interface NumberInputProps extends Omit<InputProps, 'onChange'> {
 /**
  * **Parity NumberInput**.
  *
- *  @see {@link http://localhost:3005/number-input Parity NumberInput}
+ *  @see {@link https://beta-parity-react.vercel.app/number-input Parity NumberInput}
  */
 export const NumberInput = React.forwardRef<HTMLInputElement, NumberInputProps & NumericFormatProps>(
   (

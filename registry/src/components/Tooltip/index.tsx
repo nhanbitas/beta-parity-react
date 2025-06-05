@@ -110,7 +110,7 @@ export interface TooltipProps {
 /**
  * **Parity Tooltip**.
  *
- *  @see {@link http://localhost:3005/tooltip Parity Tooltip}
+ *  @see {@link https://beta-parity-react.vercel.app/tooltip Parity Tooltip}
  */
 export const Tooltip = ({
   children,

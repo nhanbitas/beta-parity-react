@@ -139,7 +139,7 @@ export interface AvatarProps extends React.HTMLAttributes<HTMLDivElement> {
 /**
  * **Parity Avatar**.
  *
- * @see {@link http://localhost:3005/avatar Parity Avatar}
+ * @see {@link https://beta-parity-react.vercel.app/avatar Parity Avatar}
  */
 export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(
   (
@@ -336,7 +336,7 @@ export interface AvatarGroupProps extends React.HTMLAttributes<HTMLDivElement> {
 /**
  * **Parity AvatarGroup**.
  *
- * @see {@link http://localhost:3005/avatar Parity AvatarGroup}
+ * @see {@link https://beta-parity-react.vercel.app/avatar Parity AvatarGroup}
  */
 export const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
   (
@@ -432,7 +432,7 @@ export interface AvatarTriggerProps extends AvatarProps {
 /**
  * **Parity AvatarTrigger**.
  *
- * @see {@link http://localhost:3005/avatar Parity AvatarTrigger}
+ * @see {@link https://beta-parity-react.vercel.app/avatar Parity AvatarTrigger}
  */
 export const AvatarTrigger = React.forwardRef<HTMLDivElement, AvatarTriggerProps>(
   ({ className, active = false, onClick, ...props }, ref) => {

@@ -68,7 +68,7 @@ export interface ContentNavigationProps extends React.HTMLAttributes<HTMLElement
  * />
  * ```
  *
- * @see {@link http://localhost:3005/content-navigation Content Navigation}
+ * @see {@link https://beta-parity-react.vercel.app/content-navigation Content Navigation}
  */
 export const ContentNavigation: React.FC<ContentNavigationProps> = ({
   target = 'main',

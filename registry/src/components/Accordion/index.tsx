@@ -94,7 +94,7 @@ export interface AccordionProps extends BaseProps {
 /**
  * **Parity Accordion**
  *
- *  @see {@link http://localhost:3005/accordion Parity Accordion}
+ *  @see {@link https://beta-parity-react.vercel.app/accordion Parity Accordion}
  */
 export const Accordion = React.forwardRef<HTMLDivElement, AccordionProps & React.HTMLAttributes<HTMLDivElement>>(
   (
@@ -222,7 +222,7 @@ export interface AccordionItemProps {
 /**
  * **Parity Accordion Item**
  *
- *  @see {@link http://localhost:3005/accordion Parity Accordion}
+ *  @see {@link https://beta-parity-react.vercel.app/accordion Parity Accordion}
  */
 
 export const AccordionItem = React.forwardRef<
@@ -291,7 +291,7 @@ export interface AccordionItemTriggerProps {
 /**
  * **Parity Accordion Item Trigger**
  *
- *  @see {@link http://localhost:3005/accordion Parity Accordion}
+ *  @see {@link https://beta-parity-react.vercel.app/accordion Parity Accordion}
  */
 
 export const AccordionItemTrigger = React.forwardRef<
@@ -349,7 +349,7 @@ export interface AccordionItemContentProps {
 /**
  * **Parity Accordion Item Content**
 
- *  @see {@link http://localhost:3005/accordion Parity Accordion}
+ *  @see {@link https://beta-parity-react.vercel.app/accordion Parity Accordion}
  */
 export const AccordionItemContent = React.forwardRef<
   HTMLDivElement,

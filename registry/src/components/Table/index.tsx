@@ -402,7 +402,7 @@ export const TablePagination = ({
 /**
  * **Table**.
  *
- * @see {@link http://localhost:3005/table-item Parity Table}
+ * @see {@link https://beta-parity-react.vercel.app/table-item Parity Table}
  */
 export const Table = React.forwardRef<HTMLTableElement, TableProps<any>>(
   (

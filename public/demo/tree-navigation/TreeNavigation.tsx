@@ -11,7 +11,12 @@ const mockItems: TreeNavigationItem[] = [
     title: 'Introduction',
     defaultExpanded: true,
     children: [
-      { id: 'about-opera', title: 'About Opera', defaultActive: true, href: 'http://localhost:3005/tree-navigation' },
+      {
+        id: 'about-opera',
+        title: 'About Opera',
+        defaultActive: true,
+        href: 'https://beta-parity-react.vercel.app/tree-navigation'
+      },
       { id: 'key-features', title: 'Key features', href: '#' },
       { id: 'release-notes', title: 'Release notes' }
     ]

@@ -131,7 +131,7 @@ export interface PINFieldProps extends Omit<React.HTMLAttributes<HTMLDivElement>
 /**
  * **Parity PINField**
  *
- * @see {@link http://localhost:3005/pinfield Parity PINField}
+ * @see {@link https://beta-parity-react.vercel.app/pinfield Parity PINField}
  */
 export const PINField = React.forwardRef<HTMLDivElement, PINFieldProps>(
   (

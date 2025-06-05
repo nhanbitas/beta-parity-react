@@ -82,7 +82,7 @@ export interface SwitchProps extends React.ComponentPropsWithoutRef<'button'> {
 /**
  * **Parity Switch**.
  *
- *  @see {@link http://localhost:3005/switch Parity Switch}
+ *  @see {@link https://beta-parity-react.vercel.app/switch Parity Switch}
  */
 export const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
   ({ defaultActive = false, active, icon = false, switchSize = 'md', disabled, onToggle, onClick, ...props }, ref) => {

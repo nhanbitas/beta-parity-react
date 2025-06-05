@@ -96,7 +96,7 @@ export interface ProgressProps extends React.HTMLAttributes<HTMLDivElement> {
 /**
  * **Parity Progress**.
  *
- *  @see {@link http://localhost:3005/progress Parity Progress}
+ *  @see {@link https://beta-parity-react.vercel.app/progress Parity Progress}
  */
 export const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
   (
@@ -218,7 +218,7 @@ export interface ProgressIconProps extends React.HTMLAttributes<HTMLSpanElement>
 /**
  * **Parity Progress Icon**
  *
- *  @see {@link http://localhost:3005/progress Parity Progress}
+ *  @see {@link https://beta-parity-react.vercel.app/progress Parity Progress}
  */
 
 const ProgressIcon = React.forwardRef<HTMLSpanElement, ProgressIconProps>(({ kind = 'affirmative', ...props }, ref) => {

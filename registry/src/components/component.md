@@ -71,7 +71,7 @@ export interface DatePickerPropsExtend extends DateTimePickerProps {
 /**
  * **Parity DatePicker**.
  *
- * @see {@link http://localhost:3005/datepicker Parity DatePicker}
+ * @see {@link https://beta-parity-react.vercel.app/datepicker Parity DatePicker}
  *
  * @see {@link https://flatpickr.js.org/options/ Flatpickr options}
  */

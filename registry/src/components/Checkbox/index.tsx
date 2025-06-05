@@ -68,7 +68,7 @@ export interface CheckboxProps extends InputProps {
 /**
  * **Parity Checkbox**.
  *
- *  @see {@link http://localhost:3005/checkbox Parity Checkbox}
+ *  @see {@link https://beta-parity-react.vercel.app/checkbox Parity Checkbox}
  */
 export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
   (
@@ -229,7 +229,7 @@ export interface CheckboxGroup extends Pick<CheckboxProps, 'color'>, BaseProps {
 /**
  * The CheckboxGroup component.
  *
- * @see {@link http://localhost:3005/checkbox Parity CheckboxGroup}
+ * @see {@link https://beta-parity-react.vercel.app/checkbox Parity CheckboxGroup}
  */
 export const CheckboxGroup = ({
   tree,

@@ -162,7 +162,7 @@ export interface CornerIndicatorProps extends React.HTMLAttributes<HTMLDivElemen
 /**
  * **Parity Corner Indicator**
  *
- *  @see {@link http://localhost:3005/corner-indicator Parity Corner Indicator}
+ *  @see {@link https://beta-parity-react.vercel.app/corner-indicator Parity Corner Indicator}
  */
 export const CornerIndicator = React.forwardRef<HTMLDivElement, CornerIndicatorProps>(
   (

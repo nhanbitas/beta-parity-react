@@ -127,7 +127,7 @@ export interface PaginationProps extends React.HTMLAttributes<HTMLUListElement> 
 /**
  * **Parity Pagination**.
  *
- * @see {@link http://localhost:3005/pagination Parity Pagination}
+ * @see {@link https://beta-parity-react.vercel.app/pagination Parity Pagination}
  */
 export const Pagination = React.forwardRef<HTMLUListElement, PaginationProps>(
   (

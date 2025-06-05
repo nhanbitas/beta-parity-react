@@ -100,7 +100,7 @@ export interface NativeSelectProps extends React.SelectHTMLAttributes<HTMLSelect
 /**
  * **Parity NativeSelect**.
  *
- *  @see {@link http://localhost:3005/select Parity NativeSelect}
+ *  @see {@link https://beta-parity-react.vercel.app/select Parity NativeSelect}
  */
 export const NativeSelect = React.forwardRef<HTMLSelectElement, NativeSelectProps>(
   (
@@ -218,7 +218,7 @@ export interface NativeOptionProps extends React.OptionHTMLAttributes<HTMLOption
 /**
  * **Parity NativeOption**.
  *
- *  @see {@link http://localhost:3005/select Parity NativeOption}
+ *  @see {@link https://beta-parity-react.vercel.app/select Parity NativeOption}
  */
 export const NativeOption = React.forwardRef<HTMLOptionElement, NativeOptionProps>(
   ({ className, children, value, label, ...props }, ref) => (

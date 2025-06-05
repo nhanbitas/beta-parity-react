@@ -51,7 +51,7 @@ export interface RadioProps extends InputProps {
 /**
  * **Parity Radio**.
  *
- *  @see {@link http://localhost:3005/radio Parity Radio}
+ *  @see {@link https://beta-parity-react.vercel.app/radio Parity Radio}
  */
 export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
   ({ label, sublabel, radioWrapperProps, color = 'neutral', ...props }, ref) => {
@@ -153,7 +153,7 @@ export interface RadioGroupProps extends Omit<React.HTMLAttributes<HTMLDivElemen
 /**
  * **Parity Radio**.
  *
- *  @see {@link http://localhost:3005/radio Parity Radio}
+ *  @see {@link https://beta-parity-react.vercel.app/radio Parity Radio}
  */
 export const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(
   (

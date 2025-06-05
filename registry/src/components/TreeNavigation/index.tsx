@@ -57,7 +57,7 @@ export interface TreeNavigationItem {
  * />
  * ```
  *
- * @see {@link http://localhost:3005/tree-navigation Tree Navigation Documentation}
+ * @see {@link https://beta-parity-react.vercel.app/tree-navigation Tree Navigation Documentation}
  */
 export const TreeNavigation: React.FC<TreeNavigationProps> = ({ className, color = 'neutral', items, ...props }) => {
   // Create initial active anchor

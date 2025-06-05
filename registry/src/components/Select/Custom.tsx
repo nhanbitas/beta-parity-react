@@ -183,7 +183,7 @@ export interface CustomSelectProps
 /**
  * **Parity CustomSelect**.
  *
- *  @see {@link http://localhost:3005/select Parity CustomSelect}
+ *  @see {@link https://beta-parity-react.vercel.app/select Parity CustomSelect}
  */
 export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
   (
@@ -506,7 +506,7 @@ type SelectItemProps = React.ComponentProps<typeof MenuItem> &
 /**
  * **Parity SelectItem**.
  *
- *  @see {@link http://localhost:3005/select Parity SelectItem}
+ *  @see {@link https://beta-parity-react.vercel.app/select Parity SelectItem}
  */
 export const SelectItem = React.forwardRef<HTMLDivElement | HTMLOptionElement, SelectItemProps>((props, ref: any) => {
   const { type, ...rest } = props;
@@ -526,7 +526,7 @@ export interface SelectGroupProps extends MenuGroupProps {}
 /**
  * **Parity SelectGroup**.
  *
- *  @see {@link http://localhost:3005/select Parity SelectGroup}
+ *  @see {@link https://beta-parity-react.vercel.app/select Parity SelectGroup}
  */
 export const SelectGroup = React.forwardRef<HTMLDivElement, SelectGroupProps>((props, ref) => {
   return <MenuGroup {...props} ref={ref} />;
@@ -544,7 +544,7 @@ export interface SelectDividerProps extends MenuDividerProps {}
 /**
  * **Parity SelectDivider**.
  *
- *  @see {@link http://localhost:3005/select Parity SelectDivider}
+ *  @see {@link https://beta-parity-react.vercel.app/select Parity SelectDivider}
  */
 export const SelectDivider = React.forwardRef<HTMLDivElement, SelectDividerProps>((props, ref) => {
   return <MenuDivider {...props} ref={ref} />;

@@ -198,7 +198,7 @@ export interface MenuProps extends React.HTMLAttributes<HTMLDivElement> {
 /**
  * **Parity Menu**.
  *
- * @see {@link http://localhost:3005/menu Parity Menu}
+ * @see {@link https://beta-parity-react.vercel.app/menu Parity Menu}
  */
 export const Menu = React.forwardRef<HTMLDivElement, MenuProps>(
   (
@@ -535,7 +535,7 @@ export interface MenuItemProps extends Omit<React.HTMLAttributes<HTMLDivElement 
 /**
  * **Parity MenuItem**.
  *
- * @see {@link http://localhost:3005/menu Parity MenuItem}
+ * @see {@link https://beta-parity-react.vercel.app/menu Parity MenuItem}
  */
 export const MenuItem = React.forwardRef<HTMLDivElement | HTMLLabelElement, MenuItemProps>(
   (
@@ -649,7 +649,7 @@ export interface MenuTriggerProps extends React.HTMLAttributes<HTMLButtonElement
 /**
  * **Parity MenuTrigger**.
  *
- * @see {@link http://localhost:3005/menu Parity MenuTrigger}
+ * @see {@link https://beta-parity-react.vercel.app/menu Parity MenuTrigger}
  */
 export const MenuTrigger = React.forwardRef<HTMLButtonElement, MenuTriggerProps>(
   ({ className, children, ...props }, ref) => {
@@ -673,7 +673,7 @@ export interface MenuHeaderProps extends React.HTMLAttributes<HTMLDivElement> {}
 /**
  * **Parity MenuHeader**.
  *
- * @see {@link http://localhost:3005/menu Parity MenuHeader}
+ * @see {@link https://beta-parity-react.vercel.app/menu Parity MenuHeader}
  */
 export const MenuHeader = React.forwardRef<HTMLDivElement, MenuHeaderProps>(
   ({ className, children, ...props }, ref) => {
@@ -697,7 +697,7 @@ export interface MenuFooterProps extends React.HTMLAttributes<HTMLDivElement> {}
 /**
  * **Parity MenuFooter**.
  *
- * @see {@link http://localhost:3005/menu Parity MenuFooter}
+ * @see {@link https://beta-parity-react.vercel.app/menu Parity MenuFooter}
  */
 export const MenuFooter = React.forwardRef<HTMLDivElement, MenuFooterProps>(
   ({ className, children, ...props }, ref) => {

@@ -60,7 +60,7 @@ interface ToastInstance extends ToastProps {}
  *
  * A container that listens for toast events and displays toast notifications dynamically.
  *
- *  @see {@link http://localhost:3005/toast Parity Toast Container}
+ *  @see {@link https://beta-parity-react.vercel.app/toast Parity Toast Container}
  */
 export const ToastContainer: React.FC<ToastContainerProps> = ({
   limit = 1,

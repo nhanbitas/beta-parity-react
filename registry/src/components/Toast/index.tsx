@@ -22,7 +22,7 @@ export interface ToastOptions extends Omit<ToastProps, 'id' | 'removeToast'> {}
  * myToast.stop(); // Remove the toast
  *
  *
- * @see {@link http://localhost:3005/toast Parity Toast}
+ * @see {@link https://beta-parity-react.vercel.app/toast Parity Toast}
  */
 
 const toast = ({ position, kind, ...options }: ToastOptions) => {

@@ -120,7 +120,7 @@ interface SliderProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'defaul
  *
  * A customizable slider component supporting single and range modes.
  *
- * @see {@link http://localhost:3005/slider Parity Slider}
+ * @see {@link https://beta-parity-react.vercel.app/slider Parity Slider}
  */
 export const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
   (

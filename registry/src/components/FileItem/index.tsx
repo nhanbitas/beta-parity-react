@@ -78,7 +78,7 @@ export interface FileItemProps extends React.HTMLAttributes<HTMLDivElement> {
 /**
  * **File Item**.
  *
- * @see {@link http://localhost:3005/file-item Parity FileItem}
+ * @see {@link https://beta-parity-react.vercel.app/file-item Parity FileItem}
  */
 export const FileItem = React.forwardRef<HTMLDivElement, FileItemProps>(
   (

@@ -17,7 +17,7 @@ export interface TextInputProps extends React.ComponentPropsWithoutRef<typeof In
 /**
  * **Parity TextInput**.
  *
- *  @see {@link http://localhost:3005/text-input Parity TextInput}
+ *  @see {@link https://beta-parity-react.vercel.app/text-input Parity TextInput}
  */
 export const TextInput = React.forwardRef<React.ElementRef<typeof Input>, TextInputProps>(
   ({ type = 'text', ...props }, ref) => {
