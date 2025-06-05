@@ -26,9 +26,7 @@ export default async function RootLayout({
     <html lang='en'>
       <ThemeProvider initialTheme={isValidTheme ? theme.value : 'light'}>
         <SideBar />
-        <main className='prose flex min-h-screen flex-1 flex-col gap-8 overflow-hidden p-8 sm:px-12 md:px-24 2xl:px-48'>
-          {children}
-        </main>
+        {children}
       </ThemeProvider>
     </html>
   );

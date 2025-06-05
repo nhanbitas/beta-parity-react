@@ -1,21 +1,15 @@
 'use client';
 
 import React from 'react';
-import { components } from '../../../app/data';
+import { components, statusOptions } from '@/src/data';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { Menu } from 'lucide-react';
-import { Badge } from 'beta-parity-react/ui/Badge';
+import { Menu, PencilRuler, Wrench } from 'lucide-react';
+
 import { SearchInput } from 'beta-parity-react/ui/SearchInput';
 import { Select } from 'beta-parity-react/ui/Select';
 
 type Props = {};
-
-const statusOptions = {
-  1: 'Next',
-  2: 'Current',
-  3: 'Post-queue'
-};
 
 const SideBar = (props: Props) => {
   const pathname = usePathname();
@@ -58,25 +52,28 @@ const SideBar = (props: Props) => {
 
   return (
     <aside
-      className={`side-bar sticky left-0 top-0 z-[9999] h-screen border-r border-gray-200 ${isOpen ? 'w-64' : 'w-0'} transform duration-300 ease-in-out`}
+      className={`side-bar fixed left-0 top-0 z-50 h-screen border-r border-[var(--par-color-border-surface)] bg-[var(--par-color-bg)] md:sticky ${isOpen ? 'w-64' : 'w-0'} transform duration-150 ease-in-out`}
     >
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`absolute right-0 ${isOpen ? 'translate-x-0' : 'translate-x-full'} top-2 z-10 h-8 w-12 cursor-pointer p-2 px-4 transition-transform duration-300 ease-in-out hover:text-[var(--text-hover)] active:text-[var(--text-active)]`}
+        className={`absolute right-0 ${isOpen ? 'translate-x-0' : 'translate-x-full'} top-2 z-10 h-8 w-12 cursor-pointer p-2 px-4 transition-transform duration-150 ease-in-out hover:text-[var(--text-hover)] active:text-[var(--text-active)]`}
       >
         <Menu />
       </button>
 
       <div
-        className={`h-[3rem] overflow-hidden ${isOpen ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300 ease-in-out`}
+        className={`flex h-[3rem] items-center overflow-hidden ${isOpen ? 'opacity-100' : 'opacity-0'} transition-opacity duration-150 ease-in-out`}
       >
-        <Link className='text-heading-02 block w-fit min-w-64 px-4 py-3 hover:underline' href='/'>
+        <Link
+          className='text-heading-compact-02 w-fit min-w-fit truncate px-4 py-3 font-bold uppercase hover:underline'
+          href='/'
+        >
           Parity React
         </Link>
       </div>
 
       <div
-        className={`h-[7rem] border-b border-gray-200 ${isOpen ? 'overflow-visible opacity-100' : 'overflow-hidden opacity-0'} transition-opacity duration-500 ease-in-out`}
+        className={`h-[7rem] border-b border-[var(--par-color-border-surface)] ${isOpen ? 'overflow-visible opacity-100' : 'overflow-hidden opacity-0'} transition-opacity duration-500 ease-in-out`}
       >
         <div className='text-heading-02 flex w-full flex-col items-center gap-2 px-4'>
           <SearchInput
@@ -102,24 +99,19 @@ const SideBar = (props: Props) => {
       </div>
 
       <ul
-        className={`h-[calc(100vh-10rem)] overflow-hidden overflow-y-auto pb-20 scrollbar-none ${isOpen ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300 ease-in-out`}
+        className={`h-[calc(100vh-10rem)] overflow-hidden overflow-y-auto pb-20 pt-4 scrollbar-none ${isOpen ? 'opacity-100' : 'opacity-0'} transition-opacity duration-150 ease-in-out`}
       >
         {componentList.map((component: { name: string; url: string; status: number }) => (
-          <li className='group h-fit w-full min-w-64' key={component.url}>
+          <li className='group h-fit w-full min-w-64 px-4' key={component.url}>
             <Link
-              className={`z-10 flex w-full items-center justify-start gap-2 px-4 py-2 ${pathname.startsWith(component.url) ? 'text-orange-500' : ''}`}
+              className={`z-10 flex w-full items-center justify-start gap-2 rounded-md px-3 py-1 ${pathname.startsWith(component.url) ? 'bg-[var(--par-color-bg-surface)] font-semibold ' : ''}`}
               href={component.url}
             >
-              <span className='group-hover:underline'>{component.name}</span>
+              <span className='truncate group-hover:underline'>{component.name}</span>
 
-              <Badge
-                variant='glass'
-                dot
-                size='xs'
-                color={component.status === 1 ? 'violet' : component.status === 2 ? 'cyan' : 'green'}
-              >
-                {statusOptions[component.status as keyof typeof statusOptions]}
-              </Badge>
+              <span className='flex h-4 w-4 items-center justify-center'>
+                {component.status === 1 ? <PencilRuler /> : component.status === 2 ? <Wrench /> : null}
+              </span>
             </Link>
           </li>
         ))}

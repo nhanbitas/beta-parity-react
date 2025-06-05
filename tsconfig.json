@@ -18,10 +18,11 @@
       }
     ],
     "paths": {
-      "@": ["./*"],
+      "@/*": ["./*"],
       "@components/*": ["./src/components/*"],
       "@public/*": ["./public/*"],
-      "@ui/*": ["./registry/ui/*"]
+      "@ui/*": ["./registry/ui/*"],
+      "beta-parity-react/*": ["./registry/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

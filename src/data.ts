@@ -30,6 +30,11 @@ export const components = [
     status: 3
   },
   {
+    name: 'Color',
+    url: '/color',
+    status: 3
+  },
+  {
     name: 'Checkbox',
     url: '/checkbox',
     status: 3
@@ -196,3 +201,9 @@ export const components = [
     status: 3
   }
 ];
+
+export const statusOptions = {
+  // 1: 'Next',
+  2: 'Current',
+  3: 'Post-queue'
+};

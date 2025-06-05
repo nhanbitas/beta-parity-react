@@ -1,6 +1,6 @@
 'use client';
 
-import { components } from '../../../app/data';
+import { components } from '@/src/data';
 import { usePathname } from 'next/navigation';
 import React from 'react';
 
@@ -12,7 +12,7 @@ const BasePage = ({ children }: Props) => {
 
   return (
     <>
-      <h1 className='h-24 border-b border-gray-200 text-2xl'>{currentComponent.name}</h1>
+      <h1 className='sticky top-12 z-40 block h-24 bg-[var(--par-color-bg)] text-2xl'>{currentComponent.name}</h1>
       {children}
     </>
   );

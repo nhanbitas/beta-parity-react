@@ -1,0 +1,175 @@
+import React from 'react';
+
+# Color System
+
+The Parity color system overrides TailwindCSS default colors to match brand identity and ensure a consistent user experience. Below are all system color tokens, grouped by category, with their values for both light and dark schemes.
+
+---
+
+## Token Structure
+
+Tokens follow the structure:
+
+`--{system}/{property}/{target}/{variant}/{state}/{inversion}`
+
+- **system**: The design system or namespace, e.g. `par`
+- **property**: The CSS property or semantic role, e.g. `color`, `bg`, `border`, `text`, `icon`
+- **target**: The UI element or context, e.g. `surface`, `field`, `button`, `item`
+- **variant**: Variant or emphasis, e.g. `primary`, `secondary`, `accent`, `neutral`, `pronounced`, `subtle`
+- **state**: UI state, e.g. `enabled`, `hovered`, `pressed`, `disabled`, `readonly`, `invalid`, `focused`
+- **inversion**: Inverse or alternative mode, e.g. `inverse`
+
+**Example:**  
+`--par-color-bg-surface-item-accent-pronounced-selected-hovered`  
+→ system: `par`, property: `color-bg`, target: `surface-item`, variant: `accent-pronounced`, state: `selected-hovered`
+
+---
+
+## Default Neutral & Accent Colors
+
+| Role    | Token/Color             | Color |
+| ------- | ----------------------- | ----- |
+| Neutral | `--par-___-neutral-___` | gray  |
+| Accent  | `--par-___-accent-___`  | blue  |
+
+> **Note:** These are the main neutral and accent tokens used throughout the system. See the palette section for all available shades.
+
+---
+
+## Background Tokens
+
+| Token Name                                                        | Light Value              | Dark Value               | Description                         |
+| ----------------------------------------------------------------- | ------------------------ | ------------------------ | ----------------------------------- |
+| `--par-color-bg`                                                  | `rgba(255,255,255,1)`    | `rgba(22,22,22,1)`       | Main background                     |
+| `--par-color-bg-alternative`                                      | `rgba(247,247,247,1)`    | `rgba(38,38,38,1)`       | Alternative background              |
+| `--par-color-bg-surface`                                          | `rgba(247,247,247,1)`    | `rgba(38,38,38,1)`       | Surface background                  |
+| `--par-color-bg-surface-inverse`                                  | `rgba(22,22,22,1)`       | `rgba(255,255,255,1)`    | Inverse surface background          |
+| `--par-color-bg-surface-alternative`                              | `rgba(255,255,255,1)`    | `rgba(57,57,57,1)`       | Alternative surface background      |
+| `--par-color-bg-surface-indicator-neutral`                        | `var(--par-neutral-500)` | `var(--par-neutral-500)` | Neutral indicator background        |
+| `--par-color-bg-surface-indicator-accent`                         | `var(--par-accent-500)`  | `var(--par-accent-500)`  | Accent indicator background         |
+| `--par-color-bg-surface-item-enabled`                             | `rgba(0,0,0,0)`          | `rgba(0,0,0,0)`          | Enabled item background             |
+| `--par-color-bg-surface-item-hovered`                             | `rgba(227,227,227,0.5)`  | `rgba(95,95,95,0.5)`     | Hovered item background             |
+| `--par-color-bg-surface-item-neutral-subtle-selected`             | `rgba(227,227,227,1)`    | `rgba(203,203,203,0.5)`  | Subtle selected neutral item        |
+| `--par-color-bg-surface-item-neutral-subtle-selected-hovered`     | `rgba(203,203,203,1)`    | `rgba(171,171,171,0.5)`  | Subtle selected neutral hovered     |
+| `--par-color-bg-surface-item-neutral-pronounced-selected`         | `rgba(38,38,38,1)`       | `rgba(241,241,241,1)`    | Pronounced selected neutral item    |
+| `--par-color-bg-surface-item-neutral-pronounced-selected-hovered` | `rgba(57,57,57,1)`       | `rgba(227,227,227,1)`    | Pronounced selected neutral hovered |
+| `--par-color-bg-surface-item-accent-subtle-selected`              | `rgba(212,229,255,1)`    | `rgba(203,203,203,0.5)`  | Subtle selected accent item         |
+| `--par-color-bg-surface-item-accent-subtle-selected-hovered`      | `rgba(172,205,255,1)`    | `rgba(171,171,171,0.5)`  | Subtle selected accent hovered      |
+| `--par-color-bg-surface-item-accent-pronounced-selected`          | `rgba(20,122,255,1)`     | `rgba(20,122,255,1)`     | Pronounced selected accent item     |
+| `--par-color-bg-surface-item-accent-pronounced-selected-hovered`  | `rgba(15,95,192,1)`      | `rgba(15,95,192,1)`      | Pronounced selected accent hovered  |
+| `--par-color-bg-field-enabled`                                    | `rgba(247,247,247,1)`    | `rgba(38,38,38,1)`       | Enabled field background            |
+| `--par-color-bg-field-alternative-enabled`                        | `rgba(255,255,255,1)`    | `rgba(57,57,57,1)`       | Alternative enabled field bg        |
+| `--par-color-bg-field-hovered`                                    | `rgba(241,241,241,1)`    | `rgba(57,57,57,1)`       | Hovered field background            |
+| `--par-color-bg-field-alternative-hovered`                        | `rgba(241,241,241,1)`    | `rgba(95,95,95,1)`       | Alternative hovered field bg        |
+| `--par-color-bg-field-disabled`                                   | `rgba(247,247,247,0.5)`  | `rgba(38,38,38,0.5)`     | Disabled field background           |
+| `--par-color-bg-field-alternative-disabled`                       | `rgba(255,255,255,0.5)`  | `rgba(57,57,57,0.5)`     | Alt disabled field background       |
+| `--par-color-bg-field-readonly`                                   | `rgba(241,241,241,1)`    | `rgba(57,57,57,1)`       | Readonly field background           |
+| `--par-color-bg-field-invalid`                                    | `rgba(255,238,236,1)`    | `rgba(77,3,10,1)`        | Invalid field background            |
+| `--par-color-bg-field-button-enabled`                             | `rgba(0,0,0,0)`          | `rgba(0,0,0,0)`          | Enabled field button background     |
+| `--par-color-bg-field-button-hovered`                             | `rgba(227,227,227,0.5)`  | `rgba(95,95,95,0.5)`     | Hovered field button background     |
+| `--par-color-bg-field-button-pressed`                             | `rgba(171,171,171,0.5)`  | `rgba(107,107,107,0.5)`  | Pressed field button background     |
+| `--par-color-bg-field-button-disabled`                            | `rgba(0,0,0,0)`          | `rgba(0,0,0,0)`          | Disabled field button background    |
+
+---
+
+## Border Tokens
+
+| Token Name                               | Light Value             | Dark Value            | Description                |
+| ---------------------------------------- | ----------------------- | --------------------- | -------------------------- |
+| `--par-color-focus-ring`                 | `rgba(0,0,0,1)`         | `rgba(255,255,255,1)` | Focus ring                 |
+| `--par-color-border-surface`             | `rgba(227,227,227,1)`   | `rgba(95,95,95,1)`    | Surface border             |
+| `--par-color-border-surface-inverse`     | `rgba(95,95,95,1)`      | `rgba(227,227,227,1)` | Inverse surface border     |
+| `--par-color-border-field-enabled`       | `rgba(227,227,227,1)`   | `rgba(95,95,95,1)`    | Enabled field border       |
+| `--par-color-border-field-alpha-enabled` | `rgba(227,227,227,0.5)` | `rgba(95,95,95,0.5)`  | Alpha enabled field border |
+| `--par-color-border-field-hovered`       | `rgba(203,203,203,1)`   | `rgba(118,118,118,1)` | Hovered field border       |
+| `--par-color-border-field-readonly`      | `rgba(227,227,227,1)`   | `rgba(95,95,95,1)`    | Readonly field border      |
+| `--par-color-border-field-invalid`       | `rgba(219,45,50,1)`     | `rgba(254,219,219,1)` | Invalid field border       |
+| `--par-color-border-field-disabled`      | `rgba(227,227,227,0.5)` | `rgba(95,95,95,0.5)`  | Disabled field border      |
+| `--par-color-border-field-focused`       | `rgba(0,0,0,1)`         | `rgba(255,255,255,1)` | Focused field border       |
+| `--par-outlined-surface-item-focused`    | `rgba(0,0,0,1)`         | `rgba(255,255,255,1)` | Outlined surface focus     |
+
+---
+
+## Text & Icon Tokens
+
+| Token Name                                                  | Light Value             | Dark Value              | Description                  |
+| ----------------------------------------------------------- | ----------------------- | ----------------------- | ---------------------------- |
+| `--par-color-text-primary`                                  | `rgba(22,22,22,1)`      | `rgba(255,255,255,1)`   | Primary text                 |
+| `--par-color-text-primary-disabled`                         | `rgba(22,22,22,0.5)`    | `rgba(255,255,255,0.5)` | Disabled primary text        |
+| `--par-color-text-primary-inverse`                          | `rgba(255,255,255,1)`   | `rgba(22,22,22,1)`      | Inverse primary text         |
+| `--par-color-text-secondary`                                | `rgba(74,74,74,1)`      | `rgba(227,227,227,1)`   | Secondary text               |
+| `--par-color-text-secondary-inverse`                        | `rgba(227,227,227,1)`   | `rgba(74,74,74,1)`      | Inverse secondary text       |
+| `--par-color-text-helper-neutral`                           | `rgba(107,107,107,1)`   | `rgba(227,227,227,1)`   | Neutral helper text          |
+| `--par-color-text-helper-neutral-disabled`                  | `rgba(107,107,107,0.5)` | `rgba(227,227,227,0.5)` | Disabled neutral helper text |
+| `--par-color-text-helper-adverse`                           | `rgba(203,28,43,1)`     | `rgba(254,219,219,1)`   | Adverse helper text          |
+| `--par-color-text-helper-cautionary`                        | `rgba(145,99,0,1)`      | `rgba(244,229,143,1)`   | Cautionary helper text       |
+| `--par-color-text-helper-affirmative`                       | `rgba(34,122,65,1)`     | `rgba(188,240,195,1)`   | Affirmative helper text      |
+| `--par-color-text-helper-info`                              | `rgba(0,105,209,1)`     | `rgba(172,205,255,1)`   | Info helper text             |
+| `--par-color-text-surface-item-enabled`                     | `rgba(22,22,22,1)`      | `rgba(255,255,255,1)`   | Enabled surface item text    |
+| `--par-color-text-surface-item-neutral-subtle-selected`     | `rgba(22,22,22,1)`      | `rgba(255,255,255,1)`   | Neutral subtle selected text |
+| `--par-color-text-surface-item-neutral-pronounced-selected` | `rgba(255,255,255,1)`   | `rgba(22,22,22,1)`      | Neutral pronounced selected  |
+| `--par-color-text-surface-item-accent-subtle-selected`      | `rgba(22,22,22,1)`      | `rgba(172,205,255,1)`   | Accent subtle selected text  |
+| `--par-color-text-surface-item-accent-pronounced-selected`  | `rgba(255,255,255,1)`   | `rgba(255,255,255,1)`   | Accent pronounced selected   |
+| `--par-color-text-surface-item-disabled`                    | `rgba(22,22,22,0.5)`    | `rgba(255,255,255,0.5)` | Disabled surface item text   |
+| `--par-color-text-field-placeholder`                        | `rgba(95,95,95,1)`      | `rgba(227,227,227,1)`   | Field placeholder text       |
+| `--par-color-text-field-alpha-placeholder`                  | `rgba(95,95,95,0.5)`    | `rgba(227,227,227,0.5)` | Alpha placeholder text       |
+| `--par-color-text-field-alternative-placeholder`            | `rgba(107,107,107,1)`   | `rgba(227,227,227,1)`   | Alt placeholder text         |
+| `--par-color-text-field-filled`                             | `rgba(22,22,22,1)`      | `rgba(255,255,255,1)`   | Filled field text            |
+| `--par-color-text-field-label`                              | `rgba(74,74,74,1)`      | `rgba(227,227,227,1)`   | Field label text             |
+| `--par-color-text-field-disabled`                           | `rgba(95,95,95,0.5)`    | `rgba(227,227,227,0.5)` | Disabled field text          |
+| `--par-color-text-field-readonly`                           | `rgba(22,22,22,1)`      | `rgba(255,255,255,1)`   | Readonly field text          |
+| `--par-color-text-field-invalid`                            | `rgba(22,22,22,1)`      | `rgba(255,255,255,1)`   | Invalid field text           |
+| `--par-color-text-button`                                   | `rgba(107,107,107,1)`   | `rgba(227,227,227,1)`   | Button text                  |
+| `--par-color-icon-field-button-enabled`                     | `rgba(118,118,118,1)`   | `rgba(227,227,227,1)`   | Enabled field button icon    |
+| `--par-color-icon-field-button-hovered`                     | `rgba(95,95,95,1)`      | `rgba(241,241,241,1)`   | Hovered field button icon    |
+| `--par-color-icon-field-button-pressed`                     | `rgba(74,74,74,1)`      | `rgba(241,241,241,1)`   | Pressed field button icon    |
+| `--par-color-icon-field-button-disabled`                    | `rgba(118,118,118,0.5)` | `rgba(227,227,227,0.5)` | Disabled field button icon   |
+
+---
+
+## Effect Tokens
+
+| Token Name                         | Light Value        | Dark Value              | Description        |
+| ---------------------------------- | ------------------ | ----------------------- | ------------------ |
+| `--par-color-ring-visible-focused` | `rgba(22,22,22,1)` | `rgba(255,255,255,1)`   | Focus ring outline |
+| `--par-color-effect-shadow`        | `rgba(0,0,0,0.1)`  | `rgba(255,255,255,0.1)` | Shadow effect      |
+
+---
+
+## Palette (Core Colors)
+
+Below is the full palette used for overrides (see `colorPalette.ts`):
+
+| Name   | Example Value(s) (Light, rgba)                    |
+| ------ | ------------------------------------------------- |
+| gray   | `rgba(141,141,141,1)`, `rgba(247,247,247,1)`, ... |
+| orange | `rgba(255,87,21,1)`, `rgba(254,245,240,1)`, ...   |
+| blue   | `rgba(20,122,255,1)`, `rgba(243,248,255,1)`, ...  |
+| lime   | `rgba(130,186,80,1)`, `rgba(242,250,236,1)`, ...  |
+| violet | `rgba(136,74,206,1)`, `rgba(249,246,254,1)`, ...  |
+| cyan   | `rgba(90,180,233,1)`, `rgba(241,249,254,1)`, ...  |
+| red    | `rgba(214,46,66,1)`, `rgba(254,245,243,1)`, ...   |
+| yellow | `rgba(255,188,5,1)`, `rgba(249,247,240,1)`, ...   |
+| green  | `rgba(57,172,86,1)`, `rgba(238,251,239,1)`, ...   |
+
+## References
+
+- [Tailwind CSS Colors](https://tailwindcss.com/docs/customizing-colors)
+
+---
+
+## Usage Example
+
+```jsx
+<div
+  style={{
+    background: 'var(--par-color-bg)',
+    color: 'var(--par-color-text-primary)',
+    border: '1px solid var(--par-color-border-surface)'
+  }}
+>
+  Example text with system colors
+</div>
+```
+
+---

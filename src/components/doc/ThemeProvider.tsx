@@ -48,10 +48,7 @@ const ThemeProvider = (props: Props) => {
   };
 
   return (
-    <body
-      className={`relative flex ${theme === 'light' ? 'bg-white text-gray-900' : 'bg-black text-white'}`}
-      data-scheme={theme}
-    >
+    <body className={`relative flex bg-[var(--par-color-bg)] text-[var(--par-color-text-primary)]`} data-scheme={theme}>
       <button
         className={`fixed bottom-12 right-4 z-10 cursor-pointer rounded-full bg-gray-100 p-2 text-gray-900 hover:bg-gray-200`}
         onClick={toggleTheme}

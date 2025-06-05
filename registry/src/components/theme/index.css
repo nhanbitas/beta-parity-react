@@ -1,4 +1,7 @@
-@import '../global.css';
+@import url(../global.css);
+@import url(./alias/background.css);
+@import url(./alias/border.css);
+@import url(./alias/text-icon-colors.css);
 
 :root,
 [data-scheme='light'] {

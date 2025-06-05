@@ -33,7 +33,7 @@ const ComponentSection = ({ children, rawText, paths, theme }: Props) => {
           <span className='text-sm italic'>
             {paths && paths[1] ? paths[1].charAt(0).toUpperCase() + paths[1].slice(1) : ''}.tsx{' '}
           </span>
-          <button className=' rounded-md bg-gray-800/50 p-2 text-white' onClick={handleCopy}>
+          <button className=' rounded-md bg-gray-800/50 p-2 text-[var(--par-color-text-reverse)]' onClick={handleCopy}>
             <CopyIcon />
           </button>
         </div>
