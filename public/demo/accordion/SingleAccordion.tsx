@@ -31,7 +31,7 @@ export const accordionItems = [
 
 export const SingleAccordion = (props: Props) => {
   return (
-    <>
+    <div className='flex flex-col gap-8'>
       <Accordion items={accordionItems} />
 
       <Accordion items={accordionItems} kind='flush' icon='cross' />
@@ -83,6 +83,6 @@ export const SingleAccordion = (props: Props) => {
           </AccordionItemContent>
         </AccordionItem>
       </Accordion>
-    </>
+    </div>
   );
 };

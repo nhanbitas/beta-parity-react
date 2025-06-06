@@ -142,11 +142,19 @@ export const ContentNavigation: React.FC<ContentNavigationProps> = ({
 
     observerRef.current = observer;
 
-    // Observe anchors
+    // Ensure unique anchors
+    const usedAnchors = new Set<string>();
     anchorElements.forEach((anchor) => {
-      const specifiedAnchor =
+      let baseAnchor =
         anchor.getAttribute('data-specified-anchor') ||
         `anchor-${anchor.textContent?.toLowerCase().replace(/\s+/g, '-')}`;
+      let specifiedAnchor = baseAnchor;
+      let counter = 0;
+      while (usedAnchors.has(specifiedAnchor)) {
+        counter++;
+        specifiedAnchor = `${baseAnchor}-${counter}`;
+      }
+      usedAnchors.add(specifiedAnchor);
       anchor.setAttribute('data-specified-anchor', specifiedAnchor);
       observer.observe(anchor);
     });

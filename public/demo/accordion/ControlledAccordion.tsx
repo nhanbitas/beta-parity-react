@@ -31,7 +31,7 @@ export const ControlledAccordion = (props: any) => {
   const [singleValue, setSingleValue] = React.useState('item-1');
   const [multiValue, setMultiValue] = React.useState<string[]>([]);
   return (
-    <>
+    <div className='flex flex-col gap-8'>
       <Accordion value={singleValue} onChange={(value) => console.log(value)} {...props}>
         <AccordionItem value='item-1' onClick={() => setSingleValue('item-1')}>
           <AccordionItemTrigger>Can set value 1</AccordionItemTrigger>
@@ -79,6 +79,6 @@ export const ControlledAccordion = (props: any) => {
           </AccordionItemContent>
         </AccordionItem>
       </Accordion>
-    </>
+    </div>
   );
 };

@@ -26,22 +26,17 @@ const ComponentSection = ({ children, rawText, paths, theme, loading }: Props) =
   const isAlternative = theme === 'alternative';
 
   return (
-    <section
-      className={`component-section excluded-content not-prose pt-1/2 min-h-48  w-full grow-0 rounded-lg border border-gray-200/50 ${isAlternative ? 'bg-[var(--background-alternative)]' : 'bg-transparent'} p-8 shadow-sm`}
-    >
+    <div>
       <div className='w-full'>
         <div className='w-full *:mt-12'>{children}</div>
 
-        <div className='mt-16 flex items-center justify-between py-1'>
-          <span className='text-sm italic'>
+        <div className='relative flex items-center justify-between py-1'>
+          {/* <span className='text-sm italic'>
             {paths && paths[1] ? paths[1].charAt(0).toUpperCase() + paths[1].slice(1) : ''}.tsx{' '}
-          </span>
+          </span> */}
 
           <Tooltip content='Copy code to clipboard'>
-            <button
-              className=' rounded-md bg-[var(--par-color-bg-surface)] p-2 text-[var(--par-color-text-reverse)]'
-              onClick={handleCopy}
-            >
+            <button className='absolute right-4 top-4 rounded-md bg-transparent p-2 text-gray-100' onClick={handleCopy}>
               <CopyIcon />
             </button>
           </Tooltip>
@@ -61,7 +56,7 @@ const ComponentSection = ({ children, rawText, paths, theme, loading }: Props) =
           )}
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

@@ -31,7 +31,7 @@ export const accordionItems = [
 
 export const MultiAccordion = (props: Props) => {
   return (
-    <>
+    <div className='flex flex-col gap-8'>
       <Accordion
         items={accordionItems}
         defaultValue='item-2'
@@ -48,6 +48,6 @@ export const MultiAccordion = (props: Props) => {
         onChange={(value) => console.log(value)}
         {...props}
       />
-    </>
+    </div>
   );
 };

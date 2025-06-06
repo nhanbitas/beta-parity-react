@@ -29,7 +29,7 @@ export const accordionItems = [
 
 export const LeftIconAccordion = (props: any) => {
   return (
-    <>
+    <div className='flex flex-col gap-8'>
       <Accordion
         items={accordionItems}
         iconSide='left'
@@ -46,6 +46,6 @@ export const LeftIconAccordion = (props: any) => {
         onChange={(value) => console.log(value)}
         {...props}
       />
-    </>
+    </div>
   );
 };

@@ -31,7 +31,7 @@ export const accordionItems = [
 
 export const NestedAccordion = (props: Props) => {
   return (
-    <>
+    <div className='flex flex-col gap-8'>
       <Accordion defaultValue='item-2' type='multiple' onChange={(value) => console.log(value)}>
         <AccordionItem value='item-1'>
           <AccordionItemTrigger>Is it Nested?</AccordionItemTrigger>
@@ -83,6 +83,6 @@ export const NestedAccordion = (props: Props) => {
         icon='cross'
         onChange={(value) => console.log(value)}
       />
-    </>
+    </div>
   );
 };
