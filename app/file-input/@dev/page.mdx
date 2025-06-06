@@ -33,14 +33,12 @@ import TableOfContents from '@components/doc/TableOfContents';
 
 ### `<FileInput />`
 
-| Prop          | Type                      | Default | Description                              |
-| ------------- | ------------------------- | ------- | ---------------------------------------- |
-| type          | string                    | 'file'  | Input type (always 'file' for FileInput) |
-| multiple      | boolean                   | false   | Allow multiple file selection            |
-| accept        | string                    |         | Accepted file types (e.g. 'image/\*')    |
-| onChange      | function (event)          |         | Callback when file(s) selected           |
-| ...InputProps | [See Input](../BaseInput) |         | Inherits all props from Input            |
+| **Prop**          | **Type**                  | **Default** | **Description**                          |
+| ----------------- | ------------------------- | ----------- | ---------------------------------------- |
+| **type**          | string                    | _'file'_    | Input type (always 'file' for FileInput) |
+| **multiple**      | boolean                   | _false_     | Allow multiple file selection            |
+| **accept**        | string                    |             | Accepted file types (e.g. 'image/\*')    |
+| **onChange**      | function (event)          |             | Callback when file(s) selected           |
+| **...InputProps** | [See Input](../BaseInput) |             | Inherits all props from Input            |
 
 > _Note:_ _FileInput_ inherits all props from Input and the native input element. See [Input documentation](../BaseInput) for full details on available props and tokens.
-
----

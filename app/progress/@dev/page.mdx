@@ -101,17 +101,17 @@ import TableOfContents from '@components/doc/TableOfContents';
 
 ## Design Tokens for Progress
 
-| **Token**                                   | **Color for**                | **State/Meaning** | **CSS Selector(s)**                          |
-| ------------------------------------------- | ---------------------------- | ----------------- | -------------------------------------------- |
-| `--par-color-progress-track`                | Progress track background    | Default/Enabled   | `.progress-track`                            |
-| `--par-color-progress-thumb-active-neutral` | Progress bar fill (neutral)  | Active            | `.progress.active.neutral .progress-thumb`   |
-| `--par-color-progress-thumb-active-accent`  | Progress bar fill (accent)   | Active            | `.progress.active.accent .progress-thumb`    |
-| `--par-color-progress-thumb-success`        | Progress bar fill            | Success/Complete  | `.progress.success .progress-thumb`          |
-| `--par-color-progress-thumb-error`          | Progress bar fill            | Error/Failed      | `.progress.error .progress-thumb`            |
-| `--par-color-text-primary`                  | Progress label text          | Any               | `.progress-title`                            |
-| `--par-color-text-helper-neutral`           | Progress numeral/helper text | Any               | `.progress-numeral`, `.progress-helper-text` |
-| `--par-color-text-helper-affirmative`       | Helper text                  | Success           | `.progress.success .progress-helper-text`    |
-| `--par-color-text-helper-adverse`           | Helper text                  | Error             | `.progress.error .progress-helper-text`      |
+| **Token**                                     | **Color for**                | **State/Meaning** | **CSS Selector(s)**                          |
+| --------------------------------------------- | ---------------------------- | ----------------- | -------------------------------------------- |
+| **--par-color-progress-track**                | Progress track background    | Default/Enabled   | `.progress-track`                            |
+| **--par-color-progress-thumb-active-neutral** | Progress bar fill (neutral)  | Active            | `.progress.active.neutral .progress-thumb`   |
+| **--par-color-progress-thumb-active-accent**  | Progress bar fill (accent)   | Active            | `.progress.active.accent .progress-thumb`    |
+| **--par-color-progress-thumb-success**        | Progress bar fill            | Success/Complete  | `.progress.success .progress-thumb`          |
+| **--par-color-progress-thumb-error**          | Progress bar fill            | Error/Failed      | `.progress.error .progress-thumb`            |
+| **--par-color-text-primary**                  | Progress label text          | Any               | `.progress-title`                            |
+| **--par-color-text-helper-neutral**           | Progress numeral/helper text | Any               | `.progress-numeral`, `.progress-helper-text` |
+| **--par-color-text-helper-affirmative**       | Helper text                  | Success           | `.progress.success .progress-helper-text`    |
+| **--par-color-text-helper-adverse**           | Helper text                  | Error             | `.progress.error .progress-helper-text`      |
 
 > _Note: Progress tokens are defined in `registry/src/components/Progress/variables.css`._
 
@@ -121,17 +121,17 @@ import TableOfContents from '@components/doc/TableOfContents';
 
 ### `<Progress />`
 
-| **Prop**    | **Type**             | **Default** | **Description**                              |
-| ----------- | -------------------- | ----------- | -------------------------------------------- | -------------------------- | -------------- |
-| kind        | 'bar'                | 'circle'    | 'bar'                                        | Type of progress indicator |
-| value       | number               | 0           | Current progress value                       |
-| title       | string               |             | Title displayed above the progress indicator |
-| helperText  | string               |             | Helper text displayed below the indicator    |
-| color       | 'neutral'            | 'accent'    | 'neutral'                                    | Color theme                |
-| state       | 'active'             | 'success'   | 'error'                                      | 'active'                   | Progress state |
-| size        | 'sm'                 | 'md'        | 'sm'                                         | Size (for circle kind)     |
-| numeral     | boolean              | false       | Show progress value as numeral               |
-| ...divProps | HTMLDivElement props |             | All native div props (className, style, ...) |
+| **Prop**        | **Type**                         | **Default** | **Description**                              |
+| --------------- | -------------------------------- | ----------- | -------------------------------------------- |
+| **kind**        | 'bar' \| 'circle'                | _'bar'_     | Type of progress indicator                   |
+| **value**       | number                           | _0_         | Current progress value                       |
+| **title**       | string                           |             | Title displayed above the progress indicator |
+| **helperText**  | string                           |             | Helper text displayed below the indicator    |
+| **color**       | 'neutral' \| 'accent'            | _'neutral'_ | Color theme                                  |
+| **state**       | 'active' \| 'success' \| 'error' | _'active'_  | Progress state                               |
+| **size**        | 'sm' \| 'md'                     | _'md'_      | Size (for circle kind)                       |
+| **numeral**     | boolean                          | _false_     | Show progress value as numeral               |
+| **...divProps** | HTMLDivElement props             |             | All native div props (className, style, ...) |
 
 > **_Note:_** _Progress_ **inherits** all native props from **HTMLDivElement**.
 

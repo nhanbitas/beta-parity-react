@@ -17,7 +17,7 @@ const sizeMap = {
 
 export const Menu = () => {
   return (
-    <>
+    <div className='flex flex-col gap-4'>
       {/* unvalued */}
       <div className='not-prose flex flex-wrap gap-2'>
         <Chip type='dropdown' label='Options' onChange={(e) => console.log(e)} />
@@ -61,6 +61,6 @@ export const Menu = () => {
         <Chip disabled label='Disabled' value={1} type='dropdown' color='accent' />
         <Chip disabled kind='glass' value={2} label='Disabled' type='dropdown' color='accent' />
       </div>
-    </>
+    </div>
   );
 };

@@ -24,19 +24,19 @@ import TableOfContents from '@components/doc/TableOfContents';
 
 ## Design Tokens for Menu
 
-| Token                                        | Color for            | State/Meaning         | CSS Selector(s)                                  |
-| -------------------------------------------- | -------------------- | --------------------- | ------------------------------------------------ |
-| --par-color-bg-menu                          | Menu background      | Default/Enabled       | .menu                                            |
-| --par-color-bg-menu-item-hovered             | Menu item background | Hovered               | .menu-item:hover                                 |
-| --par-color-bg-menu-item-selected-subtle     | Menu item background | Selected (subtle)     | .menu-item.subtle[aria-checked='true']           |
-| --par-color-bg-menu-item-selected-pronounced | Menu item background | Selected (pronounced) | .menu-item.pronounced[aria-checked='true']       |
-| --par-color-bg-menu-item-disabled            | Menu item background | Disabled              | .menu-item[aria-disabled='true']                 |
-| --par-color-text-menu-item                   | Menu item text       | Default/Enabled       | .menu-item                                       |
-| --par-color-text-menu-item-disabled          | Menu item text       | Disabled              | .menu-item[aria-disabled='true']                 |
-| --par-color-text-menu-item-selected          | Menu item text       | Selected              | .menu-item[aria-checked='true']                  |
-| --par-color-icon-menu-item                   | Menu item icon       | Default/Enabled       | .menu-item .menu-item-icon                       |
-| --par-color-icon-menu-item-disabled          | Menu item icon       | Disabled              | .menu-item[aria-disabled='true'] .menu-item-icon |
-| --par-color-divider-menu                     | Divider              | Default               | .menu-divider                                    |
+| **Token**                                        | **Color for**        | **State/Meaning**     | **CSS Selector(s)**                                |
+| ------------------------------------------------ | -------------------- | --------------------- | -------------------------------------------------- |
+| **--par-color-bg-menu**                          | Menu background      | Default/Enabled       | `.menu`                                            |
+| **--par-color-bg-menu-item-hovered**             | Menu item background | Hovered               | `.menu-item:hover`                                 |
+| **--par-color-bg-menu-item-selected-subtle**     | Menu item background | Selected (subtle)     | `.menu-item.subtle[aria-checked='true']`           |
+| **--par-color-bg-menu-item-selected-pronounced** | Menu item background | Selected (pronounced) | `.menu-item.pronounced[aria-checked='true']`       |
+| **--par-color-bg-menu-item-disabled**            | Menu item background | Disabled              | `.menu-item[aria-disabled='true']`                 |
+| **--par-color-text-menu-item**                   | Menu item text       | Default/Enabled       | `.menu-item`                                       |
+| **--par-color-text-menu-item-disabled**          | Menu item text       | Disabled              | `.menu-item[aria-disabled='true']`                 |
+| **--par-color-text-menu-item-selected**          | Menu item text       | Selected              | `.menu-item[aria-checked='true']`                  |
+| **--par-color-icon-menu-item**                   | Menu item icon       | Default/Enabled       | `.menu-item .menu-item-icon`                       |
+| **--par-color-icon-menu-item-disabled**          | Menu item icon       | Disabled              | `.menu-item[aria-disabled='true'] .menu-item-icon` |
+| **--par-color-divider-menu**                     | Divider              | Default               | `.menu-divider`                                    |
 
 > _Note: Menu uses the same design tokens as the Button or List component. See Button/List documentation for available tokens._
 
@@ -46,21 +46,21 @@ import TableOfContents from '@components/doc/TableOfContents';
 
 ### `<Menu />`
 
-| Prop              | Type                       | Default            | Description                                   |
-| ----------------- | -------------------------- | ------------------ | --------------------------------------------- |
-| position          | string                     | 'bottom-start'     | Menu placement (Floating UI placement string) |
-| size              | 'sm' \| 'md'               | 'sm'               | Size of the menu                              |
-| menuColor         | 'neutral' \| 'accent'      | 'neutral'          | Color of the menu                             |
-| prominence        | 'subtle' \| 'pronounced'   | 'subtle'           | Visual prominence of the menu                 |
-| theme             | 'default' \| 'alternative' | 'default'          | Theme of the menu                             |
-| anchor            | HTMLElement \| string      |                    | Anchor element or selector                    |
-| menuItemsLimit    | number                     |                    | Max number of items before overflow/scroll    |
-| scrollIndicator   | boolean                    | false              | Show scroll indicators when scrollable        |
-| searchable        | boolean                    | false              | Show search input for filtering items         |
-| defaultSearch     | string                     | ''                 | Default value for search input                |
-| searchPlaceholder | string                     |                    | Placeholder for search input                  |
-| noResultsText     | string                     | 'No results found' | Text when no search results                   |
-| usePortal         | boolean                    | true               | Render menu in a portal                       |
-| isOpen            | boolean                    | false              | Whether the menu is open                      |
-| isLoading         | boolean                    |                    | Loading state                                 |
-| disabled          | boolean                    | false              | Disable the menu                              |
+| **Prop**              | **Type**                   | **Default**          | **Description**                               |
+| --------------------- | -------------------------- | -------------------- | --------------------------------------------- |
+| **position**          | string                     | _'bottom-start'_     | Menu placement (Floating UI placement string) |
+| **size**              | 'sm' \| 'md'               | _'sm'_               | Size of the menu                              |
+| **menuColor**         | 'neutral' \| 'accent'      | _'neutral'_          | Color of the menu                             |
+| **prominence**        | 'subtle' \| 'pronounced'   | _'subtle'_           | Visual prominence of the menu                 |
+| **theme**             | 'default' \| 'alternative' | _'default'_          | Theme of the menu                             |
+| **anchor**            | HTMLElement \| string      |                      | Anchor element or selector                    |
+| **menuItemsLimit**    | number                     |                      | Max number of items before overflow/scroll    |
+| **scrollIndicator**   | boolean                    | _false_              | Show scroll indicators when scrollable        |
+| **searchable**        | boolean                    | _false_              | Show search input for filtering items         |
+| **defaultSearch**     | string                     | _''_                 | Default value for search input                |
+| **searchPlaceholder** | string                     |                      | Placeholder for search input                  |
+| **noResultsText**     | string                     | _'No results found'_ | Text when no search results                   |
+| **usePortal**         | boolean                    | _true_               | Render menu in a portal                       |
+| **isOpen**            | boolean                    | _false_              | Whether the menu is open                      |
+| **isLoading**         | boolean                    |                      | Loading state                                 |
+| **disabled**          | boolean                    | _false_              | Disable the menu                              |

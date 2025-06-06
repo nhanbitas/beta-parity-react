@@ -137,15 +137,15 @@ import TableOfContents from '@components/doc/TableOfContents';
 ### `<PasswordInput />`
 
 | **Prop**                   | **Type**                  | **Default** | **Description**                      |
-| -------------------------- | ------------------------- | ----------- | ------------------------------------ | -------------- |
+| -------------------------- | ------------------------- | ----------- | ------------------------------------ |
 | **value**                  | string                    |             | Controlled value                     |
 | **onChange**               | function (event)          |             | Callback when value changes          |
 | **placeholder**            | string                    |             | Placeholder text                     |
 | **disabled**               | boolean                   | _false_     | Disable the input                    |
 | **readOnly**               | boolean                   | _false_     | Read-only input                      |
 | **error**                  | boolean                   | _false_     | Error state                          |
-| **size**                   | 'sm'                      | 'md'        | 'md'                                 | Input size     |
-| **floatingLabel**          | string                    | ReactNode   |                                      | Floating label |
+| **size**                   | 'sm' \| 'md'              | _'md'_      | Input size                           |
+| **floatingLabel**          | string \| ReactNode       |             | Floating label                       |
 | **leftIcon**               | ReactNode                 |             | Icon on the left                     |
 | **clearButton**            | boolean                   | _false_     | Show clear button                    |
 | **toggleVisibilityButton** | boolean                   | _true_      | Show/hide password visibility button |

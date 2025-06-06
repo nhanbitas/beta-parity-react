@@ -16,8 +16,7 @@ export const GroupCheckbox = (props: {}) => {
     label: 'All'
   });
   return (
-    <>
-      <h2>Group</h2>
+    <div className='flex flex-col gap-4'>
       <CheckboxGroup onChange={({ value, tree, getGroup }) => console.log(value, tree, getGroup('value-1'))}>
         <Checkbox value='value-1' label='value 1' checked />
         <Checkbox value='value-2' label='value 2' />
@@ -41,6 +40,6 @@ export const GroupCheckbox = (props: {}) => {
           />
         ))}
       </CheckboxGroup>
-    </>
+    </div>
   );
 };

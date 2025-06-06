@@ -9,7 +9,7 @@ const values = ['Toyota', 'Ford', 'Mazda', 'Vinfast', 'Mercedes', 'BMW'];
 export const MultiFilter = () => {
   const [value, setValue] = React.useState(['Toyota', 'Ford']);
   return (
-    <>
+    <div className='flex flex-col gap-4'>
       <div className='not-prose flex flex-wrap gap-2'>
         {values.map((item) => (
           <Chip
@@ -50,6 +50,6 @@ export const MultiFilter = () => {
           />
         ))}
       </div>
-    </>
+    </div>
   );
 };

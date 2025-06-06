@@ -5,8 +5,7 @@ import { Checkbox } from 'beta-parity-react/ui/Checkbox';
 
 export const BasicCheckbox = (props: {}) => {
   return (
-    <>
-      <h2>Basic</h2>
+    <div className='flex flex-col gap-4'>
       <Checkbox
         onChange={(e: any) => {
           console.log(e.target.checked);
@@ -29,6 +28,6 @@ export const BasicCheckbox = (props: {}) => {
         sublabel='This is a Checkbox with indeterminate = true'
         indeterminate={true}
       />
-    </>
+    </div>
   );
 };

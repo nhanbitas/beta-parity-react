@@ -101,24 +101,16 @@ import TableOfContents from '@components/doc/TableOfContents';
   <Demo.DomainEmailInput theme='alternative' inputSize='md' domain='@gmail.com' />
 </CodePreview>
 
-## Design Tokens for EmailInput
-
-> _Note: EmailInput uses the same design tokens as the Input component. See Input documentation for available tokens._
-
----
-
 ## EmailInput API Reference
 
 ### `<EmailInput />`
 
-| Prop           | Type                      | Default | Description                                |
-| -------------- | ------------------------- | ------- | ------------------------------------------ |
-| type           | string                    | 'email' | Input type (always 'email' for EmailInput) |
-| domain         | string \| string[]        |         | Domain or list of domains for suggestions  |
-| onDomainChange | function (domain)         |         | Callback when domain changes               |
-| domainValue    | string                    |         | Currently selected domain (controlled)     |
-| ...InputProps  | [See Input](../BaseInput) |         | Inherits all props from Input              |
+| **Prop**           | **Type**                  | **Default** | **Description**                            |
+| ------------------ | ------------------------- | ----------- | ------------------------------------------ |
+| **type**           | string                    | _'email'_   | Input type (always 'email' for EmailInput) |
+| **domain**         | string \| string[]        |             | Domain or list of domains for suggestions  |
+| **onDomainChange** | function (domain)         |             | Callback when domain changes               |
+| **domainValue**    | string                    |             | Currently selected domain (controlled)     |
+| **...InputProps**  | [See Input](../BaseInput) |             | Inherits all props from Input              |
 
 > _Note:_ _EmailInput_ inherits all props from Input and the native input element. See [Input documentation](../BaseInput) for full details on available props and tokens.
-
----

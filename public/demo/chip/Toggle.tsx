@@ -17,7 +17,7 @@ const sizeMap = {
 
 export const Toggle = () => {
   return (
-    <>
+    <div className='flex flex-col gap-4'>
       <div className='not-prose flex flex-wrap gap-2'>
         {Object.keys(colorMap).map((color: any) => (
           <Chip
@@ -62,6 +62,6 @@ export const Toggle = () => {
         <Chip disabled label='Disabled' />
         <Chip disabled label='Disabled' kind='glass' />
       </div>
-    </>
+    </div>
   );
 };

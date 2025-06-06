@@ -82,28 +82,28 @@ import TableOfContents from '@components/doc/TableOfContents';
 
 ## Design Tokens for PinField
 
-| **Token**                                | **Color for**                | **State/Meaning** | **CSS Selector(s)**                                    |
-| ---------------------------------------- | ---------------------------- | ----------------- | ------------------------------------------------------ |
-| `--par-color-bg-field-enabled`           | Pin field background         | Enabled           | `.pinfield-input:not(:disabled):not([readonly])`       |
-| `--par-color-bg-field-hovered`           | Pin field background         | Hovered           | `.pinfield-input:hover:not(:disabled):not([readonly])` |
-| `--par-color-bg-field-disabled`          | Pin field background         | Disabled          | `.pinfield.pinfield-disabled .pinfield-input`          |
-| `--par-color-bg-field-readonly`          | Pin field background         | Readonly          | `.pinfield.pinfield-read-only .pinfield-input`         |
-| `--par-color-bg-field-invalid`           | Pin field background         | Invalid/Error     | `.pinfield.pinfield-invalid .pinfield-input`           |
-| `--par-color-border-field-enabled`       | Pin field border             | Enabled           | `.pinfield-item`                                       |
-| `--par-color-border-field-hovered`       | Pin field border             | Hovered           | `.pinfield-item:hover`                                 |
-| `--par-color-border-field-disabled`      | Pin field border             | Disabled          | `.pinfield.pinfield-disabled .pinfield-item`           |
-| `--par-color-border-field-invalid`       | Pin field border             | Invalid/Error     | `.pinfield.pinfield-invalid .pinfield-item`            |
-| `--par-color-border-field-focused`       | Pin field border             | Focused           | `.pinfield-item:focus-within`                          |
-| `--par-color-text-field-placeholder`     | Placeholder text             | Any               | `.pinfield-placeholder`                                |
-| `--par-color-text-field-filled`          | Pin field text               | Filled            | `.pinfield-input`                                      |
-| `--par-color-text-field-label`           | Label text                   | Any               | `.pinfield-label`                                      |
-| `--par-color-text-field-disabled`        | Pin field text               | Disabled          | `.pinfield.pinfield-disabled .pinfield-input`          |
-| `--par-color-text-field-readonly`        | Pin field text               | Readonly          | `.pinfield.pinfield-read-only .pinfield-input`         |
-| `--par-color-text-field-invalid`         | Pin field text               | Invalid/Error     | `.pinfield.pinfield-invalid .pinfield-input`           |
-| `--par-color-icon-field-button-enabled`  | Icon color (button enabled)  | Enabled           | (not applicable, no separate icon button)              |
-| `--par-color-icon-field-button-hovered`  | Icon color (button hovered)  | Hovered           | (not applicable, no separate icon button)              |
-| `--par-color-icon-field-button-pressed`  | Icon color (button pressed)  | Pressed           | (not applicable, no separate icon button)              |
-| `--par-color-icon-field-button-disabled` | Icon color (button disabled) | Disabled          | (not applicable, no separate icon button)              |
+| **Token**                                  | **Color for**                | **State/Meaning** | **CSS Selector(s)**                                    |
+| ------------------------------------------ | ---------------------------- | ----------------- | ------------------------------------------------------ |
+| **--par-color-bg-field-enabled**           | Pin field background         | Enabled           | `.pinfield-input:not(:disabled):not([readonly])`       |
+| **--par-color-bg-field-hovered**           | Pin field background         | Hovered           | `.pinfield-input:hover:not(:disabled):not([readonly])` |
+| **--par-color-bg-field-disabled**          | Pin field background         | Disabled          | `.pinfield.pinfield-disabled .pinfield-input`          |
+| **--par-color-bg-field-readonly**          | Pin field background         | Readonly          | `.pinfield.pinfield-read-only .pinfield-input`         |
+| **--par-color-bg-field-invalid**           | Pin field background         | Invalid/Error     | `.pinfield.pinfield-invalid .pinfield-input`           |
+| **--par-color-border-field-enabled**       | Pin field border             | Enabled           | `.pinfield-item`                                       |
+| **--par-color-border-field-hovered**       | Pin field border             | Hovered           | `.pinfield-item:hover`                                 |
+| **--par-color-border-field-disabled**      | Pin field border             | Disabled          | `.pinfield.pinfield-disabled .pinfield-item`           |
+| **--par-color-border-field-invalid**       | Pin field border             | Invalid/Error     | `.pinfield.pinfield-invalid .pinfield-item`            |
+| **--par-color-border-field-focused**       | Pin field border             | Focused           | `.pinfield-item:focus-within`                          |
+| **--par-color-text-field-placeholder**     | Placeholder text             | Any               | `.pinfield-placeholder`                                |
+| **--par-color-text-field-filled**          | Pin field text               | Filled            | `.pinfield-input`                                      |
+| **--par-color-text-field-label**           | Label text                   | Any               | `.pinfield-label`                                      |
+| **--par-color-text-field-disabled**        | Pin field text               | Disabled          | `.pinfield.pinfield-disabled .pinfield-input`          |
+| **--par-color-text-field-readonly**        | Pin field text               | Readonly          | `.pinfield.pinfield-read-only .pinfield-input`         |
+| **--par-color-text-field-invalid**         | Pin field text               | Invalid/Error     | `.pinfield.pinfield-invalid .pinfield-input`           |
+| **--par-color-icon-field-button-enabled**  | Icon color (button enabled)  | Enabled           | (not applicable, no separate icon button)              |
+| **--par-color-icon-field-button-hovered**  | Icon color (button hovered)  | Hovered           | (not applicable, no separate icon button)              |
+| **--par-color-icon-field-button-pressed**  | Icon color (button pressed)  | Pressed           | (not applicable, no separate icon button)              |
+| **--par-color-icon-field-button-disabled** | Icon color (button disabled) | Disabled          | (not applicable, no separate icon button)              |
 
 > _Note: PinField uses the same design tokens as Input. See Input documentation for more details._
 
@@ -113,22 +113,22 @@ import TableOfContents from '@components/doc/TableOfContents';
 
 ### `<PinField />`
 
-| **Prop**        | **Type**             | **Default**   | **Description**                                  |
-| --------------- | -------------------- | ------------- | ------------------------------------------------ | ---------- |
-| **groups**      | number[]             | [4]           | Number and grouping of PIN fields (e.g. [2,2,2]) |
-| **value**       | string               |               | PIN value (controlled)                           |
-| **onChange**    | function (value)     |               | Callback when value changes                      |
-| **onComplete**  | function (value)     |               | Callback when all fields are filled              |
-| **masked**      | boolean              | _false_       | Mask input characters (password style)           |
-| **separator**   | string               | '-'           | Separator character between groups               |
-| **reset**       | boolean              | _false_       | Reset all input fields                           |
-| **readOnly**    | boolean              | _false_       | Read-only, cannot edit                           |
-| **disabled**    | boolean              | _false_       | Disable all fields                               |
-| **invalid**     | boolean              | _false_       | Invalid/error state                              |
-| **size**        | 'sm'                 | 'md'          | 'md'                                             | Field size |
-| **theme**       | 'default'            | 'alternative' | 'default'                                        | Theme      |
-| **placeholder** | string               | '•'           | Placeholder for empty fields                     |
-| ...HTMLDivProps | HTMLDivElement props |               | Inherits all props of div                        |
+| **Prop**            | **Type**                   | **Default** | **Description**                                  |
+| ------------------- | -------------------------- | ----------- | ------------------------------------------------ |
+| **groups**          | number[]                   | _[4]_       | Number and grouping of PIN fields (e.g. [2,2,2]) |
+| **value**           | string                     |             | PIN value (controlled)                           |
+| **onChange**        | function (value)           |             | Callback when value changes                      |
+| **onComplete**      | function (value)           |             | Callback when all fields are filled              |
+| **masked**          | boolean                    | _false_     | Mask input characters (password style)           |
+| **separator**       | string                     | _'-'_       | Separator character between groups               |
+| **reset**           | boolean                    | _false_     | Reset all input fields                           |
+| **readOnly**        | boolean                    | _false_     | Read-only, cannot edit                           |
+| **disabled**        | boolean                    | _false_     | Disable all fields                               |
+| **invalid**         | boolean                    | _false_     | Invalid/error state                              |
+| **size**            | 'sm' \| 'md'               | _'md'_      | Field size                                       |
+| **theme**           | 'default' \| 'alternative' | _'default'_ | Theme                                            |
+| **placeholder**     | string                     | _'•'_       | Placeholder for empty fields                     |
+| **...HTMLDivProps** | HTMLDivElement props       |             | Inherits all props of div                        |
 
 > **_Note:_** _PinField_ does not inherit InputProps directly but HTMLDivElement props.\_
 

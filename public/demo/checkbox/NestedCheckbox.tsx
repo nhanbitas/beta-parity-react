@@ -40,8 +40,7 @@ const treeData = [
 export const NestedCheckbox = (props: {}) => {
   const [parsedValue, setParsedValue] = React.useState<any>([]);
   return (
-    <>
-      <h2>NestedGroup</h2>
+    <div className='flex flex-col gap-4'>
       <CheckboxGroup
         tree={parsedValue}
         onParse={(value) => setParsedValue(value)}
@@ -71,6 +70,6 @@ export const NestedCheckbox = (props: {}) => {
         onParse={(value) => console.log('parsed nested', value)}
         onChange={({ value, tree, getGroup }) => console.log(value, tree, getGroup('value-2'))}
       />
-    </>
+    </div>
   );
 };

@@ -60,25 +60,25 @@ import TableOfContents from '@components/doc/TableOfContents';
 
 ## Design Tokens for Toast
 
-| **Token**                                            | **Color for**    | **State/Meaning**     | **CSS Selector(s)**                        |
-| ---------------------------------------------------- | ---------------- | --------------------- | ------------------------------------------ |
-| `--par-color-bg-toast-emphasis-high-generic`         | Toast background | Generic               | `.toast.emphasis-high.generic`             |
-| `--par-color-bg-toast-emphasis-high-information`     | Toast background | Information           | `.toast.emphasis-high.information`         |
-| `--par-color-bg-toast-emphasis-high-affirmative`     | Toast background | Affirmative (success) | `.toast.emphasis-high.affirmative`         |
-| `--par-color-bg-toast-emphasis-high-cautionary`      | Toast background | Cautionary (warning)  | `.toast.emphasis-high.cautionary`          |
-| `--par-color-bg-toast-emphasis-high-adverse`         | Toast background | Adverse (error)       | `.toast.emphasis-high.adverse`             |
-| `--par-color-bg-emphasis-normal`                     | Toast background | Normal emphasis       | `.toast.emphasis-normal`                   |
-| `--par-color-border-toast-emphasis-high-generic`     | Toast border     | Generic               | `.toast.emphasis-high.generic`             |
-| `--par-color-border-toast-emphasis-high-info`        | Toast border     | Information           | `.toast.emphasis-high.information`         |
-| `--par-color-border-toast-emphasis-high-affirmative` | Toast border     | Affirmative (success) | `.toast.emphasis-high.affirmative`         |
-| `--par-color-border-toast-emphasis-high-cautionary`  | Toast border     | Cautionary (warning)  | `.toast.emphasis-high.cautionary`          |
-| `--par-color-border-toast-emphasis-high-adverse`     | Toast border     | Adverse (error)       | `.toast.emphasis-high.adverse`             |
-| `--par-color-border-emphasis-normal`                 | Toast border     | Normal emphasis       | `.toast.emphasis-normal`                   |
-| `--par-color-border-progress-bar-generic`            | Progress bar     | Generic               | `.toast.generic > .toast-progress-bar`     |
-| `--par-color-border-progress-bar-info`               | Progress bar     | Information           | `.toast.information > .toast-progress-bar` |
-| `--par-color-border-progress-bar-affirmative`        | Progress bar     | Affirmative (success) | `.toast.affirmative > .toast-progress-bar` |
-| `--par-color-border-progress-bar-cautionary`         | Progress bar     | Cautionary (warning)  | `.toast.cautionary > .toast-progress-bar`  |
-| `--par-color-border-progress-bar-adverse`            | Progress bar     | Adverse (error)       | `.toast.adverse > .toast-progress-bar`     |
+| **Token**                                              | **Color for**    | **State/Meaning**     | **CSS Selector(s)**                        |
+| ------------------------------------------------------ | ---------------- | --------------------- | ------------------------------------------ |
+| **--par-color-bg-toast-emphasis-high-generic**         | Toast background | Generic               | `.toast.emphasis-high.generic`             |
+| **--par-color-bg-toast-emphasis-high-information**     | Toast background | Information           | `.toast.emphasis-high.information`         |
+| **--par-color-bg-toast-emphasis-high-affirmative**     | Toast background | Affirmative (success) | `.toast.emphasis-high.affirmative`         |
+| **--par-color-bg-toast-emphasis-high-cautionary**      | Toast background | Cautionary (warning)  | `.toast.emphasis-high.cautionary`          |
+| **--par-color-bg-toast-emphasis-high-adverse**         | Toast background | Adverse (error)       | `.toast.emphasis-high.adverse`             |
+| **--par-color-bg-emphasis-normal**                     | Toast background | Normal emphasis       | `.toast.emphasis-normal`                   |
+| **--par-color-border-toast-emphasis-high-generic**     | Toast border     | Generic               | `.toast.emphasis-high.generic`             |
+| **--par-color-border-toast-emphasis-high-info**        | Toast border     | Information           | `.toast.emphasis-high.information`         |
+| **--par-color-border-toast-emphasis-high-affirmative** | Toast border     | Affirmative (success) | `.toast.emphasis-high.affirmative`         |
+| **--par-color-border-toast-emphasis-high-cautionary**  | Toast border     | Cautionary (warning)  | `.toast.emphasis-high.cautionary`          |
+| **--par-color-border-toast-emphasis-high-adverse**     | Toast border     | Adverse (error)       | `.toast.emphasis-high.adverse`             |
+| **--par-color-border-emphasis-normal**                 | Toast border     | Normal emphasis       | `.toast.emphasis-normal`                   |
+| **--par-color-border-progress-bar-generic**            | Progress bar     | Generic               | `.toast.generic > .toast-progress-bar`     |
+| **--par-color-border-progress-bar-info**               | Progress bar     | Information           | `.toast.information > .toast-progress-bar` |
+| **--par-color-border-progress-bar-affirmative**        | Progress bar     | Affirmative (success) | `.toast.affirmative > .toast-progress-bar` |
+| **--par-color-border-progress-bar-cautionary**         | Progress bar     | Cautionary (warning)  | `.toast.cautionary > .toast-progress-bar`  |
+| **--par-color-border-progress-bar-adverse**            | Progress bar     | Adverse (error)       | `.toast.adverse > .toast-progress-bar`     |
 
 > _Note: Toast uses design tokens defined in `variables.css` and shares some tokens with Alert/Notification._
 
@@ -88,24 +88,24 @@ import TableOfContents from '@components/doc/TableOfContents';
 
 ### `<Toast />`
 
-| **Prop**          | **Type**             | **Default**   | **Description**                              |
-| ----------------- | -------------------- | ------------- | -------------------------------------------- | --------------- | ----------- | -------------- | ---------- |
-| **title**         | string               | ReactNode     |                                              | Toast title     |
-| **message**       | string               | ReactNode     |                                              | Toast message   |
-| **action**        | ReactNode            |               | Optional action element                      |
-| **kind**          | 'generic'            | 'information' | 'affirmative'                                | 'cautionary'    | 'adverse'   | 'generic'      | Toast type |
-| **emphasis**      | 'normal'             | 'high'        | 'high'                                       | Emphasis level  |
-| **height**        | 'flexible'           | 'compact'     | 'flexible'                                   | Height variant  |
-| **position**      | 'top-right'          | 'top-center'  | 'bottom-right'                               | 'bottom-center' | 'top-right' | Toast position |
-| **autoDismiss**   | boolean              | false         | Auto-dismiss after duration                  |
-| **duration**      | number               | 5000          | Duration in ms                               |
-| **pauseOnHover**  | boolean              | true          | Pause auto-dismiss on hover                  |
-| **icon**          | ReactNode            |               | Custom icon                                  |
-| **progressBar**   | boolean              | false         | Show progress bar                            |
-| **dismissButton** | boolean              | true          | Show close button                            |
-| **importance**    | number               | 0             | Importance for stacking/sorting              |
-| **pending**       | boolean              | false         | Pending state (shows spinner)                |
-| **onDismissed**   | function ()          |               | Callback when toast is dismissed             |
-| **...divProps**   | HTMLDivElement props |               | All native div props (className, style, ...) |
+| **Prop**          | **Type**                                                                 | **Default**   | **Description**                              |
+| ----------------- | ------------------------------------------------------------------------ | ------------- | -------------------------------------------- |
+| **title**         | string \| ReactNode                                                      |               | Toast title                                  |
+| **message**       | string \| ReactNode                                                      |               | Toast message                                |
+| **action**        | ReactNode                                                                |               | Optional action element                      |
+| **kind**          | 'generic' \| 'information' \| 'affirmative' \| 'cautionary' \| 'adverse' | _'generic'_   | Toast type                                   |
+| **emphasis**      | 'normal' \| 'high'                                                       | _'high'_      | Emphasis level                               |
+| **height**        | 'flexible' \| 'compact'                                                  | _'flexible'_  | Height variant                               |
+| **position**      | 'top-right' \| 'top-center' \| 'bottom-right' \| 'bottom-center'         | _'top-right'_ | Toast position                               |
+| **autoDismiss**   | boolean                                                                  | _false_       | Auto-dismiss after duration                  |
+| **duration**      | number                                                                   | _5000_        | Duration in ms                               |
+| **pauseOnHover**  | boolean                                                                  | _true_        | Pause auto-dismiss on hover                  |
+| **icon**          | ReactNode                                                                |               | Custom icon                                  |
+| **progressBar**   | boolean                                                                  | _false_       | Show progress bar                            |
+| **dismissButton** | boolean                                                                  | _true_        | Show close button                            |
+| **importance**    | number                                                                   | _0_           | Importance for stacking/sorting              |
+| **pending**       | boolean                                                                  | _false_       | Pending state (shows spinner)                |
+| **onDismissed**   | function ()                                                              |               | Callback when toast is dismissed             |
+| **...divProps**   | HTMLDivElement props                                                     |               | All native div props (className, style, ...) |
 
-> **_Note:_** _ToastOptions_ is imported from the Toast component and includes all above props except `id` and `removeToast` (which are internal).
+> _Note: `ToastOptions` is imported from the Toast component and includes all above props except `id` and `removeToast` (which are internal)._

@@ -29,28 +29,28 @@ import TableOfContents from '@components/doc/TableOfContents';
 
 ## Design Tokens for Select
 
-| **Token**                                | **Color for**                | **State/Meaning** | **CSS Selector(s)**                                                             |
-| ---------------------------------------- | ---------------------------- | ----------------- | ------------------------------------------------------------------------------- |
-| `--par-color-bg-field-enabled`           | Select field background      | Enabled           | `select.native-select:enabled`                                                  |
-| `--par-color-bg-field-hovered`           | Select field background      | Hovered           | `select.native-select:hover`                                                    |
-| `--par-color-bg-field-disabled`          | Select field background      | Disabled          | `select.native-select:disabled`                                                 |
-| `--par-color-bg-field-readonly`          | Select field background      | Readonly          | `select.native-select[readonly]`                                                |
-| `--par-color-bg-field-invalid`           | Select field background      | Invalid/Error     | `select.native-select.invalid`                                                  |
-| `--par-color-border-field-enabled`       | Select field border          | Enabled           | `select.native-select:enabled`                                                  |
-| `--par-color-border-field-hovered`       | Select field border          | Hovered           | `select.native-select:hover`                                                    |
-| `--par-color-border-field-disabled`      | Select field border          | Disabled          | `select.native-select:disabled`                                                 |
-| `--par-color-border-field-invalid`       | Select field border          | Invalid/Error     | `select.native-select.invalid`                                                  |
-| `--par-color-border-field-focused`       | Select field border          | Focused           | `select.native-select:focus`                                                    |
-| `--par-color-text-field-placeholder`     | Placeholder text             | Any               | `select.native-select::placeholder`, `.select-input.non-value`, `.select-label` |
-| `--par-color-text-field-filled`          | Select field text            | Filled            | `select.native-select`, `.select-input`                                         |
-| `--par-color-text-field-label`           | Label text                   | Any               | `.select-label`                                                                 |
-| `--par-color-text-field-disabled`        | Select field text            | Disabled          | `select.native-select:disabled`                                                 |
-| `--par-color-text-field-readonly`        | Select field text            | Readonly          | `select.native-select[readonly]`                                                |
-| `--par-color-text-field-invalid`         | Select field text            | Invalid/Error     | `select.native-select.invalid`                                                  |
-| `--par-color-icon-field-button-enabled`  | Icon color (button enabled)  | Enabled           | `.arrow-select-btn:enabled`, `.clear-button:enabled`                            |
-| `--par-color-icon-field-button-hovered`  | Icon color (button hovered)  | Hovered           | `.arrow-select-btn:hover`, `.clear-button:hover`                                |
-| `--par-color-icon-field-button-pressed`  | Icon color (button pressed)  | Pressed           | `.arrow-select-btn:active`, `.clear-button:active`                              |
-| `--par-color-icon-field-button-disabled` | Icon color (button disabled) | Disabled          | `.arrow-select-btn:disabled`, `.clear-button:disabled`                          |
+| **Token**                                  | **Color for**                | **State/Meaning** | **CSS Selector(s)**                                                             |
+| ------------------------------------------ | ---------------------------- | ----------------- | ------------------------------------------------------------------------------- |
+| **--par-color-bg-field-enabled**           | Select field background      | Enabled           | `select.native-select:enabled`                                                  |
+| **--par-color-bg-field-hovered**           | Select field background      | Hovered           | `select.native-select:hover`                                                    |
+| **--par-color-bg-field-disabled**          | Select field background      | Disabled          | `select.native-select:disabled`                                                 |
+| **--par-color-bg-field-readonly**          | Select field background      | Readonly          | `select.native-select[readonly]`                                                |
+| **--par-color-bg-field-invalid**           | Select field background      | Invalid/Error     | `select.native-select.invalid`                                                  |
+| **--par-color-border-field-enabled**       | Select field border          | Enabled           | `select.native-select:enabled`                                                  |
+| **--par-color-border-field-hovered**       | Select field border          | Hovered           | `select.native-select:hover`                                                    |
+| **--par-color-border-field-disabled**      | Select field border          | Disabled          | `select.native-select:disabled`                                                 |
+| **--par-color-border-field-invalid**       | Select field border          | Invalid/Error     | `select.native-select.invalid`                                                  |
+| **--par-color-border-field-focused**       | Select field border          | Focused           | `select.native-select:focus`                                                    |
+| **--par-color-text-field-placeholder**     | Placeholder text             | Any               | `select.native-select::placeholder`, `.select-input.non-value`, `.select-label` |
+| **--par-color-text-field-filled**          | Select field text            | Filled            | `select.native-select`, `.select-input`                                         |
+| **--par-color-text-field-label**           | Label text                   | Any               | `.select-label`                                                                 |
+| **--par-color-text-field-disabled**        | Select field text            | Disabled          | `select.native-select:disabled`                                                 |
+| **--par-color-text-field-readonly**        | Select field text            | Readonly          | `select.native-select[readonly]`                                                |
+| **--par-color-text-field-invalid**         | Select field text            | Invalid/Error     | `select.native-select.invalid`                                                  |
+| **--par-color-icon-field-button-enabled**  | Icon color (button enabled)  | Enabled           | `.arrow-select-btn:enabled`, `.clear-button:enabled`                            |
+| **--par-color-icon-field-button-hovered**  | Icon color (button hovered)  | Hovered           | `.arrow-select-btn:hover`, `.clear-button:hover`                                |
+| **--par-color-icon-field-button-pressed**  | Icon color (button pressed)  | Pressed           | `.arrow-select-btn:active`, `.clear-button:active`                              |
+| **--par-color-icon-field-button-disabled** | Icon color (button disabled) | Disabled          | `.arrow-select-btn:disabled`, `.clear-button:disabled`                          |
 
 > _Note: Select uses the same design tokens as the Input or Dropdown component. See Input/Dropdown documentation for available tokens._
 
@@ -61,9 +61,9 @@ import TableOfContents from '@components/doc/TableOfContents';
 ### `<Select />`
 
 | **Prop**          | **Type**                  | **Default** | **Description**                                                        |
-| ----------------- | ------------------------- | ----------- | ---------------------------------------------------------------------- | -------------- | ----------------- |
+| ----------------- | ------------------------- | ----------- | ---------------------------------------------------------------------- |
 | **options**       | array                     |             | List of options                                                        |
-| **value**         | string                    | number      | array                                                                  |                | Selected value(s) |
+| **value**         | string \| number \| array |             | Selected value(s)                                                      |
 | **onChange**      | function (value)          |             | Callback when value changes                                            |
 | **multiselect**   | boolean                   | _false_     | Allow multiple selection (named `multiselect` in code, not `multiple`) |
 | **disabled**      | boolean                   | _false_     | Disable the select                                                     |
@@ -71,10 +71,10 @@ import TableOfContents from '@components/doc/TableOfContents';
 | **clearButton**   | boolean                   | _false_     | Show clear button                                                      |
 | **filterable**    | boolean                   | _false_     | Allow filtering options                                                |
 | **tagProps**      | object                    |             | Tag props for multi-select (see Tag spec)                              |
-| **theme**         | string                    | 'default'   | Visual theme ('default' or 'alternative')                              |
-| **selectSize**    | string                    | 'md'        | Size of select ('sm', 'md')                                            |
-| **floatingLabel** | string                    | ReactNode   |                                                                        | Floating label |
+| **theme**         | string                    | _'default'_ | Visual theme ('default' or 'alternative')                              |
+| **selectSize**    | string                    | _'md'_      | Size of select ('sm', 'md')                                            |
+| **floatingLabel** | string \| ReactNode       |             | Floating label                                                         |
 | **leftIcon**      | ReactNode                 |             | Icon on the left                                                       |
 | **...InputProps** | [See Input](../BaseInput) |             | Inherits all props from **Input**                                      |
-| **...MenuProps**  | [See Menu](../menu/@spec) |             | Inherits all props from **Menu**                                       |
-| **...TagProps**   | [See Tag](../tag/@spec)   |             | Inherits all props from **Tag**                                        |
+| **...MenuProps**  | [See Menu](../menu)       |             | Inherits all props from **Menu**                                       |
+| **...TagProps**   | [See Tag](../tag)         |             | Inherits all props from **Tag**                                        |

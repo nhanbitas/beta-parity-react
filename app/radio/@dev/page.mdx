@@ -32,21 +32,21 @@ import TableOfContents from '@components/doc/TableOfContents';
 
 ## Design Tokens for Radio
 
-| **Token**                           | **Color for**       | **State/Meaning** | **CSS Selector(s)**                                 |
-| ----------------------------------- | ------------------- | ----------------- | --------------------------------------------------- |
-| `--par-color-bg-radio-enabled`      | Radio background    | Enabled           | `.par-radio:enabled`                                |
-| `--par-color-bg-radio-hovered`      | Radio background    | Hovered           | `.par-radio:hover`                                  |
-| `--par-color-bg-radio-disabled`     | Radio background    | Disabled          | `.par-radio:disabled`                               |
-| `--par-color-bg-radio-checked`      | Radio background    | Checked           | `.par-radio:checked`                                |
-| `--par-color-bg-radio-invalid`      | Radio background    | Invalid/Error     | `.par-radio.error-state`                            |
-| `--par-color-border-radio-enabled`  | Radio border        | Enabled           | `.par-radio:enabled`                                |
-| `--par-color-border-radio-hovered`  | Radio border        | Hovered           | `.par-radio:hover`                                  |
-| `--par-color-border-radio-disabled` | Radio border        | Disabled          | `.par-radio:disabled`                               |
-| `--par-color-border-radio-checked`  | Radio border        | Checked           | `.par-radio:checked`                                |
-| `--par-color-border-radio-invalid`  | Radio border        | Invalid/Error     | `.par-radio.error-state`                            |
-| `--par-color-icon-radio-dot`        | Radio dot (checked) | Checked           | `.radio-icon.radio-checked`                         |
-| `--par-color-label-radio`           | Radio label text    | Any               | `.input-label`                                      |
-| `--par-color-label-radio-disabled`  | Radio label text    | Disabled          | `.radio-wrapper[aria-disabled='true'] .input-label` |
+| **Token**                             | **Color for**       | **State/Meaning** | **CSS Selector(s)**                                 |
+| ------------------------------------- | ------------------- | ----------------- | --------------------------------------------------- |
+| **--par-color-bg-radio-enabled**      | Radio background    | Enabled           | `.par-radio:enabled`                                |
+| **--par-color-bg-radio-hovered**      | Radio background    | Hovered           | `.par-radio:hover`                                  |
+| **--par-color-bg-radio-disabled**     | Radio background    | Disabled          | `.par-radio:disabled`                               |
+| **--par-color-bg-radio-checked**      | Radio background    | Checked           | `.par-radio:checked`                                |
+| **--par-color-bg-radio-invalid**      | Radio background    | Invalid/Error     | `.par-radio.error-state`                            |
+| **--par-color-border-radio-enabled**  | Radio border        | Enabled           | `.par-radio:enabled`                                |
+| **--par-color-border-radio-hovered**  | Radio border        | Hovered           | `.par-radio:hover`                                  |
+| **--par-color-border-radio-disabled** | Radio border        | Disabled          | `.par-radio:disabled`                               |
+| **--par-color-border-radio-checked**  | Radio border        | Checked           | `.par-radio:checked`                                |
+| **--par-color-border-radio-invalid**  | Radio border        | Invalid/Error     | `.par-radio.error-state`                            |
+| **--par-color-icon-radio-dot**        | Radio dot (checked) | Checked           | `.radio-icon.radio-checked`                         |
+| **--par-color-label-radio**           | Radio label text    | Any               | `.input-label`                                      |
+| **--par-color-label-radio-disabled**  | Radio label text    | Disabled          | `.radio-wrapper[aria-disabled='true'] .input-label` |
 
 > _Note: Radio uses the same design tokens as the Input component. See Input documentation for available tokens._
 
@@ -57,12 +57,12 @@ import TableOfContents from '@components/doc/TableOfContents';
 ### `<Radio />`
 
 | **Prop**              | **Type**                  | **Default** | **Description**                   |
-| --------------------- | ------------------------- | ----------- | --------------------------------- | ---------------------- |
+| --------------------- | ------------------------- | ----------- | --------------------------------- |
 | **checked**           | boolean                   |             | Checked state                     |
 | **onChange**          | function (event)          |             | Callback when value changes       |
-| **value**             | string                    | number      |                                   | Value of the radio     |
-| **label**             | string                    | ReactNode   |                                   | Label for the radio    |
-| **sublabel**          | string                    | ReactNode   |                                   | Sublabel for the radio |
+| **value**             | string \| number          |             | Value of the radio                |
+| **label**             | string \| ReactNode       |             | Label for the radio               |
+| **sublabel**          | string \| ReactNode       |             | Sublabel for the radio            |
 | **disabled**          | boolean                   | _false_     | Disable the radio                 |
 | **color**             | string                    |             | Radio color                       |
 | **radioWrapperProps** | any                       |             | Props for the radio wrapper       |

@@ -26,11 +26,11 @@ import TableOfContents from '@components/doc/TableOfContents';
 
 ## Design Tokens for Tooltip
 
-| **Token**                          | **Color for**      | **State/Meaning** | **CSS Selector(s)** |
-| ---------------------------------- | ------------------ | ----------------- | ------------------- |
-| `--par-color-bg-surface-inverse`   | Tooltip background | Default           | `.tooltip-content`  |
-| `--par-color-text-primary-inverse` | Tooltip text       | Default           | `.tooltip-content`  |
-| `--par-color-bg-surface-inverse`   | Tooltip arrow      | Default           | `.tooltip-caret`    |
+| **Token**                            | **Color for**      | **State/Meaning** | **CSS Selector(s)** |
+| ------------------------------------ | ------------------ | ----------------- | ------------------- |
+| **--par-color-bg-surface-inverse**   | Tooltip background | Default           | `.tooltip-content`  |
+| **--par-color-text-primary-inverse** | Tooltip text       | Default           | `.tooltip-content`  |
+| **--par-color-bg-surface-inverse**   | Tooltip arrow      | Default           | `.tooltip-caret`    |
 
 > _Note: Tooltip uses shared design tokens from Popover/Overlay. See Popover/Overlay documentation for full token list._
 
@@ -41,8 +41,8 @@ import TableOfContents from '@components/doc/TableOfContents';
 ### `<Tooltip />`
 
 | **Prop**           | **Type**             | **Default** | **Description**                              |
-| ------------------ | -------------------- | ----------- | -------------------------------------------- | --------------- |
-| **content**        | string               | ReactNode   |                                              | Tooltip content |
+| ------------------ | -------------------- | ----------- | -------------------------------------------- |
+| **content**        | string \| ReactNode  |             | Tooltip content                              |
 | **position**       | string               | _'top'_     | Tooltip placement                            |
 | **isToggle**       | boolean              | _false_     | Toggle on click                              |
 | **delay**          | number               | _0_         | Delay before show on hover (ms)              |
