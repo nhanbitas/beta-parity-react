@@ -26,35 +26,33 @@ const ComponentSection = ({ children, rawText, paths, theme, loading }: Props) =
   const isAlternative = theme === 'alternative';
 
   return (
-    <div>
-      <div className='w-full'>
-        <div className='w-full *:mt-12'>{children}</div>
+    <div className='w-full'>
+      <div className='w-full *:mt-12'>{children}</div>
 
-        <div className='relative flex items-center justify-between py-1'>
-          {/* <span className='text-sm italic'>
+      <div className='relative flex w-full items-center justify-between py-1'>
+        {/* <span className='text-sm italic'>
             {paths && paths[1] ? paths[1].charAt(0).toUpperCase() + paths[1].slice(1) : ''}.tsx{' '}
           </span> */}
 
-          <Tooltip content='Copy code to clipboard'>
-            <button className='absolute right-4 top-4 rounded-md bg-transparent p-2 text-gray-100' onClick={handleCopy}>
-              <CopyIcon />
-            </button>
-          </Tooltip>
-        </div>
+        <Tooltip content='Copy code to clipboard'>
+          <button className='absolute right-4 top-4 rounded-md bg-transparent p-2 text-gray-100' onClick={handleCopy}>
+            <CopyIcon />
+          </button>
+        </Tooltip>
+      </div>
 
-        <div className='flex w-full items-center justify-center'>
-          {loading || !rawText ? (
-            <Skeleton />
-          ) : (
-            <SyntaxHighlighter
-              language='javascript'
-              style={atomDark}
-              className='tsx-language !mt-0 max-h-[600px] w-[1200px] flex-1 overflow-auto !text-sm'
-            >
-              {rawText}
-            </SyntaxHighlighter>
-          )}
-        </div>
+      <div className='flex w-full items-center justify-center'>
+        {loading || !rawText ? (
+          <Skeleton />
+        ) : (
+          <SyntaxHighlighter
+            language='javascript'
+            style={atomDark}
+            className='tsx-language !mt-0 max-h-[600px] w-[1200px] flex-1 overflow-auto !text-sm'
+          >
+            {rawText}
+          </SyntaxHighlighter>
+        )}
       </div>
     </div>
   );
