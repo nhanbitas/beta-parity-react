@@ -52,10 +52,10 @@ const ThemeProvider = (props: Props) => {
       <button
         className={`fixed bottom-12 right-4 z-10 cursor-pointer rounded-full bg-gray-100 p-2 text-gray-900 hover:bg-gray-200`}
         onClick={toggleTheme}
+        aria-label='Toggle theme'
       >
         {theme === 'light' ? <MoonIcon /> : <Sun />}
       </button>
-
       {props.children}
     </body>
   );

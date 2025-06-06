@@ -5,6 +5,7 @@ import './globals.css';
 import 'beta-parity-react/ui/theme/index.css';
 import SideBar from '@components/doc/SideBar';
 import ThemeProvider from '@components/doc/ThemeProvider';
+import ScrollToTopButton from '@/src/components/doc/ScrollToTopButton';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -21,17 +22,16 @@ export default async function RootLayout({
   const cookieStore = await cookies();
   const theme = cookieStore.get('theme') as any;
   const isValidTheme = theme ? ['light', 'dark'].includes(theme.value) : false;
-
   return (
     <html lang='en'>
       <ThemeProvider initialTheme={isValidTheme ? theme.value : 'light'}>
         <SideBar />
-        <main
-          id='main'
-          className='prose relative flex min-h-screen flex-1 flex-col gap-8 p-8 sm:px-12 md:px-24 2xl:px-48'
-        >
+
+        <main id='main' className='prose flex min-h-screen w-full flex-col gap-8 p-8 sm:px-12 md:px-24 2xl:px-48'>
           {children}
         </main>
+
+        <ScrollToTopButton />
       </ThemeProvider>
     </html>
   );

@@ -1,7 +1,5 @@
 .content-navigation {
-  @apply text-body-compact-02 
-    sticky 
-    top-0 
+  @apply text-body-compact-02  
     bg-[var(--par-color-bg-content-navigation)] 
     p-4;
 }

@@ -1,5 +1,7 @@
+'use client';
+
 import ComponentSection from './_ComponentSection';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 type Props = {
   paths?: [string, string];
@@ -9,20 +11,23 @@ type Props = {
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3005';
 
-export const dynamic = 'force-dynamic'; // Force dynamic rendering
-export const fetchCache = 'no-store'; // Disable fetch cache
+const CodePreview = ({ paths, children, theme }: Props) => {
+  const [rawText, setRawText] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
 
-const CodePreview = async ({ paths, children, theme }: Props) => {
+  useEffect(() => {
+    if (!paths) return;
+    setLoading(true);
+    fetch(`${BASE_URL}/demo/${paths[0]}/${paths[1]}.tsx`, { cache: 'force-cache' })
+      .then((res) => (res.ok ? res.text() : ''))
+      .then((text) => setRawText(text))
+      .finally(() => setLoading(false));
+  }, [paths]);
+
   if (!paths) return null;
 
-  const res = await fetch(`${BASE_URL}/demo/${paths[0]}/${paths[1]}.tsx`, { cache: 'no-store' });
-
-  if (!res.ok) return null;
-
-  const rawText = await res.text();
-
   return (
-    <ComponentSection paths={paths} rawText={rawText || ''} theme={theme}>
+    <ComponentSection paths={paths} rawText={rawText || ''} loading={loading} theme={theme}>
       {children}
     </ComponentSection>
   );

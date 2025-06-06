@@ -50,6 +50,14 @@ export interface ContentNavigationProps extends React.HTMLAttributes<HTMLElement
    * @memberof ContentNavigationProps
    */
   color?: 'neutral' | 'accent';
+
+  /**
+   * Exclude headings inside elements matching this selector (or array of selectors).
+   * Useful to skip headings in certain sections.
+   *
+   * @memberof ContentNavigationProps
+   */
+  exclude?: string | string[];
 }
 
 /**
@@ -76,6 +84,7 @@ export const ContentNavigation: React.FC<ContentNavigationProps> = ({
   className,
   color = 'neutral',
   skeleton, // Default skeleton loader
+  exclude, // New prop
   ...props
 }) => {
   const [anchors, setAnchors] = useState<HTMLElement[]>([]);
@@ -94,7 +103,22 @@ export const ContentNavigation: React.FC<ContentNavigationProps> = ({
     }
 
     mainRef.current = mainElement;
-    const anchorElements = Array.from(mainElement.querySelectorAll('h2, h3')) as HTMLElement[];
+    let anchorElements = Array.from(mainElement.querySelectorAll('h2, h3')) as HTMLElement[];
+
+    // Exclude headings inside elements matching exclude selectors
+    if (exclude) {
+      const excludeSelectors = Array.isArray(exclude) ? exclude : [exclude];
+      anchorElements = anchorElements.filter((anchor) => {
+        return !excludeSelectors.some((sel) => {
+          let parent = anchor.parentElement;
+          while (parent && parent !== mainElement) {
+            if (parent.matches(sel)) return true;
+            parent = parent.parentElement;
+          }
+          return false;
+        });
+      });
+    }
     setAnchors(anchorElements);
 
     // Check if the main element is scrollable
@@ -132,7 +156,7 @@ export const ContentNavigation: React.FC<ContentNavigationProps> = ({
     return () => {
       observer.disconnect();
     };
-  }, [target, spaceToTop]);
+  }, [target, spaceToTop, exclude]);
 
   // Handle navigation item click
   const handleNavItemClick = (anchor: HTMLElement) => {

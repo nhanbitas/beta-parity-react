@@ -12,7 +12,7 @@ const BasePage = ({ children }: Props) => {
 
   return (
     <>
-      <h1 className='sticky top-12 z-40 block h-24 bg-[var(--par-color-bg)] text-2xl'>{currentComponent.name}</h1>
+      <h1 className='block h-24 bg-[var(--par-color-bg)] text-2xl'>{currentComponent.name}</h1>
       {children}
     </>
   );

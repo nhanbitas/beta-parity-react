@@ -26,7 +26,7 @@ const ContentNavigator = (props: Props) => {
 
   return (
     <>
-      <nav className='fixed right-0 top-0 z-40 flex w-full justify-end gap-1 rounded-lg bg-[var(--par-color-bg)] p-2 px-8 backdrop-blur-sm'>
+      <nav className='fixed right-0 top-0 z-40 flex w-full justify-end gap-1 bg-[var(--par-color-bg)] p-2 px-8 backdrop-blur-sm'>
         <Button size='sm' kind={currentTab === 'dev' ? 'solid' : 'glass'} onClick={() => handleNavigate('dev')}>
           Dev
         </Button>
@@ -34,6 +34,7 @@ const ContentNavigator = (props: Props) => {
           Spec
         </Button>
       </nav>
+
       {currentTab === 'dev' && dev}
       {currentTab === 'spec' && <div className='spec-content'>{spec}</div>}
     </>
