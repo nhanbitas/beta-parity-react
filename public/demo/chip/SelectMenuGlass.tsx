@@ -1,4 +1,3 @@
-// 'use client' is required as the original uses hooks and state
 'use client';
 
 import React from 'react';

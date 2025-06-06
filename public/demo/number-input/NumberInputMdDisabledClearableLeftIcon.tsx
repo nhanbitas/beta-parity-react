@@ -1,4 +1,5 @@
-// 'use client'
+'use client';
+
 import React from 'react';
 import { NumberInput as NumberInputComponent } from 'beta-parity-react/ui/NumberInput';
 import { CircleDollarSign } from 'lucide-react';

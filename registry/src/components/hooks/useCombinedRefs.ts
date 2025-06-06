@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 /**
  * Combines multiple React refs into a single ref. This is useful when you need to pass multiple refs

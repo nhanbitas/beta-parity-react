@@ -1,4 +1,5 @@
-// 'use client' is not needed as these are not using hooks or client-only features
+'use client';
+
 import React from 'react';
 import { Dot } from 'beta-parity-react/ui/Dot';
 

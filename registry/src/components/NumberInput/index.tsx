@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import { NumericFormat, NumericFormatProps, numericFormatter, SourceInfo } from 'react-number-format';
 import { ChevronDown, ChevronUp, MinusIcon, PlusIcon } from 'lucide-react';

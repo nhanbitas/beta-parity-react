@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import './index.css';
 import './variables.css';
 import classNames from 'classnames';

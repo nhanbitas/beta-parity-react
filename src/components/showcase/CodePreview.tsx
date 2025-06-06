@@ -9,6 +9,9 @@ type Props = {
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3005';
 
+export const dynamic = 'force-dynamic'; // Force dynamic rendering
+export const fetchCache = 'no-store'; // Disable fetch cache
+
 const CodePreview = async ({ paths, children, theme }: Props) => {
   if (!paths) return null;
 
