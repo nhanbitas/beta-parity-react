@@ -48,25 +48,3 @@ A component that organizes content into vertically stacked collapsible and expan
 | Date       | Type                                                     | Description    | Author      | Associated issue(s) |
 | :--------- | :------------------------------------------------------- | -------------- | :---------- | :------------------ |
 | YYYY-MM-DD | <Badge size='sm' kind='glass' color='cyan' label="new"/> | Initial design | Oanh Nguyen | PAR-52              |
-
-## Design Tokens for FileInput
-
-> _Note: FileInput uses the same design tokens as the Input component. See Input documentation for available tokens._
-
----
-
-## FileInput API Reference
-
-### `<FileInput />`
-
-| **Prop**          | **Type**                  | **Default** | **Description**                          |
-| ----------------- | ------------------------- | ----------- | ---------------------------------------- |
-| **type**          | string                    | _'file'_    | Input type (always 'file' for FileInput) |
-| **multiple**      | boolean                   | _false_     | Allow multiple file selection            |
-| **accept**        | string                    |             | Accepted file types (e.g. 'image/\*')    |
-| **onChange**      | function (event)          |             | Callback when file(s) selected           |
-| **...InputProps** | [See Input](../BaseInput) |             | Inherits all props from **Input**        |
-
-> **_Note:_** _FileInput_ **inherits** all props from **Input** and the native **input** element. See [Input documentation](../BaseInput) for full details on available props and tokens.
-
----

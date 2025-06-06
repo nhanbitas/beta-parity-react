@@ -58,28 +58,3 @@ A component that organizes content into vertically stacked collapsible and expan
 | Date       | Type                                                     | Description    | Author      | Associated issue(s) |
 | :--------- | :------------------------------------------------------- | -------------- | :---------- | :------------------ |
 | YYYY-MM-DD | <Badge size='sm' kind='glass' color='cyan' label="new"/> | Initial design | Oanh Nguyen | PAR-52              |
-
-## Design Tokens for Spinner
-
-| **Token**                                        | **Color for**      | **State/Meaning** | **CSS Selector(s)** |
-| ------------------------------------------------ | ------------------ | ----------------- | ------------------- |
-| `--par-color-stroke-spinner-interactive-neutral` | Spinner arc        | Neutral           | `.spinner.neutral`  |
-| `--par-color-stroke-spinner-interactive-accent`  | Spinner arc        | Accent            | `.spinner.accent`   |
-| `--par-color-stroke-spinner-inactive`            | Spinner background | Inactive          | `.spinner`          |
-
-> _Note: Spinner uses its own tokens defined in `variables.css` and does not use Progress/Icon tokens._
-
----
-
-## Spinner API Reference
-
-### `<Spinner />`
-
-| **Prop**         | **Type**                                | **Default** | **Description**                               |
-| ---------------- | --------------------------------------- | ----------- | --------------------------------------------- |
-| **variant**      | 'circular' \| 'dotted' \| 'sunburst'    | 'circular'  | Spinner style variant                         |
-| **color**        | 'neutral' \| 'accent'                   | 'neutral'   | Spinner color                                 |
-| **size**         | 'sm' \| 'md' \| 'lg' \| 'xl'            | 'md'        | Spinner size                                  |
-| **...spanProps** | `React.HTMLAttributes<HTMLSpanElement>` |             | All native span props (className, style, ...) |
-
-> **_Note:_** _Spinner_ **inherits** all native props from `HTMLSpanElement`.

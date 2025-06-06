@@ -58,32 +58,3 @@ A component that organizes content into vertically stacked collapsible and expan
 | Date       | Type                                                     | Description    | Author      | Associated issue(s) |
 | :--------- | :------------------------------------------------------- | -------------- | :---------- | :------------------ |
 | 2025-06-03 | <Badge size='sm' kind='glass' color='cyan' label="new"/> | Initial design | Oanh Nguyen | PAR-52              |
-
-## Design Tokens for Dot
-
-| **Token**                           | **Color for**  | **State/Meaning** | **CSS Selector(s)** |
-| ----------------------------------- | -------------- | ----------------- | ------------------- |
-| **--par-color-bg-dot-solid-gray**   | Dot background | Gray color        | `.dot.gray`         |
-| **--par-color-bg-dot-solid-orange** | Dot background | Orange color      | `.dot.orange`       |
-| **--par-color-bg-dot-solid-cyan**   | Dot background | Cyan color        | `.dot.cyan`         |
-| **--par-color-bg-dot-solid-violet** | Dot background | Violet color      | `.dot.violet`       |
-| **--par-color-bg-dot-solid-green**  | Dot background | Green color       | `.dot.green`        |
-| **--par-color-bg-dot-solid-red**    | Dot background | Red color         | `.dot.red`          |
-| **--par-color-bg-dot-solid-yellow** | Dot background | Yellow color      | `.dot.yellow`       |
-| **--par-color-bg-dot-solid-blue**   | Dot background | Blue color        | `.dot.blue`         |
-| **--par-color-bg-dot-solid-lime**   | Dot background | Lime color        | `.dot.lime`         |
-
----
-
-## Dot API Reference
-
-### `<Dot />`
-
-| **Prop**         | **Type**                                                                                     | **Default** | **Description**                               |
-| ---------------- | -------------------------------------------------------------------------------------------- | ----------- | --------------------------------------------- |
-| **size**         | 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'                                                         | _'md'_      | Dot size                                      |
-| **pulse**        | boolean                                                                                      | _false_     | Pulse animation                               |
-| **color**        | 'gray' \| 'orange' \| 'violet' \| 'green' \| 'red' \| 'yellow' \| 'blue' \| 'lime' \| 'cyan' | _'gray'_    | Dot color                                     |
-| **...spanProps** | HTMLSpanElement props                                                                        |             | All native span props (className, style, ...) |
-
-> **_Note:_** _Dot_ **inherits** all native props from **HTMLSpanElement**.

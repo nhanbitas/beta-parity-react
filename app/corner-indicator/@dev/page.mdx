@@ -21,3 +21,39 @@ import TableOfContents from '@components/doc/TableOfContents';
 <CodePreview paths={['corner-indicator', 'CornerIndicatorInset']}>
   <Demo.CornerIndicatorInset />
 </CodePreview>
+
+## Design Tokens for CornerIndicator
+
+> All tokens are defined in `registry/src/components/CornerIndicator/variables.css`.
+
+| Token                                | Color for     | State/Meaning         | CSS Selector(s)                                                                            |
+| ------------------------------------ | ------------- | --------------------- | ------------------------------------------------------------------------------------------ |
+| --par-color-outline-corner-indicator | Outline color | Outline for indicator | .corner-indicator-container.bordered > .badge, .corner-indicator-container.bordered > .dot |
+
+---
+
+## CornerIndicator API Reference
+
+### `<CornerIndicator />`
+
+| Prop           | Type                                                                                         | Default     | Description                                                    |
+| -------------- | -------------------------------------------------------------------------------------------- | ----------- | -------------------------------------------------------------- |
+| label          | string                                                                                       |             | Label text inside the indicator                                |
+| icon           | ReactNode                                                                                    |             | Icon for badge indicator                                       |
+| outline        | boolean                                                                                      | false       | Show outline                                                   |
+| pulse          | boolean                                                                                      | false       | Pulse animation (dot only)                                     |
+| offset         | number                                                                                       | 0           | Offset from corner (px)                                        |
+| xOffset        | number                                                                                       | 0           | X offset from corner (px)                                      |
+| yOffset        | number                                                                                       | 0           | Y offset from corner (px)                                      |
+| disable        | boolean                                                                                      | false       | Disable the indicator                                          |
+| position       | 'top-left' \| 'top-right' \| 'bottom-left' \| 'bottom-right'                                 | 'top-right' | Position relative to container                                 |
+| color          | 'gray' \| 'orange' \| 'violet' \| 'green' \| 'red' \| 'yellow' \| 'blue' \| 'lime' \| 'cyan' | 'gray'      | Indicator color                                                |
+| size           | 'md' \| 'sm' \| 'xs' \| 'lg'                                                                 | 'md'        | Indicator size                                                 |
+| variant        | 'solid' \| 'outlined' \| 'glass'                                                             | 'solid'     | Visual style                                                   |
+| growDirection  | 'symmetric' \| 'inward' \| 'outward'                                                         | 'symmetric' | Direction the indicator grows                                  |
+| indicatorProps | object                                                                                       |             | Extra props for Badge/Dot (except size, color, variant, pulse) |
+| ...divProps    | HTMLDivElement props                                                                         |             | All native div props (className, style, ...)                   |
+
+> _Note:_ _CornerIndicator_ inherits all native props from HTMLDivElement.
+
+---

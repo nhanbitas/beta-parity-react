@@ -15,3 +15,33 @@ import TableOfContents from '@components/doc/TableOfContents';
 <CodePreview paths={['file-item', 'ErrorFileItem']}>
   <Demo.ErrorFileItem />
 </CodePreview>
+
+## Design Tokens for FileItem
+
+| Token                           | Color for           | State/Meaning   | CSS Selector(s)                |
+| ------------------------------- | ------------------- | --------------- | ------------------------------ |
+| --par-color-bg-fileitem-enabled | FileItem background | Enabled/Default | .file-item, .file-item.loading |
+| --par-color-bg-fileitem-failed  | FileItem background | Failed/Error    | .file-item.error               |
+
+---
+
+_FileItem also inherits design tokens from the Input and Progress components. For a full list of available tokens, refer to the Input and Progress documentation._
+
+---
+
+## FileItem API Reference
+
+### `<FileItem />`
+
+| Prop        | Type                 | Default | Description                                     |
+| ----------- | -------------------- | ------- | ----------------------------------------------- |
+| file        | File \| object       |         | File object or file data to display             |
+| onRemove    | function (file)      |         | Callback when remove is clicked                 |
+| onDownload  | function (file)      |         | Callback when download is clicked               |
+| progress    | number               |         | Upload/download progress (0-100)                |
+| status      | string               |         | File status (e.g. 'uploading', 'done', 'error') |
+| ...divProps | HTMLDivElement props |         | All native div props (className, style, ...)    |
+
+> _Note:_ _FileItem_ inherits all native props from HTMLDivElement.
+
+---

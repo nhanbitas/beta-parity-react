@@ -50,3 +50,45 @@ import TableOfContents from '@components/doc/TableOfContents';
 <CodePreview paths={['breadcrumb', 'BreadcrumbListNeutralNone']}>
   <Demo.BreadcrumbListNeutralNone />
 </CodePreview>
+
+## Design Tokens for Breadcrumb
+
+| **Token**                                   | **Color for**               | **State/Meaning** | **CSS Selector(s)**                  |
+| ------------------------------------------- | --------------------------- | ----------------- | ------------------------------------ |
+| **--par-color-separator-breadcrumb**        | Breadcrumb separator        | Default/Enabled   | `.breadcrumb-item:not(:last-child)`  |
+| **--par-color-text-breadcrumb-item-active** | Active breadcrumb item text | Active/Selected   | `.breadcrumb-item.breadcrumb-active` |
+
+## Breadcrumb API Reference
+
+### `<Breadcrumb />`
+
+| **Prop**           | **Type**                          | **Default** | **Description**                                      |
+| ------------------ | --------------------------------- | ----------- | ---------------------------------------------------- |
+| **separator**      | 'chevron' \| 'dash' \| 'slash'    | _'chevron'_ | Separator style between items.                       |
+| **breadcrumbList** | BreadcrumbItemProps[]             |             | List of breadcrumb items (see below).                |
+| **limit**          | number                            |             | Max visible items before truncation/overflow.        |
+| **menuProps**      | Omit&lt;MenuProps, 'children'&gt; |             | Props for overflow menu (see Menu component).        |
+| **...ulProps**     | HTMLUListElement props            |             | All native ul props (**className**, **style**, etc.) |
+
+---
+
+### `<BreadcrumbItem />`
+
+| **Prop**               | **Type**                                           | **Default** | **Description**                                                                   |
+| ---------------------- | -------------------------------------------------- | ----------- | --------------------------------------------------------------------------------- |
+| **isMenuItem**         | boolean                                            | _false_     | Render as a menu item (for overflow).                                             |
+| **...InlineLinkProps** | [See InlineLink](../../inline-link/@spec/page.mdx) |             | All props from **InlineLink** (size, color, disabled, underline, iconOnly, etc.). |
+
+---
+
+### `<BreadcrumbMenu />`
+
+| **Prop**           | **Type**                          | **Default** | **Description**                                          |
+| ------------------ | --------------------------------- | ----------- | -------------------------------------------------------- |
+| **items**          | BreadcrumbItemProps[]             |             | Items to show in the overflow menu.                      |
+| **menuProps**      | Omit&lt;MenuProps, 'children'&gt; |             | Props for the menu (see Menu component).                 |
+| **...buttonProps** | HTMLButtonElement props           |             | All native button props (**className**, **style**, etc.) |
+
+> **Note:** _BreadcrumbItem_ **extends** all props from [**InlineLink**](../../inline-link/@spec/page.mdx). _Breadcrumb_ and _BreadcrumbMenu_ extend all native props from their respective HTML elements.
+
+---
