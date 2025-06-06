@@ -10,12 +10,10 @@ import TableOfContents from '@components/doc/TableOfContents';
 {/* Component => Component Example */}
 
 :::callout[note]
-A component that organizes content into vertically stacked collapsible and expandable sections.
+Breadcrumbs help users navigate and understand their current location within a website or application hierarchy.
 :::
 
 ## Design checklist <span id="design-checklist"></span>
-
-{/* Design checklist specification */}
 
 | Status | Item          | Description                                                                                                                                                                                                                       |
 | ------ | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -23,23 +21,77 @@ A component that organizes content into vertically stacked collapsible and expan
 | ✔️     | States        | Includes all applicable interaction, display and value states.                                                                                                                                                                    |
 | ✔️     | Options       | Includes all relevant options (functional type, stylistic kind, semantic color, size, orientation, optional iconography, decorations, etc.)                                                                                       |
 | ✔️     | Color schemes | Includes both light and dark color schemes.                                                                                                                                                                                       |
-|        | Behaviors     | Includes descriptions of behaviors related to other components and responsive behaviors related to media breakpoints, size (minimums and maximums), orientation, alignment, position and layout (wrapping, truncation, overflow). |
+| ✔️     | Behaviors     | Includes descriptions of behaviors related to other components and responsive behaviors related to media breakpoints, size (minimums and maximums), orientation, alignment, position and layout (wrapping, truncation, overflow). |
 
 ## Anatomy <span id="anatomy"></span>
 
-{/* Anatomy specification */}
+The Breadcrumb component consists of several main elements:
+
+- **Container**: The `<nav>` element that wraps the breadcrumb for accessibility.
+- **List**: The `<ol>` element containing breadcrumb items.
+- **BreadcrumbItem**: Each navigation item, usually a link or text.
+- **Separator**: The visual separator between items (chevron, slash, dash).
+- **BreadcrumbMenu**: Dropdown menu for overflowed items when the breadcrumb exceeds the limit.
+- **BreadcrumbActive**: The last item, representing the current page, not a link.
 
 ## States <span id="states"></span>
 
-{/* States specification */}
+Breadcrumb can exist in the following states:
+
+- **Default**: Shows the navigation path.
+- **Hover**: Breadcrumb items highlight on hover.
+- **Active**: The last item is marked as the current page and is not a link.
+- **Disabled**: Items can be disabled and not clickable.
+- **Menu open**: Overflow menu is open to show hidden items.
 
 ## Options <span id="options"></span>
 
-{/* Options specification */}
+Breadcrumb provides several configuration options:
+
+### Separator
+
+- **chevron** (default): `>`
+- **slash**: `/`
+- **dash**: `-`
+
+### Limit
+
+- Limit the number of visible items; overflowed items are grouped in a menu.
+
+### BreadcrumbItem
+
+- **href**: Link destination.
+- **disabled**: Disable the item.
+- **iconOnly**: Show only an icon.
+- **size**: Size (xs, sm, md, lg).
+- **color**: Color (standard, primary, secondary, etc.).
+- **underline**: Underline style (none, hover, always).
+
+### Menu
+
+- Customize overflow menu properties (position, animation, etc.).
 
 ## Behaviors <span id="behaviors"></span>
 
-{/* Behaviors specification */}
+### Navigation
+
+- Breadcrumb allows users to return to previous levels in the hierarchy.
+- The last item is not a link and represents the current location.
+
+### Truncation & Overflow
+
+- When the number of items exceeds the limit, middle items are grouped in a dropdown menu.
+- The menu can be opened by clicking and closed by clicking outside or pressing Escape.
+
+### Accessibility
+
+- Uses `aria-label="Breadcrumb"` on `<nav>`.
+- The current item uses `aria-current="page"`.
+- Supports keyboard navigation for the overflow menu.
+
+### Responsiveness
+
+- Breadcrumb adapts to available space and can hide items as needed.
 
 ## Changelog <span id="changelog"></span>
 
