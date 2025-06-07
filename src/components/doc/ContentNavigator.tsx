@@ -18,13 +18,13 @@ const ContentNavigator = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <nav className='fixed right-0 top-0 z-40 flex w-full justify-end gap-1 bg-[var(--par-color-bg)] p-2 px-8 backdrop-blur-sm'>
-        <Button size='sm' kind={currentTab === 'dev' ? 'solid' : 'glass'}>
-          <Link href={`/${currentComponentPath}/dev`} prefetch className='grid h-full w-full place-items-center'>
+        <Button size='sm' kind={currentTab === 'dev' ? 'solid' : 'glass'} className='!px-0'>
+          <Link href={`/${currentComponentPath}/dev`} className='grid h-full w-full place-items-center px-3'>
             Dev
           </Link>
         </Button>
-        <Button size='sm' kind={currentTab === 'spec' ? 'solid' : 'glass'}>
-          <Link href={`/${currentComponentPath}/spec`} prefetch className='grid h-full w-full place-items-center'>
+        <Button size='sm' kind={currentTab === 'spec' ? 'solid' : 'glass'} className='!px-0'>
+          <Link href={`/${currentComponentPath}/spec`} className='grid h-full w-full place-items-center px-3'>
             Spec
           </Link>
         </Button>

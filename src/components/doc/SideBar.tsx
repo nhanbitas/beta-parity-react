@@ -106,6 +106,7 @@ const SideBar = (props: Props) => {
             <Link
               className={`z-10 flex w-full items-center justify-start gap-2 rounded-md px-3 py-1 ${pathname.startsWith(component.url) ? 'bg-[var(--par-color-bg-surface)] font-semibold ' : ''}`}
               href={component.url + '/dev'}
+              prefetch={false}
             >
               <span className='truncate group-hover:underline'>{component.name}</span>
 
