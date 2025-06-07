@@ -39,22 +39,12 @@ import TableOfContents from '@components/doc/TableOfContents';
 
 ## ShortCut Indicator
 
-<CodePreview paths={['search-input', 'BasicSearchInput']}>
-  <Demo.BasicSearchInput shortCut='Shift + K' />
+<CodePreview paths={['search-input', 'BasicSearchInputClearableShortCut']}>
+  <Demo.BasicSearchInputClearableShortCut />
 </CodePreview>
 
-<CodePreview paths={['search-input', 'BasicSearchInput']}>
-  <Demo.BasicSearchInput isClearable shortCut='Shift + K' />
-</CodePreview>
-<CodePreview paths={['search-input', 'BasicSearchInput']}>
-  <Demo.BasicSearchInput isClearable shortCut='Shift + K' />
-</CodePreview>
-
-<CodePreview paths={['search-input', 'BasicSearchInput']}>
-  <Demo.BasicSearchInput isPending shortCut='Shift + K' />
-</CodePreview>
-<CodePreview paths={['search-input', 'BasicSearchInput']}>
-  <Demo.BasicSearchInput isPending shortCut='Shift + K' />
+<CodePreview paths={['search-input', 'BasicSearchInputPendingShortCut']}>
+  <Demo.BasicSearchInputPendingShortCut />
 </CodePreview>
 
 ## States
@@ -117,34 +107,28 @@ import TableOfContents from '@components/doc/TableOfContents';
 
 ## Size Medium
 
-<CodePreview paths={['search-input', 'BasicSearchInput']}>
-  <Demo.BasicSearchInput inputSize='md' />
-</CodePreview>
-<CodePreview paths={['search-input', 'AuxiliarySearchInput']}>
-  <Demo.AuxiliarySearchInput inputSize='md' />
+<CodePreview paths={['search-input', 'AuxiliarySearchInputMd']}>
+  <Demo.AuxiliarySearchInputMd />
 </CodePreview>
 
-<CodePreview paths={['search-input', 'BasicSearchInput']}>
-  <Demo.BasicSearchInput isClearable searchButton inputSize='md' />
+<CodePreview paths={['search-input', 'BasicSearchInputClearableSearchButtonMd']}>
+  <Demo.BasicSearchInputClearableSearchButtonMd />
 </CodePreview>
-<CodePreview paths={['search-input', 'BasicSearchInput']}>
-  <Demo.BasicSearchInput isClearable isPending searchButton inputSize='md' />
+<CodePreview paths={['search-input', 'BasicSearchInputClearablePendingSearchButtonMd']}>
+  <Demo.BasicSearchInputClearablePendingSearchButtonMd />
 </CodePreview>
 
-<CodePreview paths={['search-input', 'BasicSearchInput']}>
-  <Demo.BasicSearchInput shortCut='Shift + K' inputSize='md' />
+<CodePreview paths={['search-input', 'BasicSearchInputShortCutMd']}>
+  <Demo.BasicSearchInputShortCutMd />
 </CodePreview>
-<CodePreview paths={['search-input', 'BasicSearchInput']}>
-  <Demo.BasicSearchInput isPending shortCut='Shift + K' inputSize='md' />
+<CodePreview paths={['search-input', 'BasicSearchInputPendingShortCutMd']}>
+  <Demo.BasicSearchInputPendingShortCutMd />
 </CodePreview>
 
 {/* /////////////////////////////////////////////////////////////////////////////////////// */}
 
 ## Basic (Alternative)
 
-<CodePreview paths={['search-input', 'BasicSearchInput']} theme='alternative'>
-  <Demo.BasicSearchInput theme='alternative' />
-</CodePreview>
 <CodePreview paths={['search-input', 'BasicSearchInputClearableSearchButtonAlternative']}>
   <Demo.BasicSearchInputClearableSearchButtonAlternative />
 </CodePreview>
@@ -157,9 +141,6 @@ import TableOfContents from '@components/doc/TableOfContents';
 
 ## Auxiliary (Alternative)
 
-<CodePreview paths={['search-input', 'AuxiliarySearchInput']} theme='alternative'>
-  <Demo.AuxiliarySearchInput theme='alternative' />
-</CodePreview>
 <CodePreview paths={['search-input', 'AuxiliarySearchInputClearableSearchButton']}>
   <Demo.AuxiliarySearchInputClearableSearchButton />
 </CodePreview>
@@ -170,44 +151,7 @@ import TableOfContents from '@components/doc/TableOfContents';
   <Demo.AuxiliarySearchInputPendingSearchButton />
 </CodePreview>
 
-## ShortCut Indicator (Alternative)
-
-<CodePreview paths={['search-input', 'BasicSearchInput']} theme='alternative'>
-  <Demo.BasicSearchInput shortCut='Shift + K' theme='alternative' />
-</CodePreview>
-<CodePreview paths={['search-input', 'BasicSearchInput']} theme='alternative'>
-  <Demo.BasicSearchInput isClearable shortCut='Shift + K' theme='alternative' />
-</CodePreview>
-<CodePreview paths={['search-input', 'BasicSearchInput']} theme='alternative'>
-  <Demo.BasicSearchInput isClearable shortCut='Shift + K' theme='alternative' />
-</CodePreview>
-<CodePreview paths={['search-input', 'BasicSearchInput']} theme='alternative'>
-  <Demo.BasicSearchInput isPending shortCut='Shift + K' theme='alternative' />
-</CodePreview>
-<CodePreview paths={['search-input', 'BasicSearchInput']} theme='alternative'>
-  <Demo.BasicSearchInput isPending shortCut='Shift + K' theme='alternative' />
-</CodePreview>
-
 ## States (Alternative)
-
-<CodePreview paths={['search-input', 'BasicSearchInputErrorClearable']} theme='alternative'>
-  <Demo.BasicSearchInputErrorClearable theme='alternative' />
-</CodePreview>
-<CodePreview paths={['search-input', 'BasicSearchInputErrorShortCut']} theme='alternative'>
-  <Demo.BasicSearchInputErrorShortCut theme='alternative' />
-</CodePreview>
-<CodePreview paths={['search-input', 'BasicSearchInputDisabledShortCut']} theme='alternative'>
-  <Demo.BasicSearchInputDisabledShortCut theme='alternative' />
-</CodePreview>
-<CodePreview paths={['search-input', 'BasicSearchInputDisabledSearchButton']} theme='alternative'>
-  <Demo.BasicSearchInputDisabledSearchButton theme='alternative' />
-</CodePreview>
-<CodePreview paths={['search-input', 'BasicSearchInputReadOnlySearchButton']} theme='alternative'>
-  <Demo.BasicSearchInputReadOnlySearchButton theme='alternative' />
-</CodePreview>
-<CodePreview paths={['search-input', 'BasicSearchInputReadOnlyPendingShortCut']} theme='alternative'>
-  <Demo.BasicSearchInputReadOnlyPendingShortCut theme='alternative' />
-</CodePreview>
 
 <CodePreview paths={['search-input', 'AuxiliarySearchInputErrorClearable']}>
   <Demo.AuxiliarySearchInputErrorClearable />
