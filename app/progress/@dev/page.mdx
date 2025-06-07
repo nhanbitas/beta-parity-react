@@ -87,14 +87,14 @@ import TableOfContents from '@components/doc/TableOfContents';
 <CodePreview paths={['progress', 'SuccessProgress']}>
   <Demo.SuccessProgress />
 </CodePreview>
-<CodePreview paths={['progress', 'SuccessProgress']}>
-  <Demo.SuccessProgress kind='circle' />
+<CodePreview paths={['progress', 'SuccessProgressCircle']}>
+  <Demo.SuccessProgressCircle />
 </CodePreview>
 <CodePreview paths={['progress', 'ErrorProgress']}>
   <Demo.ErrorProgress />
 </CodePreview>
-<CodePreview paths={['progress', 'ErrorProgress']}>
-  <Demo.ErrorProgress kind='circle' />
+<CodePreview paths={['progress', 'ErrorProgressCircle']}>
+  <Demo.ErrorProgressCircle />
 </CodePreview>
 
 ---
@@ -112,8 +112,6 @@ import TableOfContents from '@components/doc/TableOfContents';
 | **--par-color-text-helper-neutral**           | Progress numeral/helper text | Any               | `.progress-numeral`, `.progress-helper-text` |
 | **--par-color-text-helper-affirmative**       | Helper text                  | Success           | `.progress.success .progress-helper-text`    |
 | **--par-color-text-helper-adverse**           | Helper text                  | Error             | `.progress.error .progress-helper-text`      |
-
-> _Note: Progress tokens are defined in `registry/src/components/Progress/variables.css`._
 
 ---
 

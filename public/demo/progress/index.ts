@@ -21,3 +21,5 @@ export { BasicProgress25TitleHelperNumeralSuccess } from './BasicProgress25Title
 export { BasicProgress25TitleHelperNumeralError } from './BasicProgress25TitleHelperNumeralError';
 export { BasicProgress82HelperCircleSmAccent } from './BasicProgress82HelperCircleSmAccent';
 export { BasicProgress82HelperCircleMdAccent } from './BasicProgress82HelperCircleMdAccent';
+export { SuccessProgressCircle } from './SuccessProgressCircle';
+export { ErrorProgressCircle } from './ErrorProgressCircle';

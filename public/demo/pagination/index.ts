@@ -12,4 +12,6 @@ export { BasicPaginationSiblings2Bordered } from './BasicPaginationSiblings2Bord
 export { BasicPaginationSiblings3BorderedAccent } from './BasicPaginationSiblings3BorderedAccent';
 export { BasicPaginationControlConfig } from './BasicPaginationControlConfig';
 export { OnlyControlPaginationConfig } from './OnlyControlPaginationConfig';
+export { CustomPaginationTotal5 } from './CustomPaginationTotal5';
+export { CustomPaginationComponentA } from './CustomPaginationComponentA';
 // ...add more exports here if new demo components are added
