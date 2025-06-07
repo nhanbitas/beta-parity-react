@@ -27,19 +27,41 @@ A component that organizes content into vertically stacked collapsible and expan
 
 ## Anatomy <span id="anatomy"></span>
 
-{/* Anatomy specification */}
+- **Input wrapper**: The outer container for the file input, providing layout and visual feedback.
+- **File input (hidden)**: The native file input element, visually hidden but accessible for file selection.
+- **Label**: Text label prompting the user to choose a file (customizable via `label` prop).
+- **Icon**: Upload icon indicating file selection functionality.
+- **Error message**: Displays validation errors (if `isError` and `errorMessage`).
 
 ## States <span id="states"></span>
 
-{/* States specification */}
+- **Default**: Standard state, ready for file selection.
+- **Hover**: When hovering over the input area.
+- **Focus**: When the input is focused via keyboard navigation.
+- **Drag active**: When a file is being dragged over the input area (visual highlight).
+- **Disabled**: Input is non-interactive and visually muted.
+- **Error**: Error state with warning border and error message.
+- **File selected**: A file has been chosen (not shown in UI by default, but can be handled externally).
 
 ## Options <span id="options"></span>
 
-{/* Options specification */}
+- **supportedFormats**: Array of accepted file MIME types (e.g., `['image/png', 'image/jpeg']`).
+- **label**: Custom label text for the file input.
+- **theme**: Theme (`default`, `alternative`).
+- **isError**: Error state.
+- **errorMessage**: Error message.
+- **disabled**: Disable the input.
+- **className**: Custom class names for styling.
+- **Other InputProps**: Inherits all props from `InputProps` for further customization.
 
 ## Behaviors <span id="behaviors"></span>
 
-{/* Behaviors specification */}
+- **File selection**: Click or press Enter/Space to open the file picker dialog.
+- **Drag and drop**: Drag files onto the input area to select them (with drag highlight).
+- **Keyboard accessibility**: Input area is focusable and can be activated with keyboard.
+- **Supported formats**: Only files matching `supportedFormats` are accepted (if specified).
+- **Error handling**: Shows error message and styling when in error state.
+- **Disabled/Readonly**: Prevents interaction and file selection when disabled.
 
 ## Changelog <span id="changelog"></span>
 

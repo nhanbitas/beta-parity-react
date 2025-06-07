@@ -27,19 +27,38 @@ A component that organizes content into vertically stacked collapsible and expan
 
 ## Anatomy <span id="anatomy"></span>
 
-{/* Anatomy specification */}
+- **Link text**: The visible, clickable text or content of the inline link.
+- **Underline/decoration**: Visual indicator (such as underline or color) distinguishing the link from regular text.
+- **Icon (optional)**: An optional icon before or after the link text to indicate external links or actions.
 
 ## States <span id="states"></span>
 
-{/* States specification */}
+- **Default**: Standard appearance, styled as a link.
+- **Hover**: Visual feedback (e.g., underline, color change) when hovered.
+- **Focus**: Focus ring or highlight for keyboard navigation accessibility.
+- **Visited**: Optional styling for links that have been visited.
+- **Active**: Visual feedback when the link is being clicked or activated.
+- **Disabled**: Non-interactive and visually muted (if supported).
 
 ## Options <span id="options"></span>
 
-{/* Options specification */}
+- **href**: The URL or destination for the link.
+- **target**: Specifies where to open the linked document (e.g., `_blank` for new tab).
+- **rel**: Relationship attribute for security (e.g., `noopener noreferrer`).
+- **icon**: Optional icon to display with the link.
+- **underline**: Control underline style (always, hover, never).
+- **color**: Custom color for the link text.
+- **disabled**: Disable the link (if supported).
+- **className**: Custom class names for styling.
 
 ## Behaviors <span id="behaviors"></span>
 
-{/* Behaviors specification */}
+- **Navigation**: Clicking the link navigates to the specified `href`.
+- **Keyboard accessibility**: Link is focusable and can be activated with Enter/Space.
+- **Hover/Focus feedback**: Provides visual feedback on hover and focus for accessibility.
+- **External indication**: Optionally shows an icon or indicator for external links.
+- **Disabled**: Prevents navigation and interaction when disabled.
+- **Accessibility**: Uses semantic `<a>` element and ARIA attributes for screen readers.
 
 ## Changelog <span id="changelog"></span>
 

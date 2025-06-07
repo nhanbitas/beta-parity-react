@@ -27,19 +27,45 @@ A component that organizes content into vertically stacked collapsible and expan
 
 ## Anatomy <span id="anatomy"></span>
 
-{/* Anatomy specification */}
+- **Input field**: The main text input for entering search queries.
+- **Search icon**: Icon (usually a magnifying glass) indicating search functionality, typically at the start or end of the input.
+- **Clear button**: Optional button to clear the current input value.
+- **Placeholder**: Hint text for the expected search input.
+- **Dropdown/results panel (optional)**: Area below the input for displaying search suggestions or results.
 
 ## States <span id="states"></span>
 
-{/* States specification */}
+- **Default**: Standard state, ready for input.
+- **Hover**: Visual feedback when hovering over the input or icon.
+- **Focus**: Highlighted border or shadow when the input is focused.
+- **Filled**: Input contains a search query.
+- **Disabled**: Input is non-interactive and visually muted.
+- **Error**: Error state with warning border and message (if supported).
+- **With results**: Dropdown or panel is visible with search suggestions/results.
 
 ## Options <span id="options"></span>
 
-{/* Options specification */}
+- **value**: Controlled value of the search input.
+- **placeholder**: Placeholder text for the input.
+- **onChange**: Callback when the input value changes.
+- **onSearch**: Callback when a search is triggered (e.g., Enter key or icon click).
+- **isClearable**: Show clear button to clear the input.
+- **disabled**: Disable the input.
+- **error**: Error state.
+- **icon**: Custom search icon.
+- **results**: Array of search suggestions or results to display.
+- **onResultSelect**: Callback when a result is selected.
+- **theme**: Theme (`default`, `alternative`).
+- **className**: Custom class names for styling.
 
 ## Behaviors <span id="behaviors"></span>
 
-{/* Behaviors specification */}
+- **Search trigger**: Initiates search on Enter key, icon click, or programmatically.
+- **Clear**: Clears the input value with the clear button or ESC key (if clearable).
+- **Keyboard navigation**: Supports navigation through results with arrow keys and selection with Enter.
+- **Dropdown/results**: Shows/hides suggestions or results based on input and focus.
+- **Accessibility**: Uses ARIA attributes for screen readers and supports keyboard interaction.
+- **Disabled**: Prevents interaction and visually mutes the component.
 
 ## Changelog <span id="changelog"></span>
 

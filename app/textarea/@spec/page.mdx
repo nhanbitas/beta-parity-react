@@ -27,19 +27,48 @@ A multi-line text input field for entering and editing longer blocks of text.
 
 ## Anatomy <span id="anatomy"></span>
 
-{/* Anatomy specification */}
+- **Textarea field**: The main multi-line input area for entering and editing text.
+- **Label (optional)**: Text label above or within the textarea (floating label variant).
+- **Placeholder**: Hint text shown when the textarea is empty.
+- **Clear button (optional)**: Button to clear the textarea content (if supported).
+- **Error message**: Displays validation errors (if in error state).
+- **Resize handle**: UI affordance for resizing the textarea (if enabled).
 
 ## States <span id="states"></span>
 
-{/* States specification */}
+- **Default**: Standard state, ready for input.
+- **Hover**: Visual feedback when hovering over the textarea.
+- **Focus**: Highlighted border or shadow when the textarea is focused.
+- **Filled**: Textarea contains content.
+- **Disabled**: Non-interactive and visually muted.
+- **Read-only**: Content is visible but not editable.
+- **Error**: Error state with warning border and error message.
+- **Resizing**: User is actively resizing the textarea (if enabled).
 
 ## Options <span id="options"></span>
 
-{/* Options specification */}
+- **value**: Controlled value of the textarea.
+- **placeholder**: Placeholder text for the textarea.
+- **label**: Optional label or floating label.
+- **rows**: Number of visible text lines.
+- **isClearable**: Show clear button to clear the content.
+- **disabled**: Disable the textarea.
+- **readOnly**: Make the textarea read-only.
+- **error**: Error state.
+- **errorMessage**: Error message.
+- **resize**: Control resizing behavior (`none`, `vertical`, `horizontal`, `both`).
+- **theme**: Theme (`default`, `alternative`).
+- **className**: Custom class names for styling.
 
 ## Behaviors <span id="behaviors"></span>
 
-{/* Behaviors specification */}
+- **Text input**: Allows multi-line text entry and editing.
+- **Clear**: Clears the content with the clear button or ESC key (if clearable).
+- **Resize**: User can resize the textarea if enabled.
+- **Keyboard navigation**: Supports standard keyboard navigation and shortcuts.
+- **Accessibility**: Uses semantic `<textarea>` element and ARIA attributes for screen readers.
+- **Disabled/Read-only**: Prevents editing or interaction as appropriate.
+- **Error handling**: Shows error message and styling when in error state.
 
 ## Changelog <span id="changelog"></span>
 

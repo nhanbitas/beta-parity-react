@@ -27,19 +27,49 @@ A component that organizes content into vertically stacked collapsible and expan
 
 ## Anatomy <span id="anatomy"></span>
 
-{/* Anatomy specification */}
+- **Input field**: The main text input for entering the local part of the email address.
+- **Left icon**: Optional icon at the start of the input field.
+- **Placeholder**: Optional hint text for the input.
+- **Floating label**: Optional label that floats above the field when focused or filled.
+- **Domain selector**: Dropdown for selecting an email domain (if `domain` prop is provided).
+- **Clear button**: Optional button to clear the input value (if `isClearable`).
+- **Error message**: Displays validation errors (if `isError` and `errorMessage`).
 
 ## States <span id="states"></span>
 
-{/* States specification */}
+- **Default**: Standard state, allows email input.
+- **Hover**: When hovering over the input or domain selector.
+- **Focus**: When the input is focused (mouse or keyboard).
+- **Disabled**: Input and controls are disabled and non-interactive.
+- **Readonly**: Value is visible but not editable.
+- **Error**: Error state with warning border and text.
+- **Filled**: Value has been entered.
+- **With domain**: Domain selector is visible.
 
 ## Options <span id="options"></span>
 
-{/* Options specification */}
+- **domain**: Domain or list of domains for suggestions (`string | string[]`).
+- **domainValue**: Currently selected domain (for controlled usage).
+- **onDomainChange**: Callback when domain changes.
+- **inputSize**: Size (`sm`, `md`).
+- **theme**: Theme (`default`, `alternative`).
+- **floatingLabel**: Floating label.
+- **isClearable**: Show clear button.
+- **leftIcon**: Icon on the left.
+- **placeholder**: Placeholder text.
+- **isError**: Error state.
+- **errorMessage**: Error message.
+- **disabled**: Disable the input.
+- **readOnly**: Make the input read-only.
 
 ## Behaviors <span id="behaviors"></span>
 
-{/* Behaviors specification */}
+- **Domain selection**: Choose a domain from the dropdown if multiple domains are provided.
+- **Clear**: Clear the value using the clear button or ESC key (if `isClearable`).
+- **Focus/Blur**: Supports keyboard navigation (Tab/Shift+Tab), focus ring, and blur on outside click.
+- **Readonly/Disabled**: Prevents editing or interaction.
+- **Error**: Shows error message and styling when in error state.
+- **Keyboard behaviors**: Tab to focus, Shift+Tab to reverse, ArrowUp/ArrowDown to navigate domain selector, ESC to clear (if clearable).
 
 ## Changelog <span id="changelog"></span>
 

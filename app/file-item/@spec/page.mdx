@@ -27,19 +27,42 @@ A component that organizes content into vertically stacked collapsible and expan
 
 ## Anatomy <span id="anatomy"></span>
 
-{/* Anatomy specification */}
+- **Container**: The outer wrapper for the file item, providing layout and visual grouping.
+- **File icon/thumbnail**: Visual representation of the file type (icon or image preview).
+- **File name**: Displays the name of the file.
+- **File size**: Shows the file size in a readable format.
+- **Status indicator**: Optional indicator for upload status (e.g., uploading, success, error).
+- **Action buttons**: Optional buttons for actions such as download, remove, or retry.
 
 ## States <span id="states"></span>
 
-{/* States specification */}
+- **Default**: Standard state, displays file information.
+- **Hover**: When hovering over the file item (may reveal action buttons).
+- **Selected**: Indicates the file item is selected (if applicable).
+- **Uploading**: Shows progress or spinner while uploading.
+- **Success**: Indicates successful upload or completion.
+- **Error**: Error state with warning indicator and optional retry action.
+- **Disabled**: Non-interactive and visually muted.
 
 ## Options <span id="options"></span>
 
-{/* Options specification */}
+- **file**: File object or file data to display.
+- **icon**: Custom icon or thumbnail for the file type.
+- **status**: Upload status (`default`, `uploading`, `success`, `error`).
+- **actions**: Array of action buttons (e.g., download, remove, retry).
+- **size**: Size of the file item (if multiple sizes are supported).
+- **theme**: Theme (`default`, `alternative`).
+- **disabled**: Disable interaction.
+- **className**: Custom class names for styling.
 
 ## Behaviors <span id="behaviors"></span>
 
-{/* Behaviors specification */}
+- **Display file info**: Shows file name, size, and icon/thumbnail.
+- **Status indication**: Visual feedback for uploading, success, or error states.
+- **Action buttons**: Allow actions such as download, remove, or retry (if provided).
+- **Hover/Focus**: Reveals action buttons or highlights the item on hover/focus.
+- **Accessibility**: Supports keyboard navigation and screen reader labels for actions and file info.
+- **Disabled**: Prevents interaction and actions when disabled.
 
 ## Changelog <span id="changelog"></span>
 
