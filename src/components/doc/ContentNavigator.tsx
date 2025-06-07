@@ -1,28 +1,24 @@
 'use client';
 
-import { useRouter, useSearchParams } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { Button } from 'beta-parity-react/ui/Button';
 import React from 'react';
+import { components } from '@/src/data';
+import TableOfContents from '@components/doc/TableOfContents';
 
-type Props = {
-  spec: React.ReactNode;
-  dev: React.ReactNode;
-};
-
-const ContentNavigator = (props: Props) => {
-  const { dev, spec } = props;
+const ContentNavigator = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const tab = searchParams.get('tab');
-  const [currentTab, setCurrentTab] = React.useState(tab ?? 'dev');
-
-  const handleNavigate = (tab: 'dev' | 'spec') => {
-    router.push(`?tab=${tab ?? 'dev'}`);
+  const pathname = usePathname();
+  const currentComponentPath = pathname.split('/')[1];
+  const currentTab = pathname.split('/')[2] as 'dev' | 'spec' | undefined;
+  const currentComponent = components.find((component) => component.url === `/${currentComponentPath}`) || {
+    name: 'Component'
   };
 
-  React.useEffect(() => {
-    setCurrentTab(tab ?? 'dev');
-  }, [tab]);
+  const handleNavigate = (tab: 'dev' | 'spec') => {
+    if (!currentComponentPath) return;
+    router.push(`/${currentComponentPath}/${tab}`);
+  };
 
   return (
     <>
@@ -35,8 +31,12 @@ const ContentNavigator = (props: Props) => {
         </Button>
       </nav>
 
-      {currentTab === 'dev' && dev}
-      {currentTab === 'spec' && <div className='spec-content'>{spec}</div>}
+      <TableOfContents />
+
+      <main id='main' className='prose flex min-h-screen w-full flex-col gap-8 p-8 sm:px-12 md:px-24 2xl:px-48'>
+        <h1 className='block h-24 bg-[var(--par-color-bg)] text-2xl'>{currentComponent.name}</h1>
+        {children}
+      </main>
     </>
   );
 };

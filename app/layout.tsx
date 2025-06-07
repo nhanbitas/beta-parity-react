@@ -26,11 +26,7 @@ export default async function RootLayout({
     <html lang='en'>
       <ThemeProvider initialTheme={isValidTheme ? theme.value : 'light'}>
         <SideBar />
-
-        <main id='main' className='prose flex min-h-screen w-full flex-col gap-8 p-8 sm:px-12 md:px-24 2xl:px-48'>
-          {children}
-        </main>
-
+        {children}
         <ScrollToTopButton />
       </ThemeProvider>
     </html>

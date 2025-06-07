@@ -1,0 +1,135 @@
+import { Badge } from 'beta-parity-react/ui/Badge';
+import Image from '@components/showcase/ImagePreview';
+import imageSrc from '@public/images/button';
+import Component from '@components/showcase/CodePreview';
+import * as Demo from '@public/demo/button';
+
+## Button
+
+An element that performs an action when clicked.
+
+<Image src={imageSrc.button} alt='button' />
+
+## Design checklist
+
+| Status | Item                                 | Description                                                                                                                                                                                                                       |
+| ------ | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ✔️     | Anatomy                              | Includes descriptions of all parts of the component and its major variants.                                                                                                                                                       |
+| ✔️     | States                               | Includes all applicable interaction, display and value states.                                                                                                                                                                    |
+| ✔️     | Options                              | Includes all relevant options (functional type, stylistic kind, semantic color, size, orientation, optional iconography, decorations, etc.)                                                                                       |
+| ✔️     | Color schemes                        | Includes both light and dark color schemes.                                                                                                                                                                                       |
+| ✔️     | Behaviors                            | Includes descriptions of behaviors related to other components and responsive behaviors related to media breakpoints, size (minimums and maximums), orientation, alignment, position and layout (wrapping, truncation, overflow). |
+|        | Accessibility: Keyboard interactions | Includes descriptions of all keyboard interactions, focus indication and navigation order.                                                                                                                                        |
+|        | Accessibility: Text contrast         | Text meets a contrast ratio of at least 4.5:1 for small text and 3:1 for large text (WCAG 2.0 1.4.3) and/or a lightness contrast value of at least Lc 75 for standard text and Lc 60 for large text (APCA).                       |
+|        | Accessibility: UI component contrast | Visual information required to identify states and boundaries of active UI components has a contrast ratio against adjacent colors of at least 3:1 (WCAG 2.1 1.4.11) and/or a lightness contrast value of at least Lc 60 (APCA).  |
+|        | Usage guidelines                     | Includes a list of recommended and discouraged usages.                                                                                                                                                                            |
+|        | Content guidelines                   | Includes content standards and guidelines for how to write or format in-product content for the component.                                                                                                                        |
+|        | Internationalization                 | Includes support for various locales and bi-directionality (RTL).                                                                                                                                                                 |
+|        | Design tokens                        | All design attributes (color, typography, layout, animation, etc.) are available as design tokens.                                                                                                                                |
+
+## Anatomy
+
+- **Container**: The outermost encompassing element.
+- **Icon**: An optional visual element that represents the button.
+- **Label**: The text that describes the action the button performs.
+
+<Image src={imageSrc.anatomy} alt='anatomy' />
+
+## States
+
+#### Interaction states
+
+##### Enabled
+
+- Interaction with the button is available.
+
+<Image src={imageSrc.enabled} alt='enabled' />
+
+##### Hovered
+
+- The cursor is currently positioned over the button, indicated by a different color shade and the pointer cursor.
+
+<Image src={imageSrc.hovered} alt='hovered' />
+
+##### Pressed
+
+- The button is being clicked on, indicated by a different color shade.
+
+<Image src={imageSrc.pressed} alt='pressed' />
+
+##### Focused
+
+- The button is focused via keyboard interaction, indicated by a ring outline.
+
+<Image src={imageSrc.focused} alt='focused' />
+
+##### Disabled
+
+- Interaction with the button is disallowed, indicated by a muted appearance and the disallowed cursor.
+
+<Image src={imageSrc.disabled} alt='disabled' />
+
+##### Pending
+
+- Action assigned to the button is being processed, indicated by an animated spinner and optional labeling.
+- No further interaction is available to the user while the button is in this state.
+
+<Image src={imageSrc.pending} alt='pending' />
+
+## Options
+
+##### Kind
+
+- **Solid**: High visual emphasis with a solid background color.
+- **Outlined**: Medium visual emphasis with a border and a light color fill.
+- **Glass**: Medium-low visual emphasis with a translucent, frosted appearance.
+- **Ghost**: Low visual emphasis with a transparent background.
+
+<Image src={imageSrc.kind} alt='kind' />
+
+##### Color
+
+- Buttons are neutral-colored or achromatic by default.
+- An accent color can be chosen via theme configuration and applied to buttons for enhanced visual emphasis.
+- For actions that are negative or destructive in nature, an adverse color can be used.
+
+<Image src={imageSrc.color} alt='color' />
+<Image src={imageSrc.color2} alt='color2' />
+<Image src={imageSrc.color3} alt='color3' />
+
+##### Size
+
+- Small, medium and large buttons differ in container height, minimum width and padding.
+- Medium is the default button size.
+
+<Image src={imageSrc.sizeSmall} alt='sizeSmall' />
+<Image src={imageSrc.sizeMedium} alt='sizeMedium' />
+<Image src={imageSrc.sizeLarge} alt='sizeLarge' />
+
+##### Icon
+
+- An icon can be added next to the button label.
+- Buttons may also be icon-only.
+
+<Image src={imageSrc.icon} alt='icon' />
+
+## Behaviors
+
+##### Minimum width
+
+- A minimum width of 2.25× the height of the button ensures that buttons with short labels maintain identifiable shape.
+
+<Image src={imageSrc.minWidth} alt='minWidth' />
+
+##### Alignment
+
+- Content within the button container is always center-aligned.
+- The label text is also center-justified.
+
+<Image src={imageSrc.alignment} alt='alignment' />
+
+##### Text overflow
+
+- When the button label is too long for the horizontal space available, it wraps to form another line.
+
+<Image src={imageSrc.overflow} alt='overflow' />

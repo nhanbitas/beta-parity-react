@@ -1,0 +1,59 @@
+import * as Demo from '@public/demo/table';
+import CodePreview from '@components/showcase/CodePreview';
+
+## Basic Table
+
+<CodePreview paths={['table', 'BasicTable']}>
+  <Demo.BasicTable />
+</CodePreview>
+
+## Advanced Table
+
+<CodePreview paths={['table', 'AdvancedTable']}>
+  <Demo.AdvancedTable />
+</CodePreview>
+
+<CodePreview paths={['table', 'AdvancedTable2']}>
+  <Demo.AdvancedTable2 />
+</CodePreview>
+
+<div className='h-96' />
+
+---
+
+## Design Tokens for Table
+
+| **Token**                                           | **Color for**          | **State/Meaning** | **CSS Selector(s)**                                                                      |
+| --------------------------------------------------- | ---------------------- | ----------------- | ---------------------------------------------------------------------------------------- |
+| **--par-color-bg-table**                            | Table background       | Default/Enabled   | `.par-table`, `.table-wrapper`                                                           |
+| **--par-color-bg-table-header-cell-item-enabled**   | Header cell background | Enabled           | `.table-head-cell`                                                                       |
+| **--par-color-bg-table-header-cell-item-hovered**   | Header cell background | Hovered           | `.table-head-cell.sortable:hover`                                                        |
+| **--par-color-bg-table-header-cell-item-active**    | Header cell background | Active            | `.table-head-cell.sortable:active`                                                       |
+| **--par-color-bg-table-body-row-item-enabled**      | Row background         | Enabled           | `.table-body-row`                                                                        |
+| **--par-color-bg-table-body-row-item-hovered**      | Row background         | Hovered           | `.table-body-row:hover`                                                                  |
+| **--par-color-bg-table-batch-action-selected-item** | Row background         | Selected          | `.table-body-row.selected`, `.table-batch-actions`                                       |
+| **--par-color-border-table**                        | Table border           | Any               | `.par-table`, `.table-head-cell-wrapper`, `.table-body-cell-wrapper`, `.table-container` |
+| **--par-color-text-table-header-cell-item-enabled** | Header cell text       | Enabled           | `.table-head`                                                                            |
+| **--par-color-text-table-header-cell-item-hovered** | Header cell text       | Hovered           | `.table-head-cell.sortable:hover`                                                        |
+| **--par-color-text-table-header-cell-item-active**  | Header cell text       | Active            | `.table-sort-icon .active`                                                               |
+| **--par-color-text-table-content-item**             | Table cell text        | Any               | `.table-body-cell-wrapper`, `.table-footer`                                              |
+
+> _Note: Table uses the same design tokens as the List or DataGrid component. See List/DataGrid documentation for available tokens._
+
+---
+
+## Table API Reference
+
+### `<Table />`
+
+| **Prop**          | **Type**               | **Default** | **Description**                                |
+| ----------------- | ---------------------- | ----------- | ---------------------------------------------- |
+| **data**          | array of objects       |             | Table data                                     |
+| **columns**       | array of TableColumn   |             | Table columns                                  |
+| **rowKey**        | string                 | _'id'_      | Unique key for each row                        |
+| **size**          | 'sm' \| 'md' \| 'lg'   | _'md'_      | Table size                                     |
+| **color**         | 'neutral' \| 'accent'  | _'neutral'_ | Color scheme                                   |
+| **className**     | string                 |             | Custom className for container                 |
+| **...tableProps** | HTMLTableElement props |             | All native table props (className, style, ...) |
+
+> **_Note:_** Table expects each row to have a unique `id` field as the key. TableColumn type supports key, title, width, sortable, resizable, render, etc.

@@ -1,0 +1,51 @@
+import * as Demo from '@public/demo/tooltip';
+import CodePreview from '@components/showcase/CodePreview';
+
+## Hover and Focus
+
+<CodePreview paths={['tooltip', 'OutlinedTooltip']}>
+  <Demo.OutlinedTooltip />
+</CodePreview>
+
+## SafePolygon
+
+<CodePreview paths={['tooltip', 'OutlinedTooltipSafePolygon']}>
+  <Demo.OutlinedTooltipSafePolygon />
+</CodePreview>
+
+## Toggle and Delay
+
+<CodePreview paths={['tooltip', 'OutlinedTooltipToggleDelay']}>
+  <Demo.OutlinedTooltipToggleDelay />
+</CodePreview>
+
+---
+
+## Design Tokens for Tooltip
+
+| **Token**                            | **Color for**      | **State/Meaning** | **CSS Selector(s)** |
+| ------------------------------------ | ------------------ | ----------------- | ------------------- |
+| **--par-color-bg-surface-inverse**   | Tooltip background | Default           | `.tooltip-content`  |
+| **--par-color-text-primary-inverse** | Tooltip text       | Default           | `.tooltip-content`  |
+| **--par-color-bg-surface-inverse**   | Tooltip arrow      | Default           | `.tooltip-caret`    |
+
+> _Note: Tooltip uses shared design tokens from Popover/Overlay. See Popover/Overlay documentation for full token list._
+
+---
+
+## Tooltip API Reference
+
+### `<Tooltip />`
+
+| **Prop**           | **Type**             | **Default** | **Description**                              |
+| ------------------ | -------------------- | ----------- | -------------------------------------------- |
+| **content**        | string \| ReactNode  |             | Tooltip content                              |
+| **position**       | string               | _'top'_     | Tooltip placement                            |
+| **isToggle**       | boolean              | _false_     | Toggle on click                              |
+| **delay**          | number               | _0_         | Delay before show on hover (ms)              |
+| **touchDelay**     | number               |             | Delay before show on touch (ms)              |
+| **isSafePolygon**  | boolean              | _false_     | Safe polygon interaction                     |
+| **controlledOpen** | boolean              |             | Controlled visibility                        |
+| **...divProps**    | HTMLDivElement props |             | All native div props (className, style, ...) |
+
+> **_Note:_** _Tooltip_ **inherits** all native props from **HTMLDivElement**.

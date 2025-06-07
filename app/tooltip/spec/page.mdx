@@ -1,0 +1,72 @@
+import { Badge } from 'beta-parity-react/ui/Badge';
+import Image from '@components/showcase/ImagePreview';
+import Component from '@components/showcase/CodePreview';
+import * as Demo from '@public/demo/tooltip';
+
+{/* Image => Image Example */}
+{/* Component => Component Example */}
+
+:::callout[note]
+A component that organizes content into vertically stacked collapsible and expandable sections.
+:::
+
+## Design checklist <span id="design-checklist"></span>
+
+{/* Design checklist specification */}
+
+| Status | Item          | Description                                                                                                                                                                                                                       |
+| ------ | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ✔️     | Anatomy       | Includes descriptions of all parts of the component and its major variants.                                                                                                                                                       |
+| ✔️     | States        | Includes all applicable interaction, display and value states.                                                                                                                                                                    |
+| ✔️     | Options       | Includes all relevant options (functional type, stylistic kind, semantic color, size, orientation, optional iconography, decorations, etc.)                                                                                       |
+| ✔️     | Color schemes | Includes both light and dark color schemes.                                                                                                                                                                                       |
+|        | Behaviors     | Includes descriptions of behaviors related to other components and responsive behaviors related to media breakpoints, size (minimums and maximums), orientation, alignment, position and layout (wrapping, truncation, overflow). |
+
+## Anatomy <span id="anatomy"></span>
+
+- **Trigger**: The element that the tooltip is attached to (child of Tooltip, receives class `tooltip`).
+- **Tooltip content**: The floating content box, class `tooltip-content`.
+- **Arrow**: The caret/arrow pointing to the trigger, class `tooltip-caret`.
+
+## States <span id="states"></span>
+
+- **Default**: Tooltip hidden, trigger is focusable.
+- **Visible**: Tooltip is shown (on hover, focus, click, or touch, depending on props).
+- **Hover**: Tooltip appears on mouse hover (default behavior).
+- **Focus**: Tooltip appears on keyboard focus.
+- **Click**: Tooltip appears on click if `isToggle` is true.
+- **Touch**: Tooltip appears on touch if `touchDelay` is set.
+- **Controlled**: Tooltip visibility is controlled by parent via `controlledOpen` prop.
+
+## Options <span id="options"></span>
+
+- **position**: Placement of the tooltip relative to the trigger (top, bottom, left, right, etc.).
+- **isToggle**: If true, tooltip toggles on click.
+- **delay**: Delay (ms) before showing on hover.
+- **touchDelay**: Delay (ms) before showing on touch (mobile).
+- **isSafePolygon**: Enables safe polygon interaction (prevents closing when moving cursor between trigger and tooltip).
+- **controlledOpen**: Controls visibility externally.
+- **content**: Tooltip content (string or ReactNode).
+- **...divProps**: All native div props (className, style, ...).
+
+## Behaviors <span id="behaviors"></span>
+
+- Tooltip appears on hover, focus, click, or touch, depending on props.
+- Supports keyboard accessibility (Tab to focus, Escape to close if controlled).
+- Tooltip position auto-adjusts to stay in viewport (unless `isToggle` is true).
+- Uses portal to render tooltip content outside normal DOM flow.
+- Animation: fade-in effect on show.
+
+## Keyboard behaviors
+
+- **Tab**: Focuses the trigger, shows tooltip (if focus enabled).
+- **Escape**: Closes tooltip if open and controlled.
+- **Enter/Space**: If trigger is a button or link, activates it (native behavior).
+
+## Changelog <span id="changelog"></span>
+
+{/* Changelog specification */}
+
+| Date       | Type                                                     | Description    | Author      | Associated issue(s) |
+| :--------- | :------------------------------------------------------- | -------------- | :---------- | :------------------ |
+| YYYY-MM-DD | <Badge size='sm' kind='glass' color='cyan' label="new"/> | Initial design | Oanh Nguyen | PAR-52              |

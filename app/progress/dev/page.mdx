@@ -1,0 +1,133 @@
+import * as Demo from '@public/demo/progress';
+import CodePreview from '@components/showcase/CodePreview';
+
+## Bar progress
+
+<CodePreview paths={['progress', 'BasicProgress20']}>
+  <Demo.BasicProgress20 />
+</CodePreview>
+<CodePreview paths={['progress', 'BasicProgress25TitleHelper']}>
+  <Demo.BasicProgress25TitleHelper />
+</CodePreview>
+
+## Circle progress
+
+<CodePreview paths={['progress', 'BasicProgress27Circle']}>
+  <Demo.BasicProgress27Circle />
+</CodePreview>
+<CodePreview paths={['progress', 'BasicProgress82TitleHelperCircle']}>
+  <Demo.BasicProgress82TitleHelperCircle />
+</CodePreview>
+
+## Color
+
+<CodePreview paths={['progress', 'BasicProgress25TitleHelper']}>
+  <Demo.BasicProgress25TitleHelper />
+</CodePreview>
+<CodePreview paths={['progress', 'BasicProgress82TitleHelperCircle']}>
+  <Demo.BasicProgress82TitleHelperCircle />
+</CodePreview>
+<CodePreview paths={['progress', 'BasicProgress25TitleHelperAccent']}>
+  <Demo.BasicProgress25TitleHelperAccent />
+</CodePreview>
+<CodePreview paths={['progress', 'BasicProgress82TitleHelperCircleAccent']}>
+  <Demo.BasicProgress82TitleHelperCircleAccent />
+</CodePreview>
+
+## State
+
+<CodePreview paths={['progress', 'BasicProgress25Helper']}>
+  <Demo.BasicProgress25Helper />
+</CodePreview>
+<CodePreview paths={['progress', 'BasicProgress82HelperCircle']}>
+  <Demo.BasicProgress82HelperCircle />
+</CodePreview>
+<CodePreview paths={['progress', 'BasicProgress25TitleHelperSuccess']}>
+  <Demo.BasicProgress25TitleHelperSuccess />
+</CodePreview>
+<CodePreview paths={['progress', 'BasicProgress82TitleHelperCircleSuccess']}>
+  <Demo.BasicProgress82TitleHelperCircleSuccess />
+</CodePreview>
+<CodePreview paths={['progress', 'BasicProgress25TitleHelperError']}>
+  <Demo.BasicProgress25TitleHelperError />
+</CodePreview>
+<CodePreview paths={['progress', 'BasicProgress82TitleHelperCircleError']}>
+  <Demo.BasicProgress82TitleHelperCircleError />
+</CodePreview>
+
+## Numeral
+
+<CodePreview paths={['progress', 'BasicProgress25TitleHelperNumeral']}>
+  <Demo.BasicProgress25TitleHelperNumeral />
+</CodePreview>
+<CodePreview paths={['progress', 'BasicProgress25TitleHelperNumeralAccent']}>
+  <Demo.BasicProgress25TitleHelperNumeralAccent />
+</CodePreview>
+<CodePreview paths={['progress', 'BasicProgress25TitleHelperNumeralSuccess']}>
+  <Demo.BasicProgress25TitleHelperNumeralSuccess />
+</CodePreview>
+<CodePreview paths={['progress', 'BasicProgress25TitleHelperNumeralError']}>
+  <Demo.BasicProgress25TitleHelperNumeralError />
+</CodePreview>
+
+## Size
+
+<CodePreview paths={['progress', 'BasicProgress82HelperCircleSmAccent']}>
+  <Demo.BasicProgress82HelperCircleSmAccent />
+</CodePreview>
+<CodePreview paths={['progress', 'BasicProgress82HelperCircleMdAccent']}>
+  <Demo.BasicProgress82HelperCircleMdAccent />
+</CodePreview>
+
+## Demo
+
+<CodePreview paths={['progress', 'SuccessProgress']}>
+  <Demo.SuccessProgress />
+</CodePreview>
+<CodePreview paths={['progress', 'SuccessProgressCircle']}>
+  <Demo.SuccessProgressCircle />
+</CodePreview>
+<CodePreview paths={['progress', 'ErrorProgress']}>
+  <Demo.ErrorProgress />
+</CodePreview>
+<CodePreview paths={['progress', 'ErrorProgressCircle']}>
+  <Demo.ErrorProgressCircle />
+</CodePreview>
+
+---
+
+## Design Tokens for Progress
+
+| **Token**                                     | **Color for**                | **State/Meaning** | **CSS Selector(s)**                          |
+| --------------------------------------------- | ---------------------------- | ----------------- | -------------------------------------------- |
+| **--par-color-progress-track**                | Progress track background    | Default/Enabled   | `.progress-track`                            |
+| **--par-color-progress-thumb-active-neutral** | Progress bar fill (neutral)  | Active            | `.progress.active.neutral .progress-thumb`   |
+| **--par-color-progress-thumb-active-accent**  | Progress bar fill (accent)   | Active            | `.progress.active.accent .progress-thumb`    |
+| **--par-color-progress-thumb-success**        | Progress bar fill            | Success/Complete  | `.progress.success .progress-thumb`          |
+| **--par-color-progress-thumb-error**          | Progress bar fill            | Error/Failed      | `.progress.error .progress-thumb`            |
+| **--par-color-text-primary**                  | Progress label text          | Any               | `.progress-title`                            |
+| **--par-color-text-helper-neutral**           | Progress numeral/helper text | Any               | `.progress-numeral`, `.progress-helper-text` |
+| **--par-color-text-helper-affirmative**       | Helper text                  | Success           | `.progress.success .progress-helper-text`    |
+| **--par-color-text-helper-adverse**           | Helper text                  | Error             | `.progress.error .progress-helper-text`      |
+
+---
+
+## Progress API Reference
+
+### `<Progress />`
+
+| **Prop**        | **Type**                         | **Default** | **Description**                              |
+| --------------- | -------------------------------- | ----------- | -------------------------------------------- |
+| **kind**        | 'bar' \| 'circle'                | _'bar'_     | Type of progress indicator                   |
+| **value**       | number                           | _0_         | Current progress value                       |
+| **title**       | string                           |             | Title displayed above the progress indicator |
+| **helperText**  | string                           |             | Helper text displayed below the indicator    |
+| **color**       | 'neutral' \| 'accent'            | _'neutral'_ | Color theme                                  |
+| **state**       | 'active' \| 'success' \| 'error' | _'active'_  | Progress state                               |
+| **size**        | 'sm' \| 'md'                     | _'md'_      | Size (for circle kind)                       |
+| **numeral**     | boolean                          | _false_     | Show progress value as numeral               |
+| **...divProps** | HTMLDivElement props             |             | All native div props (className, style, ...) |
+
+> **_Note:_** _Progress_ **inherits** all native props from **HTMLDivElement**.
+
+---

@@ -1,0 +1,51 @@
+import * as Demo from '@public/demo/checkbox';
+import CodePreview from '@components/showcase/CodePreview';
+
+## Basic Checkbox
+
+<CodePreview paths={['checkbox', 'BasicCheckbox']}>
+  <Demo.BasicCheckbox />
+</CodePreview>
+
+## Group Checkbox
+
+<CodePreview paths={['checkbox', 'GroupCheckbox']}>
+  <Demo.GroupCheckbox />
+</CodePreview>
+
+## Nested Checkbox
+
+<CodePreview paths={['checkbox', 'NestedCheckbox']}>
+  <Demo.NestedCheckbox />
+</CodePreview>
+
+## Design Tokens for Checkbox
+
+| **Token**                                            | **Color for**                  | **State/Meaning**             | **CSS Selector(s)**                    |
+| ---------------------------------------------------- | ------------------------------ | ----------------------------- | -------------------------------------- |
+| **--par-color-icon-checkbox-enabled**                | Checkbox icon color            | Icon when enabled             | `.par-checkbox:not(:disabled)`         |
+| **--par-color-icon-checkbox-disabled**               | Checkbox icon color            | Icon when disabled            | `.par-checkbox:disabled`               |
+| **--par-color-icon-checkbox-indeterminate**          | Indeterminate icon color       | Icon when indeterminate       | `.par-checkbox.indeterminate`          |
+| **--par-color-icon-checkbox-indeterminate-disabled** | Indeterminate icon (disabled)  | Icon indeterminate/disabled   | `.par-checkbox.indeterminate:disabled` |
+| **--par-color-icon-checkbox-neutral-selected**       | Icon color (neutral, checked)  | Icon when checked (neutral)   | `.par-checkbox.neutral:checked`        |
+| **--par-color-bg-checkbox-neutral-selected**         | Background (neutral, checked)  | Background checked (neutral)  | `.par-checkbox.neutral:checked`        |
+| **--par-color-icon-checkbox-accent-selected**        | Icon color (accent, checked)   | Icon when checked (accent)    | `.par-checkbox.accent:checked`         |
+| **--par-color-bg-checkbox-accent-selected**          | Background (accent, checked)   | Background checked (accent)   | `.par-checkbox.accent:checked`         |
+| **--par-color-icon-checkbox-neutral-disabled**       | Icon color (neutral, disabled) | Icon when disabled (neutral)  | `.par-checkbox.neutral:disabled`       |
+| **--par-color-bg-checkbox-neutral-disabled**         | Background (neutral, disabled) | Background disabled (neutral) | `.par-checkbox.neutral:disabled`       |
+| **--par-color-icon-checkbox-accent-disabled**        | Icon color (accent, disabled)  | Icon when disabled (accent)   | `.par-checkbox.accent:disabled`        |
+| **--par-color-bg-checkbox-accent-disabled**          | Background (accent, disabled)  | Background disabled (accent)  | `.par-checkbox.accent:disabled`        |
+
+---
+
+## Checkbox API Reference
+
+### `<Checkbox />`
+
+| **Prop**                 | **Type**              | **Default** | **Description**         |
+| ------------------------ | --------------------- | ----------- | ----------------------- |
+| **color**                | 'neutral' \| 'accent' | _'neutral'_ | Checkbox color          |
+| **label**                | string \| ReactNode   |             | Main label              |
+| **sublabel**             | string \| ReactNode   |             | Sublabel                |
+| **indeterminate**        | boolean               | _false_     | Indeterminate state     |
+| **checkboxWrapperProps** | object                |             | Props for outer wrapper |

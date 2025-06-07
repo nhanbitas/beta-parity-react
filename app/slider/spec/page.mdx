@@ -1,0 +1,77 @@
+import { Badge } from 'beta-parity-react/ui/Badge';
+import Image from '@components/showcase/ImagePreview';
+import Component from '@components/showcase/CodePreview';
+import * as Demo from '@public/demo/slider';
+
+{/* Image => Image Example */}
+{/* Component => Component Example */}
+
+:::callout[note]
+A component that organizes content into vertically stacked collapsible and expandable sections.
+:::
+
+## Design checklist <span id="design-checklist"></span>
+
+{/* Design checklist specification */}
+
+| Status | Item          | Description                                                                                                                                                                                                                       |
+| ------ | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ✔️     | Anatomy       | Includes descriptions of all parts of the component and its major variants.                                                                                                                                                       |
+| ✔️     | States        | Includes all applicable interaction, display and value states.                                                                                                                                                                    |
+| ✔️     | Options       | Includes all relevant options (functional type, stylistic kind, semantic color, size, orientation, optional iconography, decorations, etc.)                                                                                       |
+| ✔️     | Color schemes | Includes both light and dark color schemes.                                                                                                                                                                                       |
+|        | Behaviors     | Includes descriptions of behaviors related to other components and responsive behaviors related to media breakpoints, size (minimums and maximums), orientation, alignment, position and layout (wrapping, truncation, overflow). |
+
+## Anatomy <span id="anatomy"></span>
+
+- **Container**: The outermost element with class `slider`.
+- **Track**: The background bar, class `slider-track`.
+- **Progress**: The filled portion, class `slider-progress` (with color modifier).
+- **Marks**: Mark points, class `slider-marks` and `slider-marks-item`.
+- **Dot**: Mark dot, class `slider-dot` (with `in-range`/`out-range`).
+- **Label**: Mark label, class `slider-label`.
+- **Thumb**: Native input[type=range] thumb, styled via `par-input-slider` and browser pseudo-elements.
+- **Indicator**: Value indicator, class `indicator-wrapper` and `slider-thumb-indicator-text`.
+
+## States <span id="states"></span>
+
+- **Enabled**: Default state, interactive.
+- **Hovered**: Thumb hovered (via input[type=range]:hover), shows state layer.
+- **Active/Dragging**: Thumb active (input[type=range]:active), cursor changes.
+- **Focused**: Thumb focused (input[type=range]:focus), outline visible.
+- **Disabled**: All elements have reduced opacity and pointer-events disabled.
+- **Range**: Two thumbs and two indicators.
+
+## Options <span id="options"></span>
+
+- **mode**: 'single' | 'range' (default: 'single')
+- **min**: number (default: 0)
+- **max**: number (default: 100)
+- **step**: number (default: 1)
+- **defaultValue**: number | [number, number] (default: 0 or [0, 50])
+- **marks**: array of objects with `value` (number) and optional `label` (string)
+- **color**: 'neutral' | 'accent' (default: 'neutral')
+- **orientation**: 'horizontal' | 'vertical' (default: 'horizontal')
+- **indicator**: 'normal' | 'tooltip' (default: 'normal')
+- **indicatorSide**: 'normal' | 'reverse' (default: 'normal')
+- **disabled**: boolean (default: false)
+- **onValueChange**: (value: number | [number, number]) => void
+- **...divProps**: All native div props (className, style, ...)
+
+## Behaviors <span id="behaviors"></span>
+
+- Supports both single and range selection.
+- Keyboard accessible: arrow keys, Home/End, PageUp/PageDown.
+- Responsive: vertical and horizontal layouts.
+- Marks and labels are optional and customizable.
+- Tooltip indicator shows value on focus/hover if enabled.
+- Disabled state prevents all interaction.
+- Color and orientation can be changed via props.
+
+## Changelog <span id="changelog"></span>
+
+{/* Changelog specification */}
+
+| Date       | Type                                                     | Description    | Author      | Associated issue(s) |
+| :--------- | :------------------------------------------------------- | -------------- | :---------- | :------------------ |
+| YYYY-MM-DD | <Badge size='sm' kind='glass' color='cyan' label="new"/> | Initial design | Oanh Nguyen | PAR-52              |

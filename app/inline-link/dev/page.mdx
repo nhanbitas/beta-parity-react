@@ -1,0 +1,59 @@
+import * as Demo from '@public/demo/inline-link';
+import CodePreview from '@components/showcase/CodePreview';
+
+## Inline Link
+
+<CodePreview paths={['inline-link', 'KindInlineLink']}>
+  <Demo.KindInlineLink />
+</CodePreview>
+
+## Inline Link Size
+
+<CodePreview paths={['inline-link', 'SizeInlineLink']}>
+  <Demo.SizeInlineLink />
+</CodePreview>
+
+## Inline Link Icon
+
+<CodePreview paths={['inline-link', 'IconInlineLink']}>
+  <Demo.IconInlineLink />
+</CodePreview>
+
+## Design Tokens for InlineLink
+
+| **Token**                               | **Color for** | **State/Meaning** | **CSS Selector(s)**              |
+| --------------------------------------- | ------------- | ----------------- | -------------------------------- |
+| **--color-text-link-standard-enabled**  | Standard link | Enabled           | `.inline-link.standard`          |
+| **--color-text-link-standard-hovered**  | Standard link | Hovered           | `.inline-link.standard:hover`    |
+| **--color-text-link-standard-focused**  | Standard link | Focused           | `.inline-link.standard:focus`    |
+| **--color-text-link-standard-disabled** | Standard link | Disabled          | `.inline-link.standard.disabled` |
+| **--color-text-link-neutral-enabled**   | Neutral link  | Enabled           | `.inline-link.neutral`           |
+| **--color-text-link-neutral-hovered**   | Neutral link  | Hovered           | `.inline-link.neutral:hover`     |
+| **--color-text-link-neutral-focused**   | Neutral link  | Focused           | `.inline-link.neutral:focus`     |
+| **--color-text-link-neutral-disabled**  | Neutral link  | Disabled          | `.inline-link.neutral.disabled`  |
+
+---
+
+_InlineLink may also inherit some tokens from Button or Text components for typography and spacing. See their documentation for more details._
+
+---
+
+## InlineLink API Reference
+
+### `<InlineLink />`
+
+| **Prop**      | **Type**                | **Default** | **Description**                                 |
+| ------------- | ----------------------- | ----------- | ----------------------------------------------- |
+| **href**      | string                  |             | Link URL                                        |
+| **target**    | string                  |             | Target attribute (\_blank, \_self, etc.)        |
+| **size**      | 'sm' \| 'md' \| 'lg'    | _'md'_      | Link size                                       |
+| **color**     | string                  |             | Link color                                      |
+| **disabled**  | boolean                 | _false_     | Disable the link                                |
+| **underline** | boolean                 | _true_      | Show underline                                  |
+| **icon**      | ReactNode               |             | Icon before/after text                          |
+| **iconOnly**  | boolean                 | _false_     | Icon only, no text                              |
+| **...aProps** | HTMLAnchorElement props |             | All native anchor props (className, style, ...) |
+
+> _Note:_ _InlineLink_ inherits all native props from HTMLAnchorElement.
+
+---

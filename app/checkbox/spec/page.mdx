@@ -1,0 +1,107 @@
+import { Badge } from 'beta-parity-react/ui/Badge';
+import Image from '@components/showcase/ImagePreview';
+import Component from '@components/showcase/CodePreview';
+import * as Demo from '@public/demo/checkbox';
+
+{/* Image => Image Example */}
+{/* Component => Component Example */}
+
+:::callout[note]
+Checkboxes allow users to select one or multiple options from a set. They support indeterminate states, group selection, and hierarchical (tree) selection patterns.
+:::
+
+## Design checklist <span id="design-checklist"></span>
+
+| Status | Item          | Description                                                                                                                                                                                                                       |
+| ------ | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ✔️     | Anatomy       | Includes descriptions of all parts of the component and its major variants.                                                                                                                                                       |
+| ✔️     | States        | Includes all applicable interaction, display and value states.                                                                                                                                                                    |
+| ✔️     | Options       | Includes all relevant options (functional type, stylistic kind, semantic color, size, orientation, optional iconography, decorations, etc.)                                                                                       |
+| ✔️     | Color schemes | Includes both light and dark color schemes.                                                                                                                                                                                       |
+| ✔️     | Behaviors     | Includes descriptions of behaviors related to other components and responsive behaviors related to media breakpoints, size (minimums and maximums), orientation, alignment, position and layout (wrapping, truncation, overflow). |
+
+## Anatomy <span id="anatomy"></span>
+
+The Checkbox component consists of two main variants: Checkbox and CheckboxGroup (tree structure).
+
+### Checkbox
+
+- **Container**: The label element that wraps the checkbox input and label text.
+- **Input**: The native `<input type="checkbox">` element.
+- **CheckboxIcon**: Custom SVG icon showing checked, unchecked, or indeterminate state.
+- **Label**: Optional text or node describing the checkbox.
+- **Sublabel**: Optional secondary text for additional context.
+
+### CheckboxGroup
+
+- **Group container**: Wraps a set of checkboxes, can be flat or hierarchical (tree).
+- **Parent Checkbox**: Controls the checked state of all children.
+- **Child Checkbox**: Individual selectable options, can be nested.
+
+## States <span id="states"></span>
+
+Checkboxes can exist in the following states:
+
+- **Unchecked**: Default state, not selected.
+- **Checked**: Selected state.
+- **Indeterminate**: Partially selected (used in parent nodes of tree/group).
+- **Disabled**: Not interactive.
+- **Read-only**: Cannot be changed by the user.
+- **Focus**: Highlighted for keyboard navigation.
+- **Hover**: Visual feedback on mouse hover.
+
+## Options <span id="options"></span>
+
+Checkboxes provide several configuration options:
+
+### Color
+
+- **neutral** (default)
+- **accent**
+
+### Label & Sublabel
+
+- **label**: Main label (string or node).
+- **sublabel**: Secondary label (string or node).
+
+### Indeterminate
+
+- **indeterminate**: Shows a horizontal line instead of a checkmark.
+
+### Group/Tree
+
+- **tree**: Hierarchical data structure for nested checkboxes.
+- **label** (group): Label for the group/parent node.
+- **sublabel** (group): Sublabel for the group/parent node.
+- **checked** (group): Controls checked state of all children.
+
+## Behaviors <span id="behaviors"></span>
+
+### Selection
+
+- Clicking a checkbox toggles its checked state.
+- In CheckboxGroup, checking a parent selects/deselects all children.
+- Indeterminate state is shown when only some children are selected.
+
+### Tree structure
+
+- Supports nested checkboxes with parent-child relationships.
+- Parent state updates based on children (checked, indeterminate, unchecked).
+- Children update when parent is toggled.
+
+### Accessibility
+
+- Uses native input for full accessibility support.
+- Supports keyboard navigation and focus indicators.
+- Disabled/read-only states are announced to assistive technologies.
+
+### Responsiveness
+
+- Checkbox and label adapt to different container sizes and layouts.
+- CheckboxGroup/tree supports vertical and horizontal layouts.
+
+## Changelog <span id="changelog"></span>
+
+| Date       | Type                                                     | Description                                 | Author      | Associated issue(s) |
+| :--------- | :------------------------------------------------------- | :------------------------------------------ | :---------- | :------------------ |
+| 2025-06-06 | <Badge size='sm' kind='glass' color='cyan' label="new"/> | Initial specification of Checkbox component | Oanh Nguyen | PAR-52              |

@@ -1,0 +1,153 @@
+import * as Demo from '@public/demo/password-input';
+import CodePreview from '@components/showcase/CodePreview';
+
+## Basic
+
+<CodePreview paths={['password-input', 'BasicPasswordInput']}>
+  <Demo.BasicPasswordInput />
+</CodePreview>
+<CodePreview paths={['password-input', 'BasicPasswordInputWithLeftIcon']}>
+  <Demo.BasicPasswordInputWithLeftIcon />
+</CodePreview>
+
+## Clearable
+
+<CodePreview paths={['password-input', 'ClearablePasswordInput']}>
+  <Demo.ClearablePasswordInput />
+</CodePreview>
+<CodePreview paths={['password-input', 'ClearablePasswordInputWithLeftIconAccent']}>
+  <Demo.ClearablePasswordInputWithLeftIconAccent />
+</CodePreview>
+
+## States
+
+<CodePreview paths={['password-input', 'ErrorPasswordInput']}>
+  <Demo.ErrorPasswordInput />
+</CodePreview>
+<CodePreview paths={['password-input', 'ErrorPasswordInputWithLeftIconAccent']}>
+  <Demo.ErrorPasswordInputWithLeftIconAccent />
+</CodePreview>
+<CodePreview paths={['password-input', 'DisabledClearablePasswordInputAccent']}>
+  <Demo.DisabledClearablePasswordInputAccent />
+</CodePreview>
+<CodePreview paths={['password-input', 'DisabledClearablePasswordInputWithLeftIconDefaultShown']}>
+  <Demo.DisabledClearablePasswordInputWithLeftIconDefaultShown />
+</CodePreview>
+
+## Floating label
+
+<CodePreview paths={['password-input', 'BasicPasswordInputFloatingLabel']}>
+  <Demo.BasicPasswordInputFloatingLabel />
+</CodePreview>
+<CodePreview paths={['password-input', 'BasicPasswordInputWithLeftIconFloatingLabel']}>
+  <Demo.BasicPasswordInputWithLeftIconFloatingLabel />
+</CodePreview>
+<CodePreview paths={['password-input', 'ErrorPasswordInputFloatingLabel']}>
+  <Demo.ErrorPasswordInputFloatingLabel />
+</CodePreview>
+<CodePreview paths={['password-input', 'ErrorPasswordInputWithLeftIconAccentFloatingLabel']}>
+  <Demo.ErrorPasswordInputWithLeftIconAccentFloatingLabel />
+</CodePreview>
+<CodePreview paths={['password-input', 'DisabledClearablePasswordInputAccentFloatingLabel']}>
+  <Demo.DisabledClearablePasswordInputAccentFloatingLabel />
+</CodePreview>
+<CodePreview paths={['password-input', 'DisabledClearablePasswordInputWithLeftIconDefaultShownFloatingLabel']}>
+  <Demo.DisabledClearablePasswordInputWithLeftIconDefaultShownFloatingLabel />
+</CodePreview>
+
+## Size Medium
+
+<CodePreview paths={['password-input', 'BasicPasswordInputMedium']}>
+  <Demo.BasicPasswordInputMedium />
+</CodePreview>
+<CodePreview paths={['password-input', 'BasicPasswordInputWithLeftIconMedium']}>
+  <Demo.BasicPasswordInputWithLeftIconMedium />
+</CodePreview>
+<CodePreview paths={['password-input', 'ClearablePasswordInputMedium']}>
+  <Demo.ClearablePasswordInputMedium />
+</CodePreview>
+<CodePreview paths={['password-input', 'ClearablePasswordInputWithLeftIconAccentMedium']}>
+  <Demo.ClearablePasswordInputWithLeftIconAccentMedium />
+</CodePreview>
+<CodePreview paths={['password-input', 'ErrorPasswordInputMedium']}>
+  <Demo.ErrorPasswordInputMedium />
+</CodePreview>
+<CodePreview paths={['password-input', 'ErrorPasswordInputWithLeftIconAccentMedium']}>
+  <Demo.ErrorPasswordInputWithLeftIconAccentMedium />
+</CodePreview>
+<CodePreview paths={['password-input', 'DisabledClearablePasswordInputAccentMedium']}>
+  <Demo.DisabledClearablePasswordInputAccentMedium />
+</CodePreview>
+<CodePreview paths={['password-input', 'DisabledClearablePasswordInputWithLeftIconDefaultShownMedium']}>
+  <Demo.DisabledClearablePasswordInputWithLeftIconDefaultShownMedium />
+</CodePreview>
+
+## Alternative
+
+<CodePreview paths={['password-input', 'BasicPasswordInputAlternative']} theme='alternative'>
+  <Demo.BasicPasswordInputAlternative />
+</CodePreview>
+<CodePreview paths={['password-input', 'BasicPasswordInputWithLeftIconAlternative']} theme='alternative'>
+  <Demo.BasicPasswordInputWithLeftIconAlternative />
+</CodePreview>
+
+## Clearable
+
+<CodePreview paths={['password-input', 'ClearablePasswordInputAlternative']} theme='alternative'>
+  <Demo.ClearablePasswordInputAlternative />
+</CodePreview>
+<CodePreview paths={['password-input', 'ClearablePasswordInputWithLeftIconAccentAlternative']} theme='alternative'>
+  <Demo.ClearablePasswordInputWithLeftIconAccentAlternative />
+</CodePreview>
+
+## States
+
+<CodePreview paths={['password-input', 'ErrorPasswordInputAlternative']} theme='alternative'>
+  <Demo.ErrorPasswordInputAlternative />
+</CodePreview>
+<CodePreview paths={['password-input', 'ErrorPasswordInputWithLeftIconAccentAlternative']} theme='alternative'>
+  <Demo.ErrorPasswordInputWithLeftIconAccentAlternative />
+</CodePreview>
+<CodePreview paths={['password-input', 'DisabledClearablePasswordInputAccentAlternative']} theme='alternative'>
+  <Demo.DisabledClearablePasswordInputAccentAlternative />
+</CodePreview>
+
+## Floating label
+
+<CodePreview paths={['password-input', 'BasicPasswordInputAlternativeFloatingLabel']} theme='alternative'>
+  <Demo.BasicPasswordInputAlternativeFloatingLabel />
+</CodePreview>
+<CodePreview paths={['password-input', 'BasicPasswordInputWithLeftIconAlternativeFloatingLabel']} theme='alternative'>
+  <Demo.BasicPasswordInputWithLeftIconAlternativeFloatingLabel />
+</CodePreview>
+
+---
+
+## Design Tokens for PasswordInput
+
+> _Note: PasswordInput uses the same design tokens as the Input component. See Input documentation for available tokens._
+
+---
+
+## PasswordInput API Reference
+
+### `<PasswordInput />`
+
+| **Prop**                   | **Type**                  | **Default** | **Description**                      |
+| -------------------------- | ------------------------- | ----------- | ------------------------------------ |
+| **value**                  | string                    |             | Controlled value                     |
+| **onChange**               | function (event)          |             | Callback when value changes          |
+| **placeholder**            | string                    |             | Placeholder text                     |
+| **disabled**               | boolean                   | _false_     | Disable the input                    |
+| **readOnly**               | boolean                   | _false_     | Read-only input                      |
+| **error**                  | boolean                   | _false_     | Error state                          |
+| **size**                   | 'sm' \| 'md'              | _'md'_      | Input size                           |
+| **floatingLabel**          | string \| ReactNode       |             | Floating label                       |
+| **leftIcon**               | ReactNode                 |             | Icon on the left                     |
+| **clearButton**            | boolean                   | _false_     | Show clear button                    |
+| **toggleVisibilityButton** | boolean                   | _true_      | Show/hide password visibility button |
+| **...InputProps**          | [See Input](../BaseInput) |             | Inherits all props from **Input**    |
+
+> **_Note:_** _PasswordInput_ **inherits** all props from **Input** and the native **input[type=password]** element. See [Input documentation](../BaseInput) for full details on available props and tokens.\_
+
+---

@@ -56,6 +56,7 @@ const ThemeProvider = (props: Props) => {
       >
         {theme === 'light' ? <MoonIcon /> : <Sun />}
       </button>
+
       {props.children}
     </body>
   );

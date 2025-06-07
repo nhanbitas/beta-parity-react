@@ -1,0 +1,74 @@
+import { Badge } from 'beta-parity-react/ui/Badge';
+import Image from '@components/showcase/ImagePreview';
+import Component from '@components/showcase/CodePreview';
+import * as Demo from '@public/demo/number-input';
+
+{/* Image => Image Example */}
+{/* Component => Component Example */}
+
+:::callout[note]
+A component that organizes content into vertically stacked collapsible and expandable sections.
+:::
+
+## Design checklist <span id="design-checklist"></span>
+
+{/* Design checklist specification */}
+
+| Status | Item          | Description                                                                                                                                                                                                                       |
+| ------ | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ✔️     | Anatomy       | Includes descriptions of all parts of the component and its major variants.                                                                                                                                                       |
+| ✔️     | States        | Includes all applicable interaction, display and value states.                                                                                                                                                                    |
+| ✔️     | Options       | Includes all relevant options (functional type, stylistic kind, semantic color, size, orientation, optional iconography, decorations, etc.)                                                                                       |
+| ✔️     | Color schemes | Includes both light and dark color schemes.                                                                                                                                                                                       |
+|        | Behaviors     | Includes descriptions of behaviors related to other components and responsive behaviors related to media breakpoints, size (minimums and maximums), orientation, alignment, position and layout (wrapping, truncation, overflow). |
+
+## Anatomy <span id="anatomy"></span>
+
+- **Input field**: The main numeric input (custom input, class `.par-input` inside `.number-input`).
+- **Stepper**: Increment/decrement buttons (can be auto, chevron, or separate), class `.number-stepper-wrapper`.
+- **Unit selector**: Dropdown for selecting a unit (if provided), class `.input-unit`.
+- **Clear button**: Button to quickly clear the value, class `.clear-button`.
+- **Error message**: Displays validation errors, class `.input-error-message`.
+- **Label/Floating label**: Optional floating label, class `.contained-label`.
+
+## States <span id="states"></span>
+
+- **Default**: Standard state, allows number input.
+- **Hover**: When hovering over the input or stepper.
+- **Focus**: When the input is focused (mouse or keyboard).
+- **Disabled**: Input and controls are disabled and non-interactive.
+- **Readonly**: Value is visible but not editable.
+- **Error**: Error state with warning border and text.
+- **Filled**: Value has been entered.
+- **With unit**: Unit selector is visible.
+- **With stepper**: Stepper controls are visible.
+
+## Options <span id="options"></span>
+
+- **stepper**: Stepper type (`auto`, `chevron`, `separate`).
+- **unit**: Unit or list of units (`string | string[]`).
+- **selectedUnit**: Currently selected unit.
+- **inputSize**: Size (`sm`, `md`).
+- **theme**: Theme (`default`, `alternative`).
+- **floatingLabel**: Floating label.
+- **isClearable**: Show clear button.
+- **leftIcon**: Icon on the left.
+- **min, max, stepControl**: Value limits and step size.
+
+## Behaviors <span id="behaviors"></span>
+
+- **Increment/decrement**: Change value using stepper or up/down arrow keys.
+- **Unit selection**: Choose a unit from the dropdown if multiple units are provided.
+- **Clear**: Clear the value using the clear button or ESC key (if `isClearable`).
+- **Focus/Blur**: Supports keyboard navigation (Tab/Shift+Tab), focus ring, and blur on outside click.
+- **Readonly/Disabled**: Prevents editing or interaction.
+- **Error**: Shows error message and styling when in error state.
+- **Keyboard behaviors**: Tab to focus, Shift+Tab to reverse, ArrowUp/ArrowDown to increment/decrement, ESC to clear (if clearable).
+
+## Changelog <span id="changelog"></span>
+
+{/* Changelog specification */}
+
+| Date       | Type                                                     | Description    | Author      | Associated issue(s) |
+| :--------- | :------------------------------------------------------- | -------------- | :---------- | :------------------ |
+| YYYY-MM-DD | <Badge size='sm' kind='glass' color='cyan' label="new"/> | Initial design | Oanh Nguyen | PAR-52              |

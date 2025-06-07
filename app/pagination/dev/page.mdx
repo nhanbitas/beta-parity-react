@@ -1,0 +1,107 @@
+import * as Demo from '@public/demo/pagination';
+import Link from 'next/link';
+import CodePreview from '@components/showcase/CodePreview';
+
+## Basic
+
+### Neutral
+
+<CodePreview paths={['pagination', 'BasicPaginationTotal3']}>
+  <Demo.BasicPaginationTotal3 />
+</CodePreview>
+<CodePreview paths={['pagination', 'BasicPaginationBordered']}>
+  <Demo.BasicPaginationBordered />
+</CodePreview>
+
+### Accent
+
+<CodePreview paths={['pagination', 'BasicPaginationAccent']}>
+  <Demo.BasicPaginationAccent />
+</CodePreview>
+<CodePreview paths={['pagination', 'BasicPaginationBorderedAccent']}>
+  <Demo.BasicPaginationBorderedAccent />
+</CodePreview>
+
+### Controls
+
+<CodePreview paths={['pagination', 'BasicPaginationControlConfig']}>
+  <Demo.BasicPaginationControlConfig />
+</CodePreview>
+<CodePreview paths={['pagination', 'OnlyControlPaginationConfig']}>
+  <Demo.OnlyControlPaginationConfig />
+</CodePreview>
+
+### Pagination component
+
+<CodePreview paths={['pagination', 'CustomPaginationTotal5']}>
+  <Demo.CustomPaginationTotal5 />
+</CodePreview>
+<CodePreview paths={['pagination', 'CustomPaginationComponentA']}>
+  <Demo.CustomPaginationComponentA />
+</CodePreview>
+
+### Pagination siblings
+
+<CodePreview paths={['pagination', 'BasicPaginationTotal3']}>
+  <Demo.BasicPaginationTotal3 />
+</CodePreview>
+<CodePreview paths={['pagination', 'BasicPaginationSiblings0']}>
+  <Demo.BasicPaginationSiblings0 />
+</CodePreview>
+<CodePreview paths={['pagination', 'BasicPaginationSiblings1']}>
+  <Demo.BasicPaginationSiblings1 />
+</CodePreview>
+<CodePreview paths={['pagination', 'BasicPaginationSiblings2Bordered']}>
+  <Demo.BasicPaginationSiblings2Bordered />
+</CodePreview>
+<CodePreview paths={['pagination', 'BasicPaginationSiblings3BorderedAccent']}>
+  <Demo.BasicPaginationSiblings3BorderedAccent />
+</CodePreview>
+
+---
+
+## Design Tokens for Pagination
+
+| **Token**                                                  | **Color for**              | **State/Meaning**  | **CSS Selector(s)**                                                                                                                                                          |
+| ---------------------------------------------------------- | -------------------------- | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **--par-color-bg-pagination-item-enabled**                 | Pagination item background | Default/Enabled    | `.pagination-item`                                                                                                                                                           |
+| **--par-color-bg-pagination-item-hovered**                 | Pagination item background | Hovered            | `.pagination-item:hover`                                                                                                                                                     |
+| **--par-color-bg-pagination-item-selected-neutral**        | Pagination item background | Selected (neutral) | `.pagination.neutral .pagination-item.active`                                                                                                                                |
+| **--par-color-bg-pagination-item-selected-accent**         | Pagination item background | Selected (accent)  | `.pagination.accent .pagination-item.active`                                                                                                                                 |
+| **--par-color-bg-pagination-item-disabled**                | Pagination item background | Disabled           | `.pagination-item:disabled`                                                                                                                                                  |
+| **--par-color-text-pagination-item-page-enabled**          | Pagination item text       | Default/Enabled    | `.pagination-item`                                                                                                                                                           |
+| **--par-color-text-pagination-item-page-hovered**          | Pagination item text       | Hovered            | `.pagination-item:hover`                                                                                                                                                     |
+| **--par-color-text-pagination-item-page-selected-neutral** | Pagination item text       | Selected (neutral) | `.pagination.neutral .pagination-item.active`                                                                                                                                |
+| **--par-color-text-pagination-item-page-selected-accent**  | Pagination item text       | Selected (accent)  | `.pagination.accent .pagination-item.active`                                                                                                                                 |
+| **--par-color-text-pagination-item-page-disabled**         | Pagination item text       | Disabled           | `.pagination-item:disabled`                                                                                                                                                  |
+| **--par-color-text-pagination-item-control-enabled**       | Control button text        | Default/Enabled    | `.pagination-item.pagination-start, .pagination-item.pagination-prev, .pagination-item.pagination-end, .pagination-item.pagination-next`                                     |
+| **--par-color-text-pagination-item-control-disabled**      | Control button text        | Disabled           | `.pagination-item.pagination-start:disabled, .pagination-item.pagination-prev:disabled, .pagination-item.pagination-end:disabled, .pagination-item.pagination-next:disabled` |
+| **--par-color-border-pagination-item**                     | Pagination item border     | Default/Enabled    | `.pagination, .pagination-item, .pagination-separator`                                                                                                                       |
+| **--par-color-border-pagination-item-disabled**            | Pagination item border     | Disabled           | `.pagination-item:disabled`                                                                                                                                                  |
+
+> _Note: Pagination uses the same design tokens as the Button or List component. See Button/List documentation for available tokens._
+
+---
+
+## Pagination API Reference
+
+### `<Pagination />`
+
+| **Prop**           | **Type**                               | **Default** | **Description**                             |
+| ------------------ | -------------------------------------- | ----------- | ------------------------------------------- |
+| **totalPage**      | number                                 | _0_         | Total number of pages                       |
+| **page**           | number                                 | _1_         | Current active page                         |
+| **bordered**       | boolean                                | _false_     | Show border around pagination               |
+| **onlyControl**    | boolean                                | _false_     | Show only navigation controls               |
+| **controlConfig**  | controlConfigType                      |             | Custom config for control buttons           |
+| **color**          | 'neutral' \| 'accent'                  | _'neutral'_ | Color theme                                 |
+| **siblings**       | 0 \| 1 \| 2 \| 3                       | _0_         | Number of sibling page numbers to show      |
+| **onPageChange**   | function(page: number)                 |             | Callback when page changes                  |
+| **component**      | 'button' \| 'a' \| React.ComponentType | _'button'_  | Component for page links                    |
+| **componentProps** | Record&lt;string, any&gt;              |             | Extra props for page item component         |
+| **to**             | function(page: number): string         |             | Generate URL for a given page               |
+| **...ulProps**     | HTMLUListElement props                 |             | All native ul props (className, style, ...) |
+
+> **_Note:_** _Pagination_ **inherits** all native props from **HTMLUListElement**.
+
+---

@@ -1,0 +1,60 @@
+import * as Demo from '@public/demo/badge';
+import CodePreview from '@components/showcase/CodePreview';
+
+## Outlined (default)
+
+<CodePreview paths={['badge', 'OutlinedBadge']}>
+  <Demo.OutlinedBadge />
+</CodePreview>
+
+## Glass
+
+<CodePreview paths={['badge', 'GlassBadge']}>
+  <Demo.GlassBadge />
+</CodePreview>
+
+## Solid
+
+<CodePreview paths={['badge', 'SolidBadge']}>
+  <Demo.SolidBadge />
+</CodePreview>
+
+## Dot
+
+<CodePreview paths={['badge', 'DotBadge']}>
+  <Demo.DotBadge />
+</CodePreview>
+
+## Design Tokens for Badge
+
+| **Token**                                       | **Color for**               | **State/Meaning**          | **CSS Selector(s)**         |
+| ----------------------------------------------- | --------------------------- | -------------------------- | --------------------------- |
+| **--par-color-text-badge-solid-\<color\>**      | Badge text (solid)          | Solid badge, all colors    | `.badge.solid.\<color\>`    |
+| **--par-color-bg-badge-solid-\<color\>**        | Badge background (solid)    | Solid badge, all colors    | `.badge.solid.\<color\>`    |
+| **--par-color-border-badge-solid-\<color\>**    | Badge border (solid)        | Solid badge, all colors    | `.badge.solid.\<color\>`    |
+| **--par-color-text-badge-outlined-\<color\>**   | Badge text (outlined)       | Outlined badge, all colors | `.badge.outlined.\<color\>` |
+| **--par-color-bg-badge-outlined-\<color\>**     | Badge background (outlined) | Outlined badge, all colors | `.badge.outlined.\<color\>` |
+| **--par-color-border-badge-outlined-\<color\>** | Badge border (outlined)     | Outlined badge, all colors | `.badge.outlined.\<color\>` |
+| **--par-color-text-badge-glass-\<color\>**      | Badge text (glass)          | Glass badge, all colors    | `.badge.glass.\<color\>`    |
+| **--par-color-bg-badge-glass-\<color\>**        | Badge background (glass)    | Glass badge, all colors    | `.badge.glass.\<color\>`    |
+| **--par-color-border-badge-glass-\<color\>**    | Badge border (glass)        | Glass badge, all colors    | `.badge.glass.\<color\>`    |
+
+> _Note: Replace `\<color\>` with supported color names: gray, red, green, yellow, blue, orange, cyan, violet, lime._
+
+## Badge API Reference
+
+### `<Badge />`
+
+| **Prop**         | **Type**                                                                                     | **Default**  | **Description**                                        |
+| ---------------- | -------------------------------------------------------------------------------------------- | ------------ | ------------------------------------------------------ |
+| **label**        | string                                                                                       |              | Main label text for the badge.                         |
+| **icon**         | ReactNode                                                                                    |              | Icon to display alongside the label/content.           |
+| **color**        | 'gray' \| 'orange' \| 'violet' \| 'green' \| 'red' \| 'yellow' \| 'blue' \| 'lime' \| 'cyan' | _'gray'_     | Badge color.                                           |
+| **size**         | 'md' \| 'sm' \| 'xs'                                                                         | _'md'_       | Badge size.                                            |
+| **dot**          | boolean                                                                                      | _false_      | Show a small dot (overrides icon).                     |
+| **variant**      | 'outlined' \| 'solid' \| 'glass'                                                             | _'outlined'_ | Badge visual style.                                    |
+| **...spanProps** | HTMLSpanElement props                                                                        |              | All native span props (**className**, **style**, etc.) |
+
+> **Note:** _Badge_ **extends** all native props from **HTMLSpanElement**. See [MDN: `span` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span) for more details.
+
+---

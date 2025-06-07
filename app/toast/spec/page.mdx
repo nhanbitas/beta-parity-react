@@ -1,0 +1,68 @@
+import { Badge } from 'beta-parity-react/ui/Badge';
+import Image from '@components/showcase/ImagePreview';
+import Component from '@components/showcase/CodePreview';
+import * as Demo from '@public/demo/toast';
+
+{/* Image => Image Example */}
+{/* Component => Component Example */}
+
+:::callout[note]
+A component that organizes content into vertically stacked collapsible and expandable sections.
+:::
+
+## Design checklist <span id="design-checklist"></span>
+
+| Status | Item          | Description                                                                                                                                             |
+| ------ | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ✔️     | Anatomy       | Includes descriptions of all parts of the Toast component and its major variants (container, icon, title, message, action, close button, progress bar). |
+| ✔️     | States        | Includes all applicable interaction, display and value states (default, hovered, pressed, focused, disabled, pending, collapsed, expanded).             |
+| ✔️     | Options       | Includes all relevant options (kind, emphasis, height, position, autoDismiss, progressBar, etc.).                                                       |
+| ✔️     | Color schemes | Includes both light and dark color schemes.                                                                                                             |
+| ✔️     | Behaviors     | Includes descriptions of behaviors: auto-dismiss, stacking, progress bar, keyboard accessibility, responsive layout.                                    |
+
+## Anatomy <span id="anatomy"></span>
+
+- **Container**: The outermost element with class `toast`.
+- **Icon**: Optional icon or spinner, shown at the start (`toast-icon`).
+- **Title**: Main heading of the toast (`toast-title`).
+- **Message**: Main content/message (`toast-message`).
+- **Action**: Optional action element (button or link, `toast-action`).
+- **Close button**: Dismiss button (`toast-close`).
+- **Progress bar**: Optional progress indicator (`toast-progress-bar`).
+
+## States <span id="states"></span>
+
+- **Default**: Toast is visible and enabled.
+- **Hovered**: Mouse is over the toast (pauses auto-dismiss if enabled).
+- **Pressed**: Close button or action is pressed.
+- **Focused**: Toast is focused (keyboard navigation).
+- **Disabled**: Not applicable (toasts are not disabled, but close button can be disabled).
+- **Pending**: Shows spinner, disables close button.
+- **Collapsed**: Used for stacking animation.
+- **Expanded**: Default visible state.
+
+## Options <span id="options"></span>
+
+- **kind**: 'generic' | 'information' | 'affirmative' | 'cautionary' | 'adverse'
+- **emphasis**: 'normal' | 'high'
+- **height**: 'flexible' | 'compact'
+- **position**: 'top-right' | 'top-center' | 'bottom-right' | 'bottom-center'
+- **autoDismiss**: boolean
+- **progressBar**: boolean
+- **dismissButton**: boolean
+- **importance**: number
+- **pending**: boolean
+
+## Behaviors <span id="behaviors"></span>
+
+- **Auto-dismiss**: Toast can auto-dismiss after a duration, optionally paused on hover.
+- **Stacking**: Multiple toasts can be stacked, with animation and scaling.
+- **Progress bar**: Shows remaining time for auto-dismiss.
+- **Keyboard accessibility**: Toast is focusable, close button is keyboard accessible.
+- **Responsive**: Layout adapts to container width.
+
+## Changelog <span id="changelog"></span>
+
+| Date       | Type                                                     | Description    | Author      | Associated issue(s) |
+| :--------- | :------------------------------------------------------- | -------------- | :---------- | :------------------ |
+| 2024-06-03 | <Badge size='sm' kind='glass' color='cyan' label="new"/> | Initial design | Oanh Nguyen | PAR-52              |

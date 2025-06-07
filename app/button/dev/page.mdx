@@ -1,0 +1,54 @@
+import * as Demo from '@public/demo/button';
+import CodePreview from '@components/showcase/CodePreview';
+
+## Colors
+
+<CodePreview paths={['button', 'ColorButton']}>
+  <Demo.ColorButton />
+</CodePreview>
+
+## Kinds
+
+<CodePreview paths={['button', 'KindButton']}>
+  <Demo.KindButton />
+</CodePreview>
+
+## Sizes
+
+<CodePreview paths={['button', 'SizesButton']}>
+  <Demo.SizesButton />
+</CodePreview>
+
+## Others
+
+<CodePreview paths={['button', 'StatesButton']}>
+  <Demo.StatesButton />
+</CodePreview>
+
+## Design Tokens for Button
+
+| **Token**                                                  | **Color for**     | **State/Meaning**                                                                                     | **CSS Selector(s)**          |
+| ---------------------------------------------------------- | ----------------- | ----------------------------------------------------------------------------------------------------- | ---------------------------- |
+| **--par-color-text-button-\<kind\>-\<color\>-\<state\>**   | Button text       | solid, outlined, ghost, glass; neutral, accent, adverse; enabled, hovered, pressed, disabled, pending | `.btn.<kind>.<color>[state]` |
+| **--par-color-bg-button-\<kind\>-\<color\>-\<state\>**     | Button background | solid, outlined, ghost, glass; neutral, accent, adverse; enabled, hovered, pressed, disabled, pending | `.btn.<kind>.<color>[state]` |
+| **--par-color-border-button-\<kind\>-\<color\>-\<state\>** | Button border     | solid, outlined, ghost, glass; neutral, accent, adverse; enabled, hovered, pressed, disabled, pending | `.btn.<kind>.<color>[state]` |
+
+> _Note: Replace `kind` with solid, outlined, ghost, glass; `color` with neutral, accent, adverse; `state` with enabled, hovered, pressed, disabled, pending as appropriate._
+
+## Button API Reference
+
+### `<Button />`
+
+| **Prop**           | **Type**                                    | **Default** | **Description**                                          |
+| ------------------ | ------------------------------------------- | ----------- | -------------------------------------------------------- |
+| **size**           | 'sm' \| 'md' \| 'lg'                        | _'md'_      | Button size.                                             |
+| **color**          | 'neutral' \| 'accent' \| 'adverse'          | _'neutral'_ | Button color.                                            |
+| **kind**           | 'solid' \| 'outlined' \| 'ghost' \| 'glass' | _'solid'_   | Button visual style.                                     |
+| **isPending**      | boolean                                     | _false_     | Show loading spinner and disable interaction.            |
+| **iconOnly**       | boolean                                     | _false_     | Icon-only button (no text).                              |
+| **disabled**       | boolean                                     | _false_     | Disable the button.                                      |
+| **...buttonProps** | HTMLButtonElement props                     |             | All native button props (**className**, **style**, etc.) |
+
+> **Note:** _Button_ **extends** all native props from **HTMLButtonElement**. See [MDN: `button` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) for more details.
+
+---

@@ -1,0 +1,72 @@
+import { Badge } from 'beta-parity-react/ui/Badge';
+import Image from '@components/showcase/ImagePreview';
+import Component from '@components/showcase/CodePreview';
+import * as Demo from '@public/demo/content-navigation';
+
+{/* Image => Image Example */}
+{/* Component => Component Example */}
+
+:::callout[note]
+A component that organizes content into vertically stacked collapsible and expandable sections.
+:::
+
+## Design checklist <span id="design-checklist"></span>
+
+{/* Design checklist specification */}
+
+| Status | Item          | Description                                                                                                                                                                                                                       |
+| ------ | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ✔️     | Anatomy       | Includes descriptions of all parts of the component and its major variants.                                                                                                                                                       |
+| ✔️     | States        | Includes all applicable interaction, display and value states.                                                                                                                                                                    |
+| ✔️     | Options       | Includes all relevant options (functional type, stylistic kind, semantic color, size, orientation, optional iconography, decorations, etc.)                                                                                       |
+| ✔️     | Color schemes | Includes both light and dark color schemes.                                                                                                                                                                                       |
+|        | Behaviors     | Includes descriptions of behaviors related to other components and responsive behaviors related to media breakpoints, size (minimums and maximums), orientation, alignment, position and layout (wrapping, truncation, overflow). |
+
+## Anatomy <span id="anatomy"></span>
+
+- **Container**: The outermost nav element with class `content-navigation`.
+- **List**: The ul element with class `content-navigation-list`.
+- **Item**: Each navigation button with class `content-navigation-item`.
+- **Active item**: The currently highlighted item with class `content-navigation-item-active` (or combined with `.accent` for accent theme).
+- **Heading item**: Items representing H2 headings with class `content-navigation-item-heading`.
+- **Item text**: The span inside each item with class `content-navigation-item-text`.
+
+## States <span id="states"></span>
+
+- **Default**: Item is not active, hovered, or pressed.
+- **Hovered**: Item is hovered (`:hover`), changes text color.
+- **Pressed**: Item is pressed (`:active`), changes text color.
+- **Selected (neutral)**: Item is active in neutral theme (`content-navigation-item-active`).
+- **Selected (accent)**: Item is active in accent theme (`content-navigation.accent .content-navigation-item-active`).
+- **Focus**: Item is focused via keyboard (`:focus-visible`), shows focus ring.
+
+## Options <span id="options"></span>
+
+- **color**: 'neutral' | 'accent' — Color theme for navigation.
+- **spaceToTop**: number — Space (px) from top when scrolling to heading.
+- **skeleton**: ReactNode — Custom skeleton loader while loading.
+- **target**: string | HTMLElement | null — Target element or selector for headings container.
+
+## Behaviors <span id="behaviors"></span>
+
+- Automatically generates navigation from H2/H3 headings in the target container.
+- Smooth scrolls to section on item click, respecting `spaceToTop` offset.
+- Highlights the item corresponding to the section in view (IntersectionObserver).
+- Sticky/fixed navigation (via CSS `sticky`).
+- Responsive layout (works in grid/flex containers).
+- Supports custom skeleton while loading.
+
+## Keyboard behaviors
+
+- All navigation items are focusable via Tab.
+- Focus ring appears on keyboard focus (`:focus-visible`).
+- `aria-label` is set for accessibility on the nav container and items.
+- Supports keyboard navigation (Tab/Shift+Tab to move between items, Enter/Space to activate).
+
+## Changelog <span id="changelog"></span>
+
+{/* Changelog specification */}
+
+| Date       | Type                                                     | Description    | Author      | Associated issue(s) |
+| :--------- | :------------------------------------------------------- | -------------- | :---------- | :------------------ |
+| YYYY-MM-DD | <Badge size='sm' kind='glass' color='cyan' label="new"/> | Initial design | Oanh Nguyen | PAR-52              |
