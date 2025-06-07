@@ -8,11 +8,16 @@ import TableOfContents from '@components/doc/TableOfContents';
 {/* add container in your page you want to use toast */}
 {/* <ToastContainer limit={3} stacked={false} sortImportance={true}/> */}
 {/* <ToastContainer limit={1} stacked={true} sortImportance={false}/> */}
-
-<CodePreview paths={['toast', 'ToastContainer']}>
-  <ToastContainer limit={1} stacked={true} sortImportance={true} />
-</CodePreview>
 {/* <ToastContainer limit={1} stacked={true} sortImportance={true} data-scheme="dark"/> */}
+
+## Toast Container
+
+- The `ToastContainer` is a wrapper component that manages the display of toast notifications. It can be configured with various options such as stacking, sorting by importance, and limiting the number of toasts displayed at once.
+- Add the `ToastContainer` to your page/layout to enable toast notifications.
+
+<CodePreview paths={['toast', 'ToastContainerLimit1StackedSortImportance']}>
+  <Demo.ToastContainerLimit1StackedSortImportance />
+</CodePreview>
 
 ## Types
 

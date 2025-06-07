@@ -7,3 +7,4 @@ export { AutoCloseToast } from './AutoCloseToast';
 export { PositionToast } from './PositionToast';
 export { ImportantToast } from './ImportantToast';
 export { PendingToast } from './PendingToast';
+export { ToastContainerLimit1StackedSortImportance } from './ToastContainerLimit1StackedSortImportance';
