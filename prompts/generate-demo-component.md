@@ -12,17 +12,18 @@ example:
 from:
 ```tsx
 <CodePreview paths={['breadcrumb', 'BreadcrumbBasic']}>
-  <Demo.BreadcrumbBasic separator='slash' />
+  <Demo.BreadcrumbBasic separator='slash' disabled/>
 </CodePreview>
 
 ```
 to:
 ```tsx
-<CodePreview paths={['breadcrumb', 'BreadcrumbBasicSlash']}>
-  <Demo.BreadcrumbBasicSlash />
+<CodePreview paths={['breadcrumb', 'BreadcrumbBasicSlashDisabled']}></CodePreview>
+  <Demo.BreadcrumbBasicSlashDisabled />
+
 </CodePreview>
 ```
- > BreadcrumbBasicSlash là tên file mới được tạo trong public/demo/breadcrumb/BreadcrumbBasicSlash.tsx
+ > BreadcrumbBasicSlashDisabled là tên file mới được tạo trong public/demo/breadcrumb/BreadcrumbBasicSlashDisabled.tsx
 ====
 
 # Ghi chú

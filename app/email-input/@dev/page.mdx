@@ -4,13 +4,10 @@ import TableOfContents from '@components/doc/TableOfContents';
 
 <TableOfContents />
 
-## Basic
+## Basic Email Input
 
-<CodePreview paths={['email-input', 'BasicEmailInputAlternative']}>
-  <Demo.BasicEmailInputAlternative />
-</CodePreview>
-<CodePreview paths={['email-input', 'BasicEmailInputAlternative']}>
-  <Demo.BasicEmailInputAlternative isClearable />
+<CodePreview paths={['email-input', 'BasicEmailInput']}>
+  <Demo.BasicEmailInput />
 </CodePreview>
 
 ## Domain
@@ -37,23 +34,23 @@ import TableOfContents from '@components/doc/TableOfContents';
 <CodePreview paths={['email-input', 'DomainEmailInputDisabledClearable']}>
   <Demo.DomainEmailInputDisabledClearable />
 </CodePreview>
-<CodePreview paths={['email-input', 'BasicEmailInput']}>
-  <Demo.BasicEmailInput isError={true} errorMessage='Error message' isClearable />
+<CodePreview paths={['email-input', 'BasicEmailInputErrorClearable']}>
+  <Demo.BasicEmailInputErrorClearable />
 </CodePreview>
-<CodePreview paths={['email-input', 'DomainEmailInput']}>
-  <Demo.DomainEmailInput isError={true} errorMessage='Error message' isClearable />
+<CodePreview paths={['email-input', 'DomainEmailInputErrorClearable']}>
+  <Demo.DomainEmailInputErrorClearable />
 </CodePreview>
-<CodePreview paths={['email-input', 'BasicEmailInput']}>
-  <Demo.BasicEmailInput readOnly value='bitas@example.com' isClearable />
+<CodePreview paths={['email-input', 'BasicEmailInputReadOnlyClearable']}>
+  <Demo.BasicEmailInputReadOnlyClearable />
 </CodePreview>
-<CodePreview paths={['email-input', 'DomainEmailInput']}>
-  <Demo.DomainEmailInput readOnly value='bitas' isClearable />
+<CodePreview paths={['email-input', 'DomainEmailInputReadOnlyClearable']}>
+  <Demo.DomainEmailInputReadOnlyClearable />
 </CodePreview>
-<CodePreview paths={['email-input', 'BasicEmailInput']}>
-  <Demo.BasicEmailInput disabled isClearable />
+<CodePreview paths={['email-input', 'BasicEmailInputDisabledClearable']}>
+  <Demo.BasicEmailInputDisabledClearable />
 </CodePreview>
-<CodePreview paths={['email-input', 'DomainEmailInput']}>
-  <Demo.DomainEmailInput disabled isClearable />
+<CodePreview paths={['email-input', 'DomainEmailInputDisabledClearableOnly']}>
+  <Demo.DomainEmailInputDisabledClearableOnly />
 </CodePreview>
 
 ## Floating label
@@ -91,14 +88,14 @@ import TableOfContents from '@components/doc/TableOfContents';
 
 ## Size Medium
 
-<CodePreview paths={['email-input', 'BasicEmailInput']}>
-  <Demo.BasicEmailInput theme='alternative' inputSize='md' />
+<CodePreview paths={['email-input', 'BasicEmailInputAlternativeMedium']}>
+  <Demo.BasicEmailInputAlternativeMedium />
 </CodePreview>
-<CodePreview paths={['email-input', 'DomainEmailInput']}>
-  <Demo.DomainEmailInput theme='alternative' inputSize='md' />
+<CodePreview paths={['email-input', 'DomainEmailInputAlternativeMedium']}>
+  <Demo.DomainEmailInputAlternativeMedium />
 </CodePreview>
-<CodePreview paths={['email-input', 'DomainEmailInput']}>
-  <Demo.DomainEmailInput theme='alternative' inputSize='md' domain='@gmail.com' />
+<CodePreview paths={['email-input', 'DomainEmailInputAlternativeMediumDomainGmail']}>
+  <Demo.DomainEmailInputAlternativeMediumDomainGmail />
 </CodePreview>
 
 ## EmailInput API Reference
