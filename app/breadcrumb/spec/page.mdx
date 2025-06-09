@@ -2,6 +2,7 @@ import { Badge } from 'beta-parity-react/ui/Badge';
 import Image from '@components/showcase/ImagePreview';
 import Component from '@components/showcase/CodePreview';
 import * as Demo from '@public/demo/breadcrumb';
+import imageSrc from '@public/images/breadcrumb';
 
 {/* Image => Image Example */}
 {/* Component => Component Example */}
@@ -10,17 +11,24 @@ import * as Demo from '@public/demo/breadcrumb';
 Breadcrumbs help users navigate and understand their current location within a website or application hierarchy.
 :::
 
-## Design checklist <span id="design-checklist"></span>
+## Design checklist
 
-| Status | Item          | Description                                                                                                                                                                                                                       |
-| ------ | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ✔️     | Anatomy       | Includes descriptions of all parts of the component and its major variants.                                                                                                                                                       |
-| ✔️     | States        | Includes all applicable interaction, display and value states.                                                                                                                                                                    |
-| ✔️     | Options       | Includes all relevant options (functional type, stylistic kind, semantic color, size, orientation, optional iconography, decorations, etc.)                                                                                       |
-| ✔️     | Color schemes | Includes both light and dark color schemes.                                                                                                                                                                                       |
-| ✔️     | Behaviors     | Includes descriptions of behaviors related to other components and responsive behaviors related to media breakpoints, size (minimums and maximums), orientation, alignment, position and layout (wrapping, truncation, overflow). |
+| Status | Item                                 | Description                                                                                                                                                                                                                       |
+| ------ | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ✔️     | Anatomy                              | Includes descriptions of all parts of the component and its major variants.                                                                                                                                                       |
+| ✔️     | States                               | Includes all applicable interaction, display and value states.                                                                                                                                                                    |
+| ✔️     | Options                              | Includes all relevant options (functional type, stylistic kind, semantic color, size, orientation, optional iconography, decorations, etc.)                                                                                       |
+| ✔️     | Color schemes                        | Includes both light and dark color schemes.                                                                                                                                                                                       |
+| ✔️     | Behaviors                            | Includes descriptions of behaviors related to other components and responsive behaviors related to media breakpoints, size (minimums and maximums), orientation, alignment, position and layout (wrapping, truncation, overflow). |
+|        | Accessibility: Keyboard interactions |                                                                                                                                                                                                                                   |
+|        | Accessibility: Text contrast         |                                                                                                                                                                                                                                   |
+|        | Accessibility: UI component contrast |                                                                                                                                                                                                                                   |
+|        | Usage guidelines                     |                                                                                                                                                                                                                                   |
+|        | Content guidelines                   |                                                                                                                                                                                                                                   |
+|        | Internationalization                 |                                                                                                                                                                                                                                   |
+|        | Design tokens                        |                                                                                                                                                                                                                                   |
 
-## Anatomy <span id="anatomy"></span>
+## Anatomy
 
 The Breadcrumb component consists of several main elements:
 
@@ -31,7 +39,9 @@ The Breadcrumb component consists of several main elements:
 - **BreadcrumbMenu**: Dropdown menu for overflowed items when the breadcrumb exceeds the limit.
 - **BreadcrumbActive**: The last item, representing the current page, not a link.
 
-## States <span id="states"></span>
+<Image src={imageSrc.anatomy} alt='anatomy' />
+
+## States
 
 Breadcrumb can exist in the following states:
 
@@ -41,14 +51,76 @@ Breadcrumb can exist in the following states:
 - **Disabled**: Items can be disabled and not clickable.
 - **Menu open**: Overflow menu is open to show hidden items.
 
+### Interaction states
+
+#### Enabled
+
+- Breadcrumb items are interactive and can be clicked.
+  <Image src={imageSrc.defaultEnabled} alt='enabled' />
+
+#### Hovered
+
+- Breadcrumb item is hovered, showing a highlight.
+  <Image src={imageSrc.defaultHovered} alt='hovered' />
+
+#### Focused
+
+- Breadcrumb item is focused via keyboard navigation.
+  <Image src={imageSrc.defaultFocused} alt='focused' />
+
+#### Active
+
+- The last item is marked as the current page and is not a link.
+  <Image src={imageSrc.defaultActive} alt='active' />
+
+#### Disabled
+
+- Breadcrumb item is disabled and not clickable.
+  <Image src={imageSrc.neutral} alt='disabled' />
+
+#### Menu open
+
+- Overflow menu is open to show hidden items.
+  <Image src={imageSrc.defaultOpened} alt='menu open' />
+
+### Display states
+
+#### Standard
+
+<Image src={imageSrc.standard} alt='standard' />
+
+#### Standard with menu
+
+<Image src={imageSrc.standardMenu} alt='standard menu' />
+
+#### Neutral
+
+<Image src={imageSrc.neutral} alt='neutral' />
+
+#### Neutral with menu
+
+<Image src={imageSrc.neutralMenu} alt='neutral menu' />
+
+#### Overflow enabled
+
+<Image src={imageSrc.overflowEnabled} alt='overflow enabled' />
+
+#### Overflow hovered
+
+<Image src={imageSrc.overflowHovered} alt='overflow hovered' />
+
+#### Overflow focused
+
+<Image src={imageSrc.overflowFocused} alt='overflow focused' />
+
 ## Options <span id="options"></span>
 
 Breadcrumb provides several configuration options:
 
 ### Separator
 
-- **chevron** (default): `>`
-- **slash**: `/`
+- **chevron** (default): <Image src={imageSrc.chevron} alt='chevron' />
+- **slash**: <Image src={imageSrc.slash} alt='slash' />
 - **dash**: `-`
 
 ### Limit
@@ -96,4 +168,4 @@ Breadcrumb provides several configuration options:
 
 | Date       | Type                                                     | Description    | Author      | Associated issue(s) |
 | :--------- | :------------------------------------------------------- | -------------- | :---------- | :------------------ |
-| YYYY-MM-DD | <Badge size='sm' kind='glass' color='cyan' label="new"/> | Initial design | Oanh Nguyen | PAR-52              |
+| 2024-06-09 | <Badge size='sm' kind='glass' color='cyan' label="new"/> | Initial design | Oanh Nguyen | PAR-52              |
