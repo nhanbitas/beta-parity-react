@@ -15,6 +15,16 @@ export const components = [
     status: 2
   },
   {
+    name: 'Base',
+    url: '/base',
+    status: 2
+  },
+  {
+    name: 'Base Input',
+    url: '/base-input',
+    status: 3
+  },
+  {
     name: 'Badge',
     url: '/badge',
     status: 3

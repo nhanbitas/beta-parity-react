@@ -1,0 +1,89 @@
+## Base Design Tokens
+
+| **Prop Name**       | **CSS Property**          | **Description**       |
+| ------------------- | ------------------------- | --------------------- |
+| m                   | margin                    | Margin                |
+| mt                  | marginTop                 | Margin top            |
+| mr                  | marginRight               | Margin right          |
+| mb                  | marginBottom              | Margin bottom         |
+| ml                  | marginLeft                | Margin left           |
+| mx                  | marginLeft, marginRight   | Margin left & right   |
+| my                  | marginTop, marginBottom   | Margin top & bottom   |
+| p                   | padding                   | Padding               |
+| pt                  | paddingTop                | Padding top           |
+| pr                  | paddingRight              | Padding right         |
+| pb                  | paddingBottom             | Padding bottom        |
+| pl                  | paddingLeft               | Padding left          |
+| px                  | paddingLeft, paddingRight | Padding left & right  |
+| py                  | paddingTop, paddingBottom | Padding top & bottom  |
+| w                   | width                     | Width                 |
+| h                   | height                    | Height                |
+| minW                | minWidth                  | Min width             |
+| minH                | minHeight                 | Min height            |
+| maxW                | maxWidth                  | Max width             |
+| maxH                | maxHeight                 | Max height            |
+| bg                  | backgroundColor           | Background color      |
+| cl                  | color                     | Text color            |
+| op                  | opacity                   | Opacity               |
+| bd                  | border                    | Border                |
+| bdColor             | borderColor               | Border color          |
+| bdWidth             | borderWidth               | Border width          |
+| bdStyle             | borderStyle               | Border style          |
+| radius              | borderRadius              | Border radius         |
+| position            | position                  | Position              |
+| t                   | top                       | Top                   |
+| r                   | right                     | Right                 |
+| b                   | bottom                    | Bottom                |
+| l                   | left                      | Left                  |
+| z                   | zIndex                    | Z-index               |
+| in                  | inset                     | Inset                 |
+| display             | display                   | Display               |
+| flex                | flex                      | Flex                  |
+| flexGrow            | flexGrow                  | Flex grow             |
+| flexShrink          | flexShrink                | Flex shrink           |
+| flexBasis           | flexBasis                 | Flex basis            |
+| flexDir             | flexDirection             | Flex direction        |
+| flexDirection       | flexDirection             | Flex direction        |
+| flexWrap            | flexWrap                  | Flex wrap             |
+| justifyContent      | justifyContent            | Justify content       |
+| alignItems          | alignItems                | Align items           |
+| alignContent        | alignContent              | Align content         |
+| grid                | grid                      | Grid                  |
+| gridColumn          | gridColumn                | Grid column           |
+| gridRow             | gridRow                   | Grid row              |
+| gridAutoFlow        | gridAutoFlow              | Grid auto flow        |
+| gridAutoColumns     | gridAutoColumns           | Grid auto columns     |
+| gridAutoRows        | gridAutoRows              | Grid auto rows        |
+| gridTemplateColumns | gridTemplateColumns       | Grid template columns |
+| gridTemplateRows    | gridTemplateRows          | Grid template rows    |
+| gridTemplateAreas   | gridTemplateAreas         | Grid template areas   |
+| gridArea            | gridArea                  | Grid area             |
+| gridGap             | gridGap                   | Grid gap              |
+| gridRowGap          | gridRowGap                | Grid row gap          |
+| gridColumnGap       | gridColumnGap             | Grid column gap       |
+| gridRowStart        | gridRowStart              | Grid row start        |
+| gridRowEnd          | gridRowEnd                | Grid row end          |
+| gridColumnStart     | gridColumnStart           | Grid column start     |
+| gridColumnEnd       | gridColumnEnd             | Grid column end       |
+
+---
+
+## Base Component API
+
+### `<Base />`
+
+| **Prop**      | **Type**            | **Default** | **Description**                     |
+| ------------- | ------------------- | ----------- | ----------------------------------- |
+| component     | React.ElementType   | 'div'       | HTML tag or component to render     |
+| style         | React.CSSProperties |             | Custom style                        |
+| children      | React.ReactNode     |             | Content inside the component        |
+| ...StyleProps | (see table above)   |             | Shorthand style props               |
+| ref           | React.Ref           |             | Forwarded ref                       |
+| ...rest       | any                 |             | Other props passed to the component |
+
+**Note:**
+
+- Shorthand style props (like `m`, `p`, `bg`, ...) will be automatically converted to the corresponding CSS style.
+- You can pass any valid prop for the selected HTML tag or component via the `component` prop.
+
+---

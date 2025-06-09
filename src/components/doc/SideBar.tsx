@@ -104,12 +104,15 @@ const SideBar = (props: Props) => {
         {componentList.map((component: { name: string; url: string; status: number }) => (
           <li className='group h-fit w-full min-w-64 px-4' key={component.url}>
             <Link
-              className={`z-10 flex w-full items-center justify-start gap-2 rounded-md px-3 py-1 ${pathname.startsWith(component.url) ? 'bg-[var(--par-color-bg-surface)] font-semibold ' : ''}`}
+              className={`z-10 flex w-full items-center justify-start gap-2 rounded-md px-3 py-1 ${
+                pathname === component.url || pathname.startsWith(component.url + '/')
+                  ? 'bg-[var(--par-color-bg-surface)] font-semibold'
+                  : ''
+              }`}
               href={component.url + '/dev'}
               prefetch={false}
             >
               <span className='truncate group-hover:underline'>{component.name}</span>
-
               <span className='flex h-4 w-4 items-center justify-center'>
                 {component.status === 1 ? <PencilRuler /> : component.status === 2 ? <Wrench /> : null}
               </span>

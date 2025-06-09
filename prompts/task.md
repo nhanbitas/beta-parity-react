@@ -1,7 +1,5 @@
-# Read structure from the Avatar @spec file (app/avatar/@spec/page.mdx)
+# Read the component (registry/src/components/{component}/index.tsx) file to understand the component's purpose, functionality, and any specific requirements or features it has.
 
-# Read  the file of component and generate @spec file based on this structure (e.g. `Avatar`)
+# Modify Heading 2 in the specification file to match the component's structure, e.g., `page.mdx` for a page component.
 
-# If current file has feature of @spec, don not generate this feature again
-
-# If current file has no feature of @spec, generate this feature
+# If the component do not have a specific section in the specification file, do not generate this content of section.

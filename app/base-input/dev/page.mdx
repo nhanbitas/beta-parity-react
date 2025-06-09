@@ -1,0 +1,54 @@
+## BaseInput Design Tokens
+
+| **Token Name**                                   | **Description**                            | **State/Usage** | **CSS Selector(s)**                   |
+| ------------------------------------------------ | ------------------------------------------ | --------------- | ------------------------------------- |
+| `--par-color-text-field-filled`                  | Input text color                           | Enabled         | `.par-input`                          |
+| `--par-color-text-field-placeholder`             | Placeholder text color                     | Enabled         | `.par-input::placeholder`             |
+| `--par-color-text-field-disabled`                | Input text color                           | Disabled        | `.par-input:disabled`                 |
+| `--par-color-text-field-readonly`                | Input text color                           | Readonly        | `.par-input[readonly]`                |
+| `--par-color-text-field-invalid`                 | Input text color                           | Error           | `.par-input.error-state`              |
+| `--par-color-border-field-enabled`               | Input border color                         | Enabled         | `.par-input`                          |
+| `--par-color-border-field-disabled`              | Input border color                         | Disabled        | `.par-input:disabled`                 |
+| `--par-color-border-field-readonly`              | Input border color                         | Readonly        | `.par-input[readonly]`                |
+| `--par-color-border-field-invalid`               | Input border color                         | Error           | `.par-input.error-state`              |
+| `--par-color-bg-field-enabled`                   | Input background color                     | Enabled         | `.par-input`                          |
+| `--par-color-bg-field-disabled`                  | Input background color                     | Disabled        | `.par-input:disabled`                 |
+| `--par-color-bg-field-readonly`                  | Input background color                     | Readonly        | `.par-input[readonly]`                |
+| `--par-color-bg-field-invalid`                   | Input background color                     | Error           | `.par-input.error-state`              |
+| `--par-color-bg-field-button-enabled`            | Action button background                   | Enabled         | `.par-input-action-btn`               |
+| `--par-color-bg-field-button-hovered`            | Action button background                   | Hover           | `.par-input-action-btn:hover`         |
+| `--par-color-bg-field-button-pressed`            | Action button background                   | Pressed         | `.par-input-action-btn:active`        |
+| `--par-color-bg-field-button-disabled`           | Action button background                   | Disabled        | `.par-input-action-btn:disabled`      |
+| `--par-color-icon-field-button-enabled`          | Action button icon color                   | Enabled         | `.par-input-action-btn`               |
+| `--par-color-icon-field-button-hovered`          | Action button icon color                   | Hover           | `.par-input-action-btn:hover`         |
+| `--par-color-icon-field-button-pressed`          | Action button icon color                   | Pressed         | `.par-input-action-btn:active`        |
+| `--par-color-icon-field-button-disabled`         | Action button icon color                   | Disabled        | `.par-input-action-btn:disabled`      |
+| `--par-color-text-field-alternative-placeholder` | Placeholder text color (alternative theme) | Enabled (alt)   | `.par-input.alternative::placeholder` |
+| `--par-color-bg-field-alternative-enabled`       | Input background color (alternative theme) | Enabled (alt)   | `.par-input.alternative`              |
+| `--par-color-bg-field-alternative-disabled`      | Input background color (alternative theme) | Disabled (alt)  | `.par-input.alternative:disabled`     |
+
+---
+
+## BaseInput Component API
+
+### `<BaseInput />`
+
+| **Prop**        | **Type**                       | **Default** | **Description**                                  |
+| --------------- | ------------------------------ | ----------- | ------------------------------------------------ |
+| `type`          | string                         | `'text'`    | Input type (e.g. 'text', 'number', 'date', etc.) |
+| `value`         | string                         |             | Input value                                      |
+| `placeholder`   | string                         | `''`        | Placeholder text                                 |
+| `disabled`      | boolean                        | `false`     | Disable the input                                |
+| `readOnly`      | boolean                        | `false`     | Set input as read-only                           |
+| `inputSize`     | 'sm' or 'md'                   | `'sm'`      | Input size                                       |
+| `theme`         | 'default' or 'alternative'     | `'default'` | Input theme                                      |
+| `isClearable`   | boolean                        | `false`     | Show clear button                                |
+| `ActionBtn`     | JSX.Element or React.ReactNode |             | Custom action button on the right                |
+| `leftIcon`      | React.ReactNode                |             | Icon on the left side                            |
+| `isError`       | boolean                        | `false`     | Error state                                      |
+| `errorMessage`  | string                         |             | Error message                                    |
+| `floatingLabel` | React.ReactNode                |             | Floating label                                   |
+| `onChange`      | function(event)                |             | Callback when input value changes                |
+| `onClear`       | function()                     |             | Callback when clear button is clicked            |
+| `wrapperProps`  | object                         |             | Additional props for the input wrapper           |
+| `clearBtnProps` | object                         |             | Additional props for the clear button            |
