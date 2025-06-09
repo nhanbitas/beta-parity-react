@@ -1,4 +1,4 @@
-## Folders infomation:
+## Folders Information:
 - `lib`: external library
 - `plugins`: the plugins files for config files or project
 - `src`: the sources of components
@@ -25,7 +25,7 @@
   - `npm run dev` to run nextjs site
 
 - Production mode:
-  - `npm run build:lib` to build libray
+  - `npm run build:lib` to build all components
   - `npm run build` to build nextjs site (root directory)
   - `npm run start` to start the project
 
@@ -49,4 +49,4 @@
 
 ### publish 
 
-- build the ui foler with relative paths => publish to npm
+- build the ui folder with relative paths => publish to npm
