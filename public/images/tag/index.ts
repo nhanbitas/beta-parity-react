@@ -40,4 +40,4 @@ export default {
   removeButtonOff,
   small,
   tag
-};
+} as const;

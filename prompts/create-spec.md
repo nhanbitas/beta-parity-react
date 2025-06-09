@@ -31,4 +31,7 @@ export default {
 ```
 - Ngắn gọn, chính xác, có thể dùng để làm tài liệu nội bộ hoặc hướng dẫn developer.
 
-Đầu ra: Một file index.ts để IO hình ảnh, Một file tài liệu mô tả chi tiết Spec của **Component**, dùng cấu trúc như của **Accordion Spec** có sử dụng hình ảnh để mô tả từ index.ts.
+Đầu ra: Một file index.ts để IO hình ảnh, File page.mdx là tài liệu mô tả chi tiết Spec của **Component**, dùng cấu trúc như của **Accordion Spec** có sử dụng hình ảnh để mô tả từ index.ts.
+
+Note:
+- Hãy đảm bảo rằng nội dung được viết bằng tiếng Anh.

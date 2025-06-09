@@ -50,4 +50,4 @@ export default {
   readonly,
   readonly2,
   textInput
-};
+} as const;

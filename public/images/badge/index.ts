@@ -26,4 +26,4 @@ export default {
   sizeSmall,
   sizeMedium,
   sizeLarge
-};
+} as const;

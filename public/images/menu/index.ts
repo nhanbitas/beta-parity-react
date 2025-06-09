@@ -76,4 +76,4 @@ export default {
   textOverflow,
   unselected,
   visible
-};
+} as const;

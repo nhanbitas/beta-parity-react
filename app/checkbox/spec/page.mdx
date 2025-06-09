@@ -1,28 +1,29 @@
 import { Badge } from 'beta-parity-react/ui/Badge';
 import Image from '@components/showcase/ImagePreview';
 import Component from '@components/showcase/CodePreview';
+import imageSrc from '@public/images/checkbox';
 import * as Demo from '@public/demo/checkbox';
 
-{/* Image => Image Example */}
-{/* Component => Component Example */}
+<Image src={imageSrc.previewPlaceholder} alt='checkbox' />
 
-:::callout[note]
-Checkboxes allow users to select one or multiple options from a set. They support indeterminate states, group selection, and hierarchical (tree) selection patterns.
-:::
+## Design checklist
 
-## Design checklist <span id="design-checklist"></span>
+| Status | Item                                 | Description                                                                                                                                                                                                                       |
+| ------ | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ✔️     | Anatomy                              | Includes descriptions of all parts of the component and its major variants.                                                                                                                                                       |
+| ✔️     | States                               | Includes all applicable interaction, display and value states.                                                                                                                                                                    |
+| ✔️     | Options                              | Includes all relevant options (functional type, stylistic kind, semantic color, size, orientation, optional iconography, decorations, etc.)                                                                                       |
+| ✔️     | Color schemes                        | Includes both light and dark color schemes.                                                                                                                                                                                       |
+|        | Behaviors                            | Includes descriptions of behaviors related to other components and responsive behaviors related to media breakpoints, size (minimums and maximums), orientation, alignment, position and layout (wrapping, truncation, overflow). |
+|        | Accessibility: Keyboard interactions | Includes descriptions of all keyboard interactions, focus indication and navigation order.                                                                                                                                        |
+|        | Accessibility: Text contrast         | Text meets a contrast ratio of at least 4.5:1 for small text and 3:1 for large text (WCAG 2.0 1.4.3) and/or a lightness contrast value of at least Lc 75 for standard text and Lc 60 for large text (APCA).                       |
+|        | Accessibility: UI component contrast | Visual information required to identify states and boundaries of active UI components has a contrast ratio against adjacent colors of at least 3:1 (WCAG 2.1 1.4.11) and/or a lightness contrast value of at least Lc 60 (APCA).  |
+|        | Usage guidelines                     | Includes a list of recommended and discouraged usages.                                                                                                                                                                            |
+|        | Content guidelines                   | Includes content standards and guidelines for how to write or format in-product content for the component.                                                                                                                        |
+|        | Internationalization                 | Includes support for various locales and bi-directionality (RTL).                                                                                                                                                                 |
+|        | Design tokens                        | All design attributes (color, typography, layout, animation, etc.) are available as design tokens.                                                                                                                                |
 
-| Status | Item          | Description                                                                                                                                                                                                                       |
-| ------ | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ✔️     | Anatomy       | Includes descriptions of all parts of the component and its major variants.                                                                                                                                                       |
-| ✔️     | States        | Includes all applicable interaction, display and value states.                                                                                                                                                                    |
-| ✔️     | Options       | Includes all relevant options (functional type, stylistic kind, semantic color, size, orientation, optional iconography, decorations, etc.)                                                                                       |
-| ✔️     | Color schemes | Includes both light and dark color schemes.                                                                                                                                                                                       |
-| ✔️     | Behaviors     | Includes descriptions of behaviors related to other components and responsive behaviors related to media breakpoints, size (minimums and maximums), orientation, alignment, position and layout (wrapping, truncation, overflow). |
-
-## Anatomy <span id="anatomy"></span>
-
-The Checkbox component consists of two main variants: Checkbox and CheckboxGroup (tree structure).
+## Anatomy
 
 ### Checkbox
 
@@ -32,15 +33,19 @@ The Checkbox component consists of two main variants: Checkbox and CheckboxGroup
 - **Label**: Optional text or node describing the checkbox.
 - **Sublabel**: Optional secondary text for additional context.
 
+<Image src={imageSrc.previewPlaceholder} alt='checkbox anatomy' />
+
 ### CheckboxGroup
 
 - **Group container**: Wraps a set of checkboxes, can be flat or hierarchical (tree).
 - **Parent Checkbox**: Controls the checked state of all children.
 - **Child Checkbox**: Individual selectable options, can be nested.
 
-## States <span id="states"></span>
+<Image src={imageSrc.previewPlaceholder} alt='checkbox group anatomy' />
 
-Checkboxes can exist in the following states:
+## States
+
+### Checkbox
 
 - **Unchecked**: Default state, not selected.
 - **Checked**: Selected state.
@@ -50,9 +55,9 @@ Checkboxes can exist in the following states:
 - **Focus**: Highlighted for keyboard navigation.
 - **Hover**: Visual feedback on mouse hover.
 
-## Options <span id="options"></span>
+<Image src={imageSrc.previewPlaceholder} alt='checkbox states' />
 
-Checkboxes provide several configuration options:
+## Options
 
 ### Color
 
@@ -75,7 +80,9 @@ Checkboxes provide several configuration options:
 - **sublabel** (group): Sublabel for the group/parent node.
 - **checked** (group): Controls checked state of all children.
 
-## Behaviors <span id="behaviors"></span>
+<Image src={imageSrc.previewPlaceholder} alt='checkbox options' />
+
+## Behaviors
 
 ### Selection
 
@@ -100,7 +107,7 @@ Checkboxes provide several configuration options:
 - Checkbox and label adapt to different container sizes and layouts.
 - CheckboxGroup/tree supports vertical and horizontal layouts.
 
-## Changelog <span id="changelog"></span>
+## Changelog
 
 | Date       | Type                                                     | Description                                 | Author      | Associated issue(s) |
 | :--------- | :------------------------------------------------------- | :------------------------------------------ | :---------- | :------------------ |

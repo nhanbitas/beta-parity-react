@@ -28,4 +28,4 @@ export default {
   icon,
   pressed,
   sublabel
-};
+} as const;

@@ -68,4 +68,4 @@ export default {
   tagOverflow,
   unselected,
   unselected2
-};
+} as const;

@@ -32,4 +32,4 @@ export default {
   pressed,
   switchDefault,
   unchecked
-};
+} as const;

@@ -32,4 +32,4 @@ export default {
   slash,
   standard,
   standardMenu
-};
+} as const;
