@@ -40,18 +40,16 @@ _InlineLink may also inherit some tokens from Button or Text components for typo
 
 ### `<InlineLink />`
 
-| **Prop**      | **Type**                | **Default** | **Description**                                 |
-| ------------- | ----------------------- | ----------- | ----------------------------------------------- |
-| **href**      | string                  |             | Link URL                                        |
-| **target**    | string                  |             | Target attribute (\_blank, \_self, etc.)        |
-| **size**      | 'sm' \| 'md' \| 'lg'    | _'md'_      | Link size                                       |
-| **color**     | string                  |             | Link color                                      |
-| **disabled**  | boolean                 | _false_     | Disable the link                                |
-| **underline** | boolean                 | _true_      | Show underline                                  |
-| **icon**      | ReactNode               |             | Icon before/after text                          |
-| **iconOnly**  | boolean                 | _false_     | Icon only, no text                              |
-| **...aProps** | HTMLAnchorElement props |             | All native anchor props (className, style, ...) |
+| **Prop**      | **Type**                      | **Default**  | **Description**                                 |
+| ------------- | ----------------------------- | ------------ | ----------------------------------------------- |
+| **href**      | string                        |              | Link URL                                        |
+| **target**    | string                        |              | Target attribute (\_blank, \_self, etc.)        |
+| **size**      | 'sm' \| 'md' \| 'lg'          | _'md'_       | Link size                                       |
+| **color**     | 'neutral' \| 'standard'       | _'standard'_ | Link color                                      |
+| **disabled**  | boolean                       | _false_      | Disable the link                                |
+| **underline** | 'always' \| 'hover' \| 'none' | _'hover'_    | Underline behavior                              |
+| **iconOnly**  | boolean                       | _false_      | Icon only, no text                              |
+| **asChild**   | boolean                       | _false_      | Render as child element                         |
+| **...aProps** | HTMLAnchorElement props       |              | All native anchor props (className, style, ...) |
 
 > _Note:_ _InlineLink_ inherits all native props from HTMLAnchorElement.
-
----

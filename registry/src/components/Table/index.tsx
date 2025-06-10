@@ -434,7 +434,7 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps<any>>(
     const defaultSelectedRows = new Set(selectedRows.map((item) => item.id));
     const [currentSelected, setCurrentSelected] = React.useState<Set<number | string>>(defaultSelectedRows);
     const [columnWidths, setColumnWidths] = React.useState<Record<string, number>>({});
-    const [frozenPositions, setfrozenPositions] = React.useState<Record<string, number | undefined>>({});
+    const [frozenPositions, setFrozenPositions] = React.useState<Record<string, number | undefined>>({});
     const wrapperTableRef = React.useRef<HTMLDivElement>(null);
     const tableRef = React.useRef<HTMLTableElement>(null);
     const combinedRef = useCombinedRefs<HTMLTableElement>(ref, tableRef);
@@ -549,7 +549,7 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps<any>>(
     // Function to get frozen column widths
     function getFrozenColumnWidths(action: 'freeze' | 'defrost' = 'freeze') {
       if (action === 'defrost') {
-        setfrozenPositions((pre) => {
+        setFrozenPositions((pre) => {
           const newFrozenPositions = { ...pre };
           Object.keys(newFrozenPositions).forEach((key) => {
             newFrozenPositions[key] = undefined; // Unset frozen positions
@@ -577,7 +577,7 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps<any>>(
         frozenColumnWidths.push(Math.round(targetWidth));
       }
 
-      setfrozenPositions((prev) => {
+      setFrozenPositions((prev) => {
         const newFrozenPositions = { ...prev };
 
         for (let index = 0; index < actualFreezeCount; index++) {
@@ -636,7 +636,7 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps<any>>(
           </div>
         )}
 
-        {/* Actión/Batch actions section */}
+        {/* Actions/Batch actions section */}
         {selectable && batchActions && currentSelected.size ? (
           <div className='table-batch-actions'>
             <span className='table-batch-actions-count'>{currentSelected.size} selected</span>

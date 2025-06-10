@@ -30,15 +30,15 @@ _FileItem also inherits design tokens from the Input and Progress components. Fo
 
 ### `<FileItem />`
 
-| **Prop**        | **Type**             | **Default** | **Description**                                 |
-| --------------- | -------------------- | ----------- | ----------------------------------------------- |
-| **file**        | File \| object       |             | File object or file data to display             |
-| **onRemove**    | function (file)      |             | Callback when remove is clicked                 |
-| **onDownload**  | function (file)      |             | Callback when download is clicked               |
-| **progress**    | number               |             | Upload/download progress (0-100)                |
-| **status**      | string               |             | File status (e.g. 'uploading', 'done', 'error') |
-| **...divProps** | HTMLDivElement props |             | All native div props (className, style, ...)    |
+| **Prop**      | **Type**                                 | **Default**      | **Description**                                                        |
+| ------------- | ---------------------------------------- | ---------------- | ---------------------------------------------------------------------- |
+| **fileName**  | string                                   | "Choose file"   | The name of the file to display.                                       |
+| **fileSize**  | number                                   | 0                | The size of the file in bytes.                                         |
+| **status**    | 'error' \| 'success' \| 'completed'      | 'completed'      | The status of the file item.                                           |
+| **loading**   | number                                   | 0                | Loading progress percentage (0-100).                                   |
+| **disabled**  | boolean                                  | false            | Whether the file item is disabled.                                     |
+| **onRetry**   | () => void                               |                  | Callback when the retry action is performed (on error).                |
+| **onRemove**  | () => void                               |                  | Callback when the remove action is performed.                          |
+| **...divProps** | HTMLDivElement props                   |                  | All native div props (className, style, ...)                           |
 
 > _Note:_ _FileItem_ inherits all native props from HTMLDivElement.
-
----

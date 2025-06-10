@@ -42,16 +42,44 @@ import CodePreview from '@components/showcase/CodePreview';
 
 ## Table API Reference
 
-### `<Table />`
+### `<Table />` Props
 
-| **Prop**          | **Type**               | **Default** | **Description**                                |
-| ----------------- | ---------------------- | ----------- | ---------------------------------------------- |
-| **data**          | array of objects       |             | Table data                                     |
-| **columns**       | array of TableColumn   |             | Table columns                                  |
-| **rowKey**        | string                 | _'id'_      | Unique key for each row                        |
-| **size**          | 'sm' \| 'md' \| 'lg'   | _'md'_      | Table size                                     |
-| **color**         | 'neutral' \| 'accent'  | _'neutral'_ | Color scheme                                   |
-| **className**     | string                 |             | Custom className for container                 |
-| **...tableProps** | HTMLTableElement props |             | All native table props (className, style, ...) |
+| **Prop**          | **Type**                                            | **Default** | **Description**                                                      |
+| ----------------- | --------------------------------------------------- | ----------- | -------------------------------------------------------------------- |
+| **data**          | `object[]`                                          |             | Data to display in the table.                                        |
+| **columns**       | `TableColumn[]`                                     |             | Column definitions, see TableColumn below.                           |
+| **color**         | `'neutral' \| 'accent'`                             | `'neutral'` | Table color scheme.                                                  |
+| **selectable**    | `boolean`                                           | `false`     | Enable row selection with checkboxes.                                |
+| **selectedRows**  | `object[]`                                          | `[]`        | List of currently selected rows (by rowKey).                         |
+| **onSelect**      | `(selectedRows: object[]) => void`                  |             | Callback when rows are selected.                                     |
+| **onRowClick**    | `(record, index) => void`                           |             | Callback when a row is clicked.                                      |
+| **onSort**        | `(key: string, direction: 'asc' \| 'desc') => void` |             | Callback when a column is sorted.                                    |
+| **sortKey**       | `string`                                            |             | The key of the currently sorted column.                              |
+| **sortDirection** | `'asc' \| 'desc'`                                   | `'asc'`     | Current sort direction.                                              |
+| **maxHeight**     | `number \| string`                                  |             | Maximum table height.                                                |
+| **emptyState**    | `React.ReactNode`                                   |             | Component to display when there is no data.                          |
+| **footer**        | `React.ReactNode`                                   |             | Component to display in the table footer.                            |
+| **showRowCount**  | `boolean`                                           | `true`      | Show row count in the footer.                                        |
+| **freezeColumns** | `number`                                            | `-1`        | Number of columns to freeze on the left (including checkbox if any). |
+| **actions**       | `React.ReactNode`                                   |             | Actions to display in the table header.                              |
+| **batchActions**  | `React.ReactNode`                                   |             | Actions for selected rows.                                           |
+| **description**   | `React.ReactNode`                                   |             | Short description for the table.                                     |
+| **className**     | `string`                                            |             | Custom class for the table container.                                |
+| **...tableProps** | `HTMLTableElement` props                            |             | All native HTML `<table>` props.                                     |
 
-> **_Note:_** Table expects each row to have a unique `id` field as the key. TableColumn type supports key, title, width, sortable, resizable, render, etc.
+#### TableColumn
+
+| **Prop**      | **Type**                                    | **Description**                                |
+| ------------- | ------------------------------------------- | ---------------------------------------------- |
+| **key**       | `string`                                    | Unique key for the column, matches data field. |
+| **title**     | `React.ReactNode`                           | Column header.                                 |
+| **width**     | `number`                                    | Column width (px).                             |
+| **sortable**  | `boolean`                                   | Enable sorting for this column.                |
+| **resizable** | `boolean`                                   | Enable column resizing.                        |
+| **render**    | `(value, record, index) => React.ReactNode` | Custom cell render function.                   |
+
+> **Note:**
+>
+> - Each row must have a unique key field (by `rowKey`, default is `id`).
+> - Table supports all native HTML `<table>` props. See usage examples above.
+> - TableColumn supports: key, title, width, sortable, resizable, render, ...

@@ -60,7 +60,7 @@ export interface NumberInputProps extends Omit<InputProps, 'onChange'> {
    * Type of stepper control to display for adjusting the input value.
    * - `'auto'`: Automatic increment/decrement based on user interactions.
    * - `'chevron'`: Chevron-style increment/decrement buttons.
-   * - `'separate'`: Cross-style button allowing put left and rigt buttons particularly.
+   * - `'separate'`: Cross-style button allowing put left and right buttons particularly.
    *
    * @default 'auto'
    * @memberof NumberInputProps
@@ -89,6 +89,7 @@ export interface NumberInputProps extends Omit<InputProps, 'onChange'> {
  * **Parity NumberInput**.
  *
  *  @see {@link https://beta-parity-react.vercel.app/number-input Parity NumberInput}
+ *  @see {@link https://s-yadav.github.io/react-number-format/docs/numeric_format NumericFormat documentation}
  */
 export const NumberInput = React.forwardRef<HTMLInputElement, NumberInputProps & NumericFormatProps>(
   (
@@ -202,7 +203,7 @@ export const NumberInput = React.forwardRef<HTMLInputElement, NumberInputProps &
           return (
             <>
               {originalElement}
-              <NumberButtonStepper {...stepperProps} isChervon />
+              <NumberButtonStepper {...stepperProps} isChevron />
             </>
           );
         case 'separate':
@@ -277,7 +278,7 @@ interface StepperProps extends Pick<NumberInputProps, 'stepControl' | 'min' | 'm
   handleValue: (e: any) => void;
   minusOnly?: boolean;
   plusOnly?: boolean;
-  isChervon?: boolean;
+  isChevron?: boolean;
   formatProps?: FormatProps;
 }
 
@@ -290,7 +291,7 @@ const NumberButtonStepper = ({
   disabled = false,
   minusOnly = false,
   plusOnly = false,
-  isChervon = false,
+  isChevron = false,
   formatProps = {}
 }: StepperProps) => {
   // create function handle value from number input, after that, render the suitable stepper button
@@ -353,9 +354,9 @@ const NumberButtonStepper = ({
 
   if (plusDisable || minusDisable) stopInterval();
 
-  const MinusButton = <button {...generateProps('-')}>{isChervon ? <ChevronDown /> : <MinusIcon />}</button>;
+  const MinusButton = <button {...generateProps('-')}>{isChevron ? <ChevronDown /> : <MinusIcon />}</button>;
 
-  const PlusButton = <button {...generateProps('+')}>{isChervon ? <ChevronUp /> : <PlusIcon />}</button>;
+  const PlusButton = <button {...generateProps('+')}>{isChevron ? <ChevronUp /> : <PlusIcon />}</button>;
 
   if (minusOnly) {
     return (
@@ -375,7 +376,7 @@ const NumberButtonStepper = ({
     );
   }
 
-  if (isChervon) {
+  if (isChevron) {
     return (
       <div className='number-stepper-wrapper chevron-stepper'>
         <div className='controller-divider'></div>

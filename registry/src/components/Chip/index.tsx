@@ -118,18 +118,18 @@ export interface ChipProps extends BaseProps {
   disabled?: boolean;
 
   /**
-   * Callback when the state of the chip changes for chip with valued chip - toggle, drodown
+   * Callback when the state of the chip changes for chip with valued chip - toggle, dropdown
    *
    * @memberof ChipProps
    * @param {Object} args
    * @param {string | number} args.value - The value of the valued chip.
    * @param {boolean} [args.checked] - The checked state of the toggle chip.
-   * @param {boolean} [args.active] - The active state of the drodown chip.
+   * @param {boolean} [args.active] - The active state of the dropdown chip.
    */
   onChange?: (args: { value: string | number; checked?: boolean; active?: boolean }) => void;
 
   /**
-   * Callback when the remove button is clicked. it is avaiable for button chip
+   * Callback when the remove button is clicked. it is available for button chip
    *
    * @memberof ChipProps
    * @param {string | number} value - The value of the chip to be removed.
@@ -166,7 +166,7 @@ export const Chip = React.forwardRef<
     ...rest
   } = props;
 
-  // Inite states
+  // Init states
   const kindChip = kindMap[kind];
   const sizeChip = sizeMap[size];
   const colorChip = colorMap[color];
@@ -227,7 +227,7 @@ export const Chip = React.forwardRef<
     }
   };
 
-  // Define accessibilities for chip
+  // Define accessibility props for chip
   const accessibilityProps = {
     'aria-disabled': disabled,
     'aria-label': label.toLowerCase(),

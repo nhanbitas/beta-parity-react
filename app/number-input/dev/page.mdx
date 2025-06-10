@@ -175,25 +175,26 @@ import CodePreview from '@components/showcase/CodePreview';
 
 ### `<NumberInput />`
 
-| **Prop**          | **Type**                          | **Default** | **Description**                              |
-| ----------------- | --------------------------------- | ----------- | -------------------------------------------- |
-| **type**          | string                            | _'number'_  | Input type (always 'number' for NumberInput) |
-| **min**           | number                            |             | Minimum value                                |
-| **max**           | number                            |             | Maximum value                                |
-| **stepControl**   | number                            | _1_         | Step increment                               |
-| **stepper**       | 'auto' \| 'chevron' \| 'separate' | _'auto'_    | Stepper type                                 |
-| **unit**          | string \| string[]                |             | Unit or list of units                        |
-| **selectedUnit**  | string                            |             | Selected unit                                |
-| **onUnitChange**  | (unit: string) => void            |             | Callback when unit changes                   |
-| **allowInput**    | boolean                           | _true_      | Allow manual input when using stepper        |
-| **onValueChange** | function (values, event?)         |             | Callback when value changes (number format)  |
-| **isClearable**   | boolean                           | _false_     | Show clear button                            |
-| **floatingLabel** | React.ReactNode                   |             | Floating label                               |
-| **theme**         | 'default' \| 'alternative'        | _'default'_ | Theme                                        |
-| **inputSize**     | 'sm' \| 'md'                      | _'sm'_      | Input size                                   |
-| **leftIcon**      | React.ReactNode                   |             | Left icon                                    |
-| **onClear**       | () => void                        |             | Callback when clear                          |
-| **...InputProps** | [See Input](../base-input/dev)    |             | Inherits all props from Input                |
+| **Prop**                  | **Type**                                                                               | **Default** | **Description**                              |
+| ------------------------- | -------------------------------------------------------------------------------------- | ----------- | -------------------------------------------- |
+| **type**                  | string                                                                                 | _'number'_  | Input type (always 'number' for NumberInput) |
+| **min**                   | number                                                                                 |             | Minimum value                                |
+| **max**                   | number                                                                                 |             | Maximum value                                |
+| **stepControl**           | number                                                                                 | _1_         | Step increment                               |
+| **stepper**               | 'auto' \| 'chevron' \| 'separate'                                                      | _'auto'_    | Stepper type                                 |
+| **unit**                  | string \| string[]                                                                     |             | Unit or list of units                        |
+| **selectedUnit**          | string                                                                                 |             | Selected unit                                |
+| **onUnitChange**          | (unit: string) => void                                                                 |             | Callback when unit changes                   |
+| **allowInput**            | boolean                                                                                | _true_      | Allow manual input when using stepper        |
+| **onValueChange**         | function (values, event?)                                                              |             | Callback when value changes (number format)  |
+| **isClearable**           | boolean                                                                                | _false_     | Show clear button                            |
+| **floatingLabel**         | React.ReactNode                                                                        |             | Floating label                               |
+| **theme**                 | 'default' \| 'alternative'                                                             | _'default'_ | Theme                                        |
+| **inputSize**             | 'sm' \| 'md'                                                                           | _'sm'_      | Input size                                   |
+| **leftIcon**              | React.ReactNode                                                                        |             | Left icon                                    |
+| **onClear**               | () => void                                                                             |             | Callback when clear                          |
+| **...InputProps**         | [See Input](../base-input/dev)                                                         |             | Inherits all props from Input                |
+| **...NumericFormatProps** | [See NumericFormat](https://s-yadav.github.io/react-number-format/docs/numeric_format) |             | Inherits all props from NumericFormat        |
 
 > _Note:_ _NumberInput_ inherits all props from Input and the native input element. See [Input documentation](../base-input/dev) for full details on available props and tokens.
 

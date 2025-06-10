@@ -88,7 +88,7 @@ export interface TagProps extends BaseProps {
   disabled?: boolean;
 
   /**
-   * Callback when the remove button is clicked. it is avaiable for button Tag
+   * Callback when the remove button is clicked. it is available for button Tag
    *
    * @param {string | number} value - The value of the Tag to be removed.
    * @memberof TagProps
@@ -118,7 +118,7 @@ export const Tag = React.forwardRef<HTMLElement, TagProps & Omit<React.AllHTMLAt
       ...rest
     } = props;
 
-    // Inite states
+    // Init states
     const kindTag = kindMap[kind as keyof typeof kindMap] || 'outlined';
     const sizeTag = sizeMap[size as keyof typeof sizeMap] || 'medium';
     const colorTag = colorMap[color as keyof typeof colorMap] || 'neutral';
@@ -163,7 +163,7 @@ export const Tag = React.forwardRef<HTMLElement, TagProps & Omit<React.AllHTMLAt
       }
     };
 
-    // Define accessibilities for Tag
+    // Define accessibility props for Tag
     const accessibilityProps = {
       'aria-disabled': disabled,
       'aria-label': label,

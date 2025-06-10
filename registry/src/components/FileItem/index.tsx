@@ -118,7 +118,7 @@ export const FileItem = React.forwardRef<HTMLDivElement, FileItemProps>(
           {/* File Size */}
           <span className='file-item-size'>{formatFileSize(fileSize)}</span>
 
-          {/* Rigt Icon Status */}
+          {/* Right Icon Status */}
           {isLoading ? (
             <Spinner size='sm' variant='sunburst' />
           ) : isError ? (

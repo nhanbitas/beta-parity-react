@@ -47,13 +47,7 @@ export default function TableOfContents(props: any) {
             <X />
           </button>
         </div>
-        <ContentNavigation
-          spaceToTop={150}
-          color='accent'
-          skeleton={<Skeleton />}
-          exclude={['.excluded-content']}
-          target={'#main'}
-        />
+        <ContentNavigation spaceToTop={150} skeleton={<Skeleton />} exclude={['.excluded-content']} target={'#main'} />
       </div>
     </>
   );

@@ -88,12 +88,22 @@ import CodePreview from '@components/showcase/CodePreview';
 
 ### `<Textarea />`
 
-| **Prop**          | **Type**                       | **Default** | **Description**                   |
-| ----------------- | ------------------------------ | ----------- | --------------------------------- |
-| **onChange**      | function (event)               |             | Callback when value changes       |
-| **value**         | string                         |             | Controlled value                  |
-| **placeholder**   | string                         |             | Placeholder text                  |
-| **rows**          | number                         |             | Number of visible text lines      |
-| **...InputProps** | [See Input](../base-input/dev) |             | Inherits all props from **Input** |
+| **Prop**         | **Type**              | **Default** | **Description**                    |
+| ---------------- | --------------------- | ----------- | ---------------------------------- |
+| **value**        | string                |             | Controlled value                   |
+| **defaultValue** | string                |             | Uncontrolled initial value         |
+| **onChange**     | function (event)      |             | Callback when value changes        |
+| **placeholder**  | string                |             | Placeholder text                   |
+| **rows**         | number                | 2           | Number of visible text lines       |
+| **maxLength**    | number                |             | Maximum number of characters       |
+| **isClearable**  | boolean               | false       | Show clear button                  |
+| **clearBtnText** | string                | "Clear"     | Text for clear button              |
+| **isError**      | boolean               |             | Error state                        |
+| **errorMessage** | string                |             | Error message to display           |
+| **disabled**     | boolean               | false       | Disables the textarea              |
+| **readOnly**     | boolean               | false       | Makes textarea read-only           |
+| **theme**        | string                | "default"   | Visual theme                       |
+| **wrapperProps** | object                |             | Props for wrapper element          |
+| **...textarea**  | native textarea props |             | Inherits all native textarea props |
 
 > _Note: Textarea inherits all props from **Input** and the native **textarea** element. See [Input documentation](../base-input/dev) for full details on available props and tokens._

@@ -48,3 +48,31 @@ import CodePreview from '@components/showcase/CodePreview';
 | **...divProps** | HTMLDivElement props |             | All native div props (className, style, ...)    |
 
 > **_Note:_** _TreeNavigation_ **inherits** all native props from **HTMLDivElement**.
+
+---
+
+### `TreeNavigationItem`
+
+Represents a single navigation item in the tree.
+
+**Type:**
+
+```ts
+interface TreeNavigationItem {
+  id: string;
+  title: string;
+  href?: string;
+  children?: TreeNavigationItem[];
+  defaultExpanded?: boolean;
+  defaultActive?: true;
+}
+```
+
+**Fields:**
+
+- `id` (string): Unique identifier for the item.
+- `title` (string): Display text for the item.
+- `href` (string, optional): Link for the item.
+- `children` (TreeNavigationItem[], optional): Nested child items.
+- `defaultExpanded` (boolean, optional): If true, expands this item by default.
+- `defaultActive` (true, optional): If true, sets this item as active by default.

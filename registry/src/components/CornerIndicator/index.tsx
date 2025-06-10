@@ -12,14 +12,14 @@ import { Dot, DotProps } from '../Dot';
 // =========================
 // Declare and export Corner Indicator type and Corner Indicator component
 
-const sizetoBadgeSize: Record<'xs' | 'sm' | 'md' | 'lg', string> = {
+const sizeToBadgeSize: Record<'xs' | 'sm' | 'md' | 'lg', string> = {
   xs: 'xs',
   sm: 'sm',
   md: 'md',
   lg: 'lg'
 } as const;
 
-const sizetoDotSize: Record<'xs' | 'sm' | 'md' | 'lg', string> = {
+const sizeToDotSize: Record<'xs' | 'sm' | 'md' | 'lg', string> = {
   xs: 'sm',
   sm: 'md',
   md: 'lg',
@@ -210,13 +210,13 @@ export const CornerIndicator = React.forwardRef<HTMLDivElement, CornerIndicatorP
         {...props}
       >
         {!label ? (
-          <Dot pulse={pulse} size={sizetoDotSize[size] as any} color={color} {...indicatorProps} />
+          <Dot pulse={pulse} size={sizeToDotSize[size] as any} color={color} {...indicatorProps} />
         ) : (
           <Badge
             label={label}
             icon={icon}
             color={color}
-            size={sizetoBadgeSize[size] as any}
+            size={sizeToBadgeSize[size] as any}
             variant={variant}
             {...indicatorProps}
           />

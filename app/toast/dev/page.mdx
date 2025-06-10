@@ -90,24 +90,64 @@ import { ToastContainer } from 'beta-parity-react/ui/Toast';
 
 ### `<Toast />`
 
-| **Prop**          | **Type**                                                                 | **Default**   | **Description**                              |
-| ----------------- | ------------------------------------------------------------------------ | ------------- | -------------------------------------------- |
-| **title**         | string \| ReactNode                                                      |               | Toast title                                  |
-| **message**       | string \| ReactNode                                                      |               | Toast message                                |
-| **action**        | ReactNode                                                                |               | Optional action element                      |
-| **kind**          | 'generic' \| 'information' \| 'affirmative' \| 'cautionary' \| 'adverse' | _'generic'_   | Toast type                                   |
-| **emphasis**      | 'normal' \| 'high'                                                       | _'high'_      | Emphasis level                               |
-| **height**        | 'flexible' \| 'compact'                                                  | _'flexible'_  | Height variant                               |
-| **position**      | 'top-right' \| 'top-center' \| 'bottom-right' \| 'bottom-center'         | _'top-right'_ | Toast position                               |
-| **autoDismiss**   | boolean                                                                  | _false_       | Auto-dismiss after duration                  |
-| **duration**      | number                                                                   | _5000_        | Duration in ms                               |
-| **pauseOnHover**  | boolean                                                                  | _true_        | Pause auto-dismiss on hover                  |
-| **icon**          | ReactNode                                                                |               | Custom icon                                  |
-| **progressBar**   | boolean                                                                  | _false_       | Show progress bar                            |
-| **dismissButton** | boolean                                                                  | _true_        | Show close button                            |
-| **importance**    | number                                                                   | _0_           | Importance for stacking/sorting              |
-| **pending**       | boolean                                                                  | _false_       | Pending state (shows spinner)                |
-| **onDismissed**   | function ()                                                              |               | Callback when toast is dismissed             |
-| **...divProps**   | HTMLDivElement props                                                     |               | All native div props (className, style, ...) |
+| **Prop**          | **Type**                                                                 | **Default** | **Description**                              |
+| ----------------- | ------------------------------------------------------------------------ | ----------- | -------------------------------------------- |
+| **title**         | string \| ReactNode                                                      |             | Title text of the toast                      |
+| **message**       | string \| ReactNode                                                      |             | Main message content                         |
+| **action**        | ReactNode                                                                |             | Optional action element (e.g. button)        |
+| **kind**          | 'generic' \| 'information' \| 'affirmative' \| 'cautionary' \| 'adverse' | 'generic'   | Visual style and purpose of the toast        |
+| **emphasis**      | 'normal' \| 'high'                                                       | 'high'      | Emphasis level (visual prominence)           |
+| **height**        | 'flexible' \| 'compact'                                                  | 'flexible'  | Height variant (standard or compact)         |
+| **position**      | 'top-right' \| 'top-center' \| 'bottom-right' \| 'bottom-center'         | 'top-right' | Screen position for the toast                |
+| **autoDismiss**   | boolean                                                                  | false       | Auto-dismiss after a set duration            |
+| **duration**      | number                                                                   | 5000        | Auto-dismiss duration in milliseconds        |
+| **pauseOnHover**  | boolean                                                                  | true        | Pause auto-dismiss timer on hover            |
+| **icon**          | ReactNode                                                                |             | Custom icon (overrides default)              |
+| **progressBar**   | boolean                                                                  | false       | Show a progress bar for auto-dismiss         |
+| **dismissButton** | boolean                                                                  | true        | Show a close (dismiss) button                |
+| **importance**    | number                                                                   | 0           | Priority for stacking/sorting                |
+| **pending**       | boolean                                                                  | false       | Show loading spinner (pending state)         |
+| **onDismissed**   | function ()                                                              |             | Callback when toast is dismissed             |
+| **...divProps**   | HTMLDivElement props                                                     |             | All native div props (className, style, ...) |
 
-> _Note: `ToastOptions` is imported from the Toast component and includes all above props except `id` and `removeToast` (which are internal)._
+> **Note:** `ToastOptions` includes all the above props except `id` and `removeToast` (which are internal and managed by the system).
+
+---
+
+### `toast()`
+
+Creates and controls toast notifications programmatically.
+
+**Signature:**
+
+```ts
+const myToast = toast(options: ToastOptions): ToastController;
+```
+
+**Parameters:**
+
+| **Name** | **Type**     | **Description**                                                          |
+| -------- | ------------ | ------------------------------------------------------------------------ |
+| options  | ToastOptions | Toast options (same as `<Toast />` props except `id` and `removeToast`). |
+
+**Returns:**
+
+A `ToastController` object with the following methods:
+
+| **Method**    | **Signature**                         | **Description**                               |
+| ------------- | ------------------------------------- | --------------------------------------------- |
+| `start()`     | `() => void`                          | Show the toast                                |
+| `stop()`      | `() => void`                          | Remove the toast                              |
+| `update()`    | `(options: ToastOptions) => void`     | Update the toast with new options             |
+| `getDetail()` | `() => ToastOptions & { id: string }` | Get the current toast detail (including `id`) |
+
+**Example:**
+
+```ts
+const myToast = toast({ kind: 'success', message: 'Task completed!' });
+myToast.start(); // Show the toast
+myToast.update({ message: 'Updated message' }); // Update toast content
+myToast.stop(); // Remove the toast
+```
+
+> **Note:** `toast()` dispatches custom events to control toasts. You must have a `<ToastContainer />` mounted in your app for toasts to appear.

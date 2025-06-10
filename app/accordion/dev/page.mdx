@@ -39,7 +39,7 @@ import CodePreview from '@components/showcase/CodePreview';
 
 | **Token**                                    | **Color for**             | **State/Meaning**                       | **CSS Selector(s)**                                                                              |
 | -------------------------------------------- | ------------------------- | --------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| **--par-color-text-accordion-item-enabled**  | Accordion item text       | Enabled (default)                       | `.accordion-item-trigger`, `.accordion-item-content`                                             |
+| **--par-color-text-accordion-item-enabled**  | Accordion item text       | Enabled (default)                       | `.accordion-item-trigger`                                                                        |
 | **--par-color-text-accordion-item-hovered**  | Accordion item text       | Hovered                                 | `.accordion-item:not(.active):not([aria-disabled='true']) > .accordion-item-trigger:hover`       |
 | **--par-color-text-accordion-item-pressed**  | Accordion item text       | Pressed                                 | `.accordion-item:not(.active):not([aria-disabled='true']) > .accordion-item-trigger:active`      |
 | **--par-color-text-accordion-item-expanded** | Accordion item text       | Expanded                                | `.accordion-item.active > .accordion-item-trigger`, `.accordion-item-content`                    |
@@ -51,11 +51,11 @@ import CodePreview from '@components/showcase/CodePreview';
 | **--par-color-bg-accordion-item-expanded**   | Accordion item bg         | Expanded                                | `.accordion-item.active > .accordion-item-trigger`                                               |
 | **--par-color-bg-accordion-item-disabled**   | Accordion item bg         | Disabled                                | `.accordion-item[aria-disabled='true']`, `.accordion-item[aria-disabled='true'] button:disabled` |
 | **--par-color-bg**                           | Accordion bg (flush kind) | General background (flush kind)         | (not directly applied, fallback for flush kind)                                                  |
-| **--par-color-border-surface**               | Accordion border          | Border of accordion container and items | `.accordion:not(.flush)`, `.accordion:not(.flush) > .accordion-item`, `.accordion-item`          |
+| **--par-color-border-surface**               | Accordion border          | Border of accordion container and items | `.accordion:not(.flush)`, `.accordion:not(.flush) > .accordion-item`                             |
 
 ---
 
-## Accordion API Reference
+## Accordion API Reference\*\*\*\*
 
 ### `<Accordion />`
 
@@ -72,7 +72,7 @@ import CodePreview from '@components/showcase/CodePreview';
 | **...BaseProps** | [See below](#baseprops)              |               | All layout/spacing props from **Base** (margin, padding, etc.)                 |
 | **...divProps**  | HTMLDivElement props                 |               | All native div props (**className**, **style**, etc.)                          |
 
-#### _items structure_
+#### _items props structure_
 
 | **Field**     | **Type**        | **Description**                          |
 | ------------- | --------------- | ---------------------------------------- |
@@ -118,6 +118,6 @@ import CodePreview from '@components/showcase/CodePreview';
 | **bd, bdColor, bdWidth, bdStyle, radius** | string           | Border, border color, width, style, radius    |
 | ...and more (see Base component)          |                  | All layout props from **Base**                |
 
-> **Note:** Accordion extends all layout/spacing props from the _Base_ component. See **BaseProps** for full list.
+> **Note:** Accordion extends all layout/spacing props from the _Base_ component. See [BaseProps](../base/dev) for full list.
 
 {/* Design Tokens and API Reference already present for Accordion. No changes needed. */}

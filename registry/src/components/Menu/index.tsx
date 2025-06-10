@@ -597,7 +597,7 @@ export const MenuItem = React.forwardRef<HTMLDivElement | HTMLLabelElement, Menu
       ...(!useInput && { 'aria-checked': currentSelected })
     };
 
-    // reseting side check icon to right if it has icon
+    // reset side check icon to right if it has icon
     const sideOfCheckIcon = checkmarkSide === 'right' || icon ? 'right' : 'left';
     const Component = useInput ? 'label' : 'div';
     const CheckMarkInput = multiselect ? (
@@ -745,9 +745,9 @@ export const MenuIndicator = React.forwardRef<HTMLButtonElement, MenuIndicatorPr
 MenuIndicator.displayName = 'MenuIndicator';
 
 // =========================
-// Menu Devider
+// Menu Divider
 // =========================
-// Declare and export menu devider type and menu devider component
+// Declare and export menu divider type and menu divider component
 
 export interface MenuDividerProps extends React.HTMLAttributes<HTMLDivElement> {
   isLoading?: boolean;

@@ -33,12 +33,13 @@ import CodePreview from '@components/showcase/CodePreview';
 
 ### `<ContentNavigation />`
 
-| **Prop**                | **Type**                      | **Default** | **Description**                                   |
-| ----------------------- | ----------------------------- | ----------- | ------------------------------------------------- |
-| **target**              | string \| HTMLElement \| null | _'main'_    | Target element or selector for headings container |
-| **spaceToTop**          | number                        | _0_         | Space (px) from top when scrolling to heading     |
-| **skeleton**            | ReactNode                     |             | Custom skeleton loader while loading              |
-| **color**               | 'neutral' \| 'accent'         | _'neutral'_ | Color theme for navigation                        |
-| **...HTMLElementProps** | HTML element props            |             | All native HTML props (className, style, ...)     |
+| **Prop**                | **Type**                      | **Default** | **Description**                                         |
+| ----------------------- | ----------------------------- | ----------- | ------------------------------------------------------- |
+| **target**              | string \| HTMLElement \| null | _'main'_    | Target element or selector for headings container       |
+| **spaceToTop**          | number                        | _0_         | Space (px) from top when scrolling to heading           |
+| **skeleton**            | ReactNode                     |             | Custom skeleton loader while loading                    |
+| **color**               | 'neutral' \| 'accent'         | _'neutral'_ | Color theme for navigation                              |
+| **exclude**             | string \| string[]            |             | Exclude headings inside elements matching this selector |
+| **...HTMLElementProps** | HTML element props            |             | All native HTML props (className, style, ...)           |
 
 > _Note:_ _ContentNavigation_ inherits all native props from HTMLElement.

@@ -374,7 +374,7 @@ export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
                   {...item.buttonProps}
                   key={item.value}
                   value={item.value}
-                  amimatedDirection={isActive ? activeAnimation : otherAnimation}
+                  animationDirection={isActive ? activeAnimation : otherAnimation}
                   onClick={() => handleClick(index)}
                   className={classNames(isActive ? 'active' : '')}
                   disabled={item.disabled}
@@ -447,7 +447,7 @@ export interface TabButtonProps extends React.ButtonHTMLAttributes<HTMLButtonEle
    *
    * @memberof TabButtonProps
    */
-  amimatedDirection?: 'from-right' | 'from-left' | 'from-top' | 'from-bottom';
+  animationDirection?: 'from-right' | 'from-left' | 'from-top' | 'from-bottom';
 }
 
 /**
@@ -456,9 +456,9 @@ export interface TabButtonProps extends React.ButtonHTMLAttributes<HTMLButtonEle
  *  @see {@link https://beta-parity-react.vercel.app/tabs Parity TabButton}
  */
 export const TabButton = React.forwardRef<HTMLButtonElement, TabButtonProps>(
-  ({ className, children, amimatedDirection, ...props }, ref) => {
+  ({ className, children, animationDirection, ...props }, ref) => {
     return (
-      <button className={classNames('tab-button', className, amimatedDirection)} type='button' ref={ref} {...props}>
+      <button className={classNames('tab-button', className, animationDirection)} type='button' ref={ref} {...props}>
         {children}
       </button>
     );
@@ -520,10 +520,10 @@ const generateOtherAnimation = ({
   activeTabIndex: number;
   index: number;
 }) => {
-  let amimatedDirection = activeTabIndex < index ? animationMap[direction].larger : animationMap[direction].smaller;
-  amimatedDirection = activeTabIndex > index ? animationMap[direction].smaller : animationMap[direction].larger;
+  let animationDirection = activeTabIndex < index ? animationMap[direction].larger : animationMap[direction].smaller;
+  animationDirection = activeTabIndex > index ? animationMap[direction].smaller : animationMap[direction].larger;
 
-  return amimatedDirection as 'from-right' | 'from-left' | 'from-top' | 'from-bottom';
+  return animationDirection as 'from-right' | 'from-left' | 'from-top' | 'from-bottom';
 };
 
 const generateActiveAnimation = ({

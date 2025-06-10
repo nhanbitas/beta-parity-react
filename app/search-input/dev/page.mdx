@@ -216,14 +216,19 @@ import CodePreview from '@components/showcase/CodePreview';
 
 ### `<SearchInput />`
 
-| **Prop**          | **Type**                       | **Default** | **Description**                              |
-| ----------------- | ------------------------------ | ----------- | -------------------------------------------- |
-| **type**          | string                         | _'search'_  | Input type (always 'search' for SearchInput) |
-| **onSearch**      | function (value)               |             | Callback when search is triggered            |
-| **onChange**      | function (event)               |             | Callback when value changes                  |
-| **value**         | string                         |             | Controlled value                             |
-| **placeholder**   | string                         |             | Placeholder text                             |
-| **...InputProps** | [See Input](../base-input/dev) |             | Inherits all props from **Input**            |
+| **Prop**                 | **Type**                       | **Default** | **Description**                                    |
+| ------------------------ | ------------------------------ | ----------- | -------------------------------------------------- |
+| **isPending**            | boolean                        | false       | Show loading spinner in place of search icon       |
+| **searchButton**         | boolean                        | false       | Show a clickable search button                     |
+| **searchButtonProps**    | object                         |             | Props for the search button                        |
+| **auxiliaryIcon**        | ReactNode                      |             | Icon/button displayed on the right side            |
+| **auxiliaryActive**      | boolean                        | false       | If true, auxiliary action uses styled Button       |
+| **auxiliaryActionProps** | object                         |             | Props for the auxiliary action button              |
+| **shortCut**             | string                         |             | Keyboard shortcut indicator (e.g. "Ctrl+K")        |
+| **shortCutButtonProps**  | object                         |             | Props for the shortcut button                      |
+| **onSearch**             | function ()                    |             | Callback when search is triggered                  |
+| **onAuxiliaryAction**    | function ()                    |             | Callback when auxiliary action is triggered        |
+| **...InputProps**        | [See Input](../base-input/dev) |             | Inherits all props from **Input** and native input |
 
 > **_Note:_** _SearchInput_ **inherits** all props from **Input** and the native **input** element. See [Input documentation](../base-input/dev) for full details on available props and tokens.
 

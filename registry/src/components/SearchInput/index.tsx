@@ -146,7 +146,8 @@ export const SearchInput = React.forwardRef<React.ElementRef<typeof Input>, Sear
       );
     };
 
-    const inputDevider = searchButton || auxiliaryIcon !== undefined ? <span className='input-divider'></span> : null;
+    const searchInputDivider =
+      searchButton || auxiliaryIcon !== undefined ? <span className='input-divider'></span> : null;
     const rightSearchIcon = isPending ? (
       <span className='input-icon'>{searchIcon}</span>
     ) : (
@@ -172,7 +173,7 @@ export const SearchInput = React.forwardRef<React.ElementRef<typeof Input>, Sear
       </Button>
     ) : (
       <>
-        {inputDevider}
+        {searchInputDivider}
         {searchButton && rightSearchIcon}
         {auxiliaryIcon !== undefined && <AuxiliaryActionElement />}
       </>

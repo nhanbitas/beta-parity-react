@@ -57,21 +57,32 @@ import CodePreview from '@components/showcase/CodePreview';
 
 ### `<Select />`
 
-| **Prop**          | **Type**                       | **Default** | **Description**                                                        |
-| ----------------- | ------------------------------ | ----------- | ---------------------------------------------------------------------- |
-| **options**       | array                          |             | List of options                                                        |
-| **value**         | string \| number \| array      |             | Selected value(s)                                                      |
-| **onChange**      | function (value)               |             | Callback when value changes                                            |
-| **multiselect**   | boolean                        | _false_     | Allow multiple selection (named `multiselect` in code, not `multiple`) |
-| **disabled**      | boolean                        | _false_     | Disable the select                                                     |
-| **placeholder**   | string                         |             | Placeholder text                                                       |
-| **clearButton**   | boolean                        | _false_     | Show clear button                                                      |
-| **filterable**    | boolean                        | _false_     | Allow filtering options                                                |
-| **tagProps**      | object                         |             | Tag props for multi-select (see Tag spec)                              |
-| **theme**         | string                         | _'default'_ | Visual theme ('default' or 'alternative')                              |
-| **selectSize**    | string                         | _'md'_      | Size of select ('sm', 'md')                                            |
-| **floatingLabel** | string \| ReactNode            |             | Floating label                                                         |
-| **leftIcon**      | ReactNode                      |             | Icon on the left                                                       |
-| **...InputProps** | [See Input](../base-input/dev) |             | Inherits all props from **Input**                                      |
-| **...MenuProps**  | [See Menu](../menu/dev)        |             | Inherits all props from **Menu**                                       |
-| **...TagProps**   | [See Tag](../tag/dev)          |             | Inherits all props from **Tag**                                        |
+| **Prop**             | **Type**                                                                    | **Default**               | **Description**                                                        |
+| -------------------- | --------------------------------------------------------------------------- | ------------------------- | ---------------------------------------------------------------------- |
+| **native**           | boolean                                                                     | false                     | Use native HTML `<select>` instead of custom select                    |
+| **options**          | array of `{ value, label, disabled? }`                                      |                           | List of options for the dropdown                                       |
+| **value**            | string \| string[]                                                          |                           | Selected value(s)                                                      |
+| **onChange**         | function (value: string \| string[] \| event)                               |                           | Callback when value changes (event for native, value for custom)       |
+| **multiselect**      | boolean                                                                     | false                     | Allow multiple selection (custom select only)                          |
+| **filterable**       | boolean                                                                     | false                     | Allow filtering options (custom select only)                           |
+| **clearButton**      | boolean                                                                     | false                     | Show clear button to reset selection (custom select only)              |
+| **deselectable**     | boolean                                                                     | false                     | Allow deselecting a selected option (custom select only)               |
+| **keepOpen**         | boolean                                                                     | true                      | Keep dropdown open after selection (custom select only)                |
+| **placeholder**      | string                                                                      | 'Please choose an option' | Placeholder text when no value is selected (custom select only)        |
+| **floatingLabel**    | string \| ReactNode                                                         |                           | Floating label above the select                                        |
+| **leftIcon**         | ReactNode                                                                   |                           | Icon on the left side of the select                                    |
+| **selectedIcon**     | ReactNode                                                                   |                           | Icon shown next to selected option(s) in dropdown (custom select only) |
+| **countDescription** | string                                                                      | 'item(s) selected'        | Description for selected count (custom multi-select only)              |
+| **theme**            | 'default' \| 'alternative'                                                  | 'default'                 | Visual theme                                                           |
+| **selectSize**       | 'sm' \| 'md'                                                                | 'md'                      | Size of select                                                         |
+| **tagProps**         | object                                                                      |                           | Tag props for multi-select chips (custom select only)                  |
+| **disabled**         | boolean                                                                     | false                     | Disable the select                                                     |
+| **onFocus**          | function (event)                                                            |                           | Callback when select gains focus                                       |
+| **onBlur**           | function (event)                                                            |                           | Callback when select loses focus                                       |
+| **children**         | ReactNode                                                                   |                           | Custom option/group elements (alternative to `options` prop)           |
+| **...divProps**      | [See MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div)    |                           | Inherits all native div props (custom select only)                     |
+| **...selectProps**   | [See MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select) |                           | Inherits all native select props (native select only)                  |
+| **...MenuProps**     | [See Menu](../menu/dev)                                                     |                           | Inherits all props from **Menu** (custom select only)                  |
+| **...TagProps**      | [See Tag](../tag/dev)                                                       |                           | Inherits all props from **Tag** (custom select only)                   |
+
+> **_Note:_** _Select_ automatically chooses between native and custom select based on the `native` prop. See [Menu](../menu/dev) and [Tag](../tag/dev) for additional props when using custom select.

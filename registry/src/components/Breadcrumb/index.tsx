@@ -65,7 +65,6 @@ export interface BreadcrumbProps extends React.HTMLAttributes<HTMLUListElement> 
  *
  *  @see {@link https://beta-parity-react.vercel.app/breadcrumb Parity Breadcrumb}
  */
-
 export const Breadcrumb = React.forwardRef<
   HTMLUListElement,
   BreadcrumbProps & Pick<InlineLinkProps, 'size' | 'color' | 'disabled' | 'underline' | 'iconOnly'>
@@ -199,7 +198,7 @@ export const BreadcrumbMenu = React.forwardRef<HTMLButtonElement, BreadcrumbMenu
     const [open, setOpen] = React.useState(false);
 
     const buttonRef = React.useRef<HTMLButtonElement | null>(null);
-    const conbineButtonRef = useCombinedRefs(buttonRef, ref);
+    const combinedButtonRef = useCombinedRefs(buttonRef, ref);
 
     const refOutsideClick = useOutsideClick(() => setOpen(false), ['click', 'touchstart']);
 
@@ -207,18 +206,18 @@ export const BreadcrumbMenu = React.forwardRef<HTMLButtonElement, BreadcrumbMenu
       const handleGlobalKeyDown = (e: KeyboardEvent) => {
         if (e.key === 'Escape') {
           setOpen(false);
-          conbineButtonRef.current?.focus();
+          combinedButtonRef.current?.focus();
         }
       };
 
       window.addEventListener('keydown', handleGlobalKeyDown);
       return () => window.removeEventListener('keydown', handleGlobalKeyDown);
-    }, [conbineButtonRef.current]);
+    }, [combinedButtonRef.current]);
 
     return (
       <>
         <button
-          ref={conbineButtonRef}
+          ref={combinedButtonRef}
           className={classNames('breadcrumb-item', className)}
           onClick={() => setOpen(true)}
           {...props}

@@ -126,14 +126,14 @@ export interface RadioGroupProps extends Omit<React.HTMLAttributes<HTMLDivElemen
   value?: string | number;
 
   /**
-   * The checkboxs of group will be disabled
+   * The radios of group will be disabled
    *
    * @memberof RadioGroupProps
    */
   disabled?: boolean;
 
   /**
-   * The checkboxs of group will be generate automatically by data
+   * The radios of group will be generated automatically by data
    *
    * @memberof RadioGroupProps
    */

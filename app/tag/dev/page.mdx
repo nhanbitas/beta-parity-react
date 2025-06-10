@@ -33,13 +33,16 @@ import CodePreview from '@components/showcase/CodePreview';
 
 ### `<Tag />`
 
-| **Prop**         | **Type**              | **Default** | **Description**                               |
-| ---------------- | --------------------- | ----------- | --------------------------------------------- |
-| **label**        | string \| ReactNode   |             | Tag label                                     |
-| **color**        | string                |             | Tag color                                     |
-| **size**         | 'sm' \| 'md' \| 'lg'  | _'md'_      | Tag size                                      |
-| **closable**     | boolean               | _false_     | Show close button                             |
-| **onClose**      | function ()           |             | Callback when close is clicked                |
-| **...spanProps** | HTMLSpanElement props |             | All native span props (className, style, ...) |
+| **Prop**         | **Type**                          | **Default**  | **Description**                                                                |
+| ---------------- | --------------------------------- | ------------ | ------------------------------------------------------------------------------ |
+| **label**        | string                            | (required)   | Tag label (nội dung hiển thị chính).                                           |
+| **icon**         | ReactNode                         |              | Icon hoặc hình ảnh hiển thị bên trái label.                                    |
+| **size**         | 'sm' \| 'md' \| 'lg'              | `'md'`       | Kích thước của Tag.                                                            |
+| **kind**         | 'glass' \| 'outlined'             | `'outlined'` | Kiểu hiển thị của Tag.                                                         |
+| **color**        | 'neutral' \| 'accent'             | `'neutral'`  | Màu sắc của Tag.                                                               |
+| **value**        | string \| number                  |              | Giá trị của Tag, dùng cho các trường hợp như checkbox, radio, dropdown, input. |
+| **disabled**     | boolean                           | `false`      | Vô hiệu hóa Tag.                                                               |
+| **onRemove**     | (value: string \| number) => void |              | Callback khi nhấn nút xóa (close).                                             |
+| **...spanProps** | HTMLSpanElement props             |              | Kế thừa tất cả props mặc định của thẻ `<span>` (className, style, ...).        |
 
-> _Note: Tag inherits all native props from **HTMLSpanElement**._
+> _Lưu ý: Tag luôn hiển thị nút xóa nếu có `onRemove` truyền vào. Tag kế thừa toàn bộ props của **HTMLSpanElement**._

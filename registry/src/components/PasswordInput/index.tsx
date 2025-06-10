@@ -47,14 +47,14 @@ export const PasswordInput = React.forwardRef<React.ElementRef<typeof Input>, Pa
     };
 
     const EyeButton = () => {
-      const isHiden = currentType === 'password';
-      const TagName = (isHiden ? 'button' : Button) as React.ElementType;
+      const isHidden = currentType === 'password';
+      const TagName = (isHidden ? 'button' : Button) as React.ElementType;
       return (
         <TagName
           ref={eyeButtonRef}
           disabled={disabled}
-          {...(isHiden ? { type: 'button' } : { color: color, kind: 'solid', size: 'sm' })}
-          className={`square-icon input-icon ${!isHiden ? 'showed' : ''}`}
+          {...(isHidden ? { type: 'button' } : { color: color, kind: 'solid', size: 'sm' })}
+          className={`square-icon input-icon ${!isHidden ? 'showed' : ''}`}
           onClick={handleClick}
         >
           <Eye />
