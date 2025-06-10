@@ -19,21 +19,25 @@ import CodePreview from '@components/showcase/CodePreview';
 
 ## Design Tokens for Menu
 
-| **Token**                                        | **Color for**        | **State/Meaning**     | **CSS Selector(s)**                                |
-| ------------------------------------------------ | -------------------- | --------------------- | -------------------------------------------------- |
-| **--par-color-bg-menu**                          | Menu background      | Default/Enabled       | `.menu`                                            |
-| **--par-color-bg-menu-item-hovered**             | Menu item background | Hovered               | `.menu-item:hover`                                 |
-| **--par-color-bg-menu-item-selected-subtle**     | Menu item background | Selected (subtle)     | `.menu-item.subtle[aria-checked='true']`           |
-| **--par-color-bg-menu-item-selected-pronounced** | Menu item background | Selected (pronounced) | `.menu-item.pronounced[aria-checked='true']`       |
-| **--par-color-bg-menu-item-disabled**            | Menu item background | Disabled              | `.menu-item[aria-disabled='true']`                 |
-| **--par-color-text-menu-item**                   | Menu item text       | Default/Enabled       | `.menu-item`                                       |
-| **--par-color-text-menu-item-disabled**          | Menu item text       | Disabled              | `.menu-item[aria-disabled='true']`                 |
-| **--par-color-text-menu-item-selected**          | Menu item text       | Selected              | `.menu-item[aria-checked='true']`                  |
-| **--par-color-icon-menu-item**                   | Menu item icon       | Default/Enabled       | `.menu-item .menu-item-icon`                       |
-| **--par-color-icon-menu-item-disabled**          | Menu item icon       | Disabled              | `.menu-item[aria-disabled='true'] .menu-item-icon` |
-| **--par-color-divider-menu**                     | Divider              | Default               | `.menu-divider`                                    |
-
-> _Note: Menu uses the same design tokens as the Button or List component. See Button/List documentation for available tokens._
+| **Token**                                                     | **Color for**        | **State/Meaning**              | **CSS Selector(s)**                                    |
+| ------------------------------------------------------------- | -------------------- | ------------------------------ | ------------------------------------------------------ |
+| **--par-color-bg-surface-item-enabled**                       | Menu item background | Default/Enabled                | `.menu-item`                                           |
+| **--par-color-bg-surface-item-hovered**                       | Menu item background | Hovered                        | `.menu-item:hover`                                     |
+| **--par-color-bg-surface-item-neutral-subtle-selected**       | Menu item background | Selected (neutral, subtle)     | `.menu-item.neutral.subtle[aria-checked='true']`       |
+| **--par-color-bg-surface-item-neutral-pronounced-selected**   | Menu item background | Selected (neutral, pronounced) | `.menu-item.neutral.pronounced[aria-checked='true']`   |
+| **--par-color-bg-surface-item-accent-subtle-selected**        | Menu item background | Selected (accent, subtle)      | `.menu-item.accent.subtle[aria-checked='true']`        |
+| **--par-color-bg-surface-item-accent-pronounced-selected**    | Menu item background | Selected (accent, pronounced)  | `.menu-item.accent.pronounced[aria-checked='true']`    |
+| **--par-color-bg-surface-item-disabled**                      | Menu item background | Disabled                       | `.menu-item[aria-disabled='true']`                     |
+| **--par-color-text-surface-item-enabled**                     | Menu item text       | Default/Enabled                | `.menu-item`                                           |
+| **--par-color-text-surface-item-disabled**                    | Menu item text       | Disabled                       | `.menu-item[aria-disabled='true']`                     |
+| **--par-color-text-surface-item-neutral-subtle-selected**     | Menu item text       | Selected (neutral, subtle)     | `.menu-item.neutral.subtle[aria-checked='true']`       |
+| **--par-color-text-surface-item-neutral-pronounced-selected** | Menu item text       | Selected (neutral, pronounced) | `.menu-item.neutral.pronounced[aria-checked='true']`   |
+| **--par-color-text-surface-item-accent-subtle-selected**      | Menu item text       | Selected (accent, subtle)      | `.menu-item.accent.subtle[aria-checked='true']`        |
+| **--par-color-text-surface-item-accent-pronounced-selected**  | Menu item text       | Selected (accent, pronounced)  | `.menu-item.accent.pronounced[aria-checked='true']`    |
+| **--par-color-icon-field-button-enabled**                     | Menu item icon       | Default/Enabled                | `.menu-item .menu-item-icon`                           |
+| **--par-color-border-surface**                                | Border               | Default                        | `.menu, .menu-header, .menu-footer, .menu-group-label` |
+| **--par-color-divider-menu**                                  | Divider              | Default                        | `.menu-divider`                                        |
+| **--par-color-text-secondary**                                | Group label text     | Default                        | `.menu-group-label`                                    |
 
 ---
 
