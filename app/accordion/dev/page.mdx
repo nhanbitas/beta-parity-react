@@ -37,21 +37,21 @@ import CodePreview from '@components/showcase/CodePreview';
 
 ## Design Tokens for Accordion
 
-| **Token**                                    | **Color for**             | **State/Meaning**                       | **CSS Selector(s)**                                                                              |
-| -------------------------------------------- | ------------------------- | --------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| **--par-color-text-accordion-item-enabled**  | Accordion item text       | Enabled (default)                       | `.accordion-item-trigger`                                                                        |
-| **--par-color-text-accordion-item-hovered**  | Accordion item text       | Hovered                                 | `.accordion-item:not(.active):not([aria-disabled='true']) > .accordion-item-trigger:hover`       |
-| **--par-color-text-accordion-item-pressed**  | Accordion item text       | Pressed                                 | `.accordion-item:not(.active):not([aria-disabled='true']) > .accordion-item-trigger:active`      |
-| **--par-color-text-accordion-item-expanded** | Accordion item text       | Expanded                                | `.accordion-item.active > .accordion-item-trigger`, `.accordion-item-content`                    |
-| **--par-color-text-accordion-item-disabled** | Accordion item text       | Disabled                                | `.accordion-item[aria-disabled='true']`, `.accordion-item[aria-disabled='true'] button:disabled` |
-| **--par-color-bg-accordion-menu**            | Accordion container bg    | Container background (contained kind)   | `.accordion:not(.flush)`                                                                         |
-| **--par-color-bg-accordion-item-enabled**    | Accordion item bg         | Enabled (default)                       | (not directly applied, fallback for enabled state)                                               |
-| **--par-color-bg-accordion-item-hovered**    | Accordion item bg         | Hovered                                 | `.accordion-item:not(.active):not([aria-disabled='true']) > .accordion-item-trigger:hover`       |
-| **--par-color-bg-accordion-item-pressed**    | Accordion item bg         | Pressed                                 | `.accordion-item:not(.active):not([aria-disabled='true']) > .accordion-item-trigger:active`      |
-| **--par-color-bg-accordion-item-expanded**   | Accordion item bg         | Expanded                                | `.accordion-item.active > .accordion-item-trigger`                                               |
-| **--par-color-bg-accordion-item-disabled**   | Accordion item bg         | Disabled                                | `.accordion-item[aria-disabled='true']`, `.accordion-item[aria-disabled='true'] button:disabled` |
-| **--par-color-bg**                           | Accordion bg (flush kind) | General background (flush kind)         | (not directly applied, fallback for flush kind)                                                  |
-| **--par-color-border-surface**               | Accordion border          | Border of accordion container and items | `.accordion:not(.flush)`, `.accordion:not(.flush) > .accordion-item`                             |
+| **Token**                                    | **Color for**             | **State/Meaning**                       |
+| -------------------------------------------- | ------------------------- | --------------------------------------- |
+| **--par-color-text-accordion-item-enabled**  | Accordion item text       | Enabled (default)                       |
+| **--par-color-text-accordion-item-hovered**  | Accordion item text       | Hovered                                 |
+| **--par-color-text-accordion-item-pressed**  | Accordion item text       | Pressed                                 |
+| **--par-color-text-accordion-item-expanded** | Accordion item text       | Expanded                                |
+| **--par-color-text-accordion-item-disabled** | Accordion item text       | Disabled                                |
+| **--par-color-bg-accordion-menu**            | Accordion container bg    | Container background (contained kind)   |
+| **--par-color-bg-accordion-item-enabled**    | Accordion item bg         | Enabled (default)                       |
+| **--par-color-bg-accordion-item-hovered**    | Accordion item bg         | Hovered                                 |
+| **--par-color-bg-accordion-item-pressed**    | Accordion item bg         | Pressed                                 |
+| **--par-color-bg-accordion-item-expanded**   | Accordion item bg         | Expanded                                |
+| **--par-color-bg-accordion-item-disabled**   | Accordion item bg         | Disabled                                |
+| **--par-color-bg**                           | Accordion bg (flush kind) | General background (flush kind)         |
+| **--par-color-border-surface**               | Accordion border          | Border of accordion container and items |
 
 ---
 
