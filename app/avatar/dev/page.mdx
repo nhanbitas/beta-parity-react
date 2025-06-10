@@ -72,24 +72,23 @@ import CodePreview from '@components/showcase/CodePreview';
 
 ## Design Tokens for Avatar
 
-| **Token**                                          | **Color for**               | **State/Meaning**                       | **CSS Selector(s)**                                  |
-| -------------------------------------------------- | --------------------------- | --------------------------------------- | ---------------------------------------------------- |
-| **--par-color-bg-avatar-status-dot-\<color\>**     | Status dot background       | Status indicator dot (by status)        | `.avatar-status-dot.color-\<color\>`                 |
-| **--par-color-border-avatar-status-dot-\<color\>** | Status dot border           | Status indicator dot border (by status) | `.avatar-status-dot.color-\<color\>`                 |
-| **--par-color-bg-avatar-status-border-\<color\>**  | Status border background    | Status border around avatar (by status) | `.avatar-status-border.color-\<color\>`              |
-| **--par-color-bg-avatar**                          | Avatar background           | Default background                      | `.avatar`                                            |
-| **--par-color-border-avatar**                      | Avatar border               | Default border                          | `.avatar`, `.avatar.border`                          |
-| **--par-color-bg-avatar-group**                    | AvatarGroup background      | Group container background              | `.avatar-group`                                      |
-| **--par-color-border-avatar-group**                | AvatarGroup border          | Group container border                  | `.avatar-group`                                      |
-| **--par-color-text-avatar-initials**               | Initials text               | Initials fallback                       | `.avatar-initials`                                   |
-| **--par-color-bg-avatar-placeholder**              | Placeholder icon background | Placeholder icon background             | `.avatar-placeholder`                                |
-| **--par-color-icon-avatar-placeholder**            | Placeholder icon            | Placeholder icon color                  | `.avatar-placeholder`                                |
-| **--par-color-bg-avatar-active**                   | AvatarTrigger background    | Active/focus/selected state             | `.avatar-trigger:active`, `.avatar-trigger.selected` |
-| **--par-color-border-avatar-active**               | AvatarTrigger border        | Active/focus/selected state             | `.avatar-trigger:active`, `.avatar-trigger.selected` |
-| **--par-color-bg-avatar-disabled**                 | Avatar background           | Disabled state                          | `.avatar[aria-disabled='true']`, `.avatar.disabled`  |
-| **--par-color-border-avatar-disabled**             | Avatar border               | Disabled state                          | `.avatar[aria-disabled='true']`, `.avatar.disabled`  |
+| **Token**                                 | **Color for**        | **State/Meaning**         | **CSS Selector(s)**                                                |
+| ----------------------------------------- | -------------------- | ------------------------- | ------------------------------------------------------------------ |
+| **--par-color-bg-avatar**                 | Avatar background    | Default background        | `.avatar`, `.avatar-group-overflow`                                |
+| **--par-color-bg-avatar-disabled**        | Avatar background    | Disabled state            | `.avatar.disabled`                                                 |
+| **--par-color-bg-avatar-trigger**         | AvatarTrigger bg     | Avatar trigger background | `.avatar-trigger`                                                  |
+| **--par-color-border-avatar**             | Avatar border        | Default border            | `.avatar`, `.avatar.border`, `.avatar-group-item`                  |
+| **--par-color-border-avatar-alternative** | Avatar border alt    | Alternative border style  | `.avatar.border-alternative`                                       |
+| **--par-color-border-avatar-gray**        | Avatar border gray   | Gray status border        | `.avatar.status-border[data-status-color="gray"]`                  |
+| **--par-color-border-avatar-red**         | Avatar border red    | Red status border         | `.avatar.status-border[data-status-color="red"]`                   |
+| **--par-color-border-avatar-green**       | Avatar border green  | Green status border       | `.avatar.status-border[data-status-color="green"]`                 |
+| **--par-color-border-avatar-yellow**      | Avatar border yellow | Yellow status border      | `.avatar.status-border[data-status-color="yellow"]`                |
+| **--par-color-text-avatar**               | Initials/placeholder | Initials & placeholder    | `.avatar-initials`, `.avatar-placeholder`, `.avatar-overflow-text` |
+| **--par-color-text-avatar-disabled**      | Avatar text          | Disabled state            | `.avatar.disabled`, `.avatar.disabled .avatar-img`                 |
+| **--par-color-text-avatar-trigger**       | AvatarTrigger text   | Avatar trigger text       |                                                                    |
+| **--avatar-group-spacing**                | Group spacing        | Spacing between avatars   | `.avatar-group.direction-row`, `.avatar-group.direction-column`    |
 
-> _Note: Replace `\<color\>` with supported color names: gray, red, green, yellow, blue, orange, cyan, violet, lime._
+> _Note: Status border tokens are set via `data-status-color` and mapped to the appropriate color variable. Supported colors: gray, red, green, yellow._
 
 ---
 

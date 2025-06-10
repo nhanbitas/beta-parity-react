@@ -13,12 +13,11 @@ import { CornerIndicator } from '../CornerIndicator';
 // Declare and export Avatar type and Avatar component
 
 const sizeMap = {
-  '2extra-small': '2xs',
-  'extra-small': 'xs',
-  small: 'sm',
-  medium: 'md',
-  large: 'lg',
-  'extra-large': 'xl'
+  xs: 'xs',
+  sm: 'sm',
+  md: 'md',
+  lg: 'lg'
+  // xl: 'xl' ** CONSIDER REMOVING XL SIZE **
 } as const;
 
 export type AvatarSize = keyof typeof sizeMap;
@@ -82,8 +81,10 @@ export interface AvatarProps extends React.HTMLAttributes<HTMLDivElement> {
 
     /**
      * Color of the status indicator.
+     *
+     * @default 'gray'
      */
-    color: 'gray' | 'orange' | 'violet' | 'green' | 'red' | 'yellow' | 'blue' | 'lime' | 'cyan';
+    color: 'gray' | 'green' | 'red' | 'yellow';
 
     /**
      * Whether the status indicator should pulse.
@@ -148,7 +149,7 @@ export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(
       src,
       alt,
       initials,
-      size = 'medium',
+      size = 'md',
       disabled = false,
       status,
       borderStyle = 'default',
@@ -194,7 +195,7 @@ export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(
         <div
           className={classNames(
             'avatar',
-            sizeMap[size],
+            sizeMap[size as AvatarSize],
             {
               disabled,
               'border-alternative': borderStyle === 'alternative',
@@ -207,7 +208,7 @@ export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(
           style={
             status?.type === 'border'
               ? {
-                  ['--avatar-status-color' as any]: `var(--par-color-bg-dot-solid-${status.color})`,
+                  ['--par-avatar-status-color' as any]: `var(--par-color-border-avatar-${status.color || 'gray'}${disabled ? '-disabled' : ''})`,
                   ...style
                 }
               : style
@@ -235,7 +236,7 @@ export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(
         <div
           className={classNames(
             'avatar',
-            sizeMap[size],
+            sizeMap[size as AvatarSize],
             {
               disabled,
               'border-alternative': borderStyle === 'alternative',
@@ -254,7 +255,7 @@ export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(
       <div
         className={classNames(
           'avatar',
-          sizeMap[size],
+          sizeMap[size as AvatarSize],
           {
             disabled,
             'border-alternative': borderStyle === 'alternative',
@@ -346,7 +347,7 @@ export const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
       max = 5,
       direction = 'row',
       spacing = '-0.5rem',
-      size = 'medium',
+      size = 'md',
       borderStyle = 'default',
       renderOverflow,
       onOverflowClick,
@@ -376,7 +377,7 @@ export const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
           if (React.isValidElement(child)) {
             return React.cloneElement(child as React.ReactElement<AvatarProps>, {
               key: index,
-              size: (child as React.ReactElement<AvatarProps>).props.size || size,
+              size: (child as React.ReactElement<AvatarProps>).props.size || (size as AvatarSize),
               borderStyle: (child as React.ReactElement<AvatarProps>).props.borderStyle || borderStyle,
               className: classNames((child as React.ReactElement<AvatarProps>).props.className, 'avatar-group-item')
             });
@@ -389,7 +390,7 @@ export const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
             renderOverflow(overflowCount)
           ) : (
             <Avatar
-              size={size}
+              size={size as AvatarSize}
               borderStyle={borderStyle}
               className='avatar-group-item avatar-group-overflow'
               onClick={onOverflowClick}

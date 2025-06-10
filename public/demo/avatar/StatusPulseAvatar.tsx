@@ -18,7 +18,7 @@ export const StatusPulseAvatar = () => {
         initials='JD'
         status={{
           type: 'border',
-          color: 'red',
+          color: 'green',
           pulse: true
         }}
       />

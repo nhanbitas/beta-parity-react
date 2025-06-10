@@ -27,7 +27,7 @@ export const AvatarWithNextImage = () => {
         />
       </Avatar>
 
-      <Avatar size='large' borderStyle='alternative'>
+      <Avatar size='lg' borderStyle='alternative'>
         <Image
           src='https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop'
           alt='Portrait'

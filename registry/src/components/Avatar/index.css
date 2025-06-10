@@ -31,8 +31,10 @@
 }
 
 .avatar.disabled {
+  pointer-events: none;
   background-color: var(--par-color-bg-avatar-disabled);
   color: var(--par-color-text-avatar-disabled);
+  border-color: var(--par-avatar-status-color);
 }
 
 .avatar.disabled .avatar-img {
@@ -77,45 +79,9 @@
   }
 }
 
-.avatar-status-dot.gray {
-  background-color: var(--par-color-bg-dot-solid-gray);
-}
-
-.avatar-status-dot.orange {
-  background-color: var(--par-color-bg-dot-solid-orange);
-}
-
-.avatar-status-dot.violet {
-  background-color: var(--par-color-bg-dot-solid-violet);
-}
-
-.avatar-status-dot.green {
-  background-color: var(--par-color-bg-dot-solid-green);
-}
-
-.avatar-status-dot.red {
-  background-color: var(--par-color-bg-dot-solid-red);
-}
-
-.avatar-status-dot.yellow {
-  background-color: var(--par-color-bg-dot-solid-yellow);
-}
-
-.avatar-status-dot.blue {
-  background-color: var(--par-color-bg-dot-solid-blue);
-}
-
-.avatar-status-dot.lime {
-  background-color: var(--par-color-bg-dot-solid-lime);
-}
-
-.avatar-status-dot.cyan {
-  background-color: var(--par-color-bg-dot-solid-cyan);
-}
-
 /* Status Border */
 .avatar.status-border {
-  border-color: var(--avatar-status-color);
+  border-color: var(--par-avatar-status-color);
 }
 
 /* Avatar sizes */
