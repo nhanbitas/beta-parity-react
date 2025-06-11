@@ -51,7 +51,7 @@ const mockTabs = [
 
 export const Tabs = (props: Props) => {
   return (
-    <>
+    <div className='max-w-[1200px]'>
       <ParityTabs
         data={Array(40)
           .fill(1)
@@ -71,6 +71,6 @@ export const Tabs = (props: Props) => {
       <ParityTabs data={mockTabs} side='bottom' className='mt-8' {...props} />
       <ParityTabs data={mockTabs} side='left' className='mt-8' {...props} />
       <ParityTabs data={mockTabs} side='right' className='mt-8' {...props} />
-    </>
+    </div>
   );
 };

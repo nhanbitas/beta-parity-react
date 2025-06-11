@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { ContentNavigation } from '@/registry/ui/ContentNavigation';
-import Skeleton from './Skeleton';
+import { Skeleton } from './Skeleton';
 import { ListOrdered, X } from 'lucide-react';
 
 export default function TableOfContents(props: any) {

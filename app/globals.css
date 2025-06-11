@@ -8,8 +8,6 @@
 :root,
 [data-scheme='light'] {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
   --background-alternative: var(--par-gray-25);
   --text-hover: var(--par-gray-900);
   --text-active: var(--par-gray-700);
@@ -17,8 +15,6 @@
 
 [data-scheme='dark'] {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
   --background-alternative: var(--par-gray-900);
   --text-hover: var(--par-gray-100);
   --text-active: var(--par-gray-300);
@@ -29,33 +25,13 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: white;
+.prose th {
+  font-weight: 600;
+  background-color: var(--background-alternative) !important;
 }
-
-/* .side-bar {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
-} */
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
 }
-
-/* test overide colors */
-
-/* body {
-  --par-color-text-badge-glass-lime: #ffffff;
-  --par-color-text-badge-glass-gray: #ffffff;
-  --par-color-text-badge-glass-red: #ffffff;
-  --par-color-text-badge-glass-green: #ffffff;
-  --par-color-text-badge-glass-yellow: #ffffff;
-  --par-color-text-badge-glass-blue: #ffffff;
-  --par-color-text-badge-glass-orange: #ffffff;
-  --par-color-text-badge-glass-cyan: #ffffff;
-  --par-color-text-badge-glass-violet: #ffffff;
-  --par-color-text-badge-glass-lime: #ffffff;
-} */

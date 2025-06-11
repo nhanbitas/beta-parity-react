@@ -27,9 +27,18 @@ const CodePreview = ({ paths, children, theme }: Props) => {
 
   if (!paths) return null;
 
+  const bgClass = theme === 'alternative' ? 'bg-[var(--par-color-bg-alternative)]' : 'bg-[var(--par-color-bg)]';
+
   return (
-    <section className='component-section excluded-content not-prose pt-1/2  w-full grow-0 rounded-lg border border-gray-200/50 p-8 shadow-sm'>
-      <div>{children}</div>
+    <section
+      className={`component-section excluded-content not-prose relative ${bgClass} pt-1/2 w-full grow-0 rounded-lg border border-gray-200/50 p-8 pt-20 shadow-sm`}
+    >
+      <div className='absolute left-0 top-0 flex w-full items-center justify-between border-b border-gray-200/50 px-8 py-4'>
+        <h2 className='text-sm font-semibold text-[var(--par-color-text)]'>Preview</h2>
+        <span className='text-sm italic text-[var(--par-color-text-secondary)]'>index.tsx</span>
+      </div>
+      <div className='w-full items-center justify-between *:shrink *:grow-0'>{children}</div>
+
       {!openCodeBlock ? (
         <button
           className='mt-4 py-2 text-sm text-[var(--par-color-text)] hover:underline'

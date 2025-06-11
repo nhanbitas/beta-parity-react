@@ -1,9 +1,13 @@
 import React from 'react';
 
-type Props = {};
-
-const Skeleton = (props: Props) => {
-  return <div className='my-4 h-64 animate-pulse rounded-md bg-[var(--par-color-bg-surface)]'></div>;
+type Props = React.HTMLAttributes<HTMLDivElement> & {
+  children?: React.ReactNode;
 };
 
-export default Skeleton;
+export const Skeleton = (props: Props) => {
+  return <div className='my-4 h-64 w-full animate-pulse rounded-md bg-[var(--par-color-bg-surface)]' {...props}></div>;
+};
+
+export const BlackSkeleton = (props: Props) => {
+  return <div className='my-4 h-64 w-full animate-pulse rounded-md bg-[var(--par-gray-950)]' {...props}></div>;
+};

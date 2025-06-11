@@ -7,7 +7,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 // @ts-ignore
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { Tooltip } from 'beta-parity-react/ui/Tooltip';
-import Skeleton from '../doc/Skeleton';
+import { BlackSkeleton } from '../doc/Skeleton';
 
 interface Props {
   children?: any;
@@ -17,13 +17,11 @@ interface Props {
   loading?: boolean;
 }
 
-const ComponentSection = ({ children, rawText, paths, theme, loading }: Props) => {
+const ComponentSection = ({ children, rawText, loading }: Props) => {
   const handleCopy = () => {
     navigator.clipboard.writeText(rawText || 'undefined');
     alert('Copied to clipboard!');
   };
-
-  const isAlternative = theme === 'alternative';
 
   return (
     <div className='w-full'>
@@ -43,12 +41,12 @@ const ComponentSection = ({ children, rawText, paths, theme, loading }: Props) =
 
       <div className='flex w-full items-center justify-center'>
         {loading || !rawText ? (
-          <Skeleton />
+          <BlackSkeleton />
         ) : (
           <SyntaxHighlighter
             language='javascript'
             style={atomDark}
-            className='tsx-language !mt-0 max-h-[600px] w-[1200px] flex-1 overflow-auto !text-sm'
+            className='tsx-language !mt-0 max-h-[600px] min-h-64 w-full flex-1 overflow-auto !text-sm'
           >
             {rawText}
           </SyntaxHighlighter>

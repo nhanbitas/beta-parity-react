@@ -55,7 +55,7 @@ import CodePreview from '@components/showcase/CodePreview';
 
 ---
 
-## Accordion API Reference\*\*\*\*
+## Accordion API Reference
 
 ### `<Accordion />`
 
@@ -72,7 +72,7 @@ import CodePreview from '@components/showcase/CodePreview';
 | **...BaseProps** | [See below](#baseprops)              |               | All layout/spacing props from **Base** (margin, padding, etc.)                 |
 | **...divProps**  | HTMLDivElement props                 |               | All native div props (**className**, **style**, etc.)                          |
 
-#### _items props structure_
+#### _`items` structure_
 
 | **Field**     | **Type**        | **Description**                          |
 | ------------- | --------------- | ---------------------------------------- |
@@ -106,17 +106,6 @@ import CodePreview from '@components/showcase/CodePreview';
 | --------------- | -------------------- | ----------- | ------------------------------------------------------- |
 | **isExpanded**  | boolean              |             | Whether the item is expanded (_injected automatically_) |
 | **...divProps** | HTMLDivElement props |             | All native div props (**className**, **style**, etc.)   |
-
-### <span id="baseprops"></span>**BaseProps** _(layout/spacing)_,
-
-| **Prop**                                  | **Type**         | **Description**                               |
-| ----------------------------------------- | ---------------- | --------------------------------------------- |
-| **m, mt, mr, mb, ml, mx, my**             | number \| string | Margin (all, top, right, bottom, left, x, y)  |
-| **p, pt, pr, pb, pl, px, py**             | number \| string | Padding (all, top, right, bottom, left, x, y) |
-| **w, h, minW, minH, maxW, maxH**          | number \| string | Width/height/min/max                          |
-| **bg, cl, op**                            | string           | Background, color, opacity (CSS)              |
-| **bd, bdColor, bdWidth, bdStyle, radius** | string           | Border, border color, width, style, radius    |
-| ...and more (see Base component)          |                  | All layout props from **Base**                |
 
 > **Note:** Accordion extends all layout/spacing props from the _Base_ component. See [BaseProps](../base/dev) for full list.
 

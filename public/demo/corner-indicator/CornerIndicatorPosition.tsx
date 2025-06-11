@@ -6,8 +6,8 @@ import { BellRing, PhoneMissed, Globe } from 'lucide-react';
 
 export const CornerIndicatorPosition = (props: any) => {
   return (
-    <>
-      <div className='flex  flex-wrap gap-8'>
+    <div className='flex flex-col gap-8'>
+      <div className='flex flex-wrap gap-8'>
         {['top-left', 'top-right', 'bottom-left', 'bottom-right'].map((position: any) => (
           <CornerIndicator key={position} pulse color='red' position={position} label='5' outline>
             <Button iconOnly color='accent' kind='glass'>
@@ -17,7 +17,7 @@ export const CornerIndicatorPosition = (props: any) => {
         ))}
       </div>
 
-      <div className='flex flex-col flex-wrap gap-8 '>
+      <div className='flex flex-wrap gap-8 '>
         {['top-left', 'top-right', 'bottom-left', 'bottom-right'].map((position: any) => (
           <CornerIndicator key={position} growDirection='inward' size='sm' color='red' position={position} label='23'>
             <Button iconOnly color='adverse' kind='glass'>
@@ -27,8 +27,8 @@ export const CornerIndicatorPosition = (props: any) => {
         ))}
       </div>
 
-      <div className='flex flex-col flex-wrap gap-8 '>
-        {['top-left', 'top-right', 'bottom-left', 'bottom-right'].map((position: any) => (
+      <div className='flex flex-wrap gap-28'>
+        {['top-right', 'bottom-right', 'top-left', 'bottom-left'].map((position: any) => (
           <CornerIndicator
             key={position}
             growDirection='outward'
@@ -43,6 +43,6 @@ export const CornerIndicatorPosition = (props: any) => {
           </CornerIndicator>
         ))}
       </div>
-    </>
+    </div>
   );
 };
