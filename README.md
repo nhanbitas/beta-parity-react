@@ -1,7 +1,7 @@
 
-# Parity React
+# Beta Parity React
 
-**Parity React** is a modern, lightweight, and customizable UI component library for React applications. Designed for scalability and maintainability, it offers a collection of reusable components that streamline the development of user interfaces.
+**Beta Parity React** is a modern, lightweight, and customizable UI component library for React applications. Designed for scalability and maintainability, it offers a collection of reusable components that streamline the development of user interfaces.
 
 ## 🚀 Features
 
@@ -33,7 +33,10 @@ yarn add beta-parity-react
 Import Parity theme in your React application:
 
 ```tsx
-import "beta-parity-react/ui/theme";
+import ThemeProvider from 'beta-parity-react/ui/theme';
+export default function App() {
+  return <ThemeProvider>... // Your application code</ThemeProvider>;
+}
 ```
 
 Import and use components in your React application:
@@ -48,7 +51,7 @@ export default function App() {
 
 ## 🎛 Theming
 
-Parity React uses CSS variables for flexible theming. Customize themes using `:root` and `[data-theme]` attributes:
+Beta Parity React uses CSS variables for flexible theming. Customize themes using `:root` and `[data-theme]` attributes:
 
 ```css
 :root, [data-theme="light"] {
@@ -125,7 +128,7 @@ We welcome contributions! Feel free to submit issues and pull requests.
 
 ### 🌍 Community & Support
 
-Join the Parity React community to get support, share ideas, and contribute:
+Join the Beta Parity React community to get support, share ideas, and contribute:
 
 - **GitHub Discussions**: [Here](https://beta-parity-react.vercel.app/)
 - **Website contact**: [Here](https://beta-parity-react.vercel.app/)
@@ -133,7 +136,7 @@ Join the Parity React community to get support, share ideas, and contribute:
 
 ### 🔥 Roadmap
 
-We are constantly working to improve Parity React. Here are some upcoming features:
+We are constantly working to improve Beta Parity React. Here are some upcoming features:
 
 - New Components: Expanding the library with more UI elements.
 
@@ -147,7 +150,7 @@ We are constantly working to improve Parity React. Here are some upcoming featur
 
 ---
 
-💡 **Parity React - Simplify your UI development!**
+💡 **Beta Parity React - Simplify your UI development!**
 
 
 

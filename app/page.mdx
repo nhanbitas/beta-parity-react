@@ -1,5 +1,31 @@
 <main className="prose flex min-h-screen w-full flex-col gap-8 p-8 sm:px-12 md:px-24 2xl:px-48">
 
+## Installation
+
+```bash
+npm install beta-parity-react
+```
+
+## Usage
+
+- Wrap your application code with ThemeProvider in your main entry point (e.g., `index.tsx` or `App.tsx`):
+
+```tsx
+import ThemeProvider from 'beta-parity-react/ui/theme';
+export default function App() {
+  return <ThemeProvider>... // Your application code</ThemeProvider>;
+}
+```
+
+- Use the components in your application. For example, to use a Button component:
+
+```tsx
+import { Button } from 'beta-parity-react/ui/button';
+export default function App() {
+  return <Button variant='primary'>Click Me</Button>;
+}
+```
+
 # Changelog
 
 ## Version 0.2.0:
@@ -50,7 +76,7 @@
   - Corner Indicator: core features
 - Change:
   - Color: update v2 color
-  - Plugins: generate variables based on tailwincss theme config
+  - Plugins: generate variables based on tailwindcss theme config
 - Fix:
   - Prevent override css from resetting css from tailwindcss
 
@@ -108,7 +134,7 @@
 ## Version 0.0.7:
 
 - Accordion: core
-- Bagde: core
+- Badge: core
 - Button: core
 
 </main>

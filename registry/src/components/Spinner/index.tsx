@@ -9,7 +9,7 @@ import './index.css';
 // =========================
 // Declare and export Spinner type and Spinner component
 
-export const sizeMap: Record<'sm' | 'md' | 'lg' | 'xl', string> = {
+const sizeMap: Record<'sm' | 'md' | 'lg' | 'xl', string> = {
   sm: 'small',
   md: 'medium',
   lg: 'large',

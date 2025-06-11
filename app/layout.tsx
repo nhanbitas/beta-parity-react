@@ -2,9 +2,11 @@ import type { Metadata } from 'next';
 import { cookies } from 'next/headers';
 import { Inter } from 'next/font/google';
 import './globals.css';
-import 'beta-parity-react/ui/theme/index.css';
-import SideBar from '@components/doc/SideBar';
+
+import { ThemeProvider as ParityThemeProvider } from 'beta-parity-react/ui';
 import ThemeProvider from '@components/doc/ThemeProvider';
+
+import SideBar from '@components/doc/SideBar';
 import ScrollToTopButton from '@/src/components/doc/ScrollToTopButton';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -24,11 +26,13 @@ export default async function RootLayout({
   const isValidTheme = theme ? ['light', 'dark'].includes(theme.value) : false;
   return (
     <html lang='en'>
-      <ThemeProvider initialTheme={isValidTheme ? theme.value : 'light'}>
-        <SideBar />
-        {children}
-        <ScrollToTopButton />
-      </ThemeProvider>
+      <ParityThemeProvider>
+        <ThemeProvider initialTheme={isValidTheme ? theme.value : 'light'}>
+          <SideBar />
+          {children}
+          <ScrollToTopButton />
+        </ThemeProvider>
+      </ParityThemeProvider>
     </html>
   );
 }

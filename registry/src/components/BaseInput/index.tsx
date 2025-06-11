@@ -15,7 +15,7 @@ import { useOutsideClick } from '../hooks/useOutsideClick';
 // =========================
 // Declare and export select type and Input component
 
-export const sizeMap: Record<'sm' | 'md', string> = {
+export const sizeInputMap: Record<'sm' | 'md', string> = {
   sm: 'small',
   md: 'medium'
 } as const;
@@ -109,7 +109,7 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
    * @default 'sm'
    * @memberof InputProps
    */
-  inputSize?: keyof typeof sizeMap;
+  inputSize?: keyof typeof sizeInputMap;
 }
 
 /**
@@ -249,7 +249,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
           className={classNames(
             'par-input',
             theme,
-            { 'error-state': isError, [sizeMap[inputSize]]: inputSize },
+            { 'error-state': isError, [sizeInputMap[inputSize]]: inputSize },
             className
           )}
           ref={combinedRef}

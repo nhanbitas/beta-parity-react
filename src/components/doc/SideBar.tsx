@@ -68,7 +68,7 @@ const SideBar = (props: Props) => {
           className='text-heading-compact-02 w-fit min-w-fit truncate px-4 py-3 font-bold uppercase hover:underline'
           href='/'
         >
-          Parity React
+          Beta Parity React
         </Link>
       </div>
 

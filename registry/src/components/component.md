@@ -21,7 +21,7 @@ import '../BaseInput/index.css';
 // Import components and hooks
 import { ContainedLabel } from '../FloatingLabel';
 import useCombinedRefs from '../hooks/useCombinedRefs';
-import { ErrorMessage, InputProps, InputWrapper, InputWrapperProps, sizeMap } from '../BaseInput';
+import { ErrorMessage, InputProps, InputWrapper, InputWrapperProps, sizeInputMap } from '../BaseInput';
 
 // Import locales
 import { Mandarin } from 'flatpickr/dist/l10n/zh.js';
@@ -135,7 +135,7 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
     }, [value]);
     // ...
 
-    // conditional rendering
+    // conditional rendering size
     return (
       <InputWrapper
         className={classNames(addedClassname, wrapperProps?.className)}

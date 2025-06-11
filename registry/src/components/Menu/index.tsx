@@ -11,7 +11,7 @@ import useKeyboard from '../hooks/useKeyboard';
 import useDidMountEffect from '../hooks/useDidMountEffect';
 import { Portal } from '../Portal';
 import useCombinedRefs from '../hooks/useCombinedRefs';
-import { useArrowKeyNavigation } from '../hooks/useArrowKeyNavigation ';
+import { useArrowKeyNavigation } from '../hooks/useArrowKeyNavigation';
 import { Checkbox } from '../Checkbox';
 import { Radio } from '../Radio';
 
