@@ -1,30 +1,34 @@
+import CodeBlock from '@components/showcase/CodeBlock';
+
 <main className="prose flex min-h-screen w-full flex-col gap-8 p-8 sm:px-12 md:px-24 2xl:px-48">
 
 ## Installation
 
-```bash
-npm install beta-parity-react
-```
+<CodeBlock language='bash'>npm install beta-parity-react</CodeBlock>
 
 ## Usage
 
 - Wrap your application code with ThemeProvider in your main entry point (e.g., `index.tsx` or `App.tsx`):
 
-```tsx
+<CodeBlock language='tsx'>
+  {`
 import ThemeProvider from 'beta-parity-react/ui/theme';
 export default function App() {
-  return <ThemeProvider>... // Your application code</ThemeProvider>;
+  return <ThemeProvider>... Your application code</ThemeProvider>;
 }
-```
+`}
+</CodeBlock>
 
 - Use the components in your application. For example, to use a Button component:
 
-```tsx
+<CodeBlock language='tsx'>
+  {`
 import { Button } from 'beta-parity-react/ui/button';
 export default function App() {
   return <Button variant='primary'>Click Me</Button>;
 }
-```
+`}
+</CodeBlock>
 
 # Changelog
 

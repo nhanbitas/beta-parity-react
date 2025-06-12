@@ -40,7 +40,7 @@ const ComponentSection = ({ children, rawText, loading }: Props) => {
       <div className='flex w-full items-center justify-center'>
         {!loading && rawText ? (
           <SyntaxHighlighter
-            language='javascript'
+            language='tsx'
             style={atomDark}
             className='tsx-language !mt-0 max-h-[600px] min-h-64 w-full flex-1 overflow-auto !text-sm'
           >
