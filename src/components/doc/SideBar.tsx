@@ -52,7 +52,7 @@ const SideBar = (props: Props) => {
 
   return (
     <aside
-      className={`side-bar fixed left-0 top-0 z-50 h-screen border-r border-[var(--par-color-border-surface)] bg-[var(--par-color-bg)] md:sticky ${isOpen ? 'w-64' : 'w-0'} transform duration-150 ease-in-out`}
+      className={`side-bar fixed left-0 top-0 z-50 h-screen border-r border-[var(--par-color-border-surface)] bg-[var(--par-color-bg)] md:sticky ${isOpen ? 'w-64' : 'w-0 -translate-x-full'} transform duration-150 ease-in-out`}
     >
       <button
         onClick={() => setIsOpen(!isOpen)}
