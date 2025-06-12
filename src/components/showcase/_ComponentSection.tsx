@@ -18,18 +18,28 @@ interface Props {
 }
 
 const ComponentSection = ({ children, rawText, loading }: Props) => {
+  const [copyInfo, setCopyInfo] = React.useState('Copy code');
+
   const handleCopy = () => {
     navigator.clipboard.writeText(rawText || 'undefined');
-    alert('Copied to clipboard!');
+    setCopyInfo('Copied!');
+  };
+
+  const handleMouseLeave = () => {
+    setCopyInfo('Copy code');
   };
 
   return (
     <div className='w-full'>
       <div className='w-full *:mt-12'>{children}</div>
 
-      <div className='relative flex w-full items-center justify-between py-1'>
+      <div
+        className='relative flex w-full items-center justify-between py-1'
+        onMouseLeave={handleMouseLeave}
+        onBlur={handleMouseLeave}
+      >
         {!loading && rawText ? (
-          <Tooltip content='Copy code to clipboard'>
+          <Tooltip content={copyInfo}>
             <button className='absolute right-4 top-4 rounded-md bg-transparent p-2 text-gray-100' onClick={handleCopy}>
               <CopyIcon />
             </button>

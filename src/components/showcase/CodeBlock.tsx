@@ -14,6 +14,8 @@ interface Props {
 }
 
 const CodeBlock = ({ children, language }: Props) => {
+  const [copyInfo, setCopyInfo] = React.useState('Copy code');
+
   if (!children) {
     return <div className='w-full'>No code provided</div>;
   }
@@ -26,14 +28,22 @@ const CodeBlock = ({ children, language }: Props) => {
 
   const handleCopy = () => {
     navigator.clipboard.writeText(rawText || 'undefined');
-    alert('Copied to clipboard!');
+    setCopyInfo('Copied!');
+  };
+
+  const handleMouseLeave = () => {
+    setCopyInfo('Copy code');
   };
 
   return (
     <div className='h-fit w-full'>
       <div className='text-sm font-semibold text-[var(--par-color-text-primary)]'>{language}</div>
-      <div className='relative z-10 flex w-full items-center justify-between py-1'>
-        <Tooltip content='Copy code to clipboard'>
+      <div
+        className='relative z-10 flex w-full items-center justify-between py-1'
+        onBlur={handleMouseLeave}
+        onMouseLeave={handleMouseLeave}
+      >
+        <Tooltip content={copyInfo}>
           <button className='absolute right-4 top-4 rounded-md bg-transparent p-2 text-gray-100' onClick={handleCopy}>
             <CopyIcon />
           </button>
