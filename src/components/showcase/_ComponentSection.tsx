@@ -28,21 +28,17 @@ const ComponentSection = ({ children, rawText, loading }: Props) => {
       <div className='w-full *:mt-12'>{children}</div>
 
       <div className='relative flex w-full items-center justify-between py-1'>
-        {/* <span className='text-sm italic'>
-            {paths && paths[1] ? paths[1].charAt(0).toUpperCase() + paths[1].slice(1) : ''}.tsx{' '}
-          </span> */}
-
-        <Tooltip content='Copy code to clipboard'>
-          <button className='absolute right-4 top-4 rounded-md bg-transparent p-2 text-gray-100' onClick={handleCopy}>
-            <CopyIcon />
-          </button>
-        </Tooltip>
+        {!loading && rawText ? (
+          <Tooltip content='Copy code to clipboard'>
+            <button className='absolute right-4 top-4 rounded-md bg-transparent p-2 text-gray-100' onClick={handleCopy}>
+              <CopyIcon />
+            </button>
+          </Tooltip>
+        ) : null}
       </div>
 
       <div className='flex w-full items-center justify-center'>
-        {loading || !rawText ? (
-          <BlackSkeleton />
-        ) : (
+        {!loading && rawText ? (
           <SyntaxHighlighter
             language='javascript'
             style={atomDark}
@@ -50,6 +46,8 @@ const ComponentSection = ({ children, rawText, loading }: Props) => {
           >
             {rawText}
           </SyntaxHighlighter>
+        ) : (
+          <BlackSkeleton />
         )}
       </div>
     </div>
