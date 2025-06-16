@@ -2,6 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
+:root,
+[data-scheme='light'] {
+  --par-color-text-prose-callout-gray: var(--par-gray-600);
+  --par-color-text-prose-callout-red: var(--par-red-600);
+  --par-color-text-prose-callout-green: var(--par-green-600);
+  --par-color-text-prose-callout-yellow: var(--par-yellow-600);
+  --par-color-text-prose-callout-blue: var(--par-blue-600);
+  --par-color-text-prose-callout-orange: var(--par-orange-600);
+  --par-color-text-prose-callout-cyan: var(--par-cyan-600);
+  --par-color-text-prose-callout-violet: var(--par-violet-600);
+  --par-color-text-prose-callout-lime: var(--par-lime-600);
+
+  --par-color-bg-prose-callout-gray: rgb(from var(--par-gray-100) r g b / 0.5);
+  --par-color-bg-prose-callout-red: rgb(from var(--par-red-100) r g b / 0.5);
+  --par-color-bg-prose-callout-green: rgb(from var(--par-green-100) r g b / 0.5);
+  --par-color-bg-prose-callout-yellow: rgb(from var(--par-yellow-100) r g b / 0.5);
+  --par-color-bg-prose-callout-blue: rgb(from var(--par-blue-100) r g b / 0.5);
+  --par-color-bg-prose-callout-orange: rgb(from var(--par-orange-100) r g b / 0.5);
+  --par-color-bg-prose-callout-cyan: rgb(from var(--par-cyan-100) r g b / 0.5);
+  --par-color-bg-prose-callout-violet: rgb(from var(--par-violet-100) r g b / 0.5);
+  --par-color-bg-prose-callout-lime: rgb(from var(--par-lime-100) r g b / 0.5);
+
+  --par-color-border-prose-callout-gray: var(--par-gray-400);
+  --par-color-border-prose-callout-red: var(--par-red-400);
+  --par-color-border-prose-callout-green: var(--par-green-400);
+  --par-color-border-prose-callout-yellow: var(--par-yellow-400);
+  --par-color-border-prose-callout-blue: var(--par-blue-400);
+  --par-color-border-prose-callout-orange: var(--par-orange-400);
+  --par-color-border-prose-callout-cyan: var(--par-cyan-400);
+  --par-color-border-prose-callout-violet: var(--par-violet-400);
+  --par-color-border-prose-callout-lime: var(--par-lime-400);
+
+  --color-text-link-prose-enabled: var(--par-blue-550);
+}
+
+[data-scheme='dark'] {
+  --par-color-text-prose-callout-gray: var(--par-gray-100);
+  --par-color-text-prose-callout-red: var(--par-red-100);
+  --par-color-text-prose-callout-green: var(--par-green-100);
+  --par-color-text-prose-callout-yellow: var(--par-yellow-100);
+  --par-color-text-prose-callout-blue: var(--par-blue-100);
+  --par-color-text-prose-callout-orange: var(--par-orange-100);
+  --par-color-text-prose-callout-cyan: var(--par-cyan-100);
+  --par-color-text-prose-callout-violet: var(--par-violet-100);
+  --par-color-text-prose-callout-lime: var(--par-lime-100);
+
+  --par-color-bg-prose-callout-gray: rgb(from var(--par-gray-800) r g b / 0.5);
+  --par-color-bg-prose-callout-red: rgb(from var(--par-red-800) r g b / 0.5);
+  --par-color-bg-prose-callout-green: rgb(from var(--par-green-800) r g b / 0.5);
+  --par-color-bg-prose-callout-yellow: rgb(from var(--par-yellow-800) r g b / 0.5);
+  --par-color-bg-prose-callout-blue: rgb(from var(--par-blue-800) r g b / 0.5);
+  --par-color-bg-prose-callout-orange: rgb(from var(--par-orange-800) r g b / 0.5);
+  --par-color-bg-prose-callout-cyan: rgb(from var(--par-cyan-800) r g b / 0.5);
+  --par-color-bg-prose-callout-violet: rgb(from var(--par-violet-800) r g b / 0.5);
+  --par-color-bg-prose-callout-lime: rgb(from var(--par-lime-800) r g b / 0.5);
+
+  --color-text-link-prose-enabled: var(--par-blue-200);
+}
+
 @layer components {
   .danger-icon {
     height: 1.5rem;
@@ -47,135 +106,178 @@
     mask-repeat: no-repeat;
     mask-image: url("data:image/svg+xml;utf8,<svg height='22px' width='22px' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='none' d='m9.75 20.75 1.47.82c.29.16.43.23.58.27a1 1 0 0 0 .4 0c.15-.04.3-.11.58-.27l1.47-.82m-9-2.5-1.43-.8c-.3-.16-.45-.24-.56-.36a1 1 0 0 1-.21-.36C3 16.57 3 16.4 3 16.06V14.5m0-5V7.94c0-.34 0-.51.05-.67a1 1 0 0 1 .21-.36c.11-.12.26-.2.56-.37l1.43-.79m4.5-2.5 1.47-.82c.29-.16.43-.23.58-.27a1 1 0 0 1 .4 0c.15.04.3.11.58.27l1.47.82m4.5 2.5 1.43.8c.3.16.45.24.56.36.1.1.16.23.21.36.05.16.05.33.05.67V9.5m0 5v1.56c0 .34 0 .51-.05.67a1 1 0 0 1-.21.36c-.11.12-.26.2-.56.37l-1.43.79m-9-7.5L12 12m0 0 2.25-1.25M12 12v2.5M3 7l2.25 1.25m13.5 0L21 7m-9 12.5V22' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'></path></svg>");
   }
+
   .prose {
     @apply relative h-auto min-h-screen w-full p-8;
   }
+
   .prose > :is(*):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
     @apply mb-6 w-full;
   }
+
   .prose :is(h1):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
     @apply text-heading-06 mb-4 mt-8 pb-2;
   }
+
   .prose :is(h2):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
     @apply text-heading-05 mb-4 mt-8 border-b pb-2;
   }
+
   .prose :is(h3):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
     @apply text-heading-04 mb-3 mt-6;
   }
+
   .prose :is(h4):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
-    @apply text-heading-03 mb-3 mt-6 text-gray-600;
+    @apply text-heading-03 mb-3 mt-6 text-[var(--par-color-text-secondary)];
   }
+
   .prose :is(h5):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
-    @apply text-heading-02 mb-2 mt-4 text-gray-600;
+    @apply text-heading-02 mb-2 mt-4 text-[var(--par-color-text-secondary)];
   }
+
   .prose :is(h6):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
-    @apply text-heading-01 mb-2 mt-4 text-gray-600;
+    @apply text-heading-01 mb-2 mt-4 text-[var(--par-color-text-secondary)];
   }
+
   .prose :is(p):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
     @apply text-body-02 mb-6 mt-4;
   }
+
   .prose :is(* > p:first-child):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
     @apply mt-0;
   }
+
   .prose :is(* > p:last-child):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
     @apply mb-0;
   }
+
   .prose :is(p + p):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
     @apply mt-0;
   }
+
   .prose :is(a):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
-    @apply text-blue-600 underline decoration-dotted decoration-1 underline-offset-2;
+    @apply text-[var(--color-text-link-prose-enabled)] underline decoration-dotted decoration-1 underline-offset-2;
   }
+
   .prose > :is(:where(h1, h2, h3, h4, h5, h6) a):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
-    @apply text-blue-600 no-underline;
+    @apply text-[var(--color-text-link-prose-enabled)] no-underline;
   }
+
   .prose :is(u):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
     @apply underline underline-offset-2;
   }
+
   .prose :is(del, s):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
-    @apply line-through decoration-gray-500;
+    @apply line-through decoration-[var(--par-color-text-secondary)];
   }
+
   .prose :is(ul):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
     @apply list-disc pl-7 text-base;
   }
+
   .prose :is(ol):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
     @apply list-decimal pl-7 text-base;
   }
+
   .prose :is(li:not(.task-list-item)):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
     @apply mt-1 pl-1;
   }
+
   .prose :is(ul > li):not(:where([class~='not-prose'], [class~='not-prose'] *))::marker {
-    @apply text-lg text-gray-600;
+    @apply text-lg text-[var(--par-color-text-secondary)];
   }
+
   .prose :is(ol > li):not(:where([class~='not-prose'], [class~='not-prose'] *))::marker {
-    @apply text-gray-600;
+    @apply text-[var(--par-color-text-secondary)];
   }
+
   .prose :is(li + li):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
     @apply mt-1;
   }
+
   .prose :is(li > p + p):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
     @apply mt-6;
   }
+
   .prose :is(table):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
-    @apply w-full border-gray-600 text-base;
+    @apply w-full border-[var(--par-color-border-surface-inverse)] text-base;
   }
+
   .prose :is(th):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
-    @apply border bg-gray-100 px-3 py-1;
+    @apply border bg-[var(--background-alternative)] px-3 py-1;
   }
+
   .prose :is(td):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
     @apply border px-3 py-1;
   }
+
   .prose :is(code):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
-    @apply text-code-02 inline rounded bg-gray-200 px-1 py-0.5;
+    @apply text-code-02 inline rounded bg-[var(--par-color-bg-surface-item-neutral-subtle-selected)] px-1 py-0.5;
   }
+
   .prose :is(pre):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
-    @apply rounded-md bg-gray-950 text-white;
+    @apply rounded-md bg-black text-[var(--par-color-text-primary-inverse)];
   }
+
   .prose :is(pre code):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
     @apply block overflow-visible rounded-none bg-transparent p-0;
   }
+
   .prose :is(blockquote):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
-    @apply relative px-6 text-base text-gray-600;
+    @apply relative px-6 text-base text-[var(--par-color-text-secondary)];
   }
+
   .prose :is(blockquote):not(:where([class~='not-prose'], [class~='not-prose'] *))::before {
-    @apply absolute left-0 h-full w-1 bg-gray-200 content-[''];
+    @apply absolute left-0 h-full w-1 bg-[var(--par-color-border-surface)] content-[''];
   }
+
   .prose :is(blockquote > blockquote):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
     @apply ml-0;
   }
+
   .prose :is(blockquote > p):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
     @apply mb-0 mt-0 py-2;
   }
+
   .prose :is(blockquote > p:has(+ blockquote)):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
     @apply mb-2;
   }
+
   .prose :is(dl):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
     @apply p-0 text-base;
   }
+
   .prose :is(dl dt:first-of-type):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
     @apply mt-0;
   }
+
   .prose :is(dl dt):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
     @apply mt-4 p-0 font-semibold italic;
   }
+
   .prose :is(dl dd):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
     @apply mb-4 p-0 pl-4;
   }
+
   .prose :is(dl dd:last-of-type):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
     @apply mb-0;
   }
+
   .prose :is(li.task-list-item):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
     @apply relative mt-1 list-none leading-6;
   }
+
   .prose :is(li.task-list-item > input[type='checkbox']):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
     @apply absolute -left-7 top-1;
   }
+
   .prose
     :is(li.task-list-item > input[type='checkbox']:checked:disabled):not(
       :where([class~='not-prose'], [class~='not-prose'] *)
     ) {
     @apply border-green-500 bg-green-50 opacity-100;
   }
+
   .prose
     :is(li.task-list-item > input[type='checkbox']:disabled):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
     @apply border-2 border-gray-200 bg-gray-100 opacity-100;
@@ -191,24 +293,31 @@
   .prose :is(pre:has(code)):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
     @apply relative overflow-hidden pt-8;
   }
+
   .prose :is(pre:has(code)):not(:where([class~='not-prose'], [class~='not-prose'] *))::before {
     @apply absolute left-0 top-0 h-8 w-full border-b border-gray-900 bg-black px-4 py-1.5 text-sm text-gray-400;
   }
+
   .prose :is(pre:has(code.language-html)):not(:where([class~='not-prose'], [class~='not-prose'] *))::before {
     content: 'HTML';
   }
+
   .prose :is(pre:has(code.language-markdown)):not(:where([class~='not-prose'], [class~='not-prose'] *))::before {
     content: 'Markdown';
   }
+
   .prose :is(pre:has(code.language-css)):not(:where([class~='not-prose'], [class~='not-prose'] *))::before {
     content: 'CSS';
   }
+
   .prose :is(pre:has(code.language-csharp)):not(:where([class~='not-prose'], [class~='not-prose'] *))::before {
     content: 'C#';
   }
+
   .prose :is(pre:has(code.language-php)):not(:where([class~='not-prose'], [class~='not-prose'] *))::before {
     content: 'PHP';
   }
+
   .prose
     :is(pre:has(:where(code.language-javascript, code.language-js))):not(
       :where([class~='not-prose'], [class~='not-prose'] *)
@@ -218,7 +327,7 @@
 }
 
 .callout {
-  @apply relative rounded-2xl border-2 border-dashed border-gray-500 bg-gray-50 px-6 pb-4 pt-12;
+  @apply relative rounded-2xl border-2 border-dashed border-[var(--par-color-border-prose-callout-gray)] bg-[var(--par-color-bg-prose-callout-gray)] px-6 pb-4 pt-12;
 }
 
 .callout::after {
@@ -236,29 +345,122 @@
 }
 
 .callout > p:not(:first-of-type) {
-  @apply text-black;
+  @apply text-[var(--par-color-text-primary)];
 }
 
 .callout > p:only-of-type {
-  @apply text-body-02 static mb-6 mt-4 text-black;
+  @apply text-body-02 static mb-6 mt-4 text-[var(--par-color-text-primary)];
 }
 
 .callout.danger {
-  @apply before:danger-icon border-red-500 bg-red-50 text-inherit text-red-500 before:bg-red-500 after:bg-red-200;
+  @apply before:danger-icon border-[var(--par-color-border-prose-callout-red)] bg-[var(--par-color-bg-prose-callout-red)] text-[var(--par-color-text-prose-callout-red)] before:bg-[var(--par-color-text-prose-callout-red)] after:bg-[var(--par-color-border-prose-callout-red)];
 }
 
 .callout.note {
-  @apply before:note-icon border-blue-500 bg-blue-50 text-blue-500 text-inherit before:bg-blue-500 after:bg-blue-200;
+  @apply before:note-icon border-[var(--par-color-border-prose-callout-blue)] bg-[var(--par-color-bg-prose-callout-blue)] text-[var(--par-color-text-prose-callout-blue)] before:bg-[var(--par-color-text-prose-callout-blue)] after:bg-[var(--par-color-border-prose-callout-blue)];
 }
 
 .callout.tip {
-  @apply before:tip-icon border-blue-500 bg-blue-50 text-blue-500 text-inherit before:bg-blue-500 after:bg-blue-200;
+  @apply before:tip-icon border-[var(--par-color-border-prose-callout-cyan)] bg-[var(--par-color-bg-prose-callout-cyan)] text-[var(--par-color-text-prose-callout-cyan)] before:bg-[var(--par-color-text-prose-callout-cyan)] after:bg-[var(--par-color-border-prose-callout-cyan)];
 }
 
 .callout.caution {
-  @apply before:caution-icon border-yellow-500 bg-yellow-50 text-inherit text-yellow-500 before:bg-yellow-500 after:bg-yellow-200;
+  @apply before:caution-icon border-[var(--par-color-border-prose-callout-yellow)] bg-[var(--par-color-bg-prose-callout-yellow)] text-[var(--par-color-text-prose-callout-yellow)] before:bg-[var(--par-color-text-prose-callout-yellow)] after:bg-[var(--par-color-border-prose-callout-yellow)];
 }
 
 .callout.experimental {
-  @apply before:experimental-icon border-violet-500 bg-violet-50 text-inherit text-violet-500 before:bg-violet-500 after:bg-violet-200;
+  @apply before:experimental-icon border-[var(--par-color-border-prose-callout-violet)] bg-[var(--par-color-bg-prose-callout-violet)] text-[var(--par-color-text-prose-callout-violet)] before:bg-[var(--par-color-text-prose-callout-violet)] after:bg-[var(--par-color-border-prose-callout-violet)];
+}
+
+/* highlight.js code blocks */
+
+pre code.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 1em;
+}
+code.hljs {
+  padding: 3px 5px;
+}
+.hljs {
+  color: #a8a8a8;
+  background: #161616;
+}
+.hljs-doctag,
+.hljs-keyword,
+.hljs-meta .hljs-keyword,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-type,
+.hljs-variable.language_ {
+  color: #ff5715;
+}
+.hljs-title,
+.hljs-title.class_,
+.hljs-title.class_.inherited__,
+.hljs-title.function_ {
+  color: #b892e2;
+}
+.hljs-attr,
+.hljs-attribute,
+.hljs-literal,
+.hljs-meta,
+.hljs-operator,
+.hljs-selector-attr,
+.hljs-selector-class,
+.hljs-selector-id,
+.hljs-variable {
+  color: #94dfff;
+}
+.hljs-number {
+  color: #d9f3ff;
+}
+.hljs-meta .hljs-string,
+.hljs-regexp,
+.hljs-string {
+  color: #7ee787;
+}
+.hljs-built_in,
+.hljs-symbol {
+  color: #ff9971;
+}
+.hljs-code,
+.hljs-comment,
+.hljs-formula {
+  color: #525252;
+}
+.hljs-name,
+.hljs-quote,
+.hljs-selector-pseudo,
+.hljs-selector-tag {
+  color: #4294ff;
+}
+.hljs-subst {
+  color: #c6c6c6;
+}
+.hljs-section {
+  color: #0063e6;
+  font-weight: 700;
+}
+.hljs-bullet {
+  color: #ffd561;
+}
+.hljs-emphasis {
+  color: #a8a8a8;
+  font-style: italic;
+}
+.hljs-strong {
+  color: #a8a8a8;
+  font-weight: 700;
+}
+.hljs-addition {
+  color: #aff5b4;
+  background-color: #033a16;
+}
+.hljs-deletion {
+  color: #ffdcd7;
+  background-color: #67060c;
+}
+.hljs-tag {
+  color: #525252;
 }
