@@ -43,8 +43,11 @@ jobs:
       - name: Build Next.js app
         run: npm run build
 
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v4
+
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
 
