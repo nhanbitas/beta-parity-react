@@ -14,7 +14,7 @@ const withMDX = mdx({
   }
 });
 
-const isProd = process.env.NODE_ENV === 'production';
+const isGHPProd = process.env.GITHUB_PAGE_ENV === 'production';
 const isNextProd = process.env.NEXT_PUBLIC_VERCEL_ENV === 'production';
 
 /** @type {import('next').NextConfig} */
@@ -34,8 +34,8 @@ const nextConfig = {
   },
 
   ...(!isNextProd && {
-    basePath: isProd ? '/beta-parity-react' : '',
-    assetPrefix: isProd ? '/beta-parity-react/' : ''
+    basePath: isGHPProd ? '/beta-parity-react' : '',
+    assetPrefix: isGHPProd ? '/beta-parity-react/' : ''
   })
 };
 

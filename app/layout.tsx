@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import './globals.css';
 
 import { ThemeProvider as ParityThemeProvider } from 'beta-parity-react/ui';
@@ -7,8 +6,6 @@ import ThemeProvider from '@components/doc/ThemeProvider';
 
 import SideBar from '@components/doc/SideBar';
 import ScrollToTopButton from '@/src/components/doc/ScrollToTopButton';
-
-const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Demo | React Components Library',

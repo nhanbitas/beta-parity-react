@@ -5,6 +5,8 @@ on:
     branches:
       - main
   workflow_dispatch:
+env:
+  GITHUB_PAGE_ENV: production
 
 permissions:
   contents: read
