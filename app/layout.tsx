@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { cookies } from 'next/headers';
 import { Inter } from 'next/font/google';
 import './globals.css';
 
@@ -21,13 +20,10 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const cookieStore = await cookies();
-  const theme = cookieStore.get('theme') as any;
-  const isValidTheme = theme ? ['light', 'dark'].includes(theme.value) : false;
   return (
     <html lang='en'>
       <ParityThemeProvider>
-        <ThemeProvider initialTheme={isValidTheme ? theme.value : 'light'}>
+        <ThemeProvider>
           <SideBar />
           {children}
           <ScrollToTopButton />

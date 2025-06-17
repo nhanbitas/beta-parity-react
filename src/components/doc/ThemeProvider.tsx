@@ -5,11 +5,10 @@ import React from 'react';
 
 type Props = {
   children: React.ReactNode;
-  initialTheme: 'light' | 'dark';
 };
 
 const ThemeProvider = (props: Props) => {
-  const [theme, setTheme] = React.useState<'light' | 'dark'>(props.initialTheme);
+  const [theme, setTheme] = React.useState<'light' | 'dark'>('light');
 
   React.useEffect(() => {
     const getCookie = (name: string) => {

@@ -1,5 +1,5 @@
 {
-  "name": "beta-parity-react-web",
+  "name": "parity-react-web",
   "version": "0.1.1",
   "private": true,
   "type": "module",
@@ -7,6 +7,7 @@
     "dev": "next dev --port 3005",
     "build": "next build",
     "start": "next start --port 3005",
+    "preview": "npx serve out -l 3005",
     "lint": "next lint",
     "install:packages": "npm run install:lib && npm run build:lib && npm install",
     "install:lib": "npm install --prefix registry",
@@ -38,6 +39,7 @@
     "postcss": "^8",
     "prettier": "3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.14",
+    "serve": "^14.2.4",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }

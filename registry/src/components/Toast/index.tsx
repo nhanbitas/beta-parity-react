@@ -22,7 +22,7 @@ export interface ToastOptions extends Omit<ToastProps, 'id' | 'removeToast'> {}
  * myToast.stop(); // Remove the toast
  *
  *
- * @see {@link https://beta-parity-react.vercel.app/toast Parity Toast}
+ * @see {@link https://parity-react.vercel.app/toast Parity Toast}
  */
 
 const toast = ({ position, kind, ...options }: ToastOptions) => {
@@ -33,22 +33,27 @@ const toast = ({ position, kind, ...options }: ToastOptions) => {
     ...options
   };
 
-  const eventAddToast = new CustomEvent('parity-add-toast', {
-    detail: detail
-  });
-
-  const eventRemoveToast = new CustomEvent('parity-remove-toast', {
-    detail: detail
-  });
-
-  const eventUpdateToast = (options: ToastOptions) =>
-    new CustomEvent('parity-update-toast', { detail: { ...detail, ...options } });
+  const clientDispatch = (type: 'add' | 'remove' | 'update', updateOptions?: ToastOptions) => {
+    if (typeof window !== 'undefined') {
+      let event: CustomEvent;
+      if (type === 'add') {
+        event = new CustomEvent('parity-add-toast', { detail });
+      } else if (type === 'remove') {
+        event = new CustomEvent('parity-remove-toast', { detail });
+      } else {
+        event = new CustomEvent('parity-update-toast', { detail: { ...detail, ...updateOptions } });
+      }
+      window.dispatchEvent(event);
+    } else {
+      console.warn('Toast events can only be dispatched in a browser environment.');
+    }
+  };
 
   return {
     getDetail: () => detail,
-    start: () => window.dispatchEvent(eventAddToast),
-    stop: () => window.dispatchEvent(eventRemoveToast),
-    update: (options: ToastOptions) => window.dispatchEvent(eventUpdateToast(options))
+    start: () => clientDispatch('add'),
+    stop: () => clientDispatch('remove'),
+    update: (options: ToastOptions) => clientDispatch('update', options)
   };
 };
 

@@ -19,6 +19,8 @@ const nextConfig = {
   images: {
     domains: ['images.unsplash.com']
   },
+  output: 'export',
+  trailingSlash: true,
   reactStrictMode: false,
   pageExtensions: ['js', 'jsx', 'mdx', 'md', 'ts', 'tsx'],
   productionBrowserSourceMaps: true,
