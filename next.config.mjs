@@ -14,6 +14,8 @@ const withMDX = mdx({
   }
 });
 
+const isProd = process.env.NODE_ENV === 'production';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -27,7 +29,9 @@ const nextConfig = {
   eslint: {
     dirs: [],
     ignoreDuringBuilds: true
-  }
+  },
+  basePath: isProd ? '/beta-parity-react' : '',
+  assetPrefix: isProd ? '/beta-parity-react/' : ''
 };
 
 export default withMDX(nextConfig);
