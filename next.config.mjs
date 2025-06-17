@@ -15,6 +15,7 @@ const withMDX = mdx({
 });
 
 const isProd = process.env.NODE_ENV === 'production';
+const isNextProd = process.env.NEXT_PUBLIC_VERCEL_ENV === 'production';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -31,8 +32,11 @@ const nextConfig = {
     dirs: [],
     ignoreDuringBuilds: true
   },
-  basePath: isProd ? '/beta-parity-react' : '',
-  assetPrefix: isProd ? '/beta-parity-react/' : ''
+
+  ...(!isNextProd && {
+    basePath: isProd ? '/beta-parity-react' : '',
+    assetPrefix: isProd ? '/beta-parity-react/' : ''
+  })
 };
 
 export default withMDX(nextConfig);
