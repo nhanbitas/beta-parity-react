@@ -1,0 +1,5 @@
+{
+  "outputDirectory": "out",
+  "buildCommand": "next build",
+  "installCommand": "cd registry && npm install && npm run build && cd .. && npm install"
+}
