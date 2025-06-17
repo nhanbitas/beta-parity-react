@@ -2,14 +2,13 @@
 
 import ComponentSection from './_ComponentSection';
 import React, { useEffect, useState } from 'react';
+import { BASE_URL } from '@/src/api/config';
 
 type Props = {
   paths?: [string, string];
   children?: React.ReactNode;
   theme?: 'default' | 'alternative';
 };
-
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3005';
 
 const CodePreview = ({ paths, children, theme }: Props) => {
   const [rawText, setRawText] = useState<string | null>(null);
