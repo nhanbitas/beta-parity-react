@@ -22,6 +22,7 @@ const nextConfig = {
     domains: ['images.unsplash.com']
   },
   output: 'export',
+  distDir: 'out',
   trailingSlash: true,
   reactStrictMode: false,
   pageExtensions: ['js', 'jsx', 'mdx', 'md', 'ts', 'tsx'],
