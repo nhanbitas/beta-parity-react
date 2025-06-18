@@ -16,14 +16,14 @@ const withMDX = mdx({
 
 const isGHPProd = process.env.GITHUB_PAGE_ENV === 'production';
 const isNextProd = process.env.NEXT_PUBLIC_VERCEL_ENV === 'production';
+const isDev = process.env.NODE_ENV === 'development';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
     domains: ['images.unsplash.com']
   },
-  output: 'export',
-  distDir: 'out',
+
   trailingSlash: true,
   reactStrictMode: false,
   pageExtensions: ['js', 'jsx', 'mdx', 'md', 'ts', 'tsx'],
@@ -33,7 +33,9 @@ const nextConfig = {
     ignoreDuringBuilds: true
   },
 
-  ...(!isNextProd && {
+  ...(!(isNextProd || isDev) && {
+    output: 'export',
+    distDir: 'out',
     basePath: isGHPProd ? '/beta-parity-react' : '',
     assetPrefix: isGHPProd ? '/beta-parity-react/' : ''
   })
