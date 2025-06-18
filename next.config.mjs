@@ -16,7 +16,7 @@ const withMDX = mdx({
 
 const isGHPProd = process.env.GITHUB_PAGE_ENV === 'production';
 const isNextProd = process.env.NEXT_PUBLIC_VERCEL_ENV === 'production';
-const isDev = process.env.NODE_ENV === 'development';
+const isDev = process.env.NEXT_PUBLIC_VERCEL_ENV === 'development';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
