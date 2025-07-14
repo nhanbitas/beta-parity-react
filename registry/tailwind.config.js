@@ -49,6 +49,6 @@ module.exports = {
     require('./plugins/typography.tw.js'),
     require('./plugins/zIndex.tw.js'),
     require('./plugins/icons.tw.js'),
-    require('./plugins/generate-varaiable.tw.js')
+    require('./plugins/generate-variable.tw.js')
   ]
 };

@@ -9,7 +9,7 @@ export const KindButton = () => {
       <h3>Solid</h3>
       <div className='my-4 flex gap-4'>
         {colors.map((color) => (
-          <Button key={color} color={color as any}>
+          <Button type='submit' key={color} color={color as any}>
             Button
           </Button>
         ))}

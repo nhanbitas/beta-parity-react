@@ -35,7 +35,7 @@ const kindMap: Record<'solid' | 'outlined' | 'ghost' | 'glass', string> = {
  *
  * Extends properties from the `button` element.
  */
-export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /**
    * The size of the button. It can be one of the keys from the sizeMap.
    *
