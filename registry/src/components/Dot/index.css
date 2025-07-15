@@ -1,5 +1,5 @@
 .dot {
-  @apply relative m-0 min-h-1 min-w-1 shrink-0 select-none rounded-full bg-[currentColor] p-0;
+  @apply relative m-0 flex min-h-1 min-w-1 shrink-0 select-none rounded-full bg-[currentColor] p-0;
 }
 
 .dot.pulse::before {

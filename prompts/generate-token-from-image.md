@@ -12,7 +12,7 @@ template:
 
 ```css
 :root,
-[data-theme='light'] {
+[data-scheme='light'] {
   /* TEXT */
   --par-color-text-accordion-item-enabled: var(--par-gray-550);
   --par-color-text-accordion-item-hovered: var(--par-gray-600);

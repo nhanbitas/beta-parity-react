@@ -1,13 +1,58 @@
 /* Base Avatar */
-.avatar {
+
+.avatar-wrapper {
+  z-index: 0;
   position: relative;
+  width: fit-content;
+  height: fit-content;
+  background-color: inherit;
+  border-radius: 9999px;
+}
+
+.avatar-border {
+  z-index: -1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 9999px;
+  width: calc(100% + 4px); /* 4px to account for the border */
+  height: calc(100% + 4px); /* 4px to account for the border */
+  background-color: var(--par-color-border-avatar);
+  pointer-events: none;
+}
+
+.avatar-border::after {
+  content: '';
+  z-index: -1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 9999px;
+  width: calc(100% - 4px);
+  height: calc(100% - 4px);
+  background-color: var(--par-color-border-avatar);
+  pointer-events: none;
+}
+
+.avatar-frame {
+  padding: var(--avatar-frame-gap, 0);
+  background-color: inherit;
+  border-radius: 9999px;
+}
+
+.avatar {
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  border-radius: 9999px; /* full rounded */
   background-color: var(--par-color-bg-avatar);
-  border: 2px solid var(--par-color-border-avatar);
+  border: none;
+  position: relative;
+  border-radius: 9999px;
+  width: 100%;
+  height: 100%;
 }
 
 .avatar-img {
@@ -23,147 +68,141 @@
 
 .avatar-placeholder {
   display: flex;
-  width: 66.666667%;
-  height: 66.666667%;
+  width: calc(2 / 3);
+  height: calc(2 / 3);
   align-items: center;
   justify-content: center;
   color: var(--par-color-text-avatar);
 }
 
 .avatar.disabled {
-  pointer-events: none;
+  cursor: not-allowed;
   background-color: var(--par-color-bg-avatar-disabled);
   color: var(--par-color-text-avatar-disabled);
   border-color: var(--par-avatar-status-color);
+}
+
+.avatar-border.disabled {
+  cursor: not-allowed;
+  background-color: var(--par-avatar-status-color);
 }
 
 .avatar.disabled .avatar-img {
   opacity: 0.5;
 }
 
-.avatar.border-alternative {
-  border-color: var(--par-color-border-avatar-alternative);
+.avatar-border.pulse {
+  @apply animate-pulse;
 }
 
-.avatar.border-none {
-  border: none;
+.avatar-border.border-alternative {
+  background-color: var(--par-color-border-avatar-alternative);
 }
 
-/* Status Indicators */
-.avatar-status-dot {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  border-radius: 9999px;
-  width: 30%;
-  height: 30%;
-}
-
-.avatar-status-dot.pulse::before {
-  content: '';
-  position: absolute;
-  display: inline-flex;
-  height: 100%;
-  width: 100%;
-  border-radius: 9999px;
-  background: inherit;
-  opacity: 0.75;
-  animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
-}
-
-@keyframes ping {
-  75%,
-  100% {
-    transform: scale(2);
-    opacity: 0;
-  }
+.avatar-border.border-none {
+  background-color: unset;
 }
 
 /* Status Border */
-.avatar.status-border {
-  border-color: var(--par-avatar-status-color);
+.avatar-border.status-border {
+  background-color: var(--par-avatar-status-color) !important;
 }
 
 /* Avatar sizes */
-.avatar.\32xs {
-  height: 1rem;
-  width: 1rem;
-  border-width: 1px;
+.avatar-frame.xxs {
+  height: 1.125rem;
+  width: 1.125rem;
 }
 
-.avatar.\32xs .avatar-status-dot {
-  bottom: 0;
-  right: 0;
-  width: 1.5px;
-  height: 1.5px;
+.avatar-frame.xxs .avatar-initials {
+  font-size: 0.6875rem;
 }
 
-.avatar.\32xs .avatar-initials {
-  font-size: 0.5rem;
-}
-
-.avatar.xs {
+.avatar-frame.xs {
   height: 1.25rem;
   width: 1.25rem;
-  border-width: 1px;
 }
 
-.avatar.xs .avatar-status-dot {
-  bottom: 0;
-  right: 0;
-  width: 2px;
-  height: 2px;
-}
-
-.avatar.xs .avatar-initials {
-  font-size: 0.625rem;
-}
-
-.avatar.sm {
-  height: 1.5rem;
-  width: 1.5rem;
-  border-width: 1px;
-}
-
-.avatar.sm .avatar-status-dot {
-  bottom: 0;
-  right: 0;
-  width: 3px;
-  height: 3px;
-}
-
-.avatar.sm .avatar-initials {
+.avatar-frame.xs .avatar-initials {
   font-size: 0.75rem;
 }
 
-.avatar.md {
+.avatar-frame.sm {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.avatar-frame.sm .avatar-initials {
+  font-size: 0.875rem;
+}
+
+.avatar-frame.md {
+  height: 1.75rem;
+  width: 1.75rem;
+}
+
+.avatar-frame.md .avatar-initials {
+  font-size: 1rem;
+}
+
+.avatar-frame.lg {
   height: 2rem;
   width: 2rem;
 }
 
-.avatar.md .avatar-initials {
+.avatar-frame.lg .avatar-initials {
   font-size: 1rem;
 }
 
-.avatar.lg {
-  height: 2.5rem;
-  width: 2.5rem;
+.avatar-frame.xl {
+  height: 2.25rem;
+  width: 2.25rem;
 }
 
-.avatar.lg .avatar-initials {
-  font-size: 1.25rem;
+.avatar-frame.xl .avatar-initials {
+  font-size: 1rem;
 }
 
-.avatar.xl {
-  height: 3rem;
-  width: 3rem;
+/* Status Indicators */
+.avatar-dot-wrapper {
+  position: absolute !important;
+  bottom: 0;
+  right: 0;
+  height: fit-content;
+  width: fit-content;
+  border-radius: 9999px;
+  transform: translateX(-1px) translateY(-1px); /* Adjust position to align with the avatar */
+  background-color: inherit;
 }
 
-.avatar.xl .avatar-initials {
-  font-size: 1.5rem;
+.avatar-dot-border,
+.avatar-dot-frame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% + 2px); /* 2px to account for the border left + right */
+  height: calc(100% + 2px); /* 2px to account for the border left + right */
+  border-radius: 9999px;
+}
+
+.avatar-dot-border {
+  background-color: var(--par-color-border-avatar);
+}
+
+.avatar-dot-border.border-alternative {
+  background-color: var(--par-color-border-avatar-alternative);
+}
+
+.avatar-dot-frame {
+  background-color: inherit;
 }
 
 /* Avatar Trigger */
+.avatar-trigger-button {
+  border-radius: 9999px;
+}
+
 .avatar-trigger {
   cursor: pointer;
   background-color: var(--par-color-bg-avatar-trigger);
@@ -174,6 +213,10 @@
 
 .avatar-trigger:hover {
   opacity: 0.8;
+}
+
+.avatar-trigger.disabled:hover {
+  opacity: 1;
 }
 
 .avatar-trigger.active {
@@ -193,10 +236,6 @@
 
 .avatar-group.direction-column {
   flex-direction: column;
-}
-
-.avatar-group-item {
-  border: 2px solid var(--par-color-border-avatar);
 }
 
 .avatar-group.direction-row .avatar-group-item:not(:first-child) {

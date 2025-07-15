@@ -1,5 +1,5 @@
 :root,
-[data-theme='light'] {
+[data-scheme='light'] {
   --par-color-text-tag-outlined-neutral: var(--par-neutral-600);
   --par-color-text-tag-outlined-accent: var(--par-accent-600);
   --par-color-text-tag-glass-neutral: var(--par-neutral-600);

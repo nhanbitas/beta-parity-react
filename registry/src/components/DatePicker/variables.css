@@ -4,7 +4,7 @@
 @import url('../Button/variables.css');
 
 :root,
-[data-theme='light'] {
+[data-scheme='light'] {
   /* TEXT */
   --par-color-text-datepicker-days-today-neutral-enabled: var(--par-neutral-950);
   --par-color-text-datepicker-days-today-neutral-hovered: var(--par-neutral-950);

@@ -55,7 +55,7 @@ import CodePreview from '@components/showcase/CodePreview';
 ## Avatar Group
 
 <CodePreview paths={['avatar', 'AvatarGroup']}>
-  <Demo.AvatarGroup />
+  <Demo.AvatarGroupDemo />
 </CodePreview>
 
 ## Avatar Trigger
@@ -94,37 +94,60 @@ import CodePreview from '@components/showcase/CodePreview';
 
 ### `<Avatar />`
 
-| **Prop**        | **Type**                                      | **Default** | **Description**                              |
-| --------------- | --------------------------------------------- | ----------- | -------------------------------------------- |
-| **src**         | string                                        |             | Image URL                                    |
-| **initials**    | string                                        |             | Initials fallback                            |
-| **size**        | '2xs' \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' | _'md'_      | Avatar size                                  |
-| **status**      | 'online' \| 'offline' \| 'busy' \| 'away'     |             | Status indicator                             |
-| **borderStyle** | 'default' \| 'alternative' \| 'none'          | _'default'_ | Border style                                 |
-| **children**    | ReactNode                                     |             | Custom content                               |
-| **...divProps** | HTMLDivElement props                          |             | All native div props (className, style, ...) |
+Displays a user avatar with support for image, initials, icon fallback, status indicator (dot or border), and custom content.
+
+| **Prop**         | **Type**                                      | **Default** | **Description**                               |
+| ---------------- | --------------------------------------------- | ----------- | --------------------------------------------- |
+| **src**          | string                                        |             | Image URL for the avatar.                     |
+| **alt**          | string                                        |             | Alt text for the image.                       |
+| **initials**     | string                                        |             | Initials to display if no image is available. |
+| **size**         | 'xxs' \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' | _'md'_      | Avatar size.                                  |
+| **framePadding** | number                                        | _1_         | Padding (px) between avatar and border.       |
+| **disabled**     | boolean                                       | _false_     | Disables the avatar.                          |
+| **status**       | \{ type, color, pulse, borderStyle }          |             | Status indicator (see below for details).     |
+| **wrapperProps** | React.HTMLAttributes\<HTMLDivElement>         |             | Props for the avatar wrapper element.         |
+| **children**     | ReactNode                                     |             | Custom content inside the avatar.             |
+| **...divProps**  | HTMLDivElement props                          |             | All native div props (className, style, ...). |
+
+**`status` object:**
+
+| **Field**   | **Type**                                          | **Default** | **Description**             |
+| ----------- | ------------------------------------------------- | ----------- | --------------------------- |
+| type        | 'dot' \| 'border'                                 | _'border'_  | Status indicator type.      |
+| color       | 'gray' \| 'green' \| 'red' \| 'yellow'            | _'gray'_    | Status color.               |
+| pulse       | boolean                                           | _false_     | Pulse animation for status. |
+| borderStyle | 'default' \| 'alternative' \| 'none' \| 'inherit' | _'default'_ | Border style for status.    |
+
+---
 
 ### `<AvatarGroup />`
 
-| **Prop**            | **Type**                                | **Default** | **Description**                              |
-| ------------------- | --------------------------------------- | ----------- | -------------------------------------------- |
-| **max**             | number                                  | _5_         | Max avatars to display before overflow.      |
-| **direction**       | 'row' \| 'column'                       | _'row'_     | Stack direction.                             |
-| **spacing**         | string                                  | _'-0.5rem'_ | Spacing between avatars.                     |
-| **size**            | AvatarSize                              | _'medium'_  | Size for all avatars in the group.           |
-| **borderStyle**     | 'default' \| 'alternative' \| 'none'    | _'default'_ | Border style for all avatars.                |
-| **renderOverflow**  | (overflowCount: number) => ReactNode    |             | Custom overflow indicator.                   |
-| **onOverflowClick** | (e: MouseEvent[HTMLDivElement]) => void |             | Handler for overflow avatar click.           |
-| **...divProps**     | HTMLDivElement props                    |             | All native div props (className, style, ...) |
+Displays a group of avatars with overflow handling and shared props.
+
+| **Prop**            | **Type**                                          | **Default** | **Description**                                 |
+| ------------------- | ------------------------------------------------- | ----------- | ----------------------------------------------- |
+| **max**             | number                                            | _5_         | Max avatars to display before showing overflow. |
+| **direction**       | 'row' \| 'column'                                 | _'row'_     | Stack direction.                                |
+| **spacing**         | string                                            | _'-0.5rem'_ | Spacing between avatars.                        |
+| **size**            | 'xxs' \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'     | _'md'_      | Size for all avatars in the group.              |
+| **borderStyle**     | 'default' \| 'alternative' \| 'none' \| 'inherit' | _'default'_ | Border style for all avatars.                   |
+| **framePadding**    | number                                            |             | Padding for all avatars.                        |
+| **renderOverflow**  | (overflowCount, hiddenAvatars) => ReactNode       |             | Custom overflow indicator renderer.             |
+| **onOverflowClick** | (e: React.MouseEvent\<HTMLDivElement>) => void    |             | Handler for overflow avatar click.              |
+| **children**        | ReactNode                                         |             | Avatars to display.                             |
+| **...divProps**     | HTMLDivElement props                              |             | All native div props (className, style, ...).   |
+
+---
 
 ### `<AvatarTrigger />`
 
-| **Prop**           | **Type**                                | **Default** | **Description**                         |
-| ------------------ | --------------------------------------- | ----------- | --------------------------------------- |
-| **onClick**        | (e: MouseEvent[HTMLDivElement]) => void |             | Click handler for the trigger.          |
-| **active**         | boolean                                 | _false_     | Whether the trigger is active/selected. |
-| **...AvatarProps** | [See above](#avatar-api-reference)      |             | All props from **Avatar**.              |
+A clickable avatar, typically used as a trigger for menus or popovers. Inherits all Avatar props.
 
-> **Note:** _AvatarTrigger_ **extends** all props from **Avatar**. See the Avatar props table above for details.
+| **Prop**           | **Type**                           | **Default** | **Description**                         |
+| ------------------ | ---------------------------------- | ----------- | --------------------------------------- |
+| **active**         | boolean                            | _false_     | Whether the trigger is active/selected. |
+| **...AvatarProps** | [See above](#avatar-api-reference) |             | All props from **Avatar**.              |
+
+> **Note:** _AvatarTrigger_ extends all props from **Avatar**. See the Avatar props table above for details.
 
 ---

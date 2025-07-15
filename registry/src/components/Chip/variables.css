@@ -1,5 +1,5 @@
 :root,
-[data-theme='light'] {
+[data-scheme='light'] {
   /* TEXT */
   --par-color-text-chip-outlined-unselected-neutral-enabled: var(--par-neutral-550);
   --par-color-text-chip-outlined-unselected-neutral-hovered: var(--par-neutral-600);

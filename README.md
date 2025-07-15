@@ -51,13 +51,13 @@ export default function App() {
 
 ## 🎛 Theming
 
-Beta Parity React uses CSS variables for flexible theming. Customize themes using `:root` and `[data-theme]` attributes:
+Beta Parity React uses CSS variables for flexible theming. Customize themes using `:root` and `[data-scheme]` attributes:
 
 ```css
-:root, [data-theme="light"] {
+:root, [data-scheme="light"] {
     --par-color-text-primary: var(--par-gray-950);
 }
-[data-theme="dark"] {
+[data-scheme="dark"] {
     --par-color-text-primary: var(--white);
 }
 ```

@@ -1,7 +1,7 @@
 @import '../theme/alias/text-icon-colors.css';
 
 :root,
-[data-theme='light'] {
+[data-scheme='light'] {
   /* TEXT */
   --par-color-text-pagination-item-control-enabled: var(--par-gray-550);
   --par-color-text-pagination-item-control-hovered: var(--par-gray-600);

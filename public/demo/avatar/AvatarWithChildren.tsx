@@ -39,7 +39,7 @@ export const AvatarWithChildren = () => {
         </div>
       </Avatar>
 
-      <Avatar size='md' borderStyle='alternative'>
+      <Avatar size='md' status={{ borderStyle: 'alternative' }}>
         <div
           style={{
             backgroundColor: 'var(--par-yellow-500)',

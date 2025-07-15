@@ -5,22 +5,35 @@ import classNames from 'classnames';
 import './index.css';
 import './variables.css';
 
-import { CornerIndicator } from '../CornerIndicator';
+import { Dot } from '../Dot';
+import { UserRound } from 'lucide-react';
 
 // =========================
 // Avatar
 // =========================
 // Declare and export Avatar type and Avatar component
 
-const sizeMap = {
+const sizeAvatarMap = {
+  xxs: 'xxs',
   xs: 'xs',
   sm: 'sm',
   md: 'md',
-  lg: 'lg'
-  // xl: 'xl' ** CONSIDER REMOVING XL SIZE **
+  lg: 'lg',
+  xl: 'xl'
 } as const;
 
-export type AvatarSize = keyof typeof sizeMap;
+const sizeAvatarToDot = {
+  xxs: 'xs',
+  xs: 'xs',
+  sm: 'sm',
+  md: 'md',
+  lg: 'lg',
+  xl: 'xl'
+} as const;
+
+export type borderStyle = 'default' | 'alternative' | 'none' | 'inherit';
+
+export type AvatarSize = keyof typeof sizeAvatarMap;
 
 /**
  * Props for the Avatar component.
@@ -59,6 +72,16 @@ export interface AvatarProps extends React.HTMLAttributes<HTMLDivElement> {
   size?: AvatarSize;
 
   /**
+   * Modifies the padding of the avatar frame (the gap between the avatar and the border).
+   *
+   * Unit is in pixels.
+   *
+   * @default 1
+   * @memberof AvatarProps
+   */
+  framePadding?: number;
+
+  /**
    * Whether the avatar should be disabled.
    *
    * @default false
@@ -77,14 +100,14 @@ export interface AvatarProps extends React.HTMLAttributes<HTMLDivElement> {
      *
      * @default 'dot'
      */
-    type?: 'dot' | 'border' | 'badge';
+    type?: 'dot' | 'border';
 
     /**
      * Color of the status indicator.
      *
      * @default 'gray'
      */
-    color: 'gray' | 'green' | 'red' | 'yellow';
+    color?: 'gray' | 'green' | 'red' | 'yellow';
 
     /**
      * Whether the status indicator should pulse.
@@ -94,47 +117,23 @@ export interface AvatarProps extends React.HTMLAttributes<HTMLDivElement> {
     pulse?: boolean;
 
     /**
-     * Size of the status indicator.
+     * Border style for the avatar.
+     * 'default' uses the border color.
+     * 'alternative' uses the alternative border color.
+     * 'none' removes the border.
      *
-     * @default 'md'
+     * @default 'default'
+     * @memberof AvatarProps
      */
-    size?: 'xs' | 'sm' | 'md' | 'lg';
-
-    /**
-     * Optional label for badge status type.
-     */
-    label?: string;
-
-    /**
-     * Optional icon for badge status type.
-     */
-    icon?: React.ReactNode;
-
-    /**
-     * Position of the indicator.
-     *
-     * @default 'bottom-right'
-     */
-    position?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
-
-    /**
-     * Offset for the indicator from the edge.
-     *
-     * @default 0
-     */
-    offset?: number;
+    borderStyle?: borderStyle;
   };
 
   /**
-   * Border style for the avatar.
-   * 'default' uses the border color defined in variables.css.
-   * 'alternative' uses the alternative border color defined in variables.css.
-   * 'none' removes the border.
+   * Custom styles for the wrapper element of the avatar.
    *
-   * @default 'default'
    * @memberof AvatarProps
    */
-  borderStyle?: 'default' | 'alternative' | 'none';
+  wrapperProps?: React.HTMLAttributes<HTMLDivElement>;
 }
 
 /**
@@ -151,14 +150,23 @@ export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(
       initials,
       size = 'md',
       disabled = false,
-      status,
-      borderStyle = 'default',
+      framePadding = 1,
+      status: statusProp,
       style,
       children,
+      wrapperProps,
       ...props
     },
     ref
   ) => {
+    const status = {
+      type: 'border',
+      color: undefined,
+      pulse: false,
+      borderStyle: 'default',
+      ...statusProp
+    } as AvatarProps['status'];
+
     const [imgError, setImgError] = React.useState(false);
 
     const handleImgError = () => {
@@ -173,98 +181,105 @@ export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(
         alt={alt || ''}
         onError={handleImgError}
         className='avatar-img'
-        style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+        style={{ objectFit: 'cover', width: '100%', height: '100%', ...style }}
       />
     ) : initials ? (
       <span className='avatar-initials'>{initials}</span>
     ) : (
       <span className='avatar-placeholder' aria-hidden='true'>
-        <svg viewBox='0 0 128 128' fill='currentColor' xmlns='http://www.w3.org/2000/svg'>
-          <path
-            fillRule='evenodd'
-            clipRule='evenodd'
-            d='M103 102.139C93.094 111.92 79.3994 118 64.1641 118C48.9287 118 35.2339 111.92 25.3281 102.139C26.9542 95.1136 31.7734 89.0087 38.6641 85.2919C45.0748 81.8501 52.995 80 64 80C75.005 80 82.9253 81.8501 89.336 85.2919C96.2267 89.0087 101.046 95.1136 103 102.139ZM64 99C77.2548 99 88 88.2548 88 75C88 61.7452 77.2548 51 64 51C50.7452 51 40 61.7452 40 75C40 88.2548 50.7452 99 64 99Z'
-          />
-        </svg>
+        <UserRound className='avatar-placeholder-icon' />
       </span>
     );
 
     // Use border status type if specified
     if (status?.type === 'border') {
-      return (
-        <div
-          className={classNames(
-            'avatar',
-            sizeMap[size as AvatarSize],
-            {
-              disabled,
-              'border-alternative': borderStyle === 'alternative',
-              'border-none': borderStyle === 'none',
-              'status-border': true
-            },
-            className
-          )}
-          ref={ref}
-          style={
-            status?.type === 'border'
-              ? {
-                  ['--par-avatar-status-color' as any]: `var(--par-color-border-avatar-${status.color || 'gray'}${disabled ? '-disabled' : ''})`,
-                  ...style
-                }
-              : style
+      const hasColor = !!status.color;
+      const isHasGapFrame = status.borderStyle === 'inherit' || hasColor;
+      const showBorder = !['none', 'inherit'].includes(status.borderStyle || '');
+
+      const borderStyleVars = hasColor
+        ? {
+            ['--par-avatar-status-color' as any]: `var(--par-color-border-avatar-${status.color})`
           }
-          data-status-color={status.color}
-          {...props}
-        >
-          {avatarContent}
+        : {};
+
+      const frameGap = isHasGapFrame ? `${framePadding}px` : '0px';
+
+      return (
+        <div {...wrapperProps} className={classNames('avatar-wrapper', wrapperProps?.className)}>
+          {/* Border layer */}
+          {showBorder && (
+            <div
+              className={classNames('avatar-border', {
+                'border-alternative': status.borderStyle === 'alternative',
+                'status-border': hasColor,
+                pulse: status.pulse
+              })}
+              style={{ ...borderStyleVars }}
+              data-status-color={status.color}
+            />
+          )}
+
+          {/* Avatar frame */}
+          <div
+            className={classNames('avatar-frame', sizeAvatarMap[size as AvatarSize])}
+            style={{ ['--avatar-frame-gap' as any]: frameGap }}
+          >
+            {/* Main avatar content */}
+            <div
+              className={classNames('avatar', sizeAvatarMap[size as AvatarSize], { disabled }, className)}
+              ref={ref}
+              {...props}
+            >
+              {avatarContent}
+            </div>
+          </div>
         </div>
       );
     }
 
-    // Use CornerIndicator for dot and badge status types
-    return status && (status.type === 'dot' || status.type === 'badge' || !status.type) ? (
-      <CornerIndicator
-        position={status.position || 'bottom-right'}
-        color={status.color}
-        size={status.size || 'md'}
-        pulse={status.pulse}
-        offset={status.offset || -6}
-        label={status.type === 'badge' ? status.label : undefined}
-        icon={status.type === 'badge' ? status.icon : undefined}
-        outline={status.type === 'badge' ? false : true}
-      >
-        <div
-          className={classNames(
-            'avatar',
-            sizeMap[size as AvatarSize],
-            {
-              disabled,
-              'border-alternative': borderStyle === 'alternative',
-              'border-none': borderStyle === 'none'
-            },
-            className
-          )}
-          ref={ref}
-          style={style}
-          {...props}
-        >
-          {avatarContent}
+    // Use CornerIndicator for dot status types
+    if (status && (status.type === 'dot' || !status.type)) {
+      return (
+        <div {...wrapperProps} className={classNames('avatar-wrapper', wrapperProps?.className)}>
+          {/* Avatar frame */}
+          <div className={classNames('avatar-frame', sizeAvatarMap[size as AvatarSize])}>
+            {/* Main avatar content */}
+            <div
+              className={classNames('avatar', sizeAvatarMap[size as AvatarSize], { disabled }, className)}
+              ref={ref}
+              style={style}
+              {...props}
+            >
+              {avatarContent}
+            </div>
+          </div>
+
+          {/* Status dot */}
+          <div className='avatar-dot-wrapper'>
+            {/* Dot border layer */}
+            <div
+              className={classNames('avatar-dot-border', {
+                'border-alternative': status.borderStyle === 'alternative'
+              })}
+            />
+
+            {/* Dot frame */}
+            {status.borderStyle === 'inherit' && <div className={classNames('avatar-dot-frame')} />}
+
+            {/* dot */}
+            {status.type === 'dot' && (
+              <Dot className='avatar-dot' color={status.color} size={sizeAvatarToDot[size]} pulse={status.pulse} />
+            )}
+          </div>
         </div>
-      </CornerIndicator>
-    ) : (
+      );
+    }
+
+    return (
       <div
-        className={classNames(
-          'avatar',
-          sizeMap[size as AvatarSize],
-          {
-            disabled,
-            'border-alternative': borderStyle === 'alternative',
-            'border-none': borderStyle === 'none'
-          },
-          className
-        )}
+        className={classNames('avatar', sizeAvatarMap[size as AvatarSize], { disabled }, className)}
         ref={ref}
-        style={style}
         {...props}
       >
         {avatarContent}
@@ -278,7 +293,7 @@ Avatar.displayName = 'Avatar';
 /**
  * Props for the AvatarGroup component.
  */
-export interface AvatarGroupProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface AvatarGroupProps extends Pick<AvatarProps, 'framePadding'>, React.HTMLAttributes<HTMLDivElement> {
   /**
    * The maximum number of avatars to display before showing a "+X" overflow avatar.
    *
@@ -317,14 +332,14 @@ export interface AvatarGroupProps extends React.HTMLAttributes<HTMLDivElement> {
    * @default 'default'
    * @memberof AvatarGroupProps
    */
-  borderStyle?: 'default' | 'alternative' | 'none';
+  borderStyle?: borderStyle;
 
   /**
    * Function to render a custom overflow indicator.
    *
    * @memberof AvatarGroupProps
    */
-  renderOverflow?: (overflowCount: number) => React.ReactNode;
+  renderOverflow?: (overflowCount: number, hiddenAvatars: React.ReactNode[]) => React.ReactNode;
 
   /**
    * Handler for when the overflow avatar is clicked.
@@ -337,7 +352,7 @@ export interface AvatarGroupProps extends React.HTMLAttributes<HTMLDivElement> {
 /**
  * **Parity AvatarGroup**.
  *
- * @see {@link https://beta-parity-react.vercel.app/avatar Parity AvatarGroup}
+ * @see {@link https://parity-react.vercel.app/avatar Parity AvatarGroup}
  */
 export const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
   (
@@ -349,6 +364,7 @@ export const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
       spacing = '-0.5rem',
       size = 'md',
       borderStyle = 'default',
+      framePadding,
       renderOverflow,
       onOverflowClick,
       style,
@@ -359,6 +375,7 @@ export const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
     const childrenArray = React.Children.toArray(children);
     const totalAvatars = childrenArray.length;
     const visibleAvatars = max ? childrenArray.slice(0, max) : childrenArray;
+    const hiddenAvatars = childrenArray.slice(max || 0, totalAvatars);
     const overflowCount = Math.max(0, totalAvatars - (max || 0));
 
     const groupStyle = {
@@ -377,9 +394,16 @@ export const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
           if (React.isValidElement(child)) {
             return React.cloneElement(child as React.ReactElement<AvatarProps>, {
               key: index,
-              size: (child as React.ReactElement<AvatarProps>).props.size || (size as AvatarSize),
-              borderStyle: (child as React.ReactElement<AvatarProps>).props.borderStyle || borderStyle,
-              className: classNames((child as React.ReactElement<AvatarProps>).props.className, 'avatar-group-item')
+              size: (child as React.ReactElement<AvatarProps>).props.size || size,
+              framePadding: framePadding,
+              status:
+                (child as React.ReactElement<AvatarProps>).props.status ||
+                ({
+                  borderStyle: borderStyle
+                } as AvatarProps['status']),
+              wrapperProps: {
+                className: classNames((child as React.ReactElement<AvatarProps>).props.className, 'avatar-group-item')
+              }
             });
           }
           return child;
@@ -387,14 +411,16 @@ export const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
 
         {overflowCount > 0 &&
           (renderOverflow ? (
-            renderOverflow(overflowCount)
+            renderOverflow(overflowCount, hiddenAvatars)
           ) : (
-            <Avatar
-              size={size as AvatarSize}
-              borderStyle={borderStyle}
-              className='avatar-group-item avatar-group-overflow'
+            <AvatarTrigger
+              size={size}
+              status={{ type: 'border', pulse: false, borderStyle }}
+              className='avatar-group-overflow'
               onClick={onOverflowClick}
               initials={`+${overflowCount}`}
+              framePadding={framePadding}
+              wrapperProps={{ className: 'avatar-group-item' }}
             />
           ))}
       </div>
@@ -415,13 +441,6 @@ AvatarGroup.displayName = 'AvatarGroup';
  */
 export interface AvatarTriggerProps extends AvatarProps {
   /**
-   * Callback triggered when the avatar is clicked.
-   *
-   * @memberof AvatarTriggerProps
-   */
-  onClick?: (e: React.MouseEvent<HTMLDivElement>) => void;
-
-  /**
    * Whether the trigger is active.
    *
    * @default false
@@ -433,13 +452,11 @@ export interface AvatarTriggerProps extends AvatarProps {
 /**
  * **Parity AvatarTrigger**.
  *
- * @see {@link https://beta-parity-react.vercel.app/avatar Parity AvatarTrigger}
+ * @see {@link https://parity-react.vercel.app/avatar Parity AvatarTrigger}
  */
 export const AvatarTrigger = React.forwardRef<HTMLDivElement, AvatarTriggerProps>(
-  ({ className, active = false, onClick, ...props }, ref) => {
-    return (
-      <Avatar ref={ref} className={classNames('avatar-trigger', { active }, className)} onClick={onClick} {...props} />
-    );
+  ({ className, active = false, ...props }, ref) => {
+    return <Avatar tabIndex={0} ref={ref} className={classNames('avatar-trigger', { active }, className)} {...props} />;
   }
 );
 

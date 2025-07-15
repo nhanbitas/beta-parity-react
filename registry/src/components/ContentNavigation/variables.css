@@ -1,5 +1,5 @@
 :root,
-[data-theme='light'] {
+[data-scheme='light'] {
   /* TEXT */
   --par-color-text-content-navigation-enabled: var(--par-gray-500);
   --par-color-text-content-navigation-hovered: var(--par-gray-600);

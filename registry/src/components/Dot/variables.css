@@ -1,5 +1,5 @@
 :root,
-[data-theme='light'] {
+[data-scheme='light'] {
   --par-color-bg-dot-solid-gray: var(--par-gray-600);
   --par-color-bg-dot-solid-red: var(--par-red-600);
   --par-color-bg-dot-solid-green: var(--par-green-600);
@@ -11,7 +11,7 @@
   --par-color-bg-dot-solid-lime: var(--par-lime-600);
 }
 
-[data-theme='dark'] {
+[data-scheme='dark'] {
   --par-color-bg-dot-solid-gray: var(--par-gray-100);
   --par-color-bg-dot-solid-red: var(--par-red-100);
   --par-color-bg-dot-solid-green: var(--par-green-100);

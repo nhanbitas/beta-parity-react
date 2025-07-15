@@ -2,7 +2,7 @@
 @import url(../Progress/variables.css);
 
 :root,
-[data-theme='light'] {
+[data-scheme='light'] {
   --par-color-bg-fileitem-enabled: var(--par-gray-50);
   --par-color-bg-fileitem-failed: var(--par-red-50);
 }

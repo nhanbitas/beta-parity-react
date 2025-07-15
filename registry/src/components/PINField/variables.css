@@ -3,7 +3,7 @@
 @import '../theme/alias/background.css';
 
 :root,
-[data-theme='light'] {
+[data-scheme='light'] {
   /* Default state */
   --pinfield-border-color: var(--par-color-border-field-enabled);
   --pinfield-bg-color: var(--par-color-bg-field-enabled);

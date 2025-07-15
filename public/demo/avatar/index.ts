@@ -5,7 +5,7 @@ export { BorderStylesAvatar } from './BorderStylesAvatar';
 export { StatusDotsAvatar } from './StatusDotsAvatar';
 export { StatusBorderAvatar } from './StatusBorderAvatar';
 export { StatusPulseAvatar } from './StatusPulseAvatar';
-export { AvatarGroup } from './AvatarGroup';
+export { AvatarGroupDemo } from './AvatarGroup';
 export { AvatarTrigger } from './AvatarTrigger';
 export { DisabledAvatar } from './DisabledAvatar';
 export { AvatarWithChildren } from './AvatarWithChildren';
