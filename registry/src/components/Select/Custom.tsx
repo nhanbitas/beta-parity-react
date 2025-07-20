@@ -327,7 +327,11 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
     ]);
 
     React.useEffect(() => {
-      setCurrentValue(value || multiselect ? [] : '');
+      if (value !== undefined) {
+        setCurrentValue(value);
+      } else {
+        setCurrentValue(multiselect ? [] : '');
+      }
     }, [value, multiselect]);
 
     const accessibilityWrapperProps = {

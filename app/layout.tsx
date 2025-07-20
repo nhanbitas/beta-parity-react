@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 
-import { ThemeProvider as ParityThemeProvider } from 'beta-parity-react/ui';
+import { ThemeProvider as ParityThemeProvider } from 'beta-parity-react/ui/theme';
 import ThemeProvider from '@components/doc/ThemeProvider';
 
 import SideBar from '@components/doc/SideBar';

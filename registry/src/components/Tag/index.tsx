@@ -40,7 +40,7 @@ export interface TagProps extends BaseProps {
    *
    * @memberof TagProps
    */
-  label: string;
+  label?: string;
 
   /**
    * Optional icon to display in the Tag, image is supported
