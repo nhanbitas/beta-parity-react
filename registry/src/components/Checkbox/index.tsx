@@ -278,7 +278,7 @@ export const CheckboxGroup = ({
     updateParents(data);
 
     return data;
-  }, [tree, label, value, sublabel]);
+  }, [tree, label, value, sublabel, children]);
 
   const [treeData, setTreeData] = React.useState<any>(rootData);
 
