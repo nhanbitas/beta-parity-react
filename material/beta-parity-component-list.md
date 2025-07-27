@@ -37,6 +37,16 @@ All design tokens follow this pattern:
 
 **Note**: All components inherit Base layout props.
 
+**Usage Example**:
+```tsx
+<Base component="section" p={4} m={2} bg="var(--par-color-bg)" radius={8}>
+  <Base component="h1" mb={3} cl="var(--par-color-text-primary)">
+    Title
+  </Base>
+  Content goes here
+</Base>
+```
+
 ---
 
 ### 2. Accordion Component
@@ -61,6 +71,18 @@ All design tokens follow this pattern:
 - Text: `--par-color-text-accordion-item-{enabled|hovered|pressed|expanded|disabled}`
 - Background: `--par-color-bg-accordion-{menu|item-{enabled|hovered|pressed|expanded|disabled}}`
 - Border: `--par-color-border-surface`
+
+**Usage Example**:
+```tsx
+<Accordion type="single" kind="contained" defaultValue="item-1">
+  <AccordionItem value="item-1">
+    <AccordionItemTrigger>What is Beta Parity?</AccordionItemTrigger>
+    <AccordionItemContent>
+      Beta Parity is a design system for React applications.
+    </AccordionItemContent>
+  </AccordionItem>
+</Accordion>
+```
 
 ---
 
@@ -94,6 +116,23 @@ All design tokens follow this pattern:
 - Text: `--par-color-text-avatar{-disabled|-trigger}`
 - Spacing: `--avatar-group-spacing`
 
+**Usage Example**:
+```tsx
+<Avatar 
+  src="/user-avatar.jpg" 
+  alt="User Avatar" 
+  initials="JP"
+  size="md"
+  status={{ type: 'dot', color: 'green', pulse: true }}
+/>
+
+<AvatarGroup max={3} spacing="-0.5rem">
+  <Avatar src="/user1.jpg" initials="A" />
+  <Avatar src="/user2.jpg" initials="B" />
+  <Avatar src="/user3.jpg" initials="C" />
+</AvatarGroup>
+```
+
 ---
 
 ### 4. Badge Component
@@ -111,6 +150,17 @@ All design tokens follow this pattern:
 - Text: `--par-color-text-badge-{solid|outlined|glass}-{color}`
 - Background: `--par-color-bg-badge-{solid|outlined|glass}-{color}`
 - Border: `--par-color-border-badge-{solid|outlined|glass}-{color}`
+
+**Usage Example**:
+```tsx
+<Badge 
+  label="New" 
+  color="green" 
+  variant="solid" 
+  size="sm"
+  icon={<CheckIcon />}
+/>
+```
 
 ---
 
@@ -130,6 +180,18 @@ All design tokens follow this pattern:
 **Design Tokens**:
 - Text: `--par-color-text-breadcrumb-item-active`
 - Separator: `--par-color-separator-breadcrumb`
+
+**Usage Example**:
+```tsx
+<Breadcrumb 
+  separator="chevron"
+  breadcrumbList={[
+    { href: '/', children: 'Home' },
+    { href: '/products', children: 'Products' },
+    { children: 'Current Page', color: 'neutral' }
+  ]}
+/>
+```
 
 ---
 
@@ -151,6 +213,19 @@ All design tokens follow this pattern:
 
 States: enabled, hovered, pressed, disabled, pending
 
+**Usage Example**:
+```tsx
+<Button 
+  size="md" 
+  color="accent" 
+  kind="solid"
+  isPending={false}
+  onClick={() => console.log('clicked')}
+>
+  Submit
+</Button>
+```
+
 ---
 
 ### 7. Checkbox Component
@@ -166,6 +241,17 @@ States: enabled, hovered, pressed, disabled, pending
 **Design Tokens**:
 - Icon: `--par-color-icon-checkbox-{enabled|disabled|indeterminate|neutral-selected|accent-selected}`
 - Background: `--par-color-bg-checkbox-{neutral|accent}-{selected|disabled}`
+
+**Usage Example**:
+```tsx
+<Checkbox 
+  color="accent"
+  label="I agree to the terms and conditions"
+  sublabel="This is required to proceed"
+  checked={true}
+  onChange={(e) => console.log(e.target.checked)}
+/>
+```
 
 ---
 
@@ -192,6 +278,18 @@ States: enabled, hovered, pressed, disabled, pending
 - Background: `--par-color-bg-chip-{kind}-{selected|unselected}-color-{status}`
 - Border: `--par-color-border-chip-{selected|unselected}-color-{status}`
 
+**Usage Example**:
+```tsx
+<Chip 
+  label="React" 
+  type="toggle"
+  color="accent"
+  kind="outlined"
+  checked={true}
+  onRemove={(value) => console.log('Remove', value)}
+/>
+```
+
 ---
 
 ### 9. ContentNavigation Component
@@ -208,6 +306,16 @@ States: enabled, hovered, pressed, disabled, pending
 - Text: `--par-color-text-content-navigation-{enabled|hovered|pressed|neutral-selected|accent-selected}`
 - Border: `--par-color-border-content-navigation-{enabled|active-neutral|active-accent}`
 - Background: `--par-color-bg-content-navigation`
+
+**Usage Example**:
+```tsx
+<ContentNavigation 
+  target="main"
+  color="accent"
+  spaceToTop={80}
+  exclude=".skip-toc"
+/>
+```
 
 ---
 
@@ -232,6 +340,20 @@ States: enabled, hovered, pressed, disabled, pending
 
 **Design Tokens**:
 - Outline: `--par-color-outline-corner-indicator`
+
+**Usage Example**:
+```tsx
+<div style={{ position: 'relative', width: 100, height: 100 }}>
+  <CornerIndicator 
+    label="5"
+    position="top-right"
+    color="red"
+    variant="solid"
+    pulse={true}
+  />
+  Button content
+</div>
+```
 
 ---
 
@@ -264,6 +386,18 @@ States: enabled, hovered, pressed, disabled, pending
 - Button: `--par-color-bg-field-button-{enabled|hovered|pressed|disabled}`
 - Icon: `--par-color-icon-field-button-{enabled|hovered|pressed|disabled}`
 
+**Usage Example**:
+```tsx
+<BaseInput 
+  type="text"
+  placeholder="Enter your name"
+  leftIcon={<UserIcon />}
+  isClearable={true}
+  floatingLabel="Full Name"
+  onChange={(e) => console.log(e.target.value)}
+/>
+```
+
 ---
 
 ### 12. DatePicker Component
@@ -292,6 +426,20 @@ States: enabled, hovered, pressed, disabled, pending
 - Background: `--par-color-bg-datepicker-{days|month-select-dropdown}`
 - Border: `--par-color-border-datepicker{-month-select-list}`
 
+**Usage Example**:
+```tsx
+<DatePicker 
+  color="accent"
+  locale="en"
+  floatingLabel="Select Date"
+  options={{ 
+    dateFormat: "Y-m-d",
+    enableTime: false 
+  }}
+  onChange={(selectedDates) => console.log(selectedDates)}
+/>
+```
+
 ---
 
 ### 13. Dot Component
@@ -304,6 +452,15 @@ States: enabled, hovered, pressed, disabled, pending
 
 **Design Tokens**:
 - Background: `--par-color-bg-dot-solid-{color}`
+
+**Usage Example**:
+```tsx
+<Dot 
+  size="md" 
+  color="green" 
+  pulse={true} 
+/>
+```
 
 ---
 
@@ -322,6 +479,18 @@ States: enabled, hovered, pressed, disabled, pending
 
 **Design Tokens**:
 - Text: `--color-text-link-{standard|neutral}-{enabled|hovered|focused|disabled}`
+
+**Usage Example**:
+```tsx
+<InlineLink 
+  href="/docs" 
+  size="md"
+  color="standard"
+  underline="hover"
+>
+  Read documentation
+</InlineLink>
+```
 
 ---
 
@@ -352,6 +521,21 @@ States: enabled, hovered, pressed, disabled, pending
 - Border: `--par-color-border-surface`
 - Divider: `--par-color-divider-menu`
 
+**Usage Example**:
+```tsx
+<Menu 
+  position="bottom-start"
+  searchable={true}
+  isOpen={true}
+>
+  <MenuItem>Option 1</MenuItem>
+  <MenuItem>Option 2</MenuItem>
+  <MenuGroup label="Group">
+    <MenuItem>Grouped Option</MenuItem>
+  </MenuGroup>
+</Menu>
+```
+
 ---
 
 ### 16. EmailInput Component
@@ -365,6 +549,16 @@ States: enabled, hovered, pressed, disabled, pending
 
 **Design Tokens**: Uses same tokens as BaseInput component.
 
+**Usage Example**:
+```tsx
+<EmailInput 
+  placeholder="Enter email"
+  domain={['gmail.com', 'yahoo.com']}
+  floatingLabel="Email Address"
+  isClearable={true}
+/>
+```
+
 ---
 
 ### 17. FileInput Component
@@ -377,6 +571,16 @@ States: enabled, hovered, pressed, disabled, pending
 - Inherits all BaseInput props
 
 **Design Tokens**: Uses same tokens as BaseInput component.
+
+**Usage Example**:
+```tsx
+<FileInput 
+  accept="image/*,.pdf"
+  multiple={true}
+  floatingLabel="Upload Files"
+  onChange={(e) => console.log(e.target.files)}
+/>
+```
 
 ---
 
@@ -394,6 +598,17 @@ States: enabled, hovered, pressed, disabled, pending
 
 **Design Tokens**:
 - Background: `--par-color-bg-fileitem-{enabled|failed}`
+
+**Usage Example**:
+```tsx
+<FileItem 
+  fileName="document.pdf"
+  fileSize={1024000}
+  status="completed"
+  loading={75}
+  onRemove={() => console.log('remove file')}
+/>
+```
 
 ---
 
@@ -421,6 +636,18 @@ States: enabled, hovered, pressed, disabled, pending
 
 **Design Tokens**: Uses same tokens as BaseInput component.
 
+**Usage Example**:
+```tsx
+<NumberInput 
+  min={0}
+  max={100}
+  stepper="auto"
+  unit={['px', 'rem', '%']}
+  floatingLabel="Width"
+  onValueChange={(values) => console.log(values)}
+/>
+```
+
 ---
 
 ### 20. Pagination Component
@@ -444,6 +671,17 @@ States: enabled, hovered, pressed, disabled, pending
 - Text: `--par-color-text-pagination-item-{page|control}-{enabled|hovered|selected-neutral|selected-accent|disabled}`
 - Border: `--par-color-border-pagination-item{-disabled}`
 
+**Usage Example**:
+```tsx
+<Pagination 
+  totalPage={10}
+  page={3}
+  color="accent"
+  siblings={1}
+  onPageChange={(page) => console.log('Page:', page)}
+/>
+```
+
 ---
 
 ### 21. PasswordInput Component
@@ -455,6 +693,16 @@ States: enabled, hovered, pressed, disabled, pending
 - Inherits all BaseInput props
 
 **Design Tokens**: Uses same tokens as BaseInput component.
+
+**Usage Example**:
+```tsx
+<PasswordInput 
+  color="accent"
+  placeholder="Enter password"
+  floatingLabel="Password"
+  isClearable={true}
+/>
+```
 
 ---
 
@@ -478,6 +726,16 @@ States: enabled, hovered, pressed, disabled, pending
 
 **Design Tokens**: Uses same tokens as BaseInput component.
 
+**Usage Example**:
+```tsx
+<PinField 
+  groups={[2, 2, 2]}
+  masked={true}
+  separator="-"
+  onComplete={(value) => console.log('PIN:', value)}
+/>
+```
+
 ---
 
 ### 23. Progress Component
@@ -496,6 +754,18 @@ States: enabled, hovered, pressed, disabled, pending
 **Design Tokens**:
 - Track: `--par-color-progress-track`
 - Fill: `--par-color-progress-thumb-{active-neutral|active-accent|success|error}`
+
+**Usage Example**:
+```tsx
+<Progress 
+  kind="bar"
+  value={65}
+  color="accent"
+  title="Upload Progress"
+  helperText="65% completed"
+  numeral={true}
+/>
+```
 
 ---
 
@@ -518,6 +788,15 @@ States: enabled, hovered, pressed, disabled, pending
 **Design Tokens**:
 - Icon: `--par-color-icon-radio-{enabled|disabled|neutral-selected|neutral-disabled|accent-selected|accent-disabled}`
 
+**Usage Example**:
+```tsx
+<RadioGroup name="theme" defaultValue="light">
+  <Radio value="light" label="Light Theme" />
+  <Radio value="dark" label="Dark Theme" />
+  <Radio value="auto" label="Auto" />
+</RadioGroup>
+```
+
 ---
 
 ### 25. SearchInput Component
@@ -537,6 +816,16 @@ States: enabled, hovered, pressed, disabled, pending
 - Inherits all BaseInput props
 
 **Design Tokens**: Uses same tokens as BaseInput component.
+
+**Usage Example**:
+```tsx
+<SearchInput 
+  placeholder="Search..."
+  shortCut="Ctrl+K"
+  searchButton={true}
+  onSearch={() => console.log('searching')}
+/>
+```
 
 ---
 
@@ -567,6 +856,20 @@ States: enabled, hovered, pressed, disabled, pending
 
 **Design Tokens**: Uses same tokens as BaseInput component.
 
+**Usage Example**:
+```tsx
+<Select 
+  options={[
+    { value: 'react', label: 'React' },
+    { value: 'vue', label: 'Vue' },
+    { value: 'angular', label: 'Angular' }
+  ]}
+  placeholder="Choose framework"
+  clearButton={true}
+  onChange={(value) => console.log(value)}
+/>
+```
+
 ---
 
 ### 27. Slider Component
@@ -593,6 +896,19 @@ States: enabled, hovered, pressed, disabled, pending
 - Hover: `--par-color-bg-slider-state-layer-hovered`
 - Mark: `--par-color-border-slider-discrete-neutral-{active|enabled}`
 
+**Usage Example**:
+```tsx
+<Slider 
+  mode="range"
+  min={0}
+  max={100}
+  defaultValue={[20, 80]}
+  color="accent"
+  indicator="tooltip"
+  onValueChange={(value) => console.log(value)}
+/>
+```
+
 ---
 
 ### 28. Spinner Component
@@ -606,6 +922,15 @@ States: enabled, hovered, pressed, disabled, pending
 **Design Tokens**:
 - Active: `--par-color-stroke-spinner-interactive-{neutral|accent}`
 - Inactive: `--par-color-stroke-spinner-inactive`
+
+**Usage Example**:
+```tsx
+<Spinner 
+  variant="circular" 
+  color="accent" 
+  size="md" 
+/>
+```
 
 ---
 
@@ -625,6 +950,16 @@ States: enabled, hovered, pressed, disabled, pending
 - Track: `--par-color-bg-switch-target-track-{uncheck|check}{-disabled}`
 - Border: `--par-color-border-switch-{checked|unchecked}{-disabled}`
 - Icon: `--par-color-text-switch-target-{checked|unchecked}-{enabled|disabled}`
+
+**Usage Example**:
+```tsx
+<Switch 
+  defaultActive={false}
+  switchSize="md"
+  icon={true}
+  onToggle={(active) => console.log('Active:', active)}
+/>
+```
 
 ---
 
@@ -664,6 +999,22 @@ States: enabled, hovered, pressed, disabled, pending
 - Text: `--par-color-text-table-{header-cell-item|content-item}-{enabled|hovered|active}`
 - Border: `--par-color-border-table`
 
+**Usage Example**:
+```tsx
+<Table 
+  data={[
+    { id: 1, name: 'John', age: 30 },
+    { id: 2, name: 'Jane', age: 25 }
+  ]}
+  columns={[
+    { key: 'name', title: 'Name', sortable: true },
+    { key: 'age', title: 'Age', sortable: true }
+  ]}
+  selectable={true}
+  onRowClick={(record) => console.log(record)}
+/>
+```
+
 ---
 
 ### 31. Tabs Component
@@ -685,6 +1036,18 @@ States: enabled, hovered, pressed, disabled, pending
 - Background: `--par-color-bg-tab-item-{enabled|hovered|neutral-active|accent-active|disabled}`
 - Text: `--par-color-text-tab-item-{enabled|hovered|neutral-active|accent-active|disabled}`
 - Border: `--par-color-border-tab-container`
+
+**Usage Example**:
+```tsx
+<Tabs 
+  data={[
+    { value: 'tab1', label: 'Overview', content: 'Overview content' },
+    { value: 'tab2', label: 'Details', content: 'Details content' }
+  ]}
+  color="accent"
+  side="top"
+/>
+```
 
 ---
 
@@ -708,6 +1071,17 @@ States: enabled, hovered, pressed, disabled, pending
 - Icon: `--par-color-icon-tag`
 - Remove: `--par-color-{bg|text}-tag-remove-{hovered|pressed|disabled}`
 
+**Usage Example**:
+```tsx
+<Tag 
+  label="React"
+  icon={<ReactIcon />}
+  color="accent"
+  kind="outlined"
+  onRemove={(value) => console.log('Remove:', value)}
+/>
+```
+
 ---
 
 ### 33. TextInput Component
@@ -718,6 +1092,16 @@ States: enabled, hovered, pressed, disabled, pending
 - Inherits all BaseInput props
 
 **Design Tokens**: Uses same tokens as BaseInput component.
+
+**Usage Example**:
+```tsx
+<TextInput 
+  placeholder="Enter text"
+  floatingLabel="Description"
+  leftIcon={<TextIcon />}
+  isClearable={true}
+/>
+```
 
 ---
 
@@ -741,6 +1125,17 @@ States: enabled, hovered, pressed, disabled, pending
 - `wrapperProps`: object - Wrapper props
 
 **Design Tokens**: Uses same tokens as BaseInput component.
+
+**Usage Example**:
+```tsx
+<Textarea 
+  placeholder="Enter your message..."
+  rows={4}
+  maxLength={500}
+  isClearable={true}
+  clearBtnText="Clear All"
+/>
+```
 
 ---
 
@@ -774,6 +1169,27 @@ States: enabled, hovered, pressed, disabled, pending
 - Border: `--par-color-border-toast-emphasis-{high|normal}-{generic|info|affirmative|cautionary|adverse}`
 - Progress: `--par-color-border-progress-bar-{generic|info|affirmative|cautionary|adverse}`
 
+**Usage Example**:
+```tsx
+// Using toast function
+const myToast = toast({
+  kind: 'affirmative',
+  title: 'Success!',
+  message: 'Your changes have been saved.',
+  autoDismiss: true,
+  duration: 3000
+});
+myToast.start();
+
+// Or direct component
+<Toast 
+  kind="cautionary"
+  title="Warning"
+  message="Please check your input"
+  dismissButton={true}
+/>
+```
+
 ---
 
 ### 36. Tooltip Component
@@ -791,6 +1207,17 @@ States: enabled, hovered, pressed, disabled, pending
 **Design Tokens**:
 - Background: `--par-color-bg-surface-inverse`
 - Text: `--par-color-text-primary-inverse`
+
+**Usage Example**:
+```tsx
+<Tooltip 
+  content="This is a helpful tooltip"
+  position="top"
+  delay={500}
+>
+  <Button>Hover me</Button>
+</Tooltip>
+```
 
 ---
 
@@ -812,6 +1239,24 @@ States: enabled, hovered, pressed, disabled, pending
 - Background: `--par-color-bg-tree-navigation-{item|button-neutral-hovered|button-accent-hovered|item-neutral-selected|item-accent-selected}`
 - Text: `--par-color-text-tree-navigation-content-item-{enabled|neutral-selected|accent-selected|disabled|hovered|pressed}`
 - Border: `--par-color-border-tree-navigation`
+
+**Usage Example**:
+```tsx
+<TreeNavigation 
+  items={[
+    {
+      id: 'docs',
+      title: 'Documentation',
+      href: '/docs',
+      defaultExpanded: true,
+      children: [
+        { id: 'getting-started', title: 'Getting Started', href: '/docs/start' },
+        { id: 'components', title: 'Components', href: '/docs/components' }
+      ]
+    }
+  ]}
+/>
+```
 
 ---
 
