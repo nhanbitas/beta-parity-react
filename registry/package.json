@@ -1,6 +1,6 @@
 {
   "name": "beta-parity-react",
-  "version": "0.3.5",
+  "version": "0.3.8",
   "description": "Beta Parity React Components",
   "main": "ui/index.js",
   "scripts": {

@@ -217,9 +217,13 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
   ) => {
     const [currentValue, setCurrentValue] = React.useState<string | string[]>(value || multiselect ? [] : '');
     const [isSelectOpen, setIsSelectOpen] = React.useState(false);
-    const [menu, setMenu] = React.useState<HTMLDivElement | null>(null);
+    const menuRef = React.useRef<HTMLDivElement | null>(null);
     const [wrapperRef, rect] = useResizeObserver();
-    const refOutsideClick = useOutsideClick(() => setIsSelectOpen(false), ['click', 'touchstart'], [menu]);
+    const refOutsideClick = useOutsideClick(
+      () => setIsSelectOpen(false),
+      ['click', 'touchstart'],
+      [menuRef, wrapperRef]
+    );
     const mergedRef = useCombinedRefs(ref, refOutsideClick, wrapperRef);
     const selectContainerRef = React.useRef<HTMLDivElement>(null);
     const selectInputRef = React.useRef<HTMLInputElement>(null);
@@ -252,6 +256,7 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
     };
 
     const handleFocus = (e: any) => {
+      e.preventDefault();
       if (disabled) return;
       setIsSelectOpen(!isSelectOpen);
       onFocus?.(e);
@@ -353,7 +358,9 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
     });
 
     const keyEventHandlers = {
-      onKeyDown: keyDownHandler
+      onKeyDown: keyDownHandler,
+      onMouseDown: handleFocus,
+      touchstart: handleFocus
     };
 
     const wrapperKeyDownHandler = useKeyboard('Escape', (e: any) => {
@@ -389,7 +396,6 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
         <ValueInputWrapper
           ref={selectInputRef}
           className={classNames('select-input', { 'non-value': isValueEmpty, [sizeMap[selectSize]]: !floatingLabel })}
-          onClick={handleFocus}
           theme={theme}
           {...accessibilityWrapperProps}
           {...keyEventHandlers}
@@ -425,7 +431,7 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
         </ValueInputWrapper>
 
         <SelectMenu
-          ref={setMenu}
+          ref={menuRef}
           className={classNames('custom-select', className, { 'non-value': isValueEmpty })}
           theme={theme}
           anchor={wrapperRef.current as unknown as HTMLElement}
