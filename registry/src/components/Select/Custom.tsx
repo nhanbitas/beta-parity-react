@@ -360,7 +360,7 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
     const keyEventHandlers = {
       onKeyDown: keyDownHandler,
       onMouseDown: handleFocus,
-      touchstart: handleFocus
+      onTouchStart: handleFocus
     };
 
     const wrapperKeyDownHandler = useKeyboard('Escape', (e: any) => {
