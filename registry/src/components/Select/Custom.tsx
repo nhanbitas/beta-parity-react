@@ -210,6 +210,8 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
       onFocus,
       onBlur,
       onKeyDown,
+      onMouseDown,
+      onTouchStart,
       value,
       ...props
     },
@@ -357,10 +359,24 @@ export const CustomSelect = React.forwardRef<HTMLDivElement, CustomSelectProps>(
       onKeyDown?.(e as React.KeyboardEvent<HTMLDivElement>);
     });
 
+    const mouseDownHandler = (e: React.MouseEvent<HTMLDivElement>) => {
+      if (disabled) return;
+      e.preventDefault();
+      handleFocus(e);
+      onMouseDown?.(e);
+    };
+
+    const onTouchStartHandler = (e: React.TouchEvent<HTMLDivElement>) => {
+      if (disabled) return;
+      e.preventDefault();
+      handleFocus(e);
+      onTouchStart?.(e);
+    };
+
     const keyEventHandlers = {
       onKeyDown: keyDownHandler,
-      onMouseDown: handleFocus,
-      onTouchStart: handleFocus
+      onMouseDown: mouseDownHandler,
+      onTouchStart: onTouchStartHandler
     };
 
     const wrapperKeyDownHandler = useKeyboard('Escape', (e: any) => {
