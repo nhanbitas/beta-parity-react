@@ -7,25 +7,46 @@ import { NativeSelect } from './Native';
 // =========================
 // Declare and export select type and select component
 
-type SelectProps = React.ComponentProps<typeof CustomSelect> &
-  React.ComponentProps<typeof NativeSelect> & {
-    /**
-     * Indicates whether the select component is native or custom.
-     *
-     * @default false
-     * @memberof SelectProps
-     */
-    native?: boolean;
-  };
+type NativeProps = React.ComponentProps<typeof NativeSelect> & {
+  /**
+   * Indicates whether the select component is native or custom.
+   *
+   * @default false
+   * @memberof SelectProps
+   */
+  native: true;
+};
 
-export const Select = React.forwardRef<HTMLDivElement | HTMLSelectElement, SelectProps>((props, ref: any) => {
+type CustomProps = React.ComponentProps<typeof CustomSelect> & {
+  /**
+   * Indicates whether the select component is native or custom.
+   *
+   * @default false
+   * @memberof SelectProps
+   */
+  native?: false; // hoặc undefined => default là custom
+};
+
+type SelectProps = NativeProps | CustomProps;
+
+export const Select = React.forwardRef<HTMLDivElement | HTMLSelectElement, SelectProps>((props, ref) => {
   const { native = false, children, ...rest } = props;
-  let Component = native ? NativeSelect : CustomSelect;
-  return (
-    <Component {...rest} ref={ref}>
-      {children}
-    </Component>
-  );
+
+  if (native) {
+    const nativeProps = rest as React.ComponentProps<typeof NativeSelect>;
+    return (
+      <NativeSelect {...nativeProps} ref={ref as React.Ref<HTMLSelectElement>}>
+        {children}
+      </NativeSelect>
+    );
+  } else {
+    const customProps = rest as React.ComponentProps<typeof CustomSelect>;
+    return (
+      <CustomSelect {...customProps} ref={ref as React.Ref<HTMLDivElement>}>
+        {children}
+      </CustomSelect>
+    );
+  }
 });
 
 Select.displayName = 'Select';
