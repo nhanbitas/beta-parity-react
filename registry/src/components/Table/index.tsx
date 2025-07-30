@@ -241,6 +241,15 @@ export interface TableProps<T = any> extends Omit<React.HTMLAttributes<HTMLTable
   showRowCount?: boolean;
 
   /**
+   * Description for the row count
+   *
+   * This will be displayed alongside the row count in the footer
+   *
+   * @memberof TableProps
+   */
+  countDescription?: string;
+
+  /**
    * Called when a row is clicked
    *
    * This function receives the record and index of the clicked row
@@ -420,6 +429,7 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps<any>>(
       selectedRows = [],
       onSelect,
       onSort,
+      countDescription = 'selected',
       sortKey,
       sortDirection,
       footer,
@@ -639,7 +649,9 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps<any>>(
         {/* Actions/Batch actions section */}
         {selectable && batchActions && currentSelected.size ? (
           <div className='table-batch-actions'>
-            <span className='table-batch-actions-count'>{currentSelected.size} selected</span>
+            <span className='table-batch-actions-count'>
+              {currentSelected.size} {countDescription}
+            </span>
             {batchActions}
           </div>
         ) : (
