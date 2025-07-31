@@ -323,7 +323,9 @@ export const AccordionItemTrigger = React.forwardRef<
         {...props}
       >
         {iconSide === 'left' && <span className={iconWrapperClassName}>{iconElement}</span>}
-        <span className='accordion-item-trigger-text'>{children}</span>
+
+        {isPlainText(children) ? <span className='accordion-item-trigger-text'>{children}</span> : children}
+
         {iconSide === 'right' && <span className={iconWrapperClassName}>{iconElement}</span>}
       </button>
     );
@@ -390,8 +392,10 @@ const cloneChildren = (
       return React.cloneElement(child, {
         handleChange: extraProps.handleChange ? extraProps.handleChange : () => {},
         icon: extraProps.icon ? extraProps.icon : null,
-        iconSide: extraProps.iconSide ? extraProps.iconSide : 'right',
-        children: cloneChildren(child.props.children, extraProps) as React.ReactNode
+        iconSide: extraProps.iconSide ? extraProps.iconSide : 'right'
+
+        // NOTE: The following line is commented out to avoid passing children props directly.  "version": "0.4.4"
+        // children: cloneChildren(child.props.children, extraProps) as React.ReactNode
       } as any);
     }
 
@@ -399,4 +403,10 @@ const cloneChildren = (
       return React.cloneElement(child, {} as any);
     }
   });
+};
+
+const isPlainText = (node: React.ReactNode): boolean => {
+  if (typeof node === 'string' || typeof node === 'number') return true;
+  if (Array.isArray(node)) return node.every(isPlainText);
+  return false;
 };
