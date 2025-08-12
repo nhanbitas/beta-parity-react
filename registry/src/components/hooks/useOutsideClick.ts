@@ -1,15 +1,10 @@
-import { useEffect, useRef, RefObject } from 'react';
+import { useEffect, useRef, RefObject, useCallback } from 'react';
 
 const DEFAULT_EVENTS = ['mousedown', 'touchstart'];
 
 /**
  * A custom hook that detects clicks outside of one or more elements.
- *
- * @param handler - Function to call when click is detected outside
- * @param events - List of events to listen to (default: ['mousedown', 'touchstart'])
- * @param refs - Refs to elements to monitor for outside clicks
- *
- * @returns A ref you can assign to a DOM node if you're not passing refs manually
+ * Optimized for cross-device compatibility and performance.
  */
 export function useOutsideClick<T extends HTMLElement = any>(
   handler: () => void,
@@ -17,31 +12,79 @@ export function useOutsideClick<T extends HTMLElement = any>(
   refs?: RefObject<HTMLElement | null>[]
 ) {
   const innerRef = useRef<T>(null);
+  const handlerRef = useRef(handler);
+  const touchHandled = useRef(false);
 
+  // Keep handler ref up to date
   useEffect(() => {
-    const listener = (event: Event) => {
-      const target = event.target as Node;
+    handlerRef.current = handler;
+  }, [handler]);
+
+  // Memoize the listener to prevent unnecessary re-renders
+  const listener = useCallback(
+    (event: Event) => {
+      // Prevent double firing on devices that support both touch and mouse
+      if (event.type === 'touchstart') {
+        touchHandled.current = true;
+      } else if (event.type === 'mousedown' && touchHandled.current) {
+        touchHandled.current = false;
+        return;
+      }
+
+      const target = event.target;
+
+      // Enhanced safety checks
+      if (!target || !(target instanceof Node)) return;
 
       // Ignore if element has this attribute
-      if ((target as HTMLElement)?.hasAttribute?.('data-ignore-outside-clicks')) return;
+      if ((target as HTMLElement)?.hasAttribute?.('data-ignore-outside-clicks')) {
+        return;
+      }
 
+      // Get all refs to check
       const allRefs = refs ?? [innerRef];
 
+      // Check if click is outside all referenced elements
       const isOutside = allRefs.every((ref) => {
         const el = ref?.current;
-        return el && !el.contains(target);
+        if (!el) return true; // If ref is null, consider it "outside"
+
+        // Additional check for shadow DOM compatibility
+        try {
+          return !el.contains(target);
+        } catch (error) {
+          // Fallback for edge cases with shadow DOM or cross-frame scenarios
+          console.warn('useOutsideClick: Error checking element containment', error);
+          return true;
+        }
       });
 
       if (isOutside) {
-        handler();
+        handlerRef.current();
       }
+    },
+    [refs]
+  );
+
+  useEffect(() => {
+    // Add passive listeners for better performance on touch devices
+    const options: AddEventListenerOptions = {
+      passive: true,
+      capture: true // Use capture phase for more reliable detection
     };
 
-    events.forEach((event) => document.addEventListener(event, listener));
+    events.forEach((event) => {
+      document.addEventListener(event, listener, options);
+    });
+
     return () => {
-      events.forEach((event) => document.removeEventListener(event, listener));
+      events.forEach((event) => {
+        document.removeEventListener(event, listener, options);
+      });
+      // Reset touch flag on cleanup
+      touchHandled.current = false;
     };
-  }, [handler, events, refs]);
+  }, [listener, events]);
 
   return innerRef;
 }
