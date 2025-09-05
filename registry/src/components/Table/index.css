@@ -137,7 +137,7 @@
 .table-body-row {
   @apply h-fit;
 }
-.table-body-row:hover > .table-body-cell {
+.table-body-row:hover .table-body-cell-wrapper {
   @apply bg-[var(--par-color-bg-table-body-row-item-hovered)];
 }
 
